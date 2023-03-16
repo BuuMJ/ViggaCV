@@ -1,0 +1,33 @@
+{
+  "name": "viggacv",
+  "version": "1.0.0",
+  "description": "A website that allows users to enter their own CV online, there are CV templates available for users to choose and edit their own CV.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BuuMJ/ViggaCV.git"
+  },
+  "keywords": [
+    "CV",
+    "Group",
+    "21",
+    "Vigga"
+  ],
+  "author": "Group 21",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BuuMJ/ViggaCV/issues"
+  },
+  "homepage": "https://github.com/BuuMJ/ViggaCV#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.2",
+    "handlebars-helpers": "^0.10.0",
+    "mongoose": "^7.0.2",
+    "node-sass": "^8.0.0",
+    "nodemon": "^2.0.21"
+  }
+}
