@@ -10,6 +10,7 @@ const User = new Schema(
     email: String,
     role: String,
     phone: String,
+    file: String,
   },
   {
     collection: "user",
