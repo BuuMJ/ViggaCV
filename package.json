@@ -4,6 +4,8 @@
   "description": "A website that allows users to enter their own CV online, there are CV templates available for users to choose and edit their own CV.",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon --inspect src/index.js",
+    "watch": "node-sass --watch src/resources/scss/app.scss src/public/css/app.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +29,7 @@
     "express-handlebars": "^7.0.2",
     "handlebars-helpers": "^0.10.0",
     "mongoose": "^7.0.2",
+    "morgan": "^1.10.0",
     "node-sass": "^8.0.0",
     "nodemon": "^2.0.21"
   }
