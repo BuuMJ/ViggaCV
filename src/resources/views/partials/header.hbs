@@ -19,7 +19,7 @@
             <i class="bi bi-person-circle"></i>
             <ul class="down__user">
                 <li><a href="">Your Profile</a></li>
-                <li><a href="/login">Sign Out</a></li>
+                <li><a onclick="logout()" href="/login">Sign Out</a></li>
             </ul>
         </ul>
         {{else}}
@@ -27,3 +27,9 @@
         {{/if}}
     </div>
 </div>
+<script>
+      function logout() {
+    document.cookie = 'token =; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    window.location.href = "/login"
+  }
+</script>
