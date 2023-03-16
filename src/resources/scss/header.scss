@@ -1,0 +1,84 @@
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    background-color: transparent;
+    border-bottom: 1px solid $primarycolor;
+    position: fixed;
+    // background-color: $primarycolor;
+    // background-image: linear-gradient(to bottom right, rgba(255,255,255,0.1),rgba(255,255,255,0.4));
+}
+.navbar-left{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+.navbar-left img{
+    width: 60px;
+    height: 60px;
+}
+.navbar-left span {
+    font-size: 20px;
+    font-weight: 700;
+    color: $primarycolor;
+}
+.navbar-right{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+}
+.navbar-right > * {
+    margin: 0 12px;
+}
+.navbar-right img{
+    width: 50px;
+    height: 50px;
+}
+.navbar-right a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    color: $primarycolor;
+}
+.drop-down__contact{
+    position: relative;
+    padding: 30px 0;
+}
+.contact i {
+    font-size: 20px;
+    color: $primarycolor;
+}
+.down__contact{
+    position: absolute;
+    top: 86px;
+    left: -40px;
+    display: none;
+    list-style-type: none;
+    color: $primarycolor;
+    font-size: 20px;
+    font-weight: 700;
+    width: 220px;
+    height: 180px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-bottom: 2px solid $primarycolor;
+    text-align: center;
+    padding-left: unset;
+}
+.down__contact li {
+    padding: 8px 10px;
+}
+.drop-down__contact:hover .down__contact{
+    display: block;
+}
+.send-mail:hover{
+    text-decoration: underline;
+}

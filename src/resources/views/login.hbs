@@ -1,1 +1,57 @@
-<h1>ngu lồn</h1>
+<div class="main-login">
+    <form class="box-login">
+        <div class="text-login">
+            <span class="text-sign-in">Sign In</span>
+            <span class="text-create">Create Account</span>
+        </div>
+        <div class="login-username">
+            <input type="text" name="username" id="username" required>
+            <label class="label-user" for="username">User Name</label>
+        </div>
+        <div class="login-password">
+            <input type="password" name="password" id="password" required>
+            <label class="label-password" for="password">Password</label>
+        </div>
+        <div class="action-login">
+            <button class="btn-login" type="submit">Sign In</button>
+            <a class="forgot-password" href="">Forgot Password?</a>
+        </div>
+    </form>
+    <form class="box-signup">
+        <div class="text-login">
+            <span class="text-sign-in">Sign Up</span>
+        </div>
+         <div class="login-fullname">
+            <input type="text" name="fullname" id="fullname" required>
+            <label class="label-fullname" for="fullname">Full Name</label>
+        </div>
+        <div class="login-username">
+            <input type="text" name="username" id="username-signup" required>
+            <label class="label-user" for="username-signup">User Name</label>
+        </div>
+        <div class="login-password">
+            <input type="password" name="password" id="password-signup" required>
+            <label class="label-password-signup" for="password">Password</label>
+        </div>
+        <div class="login-email">
+            <input type="text" name="email" id="email" required>
+            <label class="label-email" for="password">Email</label>
+        </div>
+        <div class="login-phone">
+            <input type="text" name="phone" id="phone" required>
+            <label class="label-phone" for="phone">Phone</label>
+        </div>
+        <div class="action-login">
+            <button class="btn-signup" type="submit">Sign Up</button>
+        </div>
+    </form>
+</div>
+<script>
+    var clickCreate = document.querySelector('.text-create')
+    var boxLogin = document.querySelector('.box-login');
+    var boxSignUp = document.querySelector('.box-signup')
+    clickCreate.addEventListener('click', ()=>{
+        boxLogin.style.cssText = "display: none;"
+        boxSignUp.style.cssText = "display: flex;"
+    })
+</script>
