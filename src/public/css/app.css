@@ -1,0 +1,195 @@
+.main-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 800px;
+  background: url("/img/bglogin.jpeg") center/cover no-repeat; }
+
+.box-login,
+.box-signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 450px;
+  height: 400px;
+  background-color: transparent;
+  border: 4px solid #fedb00;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  backdrop-filter: blur(10px); }
+
+.box-signup {
+  display: none;
+  width: 450px;
+  height: 600px; }
+
+.text-login {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%; }
+
+.text-login .text-create {
+  padding: 8px;
+  border: 1px solid #fedb00;
+  cursor: pointer; }
+
+.login-username,
+.login-password,
+.login-email,
+.login-phone,
+.login-fullname {
+  position: relative;
+  width: 100%;
+  text-align: center; }
+
+.login-username label:hover,
+.login-password label:hover,
+.login-email label:hover,
+.login-phone label:hover,
+.login-fullname label:hover {
+  cursor: pointer; }
+
+.box-login input,
+.box-signup input {
+  border: none;
+  outline: none;
+  width: 75%;
+  background-color: unset;
+  border-bottom: 1px solid #fedb00;
+  color: white;
+  padding: 0 8px; }
+
+.login-username label,
+.login-password label,
+.login-email label,
+.login-phone label,
+.login-fullname label {
+  position: absolute;
+  top: 0;
+  left: 60px;
+  transition: 0.5s;
+  font-weight: 500; }
+
+.login-username input:focus ~ label,
+.login-password input:focus ~ label,
+.login-email input:focus ~ label,
+.login-phone input:focus ~ label,
+.login-fullname input:focus ~ label {
+  top: -30px; }
+
+.login-username input:valid + label,
+.login-password input:valid + label,
+.login-email input:valid + label,
+.login-phone input:valid + label,
+.login-fullname input:valid + label {
+  top: -30px; }
+
+.action-login {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%; }
+
+.btn-login,
+.btn-signup {
+  border: 1px solid #fedb00;
+  outline: none;
+  color: white;
+  background-color: transparent;
+  width: 90px;
+  height: 40px;
+  font-weight: 700; }
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  background-color: transparent;
+  border-bottom: 1px solid #fedb00;
+  position: fixed; }
+
+.navbar-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 50%;
+  height: 100%; }
+
+.navbar-left img {
+  width: 60px;
+  height: 60px; }
+
+.navbar-left span {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fedb00; }
+
+.navbar-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 40%;
+  height: 100%; }
+
+.navbar-right > * {
+  margin: 0 12px; }
+
+.navbar-right img {
+  width: 50px;
+  height: 50px; }
+
+.navbar-right a {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fedb00; }
+
+.drop-down__contact {
+  position: relative;
+  padding: 30px 0; }
+
+.contact i {
+  font-size: 20px;
+  color: #fedb00; }
+
+.down__contact {
+  position: absolute;
+  top: 86px;
+  left: -40px;
+  display: none;
+  list-style-type: none;
+  color: #fedb00;
+  font-size: 20px;
+  font-weight: 700;
+  width: 220px;
+  height: 180px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-bottom: 2px solid #fedb00;
+  text-align: center;
+  padding-left: unset; }
+
+.down__contact li {
+  padding: 8px 10px; }
+
+.drop-down__contact:hover .down__contact {
+  display: block; }
+
+.send-mail:hover {
+  text-decoration: underline; }
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }

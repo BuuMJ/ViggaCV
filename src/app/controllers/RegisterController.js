@@ -1,15 +1,15 @@
 const UserModel = require("../../models/User");
 const bcrypt = require("bcrypt");
 
-class ResigterController {
+class RegisterController {
   //[GET] Resigter
-  resigter(req, res, next) {
+  register(req, res, next) {
     res.render("login", {
-      title: "Resigter",
+      title: "Register",
     });
   }
 
-  //[POST] Resigter
+  //[POST] Register
   apiregister(req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
@@ -55,6 +55,7 @@ class ResigterController {
                           password: hash,
                           fullname: fullname,
                           email: email,
+                          phone: phone,
                           role: role,
                         });
                       });
@@ -79,4 +80,4 @@ class ResigterController {
       });
   }
 }
-module.exports = new ResigterController();
+module.exports = new RegisterController();
