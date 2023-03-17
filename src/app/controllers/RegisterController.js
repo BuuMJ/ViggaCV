@@ -1,5 +1,6 @@
 const UserModel = require("../../models/User");
 const bcrypt = require("bcrypt");
+const nodemailer = require("nodemailer");
 
 class RegisterController {
   //[GET] Resigter
@@ -17,6 +18,19 @@ class RegisterController {
     var email = req.body.email;
     var role = req.body.role;
     var phone = req.body.phone;
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "duoc6694@gmail.com",
+        pass: "wdymtvgbhblstfbj",
+      },
+    });
+
+    const mailOptions = {
+      to: email, // list of receivers
+      subject: "Sign Up Success", // Subject line
+      html: "Your account has been successfully registered", // plain text body
+    };
 
     UserModel.findOne({
       username: username,
@@ -59,7 +73,14 @@ class RegisterController {
                           role: role,
                         });
                       });
-                      return res.redirect("/login");
+                      transporter.sendMail(mailOptions, function (err, info) {
+                        if (err) {
+                          console.log(err);
+                        } else {
+                          console.log("Đã gửi mail");
+                          return res.redirect("/login");
+                        }
+                      });
                     }
                   })
                   .catch((err) => {
