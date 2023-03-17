@@ -1,13 +1,15 @@
-<form class="box-forgot" method="POST" action="/register/apiregister">
+<div class="main-login">
+<form class="box-verify" method="POST" action="/register/sendMailVerify">
         <div class="text-login">
-            <span class="text-sign-in">Reset Password</span>
+            <span class="text-sign-in">Verify Email</span>
         </div>
         <div class="login-email">
             <input type="text" name="email" id="email-forgot" required>
             <label class="label-email" for="password">Email</label>
         </div>
         <div class="action-login">
-            <button class="btn-signup back-reset" type="button">Back</button>
-            <button class="btn-reset" type="submit">Reset Password</button>
+            <a href="/login" class="btn-signup back-reset" type="button">Back</a>
+            <button class="btn-verify" type="submit">Verify</button>
         </div>
     </form>
+</div>

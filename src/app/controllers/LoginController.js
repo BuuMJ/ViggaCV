@@ -19,8 +19,8 @@ class LoginController {
     })
       .then((data) => {
         if (data) {
-          if (!data.isEmailVerified) {
-            return res.render("login", {
+          if (!data.isVerified) {
+            return res.render("verify", {
               msg: "Email chưa được xác minh",
             });
           }

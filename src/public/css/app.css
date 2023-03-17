@@ -58,7 +58,8 @@
 
 .box-login,
 .box-signup,
-.box-forgot {
+.box-forgot,
+.box-verify {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -72,6 +73,9 @@
   font-size: 20px;
   font-weight: 700;
   backdrop-filter: blur(10px); }
+
+.box-verify {
+  height: 200px; }
 
 .box-forgot {
   display: none;
@@ -112,7 +116,8 @@
 
 .box-login input,
 .box-signup input,
-.box-forgot input {
+.box-forgot input,
+.box-verify input {
   border: none;
   outline: none;
   width: 75%;
@@ -155,7 +160,8 @@
 
 .btn-login,
 .btn-signup,
-.btn-reset {
+.btn-reset,
+.btn-verify {
   border: 1px solid #fedb00;
   outline: none;
   color: white;
@@ -169,6 +175,13 @@
 
 .forgot-password {
   cursor: pointer; }
+
+.back-reset {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  padding-top: 4px; }
 
 .footer {
   display: flex;

@@ -7,11 +7,12 @@ class RegisterController {
   //[GET] Verify Account
   verify(req, res, next) {
     // Giải mã token để kiểm tra địa chỉ email
+    const token = req.query.token;
     jwt.verify(token, "PW", function (err, decoded) {
       if (err) {
         // Token không hợp lệ hoặc đã hết hạn
         // Xử lý lỗi tại đây
-        req.render("verify", {
+        res.render("verify", {
           msg: "Token is invalid or expired, please verify again",
         });
       } else {
@@ -23,18 +24,19 @@ class RegisterController {
           .then((user) => {
             if (!user) {
               // Người dùng không tồn tại trong CSDL
-              req.render("login", {
+              res.render("login", {
                 msg: "The account does not exist, please re-register",
               });
             } else {
               // Người dùng tồn tại trong CSDL
               // Xác minh tài khoản của người dùng tại đây
-              UserModel.isVerified = true;
-              UserModel.save()
-                .then(() => {
-                  req.render("login", {
-                    msg: "Verify successful, please login.",
-                  });
+              user.isVerified = true;
+              user
+                .save()
+                .then((data) => {
+                  if (data) {
+                    res.render("login");
+                  }
                 })
                 .catch((err) => {
                   console.error(err);
@@ -64,7 +66,7 @@ class RegisterController {
       },
     });
     const token = jwt.sign({ email: email }, "PW", { expiresIn: "1h" });
-    const verifyLink = `http://localhost:3000/login?token=${token}`;
+    const verifyLink = `http://localhost:3000/register/verify?token=${token}`;
     const mailOptions = {
       to: email, // list of receivers
       subject: "Sign Up Success", // Subject line
@@ -156,7 +158,7 @@ class RegisterController {
       },
     });
     const token = jwt.sign({ email: email }, "PW", { expiresIn: "1h" });
-    const verifyLink = `http://localhost:3000/login?token=${token}`;
+    const verifyLink = `http://localhost:3000/register/verify?token=${token}`;
     const mailOptions = {
       to: email, // list of receivers
       subject: "Sign Up Success", // Subject line

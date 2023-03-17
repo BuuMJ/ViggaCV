@@ -3,6 +3,7 @@ const router = express.Router();
 const registerController = require("../app/controllers/RegisterController");
 
 router.post("/apiregister", registerController.apiregister);
-router.get("/", registerController.verify);
+router.post("/sendMailVerify", registerController.sendMailVerify);
+router.get("/verify", registerController.verify);
 
 module.exports = router;
