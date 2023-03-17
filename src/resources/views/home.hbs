@@ -1,0 +1,26 @@
+<div class="container-home">
+    <div class="first-content">
+        <div class="first-content-left">
+            <span class="left-primary-text">The CV That Lands The Job</span>
+            <span class="left-secondary-text">Outstanding. Professional. Recruiter-approved. With our step-by-step builder, you'll be ready in minutes.</span>
+            <a class="home-create-cv" href="">Create Your CV</a>
+        </div>
+        <div id="slideshow" class="first-content-right">
+            <img src="/img/cv1.jpeg" alt="">
+            <img src="/img/cv2.jpeg" alt="">
+            <img src="/img/cv3.png" alt="">
+            <img src="/img/cv4.jpeg" alt="">
+        </div>
+    </div>
+</div>
+<script>
+      const images = ["image1.jpg", "image2.jpg", "image3.jpg","imgae4.jpg"];
+
+      let currentImageIndex = 0;
+      const slideshowElement = document.getElementById("slideshow");
+      const slideshowInterval = setInterval(function() {
+        slideshowElement.children[currentImageIndex].style.display = "none";
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        slideshowElement.children[currentImageIndex].style.display = "block";
+      }, 3000);
+    </script>

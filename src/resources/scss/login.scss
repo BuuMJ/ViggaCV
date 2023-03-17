@@ -7,7 +7,8 @@
     background: url("/img/bglogin.jpeg") center / cover no-repeat;
 }
 .box-login,
-.box-signup{
+.box-signup,
+.box-forgot{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -21,6 +22,10 @@
     font-size: 20px;
     font-weight: 700;
     backdrop-filter: blur(10px);
+}
+.box-forgot{
+    display: none;
+    height: 200px;
 }
 .box-signup {
     display: none;
@@ -56,7 +61,8 @@
     cursor: pointer;
 }
 .box-login input,
-.box-signup input {
+.box-signup input,
+.box-forgot input {
     border: none;
     outline: none;
     width: 75%;
@@ -98,7 +104,8 @@
     width: 100%;
 }
 .btn-login,
-.btn-signup{
+.btn-signup,
+.btn-reset{
     border: 1px solid $primarycolor;
     outline: none;
     color: white;
@@ -106,4 +113,10 @@
     width: 90px;
     height: 40px;
     font-weight: 700;
+}
+.btn-reset{
+    width: 180px;
+}
+.forgot-password {
+    cursor: pointer;
 }

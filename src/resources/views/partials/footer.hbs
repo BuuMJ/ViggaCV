@@ -1,0 +1,49 @@
+<div class="footer">
+  <div class="footer-content">
+    <div class="footer-content-left">
+        <form class="footer-send-feed-back">
+            <span>Do You Have A Feed Back?</span>
+            <input type="text" name="" id="sendfeedback" required>
+            <label for="sendfeedback">Enter Feedback</label>
+            <button type="submit" class="icon-sendmail"><i class="bi bi-arrow-right-circle-fill"></i></button>
+        </form>
+    </div>
+   <ul><span class="contact-footer">Contact Us:</span> 
+    <li>070-277-5***</li>
+    <li>Monday-Sunday 9am-9pm</li>
+   </ul>
+  </div>
+  <div class="underline">
+    {{#if user}}
+    <input id="getemailuser" type="text" value="{{getEmail user}}">
+    {{/if}}
+  </div>
+  <div class="footer-bottom">
+       <p>Copyright © 2023 Vigga CV</p>
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+    </ul>
+  </div>
+</div>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+    function sendMail() {
+  Email.send({
+    Host: "smtp.gmail.com",
+    Username: "nxt03091999@gmail.com",
+    Password: "XUANTRUONG2010",
+    To: 'duoc6694@gmail.com',
+    From: "nxt03091999@gmail.com",
+    Subject: "New FeedBack",
+    Body: document.getElementById('sendfeedback').value +
+      "<br> Email send FeedBack: " + document.getElementById('getemailuser').value,
+
+  }).then(
+    message => alert('Feedback Sent Successfully. Wait for us to return within 24 hours')
+  );
+}
+    var sendFeedBack = document.querySelector('.icon-sendmail')
+    sendFeedBack.addEventListener("click",sendMail)
+</script>

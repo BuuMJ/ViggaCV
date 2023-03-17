@@ -1,0 +1,120 @@
+.footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 300px;
+    background-color: black;
+    color: $primarycolor;
+}
+.footer-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+}
+.footer-content-left{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 60%;
+    height: 100%;
+}
+.footer-content ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 100%;
+    margin: unset;
+}
+.footer-content span.contact-footer{
+    font-size: 20px;
+    font-weight: 700;
+}
+.footer-content li{
+    font-size: 16px;
+    font-weight: 500;
+    list-style-type: none;
+}
+.footer-send-feed-back{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 100%;
+    position: relative;
+    height: 100%;
+}
+.footer-send-feed-back input{
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 1px solid $primarycolor;
+    color: white;
+    width: 40%;
+    padding: 0 34px 0 0;
+}
+.footer-send-feed-back label{
+    top: 100px;
+    position: absolute;
+}
+.footer-send-feed-back span{
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 700;
+}
+.footer-send-feed-back input:focus ~ label {
+    top: 80px
+}
+.footer-send-feed-back input:valid + label {
+    top: 80px;
+}
+.footer-send-feed-back .icon-sendmail{
+    position: absolute;
+    left: 36%;
+    font-size: 30px;
+    top: 86px;
+    cursor: pointer;
+}
+.icon-sendmail:hover {
+    transform: translateX(4px);
+}
+.underline{
+    width: 80%;
+    height: 1px;
+    background-color: $primarycolor;
+}
+.footer-bottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+    width: 100%;
+}
+.footer-bottom ul {
+    margin: unset;
+    padding: unset;
+}
+.footer-bottom li{
+    display: inline-block;
+    margin: 0 8px;
+}
+.footer-bottom li a {
+    text-decoration: none;
+    color: $primarycolor;
+}
+#getemailuser{
+    opacity: 0;
+}
+.footer-send-feed-back button{
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: $primarycolor;
+}

@@ -11,7 +11,7 @@ module.exports = {
     getEmail: function (user) {
       return user.email;
     },
-    getDepartment: function (user) {
+    getPhone: function (user) {
       return user.phone;
     },
     ifeq: function (user, y, options) {

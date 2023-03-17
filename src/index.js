@@ -12,7 +12,7 @@ const session = require("express-session");
 const helpers = require('handlebars-helpers')
 
 const hbs = handlebars.create({
-  // helpers: require("./util/helpers"),
+  helpers: require("./util/helpers"),
   extname: ".hbs",
 });
 
