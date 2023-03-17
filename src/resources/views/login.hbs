@@ -14,7 +14,7 @@
         </div>
         <div class="action-login">
             <button class="btn-login" type="submit">Sign In</button>
-            <a class="forgot-password" href="">Forgot Password?</a>
+            <a class="forgot-password" >Forgot Password?</a>
         </div>
     </form>
     <form class="box-signup" method="POST" action="/register/apiregister">
@@ -46,6 +46,19 @@
             <button class="btn-signup" type="submit">Sign Up</button>
         </div>
     </form>
+    <form class="box-forgot" method="POST" action="/register/apiregister">
+        <div class="text-login">
+            <span class="text-sign-in">Reset Password</span>
+        </div>
+        <div class="login-email">
+            <input type="text" name="email" id="email-forgot" required>
+            <label class="label-email" for="password">Email</label>
+        </div>
+        <div class="action-login">
+            <button class="btn-signup back-reset" type="button">Back</button>
+            <button class="btn-reset" type="submit">Reset Password</button>
+        </div>
+    </form>
 </div>
 <script>
     var clickCreate = document.querySelector('.text-create')
@@ -60,4 +73,15 @@
         boxSignUp.style.cssText = "display: none;"
         boxLogin.style.cssText = "display:flex;"
     })
+    var boxReset = document.querySelector('.box-forgot');
+    var clickReset = document.querySelector('.forgot-password');
+    clickReset.addEventListener('click',()=>{
+        boxReset.style.cssText = "display: flex;"
+        boxLogin.style.cssText = "display: none;"
+    })
+     var clickBackReset = document.querySelector('.back-reset');
+     clickBackReset.addEventListener('click', ()=>{
+        boxReset.style.cssText = "display: none;"
+        boxLogin.style.cssText = "display: flex;"
+     })
 </script>
