@@ -12,9 +12,21 @@
             <img src="/img/cv4.jpeg" alt="">
         </div>
     </div>
+    <div class="templates-cv">
+        <div class="templates-img">
+            <img class="templates-img1" src="/img/cv1.jpeg" alt="">
+            <img class="templates-img2" src="/img/cv2.jpeg" alt="">
+            <img class="templates-img3" src="/img/cv3.png" alt="">
+            <img class="templates-img4" src="/img/cv4.jpeg" alt="">
+        </div>
+        <div class="templates-text">
+            <span>A candidate in your region has recently chosen this CV template.</span>
+            <a class="templates-text__action" href="">Build Your CV</a>
+        </div>
+    </div>
 </div>
 <script>
-      const images = ["image1.jpg", "image2.jpg", "image3.jpg","imgae4.jpg"];
+      const images = ["image1.jpg", "image2.jpg", "image3.jpg","image4.jpg"];
 
       let currentImageIndex = 0;
       const slideshowElement = document.getElementById("slideshow");
@@ -23,4 +35,19 @@
         currentImageIndex = (currentImageIndex + 1) % images.length;
         slideshowElement.children[currentImageIndex].style.display = "block";
       }, 3000);
-    </script>
+      
+</script>
+<script>
+  const listImages = document.querySelectorAll('.templates-img img');
+
+  let currentImageIndexA = 0;
+  listImages[currentImageIndexA].style.transform = 'translateY(-100%)';
+
+  setInterval(function() {
+    listImages[currentImageIndexA].style.transform = 'translateY(-100%)';
+
+    currentImageIndexA = (currentImageIndexA + 1) % listImages.length;
+
+    listImages[currentImageIndexA].style.transform = 'translateY(0)';
+  }, 5000);
+</script>
