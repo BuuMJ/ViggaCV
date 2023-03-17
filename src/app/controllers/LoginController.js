@@ -19,6 +19,11 @@ class LoginController {
     })
       .then((data) => {
         if (data) {
+          if (!data.isEmailVerified) {
+            return res.render("login", {
+              msg: "Email chưa được xác minh",
+            });
+          }
           var token = jwt.sign(
             {
               _id: data._id,

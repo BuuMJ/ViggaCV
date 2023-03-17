@@ -1,12 +1,50 @@
 const UserModel = require("../../models/User");
 const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
+const jwt = require("jsonwebtoken");
 
 class RegisterController {
-  //[GET] Resigter
-  register(req, res, next) {
-    res.render("login", {
-      title: "Register",
+  //[GET] Verify Account
+  verify(req, res, next) {
+    // Giải mã token để kiểm tra địa chỉ email
+    jwt.verify(token, "PW", function (err, decoded) {
+      if (err) {
+        // Token không hợp lệ hoặc đã hết hạn
+        // Xử lý lỗi tại đây
+        req.render("verify", {
+          msg: "Token is invalid or expired, please verify again",
+        });
+      } else {
+        // Token hợp lệ
+        const email = decoded.email;
+
+        // Kiểm tra địa chỉ email trong token với địa chỉ email trong CSDL
+        UserModel.findOne({ email: email })
+          .then((user) => {
+            if (!user) {
+              // Người dùng không tồn tại trong CSDL
+              req.render("login", {
+                msg: "The account does not exist, please re-register",
+              });
+            } else {
+              // Người dùng tồn tại trong CSDL
+              // Xác minh tài khoản của người dùng tại đây
+              UserModel.isVerified = true;
+              UserModel.save()
+                .then(() => {
+                  req.render("login", {
+                    msg: "Verify successful, please login.",
+                  });
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
     });
   }
 
@@ -25,11 +63,12 @@ class RegisterController {
         pass: "wdymtvgbhblstfbj",
       },
     });
-
+    const token = jwt.sign({ email: email }, "PW", { expiresIn: "1h" });
+    const verifyLink = `http://localhost:3000/login?token=${token}`;
     const mailOptions = {
       to: email, // list of receivers
       subject: "Sign Up Success", // Subject line
-      html: "Your account has been successfully registered", // plain text body
+      html: `Please click <a href="${verifyLink}">here</a> to verify your account.`, // plain text body
     };
 
     UserModel.findOne({
@@ -76,9 +115,14 @@ class RegisterController {
                       transporter.sendMail(mailOptions, function (err, info) {
                         if (err) {
                           console.log(err);
+                          console.log("Không gửi được mail");
+                          res.json("Không thể gửi mail");
                         } else {
-                          console.log("Đã gửi mail");
-                          return res.redirect("/login");
+                          if (info) {
+                            console.log(info);
+                            console.log("Đã gửi mail");
+                            return res.redirect("/login");
+                          }
                         }
                       });
                     }
@@ -99,6 +143,34 @@ class RegisterController {
         console.error(err);
         res.json("Lỗi khi kiểm tra tài khoản");
       });
+  }
+
+  //[POST] Send mail verify
+  sendMailVerify(req, res, next) {
+    const email = req.body.email;
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "duoc6694@gmail.com",
+        pass: "wdymtvgbhblstfbj",
+      },
+    });
+    const token = jwt.sign({ email: email }, "PW", { expiresIn: "1h" });
+    const verifyLink = `http://localhost:3000/login?token=${token}`;
+    const mailOptions = {
+      to: email, // list of receivers
+      subject: "Sign Up Success", // Subject line
+      html: `Please click <a href="${verifyLink}">here</a> to verify your account.`, // plain text body
+    };
+    transporter.sendMail(mailOptions, function (err, info) {
+      if (err) {
+        console.log(err);
+      } else {
+        bcrypt.hash(email, 10, function (err, hash) {});
+        console.log("Đã gửi mail");
+        return res.redirect("/login");
+      }
+    });
   }
 }
 module.exports = new RegisterController();

@@ -11,6 +11,7 @@ const User = new Schema(
     role: String,
     phone: String,
     file: String,
+    isVerified: { type: Boolean, default: false },
   },
   {
     collection: "user",
