@@ -70,7 +70,7 @@ class RegisterController {
     const mailOptions = {
       to: email, // list of receivers
       subject: "Sign Up Success", // Subject line
-      html: `Please click <a href="${verifyLink}">here</a> to verify your account.`, // plain text body
+      html: `Please click <button><a href="${verifyLink}">here</a></button> to verify your account.`, // plain text body
     };
 
     UserModel.findOne({

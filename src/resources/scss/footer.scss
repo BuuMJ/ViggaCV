@@ -7,7 +7,6 @@
     height: 300px;
     background-color: black;
     color: $primarycolor;
-    margin-top: 50px;
 }
 .footer-content{
     display: flex;
@@ -109,9 +108,6 @@
 .footer-bottom li a {
     text-decoration: none;
     color: $primarycolor;
-}
-#getemailuser{
-    opacity: 0;
 }
 .footer-send-feed-back button{
     outline: none;
