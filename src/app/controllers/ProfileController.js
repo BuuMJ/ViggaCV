@@ -7,7 +7,7 @@ class ProfileController {
     });
   }
 
-  async sendMail(req, res, next) {
+  sendMail(req, res, next) {
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
