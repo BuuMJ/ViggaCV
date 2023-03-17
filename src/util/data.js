@@ -12,16 +12,16 @@ function sendDataUser(req, res, next) {
     }).then((data) => {
       if (data) {
         req.user = data;
-        console.log(req.user + "aaaaaaaaaaaaaaaa");
+        // console.log(req.user + "aaaaaaaaaaaaaaaa");
         return next();
       } else {
         return next();
       }
     });
   } catch (err) {
-    console.log(
-      "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-    );
+    // console.log(
+    //   "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    // );
     return next();
   }
 }
