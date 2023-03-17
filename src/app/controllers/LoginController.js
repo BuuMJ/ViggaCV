@@ -38,7 +38,7 @@ class LoginController {
             }
             if (result) {
               res.cookie("token", token, {
-                expires: new Date(Date.now() + 180000000000000000000),
+                expires: new Date(Date.now() + 18000000000),
               });
               return res.redirect("/");
             } else {

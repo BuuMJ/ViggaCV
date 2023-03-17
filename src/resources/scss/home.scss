@@ -116,3 +116,37 @@
 .templates-text__action:hover{
     opacity: 0.9;
 }
+.advantages{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 85%;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+.advantage{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 45%;
+    height: 250px;
+    margin: 20px 0;
+}
+.advantage i {
+    font-size: 50px;
+    height: 30%;
+}
+.advantage h3{
+    font-size: 25px;
+    font-weight: 700;
+    height: 15%;
+}
+.advantage span {
+    font-size: 20px;
+    font-weight: 500;
+    color: #777876;
+    height: 45%;
+    padding: 0 30px 0 0;
+}
