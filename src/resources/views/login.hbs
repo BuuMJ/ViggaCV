@@ -42,6 +42,7 @@
             <label class="label-phone" for="phone">Phone</label>
         </div>
         <div class="action-login">
+            <button class="btn-signup back-signin" type="button">Back</button>
             <button class="btn-signup" type="submit">Sign Up</button>
         </div>
     </form>
@@ -49,9 +50,14 @@
 <script>
     var clickCreate = document.querySelector('.text-create')
     var boxLogin = document.querySelector('.box-login');
-    var boxSignUp = document.querySelector('.box-signup')
+    var boxSignUp = document.querySelector('.box-signup');
     clickCreate.addEventListener('click', ()=>{
         boxLogin.style.cssText = "display: none;"
         boxSignUp.style.cssText = "display: flex;"
+    })
+    var clickBack = document.querySelector('.back-signin');
+    clickBack.addEventListener('click', ()=>{
+        boxSignUp.style.cssText = "display: none;"
+        boxLogin.style.cssText = "display:flex;"
     })
 </script>

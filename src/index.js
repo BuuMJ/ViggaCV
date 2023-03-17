@@ -9,6 +9,7 @@ const db = require("./config/db");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+const helpers = require('handlebars-helpers')
 
 const hbs = handlebars.create({
   // helpers: require("./util/helpers"),

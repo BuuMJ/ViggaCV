@@ -164,7 +164,8 @@
   font-size: 20px;
   color: #fedb00; }
 
-.down__contact {
+.down__contact,
+.down__user {
   position: absolute;
   top: 86px;
   left: -40px;
@@ -180,7 +181,14 @@
   text-align: center;
   padding-left: unset; }
 
-.down__contact li {
+.down__user {
+  width: 150px;
+  height: 100px;
+  top: 94px;
+  left: -80px; }
+
+.down__contact li,
+.down__user li {
   padding: 8px 10px; }
 
 .drop-down__contact:hover .down__contact {
@@ -189,7 +197,24 @@
 .send-mail:hover {
   text-decoration: underline; }
 
+.drop-down__user {
+  color: #fedb00;
+  position: relative;
+  padding: 30px 0; }
+
+.drop-down__user i {
+  font-size: 30px; }
+
+.drop-down__user:hover .down__user {
+  display: block; }
+
+.down__user li:hover {
+  text-decoration: underline; }
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box; }
+
+body {
+  background-color: black; }
