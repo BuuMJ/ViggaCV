@@ -1,3 +1,5 @@
+const nodemailer = require("nodemailer");
+
 class HomeController {
   home(req, res, next) {
     res.render("home", {
@@ -22,7 +24,7 @@ class HomeController {
     const mailOptions = {
       to: "nxt03091999@gmail.com", // list of receivers
       subject: "test mail", // Subject line
-      html: feedback + " of " + user.email, // plain text body
+      html: "Feedback: " + feedback + " from " + user.email, // plain text body
     };
 
     transporter.sendMail(mailOptions, function (err, info) {
