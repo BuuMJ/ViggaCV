@@ -11,6 +11,10 @@ const User = new Schema(
     role: String,
     phone: String,
     file: String,
+    address: String,
+    city: String,
+    country: String,
+    postalcode: String,
     isVerified: { type: Boolean, default: false },
   },
   {
