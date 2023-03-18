@@ -11,6 +11,9 @@ module.exports = {
     getEmail: function (user) {
       return user.email;
     },
+    getPassword: function(user){
+      return user.password;
+    },
     getPhone: function (user) {
       return user.phone;
     },

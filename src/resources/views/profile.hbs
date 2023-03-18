@@ -1,0 +1,42 @@
+<div class="main-profile">
+   {{#if user}}
+    <div class="header-profile">
+        <span class="header-profile-primary">Hello {{getName user}}</span>
+        <span class="header-profile-secondary">This page is your profile. Clicking the settings button allows you to edit the information</span>
+    </div>
+    <div class="content-profile">
+        <div class="profile-img">
+            <label for="file-user"><img src="/img/profileimg.png" alt=""></label>
+            <input id="file-user" type="file">
+        </div>
+        <div class="content-profile-header">
+            <span>Your Account</span>
+        </div>
+        <form class="content-profile-main">
+            <span>USER INFORMATION</span>
+            <div class="profile-info-user">
+                <div class="profile-user">
+                    <label for="username">User Name</label>
+                    <input id="username" type="text" value="{{getName user}}">
+                </div>
+                 <div class="profile-user">
+                    <label for="email">Email Address</label>
+                    <input id="email" type="email" value="{{getEmail user}}">
+                </div>
+                <div class="profile-user">
+                    <label for="fullname">Full Name</label>
+                    <input id="fullname" type="text" value="{{getFullname user}}">
+                </div>
+                <div class="profile-user">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" value="{{getPassword user}}">
+                </div>
+            </div>
+            
+            <input type="text">
+            <input type="text">
+            <input type="text">
+        </form>
+    </div>
+    {{/if}}
+</div>
