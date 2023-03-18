@@ -153,7 +153,8 @@
 .box-login,
 .box-signup,
 .box-forgot,
-.box-verify {
+.box-verify,
+.box-resetpassword {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -211,7 +212,8 @@
 .box-login input,
 .box-signup input,
 .box-forgot input,
-.box-verify input {
+.box-verify input,
+.box-resetpassword input {
   border: none;
   outline: none;
   width: 75%;
@@ -265,7 +267,7 @@
   font-weight: 700; }
 
 .btn-reset {
-  width: 180px; }
+  width: 124px; }
 
 .forgot-password {
   cursor: pointer; }
