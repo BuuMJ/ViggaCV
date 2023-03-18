@@ -15,6 +15,10 @@ const User = new Schema(
     city: String,
     country: String,
     postalcode: String,
+    education: String,
+    skills: String,
+    certifications: String,
+    languages: String,
     isVerified: { type: Boolean, default: false },
   },
   {

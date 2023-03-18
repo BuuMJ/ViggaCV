@@ -78,8 +78,8 @@
 .down__user{
     width: 150px;
     height: 100px;
-    top: 94px;
-    left: -80px;
+    top: 92px;
+    left: -65px;
 }
 .down__contact li,
 .down__user li {
@@ -94,7 +94,8 @@
 .drop-down__user{
     color: $primarycolor;
     position: relative;
-    padding: 30px 0;
+    padding: 30px 12px;
+    margin: unset;
 }
 .drop-down__user i {
     font-size: 30px;

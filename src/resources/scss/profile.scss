@@ -1,0 +1,176 @@
+.main-profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.header-profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 550px;
+    background: url('/img/headerprofile.jpeg') center/cover no-repeat;
+}
+.header-profile span{
+    margin: 12px 0;
+}
+.header-profile-primary{
+    font-size: 40px;
+    font-weight: 700;
+    padding-left: 12px;
+}
+.header-profile-secondary{
+    font-size: 30px;
+    font-weight: 500;
+    padding: 0 50% 0 12px;
+}
+.content-profile{
+    width: 70%;
+    height: 1250px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 2px 2px 50px rgba(0,0,0,0.5);
+    transform: translateY(-10%);
+    z-index: 10;
+}
+.profile-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+.profile-img img{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    transform: translateY(-24%);
+    transition: 0.5s;
+}
+.content-profile-header{
+    width: 100%;
+    height: 80px;
+}
+.content-profile-header span,
+.content-profile-main span{
+    font-size: 24px;
+    font-weight: 700;
+    padding: 0 24px;
+}
+.content-profile-header span{
+    font-size: 30px
+}
+.content-profile-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 1000px;
+}
+.profile-info-user,
+.about-me-profile{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.underline-profile{
+    width: 100%;
+    height: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+.underline-profile .underline{
+    width: 95%;
+    height: 1px;
+    background-color: #bdc0c0;
+}
+.profile-user,
+.about-user{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 45%;
+    height: 100px;
+}
+.profile-user label,
+.contact-user label,
+.contact-user-address label,
+.about-user label{
+    font-size: 20px;
+    font-weight: 500;
+}
+.profile-user input,
+.contact-user input,
+.contact-user-address input,
+.about-user input{
+    width: 75%;
+    height: 45%;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    padding: 0 8px;
+}
+#file-user{
+    display: none;
+}
+.profile-img label:hover img{
+    cursor: pointer;
+    transform: translateY(-28%);
+}
+.contact-profile{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.contact-user-address{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 95%;
+    height: 100px;
+}
+.contact-user-address input{
+    width: 100%;
+}
+.contact-user{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 28%;
+    height: 100px;
+}
+.contact-user input{
+    width: 90%;
+}
+.experience{
+    width: 95%;
+}
+.experience input{
+    width: 100%;
+}
+.profile-action{
+    text-align: center;
+    transform: translateY(50%);
+}
+.btn-save{
+    width: 15%;
+    height: 50px;
+    border: none;
+    outline: none;
+    background-color: unset;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 700;
+}
+.btn-save:hover{
+    box-shadow: 1px 1px 50px rgba(0,0,0,0.4);
+}
+#email-profile{
+    color: #8f8d8d;
+}

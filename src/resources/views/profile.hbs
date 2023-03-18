@@ -1,0 +1,89 @@
+<div class="main-profile">
+   {{#if user}}
+    <div class="header-profile">
+        <span class="header-profile-primary">Hello {{getName user}}</span>
+        <span class="header-profile-secondary">This page is your profile. Clicking the settings button allows you to edit the information</span>
+    </div>
+    <div class="content-profile">
+        <div class="profile-img">
+            <label for="file-user"><img src="/img/profileimg.png" alt=""></label>
+            <input id="file-user" type="file">
+        </div>
+        <div class="content-profile-header">
+            <span>Your Account</span>
+        </div>
+        <form class="content-profile-main">
+            <span>USER INFORMATION</span>
+            <div class="profile-info-user">
+                <div class="profile-user">
+                    <label for="username">User Name</label>
+                    <input id="username" type="text" value="{{getName user}}">
+                </div>
+                 <div class="profile-user">
+                    <label for="email-profile">Email Address</label>
+                    <input id="email-profile" type="email" value="{{getEmail user}}" readonly>
+                </div>
+                <div class="profile-user">
+                    <label for="fullname">Full Name</label>
+                    <input id="fullname" type="text" value="{{getFullname user}}">
+                </div>
+                <div class="profile-user">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" value="{{getPassword user}}">
+                </div>
+            </div>
+            <div class="underline-profile">
+                <div class="underline"></div>
+            </div>
+            <span>CONTACT INFORMATION</span>
+            <div class="contact-profile">
+                <div class="contact-user-address">
+                    <label for="address">Address</label>
+                    <input id="address" type="text" placeholder="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" value="{{getAddress user}}">
+                </div>
+                <div class="contact-user">
+                    <label for="city">City</label>
+                    <input id="city" type="text" placeholder="New York" value="{{getCity user}}">
+                </div>
+                <div class="contact-user">
+                    <label for="country">Country</label>
+                    <input id="country" type="text" placeholder="United States" value="{{getCountry user}}">
+                </div>
+                <div class="contact-user">
+                    <label for="postal">Postal</label>
+                    <input id="postal" type="text" placeholder="10001" value="{{getPostal user}}">
+                </div>
+            </div>
+            <div class="underline-profile">
+                <div class="underline"></div>
+            </div>
+                <span>ABOUT YOU</span>
+            <div class="about-me-profile">
+                <div class="about-user experience">
+                    <label for="experience">Experience</label>
+                    <input id="experience" type="text" placeholder="4 years working at company A" value="{{getExperience user}}">
+                </div>
+                <div class="about-user">
+                    <label for="education">Education</label>
+                    <input id="education" type="text" placeholder="Greenwich University" value="{{getEducation user}}">
+                </div>
+                <div class="about-user">
+                    <label for="skills">Skills</label>
+                    <input id="skills" type="text" placeholder="HTML,CSS,JS,NodeJS,ReactJS" value="{{getSkills user}}">
+                </div>
+                <div class="about-user">
+                    <label for="certifications">Certifications</label>
+                    <input id="certifications" type="text" placeholder="Master's degree" value="{{getCertifications user}}">
+                </div>
+                <div class="about-user">
+                    <label for="languages">Languages</label>
+                    <input id="languages" type="text" placeholder="English, France, Japanese" value="{{getLanguages user}}">
+                </div>
+            </div>
+            <div class="profile-action">
+                <button class="btn-save" type="submit">Save Profile</button>
+            </div>
+        </form>
+    </div>
+    {{/if}}
+</div>
