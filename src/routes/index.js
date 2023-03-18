@@ -6,7 +6,7 @@ const { sendDataUser } = require("../util/data");
 const { checkLogin } = require("../util/authorize");
 
 function route(app) {
-  app.use("/profile", profileRouter);
+  app.use("/profile", checkLogin, profileRouter);
 
   app.use("/login", loginRouter);
 

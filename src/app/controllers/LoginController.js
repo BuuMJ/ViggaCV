@@ -1,6 +1,7 @@
 const UserModel = require("../../models/User");
-const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const nodemailer = require("nodemailer");
+const jwt = require("jsonwebtoken");
 
 class LoginController {
   //[GET] login
@@ -57,6 +58,33 @@ class LoginController {
         console.log(err);
         res.status(500).json("loi sever");
       });
+  }
+  //[POST] Send mail reset password
+  resetPassword(req, res, next) {
+    const email = req.body.email;
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "duoc6694@gmail.com",
+        pass: "wdymtvgbhblstfbj",
+      },
+    });
+    const token = jwt.sign({ email: email }, "PW", { expiresIn: "1h" });
+    const verifyLink = `http://localhost:3000/login/resetpassword?token=${token}`;
+    const mailOptions = {
+      to: email, // list of receivers
+      subject: "Reset Password", // Subject line
+      html: `Please click <a href="${verifyLink}">here</a> to reset password your account.`, // plain text body
+    };
+    transporter.sendMail(mailOptions, function (err, info) {
+      if (err) {
+        console.log(err);
+      } else {
+        bcrypt.hash(email, 10, function (err, hash) {});
+        console.log("Đã gửi mail");
+        return res.redirect("/login");
+      }
+    });
   }
 }
 module.exports = new LoginController();
