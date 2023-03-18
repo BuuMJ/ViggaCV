@@ -17,6 +17,33 @@ module.exports = {
     getPhone: function (user) {
       return user.phone;
     },
+    getAddress: function (user) {
+      return user.address;
+    },
+    getCity: function (user) {
+      return user.city;
+    },
+    getCountry: function (user) {
+      return user.country;
+    },
+    getPostal: function (user) {
+      return user.postalcode;
+    },
+    getExperience: function (user) {
+      return user.experience;
+    },
+    getEducation: function (user) {
+      return user.education;
+    },
+    getSkills: function (user) {
+      return user.skills;
+    },
+    getCertifications: function (user) {
+      return user.certifications;
+    },
+    getLanguages: function (user) {
+      return user.languages;
+    },
     ifeq: function (user, y, options) {
       // console.log(user)
       var currentRole = user == undefined ? "" : user.role;
