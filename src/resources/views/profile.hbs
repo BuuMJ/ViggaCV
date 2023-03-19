@@ -1,13 +1,14 @@
 <div class="main-profile">
    {{#if user}}
     <div class="header-profile">
-        <span class="header-profile-primary">Hello {{getName user}}</span>
+        <span class="header-profile-primary">Hello {{getFullname user}}</span>
         <span class="header-profile-secondary">This page is your profile. Clicking the settings button allows you to edit the information</span>
     </div>
     <div class="content-profile">
         <div class="profile-img">
             <label for="file-user"><img src="/img/profileimg.png" alt=""></label>
             <input id="file-user" type="file">
+            <label for="file-user"><div class="edit-img"><span>Change Avatar</span></div></label>
         </div>
         <div class="content-profile-header">
             <span>Your Account</span>
@@ -16,8 +17,8 @@
             <span>USER INFORMATION</span>
             <div class="profile-info-user">
                 <div class="profile-user">
-                    <label for="username">User Name</label>
-                    <input id="username" type="text" value="{{getName user}}">
+                    <label for="username-profile">User Name</label>
+                    <input id="username-profile" type="text" value="{{getName user}}" readonly>
                 </div>
                  <div class="profile-user">
                     <label for="email-profile">Email Address</label>
@@ -67,7 +68,7 @@
                     <label for="education">Education</label>
                     <input id="education" type="text" placeholder="Greenwich University" value="{{getEducation user}}">
                 </div>
-                <div class="about-user">
+                <div class="about-user skills-profile">
                     <label for="skills">Skills</label>
                     <input id="skills" type="text" placeholder="HTML,CSS,JS,NodeJS,ReactJS" value="{{getSkills user}}">
                 </div>
@@ -75,7 +76,7 @@
                     <label for="certifications">Certifications</label>
                     <input id="certifications" type="text" placeholder="Master's degree" value="{{getCertifications user}}">
                 </div>
-                <div class="about-user">
+                <div class="about-user languages-profile">
                     <label for="languages">Languages</label>
                     <input id="languages" type="text" placeholder="English, France, Japanese" value="{{getLanguages user}}">
                 </div>
@@ -87,3 +88,15 @@
     </div>
     {{/if}}
 </div>
+<script>
+    var hover = document.querySelector('.profile-img img')
+    var edit = document.querySelector('.edit-img')
+    hover.addEventListener('mouseover',()=>{
+        edit.style.cssText = "display: flex; transform: translateY(-28%);"
+        hover.style.cssText = "transform: translatey(-28%);"
+    })
+    edit.addEventListener('mouseout',()=>{
+        edit.style.cssText = "display: none; transform: translateY(-24%);"
+        hover.style.cssText = "transform: translatey(-24%);"
+    })
+</script>

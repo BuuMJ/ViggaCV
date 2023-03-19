@@ -67,7 +67,7 @@
     justify-content: space-around;
     align-items: center;
     width: 90%;
-    height: 500px;
+    height: 650px;
     background-color: #303030;
     margin: 50px 0;
 }
@@ -76,17 +76,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 400px;
+    height: 550px;
     width: 45%;
     overflow: hidden;
     position: relative;
 }
 .templates-img img{
-    height: 400px;
+    height: 550px;
     width: 80%;
     transform: translateY(-100%);
     position: absolute;
     transition: 1s;
+    box-shadow: 1px 1px 20px rgba(255,255,255,0.4);
 }
 .templates-text{
     display: flex;

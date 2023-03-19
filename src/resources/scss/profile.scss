@@ -45,7 +45,35 @@
     height: 180px;
     border-radius: 50%;
     transform: translateY(-24%);
-    transition: 0.5s;
+    position: relative;
+}
+.edit-img{
+    display: none;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    position: absolute;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: rgba(0,0,0,0.5);
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+    cursor: pointer;
+    top: -40px;
+    right: 43%;
+}
+.profile-img label:hover img{
+    transform: translateY(-28%);
+    cursor: pointer;
+}
+.edit-img span{
+    transform: translateY(-140%);
+}
+.profile-img label:hover .edit-img{
+    display: flex;
+    z-index: 20;
 }
 .content-profile-header{
     width: 100%;
@@ -111,15 +139,11 @@
     border: none;
     outline: none;
     border-radius: 10px;
-    box-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
     padding: 0 8px;
 }
 #file-user{
     display: none;
-}
-.profile-img label:hover img{
-    cursor: pointer;
-    transform: translateY(-28%);
 }
 .contact-profile{
     display: flex;
@@ -171,6 +195,7 @@
 .btn-save:hover{
     box-shadow: 1px 1px 50px rgba(0,0,0,0.4);
 }
-#email-profile{
+#email-profile,
+#username-profile{
     color: #8f8d8d;
 }
