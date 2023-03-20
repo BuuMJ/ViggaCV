@@ -199,6 +199,28 @@
 #username-profile {
   color: #8f8d8d; }
 
+.skills-profile,
+.languages-profile,
+.email-profile,
+.password-profile {
+  align-items: end; }
+
+.skills-profile label {
+  align-self: start;
+  transform: translateX(220%); }
+
+.languages-profile label {
+  align-self: start;
+  transform: translateX(105%); }
+
+.email-profile label {
+  align-self: start;
+  transform: translateX(80%); }
+
+.password-profile label {
+  align-self: start;
+  transform: translateX(120%); }
+
 .container-home {
   display: flex;
   flex-direction: column;
@@ -545,6 +567,28 @@
 #username-profile {
   color: #8f8d8d; }
 
+.skills-profile,
+.languages-profile,
+.email-profile,
+.password-profile {
+  align-items: end; }
+
+.skills-profile label {
+  align-self: start;
+  transform: translateX(220%); }
+
+.languages-profile label {
+  align-self: start;
+  transform: translateX(105%); }
+
+.email-profile label {
+  align-self: start;
+  transform: translateX(80%); }
+
+.password-profile label {
+  align-self: start;
+  transform: translateX(120%); }
+
 .main-login {
   display: flex;
   justify-content: center;
@@ -563,7 +607,7 @@
   justify-content: space-around;
   align-items: center;
   width: 450px;
-  height: 400px;
+  height: 420px;
   background-color: transparent;
   border: 4px solid #fedb00;
   border-radius: 10px;
@@ -649,6 +693,18 @@
 .login-phone input:valid + label,
 .login-fullname input:valid + label {
   top: -30px; }
+
+.select-role {
+  width: 100%;
+  text-align: center; }
+
+#selectrole {
+  width: 75%;
+  background-color: transparent;
+  color: white;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #fedb00; }
 
 .action-login {
   display: flex;

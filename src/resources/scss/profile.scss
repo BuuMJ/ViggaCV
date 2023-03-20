@@ -199,3 +199,26 @@
 #username-profile{
     color: #8f8d8d;
 }
+.skills-profile,
+.languages-profile,
+.email-profile,
+.password-profile{
+    align-items: end;
+}
+.skills-profile label{
+    align-self: start;
+    transform: translateX(220%);
+}
+.languages-profile label{
+    align-self: start;
+    transform: translateX(105%);
+}
+
+.email-profile label{
+    align-self: start;
+    transform: translateX(80%);
+}
+.password-profile label{
+    align-self: start;
+    transform: translateX(120%);
+}
