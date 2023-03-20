@@ -4,16 +4,16 @@
         <span class="header-profile-primary">Hello {{getFullname user}}</span>
         <span class="header-profile-secondary">This page is your profile. Clicking the settings button allows you to edit the information</span>
     </div>
-    <div class="content-profile">
+    <form class="content-profile" method="POST" action="/profile/edit?_method=PUT" enctype="multipart/form-data">
         <div class="profile-img">
-            <label for="file-user"><img src="/img/profileimg.png" alt=""></label>
-            <input id="file-user" type="file">
+            <label for="file-user"><img class="user-avatar" src="{{getAvatar user}}" alt=""></label>
+            <input id="file-user" name="avatar" type="file" accept="image/*">
             <label for="file-user"><div class="edit-img"><span>Change Avatar</span></div></label>
         </div>
         <div class="content-profile-header">
             <span>Your Account</span>
         </div>
-        <form class="content-profile-main">
+        <div class="content-profile-main" >
             <span>USER INFORMATION</span>
             <div class="profile-info-user">
                 <div class="profile-user">
@@ -26,11 +26,11 @@
                 </div>
                 <div class="profile-user">
                     <label for="fullname">Full Name</label>
-                    <input id="fullname" type="text" value="{{getFullname user}}">
+                    <input id="fullname" name="fullname" type="text" value="{{getFullname user}}">
                 </div>
                 <div class="profile-user">
                     <label for="password">Password</label>
-                    <input id="password" type="password" value="{{getPassword user}}">
+                    <input id="password" name="password" type="password">
                 </div>
             </div>
             <div class="underline-profile">
@@ -40,19 +40,19 @@
             <div class="contact-profile">
                 <div class="contact-user-address">
                     <label for="address">Address</label>
-                    <input id="address" type="text" placeholder="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" value="{{getAddress user}}">
+                    <input id="address" type="text" name="address" placeholder="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" value="{{getAddress user}}">
                 </div>
                 <div class="contact-user">
                     <label for="city">City</label>
-                    <input id="city" type="text" placeholder="New York" value="{{getCity user}}">
+                    <input id="city" type="text" name="city" placeholder="New York" value="{{getCity user}}">
                 </div>
                 <div class="contact-user">
                     <label for="country">Country</label>
-                    <input id="country" type="text" placeholder="United States" value="{{getCountry user}}">
+                    <input id="country" type="text" name="country" placeholder="United States" value="{{getCountry user}}">
                 </div>
                 <div class="contact-user">
                     <label for="postal">Postal</label>
-                    <input id="postal" type="text" placeholder="10001" value="{{getPostal user}}">
+                    <input id="postal" type="text" name="postal" placeholder="10001" value="{{getPostal user}}">
                 </div>
             </div>
             <div class="underline-profile">
@@ -62,30 +62,30 @@
             <div class="about-me-profile">
                 <div class="about-user experience">
                     <label for="experience">Experience</label>
-                    <input id="experience" type="text" placeholder="4 years working at company A" value="{{getExperience user}}">
+                    <input id="experience" type="text" name="experience" placeholder="4 years working at company A" value="{{getExperience user}}">
                 </div>
                 <div class="about-user">
                     <label for="education">Education</label>
-                    <input id="education" type="text" placeholder="Greenwich University" value="{{getEducation user}}">
+                    <input id="education" type="text" name="education" placeholder="Greenwich University" value="{{getEducation user}}">
                 </div>
                 <div class="about-user skills-profile">
                     <label for="skills">Skills</label>
-                    <input id="skills" type="text" placeholder="HTML,CSS,JS,NodeJS,ReactJS" value="{{getSkills user}}">
+                    <input id="skills" type="text" name="skills" placeholder="HTML,CSS,JS,NodeJS,ReactJS" value="{{getSkills user}}">
                 </div>
                 <div class="about-user">
                     <label for="certifications">Certifications</label>
-                    <input id="certifications" type="text" placeholder="Master's degree" value="{{getCertifications user}}">
+                    <input id="certifications" type="text" name="certifications" placeholder="Master's degree" value="{{getCertifications user}}">
                 </div>
                 <div class="about-user languages-profile">
                     <label for="languages">Languages</label>
-                    <input id="languages" type="text" placeholder="English, France, Japanese" value="{{getLanguages user}}">
+                    <input id="languages" type="text" name="languages" placeholder="English, France, Japanese" value="{{getLanguages user}}">
                 </div>
             </div>
             <div class="profile-action">
                 <button class="btn-save" type="submit">Save Profile</button>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
     {{/if}}
 </div>
 <script>
@@ -99,4 +99,16 @@
         edit.style.cssText = "display: none; transform: translateY(-24%);"
         hover.style.cssText = "transform: translatey(-24%);"
     })
+    var file = document.querySelector('#file-user');
+    var img = document.querySelector('.user-avatar');
+    file.addEventListener('change', () => {
+        const chooseFile = file.files[0];
+        if (chooseFile) {
+            const reader = new FileReader();
+            reader.addEventListener('load', () => {
+                img.setAttribute('src', reader.result);
+            });
+            reader.readAsDataURL(chooseFile);
+        }
+    });
 </script>

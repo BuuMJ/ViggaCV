@@ -58,6 +58,7 @@ class RegisterController {
     var email = req.body.email;
     var role = req.body.role;
     var phone = req.body.phone;
+    var skills = req.body.skills;
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -112,6 +113,7 @@ class RegisterController {
                           email: email,
                           phone: phone,
                           role: role,
+                          skills: skills,
                         });
                       });
                       transporter.sendMail(mailOptions, function (err, info) {
