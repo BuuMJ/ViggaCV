@@ -19,14 +19,11 @@
     justify-content: center;
     width: 55%;
 }
-.first-content-left .left-primary-text{
-    font-size: 50px;
-    font-weight: 800;
-}
 .first-content-left .left-secondary-text{
-    font-size: 30px;
-    font-weight: 400;
-    padding: 10px 50px 10px 0;
+    font-size: 26px;
+    font-weight: 600;
+    padding: 10px 0 10px 0;
+    transform: translatey(-10%);
 }
 .home-create-cv{
     width: 25%;
@@ -45,12 +42,12 @@
 .first-content-right{
     padding: 10px;
     border: 4px solid black;
-    
+    transform: translateY(-12%);
 }
 .first-content-right img{
     display: none;
     width: 300px;
-    height: 400px;
+    height: 300px;
     // animation-name: ShowImg;
     // animation-duration: 3s;
     // animation-iteration-count: infinite;
