@@ -6,6 +6,7 @@
     width: 100%;
     height: 80px;
     background-color: black;
+    padding: unset;
     // background-color: $primarycolor;
     // background-image: linear-gradient(to bottom right, rgba(255,255,255,0.1),rgba(255,255,255,0.4));
 }
@@ -14,8 +15,9 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    width: 50%;
+    width: 20%;
     height: 100%;
+    transform: translatey(-5%);
 }
 .navbar-left a {
     text-decoration: none;
@@ -24,17 +26,83 @@
     width: 60px;
     height: 60px;
 }
-.navbar-left span {
+.navbar-left .header-text span {
     font-size: 20px;
     font-weight: 700;
     color: $primarycolor;
+}
+.header-text{
+    display: flex;
+    flex-direction: column;
+    transform: translateY(10%);
+}
+.header-text a{
+    height: 20px;
+}
+.header-text .litle-text{
+    font-size: 10px;
+    font-weight: 500;
+    color: $primarycolor ;
+    align-self: end;
+}
+.litle-text p {
+    margin: unset;
+}
+.navbar-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+    font-size: 20px;
+    font-weight: 700;
+    color: $primarycolor;
+}
+.navbar-center a {
+    color: $primarycolor;
+    text-decoration: none;
+}
+.navbar-center ul {
+    margin: unset;
+}
+.drop-down__tools{
+    position: relative;
+    padding: 25px 0 25px 0;
+}
+.down__tools{
+    position: absolute;
+    top: 78px;
+    left: -83%;
+    display: none;
+    list-style-type: none;
+    color: $primarycolor;
+    font-size: 20px;
+    font-weight: 700;
+    width: 130px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-bottom: 2px solid $primarycolor;
+    text-align: center;
+    padding: unset;
+}
+.down__tools li{
+    padding: 8px 10px ;
+}
+.drop-down__tools:hover{
+    cursor: pointer;
+}
+.drop-down__tools:hover .down__tools {
+    display: block;
+}
+.down__tools a:hover{
+    text-decoration: underline;
 }
 .navbar-right{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    width: 40%;
+    width: 30%;
     height: 100%;
 }
 .navbar-right > * {
@@ -53,6 +121,7 @@
 .drop-down__contact{
     position: relative;
     padding: 30px 0;
+    z-index: 10;
 }
 .contact i {
     font-size: 20px;
@@ -61,7 +130,7 @@
 .down__contact,
 .down__user{
     position: absolute;
-    top: 86px;
+    top: 84px;
     left: -40px;
     display: none;
     list-style-type: none;

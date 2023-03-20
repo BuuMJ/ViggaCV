@@ -16,7 +16,7 @@
     justify-content: space-around;
     align-items: center;
     width: 450px;
-    height: 400px;
+    height: 420px;
     background-color: transparent;
     border: 4px solid $primarycolor;
     border-radius: 10px;
@@ -88,6 +88,7 @@
     left: 60px;
     transition: 0.5s;
     font-weight: 500;
+    color: white;
 }
 .login-username input:focus ~ label,
 .login-password input:focus ~ label,
@@ -95,6 +96,7 @@
 .login-phone input:focus ~label,
 .login-fullname input:focus ~label {
     top: -30px;
+    color: #9ca3af;
 }
 .login-username input:valid + label,
 .login-password input:valid + label,
@@ -102,6 +104,19 @@
 .login-phone input:valid + label,
 .login-fullname input:valid + label{
     top: -30px;
+    color: #9ca3af;
+}
+.select-role{
+    width: 100%;
+    text-align: center;
+}
+#selectrole{
+    width: 75%;
+    background-color: transparent;
+    color: white;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid $primarycolor;
 }
 .action-login{
     display: flex;
