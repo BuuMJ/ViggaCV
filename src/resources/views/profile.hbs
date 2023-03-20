@@ -89,13 +89,17 @@
     {{/if}}
 </div>
 <script>
-    var hover = document.querySelector('.profile-img img')
+    var hover = document.querySelector('.user-avatar')
     var edit = document.querySelector('.edit-img')
     hover.addEventListener('mouseover',()=>{
         edit.style.cssText = "display: flex; transform: translateY(-28%);"
         hover.style.cssText = "transform: translatey(-28%);"
     })
     edit.addEventListener('mouseout',()=>{
+        edit.style.cssText = "display: none; transform: translateY(-24%);"
+        hover.style.cssText = "transform: translatey(-24%);"
+    })
+     hover.addEventListener('mouseout',()=>{
         edit.style.cssText = "display: none; transform: translateY(-24%);"
         hover.style.cssText = "transform: translatey(-24%);"
     })

@@ -44,7 +44,7 @@ const storage = multer.diskStorage({
 // Hàm filter
 const imageFilter = function (req, file, cb) {
   // Chỉ chấp nhận file hình ảnh
-  if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
+  if (!file.originalname.match(/\.(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/)) {
     return cb(new Error("Chỉ chấp nhận file hình ảnh"), false);
   }
   cb(null, true);

@@ -148,7 +148,7 @@
     width: 150px;
     height: 100px;
     top: 92px;
-    left: -65px;
+    left: -55px;
 }
 .down__contact li,
 .down__user li {
@@ -166,8 +166,9 @@
     padding: 30px 12px;
     margin: unset;
 }
-.drop-down__user i {
-    font-size: 30px;
+.drop-down__user img {
+    border-radius: 50%;
+    cursor: pointer;
 }
 .drop-down__user:hover .down__user{
     display: block;
