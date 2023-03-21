@@ -1,7 +1,7 @@
 @import "variable";
-@import "profile";
 @import "home";
 @import "profile";
+@import "cv";
 @import "login";
 @import "footer";
 @import "header";
@@ -13,5 +13,6 @@
     box-sizing: border-box;
 }
 body{
-    font-family: 'Roboto', sans-serif;
+    font-family: Helvetica Neue, HelveticaNeueLTPro, Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
 }
