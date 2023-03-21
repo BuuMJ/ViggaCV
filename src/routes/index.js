@@ -9,7 +9,7 @@ const CvRouter = require('./cv')
 function route(app) {
   app.use("/profile", checkLogin, profileRouter);
 
-  app.use("/cv", CvRouter);
+  app.use("/cv",sendDataUser, CvRouter);
 
   app.use("/login", loginRouter);
 
