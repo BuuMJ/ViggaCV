@@ -1,7 +1,7 @@
 {
-  "name": "viggacv",
+  "name": "viggawork",
   "version": "1.0.0",
-  "description": "A website that allows users to enter their own CV online, there are CV templates available for users to choose and edit their own CV.",
+  "description": "A website that allows users to seek for employment, offers a CV generating option (with customizable templates), and handles payroll for users. On the company's side, employee recruiting workers might be posted.",
   "main": "index.js",
   "scripts": {
     "start": "nodemon --inspect src/index.js",
@@ -13,7 +13,6 @@
     "url": "git+https://github.com/BuuMJ/ViggaCV.git"
   },
   "keywords": [
-    "CV",
     "Group",
     "21",
     "Vigga"

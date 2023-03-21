@@ -2,7 +2,9 @@ const nodemailer = require("nodemailer");
 const UserModel = require("../../models/User");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
+const bcrypt = require("bcrypt");
 const fs = require("fs");
+
 class ProfileController {
   profile(req, res, next) {
     res.render("profile", {
@@ -50,27 +52,33 @@ class ProfileController {
         const data = await fs.promises.readFile(req.file.path); // sửa chỗ này
         if (data) {
           console.log("da toi day 1");
-          const updateUser = await UserModel.findByIdAndUpdate(
-            id,
-            {
-              address: address,
-              fullname: fullname,
-              city: city,
-              country: country,
-              postal: postal,
-              education: education,
-              skills: skills,
-              certifications: certifications,
-              languages: languages,
-              experience: experience,
-              avatar: req.file.filename,
-            },
-            { new: true }
-          );
-          res.render("profile", {
-            message: "User updated successfully",
-            user: updateUser,
-          });
+          if (password != undefined) {
+            bcrypt.hash(password, 10, function (err, hash) {
+              const updateUser = await UserModel.findByIdAndUpdate(
+                id,
+                {
+                  address: address,
+                  fullname: fullname,
+                  password: hash,
+                  city: city,
+                  country: country,
+                  postal: postal,
+                  education: education,
+                  skills: skills,
+                  certifications: certifications,
+                  languages: languages,
+                  experience: experience,
+                  avatar: req.file.filename,
+                },
+                { new: true }
+              );
+              res.render("profile", {
+                message: "User updated successfully",
+                user: updateUser,
+              });
+            })
+            
+          }
         }
       } else {
         console.log("da toi day 2");
