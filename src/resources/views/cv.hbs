@@ -1,0 +1,107 @@
+<div class="container-cv">
+    <div class="header-cv">
+        <span class="intro-title">Impress Employers With</span>
+        <span class="intro-surprise">ViggaWorks NiceCV</span>
+        <span class="intro-text">Create a quick and free CV template, so that employers must <b>"Surprise!"</b>  as soon as I see your CV.</span>
+        <a class="btn-cv" href="/cv/createcv">Create CV</a>
+    </div>
+    <div class="free-design">
+        <div class="free-design-left">
+            <span class="free-design-title">Freelance Design</span>
+            <span class="free-design-text">You may make a decent CV template for yourself with 5 minutes of creativity or by utilizing CV templates with a variety of colors and styles that are appropriate for different professions and sectors. You may make a decent CV template for yourself with 5 minutes of creativity or by utilizing CV templates with a variety of colors and styles that are appropriate for different professions and sectors.</span>
+        </div>
+        <div class="free-design-right">
+            <img src="/img/editcv.avif" alt="">
+        </div>
+    </div>
+    <div class="easy-operation">
+        <div class="easy-operation-left">
+            <img src="/img/easycv.webp" alt="">
+        </div>
+        <div class="easy-operation-right">
+            <span class="easy-tilte">Easy Operation</span>
+            <span class="easy-text">With a single login, you may generate a CV that is pre-populated with information from your current ViggaWorks profile and use it immediately to find a job.</span>
+        </div>
+    </div>
+    <div class="download-cv">
+        <div class="download-cv-left">
+            <span class="download-title">Download free removed logo brand</span>
+            <span class="download-text">With just one click, you can obtain your ideal CV template in PDF format, watermark-free.</span>
+        </div>
+        <div class="download-cv-right">
+            <img src="/img/downloadpdf.jpeg" alt="">
+        </div>
+    </div>
+    <div class="interview-cv">
+        <div class="interview-left">
+            <img src="/img/interview.webp" alt="">
+        </div>
+        <div class="interview-right">
+            <span class="interview-title">Apply Anywhere</span>
+            <span class="interview-text">You may apply anywhere, at any time, and wow every recruiter with a professional CV from NiceCV.</span>
+            <a href="/cv/createcv" class="interview-action">Build CV Now</a>
+        </div>
+    </div>
+    <div class="stepbystep-cv">
+        <span class="stepbystep-header">03 steps to construct a CV immediately</span>
+        <div class="stepbystep-left">
+            <div class="stepbystep-first">
+                <span class="first-title">01 - Choose the proper CV template</span>
+                <span class="first-text">NiceCV features a lot of creative designs. Please select the CV template that best fits your needs and interests.</span>
+            </div>
+            <div class="stepbystep-first">
+                <span class="first-title">01 - Choose the proper CV template</span>
+                <span class="first-text">NiceCV features a lot of creative designs. Please select the CV template that best fits your needs and interests.</span>
+            </div>
+            <div class="stepbystep-first">
+                <span class="first-title">01 - Choose the proper CV template</span>
+                <span class="first-text">NiceCV features a lot of creative designs. Please select the CV template that best fits your needs and interests.</span>
+            </div>
+        </div>
+        <div class="stepbystep-right">
+            <img src="/img/stepbystep.jpeg" alt="">
+        </div>
+    </div>
+</div>
+<script>
+    document.body.onscroll = function() {scrollNavbar()};
+function scrollNavbar() {
+if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+document.querySelector('.header-cv').style.cssText = "transform: translatey(0);";
+document.querySelector('.free-design').style.cssText = "transform: translatex(0);";
+
+} else {
+document.querySelector('.header-cv').style.cssText = "transform: translatey(80%);";
+document.querySelector('.free-design').style.cssText = "transform: translatex(400%);";
+
+}
+if (document.body.scrollTop > 450 || document.documentElement.scrollTop > 450) {
+document.querySelector('.easy-operation').style.cssText = "transform: translateX(0);";
+
+} else {
+document.querySelector('.easy-operation').style.cssText = "transform: translateX(-200%);";
+
+}
+if (document.body.scrollTop > 930 || document.documentElement.scrollTop > 930) {
+document.querySelector('.download-cv').style.cssText = "transform: translateX(0);";
+
+} else {
+document.querySelector('.download-cv').style.cssText = "transform: translateX(400%);";
+
+}
+if (document.body.scrollTop > 1350 || document.documentElement.scrollTop > 1350) {
+document.querySelector('.interview-cv').style.cssText = "transform: translateX(0);";
+
+} else {
+document.querySelector('.interview-cv').style.cssText = "transform: translateX(-200%);";
+
+}
+if (document.body.scrollTop > 1900 || document.documentElement.scrollTop > 1900) {
+document.querySelector('.stepbystep-cv').style.cssText = "transform: translateX(0);";
+
+} else {
+document.querySelector('.stepbystep-cv').style.cssText = "transform: translateX(400%);";
+
+}
+}
+</script>

@@ -4,9 +4,12 @@ const registerRouter = require("./register");
 const profileRouter = require("./profile");
 const { sendDataUser } = require("../util/data");
 const { checkLogin } = require("../util/authorize");
+const CvRouter = require('./cv')
 
 function route(app) {
   app.use("/profile", checkLogin, profileRouter);
+
+  app.use("/cv", CvRouter);
 
   app.use("/login", loginRouter);
 
