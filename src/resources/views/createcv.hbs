@@ -52,17 +52,17 @@
     <div class="contact-info-create-cv">
         <div class="list-contact-info">
             <label for="email-cv">Email:</label>
-            <input id="email-cv" value="{{getEmail user}}">
+            <input id="email-cv" name="email-cv" value="{{getEmail user}}">
         </div>
         <div class="list-contact-info">
             <label class="phone-cv" for="phone-cv">Phone: </label>
-            <input id="phone-cv" value="{{getPhone user}}">
+            <input id="phone-cv" name="phone-cv" value="{{getPhone user}}">
         </div>
     </div>
     
     <div class="about-create-cv">
       <span class="position">Overview:</span>
-      <textarea class="desc" placeholder="I am a front-end developer with more than 3 years of experience writing html, css, and js. I'm motivated, result-focused and seeking a successful team-oriented company with opportunity to grow."></textarea>
+      <textarea class="desc" name="overview" placeholder="I am a front-end developer with more than 3 years of experience writing html, css, and js. I'm motivated, result-focused and seeking a successful team-oriented company with opportunity to grow."></textarea>
     </div>
   </div>
    <div class="details">
@@ -71,13 +71,13 @@
       <div class="section__list">
         <div class="section__list-item">
           <div class="left">
-            <input class="name-company" placeholder="Thien Phu Company">
-            <input class="addr-company" placeholder="Le Hong Phong, Nha Trang">
-            <input class="duration-company" placeholder="4 years">
+            <input class="name-company" name="name-company" placeholder="Thien Phu Company">
+            <input class="addr-company" name="addr-company" placeholder="Le Hong Phong, Nha Trang">
+            <input class="duration-company" name="duration-company" placeholder="4 years">
           </div>
           <div class="right">
-            <input class="name-profession" placeholder="Front-end Developer">
-            <input class="desc-profession" placeholder="Develop a website for company">
+            <input class="name-profession" name="name-profession" placeholder="Front-end Developer">
+            <input class="desc-profession" name="desc-profession" placeholder="Develop a website for company">
           </div>
         </div>
       </div>
@@ -87,13 +87,13 @@
        <div class="section__list">
         <div class="section__list-item">
           <div class="left">
-            <input class="name-school" placeholder="Greenwich University">
-            <input class="addr-school" placeholder="20 Cong Hoa">
-            <input class="duration-school" placeholder="Sep 2017 - Nov 2023">
+            <input class="name-school" name="name-school" placeholder="Greenwich University">
+            <input class="addr-school" name="addr-school" placeholder="20 Cong Hoa">
+            <input class="duration-school" name="duration-school" placeholder="Sep 2017 - Nov 2023">
           </div>
           <div class="right">
-            <input class="name-profession" placeholder="Front-end Developer">
-            <input class="desc-profession" placeholder="Web Development">
+            <input class="name-profession" name="name-profession-school" placeholder="Front-end Developer">
+            <input class="desc-profession" name="desc-profession-school" placeholder="Web Development">
           </div>
         </div>
       </div>
@@ -103,8 +103,8 @@
       <div class="section__title">Projects</div> 
        <div class="section__list">
          <div class="section__list-item project">
-           <textarea id="name-project" placeholder="Your Name Project"></textarea>
-           <textarea id="desc-project" placeholder="I am a front-end developer with more than 3 years of experience writing html, css, and js. I'm motivated, result-focused and seeking a successful team-oriented company with opportunity to grow."></textarea>
+           <textarea id="name-project" name="name-project" placeholder="Your Name Project"></textarea>
+           <textarea id="desc-project" name="desc-project" placeholder="I am a front-end developer with more than 3 years of experience writing html, css, and js. I'm motivated, result-focused and seeking a successful team-oriented company with opportunity to grow."></textarea>
          </div>
        </div>
     </div>
@@ -114,18 +114,18 @@
          <div class="skills__item">
            <div class="left"><input class="name-skill" value="{{getSkills user}}"></div>
            <div class="right">
-                          <input  id="ck1" type="checkbox" checked/>
+                          <input  id="ck1" name="skill-lv1" type="checkbox" checked/>
 
              <label for="ck1"></label>
-                          <input id="ck2" type="checkbox" checked/>
+                          <input id="ck2" name="skill-lv2" type="checkbox" checked/>
 
               <label for="ck2"></label>
-                         <input id="ck3" type="checkbox" />
+                         <input id="ck3" name="skill-lv3" type="checkbox" />
 
               <label for="ck3"></label>
-                           <input id="ck4" type="checkbox" />
+                           <input id="ck4" name="skill-lv4" type="checkbox" />
             <label for="ck4"></label>
-                          <input id="ck5" type="checkbox" />
+                          <input id="ck5" name="skill-lv5" type="checkbox" />
               <label for="ck5"></label>
            </div>
          </div>
@@ -136,10 +136,11 @@
        Activities
        </div>
        <div class="section__list">
-         <textarea id="activities" placeholder="Football, programming, swimming."></textarea>
+         <textarea id="activities" name="activities" placeholder="Football, programming, swimming."></textarea>
        </div>
      </div>
      </div>
+     <button type="submit">Download Your CV</button>
   </form>
 
 {{/if}}
