@@ -604,7 +604,7 @@
   margin-bottom: 50px;
   background-image: url("/img/bgcv.jpeg");
   background-repeat: no-repeat;
-  background-size: 102%; }
+  background-size: 111%; }
 
 .container-create-cv input {
   border: none;
@@ -620,11 +620,20 @@
 .header-create-cv {
   margin-bottom: 30px; }
   .header-create-cv .full-name-create-cv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     font-size: 40px;
     text-transform: uppercase;
     margin-bottom: 5px; }
   .header-create-cv .full-name-create-cv input {
-    font-weight: 700; }
+    font-weight: 700;
+    width: 70%; }
+  .header-create-cv .full-name-create-cv img {
+    width: 30%;
+    height: 150px;
+    border-radius: 52%;
+    border: 4px solid white; }
   .header-create-cv .contact-info-create-cv {
     display: flex;
     flex-direction: column;
