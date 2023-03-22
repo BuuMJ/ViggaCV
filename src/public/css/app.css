@@ -994,6 +994,24 @@ textarea#activities {
   background-color: transparent;
   color: #fedb00; }
 
+#moveTopBtn {
+  opacity: 0; }
+
+button#moveTopBtn {
+  border: none;
+  outline: unset;
+  width: 40px;
+  background-color: unset;
+  position: fixed;
+  bottom: 2%;
+  right: 2%; }
+
+#moveTopBtn i {
+  font-size: 30px;
+  color: #fedb00;
+  z-index: 5;
+  cursor: pointer; }
+
 .navbar {
   display: flex;
   flex-direction: row;

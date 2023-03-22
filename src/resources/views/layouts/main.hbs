@@ -25,4 +25,46 @@
         
     </div>
 </body>
+<script>
+      function moveToTop() {
+  var moveTopBtn = document.getElementById("moveTopBtn");
+  var moveTop = document.getElementById("toTop");
+  moveTopBtn.addEventListener("click", function() {
+    moveTop.scrollIntoView();
+  });
+}
+moveToTop();
+document.body.onscroll = function() {scrollContent()};
+function scrollContent() {
+if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+document.querySelector('.header-cv').style.cssText = "transform: translatey(0);";
+document.querySelector('.free-design').style.cssText = "transform: translatex(0);";
+document.getElementById('moveTopBtn').style.cssText = "opacity: 1; transition: .5s;";
+} else {
+document.querySelector('.header-cv').style.cssText = "transform: translatey(80%);";
+document.querySelector('.free-design').style.cssText = "transform: translatex(400%);";
+document.getElementById('moveTopBtn').style.cssText = "opacity: 0; transition: .5s;";
+}
+if (document.body.scrollTop > 450 || document.documentElement.scrollTop > 450) {
+document.querySelector('.easy-operation').style.cssText = "transform: translateX(0);";
+} else {
+document.querySelector('.easy-operation').style.cssText = "transform: translateX(-200%);";
+}
+if (document.body.scrollTop > 930 || document.documentElement.scrollTop > 930) {
+document.querySelector('.download-cv').style.cssText = "transform: translateX(0);";
+} else {
+document.querySelector('.download-cv').style.cssText = "transform: translateX(400%);";
+}
+if (document.body.scrollTop > 1350 || document.documentElement.scrollTop > 1350) {
+document.querySelector('.interview-cv').style.cssText = "transform: translateX(0);";
+} else {
+document.querySelector('.interview-cv').style.cssText = "transform: translateX(-200%);";
+}
+if (document.body.scrollTop > 1900 || document.documentElement.scrollTop > 1900) {
+document.querySelector('.stepbystep-cv').style.cssText = "transform: translateX(0);";
+} else {
+document.querySelector('.stepbystep-cv').style.cssText = "transform: translateX(400%);";
+}
+}
+</script>
 </html>
