@@ -601,16 +601,21 @@
   border-radius: 3px;
   padding: 40px;
   margin-top: 50px;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  background-image: url("/img/bgcv.jpeg");
+  background-repeat: no-repeat;
+  background-size: 102%; }
 
 .container-create-cv input {
   border: none;
-  outline: none; }
+  outline: none;
+  background-color: transparent; }
 
 .container-create-cv textarea {
   border: none;
   outline: none;
-  resize: none; }
+  resize: none;
+  background-color: transparent; }
 
 .header-create-cv {
   margin-bottom: 30px; }
@@ -658,6 +663,8 @@
     font-weight: bold;
     margin-bottom: 10px;
     text-transform: uppercase; }
+  .details .section__acti {
+    color: white; }
   .details .section__list-item {
     margin-bottom: 40px;
     display: flex;
