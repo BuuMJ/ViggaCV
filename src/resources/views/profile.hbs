@@ -8,7 +8,8 @@
         <div class="profile-img">
             <label for="file-user"><img class="user-avatar" src="{{getAvatar user}}" alt=""></label>
             <input id="file-user" name="avatar" type="file" accept="image/*">
-            <label for="file-user"><div class="edit-img"><span>Change Avatar</span></div></label>
+            <label for="file-user" class="edit-img"><span>Change Avatar</span></label>
+            <label class="camera-edit" for="file-user"><i class="bi bi-camera"></i></label>
         </div>
         <div class="content-profile-header">
             <span>Your Account</span>
@@ -52,7 +53,7 @@
                 </div>
                 <div class="contact-user">
                     <label for="postal">Postal</label>
-                    <input id="postal" type="text" name="postal" placeholder="10001" value="{{getPostal user}}">
+                    <input id="postal" type="number" name="postal" placeholder="10001" value="{{getPostal user}}">
                 </div>
             </div>
             <div class="underline-profile">
