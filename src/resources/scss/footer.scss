@@ -115,3 +115,21 @@
     background-color: transparent;
     color: $primarycolor;
 }
+#moveTopBtn {
+    opacity: 0;
+  }
+  button#moveTopBtn {
+    border: none;
+    outline: unset;
+    width: 40px;
+    background-color: unset;
+    position: fixed;
+    bottom: 2%;
+    right: 2%;
+  }
+  #moveTopBtn i {
+    font-size: 30px;
+    color: $primarycolor;
+    z-index: 5;
+    cursor: pointer;
+  }

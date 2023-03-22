@@ -44,10 +44,12 @@
 
 <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
 {{#if user}}
-<form class="container-create-cv">
+<form action="">
+<div class="container-create-cv">
   <div class="header-create-cv">
     <div class="full-name-create-cv">
       <input type="text" name="fullname-cv" id="fullname-cv" value="{{getFullname user}}">
+      <img src="{{getAvatar user}}" alt="">
     </div>
     <div class="contact-info-create-cv">
         <div class="list-contact-info">
@@ -132,7 +134,7 @@
        </div>
        </div>
      <div class="section">
-     <div class="section__title">
+     <div class="section__title section__acti">
        Activities
        </div>
        <div class="section__list">
@@ -140,7 +142,7 @@
        </div>
      </div>
      </div>
-     <button type="submit">Download Your CV</button>
-  </form>
-
+  </div>
+    <button type="submit">Download Your CV</button>
+    </form>
 {{/if}}
