@@ -25,6 +25,71 @@
     font-weight: 500;
     padding: 0 50% 0 12px;
 }
+button.btn-setting {
+    appearance: button;
+    background-color: #d6c918;
+    border: solid transparent;
+    border-radius: 10px;
+    border-width: 0 0 4px;
+    box-sizing: border-box;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    line-height: 20px;
+    margin: 0;
+    outline: none;
+    overflow: visible;
+    padding: 13px 19px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 14%;
+    margin-left: 12px;
+   }
+   
+   button.btn-setting:after {
+    background-clip: padding-box;
+    background-color: $primarycolor;
+    border: solid transparent;
+    border-radius: 10px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+   }
+   
+   button.btn-setting:main, button.btn-setting:focus {
+    user-select: auto;
+   }
+   
+   button.btn-setting:hover:not(:disabled) {
+    filter: brightness(1.1);
+   }
+   
+   button.btn-setting:disabled {
+    cursor: auto;
+   }
+   
+   button.btn-setting:active:after {
+    border-width: 0 0 0px;
+   }
+   
+   button.btn-setting:active {
+    padding-bottom: 10px;
+   }
 .content-profile{
     width: 70%;
     height: 1250px;
@@ -33,6 +98,8 @@
     box-shadow: 2px 2px 50px rgba(0,0,0,0.5);
     transform: translateY(-10%);
     z-index: 10;
+    display: none;
+    transition: 1s;
 }
 .profile-img{
     display: flex;
@@ -77,11 +144,11 @@
     color: white;
     padding: 0 8px;
     border-radius: 50%;
-    background-color: #8f8d8d;
+    background-color:  rgba(0,0,0,0.5);
     cursor: pointer;
 }
 .camera-edit:hover{
-    background-color: rgba(0,0,0,0.5);
+    background-color:#8f8d8d;
 }
 .profile-img label:hover img{
     transform: translateY(-28%);
@@ -217,6 +284,7 @@
 #email-profile,
 #username-profile{
     color: #8f8d8d;
+    cursor: not-allowed;
 }
 .skills-profile,
 .languages-profile,

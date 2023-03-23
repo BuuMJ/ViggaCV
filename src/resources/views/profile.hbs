@@ -3,6 +3,7 @@
     <div class="header-profile">
         <span class="header-profile-primary">Hello {{getFullname user}}</span>
         <span class="header-profile-secondary">This page is your profile. Clicking the settings button allows you to edit the information</span>
+        <button class="btn-setting">Setting <i class="bi bi-gear"></i></button>
     </div>
     <form class="content-profile" method="POST" action="/profile/edit?_method=PUT" enctype="multipart/form-data">
         <div class="profile-img">
@@ -90,6 +91,24 @@
     {{/if}}
 </div>
 <script>
+var btnSetting = document.querySelector('.btn-setting');
+var settingProfile = document.querySelector('.content-profile');
+btnSetting.addEventListener('click',()=>{
+    var computedStyle = getComputedStyle(settingProfile);
+    if(computedStyle.display === "none"){
+        settingProfile.style.display = "block";
+        settingProfile.style.opacity = "0";
+        setTimeout(() => {
+            settingProfile.style.opacity = "1";
+        }, 50);
+    }
+    else{
+        settingProfile.style.opacity = "0";
+        setTimeout(() => {
+            settingProfile.style.display = "none";
+        }, 300);
+    }
+})
     var hover = document.querySelector('.user-avatar')
     var edit = document.querySelector('.edit-img')
     hover.addEventListener('mouseover',()=>{
@@ -117,3 +136,4 @@
         }
     });
 </script>
+
