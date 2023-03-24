@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const { company } = require("../app/controllers/CompanyController");
 const UserModel = require("../models/User");
 
 //check login
@@ -29,4 +30,43 @@ function checkLogin(req, res, next) {
   }
 }
 
-module.exports = { checkLogin };
+//check company
+function checkCompany(req, res, next) {
+  var role = req.user.role;
+  if (role != user) {
+    next();
+  } else {
+    return res.render("home", {
+      title: "authorized",
+      msg: "You are not authorized.",
+    });
+  }
+}
+
+//check User
+function checkUser(req, res, next) {
+  var role = req.user.role;
+  if (role != company) {
+    next();
+  } else {
+    return res.render("home", {
+      title: "authorized",
+      msg: "You are not authorized.",
+    });
+  }
+}
+
+//check company
+function checkAdmin(req, res, next) {
+  var role = req.user.role;
+  if ((role = admin)) {
+    next();
+  } else {
+    return res.render("home", {
+      title: "authorized",
+      msg: "You are not authorized.",
+    });
+  }
+}
+
+module.exports = { checkLogin, checkAdmin, checkCompany, checkUser };

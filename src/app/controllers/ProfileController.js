@@ -30,6 +30,15 @@ class ProfileController {
       const skills = req.body.skills;
       const certifications = req.body.certifications;
       const languages = req.body.languages;
+      const companyname = req.body.companyName;
+      const companyaddress = req.body.companyAddress;
+      const faxcode = req.body.faxCode;
+      const taxcode = req.body.taxCode;
+      const companyemail = req.body.companyEmail;
+      const companyphone = req.body.companyPhone;
+      const companyyears = req.body.companyYears;
+      const companydesc = req.body.companyDesc;
+      const TOB = req.body.typeOfBusiness;
 
       console.log("da toi day5" + id);
       console.log("da toi day5" + password);
@@ -70,6 +79,15 @@ class ProfileController {
                 languages: languages,
                 experience: experience,
                 avatar: req.file.filename,
+                companyname: companyname,
+                companyaddress: companyaddress,
+                faxcode: faxcode,
+                taxcode: taxcode,
+                companyemail: companyemail,
+                companyphone: companyphone,
+                companyyears: companyyears,
+                companydesc: companydesc,
+                TOB: TOB,
               },
               { new: true }
             );
@@ -93,6 +111,15 @@ class ProfileController {
                 languages: languages,
                 experience: experience,
                 avatar: req.file.filename,
+                companyname: companyname,
+                companyaddress: companyaddress,
+                faxcode: faxcode,
+                taxcode: taxcode,
+                companyemail: companyemail,
+                companyphone: companyphone,
+                companyyears: companyyears,
+                companydesc: companydesc,
+                TOB: TOB,
               },
               { new: true }
             );
@@ -121,6 +148,15 @@ class ProfileController {
               certifications: certifications,
               languages: languages,
               experience: experience,
+              companyname: companyname,
+              companyaddress: companyaddress,
+              faxcode: faxcode,
+              taxcode: taxcode,
+              companyemail: companyemail,
+              companyphone: companyphone,
+              companyyears: companyyears,
+              companydesc: companydesc,
+              TOB: TOB,
             },
             { new: true }
           );
@@ -144,6 +180,15 @@ class ProfileController {
               certifications: certifications,
               languages: languages,
               experience: experience,
+              companyname: companyname,
+              companyaddress: companyaddress,
+              faxcode: faxcode,
+              taxcode: taxcode,
+              companyemail: companyemail,
+              companyphone: companyphone,
+              companyyears: companyyears,
+              companydesc: companydesc,
+              TOB: TOB,
             },
             { new: true }
           );
