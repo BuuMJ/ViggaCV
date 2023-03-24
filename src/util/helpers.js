@@ -65,4 +65,80 @@ module.exports = {
       return options.inverse(this);
     }
   },
+  getfullnamecv: function (cvuser) {
+    return cvuser.fullnamecv;
+  },
+  getemailcv: function (cvuser) {
+    return cvuser.emailcv;
+  },
+  getphonecv: function (cvuser) {
+    return cvuser.phonecv;
+  },
+  getoverview: function (cvuser) {
+    return cvuser.overview;
+  },
+  getnamecompany: function (cvuser) {
+    return cvuser.namecompany;
+  },
+  getaddrcompany: function (cvuser) {
+    return cvuser.addrcompany;
+  },
+  getdurationcompany: function (cvuser) {
+    return cvuser.durationcompany;
+  },
+  getnameprofession: function (cvuser) {
+    return cvuser.nameprofession;
+  },
+  getdescprofession: function (cvuser) {
+    return cvuser.descprofession;
+  },
+  getnameschool: function (cvuser) {
+    return cvuser.nameschool;
+  },
+  getaddrschool: function (cvuser) {
+    return cvuser.addrschool;
+  },
+  getdurationschool: function (cvuser) {
+    return cvuser.durationschool;
+  },
+  getnameprofessionschool: function (cvuser) {
+    return cvuser.nameprofessionschool;
+  },
+  getdescprofessionschool: function (cvuser) {
+    return cvuser.descprofessionschool;
+  },
+  getdescproject: function (cvuser) {
+    return cvuser.descproject;
+  },
+  getnameproject: function (cvuser) {
+    return cvuser.nameproject;
+  },
+  getnameskill: function (cvuser) {
+    return cvuser.nameskill;
+  },
+  getskilllv1: function (cvuser) {
+    return cvuser.skilllv1;
+  },
+  getskilllv2: function (cvuser) {
+    return cvuser.skilllv2;
+  },
+  getskilllv3: function (cvuser) {
+    return cvuser.skilllv3;
+  },
+  getskilllv4: function (cvuser) {
+    return cvuser.skilllv4;
+  },
+  getskilllv5: function (cvuser) {
+    return cvuser.skilllv5;
+  },
+  getactivities: function (cvuser) {
+    return cvuser.activities;
+  },
+  getavatarcv: function (cvuser) {
+    if (cvuser.avatar) {
+      return `/${cvuser.avatar}`;
+    } else {
+      return "";
+    }
+  },
 };

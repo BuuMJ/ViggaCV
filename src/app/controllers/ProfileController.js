@@ -47,62 +47,111 @@ class ProfileController {
 
       //uploads file
       if (req.file) {
-        console.log("da toi day");
+        console.log("đã có file");
         // Kiểm tra xem có file được tải lên không
         const data = await fs.promises.readFile(req.file.path); // sửa chỗ này
         if (data) {
-          console.log("da toi day 1");
+          console.log("đã tới đây và có file");
           if (password != undefined) {
-            bcrypt.hash(password, 10, function (err, hash) {
-              const updateUser = await UserModel.findByIdAndUpdate(
-                id,
-                {
-                  address: address,
-                  fullname: fullname,
-                  password: hash,
-                  city: city,
-                  country: country,
-                  postal: postal,
-                  education: education,
-                  skills: skills,
-                  certifications: certifications,
-                  languages: languages,
-                  experience: experience,
-                  avatar: req.file.filename,
-                },
-                { new: true }
-              );
-              res.render("profile", {
-                message: "User updated successfully",
-                user: updateUser,
-              });
-            })
-            
+            console.log("đã tới đây có file và có password");
+            const hash = await bcrypt.hash(password, 10);
+            const updateUser = await UserModel.findByIdAndUpdate(
+              id,
+              {
+                address: address,
+                fullname: fullname,
+                password: hash,
+                city: city,
+                country: country,
+                postal: postal,
+                education: education,
+                skills: skills,
+                certifications: certifications,
+                languages: languages,
+                experience: experience,
+                avatar: req.file.filename,
+              },
+              { new: true }
+            );
+            res.render("profile", {
+              message: "User updated successfully",
+              user: updateUser,
+            });
+          } else {
+            console.log("đã tới đây có file nhưng không có password");
+            const updatedUser = await UserModel.findByIdAndUpdate(
+              id,
+              {
+                address: address,
+                fullname: fullname,
+                city: city,
+                country: country,
+                postal: postal,
+                education: education,
+                skills: skills,
+                certifications: certifications,
+                languages: languages,
+                experience: experience,
+                avatar: req.file.filename,
+              },
+              { new: true }
+            );
+            res.render("profile", {
+              message: "User updated successfully",
+              user: updatedUser,
+            });
           }
         }
       } else {
-        console.log("da toi day 2");
+        console.log("không có file");
+        if (password != undefined) {
+          console.log("đã tới đây không có file nhưng có password");
+          const hash = await bcrypt.hash(password, 10);
+          const updateUser = await UserModel.findByIdAndUpdate(
+            id,
+            {
+              address: address,
+              fullname: fullname,
+              password: hash,
+              city: city,
+              country: country,
+              postal: postal,
+              education: education,
+              skills: skills,
+              certifications: certifications,
+              languages: languages,
+              experience: experience,
+            },
+            { new: true }
+          );
+          res.render("profile", {
+            message: "User updated successfully",
+            user: updateUser,
+          });
+        } else {
+          console.log("đã tới đây khônng có file và không có password");
 
-        const updatedUser = await UserModel.findByIdAndUpdate(
-          id,
-          {
-            fullname: fullname,
-            city: city,
-            country: country,
-            address: address,
-            postal: postal,
-            education: education,
-            skills: skills,
-            certifications: certifications,
-            languages: languages,
-            experience: experience,
-          },
-          { new: true }
-        );
-        res.render("profile", {
-          message: "User updated successfully",
-          user: updatedUser,
-        });
+          const updatedUser = await UserModel.findByIdAndUpdate(
+            id,
+            {
+              address: address,
+              fullname: fullname,
+              city: city,
+              country: country,
+              postal: postal,
+              education: education,
+              skills: skills,
+              certifications: certifications,
+              languages: languages,
+              experience: experience,
+            },
+            { new: true }
+          );
+          res.render("profile", {
+            message: "User updated successfully",
+            user: updatedUser,
+          });
+        }
       }
     } catch (error) {
       res.status(500).json({ message: "Error updating user", error });
