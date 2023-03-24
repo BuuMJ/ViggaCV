@@ -12,7 +12,7 @@ function route(app) {
 
   app.use("/profile", checkLogin, profileRouter);
 
-  app.use("/cv", checkLogin, cvRouter);
+  app.use("/cv", sendDataUser, cvRouter);
 
   app.use("/login", loginRouter);
 

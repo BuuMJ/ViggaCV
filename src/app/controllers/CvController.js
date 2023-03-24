@@ -23,12 +23,14 @@ class CvController {
       res.render("createCV", {
         title: "Create CV",
         cvuser: data,
+        user: req.user,
       });
       next();
     }
     res.render("createCV", {
       title: "Create CV",
       user: req.user,
+      usercv: req.user,
     });
   }
 
