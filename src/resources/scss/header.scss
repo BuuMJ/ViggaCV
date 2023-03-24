@@ -37,7 +37,7 @@
     transform: translateY(10%);
 }
 .header-text a{
-    height: 20px;
+    height: 24px;
 }
 .header-text .litle-text{
     font-size: 10px;
@@ -168,6 +168,8 @@
 }
 .drop-down__user img {
     border-radius: 50%;
+    padding: 2px;
+    border: 2px solid $primarycolor;
     cursor: pointer;
 }
 .drop-down__user:hover .down__user{
