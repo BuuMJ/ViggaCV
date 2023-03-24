@@ -75,7 +75,11 @@
         <img src="/img/LOGOVN.png" alt="">
         {{#if user}}
         <ul class="drop-down__user">
+            {{#ifeq user 'user'}}
             <img src="{{getAvatar user}}" alt="">
+            {{else ifeq user 'company'}}
+            <img src="{{getAvatarcompany user}}" alt="">
+            {{/ifeq}}
             <ul class="down__user">
                 <li><a href="/profile">Your Profile </a></li>
                 <li><a onclick="logout()" href="/login">Sign Out</a></li>
