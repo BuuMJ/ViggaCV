@@ -54,6 +54,33 @@ module.exports = {
       return "/img/profileimg.png";
     }
   },
+  getCompanyname: function (user) {
+    return user.companyname;
+  },
+  getCompanyaddress: function (user) {
+    return user.companyaddress;
+  },
+  getFaxcode: function (user) {
+    return user.faxcode;
+  },
+  getTaxcode: function (user) {
+    return user.taxcode;
+  },
+  getCompanyemail: function (user) {
+    return user.companyemail;
+  },
+  getCompanyphone: function (user) {
+    return user.companyphone;
+  },
+  getCompanyyears: function (user) {
+    return user.companyyears;
+  },
+  getCompanydesc: function (user) {
+    return user.companydesc;
+  },
+  getTOB: function (user) {
+    return user.TOB;
+  },
   ifeq: function (user, y, options) {
     // console.log(user)
     var currentRole = user == undefined ? "" : user.role;

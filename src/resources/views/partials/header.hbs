@@ -6,10 +6,17 @@
         </div>
         <a class="navbar-left-img" href="/"><img src="/img/LOGOVGA.png" alt=""></a>
     </div>
+    {{#ifeq user 'admin'}}
     <div class="navbar-center">
         <a href="/"><span>Home</span></a>
         <a href="">Jobs</a>
-        <a href="">Company</a>
+        <ul class="drop-down__company">
+            <span>Company</span>
+            <ul class="down__company">
+                <li><a href="/company/listcompany">List Company</a></li>
+                <li><a href="/company/postjob">Post Job</a></li>
+            </ul>
+        </ul>
         <ul class="drop-down__tools">
             <span>Tools</span>
             <ul class="down__tools">
@@ -18,6 +25,43 @@
             </ul>
         </ul>
     </div>
+    {{else ifeq user 'company'}}
+    <div class="navbar-center">
+        <a href="/"><span>Home</span></a>
+        <a href="">Jobs</a>
+        <ul class="drop-down__company">
+            <span>Company</span>
+            <ul class="down__company">
+                <li><a href="/company/postjob">Post Job</a></li>
+            </ul>
+        </ul>
+        <ul class="drop-down__tools">
+            <span>Tools</span>
+            <ul class="down__tools">
+                <li><a href="/cv">NiceCV</a></li>
+                <li><a href="">Payroll</a></li>
+            </ul>
+        </ul>
+    </div>
+    {{else}}
+    <div class="navbar-center">
+        <a href="/"><span>Home</span></a>
+        <a href="">Jobs</a>
+        <ul class="drop-down__company">
+            <span>Company</span>
+            <ul class="down__company">
+                <li><a href="/company/listcompany">List Company</a></li>
+            </ul>
+        </ul>
+        <ul class="drop-down__tools">
+            <span>Tools</span>
+            <ul class="down__tools">
+                <li><a href="/cv">NiceCV</a></li>
+                <li><a href="">Payroll</a></li>
+            </ul>
+        </ul>
+    </div>
+    {{/ifeq}}
     <div class="navbar-right">
         <ul class="drop-down__contact">
             <a class="contact" href=""><i class="bi bi-chat-dots"></i> Contact Us</a>

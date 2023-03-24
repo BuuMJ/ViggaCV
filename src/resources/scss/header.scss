@@ -65,11 +65,13 @@
 .navbar-center ul {
     margin: unset;
 }
-.drop-down__tools{
+.drop-down__tools,
+.drop-down__company{
     position: relative;
     padding: 25px 0 25px 0;
 }
-.down__tools{
+.down__tools,
+.down__company{
     position: absolute;
     top: 78px;
     left: -83%;
@@ -85,16 +87,25 @@
     text-align: center;
     padding: unset;
 }
-.down__tools li{
+.down__company{
+    top: 80px;
+    left: -42%;
+    width: 160px;
+}
+.down__tools li,
+.down__company li{
     padding: 8px 10px ;
 }
-.drop-down__tools:hover{
+.drop-down__tools:hover,
+.drop-down__company:hover{
     cursor: pointer;
 }
-.drop-down__tools:hover .down__tools {
+.drop-down__tools:hover .down__tools,
+.drop-down__company:hover .down__company {
     display: block;
 }
-.down__tools a:hover{
+.down__tools a:hover,
+.down__company a:hover{
     text-decoration: underline;
 }
 .navbar-right{
