@@ -110,7 +110,7 @@ button.btn-setting {
     transition: 1s;
 }
 .company-profile{
-    height: 1450px;
+    min-height: 1200px;
 }
 .profile-img{
     display: flex;
@@ -193,15 +193,20 @@ button.btn-setting {
 }
 .profile-info-user,
 .about-me-profile,
-.about-company-profile{
+.about-company-profile,
+.listjobs{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
     flex-wrap: wrap;
 }
-.about-company-profile > * {
+.about-company-profile > *,
+.listjobs {
     margin: 8px 0;
+}
+.listjobs{
+    min-height: 120px;
 }
 .underline-profile{
     width: 100%;
@@ -310,4 +315,93 @@ input#postal::-webkit-outer-spin-button,
 input#postal::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.listjobs ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 95%;
+}
+.listjobs ul li{
+    list-style-type: none;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+.listjobs-action {
+    width: 95%;
+}
+.listjobs-action button{
+    width: 18%;
+    outline: none;
+    border: 1px solid $primarycolor;
+    border-radius: 10px;
+    background-color: transparent;
+    height: 40px;
+}
+.listjobs-action button:hover{
+    background-color: rgba(0,0,0,0.1);
+}
+.overplay-postjob{
+    position: fixed;
+    width: 100%;
+    height: 120%;
+    background-color: rgba(0,0,0,0.8);
+    display: none;
+    z-index: 19;
+    transform: translatey(-12%);
+    cursor: pointer;
+}
+#postjob{
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 70%;
+    height: 700px;
+    position: fixed;
+    z-index: 20;
+    transform: translateY(-8%);
+}
+#postjob h2{
+    text-align: center;
+    color: white;
+}
+.info-job{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100px;
+}
+.info-job label{
+    color: white;
+    font-size: 18px;
+}
+.info-job input,
+.info-job textarea{
+    outline: none;
+    border: none;
+    height: 40px;
+    width: 100%;
+    border-radius: 10px;
+    resize: none;
+    padding: 4px 12px;
+}
+.jobdesc{
+    height: 200px;
+}
+.info-job textarea{
+    height: 120px;
+}
+.btn-postjob{
+    outline: none;
+    border: 1px solid $primarycolor;
+    height: 50%;
+    width: 120px;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    background-color: transparent;
+    border-radius: 10px;
+}
+.btn-postjob:hover{
+    background-color: rgba(255,255,255,0.5);
 }

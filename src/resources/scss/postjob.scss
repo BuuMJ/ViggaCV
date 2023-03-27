@@ -1,0 +1,35 @@
+.main-postjob{
+    width: 100%;
+    min-height: 800px;
+    background-color: #131313;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.header-postjob{
+    width: 80%;
+    height: 400px;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10%;
+}
+.header-postjob a {
+    color: white;
+    border: 1px solid $primarycolor;
+    text-decoration: none;
+    font-size: 24px;
+    width: 220px;
+    height: 50px;
+    padding: 4px 0;
+    margin-top: 20px;
+}
+.header-postjob a:hover{
+    background-color: rgba(255,255,255,0.1);
+}

@@ -1,0 +1,173 @@
+<div class="main-profile">
+        <div class="header-profile header-profile-company">
+        <span class="header-profile-primary">Hello {{getCompanyname user}} Company</span>
+        <span class="header-profile-secondary">This page is your Company profile. Clicking on the settings button allows you to edit your company information</span>
+        <button class="btn-setting">Setting <i class="bi bi-gear"></i></button>
+    </div>
+    <form class="content-profile company-profile" method="POST" action="/profile/edit?_method=PUT" enctype="multipart/form-data">
+        <div class="profile-img">
+            <label for="file-user"><img class="user-avatar" src="{{getAvatarcompany user}}" alt=""></label>
+            <input id="file-user" name="avatar" type="file" accept="image/*">
+            <label for="file-user" class="edit-img"><span>Change Logo</span></label>
+            <label class="camera-edit" for="file-user"><i class="bi bi-camera"></i></label>
+        </div>
+        <div class="content-profile-main" >
+                <span>COMPANY INFORMATION</span>
+            <div class="about-company-profile">
+                <div class="about-user">
+                    <label for="education">Company Name</label>
+                    <input id="education" type="text" name="companyName" placeholder="ViggaWorks" value="{{getCompanyname user}}">
+                </div>
+                <div class="about-user ">
+                    <label for="skills">Compnany Address</label>
+                    <input id="skills" type="text" name="companyAddress" placeholder="124 Tran Hung Dao, P3 , Q.TB" value="{{getCompanyaddress user}}">
+                </div>
+                <div class="about-user">
+                    <label for="certifications">Fax Code</label>
+                    <input id="certifications" type="text" name="faxCode" placeholder="0700668" value="{{getFaxcode user}}">
+                </div>
+                <div class="about-user">
+                    <label for="certifications">Tax Code</label>
+                    <input id="certifications" type="text" name="taxCode" placeholder="2556789" value="{{getTaxcode user}}">
+                </div>
+                <div class="about-user ">
+                    <label for="languages">Company Email</label>
+                    <input id="languages" type="text" name="companyEmail" placeholder="name@example.com" value="{{getCompanyemail user}}">
+                </div>
+                <div class="about-user ">
+                    <label for="languages">Company Phone</label>
+                    <input id="languages" type="text" name="companyPhone" placeholder="07055548" value="{{getCompanyphone user}}">
+                </div>
+                <div class="about-user ">
+                    <label for="languages">No. OfYears In Business</label>
+                    <input id="languages" type="text" name="companyYears" placeholder="70 Years" value="{{getCompanyyears user}}">
+                </div>
+                <div class="about-user ">
+                    <label for="languages">Type of business</label>
+                    <select id="languages" name="typeOfBusiness" >
+                        <option value="{{getTOB user}}" selected>{{getTOB user}}</option>
+                        <option value="Sole Proprietorships">Sole Proprietorships.</option>
+                        <option value="Partnerships">Partnerships.</option>
+                        <option value="Corporations">Corporations.</option>
+                        <option value="S Corporations">S Corporations.</option>
+                        <option value="Limited Liability Company">Limited Liability Company.</option>
+                    </select>
+                </div>
+                <div class="about-user about-user-desc-company">
+                    <label for="experience">Company Description</label>
+                    <textarea id="experience" type="text" name="companyDesc" placeholder="ViggaWorks provides software and services to energy, water and communications industries. The company was founded in 1971 and is headquartered in Viet Nam.">{{getCompanydesc user}}</textarea>
+                </div>
+            </div>
+            <span>LIST JOBS</span>
+            <div class="listjobs">
+                <div class="listjobs-action">
+                    <button class="btn-listjobs" type="button">Add New Jobs</button>
+                </div>
+                <ul>
+                    <li>a</li>
+                </ul>
+            </div>
+            <div class="profile-action">
+                <button class="btn-save" type="submit">Save Profile</button>
+            </div>
+        </div>
+    </form>
+    <div class="overplay-postjob"></div>
+    <form id="postjob" action="">
+        <h2>New Job</h2>
+        <div class="info-job">
+            <label for="namecompanyjob">Company Name</label>
+            <input id="namecompanyjob" name="namecompanyjob" type="text" value="{{getCompanyname user}}">
+        </div>
+        <div class="info-job">
+            <label for="jobname">Job Name</label>
+            <input id="jobname" name="jobname" placeholder="Developer Engineer" type="text" >
+        </div>
+        <div class="info-job jobdesc">
+            <label for="jobdesc">Job Description</label>
+            <textarea id="jobdesc" name="jobdesc" placeholder="Customer Engineering Connector Technology for JOEM
+- Customer Engineering for PS-CC products for JOEM (Connectors, Fuel cell air valves, Charging solutions, Fuel pump modules, General purpose actuators, Accelerator pedal modules, etc.). The main responsibility is Connector Technology.
+- JOEM向けPS-CC製品（コネクター、燃料電池用エアバルブ、チャージングソリューション、燃料ポンプモジュール、ターボ用電制アクチュエーター、アクセルペダルモジュール等）の技術窓口。主にコネクターを担当。" type="text"></textarea>
+        </div>
+        <div class="info-job jobdesc">
+            <label for="jobdesc">Job Requirements</label>
+            <textarea id="jobdesc" name="jobrequirement" placeholder="Qualifications
+- Proactiveness and openness to learn, work and collaborating in global team
+- Technical background / engineering degree or similar
+- Native or fluent in Japanese and advanced level in English skills for customer and global team communication
+- Good understanding of automotive technology, e/wire harness experience or knowledge is a plus
+- Good presentation and negotiation skills is a plus
+- オープンなマインドセットで積極的に学び、グローバルチームど協力して働くことが出来る
+- 技術的な仕事の経験がある、工学部の学位またはそれと同等の学力
+- 顧客（JOEM）及び海外拠点とのコミュニケーションに必要なネイティブレベルの日本語力とビジネスレベルの英語力
+- 自動車業界、特にコネクターやワイヤーハーネス関連の製品知識や業務経験(あれば望ましい)
+- プレゼンテーション力と交渉力 (あれば望ましい)" type="text"></textarea>
+        </div>
+        <div class="info-job">
+            <label for="joblocation">Job Locations</label>
+            <input id="joblocation" name="joblocation" placeholder="33 Lê Duẩn, Bến Nghé, District 1, Ho Chi Minh City, Vietnam" value="{{getCompanyaddress user}}" type="text" >
+        </div>
+        <div class="info-job">
+            <button type="submit" class="btn-postjob">Post Job</button>
+        </div>
+        
+    </form>
+</div>
+</div>
+<script>
+var btnSetting = document.querySelector('.btn-setting');
+var settingProfile = document.querySelector('.content-profile');
+btnSetting.addEventListener('click',()=>{
+    var computedStyle = getComputedStyle(settingProfile);
+    if(computedStyle.display === "none"){
+        settingProfile.style.display = "block";
+        settingProfile.style.opacity = "0";
+        setTimeout(() => {
+            settingProfile.style.opacity = "1";
+        }, 50);
+    }
+    else{
+        settingProfile.style.opacity = "0";
+        setTimeout(() => {
+            settingProfile.style.display = "none";
+        }, 300);
+    }
+})
+    var hover = document.querySelector('.user-avatar')
+    var edit = document.querySelector('.edit-img')
+    hover.addEventListener('mouseover',()=>{
+        edit.style.cssText = "display: flex; transform: translateY(-28%);"
+        hover.style.cssText = "transform: translatey(-28%);"
+    })
+    edit.addEventListener('mouseout',()=>{
+        edit.style.cssText = "display: none; transform: translateY(-24%);"
+        hover.style.cssText = "transform: translatey(-24%);"
+    })
+     hover.addEventListener('mouseout',()=>{
+        edit.style.cssText = "display: none; transform: translateY(-24%);"
+        hover.style.cssText = "transform: translatey(-24%);"
+    })
+    var file = document.querySelector('#file-user');
+    var img = document.querySelector('.user-avatar');
+    file.addEventListener('change', () => {
+        const chooseFile = file.files[0];
+        if (chooseFile) {
+            const reader = new FileReader();
+            reader.addEventListener('load', () => {
+                img.setAttribute('src', reader.result);
+            });
+            reader.readAsDataURL(chooseFile);
+        }
+    });
+    var btnJob = document.querySelector('.btn-listjobs');
+    var postJob = document.getElementById('postjob');
+    var overplay = document.querySelector('.overplay-postjob');
+    btnJob.addEventListener('click', ()=>{
+        postJob.style.display = 'flex';
+        overplay.style.display = 'block';
+    })
+    overplay.addEventListener('click',()=>{
+        postJob.style.display = 'none';
+        overplay.style.display = 'none'
+    })
+</script>

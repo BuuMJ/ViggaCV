@@ -58,7 +58,7 @@ module.exports = {
     if (user.avatar) {
       return `/${user.avatar}`;
     } else {
-      return "/img/logocompany.png";
+      return "/img/logocompany.jpeg";
     }
   },
   getCompanyname: function (user) {

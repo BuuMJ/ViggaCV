@@ -80,13 +80,18 @@
         <ul class="drop-down__user">
             {{#ifeq user 'user'}}
             <img src="{{getAvatar user}}" alt="">
-            {{else ifeq user 'company'}}
-            <img src="{{getAvatarcompany user}}" alt="">
-            {{/ifeq}}
-            <ul class="down__user">
+            <ul class="down__user ">
                 <li><a href="/profile">Your Profile </a></li>
                 <li><a onclick="logout()" href="/login">Sign Out</a></li>
             </ul>
+            {{else ifeq user 'company'}}
+            <img src="{{getAvatarcompany user}}" alt="">
+            <ul class="down__user down__user-company">
+                <li><a href="/profile">Your Profile </a></li>
+                <li><a href="/companyprofile">Your Company Profile</a></li>
+                <li><a onclick="logout()" href="/login">Sign Out</a></li>
+            </ul>
+            {{/ifeq}}
         </ul>
         {{else}}
         <a class="navbar-right__login" href="/login">Sign In</a>
