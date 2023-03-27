@@ -54,6 +54,13 @@ module.exports = {
       return "/img/profileimg.png";
     }
   },
+  getAvatarcompany: function (user) {
+    if (user.avatar) {
+      return `/${user.avatar}`;
+    } else {
+      return "/img/logocompany.png";
+    }
+  },
   getCompanyname: function (user) {
     return user.companyname;
   },
