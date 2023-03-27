@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer");
-const UserModel = require("../../models/User");
+const UserModel = require("../models/User");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 const bcrypt = require("bcrypt");

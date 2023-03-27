@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const UserModel = require("../models/User");
+const UserModel = require("../app/models/User");
 const multer = require("multer");
 const fs = require("fs");
 
@@ -15,16 +15,16 @@ function sendDataUser(req, res, next) {
       if (data) {
         req.user = data;
         console.log(req.user + "aaaaaaaaaaaaaaaa");
-        return next();
+        next();
       } else {
-        return next();
+        next();
       }
     });
   } catch (err) {
     // console.log(
     //   "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
     // );
-    return next();
+    next();
   }
 }
 

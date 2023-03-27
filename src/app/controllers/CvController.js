@@ -2,7 +2,7 @@ const puppeteer = require("puppeteer");
 const fs = require("fs");
 const pdf = require("html-pdf");
 const path = require("path");
-const CVModel = require("../../models/CV");
+const CVModel = require("../models/CV");
 
 class CvController {
   //[GET] CV
@@ -29,6 +29,26 @@ class CvController {
     }
     res.render("createCV", {
       title: "Create CV",
+      user: req.user,
+      usercv: req.user,
+    });
+  }
+
+  //[GET] CV PDF
+  async cvpdf(req, res, next) {
+    const iduser = req.params.id;
+    const data = await CVModel.findOne({ iduser: iduser });
+    console.log("đây là id của user khi thực hiện xuất pdf: " + iduser);
+    if (data) {
+      console.log(data + " = Thông tin của user sau khi tra cứu");
+      res.render("cvpdf", {
+        title: "Export PDF",
+        cvuser: data,
+        user: req.user,
+      });
+    }
+    res.render("cvpdf", {
+      title: "Export PDF",
       user: req.user,
       usercv: req.user,
     });
@@ -73,10 +93,11 @@ class CvController {
             new: true,
           }
         ).exec();
+        const iduser = req.user._id;
         const browser = await puppeteer.launch();
         const webPage = await browser.newPage();
-        const url = "http://localhost:3000/cv/createcv";
-        console.log("aaaaaaaaaaaaaaaaaaa " + browser);
+        console.log("ĐÂY LÀ ID CỦA USER NHÌN CHO RÕ VÀO: " + iduser);
+        const url = `http://localhost:3000/cv/exportcv/${iduser}`;
         await webPage.goto(url, {
           waitUntil: "networkidle0",
         });
@@ -84,8 +105,8 @@ class CvController {
           .pdf({
             printBackground: true,
             displayHeaderFooter: false,
-            path: "testttt.pdf",
-            format: "A4",
+            path: "CV of " + req.user.fullname + ".pdf",
+            format: "Tabloid",
             landscape: false,
             margin: {
               top: "10px",
@@ -101,6 +122,7 @@ class CvController {
             console.log(e);
           });
         await browser.close();
+        return res.download("CV of " + req.user.fullname + ".pdf");
       } else {
         const cv = new CVModel(req.body);
         savedCv = await cv.save();

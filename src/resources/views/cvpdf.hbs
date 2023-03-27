@@ -1,0 +1,251 @@
+{{!-- <div class="container-create-cv">
+    {{#if user}}
+    <form action="" class="create-cv">
+        <div class="form-cv-left">
+            <img src="{{getAvatar user}}" alt="">
+        </div>
+        <div class="form-cv-right">
+        <div class="header-form">
+            <div class="info-header-cv">
+                <input id="fullname-cv" name="fullname-cv" type="text" value="{{getFullname user}}">
+                <input id="profession" type="text" name="profession" placeholder="FullStack Developer">
+                <div class="list-info-header">
+                    <div class="info-header-item">
+                        <label for="name-cv">Name:</label>
+                        <input type="text" name="name-cv" id="name-cv" value="{{getFullname user}}">
+                    </div>
+                    <div class="info-header-item">
+                        <label for="birth-cv">Birth:</label>
+                        <input type="text" name="birth-cv" id="birth-cv" placeholder="03/09/1999">
+                    </div>
+                    <div class="info-header-item">
+                        <label for="phone-cv">Phone:</label>
+                        <input type="text" name="phone-cv" id="phone-cv" value="{{getPhone user}}">
+                    </div>
+                    <div class="info-header-item">
+                        <label for="email-cv">Email:</label>
+                        <input type="text" name="email-cv" id="email-cv" value="{{getEmail user}}">
+                    </div>
+                    <div class="info-header-item address-header-item">
+                        <label for="address-cv">Address:</label>
+                        <input type="text" name="address-cv" id="address-cv" value="{{getCity user}}, {{getCountry user}} ">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="body-cv">
+
+        </div>
+        <div class="footer-cv"></div>
+        </div>
+    </form>
+    {{/if}}
+</div> --}}
+
+<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+{{#if usercv}}
+<form method="POST" action="/cv/exportcv">
+<div class="container-create-cv">
+  <div class="header-create-cv">
+    <div class="full-name-create-cv">
+      <input type="text" name="fullnamecv" id="fullname-cv" value="{{getFullname user}}">
+      <img src="{{getAvatar user}}" alt="">
+    </div>
+    <div class="contact-info-create-cv">
+        <div class="list-contact-info">
+            <label for="email-cv">Email:</label>
+            <input id="email-cv" name="emailcv" value="{{getEmail user}}">
+        </div>
+        <div class="list-contact-info">
+            <label class="phone-cv" for="phone-cv">Phone: </label>
+            <input id="phone-cv" name="phonecv" value="{{getPhone user}}">
+        </div>
+    </div>
+    
+    <div class="about-create-cv">
+      <span class="position">Overview:</span>
+      <textarea id="desc-overview" class="desc" name="overview" placeholder="I am a front-end developer with more than 3 years of experience writing html, css, and js. I'm motivated, result-focused and seeking a successful team-oriented company with opportunity to grow."></textarea>
+    </div>
+  </div>
+   <div class="details">
+    <div class="section">
+      <div class="section__title">Experience</div>
+      <div class="section__list">
+        <div class="section__list-item">
+          <div class="left">
+            <input class="name-company" name="namecompany" placeholder="Thien Phu Company">
+            <input class="addr-company" name="addrcompany" placeholder="Le Hong Phong, Nha Trang">
+            <input class="duration-company" name="durationcompany" placeholder="4 years">
+          </div>
+          <div class="right">
+            <input class="name-profession" name="nameprofession" placeholder="Front-end Developer">
+            <input class="desc-profession" name="descprofession" placeholder="Develop a website for company">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section__title">Education</div>
+       <div class="section__list">
+        <div class="section__list-item">
+          <div class="left">
+            <input class="name-school" name="nameschool" placeholder="Greenwich University">
+            <input class="addr-school" name="addrschool" placeholder="20 Cong Hoa">
+            <input class="duration-school" name="durationschool" placeholder="Sep 2017 - Nov 2023">
+          </div>
+          <div class="right">
+            <input class="name-profession" name="nameprofessionschool" placeholder="Front-end Developer">
+            <input class="desc-profession" name="descprofessionschool" placeholder="Web Development">
+          </div>
+        </div>
+      </div>
+      
+  </div>
+     <div class="section">
+      <div class="section__title">Projects</div> 
+       <div class="section__list">
+         <div class="section__list-item project">
+           <textarea id="name-project" name="nameproject" placeholder="Your Name Project"></textarea>
+           <textarea id="desc-project" name="descproject" placeholder="I am a front-end developer with more than 3 years of experience writing html, css, and js. I'm motivated, result-focused and seeking a successful team-oriented company with opportunity to grow."></textarea>
+         </div>
+       </div>
+    </div>
+     <div class="section">
+       <div class="section__title">Skills</div>
+       <div class="skills">
+         <div class="skills__item">
+           <div class="left"><input class="nameskill" value="{{getSkills user}}"></div>
+           <div class="right">
+                          <input  id="ck1" name="skilllv1" type="checkbox" checked/>
+
+             <label for="ck1"></label>
+                          <input id="ck2" name="skilllv2" type="checkbox" checked/>
+
+              <label for="ck2"></label>
+                         <input id="ck3" name="skilllv3" type="checkbox" />
+
+              <label for="ck3"></label>
+                           <input id="ck4" name="skilllv4" type="checkbox" />
+            <label for="ck4"></label>
+                          <input id="ck5" name="skilllv5" type="checkbox" />
+              <label for="ck5"></label>
+           </div>
+         </div>
+       </div>
+       </div>
+     <div class="section">
+     <div class="section__title section__acti">
+       Activities
+       </div>
+       <div class="section__list">
+         <textarea id="activities" name="activities" placeholder="Football, programming, swimming."></textarea>
+       </div>
+     </div>
+     </div>
+  </div>
+    <button type="submit">Review Your CV</button>
+    </form>
+{{/if}}
+{{#if cvuser}}
+<form method="POST" action="/cv/exportcv">
+<div class="container-create-cv">
+  <div class="header-create-cv">
+    <div class="full-name-create-cv">
+      <input type="text" name="fullnamecv" id="fullname-cv" value="{{getfullnamecv cvuser}}">
+      {{!-- <img src="{{getAvatar user}}" alt=""> --}}
+    </div>
+    <div class="contact-info-create-cv">
+        <div class="list-contact-info">
+            <label for="email-cv">Email:</label>
+            <input id="email-cv" name="emailcv" value="{{getemailcv cvuser}}">
+        </div>
+        <div class="list-contact-info">
+            <label class="phone-cv" for="phone-cv">Phone: </label>
+            <input id="phone-cv" name="phonecv" value="{{getphonecv cvuser}}">
+        </div>
+    </div>
+    
+    <div class="about-create-cv">
+      <span class="position">Overview:</span>
+      <textarea id="desc-overview" class="desc" name="overview" placeholder="I am a front-end developer with more than 3 years of experience writing html, css, and js. I'm motivated, result-focused and seeking a successful team-oriented company with opportunity to grow.">{{getoverview cvuser}}</textarea>
+    </div>
+  </div>
+   <div class="details">
+    <div class="section">
+      <div class="section__title">Experience</div>
+      <div class="section__list">
+        <div class="section__list-item">
+          <div class="left">
+            <input class="name-company" name="namecompany" value="{{getnamecompany cvuser}}" placeholder="Thien Phu Company">
+            <input class="addr-company" name="addrcompany" value="{{getaddrcompany cvuser}}" placeholder="Le Hong Phong, Nha Trang">
+            <input class="duration-company" name="durationcompany" value="{{getdurationcompany cvuser}}" placeholder="4 years">
+          </div>
+          <div class="right">
+            <input class="name-profession" name="nameprofession" value="{{getnameprofession cvuser}}" placeholder="Front-end Developer">
+            <input class="desc-profession" name="descprofession" value="{{getdescprofession cvuser}}" placeholder="Develop a website for company">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section__title">Education</div>
+       <div class="section__list">
+        <div class="section__list-item">
+          <div class="left">
+            <input class="name-school" name="nameschool" value="{{getnameschool cvuser}}" placeholder="Greenwich University">
+            <input class="addr-school" name="addrschool" value="{{getaddrschool cvuser}}" placeholder="20 Cong Hoa">
+            <input class="duration-school" name="durationschool" value="{{getdurationschool cvuser}}"  placeholder="Sep 2017 - Nov 2023">
+          </div>
+          <div class="right">
+            <input class="name-profession" name="nameprofessionschool" value="{{getnameprofessionschool cvuser}}" placeholder="Front-end Developer">
+            <input class="desc-profession" name="descprofessionschool"  value="{{getdescprofessionschool cvuser}}" placeholder="Web Development">
+          </div>
+        </div>
+      </div>
+      
+  </div>
+     <div class="section">
+      <div class="section__title">Projects</div> 
+       <div class="section__list">
+         <div class="section__list-item project">
+           <textarea id="name-project" name="nameproject"  placeholder="Your Name Project">{{getnameproject cvuser}}</textarea>
+           <textarea id="desc-project" name="descproject"  placeholder="I am a front-end developer with more than 3 years of experience writing html, css, and js. I'm motivated, result-focused and seeking a successful team-oriented company with opportunity to grow.">{{getdescproject cvuser}}</textarea>
+         </div>
+       </div>
+    </div>
+     <div class="section">
+       <div class="section__title">Skills</div>
+       <div class="skills">
+         <div class="skills__item">
+           <div class="left"><input class="nameskill" name="nameskill" value="{{getnameskill cvuser}}"></div>
+           <div class="right">
+                          <input  id="ck1" name="skilllv1" value="{{getskilllv1 cvuser}}" type="checkbox" checked/>
+
+             <label for="ck1"></label>
+                          <input id="ck2" name="skilllv2" value="{{getskilllv2 cvuser}}" type="checkbox" checked/>
+
+              <label for="ck2"></label>
+                         <input id="ck3" name="skilllv3" value="{{getskilllv3 cvuser}}" type="checkbox" />
+
+              <label for="ck3"></label>
+                           <input id="ck4" name="skilllv4" value="{{getskilllv4 cvuser}}" type="checkbox" />
+            <label for="ck4"></label>
+                          <input id="ck5" name="skilllv5"  value="{{getskilllv5 cvuser}}" type="checkbox" />
+              <label for="ck5"></label>
+           </div>
+         </div>
+       </div>
+       </div>
+     <div class="section">
+     <div class="section__title section__acti">
+       Activities
+       </div>
+       <div class="section__list">
+         <textarea id="activities" name="activities" placeholder="Football, programming, swimming.">{{getactivities cvuser}}</textarea>
+       </div>
+     </div>
+     </div>
+  </div>
+    <button type="submit">Review Your CV</button>
+    </form>
+{{/if}}
