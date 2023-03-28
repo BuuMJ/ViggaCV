@@ -1,15 +1,16 @@
 <form class="content-profile company-profile" method="POST" action="/profile/edit?_method=PUT" enctype="multipart/form-data"></form>
 <div class="main-profile">
-    <div class="header-profile header-profile-company" id="header-profile" style="background: url('{{getBackground user}}') center/cover no-repeat;">
+    <form class="form-company-profile" method="POST" action="/companyprofile/edit?_method=PUT" enctype="multipart/form-data">
+    <div class="header-profile header-profile-company" id="header-profile" style="background: url('{{getBackground company}}') center/cover no-repeat;">
         <label class="changebackground-profile" for="header-profile-file-input">Change Background</label>
-        <input type="file" id="header-profile-file-input" style="display: none;">
-        <span class="header-profile-primary">Hello {{getCompanyname user}} Company</span>
+        <input type="file" name="background" id="header-profile-file-input" style="display: none;">
+        <span class="header-profile-primary">Hello {{getCompanyname company}} Company</span>
         <span class="header-profile-secondary">This page is your Company profile. Clicking on the settings button allows you to edit your company information</span>
         <button class="btn-setting">Setting <i class="bi bi-gear"></i></button>
     </div>
-    
+    <div class="content-profile company-profile">
         <div class="profile-img">
-            <label for="file-user"><img class="user-avatar" src="{{getAvatarcompany user}}" alt=""></label>
+            <label for="file-user"><img class="user-avatar" src="{{getAvatarcompany company}}" alt=""></label>
             <input id="file-user" name="avatar" type="file" accept="image/*">
             <label for="file-user" class="edit-img"><span>Change Logo</span></label>
             <label class="camera-edit" for="file-user"><i class="bi bi-camera"></i></label>
@@ -19,36 +20,36 @@
             <div class="about-company-profile">
                 <div class="about-user">
                     <label for="education">Company Name</label>
-                    <input id="education" type="text" name="companyName" placeholder="ViggaWorks" value="{{getCompanyname user}}">
+                    <input id="education" type="text" name="companyName" placeholder="ViggaWorks" value="{{getCompanyname company}}">
                 </div>
                 <div class="about-user ">
                     <label for="skills">Compnany Address</label>
-                    <input id="skills" type="text" name="companyAddress" placeholder="124 Tran Hung Dao, P3 , Q.TB" value="{{getCompanyaddress user}}">
+                    <input id="skills" type="text" name="companyAddress" placeholder="124 Tran Hung Dao, P3 , Q.TB" value="{{getCompanyaddress company}}">
                 </div>
                 <div class="about-user">
                     <label for="certifications">Fax Code</label>
-                    <input id="certifications" type="text" name="faxCode" placeholder="0700668" value="{{getFaxcode user}}">
+                    <input id="certifications" type="text" name="faxCode" placeholder="0700668" value="{{getFaxcode company}}">
                 </div>
                 <div class="about-user">
                     <label for="certifications">Tax Code</label>
-                    <input id="certifications" type="text" name="taxCode" placeholder="2556789" value="{{getTaxcode user}}">
+                    <input id="certifications" type="text" name="taxCode" placeholder="2556789" value="{{getTaxcode company}}">
                 </div>
                 <div class="about-user ">
                     <label for="languages">Company Email</label>
-                    <input id="languages" type="text" name="companyEmail" placeholder="name@example.com" value="{{getCompanyemail user}}">
+                    <input id="languages" type="text" name="companyEmail" placeholder="name@example.com" value="{{getCompanyemail company}}">
                 </div>
                 <div class="about-user ">
                     <label for="languages">Company Phone</label>
-                    <input id="languages" type="text" name="companyPhone" placeholder="07055548" value="{{getCompanyphone user}}">
+                    <input id="languages" type="text" name="companyPhone" placeholder="07055548" value="{{getCompanyphone company}}">
                 </div>
                 <div class="about-user ">
                     <label for="languages">No. OfYears In Business</label>
-                    <input id="languages" type="text" name="companyYears" placeholder="70 Years" value="{{getCompanyyears user}}">
+                    <input id="languages" type="text" name="companyYears" placeholder="70 Years" value="{{getCompanyyears company}}">
                 </div>
                 <div class="about-user ">
                     <label for="languages">Type of business</label>
                     <select id="languages" name="typeOfBusiness" >
-                        <option value="{{getTOB user}}" selected>{{getTOB user}}</option>
+                        <option value="{{getTOB user}}" selected>{{getTOB company}}</option>
                         <option value="Sole Proprietorships">Sole Proprietorships.</option>
                         <option value="Partnerships">Partnerships.</option>
                         <option value="Corporations">Corporations.</option>
@@ -58,7 +59,7 @@
                 </div>
                 <div class="about-user about-user-desc-company">
                     <label for="experience">Company Description</label>
-                    <textarea id="experience" type="text" name="companyDesc" placeholder="ViggaWorks provides software and services to energy, water and communications industries. The company was founded in 1971 and is headquartered in Viet Nam.">{{getCompanydesc user}}</textarea>
+                    <textarea id="experience" type="text" name="companyDesc" placeholder="ViggaWorks provides software and services to energy, water and communications industries. The company was founded in 1971 and is headquartered in Viet Nam.">{{getCompanydesc company}}</textarea>
                 </div>
             </div>
             <span>LIST JOBS</span>
@@ -74,13 +75,14 @@
                 <button class="btn-save" type="submit">Save Profile</button>
             </div>
         </div>
+    </div>
     </form>
     <div class="overplay-postjob"></div>
     <form id="postjob" action="">
         <h2>New Job</h2>
         <div class="info-job">
             <label for="namecompanyjob">Company Name</label>
-            <input id="namecompanyjob" name="namecompanyjob" type="text" value="{{getCompanyname user}}">
+            <input id="namecompanyjob" name="namecompanyjob" type="text" value="{{getCompanyname company}}">
         </div>
         <div class="info-job">
             <label for="jobname">Job Name</label>
@@ -115,7 +117,6 @@
         </div>
         
     </form>
-</div>
 </div>
 <script>
     document.querySelector('label[for="header-profile-file-input"]').addEventListener('click', function() {

@@ -86,6 +86,7 @@
     border-bottom: 2px solid $primarycolor;
     text-align: center;
     padding: unset;
+    z-index: 20;
 }
 .down__company{
     top: 80px;
@@ -154,6 +155,7 @@
     border-bottom: 2px solid $primarycolor;
     text-align: center;
     padding-left: unset;
+    z-index: 20;
 }
 .down__user{
     width: 150px;
@@ -165,7 +167,7 @@
     width: 230px;
     height: 150px;
     left: -130px;
-
+    z-index: 20;
 }
 .down__contact li,
 .down__user li {

@@ -6,9 +6,11 @@ const upload = multer({ dest: "uploads/" });
 class CompanyProfileController {
   //[GET]
   companyprofile(req, res, next) {
+    const company = CompanyModel.findOne({iduser: req.user._id});
     res.render("companyprofile", {
       title: "Company",
       user: req.user,
+      company: company,
     });
   }
 

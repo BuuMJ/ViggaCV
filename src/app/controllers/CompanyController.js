@@ -1,6 +1,7 @@
 class CompanyController {
   //[GET]
   company(req, res, next) {
+    
     res.render("company", {
       title: "Company",
       user: req.user,

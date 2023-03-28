@@ -7,6 +7,7 @@ const fs = require("fs");
 
 class ProfileController {
   profile(req, res, next) {
+    console.log('DAY LA THONG TIN CUA USER: ' + req.user.role)
     res.render("profile", {
       title: "Profile User",
       user: req.user,

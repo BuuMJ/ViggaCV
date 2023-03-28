@@ -153,6 +153,12 @@
   flex-direction: column;
   align-items: center; }
 
+.form-company-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; }
+
 .header-profile {
   display: flex;
   flex-direction: column;
@@ -390,14 +396,20 @@ button.btn-setting:active {
 .contact-user input,
 .contact-user-address input,
 .about-user input,
-.about-user select {
+.about-user select,
+.about-user textarea {
   width: 100%;
   height: 45%;
   border: none;
   outline: none;
   border-radius: 10px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-  padding: 0 8px; }
+  padding: 0 8px;
+  resize: none; }
+
+.about-user textarea {
+  height: 300px;
+  padding: 8px 12px 0 12px; }
 
 #file-user {
   display: none; }
@@ -1301,7 +1313,8 @@ button#moveTopBtn {
   background-color: rgba(0, 0, 0, 0.8);
   border-bottom: 2px solid #fedb00;
   text-align: center;
-  padding: unset; }
+  padding: unset;
+  z-index: 20; }
 
 .down__company {
   top: 80px;
@@ -1369,7 +1382,8 @@ button#moveTopBtn {
   background-color: rgba(0, 0, 0, 0.8);
   border-bottom: 2px solid #fedb00;
   text-align: center;
-  padding-left: unset; }
+  padding-left: unset;
+  z-index: 20; }
 
 .down__user {
   width: 150px;
@@ -1380,7 +1394,8 @@ button#moveTopBtn {
 .down__user-company {
   width: 230px;
   height: 150px;
-  left: -130px; }
+  left: -130px;
+  z-index: 20; }
 
 .down__contact li,
 .down__user li {
