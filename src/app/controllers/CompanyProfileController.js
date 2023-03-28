@@ -1,16 +1,23 @@
 const CompanyModel = require("../models/Company");
+const JobModel = require("../models/Job");
 const fs = require("fs");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 
 class CompanyProfileController {
   //[GET]
-  companyprofile(req, res, next) {
-    const company = CompanyModel.findOne({iduser: req.user._id});
-    res.render("companyprofile", {
-      title: "Company",
-      user: req.user,
-      company: company,
+  async companyprofile(req, res, next) {
+    const company = await CompanyModel.findOne({ iduser: req.user._id });
+    // const listjob = await JobModel.findone({ iduser: req.user._id });
+    JobModel.find({}).then((listjob) => {
+      listjob = listjob.map((listjob) => listjob.toObject());
+      console.log(company + " = ĐÂY LÀ COMPANY SAU KHI TÌM KIẾM");
+      res.render("companyprofile", {
+        title: "Company",
+        user: req.user,
+        company: company,
+        listjob,
+      });
     });
   }
 
@@ -252,6 +259,26 @@ class CompanyProfileController {
     } catch (err) {
       console.log(err);
     }
+  }
+
+  //[GET] Post Job
+  postjob(req, res, next) {
+    const iduser = req.user._id;
+    const companyname = req.body.companyname;
+    const jobname = req.body.jobname;
+    const jobdesc = req.body.jobdesc;
+    const jobrequi = req.body.jobrequi;
+    const joblocation = req.body.joblocation;
+
+    JobModel.create({
+      iduser: iduser,
+      companyname: companyname,
+      jobname: jobname,
+      jobdesc: jobdesc,
+      jobrequi: jobrequi,
+      joblocation: joblocation,
+    });
+    res.redirect("/companyprofile");
   }
 }
 
