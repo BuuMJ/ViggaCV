@@ -11,6 +11,14 @@
     width: 100%;
     height: 550px;
     background: url('/img/headerprofile.jpeg') center/cover no-repeat;
+    position: relative;
+}
+label.changebackground-profile{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
 }
 .header-profile-company{
     height: 620px;

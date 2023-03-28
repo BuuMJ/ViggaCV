@@ -61,6 +61,13 @@ module.exports = {
       return "/img/logocompany.jpeg";
     }
   },
+  getBackground: function (user) {
+    if (user.background) {
+      return `/${user.background}`;
+    } else {
+      return "/img/headerprofile.jpeg";
+    }
+  },
   getCompanyname: function (user) {
     return user.companyname;
   },

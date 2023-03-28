@@ -1,10 +1,12 @@
 <div class="main-profile">
-        <div class="header-profile header-profile-company">
+    <div class="header-profile header-profile-company" id="header-profile" style="background: url('{{getBackground user}}') center/cover no-repeat;">
+        <label class="changebackground-profile" for="header-profile-file-input">Change Background</label>
+        <input type="file" name="background" id="header-profile-file-input" style="display: none;">
         <span class="header-profile-primary">Hello {{getCompanyname user}} Company</span>
         <span class="header-profile-secondary">This page is your Company profile. Clicking on the settings button allows you to edit your company information</span>
         <button class="btn-setting">Setting <i class="bi bi-gear"></i></button>
     </div>
-    <form class="content-profile company-profile" method="POST" action="/profile/edit?_method=PUT" enctype="multipart/form-data">
+    <form class="content-profile company-profile" method="POST" action="/companyprofile/edit?_method=PUT" enctype="multipart/form-data">
         <div class="profile-img">
             <label for="file-user"><img class="user-avatar" src="{{getAvatarcompany user}}" alt=""></label>
             <input id="file-user" name="avatar" type="file" accept="image/*">
@@ -114,6 +116,20 @@
     </form>
 </div>
 </div>
+<script>
+    document.querySelector('label[for="header-profile-file-input"]').addEventListener('click', function() {
+       
+    });
+
+    document.querySelector('#header-profile-file-input').addEventListener('change', function() {
+        var fileBackground = this.files[0];
+        var readerBackground = new FileReader();
+        readerBackground.onload = function(e) {
+            document.querySelector('#header-profile').style.backgroundImage = "url('" + e.target.result + "')";
+        };
+        readerBackground.readAsDataURL(fileBackground);
+    });
+</script>
 <script>
 var btnSetting = document.querySelector('.btn-setting');
 var settingProfile = document.querySelector('.content-profile');

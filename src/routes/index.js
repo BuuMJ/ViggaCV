@@ -6,8 +6,11 @@ const { sendDataUser } = require("../util/data");
 const { checkLogin } = require("../util/authorize");
 const cvRouter = require("./cv");
 const companyRouter = require("./company");
+const companyprofileRouter = require("./companyprofile");
 
 function route(app) {
+  app.use("/companyprofile", checkLogin, companyprofileRouter);
+
   app.use("/company", checkLogin, companyRouter);
 
   app.use("/profile", checkLogin, profileRouter);
