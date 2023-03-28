@@ -9,11 +9,11 @@ const companyRouter = require("./company");
 const companyprofileRouter = require("./companyprofile");
 
 function route(app) {
-  app.use("/companyprofile", checkLogin, companyprofileRouter);
+  app.use("/companyprofile", sendDataUser, companyprofileRouter);
 
-  app.use("/company", checkLogin, companyRouter);
+  app.use("/company", sendDataUser, companyRouter);
 
-  app.use("/profile", checkLogin, profileRouter);
+  app.use("/profile", sendDataUser, profileRouter);
 
   app.use("/cv", cvRouter);
 

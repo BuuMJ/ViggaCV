@@ -54,46 +54,46 @@ module.exports = {
       return "/img/profileimg.png";
     }
   },
-  getAvatarcompany: function (user) {
-    if (user.avatar) {
-      return `/${user.avatar}`;
+  getAvatarcompany: function (company) {
+    if (company.avatar) {
+      return `/${company.avatar}`;
     } else {
       return "/img/logocompany.jpeg";
     }
   },
-  getBackground: function (user) {
-    if (user.background) {
-      return `/${user.background}`;
+  getBackground: function (company) {
+    if (company.background) {
+      return `/${company.background}`;
     } else {
       return "/img/headerprofile.jpeg";
     }
   },
-  getCompanyname: function (user) {
-    return user.companyname;
+  getCompanyname: function (company) {
+    return company.companyname;
   },
-  getCompanyaddress: function (user) {
-    return user.companyaddress;
+  getCompanyaddress: function (company) {
+    return company.companyaddress;
   },
-  getFaxcode: function (user) {
-    return user.faxcode;
+  getFaxcode: function (company) {
+    return company.faxcode;
   },
-  getTaxcode: function (user) {
-    return user.taxcode;
+  getTaxcode: function (company) {
+    return company.taxcode;
   },
-  getCompanyemail: function (user) {
-    return user.companyemail;
+  getCompanyemail: function (company) {
+    return company.companyemail;
   },
-  getCompanyphone: function (user) {
-    return user.companyphone;
+  getCompanyphone: function (company) {
+    return company.companyphone;
   },
-  getCompanyyears: function (user) {
-    return user.companyyears;
+  getCompanyyears: function (company) {
+    return company.companyyears;
   },
-  getCompanydesc: function (user) {
-    return user.companydesc;
+  getCompanydesc: function (company) {
+    return company.companydesc;
   },
-  getTOB: function (user) {
-    return user.TOB;
+  getTOB: function (company) {
+    return company.TOB;
   },
   ifeq: function (user, y, options) {
     // console.log(user)

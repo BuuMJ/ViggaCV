@@ -14,7 +14,8 @@ const Company = new Schema(
         companyyears: String,
         typeofbusiness: String,
         companydesc: String,
-
+        avatar: String,
+        background: String,
     },
     {
         collection: 'company',
