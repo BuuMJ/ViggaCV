@@ -1,4 +1,7 @@
 const CompanyModel = require("../models/Company");
+const fs = require("fs");
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 
 class CompanyProfileController {
   //[GET]
@@ -12,6 +15,7 @@ class CompanyProfileController {
   //[PUT] edit  company profile
   async apicompanyprofile(req, res, next) {
     try {
+      console.log("Đã tới đâyyyyyyyyyyyyyyyyyyyyyy");
       const iduser = req.user._id;
       const companyname = req.body.companyName;
       const companyaddress = req.body.companyAddress;
@@ -23,17 +27,24 @@ class CompanyProfileController {
       const typeofbusiness = req.body.typeOfBusiness;
       const companydesc = req.body.companyDesc;
 
-      if (req.file.avatar || req.file.background) {
-        const data = await fs.promises.readFile(req.file.path);
-        console.log("ĐÃ CÓ FILE: " + data);
-        if (data) {
+      if (req.files) {
+        const avatar = req.files["avatar"]
+          ? req.files["avatar"][0].filename
+          : undefined;
+        const background = req.files["background"]
+          ? req.files["background"][0].filename
+          : undefined;
+        console.log(
+          "ĐÃ CÓ FILE: " + avatar + "CÒN ĐÂY LÀ BACKGROUND: " + background
+        );
+        if (avatar || background) {
           const company = await CompanyModel.findOne({ iduser: req.user._id });
           if (!company) {
-            if (req.file.avatar && req.file.background) {
+            if (avatar && background) {
               console.log(
                 "ĐÃ CÓ AVATAR VÀ BACKGROUND: " +
-                  req.file.avatar +
-                  req.file.background
+                  req.files.avatar +
+                  req.files.background
               );
 
               await CompanyModel.create({
@@ -46,13 +57,13 @@ class CompanyProfileController {
                 companyphone: companyphone,
                 companyyears: companyyears,
                 typeofbusiness: typeofbusiness,
-                avatar: req.file.avatar.filename,
-                background: req.file.background.filename,
+                avatar: avatar,
+                background: background,
                 companydesc: companydesc,
               }).save();
               res.redirect("/companyprofile");
             }
-            if (req.file.avatar[0]) {
+            if (avatar) {
               console.log("ĐÃ CÓ AVATAR: " + req.file.avatar);
 
               await CompanyModel.create({
@@ -65,14 +76,14 @@ class CompanyProfileController {
                 companyphone: companyphone,
                 companyyears: companyyears,
                 typeofbusiness: typeofbusiness,
-                avatar: req.file.avatar[0].filename,
+                avatar: avatar,
                 companydesc: companydesc,
               }).save();
               res.redirect("/companyprofile");
             }
 
-            if (req.file.background[0]) {
-              console.log("ĐÃ CÓ BACKGROUND: " + req.file.background);
+            if (background) {
+              console.log("ĐÃ CÓ BACKGROUND: " + req.files.background);
 
               await CompanyModel.create({
                 iduser: iduser,
@@ -84,7 +95,7 @@ class CompanyProfileController {
                 companyphone: companyphone,
                 companyyears: companyyears,
                 typeofbusiness: typeofbusiness,
-                background: req.file.background[0].filename,
+                background: background,
                 companydesc: companydesc,
               }).save();
               res.redirect("/companyprofile");
@@ -105,11 +116,11 @@ class CompanyProfileController {
             // res.redirect("/companyprofile");
           } else {
             const idCompany = company._id;
-            if (req.file.avatar[0] && req.file.background[0]) {
+            if (avatar && background) {
               console.log(
                 "ĐÃ CÓ AVATAR VÀ BACKGROUND: " +
-                  req.file.avatar +
-                  req.file.background
+                  req.files.avatar +
+                  req.files.background
               );
               await CompanyModel.findByIdAndUpdate(
                 idCompany,
@@ -123,16 +134,16 @@ class CompanyProfileController {
                   companyphone: companyphone,
                   companyyears: companyyears,
                   typeofbusiness: typeofbusiness,
-                  avatar: req.file.avatar[0].filename,
-                  background: req.file.background[0].filename,
+                  avatar: avatar,
+                  background: background,
                   companydesc: companydesc,
                 },
                 { new: true }
               );
               res.redirect("/companyprofile");
             }
-            if (req.file.avatar[0]) {
-              console.log("ĐÃ CÓ AVATAR: " + req.file.avatar);
+            if (avatar) {
+              console.log("ĐÃ CÓ AVATAR: " + req.files.avatar);
               await CompanyModel.findByIdAndUpdate(
                 idCompany,
                 {
@@ -145,15 +156,15 @@ class CompanyProfileController {
                   companyphone: companyphone,
                   companyyears: companyyears,
                   typeofbusiness: typeofbusiness,
-                  avatar: req.file.avatar[0].filename,
+                  avatar: avatar,
                   companydesc: companydesc,
                 },
                 { new: true }
               );
               res.redirect("/companyprofile");
             }
-            if (req.file.background[0]) {
-              console.log("ĐÃ CÓ BACKGROUND: " + req.file.background);
+            if (background) {
+              console.log("ĐÃ CÓ BACKGROUND: " + req.files.background);
 
               await CompanyModel.findByIdAndUpdate(
                 idCompany,
@@ -167,7 +178,7 @@ class CompanyProfileController {
                   companyphone: companyphone,
                   companyyears: companyyears,
                   typeofbusiness: typeofbusiness,
-                  background: req.file.background[0].filename,
+                  background: background,
                   companydesc: companydesc,
                 },
                 { new: true }
@@ -195,6 +206,7 @@ class CompanyProfileController {
           }
         } else {
           console.log("LỖI KHI ĐỌC FILE TẢI LÊN!");
+          res.redirect("/companyprofile");
         }
       } else {
         const company = await CompanyModel.findOne({ iduser: req.user._id });
@@ -235,7 +247,9 @@ class CompanyProfileController {
           res.redirect("/companyprofile");
         }
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   }
 }
 
