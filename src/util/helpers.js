@@ -74,8 +74,8 @@ module.exports = {
   getCompanyaddress: function (company) {
     return company.companyaddress;
   },
-  getFaxcode: function (company) {
-    return company.faxcode;
+  getCompanyfield: function (company) {
+    return company.companyfield;
   },
   getTaxcode: function (company) {
     return company.taxcode;

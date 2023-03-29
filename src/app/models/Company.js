@@ -7,7 +7,7 @@ const Company = new Schema(
     iduser: String,
     companyname: String,
     companyaddress: String,
-    faxcode: String,
+    companyfield: String,
     taxcode: String,
     companyemail: String,
     companyphone: String,
@@ -16,6 +16,7 @@ const Company = new Schema(
     companydesc: String,
     avatar: String,
     background: String,
+    jobcount: String,
   },
   {
     collection: "company",
