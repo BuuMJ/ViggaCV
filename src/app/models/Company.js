@@ -7,7 +7,7 @@ const Company = new Schema(
     iduser: String,
     companyname: String,
     companyaddress: String,
-    faxcode: String,
+    companyfield: String,
     taxcode: String,
     companyemail: String,
     companyphone: String,

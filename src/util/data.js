@@ -14,7 +14,6 @@ function sendDataUser(req, res, next) {
     }).then((data) => {
       if (data) {
         req.user = data;
-        console.log(req.user + "aaaaaaaaaaaaaaaa");
         next();
       } else {
         next();

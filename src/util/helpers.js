@@ -55,45 +55,81 @@ module.exports = {
     }
   },
   getAvatarcompany: function (company) {
-    if (company.avatar) {
+    if (company && company.avatar) {
       return `/${company.avatar}`;
     } else {
       return "/img/logocompany.jpeg";
     }
   },
   getBackground: function (company) {
-    if (company.background) {
+    if (company && company.background) {
       return `/${company.background}`;
     } else {
       return "/img/headerprofile.jpeg";
     }
   },
   getCompanyname: function (company) {
-    return company.companyname;
+    if (company && company.companyname) {
+      return company.companyname;
+    } else {
+      return "";
+    }
   },
   getCompanyaddress: function (company) {
-    return company.companyaddress;
+    if (company && company.companyaddress) {
+      return company.companyaddress;
+    } else {
+      return "";
+    }
   },
-  getFaxcode: function (company) {
-    return company.faxcode;
+  getCompanyfield: function (company) {
+    if (company && company.companyfield) {
+      return company.companyfield;
+    } else {
+      return "";
+    }
   },
   getTaxcode: function (company) {
-    return company.taxcode;
+    if (company && company.taxcode) {
+      return company.taxcode;
+    } else {
+      return "";
+    }
   },
   getCompanyemail: function (company) {
-    return company.companyemail;
+    if (company && company.companyemail) {
+      return company.companyemail;
+    } else {
+      return "";
+    }
   },
   getCompanyphone: function (company) {
-    return company.companyphone;
+    if (company && company.companyphone) {
+      return company.companyphone;
+    } else {
+      return "";
+    }
   },
   getCompanyyears: function (company) {
-    return company.companyyears;
+    if (company && company.companyyears) {
+      return company.companyyears;
+    } else {
+      return "";
+    }
   },
   getCompanydesc: function (company) {
-    return company.companydesc;
+    if (company && company.companydesc) {
+      return company.companydesc;
+    } else {
+      return "";
+    }
   },
   getTOB: function (company) {
-    return company.TOB;
+    if (company && company.TOB) {
+      return company.TOB;
+    } else {
+      return "";
+    }
   },
   ifeq: function (user, y, options) {
     // console.log(user)

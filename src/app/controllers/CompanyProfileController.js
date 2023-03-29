@@ -7,9 +7,14 @@ const upload = multer({ dest: "uploads/" });
 class CompanyProfileController {
   //[GET]
   async companyprofile(req, res, next) {
+    console.log(req.user._id);
     const company = await CompanyModel.findOne({ iduser: req.user._id });
+    console.log(
+      company +
+        "ĐÂY LÀ GIÁ TRỊ CỦA COMPANY PROFILEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
+    );
     // const listjob = await JobModel.findone({ iduser: req.user._id });
-    JobModel.find({}).then((listjob) => {
+    JobModel.find({ iduser: req.user._id }).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
       console.log(company + " = ĐÂY LÀ COMPANY SAU KHI TÌM KIẾM");
       res.render("companyprofile", {
@@ -28,7 +33,7 @@ class CompanyProfileController {
       const iduser = req.user._id;
       const companyname = req.body.companyName;
       const companyaddress = req.body.companyAddress;
-      const faxcode = req.body.faxCode;
+      const companyfield = req.body.companyField;
       const taxcode = req.body.taxCode;
       const companyemail = req.body.companyEmail;
       const companyphone = req.body.companyPhone;
@@ -36,6 +41,16 @@ class CompanyProfileController {
       const typeofbusiness = req.body.typeOfBusiness;
       const companydesc = req.body.companyDesc;
 
+      console.log(iduser + " đây là những gì bạn nhập vào!!!!!!!");
+      console.log(companyname + " đây là những gì bạn nhập vào!!!!!!!");
+      console.log(companyaddress + " đây là những gì bạn nhập vào!!!!!!!");
+      console.log(companyfield + " đây là những gì bạn nhập vào!!!!!!!");
+      console.log(taxcode + " đây là những gì bạn nhập vào!!!!!!!");
+      console.log(companyemail + " đây là những gì bạn nhập vào!!!!!!!");
+      console.log(companyphone + " đây là những gì bạn nhập vào!!!!!!!");
+      console.log(companyyears + " đây là những gì bạn nhập vào!!!!!!!");
+      console.log(typeofbusiness + " đây là những gì bạn nhập vào!!!!!!!");
+      console.log(companydesc + " đây là những gì bạn nhập vào!!!!!!!");
       if (req.files) {
         const avatar = req.files["avatar"]
           ? req.files["avatar"][0].filename
@@ -60,7 +75,7 @@ class CompanyProfileController {
                 iduser: iduser,
                 companyname: companyname,
                 companyaddress: companyaddress,
-                faxcode: faxcode,
+                companyfield: companyfield,
                 taxcode: taxcode,
                 companyemail: companyemail,
                 companyphone: companyphone,
@@ -79,7 +94,7 @@ class CompanyProfileController {
                 iduser: iduser,
                 companyname: companyname,
                 companyaddress: companyaddress,
-                faxcode: faxcode,
+                companyfield: companyfield,
                 taxcode: taxcode,
                 companyemail: companyemail,
                 companyphone: companyphone,
@@ -98,7 +113,7 @@ class CompanyProfileController {
                 iduser: iduser,
                 companyname: companyname,
                 companyaddress: companyaddress,
-                faxcode: faxcode,
+                companyfield: companyfield,
                 taxcode: taxcode,
                 companyemail: companyemail,
                 companyphone: companyphone,
@@ -114,7 +129,7 @@ class CompanyProfileController {
             //   iduser: iduser,
             //   companyname: companyname,
             //   companyaddress: companyaddress,
-            //   faxcode: faxcode,
+            //   companyfield: companyfield,
             //   taxcode: taxcode,
             //   companyemail: companyemail,
             //   companyphone: companyphone,
@@ -137,7 +152,7 @@ class CompanyProfileController {
                   iduser: iduser,
                   companyname: companyname,
                   companyaddress: companyaddress,
-                  faxcode: faxcode,
+                  companyfield: companyfield,
                   taxcode: taxcode,
                   companyemail: companyemail,
                   companyphone: companyphone,
@@ -159,7 +174,7 @@ class CompanyProfileController {
                   iduser: iduser,
                   companyname: companyname,
                   companyaddress: companyaddress,
-                  faxcode: faxcode,
+                  companyfield: companyfield,
                   taxcode: taxcode,
                   companyemail: companyemail,
                   companyphone: companyphone,
@@ -181,7 +196,7 @@ class CompanyProfileController {
                   iduser: iduser,
                   companyname: companyname,
                   companyaddress: companyaddress,
-                  faxcode: faxcode,
+                  companyfield: companyfield,
                   taxcode: taxcode,
                   companyemail: companyemail,
                   companyphone: companyphone,
@@ -201,7 +216,7 @@ class CompanyProfileController {
             //     iduser: iduser,
             //     companyname: companyname,
             //     companyaddress: companyaddress,
-            //     faxcode: faxcode,
+            //     companyfield: companyfield,
             //     taxcode: taxcode,
             //     companyemail: companyemail,
             //     companyphone: companyphone,
@@ -214,47 +229,46 @@ class CompanyProfileController {
             // res.redirect("/companyprofile");
           }
         } else {
-          console.log("LỖI KHI ĐỌC FILE TẢI LÊN!");
-          res.redirect("/companyprofile");
-        }
-      } else {
-        const company = await CompanyModel.findOne({ iduser: req.user._id });
-        if (company) {
-          console.log("Đã tới đây không có file nhưng đã có dữ liệu");
-          const idCompany = company._id;
-          await CompanyModel.findByIdAndUpdate(
-            idCompany,
-            {
+          const company = await CompanyModel.findOne({ iduser: req.user._id });
+          if (company) {
+            console.log("Đã tới đây không có file nhưng đã có dữ liệu");
+            const idCompany = company._id;
+            await CompanyModel.findByIdAndUpdate(
+              idCompany,
+              {
+                iduser: iduser,
+                companyname: companyname,
+                companyaddress: companyaddress,
+                companyfield: companyfield,
+                taxcode: taxcode,
+                companyemail: companyemail,
+                companyphone: companyphone,
+                companyyears: companyyears,
+                typeofbusiness: typeofbusiness,
+                companydesc: companydesc,
+              },
+              { new: true }
+            );
+            res.redirect("/companyprofile");
+          } else {
+            console.log("Đã tới đây không có file cũng không có dữ liệu");
+            await CompanyModel.create({
               iduser: iduser,
               companyname: companyname,
               companyaddress: companyaddress,
-              faxcode: faxcode,
+              companyfield: companyfield,
               taxcode: taxcode,
               companyemail: companyemail,
               companyphone: companyphone,
               companyyears: companyyears,
               typeofbusiness: typeofbusiness,
               companydesc: companydesc,
-            },
-            { new: true }
-          );
-          res.redirect("/companyprofile");
-        } else {
-          console.log("Đã tới đây không có file cũng không có dữ liệu");
-          await CompanyModel.create({
-            iduser: iduser,
-            companyname: companyname,
-            companyaddress: companyaddress,
-            faxcode: faxcode,
-            taxcode: taxcode,
-            companyemail: companyemail,
-            companyphone: companyphone,
-            companyyears: companyyears,
-            typeofbusiness: typeofbusiness,
-            companydesc: companydesc,
-          }).save();
-          res.redirect("/companyprofile");
+            }).save();
+            res.redirect("/companyprofile");
+          }
         }
+      } else {
+        console.log("loi khi kiem tra files");
       }
     } catch (err) {
       console.log(err);

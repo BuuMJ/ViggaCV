@@ -98,6 +98,7 @@ class CvController {
         const webPage = await browser.newPage();
         console.log("ĐÂY LÀ ID CỦA USER NHÌN CHO RÕ VÀO: " + iduser);
         const url = `http://localhost:3000/cv/exportcv/${iduser}`;
+
         await webPage.goto(url, {
           waitUntil: "networkidle0",
         });
@@ -106,6 +107,7 @@ class CvController {
             printBackground: true,
             displayHeaderFooter: false,
             path: "CV of " + req.user.fullname + ".pdf",
+            clip: { x: 1000, y: -500, width: 500, height: 500 },
             format: "Tabloid",
             landscape: false,
             margin: {
