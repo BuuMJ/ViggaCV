@@ -153,12 +153,6 @@
   flex-direction: column;
   align-items: center; }
 
-.form-company-profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%; }
-
 .header-profile {
   display: flex;
   flex-direction: column;
@@ -266,13 +260,13 @@ button.btn-setting:active {
   transition: 1s; }
 
 .company-profile {
-  min-height: 1200px; }
+  height: 1500px; }
 
 .profile-img {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px; }
+  height: 10%; }
 
 .profile-img .user-avatar {
   width: 180px;
@@ -345,7 +339,7 @@ button.btn-setting:active {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 85%; }
+  height: 90%; }
 
 .profile-info-user,
 .about-me-profile,
@@ -357,12 +351,12 @@ button.btn-setting:active {
   align-items: flex-start;
   flex-wrap: wrap; }
 
+.about-company-profile {
+  margin-bottom: 40px; }
+
 .about-company-profile > *,
 .listjobs {
-  margin: 8px 0; }
-
-.listjobs {
-  min-height: 120px; }
+  margin: 8px 0 0 0; }
 
 .underline-profile {
   width: 100%;
@@ -408,7 +402,7 @@ button.btn-setting:active {
   resize: none; }
 
 .about-user textarea {
-  height: 300px;
+  height: 130px;
   padding: 8px 12px 0 12px; }
 
 #file-user {
@@ -447,8 +441,9 @@ button.btn-setting:active {
   width: 100%; }
 
 .profile-action {
-  text-align: center;
-  transform: translateY(50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 10%; }
 
 .btn-save {
@@ -471,7 +466,8 @@ button.btn-setting:active {
   cursor: not-allowed; }
 
 .about-user-desc-company {
-  width: 95%; }
+  width: 95%;
+  height: 180px; }
 
 input#postal::-webkit-outer-spin-button,
 input#postal::-webkit-inner-spin-button {
@@ -566,6 +562,228 @@ input#postal::-webkit-inner-spin-button {
 
 .btn-postjob:hover {
   background-color: rgba(255, 255, 255, 0.5); }
+
+.listjobs ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: unset;
+  margin-top: 20px; }
+
+li.content-listjob {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  height: 60px;
+  padding: unset;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 12px;
+  cursor: pointer; }
+
+li.content-listjob:hover .namejobs {
+  color: #fedb00; }
+
+.namejobs {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  padding: 0 0 0 2px !important;
+  height: 20px; }
+
+.secondary-listjob {
+  display: inline-block;
+  height: 20px; }
+
+span.timejobs,
+span.locationjobs {
+  color: #b1b1b1;
+  font-size: 12px;
+  font-weight: 400;
+  width: 50%;
+  padding: unset; }
+
+ul.listpagejob {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px !important; }
+
+ul.listpagejob li {
+  width: 30px;
+  height: 30px;
+  color: black;
+  text-align: center;
+  margin: 0 8px;
+  cursor: pointer;
+  box-sizing: unset;
+  list-style-type: none; }
+
+ul.listpagejob li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px; }
+
+ul.listpagejob .active {
+  border: 1px solid #fedb00;
+  border-radius: 10px;
+  transform: scale(1.2);
+  cursor: not-allowed;
+  text-align: center; }
+
+.container-companies {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #f4f4f7; }
+
+.main-companies {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin-top: 50px; }
+
+.companies {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  height: 800px;
+  border-radius: 10px;
+  border: 1px solid #f0f0f0;
+  background-color: white; }
+
+.companies > * {
+  padding: 0 30px; }
+
+.header-companies {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 15%; }
+
+.header-companies span {
+  width: 30%;
+  font-size: 20px;
+  font-weight: 400; }
+
+.search-companies {
+  width: 70%; }
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 10; }
+
+.input {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  padding: 18px 16px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all .5s ease-in-out; }
+
+.input::placeholder {
+  color: transparent; }
+
+.input:focus::placeholder {
+  color: #838080; }
+
+.input:focus, .input:not(:placeholder-shown) {
+  background-color: #fff;
+  border: 1px solid black;
+  width: 90%;
+  padding: 18px 16px 18px 40px; }
+
+.icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 40px;
+  width: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  z-index: -1;
+  fill: black;
+  border: 1px solid black; }
+
+.input:hover + .icon {
+  transform: rotate(360deg);
+  transition: .3s ease-in-out; }
+
+.input:focus + .icon, .input:not(:placeholder-shown) + .icon {
+  z-index: 0;
+  background-color: transparent;
+  border: none; }
+
+.categories-companies {
+  width: 100%; }
+
+#categories-search {
+  width: 20%;
+  height: 30px;
+  outline: none;
+  border-radius: 10px;
+  padding: 0 4px; }
+
+.body-companies {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 85%;
+  overflow-x: hidden; }
+
+.card-company {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32%;
+  height: 300px;
+  border: 1px solid #f0f0f0;
+  border-radius: 10px; }
+
+.header-card-company {
+  width: 100%;
+  height: 50%;
+  padding: 8px 8px 0 8px; }
+
+.header-card-company .background-card-company {
+  width: 100%;
+  height: 80%;
+  border-radius: 10px; }
+
+.header-card-company .avatar-card-company {
+  width: 35%;
+  height: 50%;
+  border-radius: 10px;
+  transform: translate(20%, -50%); }
+
+.main-card-company {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 45%;
+  width: 100%;
+  padding: 0 8px 8px 8px; }
+
+.card-company-name {
+  font-size: 15px;
+  font-weight: 500; }
+
+.card-company-jobname,
+.card-company-counts {
+  color: #777777; }
 
 .container-cv {
   display: flex;

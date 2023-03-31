@@ -1,7 +1,10 @@
 const jwt = require("jsonwebtoken");
 const UserModel = require("../app/models/User");
 const multer = require("multer");
+const JobModel = require("../app/models/Job");
 const fs = require("fs");
+const CompanyModel = require("../app/models/Company");
+const { company } = require("../app/controllers/CompanyController");
 
 //send data user
 function sendDataUser(req, res, next) {
@@ -14,6 +17,7 @@ function sendDataUser(req, res, next) {
     }).then((data) => {
       if (data) {
         req.user = data;
+        // console.log(req.user + "aaaaaaaaaaaaaaaa");
         next();
       } else {
         next();
@@ -24,6 +28,30 @@ function sendDataUser(req, res, next) {
     //   "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
     // );
     next();
+  }
+}
+
+async function jobcount(req, res, next) {
+  try {
+    const jobcount = await JobModel.aggregate([
+      { $group: { _id: "$companyname", jobcount: { $sum: 1 } } },
+    ]);
+
+    for (const result of jobcount) {
+      const { _id, jobcount } = result;
+      console.log(
+        result._id +
+          " day la gia tri resulttttttttttttttttttttttttttttttttttttttttttttttt"
+      );
+
+      await CompanyModel.updateOne(
+        { companyname: _id },
+        { jobcount: jobcount }
+      );
+    }
+    return next();
+  } catch (err) {
+    console.log(err);
   }
 }
 
@@ -54,4 +82,4 @@ const upload = multer({
   fileFilter: imageFilter, // sử dụng hàm filter để chỉ lấy file ảnh
 });
 
-module.exports = { sendDataUser, upload };
+module.exports = { sendDataUser, jobcount, upload };

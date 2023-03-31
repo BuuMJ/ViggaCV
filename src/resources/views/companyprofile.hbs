@@ -31,33 +31,33 @@
                             value="{{getCompanyaddress company}}">
                     </div>
                     <div class="about-user">
-                        <label for="certifications">Fax Code</label>
-                        <input id="certifications" type="text" name="companyField" placeholder="0700668"
+                        <label for="certifications">Company Field</label>
+                        <input id="certifications" type="text" name="companyField" placeholder="IT-Sofware"
                             value="{{getCompanyfield company}}">
                     </div>
                     <div class="about-user">
-                        <label for="certifications">Tax Code</label>
-                        <input id="certifications" type="text" name="taxCode" placeholder="2556789"
+                        <label for="taxcode">Tax Code</label>
+                        <input id="taxcode" type="text" name="taxCode" placeholder="2556789"
                             value="{{getTaxcode company}}">
                     </div>
                     <div class="about-user ">
-                        <label for="languages">Company Email</label>
-                        <input id="languages" type="text" name="companyEmail" placeholder="name@example.com"
+                        <label for="comapanyemail">Company Email</label>
+                        <input id="comapanyemail" type="text" name="companyEmail" placeholder="name@example.com"
                             value="{{getCompanyemail company}}">
                     </div>
                     <div class="about-user ">
-                        <label for="languages">Company Phone</label>
-                        <input id="languages" type="text" name="companyPhone" placeholder="07055548"
+                        <label for="comapanyphone">Company Phone</label>
+                        <input id="comapanyphone" type="text" name="companyPhone" placeholder="07055548"
                             value="{{getCompanyphone company}}">
                     </div>
                     <div class="about-user ">
-                        <label for="languages">No. OfYears In Business</label>
-                        <input id="languages" type="text" name="companyYears" placeholder="70 Years"
+                        <label for="companyyears">No. OfYears In Business</label>
+                        <input id="companyyears" type="text" name="companyYears" placeholder="70 Years"
                             value="{{getCompanyyears company}}">
                     </div>
                     <div class="about-user ">
-                        <label for="languages">Type of business</label>
-                        <select id="languages" name="typeOfBusiness">
+                        <label for="TOB">Type of business</label>
+                        <select id="TOB" name="typeOfBusiness">
                             <option value="{{getTOB user}}" selected>{{getTOB company}}</option>
                             <option value="Sole Proprietorships">Sole Proprietorships.</option>
                             <option value="Partnerships">Partnerships.</option>
@@ -79,13 +79,17 @@
                     </div>
                     <ul>
                         {{#each listjob}}
-                        <li>
-                           <span>{{this.jobname}}</span> 
-                            <span>{{this.joblocation}}</span>
-                            <span>{{this.createdAt}}</span>
+                        <li class="content-listjob">
+                           <span class="namejobs">{{this.jobname}}</span>
+                           <div class="secondary-listjob">
+                                <span class="locationjobs"><i class="bi bi-geo"></i> Location: {{this.joblocation}}</span>
+                                <span class="timejobs"><i class="bi bi-calendar-date"></i> {{this.createdAt}}</span>
+                           </div> 
                         </li>
                         {{/each}}
                     </ul>
+                    <ul class="listpagejob">
+                    </ul>   
                 </div>
                 <div class="profile-action">
                     <button class="btn-save" type="submit">Save Profile</button>
@@ -150,6 +154,43 @@
         };
         readerBackground.readAsDataURL(fileBackground);
     });
+      var thisPage = 1;
+  var limit = 5;
+  var list = document.querySelectorAll('.content-listjob')
+  function loadIteam() {
+    var beginGet = limit * (thisPage - 1);
+    var endGet = limit * thisPage - 1;
+    list.forEach((item, key) => {
+      if (key >= beginGet && key <= endGet) {
+        item.style.display = 'flex';
+      } else {
+        item.style.display = 'none';
+      }
+    })
+    listPage();
+  }
+  loadIteam()
+  function listPage() {
+    var count = Math.ceil(list.length / limit);
+    document.querySelector('.listpagejob').innerHTML = '';
+    for (i = 1; i <= count; i++) {
+      var newPage = document.createElement('li');
+      newPage.innerHTML = i;
+      document.querySelector('.listpagejob').appendChild(newPage);
+      newPage.setAttribute('onclick', "changePage(" + i + ")");
+      if (i === thisPage) {
+      newPage.classList.add('active');
+    }
+    }
+  }
+  function changePage(i) {
+    thisPage = i;
+    document.querySelectorAll('.listpagejob li').forEach(function(page) {
+    page.classList.remove('active');
+  });
+  document.querySelector('.listpagejob li:nth-child(' + (thisPage) + ')').classList.add('active');
+    loadIteam()
+  }
 </script>
 <script>
     var btnSetting = document.querySelector('.btn-setting');

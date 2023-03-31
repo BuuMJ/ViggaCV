@@ -14,13 +14,19 @@ class CompanyProfileController {
         "ĐÂY LÀ GIÁ TRỊ CỦA COMPANY PROFILEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
     );
     // const listjob = await JobModel.findone({ iduser: req.user._id });
-    JobModel.find({ iduser: req.user._id }).then((listjob) => {
+    const listcompany = await CompanyModel.find({});
+    const Listcompany = listcompany.map((listcompany) =>
+      listcompany.toObject()
+    );
+    console.log(listcompany + "DAY LA DANH SACH COMPANY SAU KHI TIM");
+    JobModel.find({}).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
       console.log(company + " = ĐÂY LÀ COMPANY SAU KHI TÌM KIẾM");
       res.render("companyprofile", {
         title: "Company",
         user: req.user,
         company: company,
+        listcompany: Listcompany,
         listjob,
       });
     });
@@ -278,7 +284,7 @@ class CompanyProfileController {
   //[GET] Post Job
   postjob(req, res, next) {
     const iduser = req.user._id;
-    const companyname = req.body.companyname;
+    const companyname = req.body.namecompanyjob;
     const jobname = req.body.jobname;
     const jobdesc = req.body.jobdesc;
     const jobrequi = req.body.jobrequi;

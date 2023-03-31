@@ -16,6 +16,7 @@ const Company = new Schema(
     companydesc: String,
     avatar: String,
     background: String,
+    jobcount: String,
   },
   {
     collection: "company",
