@@ -42,6 +42,8 @@
     "node-sass": "^8.0.0",
     "nodemailer": "^6.9.1",
     "nodemon": "^2.0.21",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
     "puppeteer": "^19.7.5"
   }
 }
