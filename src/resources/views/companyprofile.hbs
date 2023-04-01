@@ -101,10 +101,6 @@
     <form id="postjob" method="POST" action="/companyprofile/postjob">
         <h2>New Job</h2>
         <div class="info-job">
-            <label for="namecompanyjob">Company Name</label>
-            <input id="namecompanyjob" name="namecompanyjob" type="text" value="{{getCompanyname company}}">
-        </div>
-        <div class="info-job">
             <label for="jobname">Job Name</label>
             <input id="jobname" name="jobname" placeholder="Developer Engineer" type="text">
         </div>
@@ -128,6 +124,10 @@
 - 顧客（JOEM）及び海外拠点とのコミュニケーションに必要なネイティブレベルの日本語力とビジネスレベルの英語力
 - 自動車業界、特にコネクターやワイヤーハーネス関連の製品知識や業務経験(あれば望ましい)
 - プレゼンテーション力と交渉力 (あれば望ましい)" type="text"></textarea>
+        </div>
+        <div class="info-job">
+            <label for="namecompanyjob">Benefit</label>
+            <input id="namecompanyjob" name="benefit" type="text" >
         </div>
         <div class="info-job">
             <label for="joblocation">Job Locations</label>
