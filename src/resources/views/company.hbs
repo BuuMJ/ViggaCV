@@ -7,7 +7,7 @@
                 <span>Featured Companies ({{count}})</span>
                 <div class="search-companies">
                     <div class="input-container">
-                            <input placeholder="Enter Company Name" class="input" name="text" type="text">
+                            <input placeholder="Enter Company Name" class="input" id="search-input" name="text" type="text">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon">
                                 <g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g>
                                 <g id="SVGRepo_iconCarrier"> 
@@ -28,42 +28,161 @@
                     </div>
                 </div>
             </div>
-            <div class="body-companies">
+            <div id="search-results" class="body-companies">
                 {{#each listcompany}}
-                <div class="card-company">
-                    <div class="header-card-company">
-                        <img class="background-card-company" src="/{{this.background}}" alt="">
-                        <img class="avatar-card-company" src="/{{this.avatar}}" alt="">
-                    </div>
-                    <div class="main-card-company">
-                        <span class="card-company-name">{{this.TOB}} {{this.companyname}}</span>
-                        <span class="card-company-jobname"><i class="bi bi-building-fill-exclamation"></i> {{this.companyfield}}</span>
-                        <span class="card-company-counts"><i class="bi bi-briefcase-fill"></i> {{this.jobcount}} opening jobs</span>
+                <div class="card-companies">
+                    <div class="card-company">
+                        <div class="header-card-company">
+                            <img class="background-card-company" src="/{{this.background}}" alt="">
+                            <img class="avatar-card-company" src="/{{this.avatar}}" alt="">
+                        </div>
+                        <div class="main-card-company">
+                            <span class="card-company-name">{{this.TOB}} {{this.companyname}}</span>
+                            <span class="card-company-jobname"><i class="bi bi-building-fill-exclamation"></i> {{this.companyfield}}</span>
+                            <span class="card-company-counts"><i class="bi bi-briefcase-fill"></i> {{this.jobcount}} opening jobs</span>
+                        </div>
                     </div>
                 </div>
                 {{/each}}
-                <ul class="listpagejob">
-                </ul> 
+                <ul class="listpagejob"></ul>
             </div>
         </div>
     </div>
 </div>
-<script>
+{{!-- <script>
+
     var thisPage = 1;
-  var limit = 5;
-  var list = document.querySelectorAll('.body-companies')
-  function loadIteam() {
-    var beginGet = limit * (thisPage - 1);
-    var endGet = limit * thisPage - 1;
-    list.forEach((item, key) => {
-      if (key >= beginGet && key <= endGet) {
-        item.style.transform = 'translateX(0);';
-      } else {
-        item.style.transform = 'translateX(-300%);';
-      }
-    })
-    listPage();
+  var limit = 6;
+  var list = document.querySelectorAll('.card-companies')
+function loadItem() {
+  var beginGet = limit * (thisPage - 1);
+  var endGet = limit * thisPage - 1;
+  list.forEach((item, key) => {
+    if (key >= beginGet && key <= endGet) {
+      item.style.display = 'flex';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+
+  // Show hidden items on the current page
+  const currentPageItems = document.querySelectorAll('.card-company[style*="display: none"]');
+  currentPageItems.forEach(function(card) {
+    const companyName = card.querySelector('.card-company-name').textContent.toLowerCase();
+    const companyCategory = card.querySelector('.card-company-jobname').textContent.trim();
+
+    if ((selectedCategory === "" || companyCategory === selectedCategory) &&
+        companyName.includes(inputVal)) {
+      card.style.display = 'block';
+    }
+  });
+  
+  listPage();
+}
+  loadItem()
+  function listPage() {
+    var count = Math.ceil(list.length / limit);
+    document.querySelector('.listpagejob').innerHTML = '';
+    for (i = 1; i <= count; i++) {
+      var newPage = document.createElement('li');
+      newPage.innerHTML = i;
+      document.querySelector('.listpagejob').appendChild(newPage);
+      newPage.setAttribute('onclick', "changePage(" + i + ")");
+      if (i === thisPage) {
+      newPage.classList.add('active');
+    }
+    }
   }
+  function changePage(i) {
+    thisPage = i;
+    document.querySelectorAll('.listpagejob li').forEach(function(page) {
+    page.classList.remove('active');
+  });
+  document.querySelector('.listpagejob li:nth-child(' + (thisPage) + ')').classList.add('active');
+    loadItem()
+  }
+  const searchInput = document.getElementById('search-input');
+const categoriesSelect = document.getElementById('categories-search');
+
+searchInput.addEventListener('input', function() {
+  search();
+});
+
+categoriesSelect.addEventListener('change', function() {
+  search();
+});
+
+function search() {
+  const inputVal = searchInput.value.toLowerCase();
+  const selectedCategory = categoriesSelect.value.trim();
+  const companyCards = document.querySelectorAll('.card-company');
+  let resultsFound = false;
+
+  companyCards.forEach(function(card) {
+    const companyName = card.querySelector('.card-company-name').textContent.toLowerCase();
+    const companyCategory = card.querySelector('.card-company-jobname').textContent.trim();
+
+    if ((selectedCategory === "" || companyCategory === selectedCategory) &&
+        companyName.includes(inputVal)) {
+      card.style.display = 'flex';
+      resultsFound = true;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  const searchResults = document.getElementById('search-results');
+  const noResults = document.querySelector('.no-results');
+
+  if (!resultsFound) {
+    if (noResults) {
+      noResults.textContent = 'No companies found.';
+      searchResults.insertBefore(noResults, searchResults.firstChild);
+    } else {
+      const newNoResults = document.createElement('div');
+      newNoResults.classList.add('no-results');
+      newNoResults.textContent = 'No companies found.';
+      searchResults.insertBefore(newNoResults, searchResults.firstChild);
+    }
+  } else if (noResults) {
+    searchResults.removeChild(noResults);
+  }
+
+  // Hide cards that do not match the search criteria and are not on the current page
+  const currentPageItems = document.querySelectorAll('.card-company[style*="display: none"]');
+  currentPageItems.forEach(function(card) {
+    const companyName = card.querySelector('.card-company-name').textContent.toLowerCase();
+    const companyCategory = card.querySelector('.card-company-jobname').textContent.trim();
+    const cardIndex = Array.from(companyCards).indexOf(card);
+    const currentPageStart = (thisPage - 1) * limit;
+    const currentPageEnd = currentPageStart + limit - 1;
+
+    if ((selectedCategory === "" || companyCategory === selectedCategory) &&
+        companyName.includes(inputVal) &&
+        cardIndex >= currentPageStart && cardIndex <= currentPageEnd) {
+      card.style.display = 'flex';
+    }
+  });
+}
+</script> --}}
+<script>
+  var thisPage = 1;
+  var limit = 6;
+  var list = document.querySelectorAll('.card-companies')
+function loadIteam() {
+  list.forEach((item, key) => {
+    item.style.display = 'none';
+  });
+
+  var beginGet = limit * (thisPage - 1);
+  var endGet = limit * thisPage - 1;
+  
+  for (i = beginGet; i <= endGet && i < list.length; i++) {
+    list[i].style.display = 'flex';
+  }
+  
+  listPage();
+}
   loadIteam()
   function listPage() {
     var count = Math.ceil(list.length / limit);
@@ -86,4 +205,123 @@
   document.querySelector('.listpagejob li:nth-child(' + (thisPage) + ')').classList.add('active');
     loadIteam()
   }
+ const searchInput = document.getElementById('search-input');
+const categoriesSelect = document.getElementById('categories-search');
+searchInput.addEventListener('input', function() {
+  search();
+  if (this.value.trim() === '') {
+    thisPage = 1;
+    loadIteam();
+  }
+});
+categoriesSelect.addEventListener('change', function() {
+  search();
+  if (this.value.trim() === '') {
+    thisPage = 1;
+    loadIteam();
+  }
+});
+function search() {
+  const inputVal = searchInput.value.toLowerCase();
+  const selectedCategory = categoriesSelect.value.trim();
+  
+  let resultsFound = false;
+
+  list.forEach(function(item) {
+    const companyName = item.querySelector('.card-company-name').textContent.toLowerCase();
+    const companyCategory = item.querySelector('.card-company-jobname').textContent.trim();
+
+    if ((selectedCategory === "" || companyCategory === selectedCategory) &&
+        companyName.includes(inputVal)) {
+      item.style.display = 'flex';
+      resultsFound = true;
+    } else {
+      item.style.display = 'none';
+    }
+  });
+
+  const searchResults = document.getElementById('search-results');
+  const noResults = document.querySelector('.no-results');
+  
+  if (!resultsFound) {
+    if (noResults) {
+      noResults.textContent = 'No companies found.';
+      searchResults.insertBefore(noResults, searchResults.firstChild);
+    } else {
+      const newNoResults = document.createElement('div');
+      newNoResults.classList.add('no-results');
+      newNoResults.textContent = 'No companies found.';
+      searchResults.insertBefore(newNoResults, searchResults.firstChild);
+    }
+  } else if (noResults) {
+    searchResults.removeChild(noResults);
+  }
+}
+
 </script>
+{{!-- <script>
+      var loadMoreButton = document.querySelector('#load-more');
+  var companies = document.querySelectorAll('.card-companies');
+
+  for (var i = 6; i < companies.length; i++) {
+    companies[i].classList.add('hidden-company');
+    companies[i].style.display = 'none';
+}
+
+
+  loadMoreButton.addEventListener('click', function() {
+    var hiddenCompanies = document.querySelectorAll('.hidden-company');
+    hiddenCompanies.forEach(function(company) {
+        company.style.display = 'block';
+        company.classList.remove('hidden-company');
+    });
+    loadMoreButton.style.display = 'none';
+});
+  const searchInput = document.getElementById('search-input');
+const categoriesSelect = document.getElementById('categories-search');
+
+searchInput.addEventListener('input', function() {
+  search();
+});
+
+categoriesSelect.addEventListener('change', function() {
+  search();
+});
+
+function search() {
+  const inputVal = searchInput.value.toLowerCase();
+  const selectedCategory = categoriesSelect.value.trim();
+  const companyCards = document.querySelectorAll('.card-company');
+  let resultsFound = false;
+
+  companyCards.forEach(function(card) {
+    const companyName = card.querySelector('.card-company-name').textContent.toLowerCase();
+    const companyCategory = card.querySelector('.card-company-jobname').textContent.trim();
+
+    if ((selectedCategory === "" || companyCategory === selectedCategory) &&
+        companyName.includes(inputVal)) {
+      card.style.display = 'block';
+      resultsFound = true;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  const searchResults = document.getElementById('search-results');
+  const noResults = document.querySelector('.no-results');
+  
+  if (!resultsFound) {
+    if (noResults) {
+      noResults.textContent = 'No companies found.';
+      searchResults.insertBefore(noResults, searchResults.firstChild);
+    } else {
+      const newNoResults = document.createElement('div');
+      newNoResults.classList.add('no-results');
+      newNoResults.textContent = 'No companies found.';
+      searchResults.insertBefore(newNoResults, searchResults.firstChild);
+    }
+  } else if (noResults) {
+    searchResults.removeChild(noResults);
+  }
+}
+</script> --}}

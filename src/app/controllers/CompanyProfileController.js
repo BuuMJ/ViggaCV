@@ -90,7 +90,7 @@ class CompanyProfileController {
                 avatar: avatar,
                 background: background,
                 companydesc: companydesc,
-              }).save();
+              });
               res.redirect("/companyprofile");
             }
             if (avatar) {
@@ -108,7 +108,7 @@ class CompanyProfileController {
                 typeofbusiness: typeofbusiness,
                 avatar: avatar,
                 companydesc: companydesc,
-              }).save();
+              });
               res.redirect("/companyprofile");
             }
 
@@ -127,7 +127,7 @@ class CompanyProfileController {
                 typeofbusiness: typeofbusiness,
                 background: background,
                 companydesc: companydesc,
-              }).save();
+              });
               res.redirect("/companyprofile");
             }
             // res.redirect("/companyprofile");
@@ -269,7 +269,7 @@ class CompanyProfileController {
               companyyears: companyyears,
               typeofbusiness: typeofbusiness,
               companydesc: companydesc,
-            }).save();
+            });
             res.redirect("/companyprofile");
           }
         }
