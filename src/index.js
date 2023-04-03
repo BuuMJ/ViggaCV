@@ -10,8 +10,38 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const methodOverride = require("method-override");
+const passport = require("passport");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 const helpers = require("handlebars-helpers");
+
+// Passport Configuration
+passport.serializeUser((user, done) => {
+  done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
+
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: "/auth/google/callback",
+    },
+    (accessToken, refreshToken, profile, done) => {
+      const user = {
+        id: profile.id,
+        name: profile.displayName,
+        email: profile.emails[0].value,
+        photo: profile.photos[0].value,
+      };
+      done(null, user);
+    }
+  )
+);
 
 const hbs = handlebars.create({
   helpers: require("./util/helpers"),
