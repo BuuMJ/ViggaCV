@@ -19,7 +19,7 @@ class CompanyProfileController {
       listcompany.toObject()
     );
     console.log(listcompany + "DAY LA DANH SACH COMPANY SAU KHI TIM");
-    JobModel.find({}).then((listjob) => {
+    JobModel.find({iduser: req.user._id}).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
       console.log(company + " = ĐÂY LÀ COMPANY SAU KHI TÌM KIẾM");
       res.render("companyprofile", {
@@ -290,7 +290,7 @@ class CompanyProfileController {
     const joblocation = req.body.joblocation;
     const benefit = req.body.benefit;
     const companyname = await CompanyModel.findOne({iduser: iduser})
-console.log(companyname + 'aaaaaaaaaasdadadasdasdadasdasdada')
+
     JobModel.create({
       iduser: iduser, 
       benefit: benefit, 
