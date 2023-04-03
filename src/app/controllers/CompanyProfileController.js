@@ -19,7 +19,7 @@ class CompanyProfileController {
       listcompany.toObject()
     );
     console.log(listcompany + "DAY LA DANH SACH COMPANY SAU KHI TIM");
-    JobModel.find({ iduser: req.user._id }).then((listjob) => {
+    JobModel.find({}).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
       console.log(company + " = ĐÂY LÀ COMPANY SAU KHI TÌM KIẾM");
       res.render("companyprofile", {
@@ -90,7 +90,7 @@ class CompanyProfileController {
                 avatar: avatar,
                 background: background,
                 companydesc: companydesc,
-              }).save();
+              });
               res.redirect("/companyprofile");
             }
             if (avatar) {
@@ -108,7 +108,7 @@ class CompanyProfileController {
                 typeofbusiness: typeofbusiness,
                 avatar: avatar,
                 companydesc: companydesc,
-              }).save();
+              });
               res.redirect("/companyprofile");
             }
 
@@ -127,7 +127,7 @@ class CompanyProfileController {
                 typeofbusiness: typeofbusiness,
                 background: background,
                 companydesc: companydesc,
-              }).save();
+              });
               res.redirect("/companyprofile");
             }
             // res.redirect("/companyprofile");
@@ -142,7 +142,7 @@ class CompanyProfileController {
             //   companyyears: companyyears,
             //   typeofbusiness: typeofbusiness,
             //   companydesc: companydesc,
-            // });f
+            // }).save();
             // res.redirect("/companyprofile");
           } else {
             const idCompany = company._id;
@@ -269,7 +269,7 @@ class CompanyProfileController {
               companyyears: companyyears,
               typeofbusiness: typeofbusiness,
               companydesc: companydesc,
-            }).save();
+            });
             res.redirect("/companyprofile");
           }
         }
@@ -282,17 +282,19 @@ class CompanyProfileController {
   }
 
   //[GET] Post Job
-  postjob(req, res, next) {
+  async postjob(req, res, next) {
     const iduser = req.user._id;
-    const companyname = req.body.namecompanyjob;
     const jobname = req.body.jobname;
     const jobdesc = req.body.jobdesc;
     const jobrequi = req.body.jobrequi;
     const joblocation = req.body.joblocation;
-
+    const benefit = req.body.benefit;
+    const companyname = await CompanyModel.findOne({iduser: iduser})
+console.log(companyname + 'aaaaaaaaaasdadadasdasdadasdasdada')
     JobModel.create({
-      iduser: iduser,
-      companyname: companyname,
+      iduser: iduser, 
+      benefit: benefit, 
+      companyname: companyname.companyname,
       jobname: jobname,
       jobdesc: jobdesc,
       jobrequi: jobrequi,
