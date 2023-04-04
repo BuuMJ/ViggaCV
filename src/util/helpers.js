@@ -125,8 +125,8 @@ module.exports = {
     }
   },
   getTOB: function (company) {
-    if (company && company.TOB) {
-      return company.TOB;
+    if (company && company.typeofbusiness) {
+      return company.typeofbusiness;
     } else {
       return "";
     }
