@@ -7,9 +7,12 @@ const { checkLogin } = require("../util/authorize");
 const cvRouter = require("./cv");
 const companyRouter = require("./company");
 const companyprofileRouter = require("./companyprofile");
+const jobRouter = require("./job");
 
 function route(app) {
   app.use("/companyprofile", checkLogin, companyprofileRouter);
+
+  app.use("/job", checkLogin, jobRouter);
 
   app.use("/company", checkLogin, companyRouter);
 
