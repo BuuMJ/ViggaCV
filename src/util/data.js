@@ -31,6 +31,7 @@ function sendDataUser(req, res, next) {
   }
 }
 
+//Job count
 async function jobcount(req, res, next) {
   try {
     const jobcount = await JobModel.aggregate([
@@ -55,6 +56,7 @@ async function jobcount(req, res, next) {
   }
 }
 
+// Upload files
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     // Tạo đường dẫn đầy đủ cho thư mục lưu trữ của submission đó
