@@ -141,6 +141,161 @@
   height: 45%;
   padding: 0 30px 0 0; }
 
+header.jobdetail {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; }
+
+header.jobdetail img {
+  width: 20%;
+  height: 90%; }
+
+header.jobdetail .center-jobdetail {
+  width: 50%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; }
+
+.center-jobdetail .primary-text {
+  font-size: 27px;
+  font-weight: 500; }
+
+.center-jobdetail .secondary-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #FCCB0C; }
+
+.center-jobdetail .third-text {
+  font-size: 14px;
+  font-weight: 400; }
+
+.center-jobdetail .forth-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #ff7d55; }
+
+.jobdetail-action {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%; }
+
+.jobdetail-action button {
+  outline: none;
+  border: 1px solid #fedb00;
+  height: 50px;
+  width: 160px;
+  background-color: #FCCB0C;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  transition: .3s; }
+
+.jobdetail-action button:hover {
+  background-color: #fedb00;
+  text-shadow: 4px 4px 4px black; }
+
+.jobdetail-action a {
+  text-decoration: none; }
+
+.jobdetail-action a {
+  color: #FCCB0C; }
+
+.jobdetail-action a:hover {
+  color: #fedb00; }
+
+.body-jobdetail {
+  width: 100%;
+  min-height: 300px;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.main-jobdetail {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  align-items: center;
+  height: 50px;
+  margin-left: 16px; }
+
+.main-jobdetail > * {
+  margin-right: 16px;
+  padding-bottom: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  z-index: 20;
+  padding: 0 12px;
+  transition: .3s; }
+
+.jobinfo {
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom: 3px solid #fedb00; }
+
+.main-jobdetail .jobinfo:hover,
+.main-jobdetail .companyinfo:hover,
+.main-jobdetail .jobsfromthiscompany:hover {
+  color: #fedb00; }
+
+.main-jobinfo,
+.main-companyinfo,
+.main-jobsfromthiscompany {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 80%;
+  background-color: white;
+  min-height: 300px;
+  margin-bottom: 50px;
+  transform: translateY(-9px); }
+
+.main-jobinfo {
+  display: flex; }
+
+.main-jobinfo > *,
+.main-companyinfo > *,
+.main-jobsfromthiscompany > * {
+  padding: 0 20px; }
+
+.main-jobsfromthiscompany ul {
+  padding-top: 20px; }
+
+.desc-jobinfo p,
+.requirements-jobinfo p,
+.benefit-jobinfo p,
+.location-jobinfo p {
+  margin: unset; }
+
+.jobinfo-main-text {
+  font-size: 20px;
+  font-weight: 500; }
+
+.main-companyinfo .company-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+
+.company-detail span {
+  padding-bottom: 8px; }
+
+.jftc-namejobs {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: #555555 !important; }
+
+.jftc-salary {
+  font-weight: 500;
+  color: #ff7d55; }
+
 .main-profile {
   display: flex;
   flex-direction: column;
@@ -514,7 +669,7 @@ input#postal::-webkit-inner-spin-button {
   flex-direction: column;
   justify-content: space-around;
   width: 70%;
-  height: 700px;
+  height: 680px;
   position: fixed;
   z-index: 20;
   transform: translateY(-8%); }
@@ -534,7 +689,8 @@ input#postal::-webkit-inner-spin-button {
   font-size: 18px; }
 
 .info-job input,
-.info-job textarea {
+.info-job textarea,
+.job-location select {
   outline: none;
   border: none;
   height: 40px;
@@ -548,6 +704,27 @@ input#postal::-webkit-inner-spin-button {
 
 .info-job textarea {
   height: 120px; }
+
+.info-job-salary {
+  flex-direction: row;
+  justify-content: space-between; }
+
+.info-job-salary .job-location {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 48%;
+  height: 100%; }
+
+.job-salary {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 48%;
+  height: 100%; }
+
+#salary-range {
+  width: 100%; }
 
 .btn-postjob {
   outline: none;

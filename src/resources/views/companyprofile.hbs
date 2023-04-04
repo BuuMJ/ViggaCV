@@ -129,11 +129,17 @@
             <label for="namecompanyjob">Benefit</label>
             <input id="namecompanyjob" name="benefit" type="text" >
         </div>
-        <div class="info-job">
-            <label for="joblocation">Job Locations</label>
-            <input id="joblocation" name="joblocation"
-                placeholder="33 Lê Duẩn, Bến Nghé, District 1, Ho Chi Minh City, Vietnam"
-                value="{{getCompanyaddress user}}" type="text">
+        <div class="info-job info-job-salary">
+            <div class="job-location">
+                <label for="joblocation">Job Locations</label>
+                <select id="joblocation" name="joblocation">
+                    <option value="" selected>Select Your Location</option>
+                </select>
+            </div>
+            <div class="job-salary">
+                <label for="salary-range">Salary</label>
+                <input type="text" name="salary" id="salary-range" placeholder="500$-1000$ | Negotiable">
+            </div>
         </div>
         <div class="info-job">
             <button type="submit" class="btn-postjob">Post Job</button>
@@ -142,6 +148,16 @@
     </form>
 </div>
 <script>
+    		var provinces = ["An Giang", "Bà Rịa-Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên-Huế", "Tiền Giang", "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"];
+		
+		var select = document.getElementById("joblocation");
+		
+		for(var i = 0; i < provinces.length; i++) {
+			var option = document.createElement("option");
+			option.text = provinces[i];
+			option.value = provinces[i];
+			select.appendChild(option);
+		}
     document.querySelector('label[for="header-profile-file-input"]').addEventListener('click', function () {
 
     });

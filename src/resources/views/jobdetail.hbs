@@ -1,0 +1,97 @@
+<header class="jobdetail">
+    <img src="{{getAvatarcompany company}}" alt="">
+    <div class="center-jobdetail">
+        <span class="primary-text">{{detail.jobname}}</span>
+        <span class="secondary-text">{{getCompanyname company}} {{getTOB company}}</span>
+        <span class="third-text">Jobs Locations: {{detail.joblocation}}</span>
+        <span class="forth-text">{{detail.salary}}</span>
+    </div>
+    <div class="jobdetail-action">
+        <button class="btn-apply" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Apply Now</button>
+        <a href="/cv/createcv">create cv to apply</a>
+    </div>
+</header>
+<div class="body-jobdetail">
+    <div class="main-jobdetail">
+        <span class="jobinfo">JOB INFO</span>
+        <span class="companyinfo">COMPANY INFO</span>
+        <span class="jobsfromthiscompany">JOBS FROM THIS COMPANY</span>
+    </div>
+        <div class="main-jobinfo">
+            <div class="desc-jobinfo">
+                <p class="jobinfo-main-text">Job Description</p>
+                <span>{{detail.jobdesc}}</span>
+                <p>Offer Salary: {{detail.salary}}</p>
+            </div>
+            <div class="requirements-jobinfo">
+                <p class="jobinfo-main-text">Job Requirements</p>
+                <span>{{detail.jobrequi}}</span>
+            </div>
+            <div class="benefit-jobinfo">
+                <p class="jobinfo-main-text">Benefit</p>
+                <span>{{detail.benefit}}</span>
+            </div>
+            <div class="location-jobinfo">
+                <p class="jobinfo-main-text">Locations</p>
+                <span><i class="bi bi-geo-alt-fill"></i> {{getCompanyaddress company}}</span>
+            </div>
+        </div>
+        <div class="main-companyinfo">
+            <div class="company-detail">
+                <p class="jobinfo-main-text">Company Detail</p>
+                <span>Company Name: {{getCompanyname company}} {{getTOB company}}</span>
+                <span>Company Field{{getCompanyfield company}}</span>
+                <span>Address: {{getCompanyaddress company}}</span>
+                <span>{{getCompanyyears company}} Years</span>
+                <span>Hotline: {{getCompanyphone company}}</span>
+            </div>
+            <div class="desc-jobinfo">
+                <p class="jobinfo-main-text">Company Description</p>
+                <span>{{getCompanydesc company}}</span>
+            </div>
+        </div>
+        <div class="main-jobsfromthiscompany">
+            <ul>
+                        {{#each job}}
+                        <li class="content-listjob">
+                           <span class="jftc-namejobs">{{this.jobname}}</span>
+                           <div class="secondary-listjob">
+                                <span class="locationjobs"><span class="jftc-salary">{{this.salary}}</span> | {{this.joblocation}}</span>
+                           </div> 
+                        </li>
+                        {{/each}}
+                    </ul>
+        </div>
+</div>
+<script>
+    var clickShowJobInfo = document.querySelector('.jobinfo');
+    var showJobInfo = document.querySelector('.main-jobinfo');
+    clickShowJobInfo.addEventListener('click',()=>{
+        showJobInfo.style.cssText = "display: flex;"
+        clickShowJobInfo.style.cssText = "font-size: 20px; font-weight:600; border-bottom: 3px solid #fedb00;"
+        showcompanyInfo.style.cssText = "display: none;"
+        clickShowcompanyInfo.style.cssText = "font-size: 16px; font-weight:400; border-bottom: unset;"
+        showjobsfromthiscompany.style.cssText = "display: none;"
+        clickShowjobsfromthiscompany.style.cssText = "font-size: 16px; font-weight:400; border-bottom: unset;"
+    });
+    var clickShowcompanyInfo = document.querySelector('.companyinfo');
+    var showcompanyInfo = document.querySelector('.main-companyinfo');
+    clickShowcompanyInfo.addEventListener('click',()=>{
+        showcompanyInfo.style.cssText = "display: flex;"
+        clickShowcompanyInfo.style.cssText = "font-size: 20px; font-weight:600; border-bottom: 3px solid #fedb00;"
+        showJobInfo.style.cssText = "display: none;"
+        clickShowJobInfo.style.cssText = "font-size: 16px; font-weight:400; border-bottom: unset;"
+        showjobsfromthiscompany.style.cssText = "display: none;"
+        clickShowjobsfromthiscompany.style.cssText = "font-size: 16px; font-weight:400; border-bottom: unset;"
+    });
+    var clickShowjobsfromthiscompany = document.querySelector('.jobsfromthiscompany');
+    var showjobsfromthiscompany = document.querySelector('.main-jobsfromthiscompany');
+    clickShowjobsfromthiscompany.addEventListener('click',()=>{
+        showjobsfromthiscompany.style.cssText = "display: flex;"
+        clickShowjobsfromthiscompany.style.cssText = "font-size: 20px; font-weight:600; border-bottom: 3px solid #fedb00;"
+        showJobInfo.style.cssText = "display: none;"
+        clickShowJobInfo.style.cssText = "font-size: 16px; font-weight:400; border-bottom: unset;"
+        showcompanyInfo.style.cssText = "display: none;"
+        clickShowcompanyInfo.style.cssText = "font-size: 16px; font-weight:400; border-bottom: unset;"
+    })
+</script>

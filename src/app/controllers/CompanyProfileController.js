@@ -3,31 +3,35 @@ const JobModel = require("../models/Job");
 const fs = require("fs");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
+const subVN = require('sub-vn')
 
 class CompanyProfileController {
   //[GET]
   async companyprofile(req, res, next) {
-    console.log(req.user._id);
+    const location = subVN.getProvinces();
+    const address = location.map(location => location.name)
+    // console.log(req.user._id);
     const company = await CompanyModel.findOne({ iduser: req.user._id });
-    console.log(
-      company +
-        "ĐÂY LÀ GIÁ TRỊ CỦA COMPANY PROFILEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
-    );
+    // console.log(
+    //   company +
+    //     "ĐÂY LÀ GIÁ TRỊ CỦA COMPANY PROFILEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
+    // );
     // const listjob = await JobModel.findone({ iduser: req.user._id });
     const listcompany = await CompanyModel.find({});
     const Listcompany = listcompany.map((listcompany) =>
       listcompany.toObject()
     );
-    console.log(listcompany + "DAY LA DANH SACH COMPANY SAU KHI TIM");
+    // console.log(listcompany + "DAY LA DANH SACH COMPANY SAU KHI TIM");
     JobModel.find({iduser: req.user._id}).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
-      console.log(company + " = ĐÂY LÀ COMPANY SAU KHI TÌM KIẾM");
+      // console.log(company + " = ĐÂY LÀ COMPANY SAU KHI TÌM KIẾM");
       res.render("companyprofile", {
         title: "Company",
         user: req.user,
         company: company,
         listcompany: Listcompany,
         listjob,
+        address,
       });
     });
   }
@@ -46,17 +50,18 @@ class CompanyProfileController {
       const companyyears = req.body.companyYears;
       const typeofbusiness = req.body.typeOfBusiness;
       const companydesc = req.body.companyDesc;
-
-      console.log(iduser + " đây là những gì bạn nhập vào!!!!!!!");
-      console.log(companyname + " đây là những gì bạn nhập vào!!!!!!!");
-      console.log(companyaddress + " đây là những gì bạn nhập vào!!!!!!!");
-      console.log(companyfield + " đây là những gì bạn nhập vào!!!!!!!");
-      console.log(taxcode + " đây là những gì bạn nhập vào!!!!!!!");
-      console.log(companyemail + " đây là những gì bạn nhập vào!!!!!!!");
-      console.log(companyphone + " đây là những gì bạn nhập vào!!!!!!!");
-      console.log(companyyears + " đây là những gì bạn nhập vào!!!!!!!");
-      console.log(typeofbusiness + " đây là những gì bạn nhập vào!!!!!!!");
-      console.log(companydesc + " đây là những gì bạn nhập vào!!!!!!!");
+      
+      
+      // console.log(iduser + " đây là những gì bạn nhập vào!!!!!!!");
+      // console.log(companyname + " đây là những gì bạn nhập vào!!!!!!!");
+      // console.log(companyaddress + " đây là những gì bạn nhập vào!!!!!!!");
+      // console.log(companyfield + " đây là những gì bạn nhập vào!!!!!!!");
+      // console.log(taxcode + " đây là những gì bạn nhập vào!!!!!!!");
+      // console.log(companyemail + " đây là những gì bạn nhập vào!!!!!!!");
+      // console.log(companyphone + " đây là những gì bạn nhập vào!!!!!!!");
+      // console.log(companyyears + " đây là những gì bạn nhập vào!!!!!!!");
+      // console.log(typeofbusiness + " đây là những gì bạn nhập vào!!!!!!!");
+      // console.log(companydesc + " đây là những gì bạn nhập vào!!!!!!!");
       if (req.files) {
         const avatar = req.files["avatar"]
           ? req.files["avatar"][0].filename
@@ -283,10 +288,12 @@ class CompanyProfileController {
 
   //[GET] Post Job
   async postjob(req, res, next) {
+   
     const iduser = req.user._id;
     const jobname = req.body.jobname;
     const jobdesc = req.body.jobdesc;
-    const jobrequi = req.body.jobrequi;
+    const jobrequi = req.body.jobrequirement;
+    const salary = req.body.salary;
     const joblocation = req.body.joblocation;
     const benefit = req.body.benefit;
     const companyname = await CompanyModel.findOne({iduser: iduser})
@@ -297,6 +304,7 @@ class CompanyProfileController {
       companyname: companyname.companyname,
       jobname: jobname,
       jobdesc: jobdesc,
+      salary: salary,
       jobrequi: jobrequi,
       joblocation: joblocation,
     });

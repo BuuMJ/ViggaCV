@@ -381,7 +381,7 @@ input#postal::-webkit-inner-spin-button {
     flex-direction: column;
     justify-content: space-around;
     width: 70%;
-    height: 700px;
+    height: 680px;
     position: fixed;
     z-index: 20;
     transform: translateY(-8%);
@@ -401,7 +401,8 @@ input#postal::-webkit-inner-spin-button {
     font-size: 18px;
 }
 .info-job input,
-.info-job textarea{
+.info-job textarea,
+.job-location select{
     outline: none;
     border: none;
     height: 40px;
@@ -415,6 +416,27 @@ input#postal::-webkit-inner-spin-button {
 }
 .info-job textarea{
     height: 120px;
+}
+.info-job-salary{
+    flex-direction: row;
+    justify-content: space-between;
+}
+.info-job-salary .job-location{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 48%;
+    height: 100%;
+}
+.job-salary{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 48%;
+    height: 100%;
+}
+#salary-range{
+    width: 100%;
 }
 .btn-postjob{
     outline: none;

@@ -27,7 +27,17 @@ class CompanyController {
 
   async information(req, res, next) {
     const idcompany = req.params.id;
+    // console.log("day la gia tri của: " + idcompany.id)
     const company = await CompanyModel.findOne({ _id: idcompany });
+    // const iduser = company.user;
+    // const list = await JobModel.find({iduser: iduser})
+    // const listjob = list.map((list) => list.toObject());
+    // res.render("companyinformation", {
+    //   title: "Company Information",
+    //   user: req.user,
+    //   company,
+    //   listjob: listjob,
+    // });
     JobModel.find({ iduser: company.iduser }).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
       res.render("companyinformation", {

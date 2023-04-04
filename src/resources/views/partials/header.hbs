@@ -9,7 +9,7 @@
     {{#ifeq user 'admin'}}
     <div class="navbar-center">
         <a href="/"><span>Home</span></a>
-        <a href="">Jobs</a>
+        <a href="/job">Jobs</a>
         <ul class="drop-down__company">
             <a href="/company"><span>Companies</span></a>
             {{!-- <ul class="down__company">
@@ -28,7 +28,7 @@
     {{else ifeq user 'company'}}
     <div class="navbar-center">
         <a href="/"><span>Home</span></a>
-        <a href="">Jobs</a>
+        <a href="/job">Jobs</a>
         <ul class="drop-down__company">
             <a href="/company"><span>Companies</span></a>
             {{!-- <ul class="down__company">
@@ -46,7 +46,7 @@
     {{else}}
     <div class="navbar-center">
         <a href="/"><span>Home</span></a>
-        <a href="">Jobs</a>
+        <a href="/job">Jobs</a>
         <ul class="drop-down__company">
             <a href="/company"><span>Companies</span></a>
             {{!-- <ul class="down__company">
@@ -96,7 +96,6 @@
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script>
       function logout() {
     document.cookie = 'token =; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
