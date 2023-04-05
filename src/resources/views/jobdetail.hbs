@@ -7,7 +7,7 @@
         <span class="forth-text">{{detail.salary}}</span>
     </div>
     <div class="jobdetail-action">
-        <button class="btn-apply" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Apply Now</button>
+        <button class="btn-apply" type="button" >Apply Now</button>
         <a href="/cv/createcv">create cv to apply</a>
     </div>
 </header>
@@ -63,6 +63,43 @@
                     </ul>
         </div>
 </div>
+   <div class="overplay-jobdetail">
+</div>
+<form class="box-apply-job">
+        <header>
+            <span>You are applying for <b>{{detail.jobname}}</b></span>
+            <p>Employers prefer to receive your resume in  <b>English</b> language.</p>
+        </header>
+        <div class="nav-apply-job">
+            <img src="{{getAvatar user}}" alt="">
+            <div class="apply-job-info">
+                <span>{{getFullname user}}</span>
+                <input type="text" name="professional" id="professional" placeholder="Professional headline. Ex: Project manager" required>
+            </div>
+        </div>
+        <div class="body-apply-job">
+            <div class="main-apply-job">
+                <label for="email-apply">Email</label>
+                <input type="text" name="email" id="email-apply" value="{{getEmail user}}" readonly>
+            </div>
+            <div class="main-apply-job">
+                <label for="phone">Phone number</label>
+                <input type="text" name="phoneApply" value="{{getPhone user}}" id="phone" required>
+            </div>
+            <div class="main-apply-job">
+                <label for="cv">Resume</label>
+                <label for="cv" class="resume">
+                    <span>Upload new CV <i class="bi bi-cloud-plus"></i></span>
+                    <span>.doc, .docx and .pdf files that are less than 5120KB in size</span>
+                </label>
+                <input type="file" name="phoneApply" id="cv" >
+            </div>
+        </div>
+        <div class="apply-job-action">
+            <button class="cancle-apply" type="button">Cancle</button>
+            <button class="submit-apply" type="submit">Apply CV</button>
+        </div>
+    </form>
 <script>
     var clickShowJobInfo = document.querySelector('.jobinfo');
     var showJobInfo = document.querySelector('.main-jobinfo');
@@ -93,5 +130,25 @@
         clickShowJobInfo.style.cssText = "font-size: 16px; font-weight:400; border-bottom: unset;"
         showcompanyInfo.style.cssText = "display: none;"
         clickShowcompanyInfo.style.cssText = "font-size: 16px; font-weight:400; border-bottom: unset;"
-    })
+    });
+    var clickShowApply = document.querySelector('.btn-apply');
+    var showApply = document.querySelector('.overplay-jobdetail');
+    var cancleApply = document.querySelector('.cancle-apply');
+    var boxApply = document.querySelector('.box-apply-job');
+    const body = document.querySelector('body');
+    clickShowApply.addEventListener('click',()=>{
+        showApply.style.cssText = "display:flex;"
+        boxApply.style.cssText = "transform: translateY(10%);"
+        body.classList.add('modal-open');
+    });
+    showApply.addEventListener('click',()=>{
+        showApply.style.cssText = "display:none;"
+        boxApply.style.cssText = "transform: translateY(-200%);"
+        body.classList.remove('modal-open');
+    });
+    cancleApply.addEventListener('click',()=>{
+        showApply.style.cssText = "display:none;"
+        boxApply.style.cssText = "transform: translateY(-200%);"
+        body.classList.remove('modal-open');
+    });
 </script>

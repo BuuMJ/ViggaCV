@@ -154,3 +154,187 @@ header.jobdetail .center-jobdetail{
     font-weight: 500;
     color:#ff7d55
 }
+.overplay-jobdetail{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    cursor: pointer;
+}
+.box-apply-job{
+    width: 60%;
+    height: 80vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(-200%);
+    margin-right: auto;
+    margin-left: auto;
+    z-index: 31;
+    transition: .3s;
+}
+.box-apply-job > * {
+    padding: 0 40px;
+}
+.box-apply-job header{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 10%;
+}
+.box-apply-job header span{
+    font-size: 18px;
+    word-spacing: 1.3px;
+    color: #666666;
+}
+.box-apply-job header span b{
+    font-size: 20px;
+    font-weight: 600;
+}
+.box-apply-job header p{
+    margin: unset;
+    color: #b8b8b8;
+    font-size: 14px;
+    font-weight: 400;
+}
+.box-apply-job header p b{
+    color: #666666;
+}
+.box-apply-job .nav-apply-job{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 22%;
+    width: 100%;
+    border-top: 1px solid $primarycolor;
+    border-bottom: 1px solid $primarycolor;
+    background-color: rgba(254, 219, 0,0.1);
+}
+.nav-apply-job img{
+    width: 80px;
+    height: 80px;
+    margin: 0 40px 0 30px;
+    border-radius: 50%;
+    border: 2px solid $primarycolor;
+}
+.nav-apply-job .apply-job-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+}
+.apply-job-info span{
+    font-size: 16px;
+    font-weight: 400;
+    color: #717172;
+}
+.apply-job-info input{
+    outline: none;
+    border: none;
+    border-bottom: 1px dashed $primarycolor;
+    width: 60%;
+    cursor: pointer;
+    height: 40px;
+    background-color: transparent;
+}
+.apply-job-info input:focus {
+    border: 1px solid black;
+    outline: black;
+    border-radius: 10px;
+    height: 40px;
+    padding: 2px 8px;
+}
+.body-apply-job{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 35%;
+}
+.main-apply-job{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80px;
+}
+.main-apply-job > * {
+    margin: 0 16px 0 0;
+}
+.main-apply-job label{
+    font-weight: 600;
+    width: 20%;
+}
+.main-apply-job input{
+    width: 50%;
+    height: 40px;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid black;
+    padding: 4px 8px;
+}
+input#email-apply{
+    outline: none;
+    border: none;
+    color: #717172;
+}
+.main-apply-job input[type="file"]{
+    display: none;
+}
+.main-apply-job .resume{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+    font-weight: 400;
+    color: #717172;
+    cursor: pointer;
+    padding-top: 40px;
+}
+.main-apply-job .resume span i{
+    font-size: 20px;
+}
+.apply-job-action{
+    height: 16%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+}
+.apply-job-action > * {
+    margin: 0 10px;
+    transition: .5s;
+}
+.submit-apply{
+    border: 1px solid $primarycolor;
+    width: 140px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: $primarycolor;
+    border-radius: 10px;
+}
+.submit-apply:hover,
+.cancle-apply:hover{
+    background-color: white;
+}
+.cancle-apply{
+    border: 1px solid #FC0404;
+    background-color: #FC0404;
+    width: 80px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 10px;
+}
