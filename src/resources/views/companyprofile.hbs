@@ -5,16 +5,18 @@
             style="background: url('{{getBackground company}}') center/cover no-repeat;">
             <label class="changebackground-profile" for="header-profile-file-input">Change Background</label>
             <input type="file" name="background" id="header-profile-file-input" style="display: none;">
-            <span class="header-profile-primary">Hello {{getCompanyname company}} Company</span>
-            <span class="header-profile-secondary">This page is your Company profile. Clicking on the settings button
-                allows you to edit your company information</span>
+            <div class="header-main-text">
+                <span class="header-profile-primary">Hello {{getCompanyname company}} Company</span>
+                <span class="header-profile-secondary">This page is your Company profile. Clicking on the settings button
+                    allows you to edit your company information</span>
+            </div>
             <button class="btn-setting" type="button" >Setting <i class="bi bi-gear"></i></button>
         </div>
         <div class="content-profile company-profile">
             <div class="profile-img">
                 <label for="file-user"><img class="user-avatar" src="{{getAvatarcompany company}}" alt=""></label>
                 <input id="file-user" name="avatar" type="file" accept="image/*">
-                <label for="file-user" class="edit-img"><span>Change Logo</span></label>
+                <label for="file-user" class="edit-img edit-logo"><span>Change Logo</span></label>
                 <label class="camera-edit" for="file-user"><i class="bi bi-camera"></i></label>
             </div>
             <div class="content-profile-main">
@@ -228,10 +230,10 @@
         }
     })
     var hover = document.querySelector('.user-avatar')
-    var edit = document.querySelector('.edit-img')
+    var edit = document.querySelector('.edit-logo')
     hover.addEventListener('mouseover', () => {
         edit.style.cssText = "display: flex; transform: translateY(-28%);"
-        hover.style.cssText = "transform: translatey(-28%);"
+        hover.style.cssText = "transform: translatey(-42%);"
     })
     edit.addEventListener('mouseout', () => {
         edit.style.cssText = "display: none; transform: translateY(-24%);"

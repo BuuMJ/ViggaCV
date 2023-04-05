@@ -1,7 +1,9 @@
 <div class="main-profile">
     <div class="header-profile">
-        <span class="header-profile-primary">Hello {{getFullname user}}</span>
-        <span class="header-profile-secondary">This page is your profile. Clicking the settings button allows you to edit the information</span>
+        <div class="header-main-text">
+            <span class="header-profile-primary">Hello {{getFullname user}}</span>
+            <span class="header-profile-secondary">This page is your profile. Clicking the settings button allows you to edit the information</span>
+        </div>
         <button class="btn-setting">Setting <i class="bi bi-gear"></i></button>
     </div>
     <form class="content-profile" method="POST" action="/profile/edit?_method=PUT" enctype="multipart/form-data">
@@ -111,7 +113,7 @@ btnSetting.addEventListener('click',()=>{
     var edit = document.querySelector('.edit-img')
     hover.addEventListener('mouseover',()=>{
         edit.style.cssText = "display: flex; transform: translateY(-28%);"
-        hover.style.cssText = "transform: translatey(-28%);"
+        hover.style.cssText = "transform: translatey(-35%);"
     })
     edit.addEventListener('mouseout',()=>{
         edit.style.cssText = "display: none; transform: translateY(-24%);"
