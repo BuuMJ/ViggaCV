@@ -506,7 +506,15 @@ label.changebackground-profile {
   bottom: 10px;
   right: 10px;
   font-size: 20px;
-  cursor: pointer; }
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: white;
+  transition: .3s; }
+
+label.changebackground-profile:hover {
+  background-color: rgba(255, 255, 255, 0.9); }
 
 .header-profile-company {
   height: 620px; }

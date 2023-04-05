@@ -3,7 +3,7 @@
         enctype="multipart/form-data">
         <div class="header-profile header-profile-company" id="header-profile"
             style="background: url('{{getBackground company}}') center/cover no-repeat;">
-            <label class="changebackground-profile" for="header-profile-file-input">Change Background</label>
+            <label class="changebackground-profile" for="header-profile-file-input"><i class="bi bi-camera-fill"></i> Change Background</label>
             <input type="file" name="background" id="header-profile-file-input" style="display: none;">
             <div class="header-main-text">
                 <span class="header-profile-primary">Hello {{getCompanyname company}} Company</span>
@@ -211,6 +211,7 @@
   }
 </script>
 <script>
+    var changeBackground = document.querySelector('.changebackground-profile')
     var btnSetting = document.querySelector('.btn-setting');
     var settingProfile = document.querySelector('.content-profile');
     btnSetting.addEventListener('click', () => {
@@ -218,11 +219,13 @@
         if (computedStyle.display === "none") {
             settingProfile.style.display = "block";
             settingProfile.style.opacity = "0";
+            changeBackground.style.bottom = "160px"
             setTimeout(() => {
                 settingProfile.style.opacity = "1";
             }, 50);
         }
         else {
+            changeBackground.style.bottom = "10px"
             settingProfile.style.opacity = "0";
             setTimeout(() => {
                 settingProfile.style.display = "none";
