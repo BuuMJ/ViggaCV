@@ -1,8 +1,8 @@
 const CompanyModel = require("../models/Company");
 const JobModel = require("../models/Job");
-const { staffMongoseToObject } = require("../../util/mongoose");
+const { staffMongoseToObject, mutipleMongooseToObject } = require("../../util/mongoose");
 class CompanyController {
-  //[GET]
+  //[GET] List job
   async company(req, res, next) {
     const company = await CompanyModel.findOne({ iduser: req.user._id });
     // const listjob = await JobModel.findone({ iduser: req.user._id });
@@ -17,10 +17,26 @@ class CompanyController {
       res.render("company", {
         title: "Company",
         user: req.user,
+        jobcount: listcompany,
         company: company,
         listcompany: Listcompany,
         listjob,
         count: count,
+      });
+    });
+  }
+
+  //[GET] company detail
+  async detail(req, res, next) {
+    const idcompany = req.params.id;
+    const company = await CompanyModel.findOne({ _id: idcompany });
+    JobModel.find({ iduser: company.iduser }).then((listjob) => {
+      listjob = listjob.map((listjob) => listjob.toObject());
+      res.render("companydetail", {
+        title: "Company Detail",
+        user: req.user,
+        company: staffMongoseToObject(company),
+        listjob: listjob,
       });
     });
   }

@@ -12,6 +12,9 @@
   width: 70%;
   margin-top: 50px;
 }
+.main-companies p.secondary-text{
+  padding-left: 2px;
+}
 .companies{
   display: flex;
   flex-direction: column;
@@ -172,26 +175,40 @@ font-weight: 500;
 .card-company-counts{
 color: #777777;
 }
-.view-deatil__company{
+.card-companies .list-detail{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 50px;
+  width: 100%;
+  background-color: transparent;
+  transform: translateY(80%);
+  opacity: 0;
+  transition: .5s;
+  cursor: default;
+}
+.view-detail__company,
+.view-detail__job{
 text-decoration: none;
 color: black;
 padding: 8px;
 border-radius: 10px;
 background-color: $primarycolor;
-width: 120px;
+width: 100px;
 height: 40px;
 text-align: center;
 align-self: center;
 font-weight: 500;
-transform: translateY(80%);
-opacity: 0;
-cursor: default;
-transition: .5s;
+cursor: pointer;
+font-size: 15px;
+}
+.view-detail__company{
+  width: 130px;
 }
 .card-company:hover{
 border: 1px solid $primarycolor;
 }
-.card-company:hover  .view-deatil__company{
+.card-company:hover  .list-detail{
 opacity: 1;
 cursor: pointer;
 transform: translateY(40%);

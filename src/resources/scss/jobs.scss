@@ -7,8 +7,9 @@ header.jobdetail{
     align-items: center;
 }
 header.jobdetail img{
-    width: 20%;
+    width: 12%;
     height: 90%;
+    margin: 0 20px 0 0;
 }
 header.jobdetail .center-jobdetail{
     width: 50%;
@@ -118,6 +119,9 @@ header.jobdetail .center-jobdetail{
 }
 .main-jobinfo{
     display: flex;
+}
+.main-jobsfromthiscompany{
+    min-height: 120px;
 }
 .main-jobinfo > *,
 .main-companyinfo > *,

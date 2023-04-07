@@ -61,6 +61,13 @@ module.exports = {
       return "/img/logocompany.jpeg";
     }
   },
+  getAvatarleadership: function (leadership) {
+    if (leadership && leadership.avatar) {
+      return `/${leadership.avatar}`;
+    } else {
+      return "/img/logoleadership.jpeg";
+    }
+  },
   getBackground: function (company) {
     if (company && company.background) {
       return `/${company.background}`;
@@ -128,7 +135,49 @@ module.exports = {
     if (company && company.typeofbusiness) {
       return company.typeofbusiness;
     } else {
+      return "Choose Type Of Your Business";
+    }
+  },
+  getService: function (company) {
+    if (company && company.servicedesc ) {
+      return company.servicedesc ;
+    } else {
       return "";
+    }
+  },
+  getEstablisheddate: function (company) {
+    if (company && company.establisheddate ) {
+      return company.establisheddate ;
+    } else {
+      return "";
+    }
+  },
+  getNoofemployee: function (company) {
+    if (company && company.noofemployee ) {
+      return company.noofemployee ;
+    } else {
+      return "";
+    }
+  },
+  getMission: function (company) {
+    if (company && company.mission ) {
+      return company.mission ;
+    } else {
+      return "";
+    }
+  },
+  getHistory: function (company) {
+    if (company && company.history ) {
+      return company.history ;
+    } else {
+      return "";
+    }
+  },
+  getJobcount: function (jobcount) {
+    if (jobcount ) {
+      return jobcount;
+    } else {
+      return "0";
     }
   },
   ifeq: function (user, y, options) {

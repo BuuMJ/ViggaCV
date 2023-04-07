@@ -3,13 +3,14 @@ const JobModel = require("../models/Job");
 const fs = require("fs");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
-const subVN = require('sub-vn')
+const subVN = require("sub-vn");
+const {staffMongoseToObject} = require('../../util/mongoose')
 
 class CompanyProfileController {
   //[GET]
   async companyprofile(req, res, next) {
     const location = subVN.getProvinces();
-    const address = location.map(location => location.name)
+    const address = location.map((location) => location.name);
     // console.log(req.user._id);
     const company = await CompanyModel.findOne({ iduser: req.user._id });
     // console.log(
@@ -22,7 +23,7 @@ class CompanyProfileController {
       listcompany.toObject()
     );
     // console.log(listcompany + "DAY LA DANH SACH COMPANY SAU KHI TIM");
-    JobModel.find({iduser: req.user._id}).then((listjob) => {
+    JobModel.find({ iduser: req.user._id }).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
       // console.log(company + " = ĐÂY LÀ COMPANY SAU KHI TÌM KIẾM");
       res.render("companyprofile", {
@@ -32,6 +33,7 @@ class CompanyProfileController {
         listcompany: Listcompany,
         listjob,
         address,
+        leadership: staffMongoseToObject(company.leadership),
       });
     });
   }
@@ -50,8 +52,12 @@ class CompanyProfileController {
       const companyyears = req.body.companyYears;
       const typeofbusiness = req.body.typeOfBusiness;
       const companydesc = req.body.companyDesc;
-      
-      
+      const noofemployee = req.body.noofemployee;
+      const servicedesc = req.body.serviceDesc;
+      const establisheddate = req.body.establisheddate;
+      const mission = req.body.mission;
+      const history = req.body.history;
+
       // console.log(iduser + " đây là những gì bạn nhập vào!!!!!!!");
       // console.log(companyname + " đây là những gì bạn nhập vào!!!!!!!");
       // console.log(companyaddress + " đây là những gì bạn nhập vào!!!!!!!");
@@ -95,6 +101,11 @@ class CompanyProfileController {
                 avatar: avatar,
                 background: background,
                 companydesc: companydesc,
+                noofemployee: noofemployee,
+                servicedesc: servicedesc,
+                establisheddate: establisheddate,
+                mission: mission,
+                history: history,
               });
               res.redirect("/companyprofile");
             }
@@ -113,6 +124,11 @@ class CompanyProfileController {
                 typeofbusiness: typeofbusiness,
                 avatar: avatar,
                 companydesc: companydesc,
+                noofemployee: noofemployee,
+                servicedesc: servicedesc,
+                establisheddate: establisheddate,
+                mission: mission,
+                history: history,
               });
               res.redirect("/companyprofile");
             }
@@ -132,6 +148,11 @@ class CompanyProfileController {
                 typeofbusiness: typeofbusiness,
                 background: background,
                 companydesc: companydesc,
+                noofemployee: noofemployee,
+                servicedesc: servicedesc,
+                establisheddate: establisheddate,
+                mission: mission,
+                history: history,
               });
               res.redirect("/companyprofile");
             }
@@ -172,6 +193,11 @@ class CompanyProfileController {
                   avatar: avatar,
                   background: background,
                   companydesc: companydesc,
+                  noofemployee: noofemployee,
+                  servicedesc: servicedesc,
+                  establisheddate: establisheddate,
+                  history: history,
+                  mission: mission,
                 },
                 { new: true }
               );
@@ -193,6 +219,11 @@ class CompanyProfileController {
                   typeofbusiness: typeofbusiness,
                   avatar: avatar,
                   companydesc: companydesc,
+                  noofemployee: noofemployee,
+                  servicedesc: servicedesc,
+                  establisheddate: establisheddate,
+                  mission: mission,
+                  history: history,
                 },
                 { new: true }
               );
@@ -215,6 +246,11 @@ class CompanyProfileController {
                   typeofbusiness: typeofbusiness,
                   background: background,
                   companydesc: companydesc,
+                  noofemployee: noofemployee,
+                  servicedesc: servicedesc,
+                  establisheddate: establisheddate,
+                  mission: mission,
+                  history: history,
                 },
                 { new: true }
               );
@@ -257,6 +293,11 @@ class CompanyProfileController {
                 companyyears: companyyears,
                 typeofbusiness: typeofbusiness,
                 companydesc: companydesc,
+                noofemployee: noofemployee,
+                servicedesc: servicedesc,
+                establisheddate: establisheddate,
+                mission: mission,
+                history: history,
               },
               { new: true }
             );
@@ -274,6 +315,11 @@ class CompanyProfileController {
               companyyears: companyyears,
               typeofbusiness: typeofbusiness,
               companydesc: companydesc,
+              noofemployee: noofemployee,
+              servicedesc: servicedesc,
+              establisheddate: establisheddate,
+              mission: mission,
+              history: history,
             });
             res.redirect("/companyprofile");
           }
@@ -286,9 +332,51 @@ class CompanyProfileController {
     }
   }
 
+  //[POST] leadership
+  async leadership(req, res, next) {
+    const nameleadership = req.body.nameleadership;
+    const position = req.body.position;
+    const introduce = req.body.introduce;
+    const iduser = req.user._id;
+    const company = await CompanyModel.findOne({ iduser: iduser });
+
+    if (req.file) {
+      const data = await fs.promises.readFile(req.file.path);
+      if (data) {
+        console.log('đã tới đây rồi')
+        company.leadership.push({
+          avatar: req.file.filename,
+          name: nameleadership,
+          position: position,
+          introduce: introduce,
+        });
+        await company.save();
+        res.redirect("/companyprofile");
+      } else {
+        console.log('con cặc')
+        company.leadership.push({
+          name: nameleadership,
+          position: position,
+          introduce: introduce,
+        });
+        await company.save();
+        res.redirect("/companyprofile");
+      }
+    }
+    else {
+      console.log('con cặc')
+      company.leadership.push({
+        name: nameleadership,
+        position: position,
+        introduce: introduce,
+      });
+      await company.save();
+      res.redirect("/companyprofile");
+    }
+  }
+
   //[GET] Post Job
   async postjob(req, res, next) {
-   
     const iduser = req.user._id;
     const jobname = req.body.jobname;
     const jobdesc = req.body.jobdesc;
@@ -296,11 +384,11 @@ class CompanyProfileController {
     const salary = req.body.salary;
     const joblocation = req.body.joblocation;
     const benefit = req.body.benefit;
-    const companyname = await CompanyModel.findOne({iduser: iduser})
+    const companyname = await CompanyModel.findOne({ iduser: iduser });
 
     JobModel.create({
-      iduser: iduser, 
-      benefit: benefit, 
+      iduser: iduser,
+      benefit: benefit,
       companyname: companyname.companyname,
       jobname: jobname,
       jobdesc: jobdesc,
