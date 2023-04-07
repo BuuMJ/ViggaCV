@@ -61,9 +61,9 @@ module.exports = {
       return "/img/logocompany.jpeg";
     }
   },
-  getAvatarleadership: function (leadership) {
-    if (leadership && leadership.avatar) {
-      return `/${leadership.avatar}`;
+  getAvatarleadership: function (leader) {
+    if (leader && leader.avatar) {
+      return `/${leader.avatar}`;
     } else {
       return "/img/logoleadership.jpeg";
     }

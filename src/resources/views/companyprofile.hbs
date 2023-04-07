@@ -111,14 +111,18 @@ Today we are on the cusp of a new journey with our customers, to help them Power
                     <ul>
                         {{#each leadership}}
                         <li class="content-listleadership">
-                           <span class="namejobs">{{this.name}}</span>
-                           <div class="secondary-listjob">
-                                <span class="locationjobs"><i class="bi bi-geo"></i> Location: {{this.position}}</span>
-                                <span class="timejobs"><i class="bi bi-calendar-date"></i> {{this.introduce}}</span>
-                           </div> 
+                            <img src="{{getAvatarleadership this}}" alt="">
+                            <div class="infoleadership">
+                                <span class="nameleadership">{{this.name}}</span>
+                                <span class="position">{{this.position}}</span>
+                            </div>
                         </li>
                         {{/each}}
                     </ul>
+                    <div class="leadership-action-view">
+                        <button type="button" id="view-more-btn">View more</button>
+                        <button type="button" id="view-less-btn">View less</button>
+                    </div>                  
                 </div>
                 <span>LIST JOBS</span>
                 <div class="listjobs">
@@ -220,11 +224,12 @@ Andrew leads the strategic direction of the business with a dedicated and divers
         </div>
         <div class="info-job postleader-cancle">
             <button type="submit" class="btn-postjob btn-postleader">Add Leadership</button>
-            <button type="button" class="btn-postjob-cancle btn-postleader-cancle">Cancle</button>
+            <button type="button" class="btn-postleader-cancle">Cancle</button>
         </div>
     </form>
 </div>
 <script>
+    //function show categories 63 provinces
     		var provinces = ["An Giang", "Bà Rịa-Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên-Huế", "Tiền Giang", "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"];
 		
 		var select = document.getElementById("joblocation");
@@ -235,6 +240,7 @@ Andrew leads the strategic direction of the business with a dedicated and divers
 			option.value = provinces[i];
 			select.appendChild(option);
 		}
+        // function get file from input tag
     document.querySelector('#header-profile-file-input').addEventListener('change', function () {
         var fileBackground = this.files[0];
         var readerBackground = new FileReader();
@@ -243,6 +249,7 @@ Andrew leads the strategic direction of the business with a dedicated and divers
         };
         readerBackground.readAsDataURL(fileBackground);
     });
+    //function pagination
       var thisPage = 1;
   var limit = 5;
   var list = document.querySelectorAll('.content-listjob')
@@ -280,6 +287,52 @@ Andrew leads the strategic direction of the business with a dedicated and divers
   document.querySelector('.listpagejob li:nth-child(' + (thisPage) + ')').classList.add('active');
     loadIteam()
   }
+  //function view more and view less
+  var leadershipList = document.querySelectorAll(".content-listleadership");
+var viewMoreBtn = document.getElementById("view-more-btn");
+var viewLessBtn = document.getElementById("view-less-btn");
+var numToShow = 3;
+var numToShowIncrement = 3;
+
+for (var i = numToShow; i < leadershipList.length; i++) {
+  leadershipList[i].style.display = "none";
+}
+
+viewMoreBtn.addEventListener("click", function() {
+  numToShow += numToShowIncrement;
+  for (var i = 0; i < leadershipList.length; i++) {
+    if (i < numToShow) {
+      leadershipList[i].style.display = "flex";
+    } else {
+      leadershipList[i].style.display = "none";
+    }
+  }
+  if (numToShow >= leadershipList.length) {
+    viewMoreBtn.style.cssText = "opacity: 0; cursor: default;";
+    viewLessBtn.style.cssText = "opacity: 1; cursor: pointer; ";
+  }
+  viewLessBtn.style.cssText = "opacity: 1; cursor: pointer; ";
+
+  // Add event listener for viewLessBtn
+  if (viewLessBtn !== null){
+    viewLessBtn.addEventListener("click", function() {
+      numToShow -= numToShowIncrement;
+      for (var i = 0; i < leadershipList.length; i++) {
+        if (i < numToShow) {
+          leadershipList[i].style.display = "flex";
+        } else {
+          leadershipList[i].style.display = "none";
+        }
+      }
+      if (numToShow <= numToShowIncrement) {
+        viewLessBtn.style.cssText = "opacity: 0; cursor: default;";
+        viewMoreBtn.style.cssText = "opacity: 1; cursor: pointer; ";
+      }
+      viewMoreBtn.style.cssText = "opacity: 1; cursor: pointer; ";
+    });
+  }
+});
+
 </script>
 <script>
     var changeBackground = document.querySelector('.changebackground-profile')
@@ -341,23 +394,33 @@ Andrew leads the strategic direction of the business with a dedicated and divers
     var btnJob = document.querySelector('.btn-listjobs');
     var postJob = document.getElementById('postjob');
     var overplay = document.querySelector('.overplay-postjob');
+    var cancleJob = document.querySelector('.btn-postjob-cancle');
     btnJob.addEventListener('click', () => {
         postJob.style.display = 'flex';
         overplay.style.display = 'block';
     })
     overplay.addEventListener('click', () => {
         postJob.style.display = 'none';
-        overplay.style.display = 'none'
+        overplay.style.display = 'none';
+    })
+    cancleJob.addEventListener('click',() =>{
+        postJob.style.display = 'none';
+        overplay.style.display = 'none';
     })
     var btnLeadership = document.querySelector('.btn-listleadership');
     var postLeadership = document.getElementById('postleadership');
     var overplay2 = document.querySelector('.overplay-postleadership');
+    var cancleLeadership = document.querySelector('.btn-postleader-cancle');
     btnLeadership.addEventListener('click', () => {
         postLeadership.style.display = 'flex';
         overplay2.style.display = 'block';
     })
     overplay2.addEventListener('click', () => {
         postLeadership.style.display = 'none';
-        overplay2.style.display = 'none'
+        overplay2.style.display = 'none';
+    })
+    cancleLeadership.addEventListener('click',()=>{
+        postLeadership.style.display = 'none';
+        overplay2.style.display = 'none';
     })
 </script>

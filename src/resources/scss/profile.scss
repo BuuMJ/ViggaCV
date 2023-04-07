@@ -467,7 +467,8 @@ input#postal::-webkit-inner-spin-button {
     margin: 0 12px;
 }
 .btn-postjob,
-.btn-postjob-cancle{
+.btn-postjob-cancle,
+.btn-postleader-cancle{
     outline: none;
     border: 1px solid $primarycolor;
     height: 50%;
@@ -478,12 +479,14 @@ input#postal::-webkit-inner-spin-button {
     background-color: transparent;
     border-radius: 10px;
 }
-.btn-postjob-cancle{
+.btn-postjob-cancle,
+.btn-postleader-cancle{
     width: 80px;
     border: 1px solid #FC0404;
     color: #FC0404;
 }
-.btn-postjob-cancle:hover{
+.btn-postjob-cancle:hover,
+.btn-postleader-cancle:hover{
     background-color: #FC0404;
     color: white;
 }
@@ -517,8 +520,36 @@ li.content-listleadership{
     font-size: 20px;
     text-transform: capitalize;
 }
+li.content-listleadership{
+    flex-direction: row;
+    height: 80px;
+    align-items: center;
+}
 li.content-listjob:hover .namejobs{
     color: $primarycolor;
+}
+li.content-listleadership img{
+    width: 60px;
+    height: 60px;
+    padding: 2px;
+    border: 2px solid $primarycolor;
+}
+.infoleadership{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.infoleadership .nameleadership{
+    font-size: 20px;
+    font-weight: 700;
+    height: 20px;
+}
+.infoleadership .position{
+    color: #b9c2c4;
+    font-size: 14px;
+    font-weight: 800;
+    height: 18px;
 }
 .namejobs{
     font-size: 20px !important;
@@ -538,7 +569,8 @@ span.locationjobs{
     width: 50%;
     padding: unset;
 }
-ul.listpagejob {
+ul.listpagejob,
+ul.listpageleadership {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -546,7 +578,8 @@ ul.listpagejob {
     width: 100%;
     margin-bottom: 30px !important;
   }
-  ul.listpagejob li {
+  ul.listpagejob li,
+  ul.listpageleadership li {
     width: 30px;
     height: 30px;
     color: black;
@@ -560,7 +593,8 @@ ul.listpagejob {
     background-color: rgba(0,0,0,0.1);
     border-radius: 10px;
   }
-  ul.listpagejob .active {
+  ul.listpagejob .active,
+  ul.listpageleadership .active {
     border: 1px solid $primarycolor ;
     border-radius: 10px;
     transform: scale(1.2);
@@ -601,4 +635,40 @@ ul.listpagejob {
     display: none;
     z-index: 30;
   }
-
+.leadership-action-view{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+}
+.leadership-action-view button{
+    width: 120px;
+    height: 40px;
+    outline: none;
+    border-radius: 10px;
+    border: 4px solid #04FC04;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    padding: 4px 8px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: .5s;
+}
+.leadership-action-view #view-more-btn:hover{
+    background-color: #04FC04;
+    color: white;
+    border: 4px solid white;
+    box-shadow: 2px 2px 2px 6px #04FC04;
+}
+.leadership-action-view #view-less-btn{
+    border: 4px solid #FC0404;
+    opacity: 0;
+    cursor: default;
+}
+.leadership-action-view #view-less-btn:hover {
+    background-color: #FC0404;
+    color: white;
+    border:4px solid white ;
+    box-shadow: 2px 2px 1px 6px #FC0404;
+}
