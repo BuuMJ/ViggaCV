@@ -6,6 +6,7 @@ const { jobcount } = require("../util/data");
 
 router.get("/job/:id", jobcount, companyController.information);
 router.get("/:id", jobcount, companyController.detail);
+router.post('/:id/follow',jobcount , companyController.follow)
 router.get("/", jobcount, companyController.company);
 
 module.exports = router;

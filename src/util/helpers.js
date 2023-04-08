@@ -180,6 +180,14 @@ module.exports = {
       return "0";
     }
   },
+  checkFl: function (checkfl){
+    if(checkfl){
+      return "Following"
+    }
+    else{
+      return "Follow"
+    }
+  },
   ifeq: function (user, y, options) {
     // console.log(user)
     var currentRole = user == undefined ? "" : user.role;

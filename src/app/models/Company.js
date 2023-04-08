@@ -21,6 +21,7 @@ const Company = new Schema(
     servicedesc: String,
     establisheddate: String,
     mission: String,
+    follow: { type: Number, default: 0 },
     history: String,
     leadership: [
       {

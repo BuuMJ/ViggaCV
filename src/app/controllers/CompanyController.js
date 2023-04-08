@@ -1,6 +1,11 @@
 const CompanyModel = require("../models/Company");
 const JobModel = require("../models/Job");
-const { staffMongoseToObject, mutipleMongooseToObject, mongooseToObject } = require("../../util/mongoose");
+const ActionModel = require("../models/Action");
+const {
+  staffMongoseToObject,
+  mutipleMongooseToObject,
+  mongooseToObject,
+} = require("../../util/mongoose");
 class CompanyController {
   //[GET] List job
   async company(req, res, next) {
@@ -31,18 +36,52 @@ class CompanyController {
     const idcompany = req.params.id;
     const company = await CompanyModel.findOne({ _id: idcompany });
     const leadership = company.leadership;
-    const Leadership = leadership.map((leadership) => leadership.toObject());
+    const checkfl = await ActionModel.findOne({
+      companyid: idcompany,
+      userid: req.user._id,
+      follow: "following",
+    });
     JobModel.find({ iduser: company.iduser }).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
       res.render("companydetail", {
         title: "Company Detail",
         user: req.user,
-        
-        company: staffMongoseToObject(company),  
+        checkfl,
+        company: staffMongoseToObject(company),
         leadership: staffMongoseToObject(company.leadership),
         listjob: listjob,
       });
     });
+  }
+
+  //[POST] Follow company
+  async follow(req, res, next) {
+    const idCompany = req.params.id;
+    const company = await CompanyModel.findById(idCompany);
+
+    const checkfl = await ActionModel.findOne({
+      companyid: idCompany,
+      userid: req.user._id,
+      follow: "following",
+    });
+    if (checkfl) {
+      await ActionModel.findByIdAndRemove(checkfl._id);
+      company.follow--;
+      await company.save();
+      res.redirect("/company/" + idCompany);
+      console.log("ĐÃ XOÁ FOLLOW");
+    } else {
+      const action = new ActionModel({
+        companyid: idCompany,
+        userid: req.user._id,
+        follow: "following",
+      });
+      await action.save();
+      company.follow++;
+      await company.save();
+      res.redirect('/company/' + idCompany);
+      console.log("ĐÃ THÊM FOLLOW" + checkfl);
+    }
   }
 
   async information(req, res, next) {
