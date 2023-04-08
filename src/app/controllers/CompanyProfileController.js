@@ -344,7 +344,6 @@ class CompanyProfileController {
     if (req.file) {
       const data = await fs.promises.readFile(req.file.path);
       if (data) {
-        console.log('đã tới đây rồi')
         company.leadership.push({
           avatar: req.file.filename,
           name: nameleadership,
@@ -354,7 +353,6 @@ class CompanyProfileController {
         await company.save();
         res.redirect("/companyprofile");
       } else {
-        console.log('con cặc')
         company.leadership.push({
           name: nameleadership,
           position: position,
@@ -365,7 +363,6 @@ class CompanyProfileController {
       }
     }
     else {
-      console.log('con cặc')
       company.leadership.push({
         name: nameleadership,
         position: position,
