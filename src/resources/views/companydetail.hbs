@@ -1,0 +1,103 @@
+<div class="main-company-detail">
+    <header class="company-detail">
+        <img src="{{getBackground company}}" alt="" class="background-company-detail">
+        <div class="main__header-company-detail">
+            <div class="header__primary-company-detail">
+                <div class="logo-company-detail">
+                    <img src="{{getAvatarcompany company}}" alt="">
+                    <span>{{getCompanyname company}} {{getTOB company}}</span>
+                </div>
+                <div class="follow-company-detail">
+                    <button type="button">Follow</button>
+                </div>
+            </div>
+            <div class="header__info-company-detail">
+                <span class="about-us">About Us</span>
+                <span class="opening-jobs">Opening Jobs</span>
+            </div>
+        </div>
+    </header>
+        <div class="body-about-us">
+            <div class="company-desc">
+                <span class="desc__first-text">About {{getCompanyname company}} Company</span>
+                <div class="contact-company company-desc">
+                    <span class="desc__second-text"><b>Address</b>: {{getCompanyaddress company}}</span>
+                    <span class="desc__second-text"><b>Size:</b> {{getNoofemployee company}} staff</span>
+                    <span class="desc__second-text"><b>Email:</b> {{getCompanyemail company}}</span>
+                    <span class="desc__second-text"><b>HotLine:</b> {{getCompanyphone company}}</span>
+                </div>
+                <span class="desc__second-text">{{getCompanydesc company}}</span>
+
+            </div>
+            <div class="company-desc">
+                <span class="desc__first-text">Our Service</span>
+                <span class="desc__second-text">{{getService company}}</span>
+            </div>
+            <div class="company-desc">
+                <span class="desc__first-text">Our Mission</span>
+                <span class="desc__second-text">{{getMission company}}</span>
+            </div>
+            <div class="company-desc">
+                <span class="desc__first-text">Our History</span>
+                <span class="desc__second-text">{{getHistory company}}</span>
+            </div>
+            <div class="company-leadership">
+                <div class="company-leadership__text">
+                    <span class="leadership__first-text">LEADERSHIP</span>
+                    <span class="leadership__second-text">The {{getCompanyname company}} company was founded on {{getEstablisheddate company}}, and has {{getCompanyyears company}} years of experience in the industry. A summary of our company's Leadership</span>
+                </div>
+                <div class="company-leadership__info-total">
+                    {{#each leadership}}
+                    <div class="company-leadership__info">
+                        <div class="total-leadership" style="background:linear-gradient(-180deg, transparent, rgba(254, 219, 0,0.3)), url('{{getAvatarleadership this}}') center/cover no-repeat; ;" ></div>
+                        <div class="company-leadership__info-text">
+                            <span class="first">{{this.name}}</span>
+                            <span class="second">{{this.position}}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="show__main-info-leadership">
+                        <img src="{{getAvatarleadership this}}" alt="">
+                        <div class="introduce-leadership">
+                            <span class="first">{{this.name}}</span>
+                            <span class="second">{{this.position}}</span>
+                            <p>{{this.introduce}}</p>
+                        </div>
+                        <i class="bi bi-x-square-fill"></i>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+</div>
+<div class="overplay"></div>
+<script>
+  const overplay = document.querySelector('.overplay');
+const body = document.querySelector('body');
+const showLeadership = document.querySelectorAll('.company-leadership__info');
+const tableLeadership = document.querySelectorAll('.show__main-info-leadership');
+
+for (let i = 0; i < showLeadership.length; i++) {
+  showLeadership[i].addEventListener('click', () => {
+    tableLeadership[i].style.display = 'flex';
+    body.classList.add('modal-open');
+    overplay.style.display = 'block';
+  });
+}
+
+const closeLeadership = document.querySelectorAll('.bi-x-square-fill');
+for (let i = 0; i < closeLeadership.length; i++) {
+  closeLeadership[i].addEventListener('click', () => {
+    tableLeadership[i].style.display = 'none';
+    body.classList.remove('modal-open');
+    overplay.style.display = 'none';
+  });
+  
+  overplay.addEventListener('click', () => {
+    tableLeadership[i].style.display = 'none';
+    body.classList.remove('modal-open');
+    overplay.style.display = 'none';
+  });
+}
+
+</script>

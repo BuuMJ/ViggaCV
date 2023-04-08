@@ -1,6 +1,6 @@
 const CompanyModel = require("../models/Company");
 const JobModel = require("../models/Job");
-const { staffMongoseToObject, mutipleMongooseToObject } = require("../../util/mongoose");
+const { staffMongoseToObject, mutipleMongooseToObject, mongooseToObject } = require("../../util/mongoose");
 class CompanyController {
   //[GET] List job
   async company(req, res, next) {
@@ -30,12 +30,16 @@ class CompanyController {
   async detail(req, res, next) {
     const idcompany = req.params.id;
     const company = await CompanyModel.findOne({ _id: idcompany });
+    const leadership = company.leadership;
+    const Leadership = leadership.map((leadership) => leadership.toObject());
     JobModel.find({ iduser: company.iduser }).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
       res.render("companydetail", {
         title: "Company Detail",
         user: req.user,
-        company: staffMongoseToObject(company),
+        
+        company: staffMongoseToObject(company),  
+        leadership: staffMongoseToObject(company.leadership),
         listjob: listjob,
       });
     });

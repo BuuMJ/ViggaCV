@@ -13,10 +13,10 @@ class CompanyProfileController {
     const address = location.map((location) => location.name);
     // console.log(req.user._id);
     const company = await CompanyModel.findOne({ iduser: req.user._id });
-    console.log(
-      company.leadership +
-        "ĐÂY LÀ GIÁ TRỊ CỦA COMPANY PROFILEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
-    );
+    // console.log(
+    //   company.leadership +
+    //     "ĐÂY LÀ GIÁ TRỊ CỦA COMPANY PROFILEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
+    // );
     // const listjob = await JobModel.findone({ iduser: req.user._id });
     const listcompany = await CompanyModel.find({});
     const Listcompany = listcompany.map((listcompany) =>

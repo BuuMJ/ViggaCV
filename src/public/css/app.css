@@ -518,7 +518,7 @@ label.changebackground-profile {
   transition: .3s; }
 
 label.changebackground-profile:hover {
-  background-color: rgba(255, 255, 255, 0.9); }
+  background-color: #fedb00; }
 
 .header-profile-company {
   height: 620px; }
@@ -616,6 +616,9 @@ button.btn-setting:active {
   display: none;
   transition: 1s; }
 
+.company-profile {
+  transform: translateY(-5%); }
+
 .content-profile-main > * {
   margin: 14px 0; }
 
@@ -659,7 +662,7 @@ button.btn-setting:active {
   position: absolute;
   font-size: 30px;
   right: 41%;
-  top: 3%;
+  top: 2.5%;
   color: black;
   padding: 0 8px;
   border-radius: 50%;
@@ -1016,7 +1019,7 @@ li.content-listleadership img {
 .infoleadership .nameleadership {
   font-size: 20px;
   font-weight: 700;
-  height: 20px; }
+  height: 22px; }
 
 .infoleadership .position {
   color: #b9c2c4;
@@ -1119,19 +1122,21 @@ ul.listpageleadership .active {
   height: 40px;
   outline: none;
   border-radius: 10px;
-  border: 4px solid #04FC04;
+  border: 4px solid #FCE604;
   background-color: transparent;
   backdrop-filter: blur(10px);
   padding: 4px 8px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
-  transition: .5s; }
+  transition: .5s;
+  text-align: center; }
 
 .leadership-action-view #view-more-btn:hover {
-  background-color: #04FC04;
+  background-color: #FCE604;
   color: white;
   border: 4px solid white;
-  box-shadow: 2px 2px 2px 6px #04FC04; }
+  box-shadow: 2px 2px 2px 6px #FCE604;
+  font-weight: 600; }
 
 .leadership-action-view #view-less-btn {
   border: 4px solid #FC0404;
@@ -1142,7 +1147,8 @@ ul.listpageleadership .active {
   background-color: #FC0404;
   color: white;
   border: 4px solid white;
-  box-shadow: 2px 2px 1px 6px #FC0404; }
+  box-shadow: 2px 2px 1px 6px #FC0404;
+  font-weight: 600; }
 
 .container-companies {
   display: flex;
@@ -1338,7 +1344,13 @@ h2.main-text {
   align-self: center;
   font-weight: 500;
   cursor: pointer;
-  font-size: 15px; }
+  font-size: 13px;
+  transition: .3s; }
+
+.view-detail__company:hover,
+.view-detail__job:hover {
+  box-shadow: 2px 2px 2px 6px #fedb00;
+  border: 4px solid white; }
 
 .view-detail__company {
   width: 130px; }
@@ -1452,6 +1464,266 @@ nav.companyinformation img {
 .job-companyinfo-action a:hover {
   background-color: #fedb00;
   color: white; }
+
+.main-company-detail {
+  background-color: #f9f9fa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.main-company-detail > * {
+  margin: 10px 0; }
+
+.main-company-detail header.company-detail {
+  width: 80%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 1px solid #efefef;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden; }
+
+header.company-detail .background-company-detail {
+  width: 100%;
+  height: 60%; }
+
+.main__header-company-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 45%; }
+
+.header__primary-company-detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 60%; }
+
+.logo-company-detail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 80%;
+  padding-left: 40px; }
+
+.header__primary-company-detail .logo-company-detail img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 8px #999999;
+  transform: translateY(-15%); }
+
+.header__primary-company-detail .logo-company-detail span {
+  font-size: 30px;
+  font-weight: 500;
+  margin-left: 16px; }
+
+.follow-company-detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 18%; }
+
+.follow-company-detail button {
+  outline: none;
+  width: 80px;
+  height: 40px;
+  background-color: #fedb00;
+  color: black;
+  border: 1px solid #fedb00;
+  border-radius: 10px;
+  font-weight: 500; }
+
+.follow-company-detail button:hover {
+  background-color: #efce01;
+  border: 1px solid #efce01; }
+
+.header__info-company-detail {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 400;
+  padding-left: 40px;
+  height: 22%; }
+
+.header__info-company-detail span {
+  padding: 0 10px;
+  text-align: center;
+  height: 100%;
+  cursor: pointer; }
+
+.header__info-company-detail span:hover {
+  color: #fedb00;
+  border-bottom: 3px solid #fedb00; }
+
+.body-about-us {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #efefef;
+  border-radius: 5px;
+  width: 80%; }
+
+.company-desc {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; }
+
+.company-desc span.desc__first-text,
+.company-leadership__text span.leadership__first-text {
+  font-size: 38px;
+  font-weight: 700;
+  padding: 16px 0; }
+
+.company-leadership__text span.leadership__first-text {
+  padding: 0 0 16px 0; }
+
+.company-desc span.desc__second-text,
+.company-leadership__text span.leadership__second-text {
+  font-size: 16px;
+  font-weight: 400;
+  padding: 10px 0;
+  letter-spacing: 1.3px; }
+
+.company-leadership {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 26px 0; }
+
+.contact-company {
+  padding-bottom: 16px; }
+
+.contact-company span {
+  padding: unset !important; }
+
+.company-leadership .company-leadership__text {
+  display: flex;
+  flex-direction: column;
+  width: 40%; }
+
+.company-leadership__info-total {
+  width: 55%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* changed from space-around */
+  align-items: center;
+  overflow-x: scroll; }
+
+.company-leadership__info-total .company-leadership__info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  position: relative; }
+
+.total-leadership {
+  width: 360px;
+  height: 579px;
+  margin-right: 30px;
+  cursor: pointer;
+  transition: .3s; }
+
+.total-leadership:hover {
+  transform: scale(0.98); }
+
+.company-leadership__info .company-leadership__info-text {
+  position: absolute;
+  bottom: 50px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  color: black;
+  width: 347px;
+  text-transform: uppercase; }
+
+.company-leadership__info-text span.first,
+.show__main-info-leadership .introduce-leadership span.first {
+  font-size: 30px;
+  font-weight: 700;
+  height: 80%; }
+
+.company-leadership__info-text span.second,
+.show__main-info-leadership .introduce-leadership span.second {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  height: 20%; }
+
+.company-leadership__info-text span.second {
+  color: #b9c2c4;
+  letter-spacing: 4px; }
+
+.show__main-info-leadership {
+  position: fixed;
+  display: none;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  height: 600px;
+  background-color: white;
+  top: 7%;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  z-index: 100;
+  overflow: scroll; }
+
+.show__main-info-leadership img {
+  height: 100%;
+  width: 363px; }
+
+.show__main-info-leadership .introduce-leadership {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.show__main-info-leadership .introduce-leadership span.first {
+  height: 40px;
+  text-transform: uppercase; }
+
+.show__main-info-leadership .introduce-leadership span.second {
+  height: 20px;
+  letter-spacing: 4px;
+  color: #b8c2c4;
+  text-transform: uppercase; }
+
+.show__main-info-leadership .introduce-leadership p {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  padding: 20px 20px 0 0; }
+
+.show__main-info-leadership i {
+  font-size: 50px;
+  cursor: pointer;
+  transform: translate(2px, -14px);
+  color: black; }
+
+.overplay {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  cursor: pointer;
+  top: 0;
+  right: 0; }
 
 .container-cv {
   display: flex;

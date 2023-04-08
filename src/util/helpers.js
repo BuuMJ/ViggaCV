@@ -142,7 +142,7 @@ module.exports = {
     if (company && company.servicedesc ) {
       return company.servicedesc ;
     } else {
-      return "";
+      return "There is no information about the service, you can contact the company to learn more";
     }
   },
   getEstablisheddate: function (company) {
@@ -156,21 +156,21 @@ module.exports = {
     if (company && company.noofemployee ) {
       return company.noofemployee ;
     } else {
-      return "";
+      return "The company has not updated the total number of employees";
     }
   },
   getMission: function (company) {
     if (company && company.mission ) {
       return company.mission ;
     } else {
-      return "";
+      return "There is no information about the mission, you can contact the company to learn more";
     }
   },
   getHistory: function (company) {
     if (company && company.history ) {
       return company.history ;
     } else {
-      return "";
+      return "The company has not updated its operating history";
     }
   },
   getJobcount: function (jobcount) {

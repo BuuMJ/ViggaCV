@@ -2,7 +2,7 @@
     <form class="form-company-profile" method="POST" action="/companyprofile/edit?_method=PUT"
         enctype="multipart/form-data">
         <div class="header-profile header-profile-company" id="header-profile"
-            style="background:linear-gradient(to right, rgba(0,0,0,0.3), rgba(255,255,255,0.2)),url('{{getBackground company}}') center/cover no-repeat;">
+            style="background:linear-gradient(to right, rgba(0,0,0,0.6), rgba(255,255,255,0.3)),url('{{getBackground company}}') center/cover no-repeat;">
             <label class="changebackground-profile" for="header-profile-file-input"><i class="bi bi-camera-fill"></i> Change Background</label>
             <input type="file" name="background" id="header-profile-file-input" style="display: none;">
             <div class="header-main-text">
@@ -53,13 +53,13 @@
                             value="{{getCompanyphone company}}">
                     </div>
                     <div class="about-user ">
-                        <label for="companyyears">Established Date</label>
-                        <input id="companyyears" type="date" name="establisheddate" placeholder="70 Years"
+                        <label for="companyyearsestablished">Established Date</label>
+                        <input id="companyyearsestablished" type="date" name="establisheddate" placeholder="70 Years"
                             value="{{getEstablisheddate company}}">
                     </div>
                     <div class="about-user ">
-                        <label for="companyyears">No. OfYears In Business</label>
-                        <input id="companyyears" type="text" name="companyYears" placeholder="70 Years"
+                        <label for="companyyearsinbusiness">No. OfYears In Business</label>
+                        <input id="companyyearsinbusiness" type="text" name="companyYears" placeholder="70 Years"
                             value="{{getCompanyyears company}}">
                     </div>
                     <div class="about-user ">
@@ -103,7 +103,7 @@ Today we are on the cusp of a new journey with our customers, to help them Power
 ">{{getHistory company}}</textarea>
                     </div>
                 </div>
-                <span>LIST LEADERSHIP</span>
+                <span>TEAM LEADERSHIP</span>
                 <div class="listleadership">
                     <div class="listleadership-action">
                         <button class="btn-listleadership" type="button">Add Leadership</button>
@@ -245,10 +245,21 @@ Andrew leads the strategic direction of the business with a dedicated and divers
         var fileBackground = this.files[0];
         var readerBackground = new FileReader();
         readerBackground.onload = function (e) {
-            document.querySelector('#header-profile').style.backgroundImage = "linear-gradient(to right, rgba(0,0,0,0.3), rgba(255,255,255,0.2)), url('" + e.target.result + "') ";
+            document.querySelector('#header-profile').style.backgroundImage = "linear-gradient( 90deg, rgba(0,0,0,0.6), rgba(255,255,255,0.3)), url('" + e.target.result + "') ";
         };
         readerBackground.readAsDataURL(fileBackground);
     });
+    //establishment year calculation function
+    const establishedDateInput = document.getElementById('companyyearsestablished');
+    companyYearsInput = document.getElementById('companyyearsinbusiness');
+        establishedDateInput.addEventListener('input', function() {
+        const establishedDate = this.value;
+        const date1 = new Date(establishedDate);
+        const date2 = new Date();
+        const diffInMs = date2 - date1;
+        const diffInYears = diffInMs / (1000 * 60 * 60 * 24 * 365.25);
+        companyYearsInput.value = Math.round(diffInYears);
+        });
     //function pagination
       var thisPage = 1;
   var limit = 5;
@@ -391,6 +402,7 @@ viewMoreBtn.addEventListener("click", function() {
             reader.readAsDataURL(chooseFile);
         }
     });
+    var body = document.querySelector('body');
     var btnJob = document.querySelector('.btn-listjobs');
     var postJob = document.getElementById('postjob');
     var overplay = document.querySelector('.overplay-postjob');
@@ -398,14 +410,17 @@ viewMoreBtn.addEventListener("click", function() {
     btnJob.addEventListener('click', () => {
         postJob.style.display = 'flex';
         overplay.style.display = 'block';
+        body.classList.add('modal-open');
     })
     overplay.addEventListener('click', () => {
         postJob.style.display = 'none';
         overplay.style.display = 'none';
+        body.classList.remove('modal-open');
     })
     cancleJob.addEventListener('click',() =>{
         postJob.style.display = 'none';
         overplay.style.display = 'none';
+        body.classList.remove('modal-open');
     })
     var btnLeadership = document.querySelector('.btn-listleadership');
     var postLeadership = document.getElementById('postleadership');
@@ -414,13 +429,16 @@ viewMoreBtn.addEventListener("click", function() {
     btnLeadership.addEventListener('click', () => {
         postLeadership.style.display = 'flex';
         overplay2.style.display = 'block';
+        body.classList.add('modal-open');
     })
     overplay2.addEventListener('click', () => {
         postLeadership.style.display = 'none';
         overplay2.style.display = 'none';
+        body.classList.remove('modal-open');
     })
     cancleLeadership.addEventListener('click',()=>{
         postLeadership.style.display = 'none';
         overplay2.style.display = 'none';
+        body.classList.remove('modal-open');
     })
 </script>
