@@ -8,6 +8,7 @@ router.put(
   upload.fields([{ name: "avatar" }, { name: "background" }]),
   companyprofileComtroller.apicompanyprofile
 );
+router.post('/leadership',  upload.single("avatarleadership"), companyprofileComtroller.leadership)
 router.post("/postjob", companyprofileComtroller.postjob);
 router.get("/", companyprofileComtroller.companyprofile);
 

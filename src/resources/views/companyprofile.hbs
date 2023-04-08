@@ -2,19 +2,21 @@
     <form class="form-company-profile" method="POST" action="/companyprofile/edit?_method=PUT"
         enctype="multipart/form-data">
         <div class="header-profile header-profile-company" id="header-profile"
-            style="background: url('{{getBackground company}}') center/cover no-repeat;">
-            <label class="changebackground-profile" for="header-profile-file-input">Change Background</label>
+            style="background:linear-gradient(to right, rgba(0,0,0,0.6), rgba(255,255,255,0.3)),url('{{getBackground company}}') center/cover no-repeat;">
+            <label class="changebackground-profile" for="header-profile-file-input"><i class="bi bi-camera-fill"></i> Change Background</label>
             <input type="file" name="background" id="header-profile-file-input" style="display: none;">
-            <span class="header-profile-primary">Hello {{getCompanyname company}} Company</span>
-            <span class="header-profile-secondary">This page is your Company profile. Clicking on the settings button
-                allows you to edit your company information</span>
+            <div class="header-main-text">
+                <span class="header-profile-primary">Hello {{getCompanyname company}} Company</span>
+                <span class="header-profile-secondary">This page is your Company profile. Clicking on the settings button
+                    allows you to edit your company information</span>
+            </div>
             <button class="btn-setting" type="button" >Setting <i class="bi bi-gear"></i></button>
         </div>
         <div class="content-profile company-profile">
             <div class="profile-img">
                 <label for="file-user"><img class="user-avatar" src="{{getAvatarcompany company}}" alt=""></label>
                 <input id="file-user" name="avatar" type="file" accept="image/*">
-                <label for="file-user" class="edit-img"><span>Change Logo</span></label>
+                <label for="file-user" class="edit-img edit-logo"><span>Change Logo</span></label>
                 <label class="camera-edit" for="file-user"><i class="bi bi-camera"></i></label>
             </div>
             <div class="content-profile-main">
@@ -51,8 +53,13 @@
                             value="{{getCompanyphone company}}">
                     </div>
                     <div class="about-user ">
-                        <label for="companyyears">No. OfYears In Business</label>
-                        <input id="companyyears" type="text" name="companyYears" placeholder="70 Years"
+                        <label for="companyyearsestablished">Established Date</label>
+                        <input id="companyyearsestablished" type="date" name="establisheddate" placeholder="70 Years"
+                            value="{{getEstablisheddate company}}">
+                    </div>
+                    <div class="about-user ">
+                        <label for="companyyearsinbusiness">No. OfYears In Business</label>
+                        <input id="companyyearsinbusiness" type="text" name="companyYears" placeholder="70 Years"
                             value="{{getCompanyyears company}}">
                     </div>
                     <div class="about-user ">
@@ -66,11 +73,56 @@
                             <option value="Limited Liability Company">Limited Liability Company.</option>
                         </select>
                     </div>
+                    <div class="about-user ">
+                        <label for="companyyears">No. Of Employee</label>
+                        <input id="companyyears" type="text" name="noofemployee" placeholder="70 Years"
+                            value="{{getNoofemployee company}}">
+                    </div>
                     <div class="about-user about-user-desc-company">
                         <label for="experience">Company Description</label>
                         <textarea id="experience" type="text" name="companyDesc"
                             placeholder="ViggaWorks provides software and services to energy, water and communications industries. The company was founded in 1971 and is headquartered in Viet Nam.">{{getCompanydesc company}}</textarea>
                     </div>
+                    <div class="about-user about-user-desc-company">
+                        <label for="experience">Service Description</label>
+                        <textarea id="experience" type="text" name="serviceDesc"
+                            placeholder="ViggaWorks provides software and services to energy, water and communications industries. The company was founded in 1971 and is headquartered in Viet Nam.">{{getService company}}</textarea>
+                    </div>
+                    <div class="about-user about-user-desc-company">
+                        <label for="experience">Mission</label>
+                        <textarea id="experience" type="text" name="mission"
+                            placeholder="ViggaWorks provides software and services to energy, water and communications industries. The company was founded in 1971 and is headquartered in Viet Nam.">{{getMission company}}</textarea>
+                    </div>
+                    <div class="about-user about-user-desc-company">
+                        <label for="experience">History</label>
+                        <textarea id="experience" type="text" name="history"
+                            placeholder="Founded in 1971, Hansen is a global provider of software and services, serving the most demanding energy and communications brands around the world.
+Our early origins in the management of customer and organisational data has served our customers well over the years. As a pioneer in providing some of the first web-based self-service and browser- based customer care solutions to the market we have continued to hone our software to enable energy and communications service providers to create new products and services, deliver them flawlessly, and engage customers with excellence – powered by the Hansen Create-Deliver-EngageTM suite of software applications.
+In the last decade we have grown exponentially through several progressive and strategic acquisitions that have expanded our geographic scope and enhanced the business of our valued customers.
+Today we are on the cusp of a new journey with our customers, to help them Power the NextTM age of communications and energy related experiences beyond the essentials of providing basic core energy and connectivity.
+">{{getHistory company}}</textarea>
+                    </div>
+                </div>
+                <span>TEAM LEADERSHIP</span>
+                <div class="listleadership">
+                    <div class="listleadership-action">
+                        <button class="btn-listleadership" type="button">Add Leadership</button>
+                    </div>
+                    <ul>
+                        {{#each leadership}}
+                        <li class="content-listleadership">
+                            <img src="{{getAvatarleadership this}}" alt="">
+                            <div class="infoleadership">
+                                <span class="nameleadership">{{this.name}}</span>
+                                <span class="position">{{this.position}}</span>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ul>
+                    <div class="leadership-action-view">
+                        <button type="button" id="view-more-btn">View more</button>
+                        <button type="button" id="view-less-btn">View less</button>
+                    </div>                  
                 </div>
                 <span>LIST JOBS</span>
                 <div class="listjobs">
@@ -129,31 +181,86 @@
             <label for="namecompanyjob">Benefit</label>
             <input id="namecompanyjob" name="benefit" type="text" >
         </div>
-        <div class="info-job">
-            <label for="joblocation">Job Locations</label>
-            <input id="joblocation" name="joblocation"
-                placeholder="33 Lê Duẩn, Bến Nghé, District 1, Ho Chi Minh City, Vietnam"
-                value="{{getCompanyaddress user}}" type="text">
+        <div class="info-job info-job-salary">
+            <div class="job-location">
+                <label for="joblocation">Job Locations</label>
+                <select id="joblocation" name="joblocation">
+                    <option value="" selected>Select Your Location</option>
+                </select>
+            </div>
+            <div class="job-salary">
+                <label for="salary-range">Salary</label>
+                <input type="text" name="salary" id="salary-range" placeholder="500$-1000$ | Negotiable">
+            </div>
         </div>
-        <div class="info-job">
+        <div class="info-job postjob-cancle">
             <button type="submit" class="btn-postjob">Post Job</button>
+            <button type="button" class="btn-postjob-cancle">Cancle</button>
         </div>
 
     </form>
+    <div class="overplay-postleadership"></div>
+    <form id="postleadership" method="POST" action="/companyprofile/leadership" enctype="multipart/form-data">
+        <h2>Add Leadership</h2>
+        <div class="avatar-leadership">
+            <label class="leadership-avatar" for="avatar-leadership"><img class="leadership-img" src="{{getAvatarleadership leadership}}" alt=""></label>
+            <input name="avatarleadership" type="file" id="avatar-leadership">
+            <label class="eidt__avatar-leadership" for="avatar-leadership">Change Avatar</label>
+        </div>
+        <div class="info-job">
+            <label for="jobname">Name</label>
+            <input id="jobname" name="nameleadership" placeholder="BuuMJ" type="text">
+        </div>
+        <div class="info-job">
+            <label for="jobname">Postion</label>
+            <input id="jobname" name="position" placeholder="CEO" type="text">
+        </div>
+        <div class="info-job jobdesc">
+            <label for="jobdesc">Introduce</label>
+            <textarea id="jobdesc" name="introduce" placeholder="IT executive with over 30 years of experience, including management of mid to large size organizations, corporate development, business operations, and strategy. Current CEO and Managing Director at Hansen Technologies Limited.
+Andrew joined Hansen Technologies in 1990, and quickly began to transform the business and then ASX listed the company in 2000. Andrew’s IT expertise combined with his strong business acumen has built a diversified global company delivering market leading billing and customer care solutions in over 80 countries.
+Andrew leads the strategic direction of the business with a dedicated and diverse team of over 1500 industry experts delivering solutions to some of the globe’s leading companies. Hansen’s Create-Deliver-Engage product suite is now used by over 500 substantial companies worldwide."
+                type="text"></textarea>
+        </div>
+        <div class="info-job postleader-cancle">
+            <button type="submit" class="btn-postjob btn-postleader">Add Leadership</button>
+            <button type="button" class="btn-postleader-cancle">Cancle</button>
+        </div>
+    </form>
 </div>
 <script>
-    document.querySelector('label[for="header-profile-file-input"]').addEventListener('click', function () {
-
-    });
-
+    //function show categories 63 provinces
+    		var provinces = ["An Giang", "Bà Rịa-Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên-Huế", "Tiền Giang", "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"];
+		
+		var select = document.getElementById("joblocation");
+		
+		for(var i = 0; i < provinces.length; i++) {
+			var option = document.createElement("option");
+			option.text = provinces[i];
+			option.value = provinces[i];
+			select.appendChild(option);
+		}
+        // function get file from input tag
     document.querySelector('#header-profile-file-input').addEventListener('change', function () {
         var fileBackground = this.files[0];
         var readerBackground = new FileReader();
         readerBackground.onload = function (e) {
-            document.querySelector('#header-profile').style.backgroundImage = "url('" + e.target.result + "')";
+            document.querySelector('#header-profile').style.backgroundImage = "linear-gradient( 90deg, rgba(0,0,0,0.6), rgba(255,255,255,0.3)), url('" + e.target.result + "') ";
         };
         readerBackground.readAsDataURL(fileBackground);
     });
+    //establishment year calculation function
+    const establishedDateInput = document.getElementById('companyyearsestablished');
+    companyYearsInput = document.getElementById('companyyearsinbusiness');
+        establishedDateInput.addEventListener('input', function() {
+        const establishedDate = this.value;
+        const date1 = new Date(establishedDate);
+        const date2 = new Date();
+        const diffInMs = date2 - date1;
+        const diffInYears = diffInMs / (1000 * 60 * 60 * 24 * 365.25);
+        companyYearsInput.value = Math.round(diffInYears);
+        });
+    //function pagination
       var thisPage = 1;
   var limit = 5;
   var list = document.querySelectorAll('.content-listjob')
@@ -191,8 +298,55 @@
   document.querySelector('.listpagejob li:nth-child(' + (thisPage) + ')').classList.add('active');
     loadIteam()
   }
+  //function view more and view less
+  var leadershipList = document.querySelectorAll(".content-listleadership");
+var viewMoreBtn = document.getElementById("view-more-btn");
+var viewLessBtn = document.getElementById("view-less-btn");
+var numToShow = 3;
+var numToShowIncrement = 3;
+
+for (var i = numToShow; i < leadershipList.length; i++) {
+  leadershipList[i].style.display = "none";
+}
+
+viewMoreBtn.addEventListener("click", function() {
+  numToShow += numToShowIncrement;
+  for (var i = 0; i < leadershipList.length; i++) {
+    if (i < numToShow) {
+      leadershipList[i].style.display = "flex";
+    } else {
+      leadershipList[i].style.display = "none";
+    }
+  }
+  if (numToShow >= leadershipList.length) {
+    viewMoreBtn.style.cssText = "opacity: 0; cursor: default;";
+    viewLessBtn.style.cssText = "opacity: 1; cursor: pointer; ";
+  }
+  viewLessBtn.style.cssText = "opacity: 1; cursor: pointer; ";
+
+  // Add event listener for viewLessBtn
+  if (viewLessBtn !== null){
+    viewLessBtn.addEventListener("click", function() {
+      numToShow -= numToShowIncrement;
+      for (var i = 0; i < leadershipList.length; i++) {
+        if (i < numToShow) {
+          leadershipList[i].style.display = "flex";
+        } else {
+          leadershipList[i].style.display = "none";
+        }
+      }
+      if (numToShow <= numToShowIncrement) {
+        viewLessBtn.style.cssText = "opacity: 0; cursor: default;";
+        viewMoreBtn.style.cssText = "opacity: 1; cursor: pointer; ";
+      }
+      viewMoreBtn.style.cssText = "opacity: 1; cursor: pointer; ";
+    });
+  }
+});
+
 </script>
 <script>
+    var changeBackground = document.querySelector('.changebackground-profile')
     var btnSetting = document.querySelector('.btn-setting');
     var settingProfile = document.querySelector('.content-profile');
     btnSetting.addEventListener('click', () => {
@@ -200,11 +354,13 @@
         if (computedStyle.display === "none") {
             settingProfile.style.display = "block";
             settingProfile.style.opacity = "0";
+            changeBackground.style.bottom = "160px"
             setTimeout(() => {
                 settingProfile.style.opacity = "1";
             }, 50);
         }
         else {
+            changeBackground.style.bottom = "10px"
             settingProfile.style.opacity = "0";
             setTimeout(() => {
                 settingProfile.style.display = "none";
@@ -212,19 +368,28 @@
         }
     })
     var hover = document.querySelector('.user-avatar')
-    var edit = document.querySelector('.edit-img')
+    var edit = document.querySelector('.edit-logo')
     hover.addEventListener('mouseover', () => {
-        edit.style.cssText = "display: flex; transform: translateY(-28%);"
-        hover.style.cssText = "transform: translatey(-28%);"
+        edit.style.cssText = "display: flex;"
     })
     edit.addEventListener('mouseout', () => {
-        edit.style.cssText = "display: none; transform: translateY(-24%);"
-        hover.style.cssText = "transform: translatey(-24%);"
+        edit.style.cssText = "display: none;"
     })
     hover.addEventListener('mouseout', () => {
-        edit.style.cssText = "display: none; transform: translateY(-24%);"
-        hover.style.cssText = "transform: translatey(-24%);"
+        edit.style.cssText = "display: none;"
     })
+    var getFile = document.querySelector('#avatar-leadership');
+    var changeImg = document.querySelector('.leadership-img');
+    getFile.addEventListener('change', () => {
+        const chooseFile = getFile.files[0];
+        if (chooseFile) {
+            const pick = new FileReader();
+            pick.addEventListener('load', () => {
+                changeImg.setAttribute('src', pick.result);
+            });
+            pick.readAsDataURL(chooseFile);
+        }
+    });
     var file = document.querySelector('#file-user');
     var img = document.querySelector('.user-avatar');
     file.addEventListener('change', () => {
@@ -237,15 +402,43 @@
             reader.readAsDataURL(chooseFile);
         }
     });
+    var body = document.querySelector('body');
     var btnJob = document.querySelector('.btn-listjobs');
     var postJob = document.getElementById('postjob');
     var overplay = document.querySelector('.overplay-postjob');
+    var cancleJob = document.querySelector('.btn-postjob-cancle');
     btnJob.addEventListener('click', () => {
         postJob.style.display = 'flex';
         overplay.style.display = 'block';
+        body.classList.add('modal-open');
     })
     overplay.addEventListener('click', () => {
         postJob.style.display = 'none';
-        overplay.style.display = 'none'
+        overplay.style.display = 'none';
+        body.classList.remove('modal-open');
+    })
+    cancleJob.addEventListener('click',() =>{
+        postJob.style.display = 'none';
+        overplay.style.display = 'none';
+        body.classList.remove('modal-open');
+    })
+    var btnLeadership = document.querySelector('.btn-listleadership');
+    var postLeadership = document.getElementById('postleadership');
+    var overplay2 = document.querySelector('.overplay-postleadership');
+    var cancleLeadership = document.querySelector('.btn-postleader-cancle');
+    btnLeadership.addEventListener('click', () => {
+        postLeadership.style.display = 'flex';
+        overplay2.style.display = 'block';
+        body.classList.add('modal-open');
+    })
+    overplay2.addEventListener('click', () => {
+        postLeadership.style.display = 'none';
+        overplay2.style.display = 'none';
+        body.classList.remove('modal-open');
+    })
+    cancleLeadership.addEventListener('click',()=>{
+        postLeadership.style.display = 'none';
+        overplay2.style.display = 'none';
+        body.classList.remove('modal-open');
     })
 </script>

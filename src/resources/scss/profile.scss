@@ -16,7 +16,7 @@
     justify-content: center;
     width: 100%;
     height: 550px;
-    background: url('/img/headerprofile.jpeg') center/cover no-repeat;
+    background:linear-gradient(to right, rgba(0,0,0,0.3), rgba(255,255,255,0.2)), url('/img/headerprofile.jpeg') center/cover no-repeat;
     position: relative;
 }
 label.changebackground-profile{
@@ -24,27 +24,44 @@ label.changebackground-profile{
     bottom: 10px;
     right: 10px;
     font-size: 20px;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 10px;
     cursor: pointer;
+    background-color: white;
+    transition: .3s;
+}
+label.changebackground-profile:hover{
+    background-color: $primarycolor;
 }
 .header-profile-company{
     height: 620px;
 }
-
-.header-profile span{
-    margin: 12px 0;
-}
-.header-profile-company span {
-    margin: 0 0 12px 0;
+.header-main-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 240px;
+    width: 580px;
+    // background-color: rgba(0,0,0,0.3);
+    // background-image: linear-gradient(to right, rgba(0,0,0,0.3), rgba(255,255,255,0.3));
+    // backdrop-filter: blur(5px);
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 3px 3px 2px rgba(255, 255, 255,0.5);
 }
 .header-profile-primary{
     font-size: 40px;
     font-weight: 700;
     padding-left: 12px;
+    min-height: 25%;
 }
 .header-profile-secondary{
     font-size: 30px;
     font-weight: 500;
-    padding: 0 50% 0 12px;
+    padding: 12px;
+    max-height: 65%;
+    text-shadow: 2px 2px 2px rgba(255, 255, 255,0.5);
 }
 button.btn-setting {
     appearance: button;
@@ -114,17 +131,19 @@ button.btn-setting {
 .content-profile,
 .company-profile{
     width: 70%;
-    height: 1250px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 2px 2px 50px rgba(0,0,0,0.5);
-    transform: translateY(-10%);
+    transform: translateY(-6%);
     z-index: 10;
     display: none;
     transition: 1s;
 }
 .company-profile{
-    height: 1500px;
+    transform: translateY(-5%);
+}
+.content-profile-main > * {
+    margin: 14px 0;
 }
 .profile-img{
     display: flex;
@@ -137,7 +156,8 @@ button.btn-setting {
     height: 180px;
     border-radius: 50%;
     border: 4px solid white;
-    transform: translateY(-24%);
+    box-shadow: 1px 1px 10px #8f8d8d;
+    transform: translateY(-40%);
     position: relative;
     cursor: pointer;
 }
@@ -155,36 +175,35 @@ button.btn-setting {
     width: 172px;
     border-radius: 50%;
     cursor: pointer;
-    top: -39px;
+    top: -68px;
     left: 0;
     right: 0;
     margin: 0 auto;
-    transition: 0.5s;
+    cursor: pointer;
 }
 .camera-edit{
     position: absolute;
     font-size: 30px;
     right: 41%;
-    top: 4%;
-    color: white;
+    top: 2.5%;
+    color: black;
     padding: 0 8px;
     border-radius: 50%;
-    background-color:  rgba(0,0,0,0.5);
+    background-color:  rgba(255,255,255,0.5);
     cursor: pointer;
+    border: 1px dashed black;
+    transition: .3s;
+}
+.camera-user-edit{
+    top: 4.5%;
 }
 .camera-edit:hover{
     background-color:#8f8d8d;
-}
-.profile-img label:hover img{
-    transform: translateY(-28%);
-    cursor: pointer;
+    color: white;
+    border: unset;
 }
 .edit-img span{
-    transform: translateY(-140%);
-}
-.profile-img label:hover .edit-img{
-    display: flex;
-    z-index: 20;
+    transform: translateY(-220%);
 }
 .content-profile-header{
     width: 100%;
@@ -208,7 +227,8 @@ button.btn-setting {
 .profile-info-user,
 .about-me-profile,
 .about-company-profile,
-.listjobs{
+.listjobs,
+.listleadership{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -219,7 +239,8 @@ button.btn-setting {
     margin-bottom: 40px;
 }
 .about-company-profile > *,
-.listjobs {
+.listjobs,
+.listleadership {
     margin: 8px 0 0 0;
 }
 // .listjobs{
@@ -312,6 +333,7 @@ button.btn-setting {
     justify-content: center;
     align-items: center;
     height: 10%;
+    margin-bottom: 20px;
 }
 .btn-save{
     width: 15%;
@@ -341,21 +363,12 @@ input#postal::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.listjobs ul{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+.listjobs-action,
+.listleadership-action {
     width: 95%;
 }
-.listjobs ul li{
-    list-style-type: none;
-    font-size: 20px;
-    text-transform: capitalize;
-}
-.listjobs-action {
-    width: 95%;
-}
-.listjobs-action button{
+.listjobs-action button,
+.listleadership-action button{
     width: 18%;
     outline: none;
     border: 1px solid $primarycolor;
@@ -363,10 +376,12 @@ input#postal::-webkit-inner-spin-button {
     background-color: transparent;
     height: 40px;
 }
-.listjobs-action button:hover{
+.listjobs-action button:hover,
+.listleadership-action button:hover{
     background-color: rgba(0,0,0,0.1);
 }
-.overplay-postjob{
+.overplay-postjob,
+.overplay-postleadership{
     position: fixed;
     width: 100%;
     height: 120%;
@@ -376,17 +391,22 @@ input#postal::-webkit-inner-spin-button {
     transform: translatey(-12%);
     cursor: pointer;
 }
-#postjob{
+#postjob,
+#postleadership{
     display: none;
     flex-direction: column;
     justify-content: space-around;
     width: 70%;
-    height: 700px;
+    height: 680px;
     position: fixed;
     z-index: 20;
     transform: translateY(-8%);
 }
-#postjob h2{
+#postleadership{
+    height: 600px;
+}
+#postjob h2,
+#postleadership h2{
     text-align: center;
     color: white;
 }
@@ -401,7 +421,8 @@ input#postal::-webkit-inner-spin-button {
     font-size: 18px;
 }
 .info-job input,
-.info-job textarea{
+.info-job textarea,
+.job-location select{
     outline: none;
     border: none;
     height: 40px;
@@ -416,7 +437,41 @@ input#postal::-webkit-inner-spin-button {
 .info-job textarea{
     height: 120px;
 }
-.btn-postjob{
+.info-job-salary{
+    flex-direction: row;
+    justify-content: space-between;
+}
+.info-job-salary .job-location{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 48%;
+    height: 100%;
+}
+.job-salary{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 48%;
+    height: 100%;
+}
+#salary-range{
+    width: 100%;
+}
+.postleader-cancle,
+.postjob-cancle{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+.postleader-cancle > * ,
+.postjob-cancle > *{
+    margin: 0 12px;
+}
+.btn-postjob,
+.btn-postjob-cancle,
+.btn-postleader-cancle{
     outline: none;
     border: 1px solid $primarycolor;
     height: 50%;
@@ -427,18 +482,35 @@ input#postal::-webkit-inner-spin-button {
     background-color: transparent;
     border-radius: 10px;
 }
+.btn-postjob-cancle,
+.btn-postleader-cancle{
+    width: 80px;
+    border: 1px solid #FC0404;
+    color: #FC0404;
+}
+.btn-postjob-cancle:hover,
+.btn-postleader-cancle:hover{
+    background-color: #FC0404;
+    color: white;
+}
+.btn-postleader{
+    width: 180px;
+}
 .btn-postjob:hover{
     background-color: rgba(255,255,255,0.5);
 }
-.listjobs ul {
+.listjobs ul,
+.listleadership ul {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     flex-wrap: wrap;
+    width: 95%;
     padding: unset;
     margin-top: 20px;
 }
-li.content-listjob{
+li.content-listjob,
+li.content-listleadership{
     display: flex;
     flex-direction: column;
     width: 95%;
@@ -447,9 +519,40 @@ li.content-listjob{
     border-bottom: 1px solid #f0f0f0;
     margin-bottom: 12px;
     cursor: pointer;
+    list-style-type: none;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+li.content-listleadership{
+    flex-direction: row;
+    height: 80px;
+    align-items: center;
 }
 li.content-listjob:hover .namejobs{
     color: $primarycolor;
+}
+li.content-listleadership img{
+    width: 60px;
+    height: 60px;
+    padding: 2px;
+    border: 2px solid $primarycolor;
+}
+.infoleadership{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.infoleadership .nameleadership{
+    font-size: 20px;
+    font-weight: 700;
+    height: 22px;
+}
+.infoleadership .position{
+    color: #b9c2c4;
+    font-size: 14px;
+    font-weight: 800;
+    height: 18px;
 }
 .namejobs{
     font-size: 20px !important;
@@ -469,15 +572,17 @@ span.locationjobs{
     width: 50%;
     padding: unset;
 }
-ul.listpagejob {
+ul.listpagejob,
+ul.listpageleadership {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-bottom: 20px !important;
+    margin-bottom: 30px !important;
   }
-  ul.listpagejob li {
+  ul.listpagejob li,
+  ul.listpageleadership li {
     width: 30px;
     height: 30px;
     color: black;
@@ -491,10 +596,85 @@ ul.listpagejob {
     background-color: rgba(0,0,0,0.1);
     border-radius: 10px;
   }
-  ul.listpagejob .active {
+  ul.listpagejob .active,
+  ul.listpageleadership .active {
     border: 1px solid $primarycolor ;
     border-radius: 10px;
     transform: scale(1.2);
     cursor: not-allowed;
     text-align: center;
   }
+  .avatar-leadership{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .avatar-leadership img{
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    
+  }
+  .leadership-avatar{
+    position: relative;
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+  }
+  .avatar-leadership input{
+    display: none;
+  }
+  .eidt__avatar-leadership{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: none;
+    z-index: 30;
+  }
+.leadership-action-view{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+}
+.leadership-action-view button{
+    width: 120px;
+    height: 40px;
+    outline: none;
+    border-radius: 10px;
+    border: 4px solid #FCE604;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    padding: 4px 8px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: .5s;
+    text-align: center;
+}
+.leadership-action-view #view-more-btn:hover{
+    background-color: #FCE604;
+    color: white;
+    border: 4px solid white;
+    box-shadow: 2px 2px 2px 6px #FCE604;
+    font-weight: 600;
+}
+.leadership-action-view #view-less-btn{
+    border: 4px solid #FC0404;
+    opacity: 0;
+    cursor: default;
+}
+.leadership-action-view #view-less-btn:hover {
+    background-color: #FC0404;
+    color: white;
+    border:4px solid white ;
+    box-shadow: 2px 2px 1px 6px #FC0404;
+    font-weight: 600;
+}

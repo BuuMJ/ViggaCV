@@ -10,6 +10,7 @@ const Job = new Schema(
     jobdesc: String,
     jobrequi: String,
     joblocation: String,
+    salary: String,
   },
   {
     timestamps: true,

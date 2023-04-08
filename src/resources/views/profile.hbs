@@ -1,7 +1,9 @@
 <div class="main-profile">
     <div class="header-profile">
-        <span class="header-profile-primary">Hello {{getFullname user}}</span>
-        <span class="header-profile-secondary">This page is your profile. Clicking the settings button allows you to edit the information</span>
+        <div class="header-main-text">
+            <span class="header-profile-primary">Hello {{getFullname user}}</span>
+            <span class="header-profile-secondary">This page is your profile. Clicking the settings button allows you to edit the information</span>
+        </div>
         <button class="btn-setting">Setting <i class="bi bi-gear"></i></button>
     </div>
     <form class="content-profile" method="POST" action="/profile/edit?_method=PUT" enctype="multipart/form-data">
@@ -9,7 +11,7 @@
             <label for="file-user"><img class="user-avatar" src="{{getAvatar user}}" alt=""></label>
             <input id="file-user" name="avatar" type="file" accept="image/*">
             <label for="file-user" class="edit-img"><span>Change Avatar</span></label>
-            <label class="camera-edit" for="file-user"><i class="bi bi-camera"></i></label>
+            <label class="camera-edit camera-user-edit" for="file-user"><i class="bi bi-camera"></i></label>
         </div>
         <div class="content-profile-header">
             <span>Your Account</span>
@@ -110,16 +112,13 @@ btnSetting.addEventListener('click',()=>{
     var hover = document.querySelector('.user-avatar')
     var edit = document.querySelector('.edit-img')
     hover.addEventListener('mouseover',()=>{
-        edit.style.cssText = "display: flex; transform: translateY(-28%);"
-        hover.style.cssText = "transform: translatey(-28%);"
+        edit.style.cssText = "display: flex;"
     })
     edit.addEventListener('mouseout',()=>{
-        edit.style.cssText = "display: none; transform: translateY(-24%);"
-        hover.style.cssText = "transform: translatey(-24%);"
+        edit.style.cssText = "display: none;"
     })
      hover.addEventListener('mouseout',()=>{
-        edit.style.cssText = "display: none; transform: translateY(-24%);"
-        hover.style.cssText = "transform: translatey(-24%);"
+        edit.style.cssText = "display: none;"
     })
     var file = document.querySelector('#file-user');
     var img = document.querySelector('.user-avatar');

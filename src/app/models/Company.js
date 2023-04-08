@@ -17,6 +17,19 @@ const Company = new Schema(
     avatar: String,
     background: String,
     jobcount: String,
+    noofemployee: String,
+    servicedesc: String,
+    establisheddate: String,
+    mission: String,
+    history: String,
+    leadership: [
+      {
+        avatar: String,
+        name: String,
+        position: String,
+        introduce: String,
+      }
+    ]
   },
   {
     collection: "company",

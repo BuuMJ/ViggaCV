@@ -39,9 +39,12 @@
                         <div class="main-card-company">
                             <span class="card-company-name">{{this.TOB}} {{this.companyname}}</span>
                             <span class="card-company-jobname"><i class="bi bi-building-fill-exclamation"></i> {{this.companyfield}}</span>
-                            <span class="card-company-counts"><i class="bi bi-briefcase-fill"></i> {{this.jobcount}} opening jobs</span>
+                            <span class="card-company-counts"><i class="bi bi-briefcase-fill"></i> {{getJobcount jobcount}} opening jobs</span>
                         </div>
-                        <a href="/company/{{this._id}}" class="view-deatil__company">View Detail</a>
+                        <div class="list-detail">
+                          <a href="/company/{{this._id}}" class="view-detail__company">Company Detail</a>
+                          <a href="/company/job/{{this._id}}" class="view-detail__job">View Job</a>
+                        </div>
                     </div>
                 </div>
                 {{/each}}
