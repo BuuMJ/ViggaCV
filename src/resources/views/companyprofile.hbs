@@ -108,9 +108,10 @@ Today we are on the cusp of a new journey with our customers, to help them Power
                     <div class="listleadership-action">
                         <button class="btn-listleadership" type="button">Add Leadership</button>
                     </div>
+                    {{!-- form update --}}
                     <ul>
                         {{#each leadership}}
-                        <li class="content-listleadership">
+                        <li class="content-listleadership" data-id="{{this._id}}">
                             <img src="{{getAvatarleadership this}}" alt="">
                             <div class="infoleadership">
                                 <span class="nameleadership">{{this.name}}</span>
@@ -120,14 +121,13 @@ Today we are on the cusp of a new journey with our customers, to help them Power
                                 <i class="bi bi-three-dots-vertical"></i>
                                 <div class="show-action">
                                     <span class="update-leader">Update</span>
-                                    <a href=""><i class="bi bi-trash"></i></a>
+                                    <a href="" data-id="{{this._id}}" class="leadership-btn__remove" data-bs-toggle="modal" data-bs-target="#delete-leadership">
+                                    <i class="bi bi-trash"></i>
+                                    </a>
                                 </div>
                             </div>
-                        </li>
-                        {{!-- form update --}}
-                        <div class="overplay-updateleader"></div>
+                             <div class="overplay-updateleader"></div>
                          <div id="updateleadership">
-                            <form  method="POST" action="/companyprofile/leadership" enctype="multipart/form-data">
                                 <h2>Update for {{this.name}}</h2>
                                 <div class="avatar-leadership">
                                     <label class="leadership-avatar" for="avatar-leadership"><img class="leadership-img" src="{{getAvatarleadership this}}" alt=""></label>
@@ -147,11 +147,11 @@ Today we are on the cusp of a new journey with our customers, to help them Power
                                     <textarea id="jobdesc" name="introduce" type="text">{{this.introduce}}</textarea>
                                 </div>
                                 <div class="info-job postleader-cancle updateleader-cancle">
-                                    <button type="submit" class="btn-postjob btn-postleader">Update for {{this.name}}</button>
+                                    <button type="button" id="btn-update-leadership" class="btn-postjob btn-postleader">Update for {{this.name}}</button>
                                     <button type="button" class="btn-updateleader-cancle">Cancle</button>
                                 </div>
-                            </form>
                         </div>
+                        </li>
                         {{/each}}
                     </ul>
                     <div class="leadership-action-view">
@@ -265,7 +265,53 @@ Andrew leads the strategic direction of the business with a dedicated and divers
         </div>
     </form>
 </div>
+{{! confirm delete }}
+
+<div id="delete-leadership" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="font-weight: 700;">Do You Wanna Delete This Leadership</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:22px; ffont-weight: 600;">Are You Sure ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+        <button type="button" id="btn-delete-leadership" class="btn btn-danger">Delete Leadership</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{!-- update hiden form --}}
+<form  method="POST" name="update-leadership-form" enctype="multipart/form-data"></form>
+{{! delete hidden form }}
+<form method="POST" name="delete-leadership-form"></form>
 <script>
+   var dataIdUpdate = document.querySelectorAll('.content-listleadership');
+var updateForm = document.forms['update-leadership-form'];
+var btnUpdateLeadership = document.querySelectorAll('#btn-update-leadership');
+btnUpdateLeadership.forEach((btn, index) => {
+  btn.addEventListener('click', () => {
+    var updateLeadershipID = dataIdUpdate[index].getAttribute('data-id');
+    updateForm.action = '/companyprofile/leadership/edit/' + updateLeadershipID + '?_method=PUT';
+    updateForm.submit();
+  });
+});
+
+    var deleteLeadership = document.getElementById('delete-leadership')
+  var leadershipID; 
+  var btnDeleteLeadership =document.getElementById('btn-delete-leadership')
+  var deleteForm = document.forms['delete-leadership-form'];
+  deleteLeadership.addEventListener('show.bs.modal', event => {
+    var button = event.relatedTarget
+    leadershipID = button.getAttribute('data-id')
+    btnDeleteLeadership.onclick = function () {
+      deleteForm.action = '/companyprofile/leadership/delete/'  + leadershipID + '?_method=DELETE'; 
+      deleteForm.submit();
+    }
+  })
     //function show categories 63 provinces
     		var provinces = ["An Giang", "Bà Rịa-Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên-Huế", "Tiền Giang", "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"];
 		
