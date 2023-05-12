@@ -116,7 +116,42 @@ Today we are on the cusp of a new journey with our customers, to help them Power
                                 <span class="nameleadership">{{this.name}}</span>
                                 <span class="position">{{this.position}}</span>
                             </div>
+                            <div class="action-leader">
+                                <i class="bi bi-three-dots-vertical"></i>
+                                <div class="show-action">
+                                    <span class="update-leader">Update</span>
+                                    <a href=""><i class="bi bi-trash"></i></a>
+                                </div>
+                            </div>
                         </li>
+                        {{!-- form update --}}
+                        <div class="overplay-updateleader"></div>
+                         <div id="updateleadership">
+                            <form  method="POST" action="/companyprofile/leadership" enctype="multipart/form-data">
+                                <h2>Update for {{this.name}}</h2>
+                                <div class="avatar-leadership">
+                                    <label class="leadership-avatar" for="avatar-leadership"><img class="leadership-img" src="{{getAvatarleadership this}}" alt=""></label>
+                                    <input name="avatarleadership" type="file" id="avatar-leadership">
+                                    <label class="eidt__avatar-leadership" for="avatar-leadership">Change Avatar</label>
+                                </div>
+                                <div class="info-job">
+                                    <label for="jobname">Name</label>
+                                    <input id="jobname" name="nameleadership" value="{{this.name}}" type="text">
+                                </div>
+                                <div class="info-job">
+                                    <label for="jobname">Postion</label>
+                                    <input id="jobname" name="position" value="{{this.position}}" type="text">
+                                </div>
+                                <div class="info-job jobdesc">
+                                    <label for="jobdesc">Introduce</label>
+                                    <textarea id="jobdesc" name="introduce" type="text">{{this.introduce}}</textarea>
+                                </div>
+                                <div class="info-job postleader-cancle updateleader-cancle">
+                                    <button type="submit" class="btn-postjob btn-postleader">Update for {{this.name}}</button>
+                                    <button type="button" class="btn-updateleader-cancle">Cancle</button>
+                                </div>
+                            </form>
+                        </div>
                         {{/each}}
                     </ul>
                     <div class="leadership-action-view">
@@ -150,6 +185,7 @@ Today we are on the cusp of a new journey with our customers, to help them Power
         </div>
     </form>
     <div class="overplay-postjob"></div>
+    {{!-- form post job --}}
     <form id="postjob" method="POST" action="/companyprofile/postjob">
         <h2>New Job</h2>
         <div class="info-job">
@@ -200,6 +236,7 @@ Today we are on the cusp of a new journey with our customers, to help them Power
 
     </form>
     <div class="overplay-postleadership"></div>
+    {{!-- form add leader --}}
     <form id="postleadership" method="POST" action="/companyprofile/leadership" enctype="multipart/form-data">
         <h2>Add Leadership</h2>
         <div class="avatar-leadership">
@@ -441,4 +478,32 @@ viewMoreBtn.addEventListener("click", function() {
         overplay2.style.display = 'none';
         body.classList.remove('modal-open');
     })
+    var actionLeader = document.querySelectorAll('.action-leader');
+    var showActionLeader = document.querySelectorAll('.show-action');
+    for (let i = 0; i < actionLeader.length; i++){
+        actionLeader[i].addEventListener('mouseover',()=> {
+        showActionLeader[i].style.display = 'flex';
+    })
+        showActionLeader[i].addEventListener('mouseout',() => {
+            showActionLeader[i].style.display = 'none'
+        })
+    }
+    var updateLeader = document.querySelectorAll('.update-leader');
+    var showUpdateLeader = document.querySelectorAll('#updateleadership');
+    var cancleUpdate = document.querySelectorAll('.btn-updateleader-cancle');
+    var overplayUpdate = document.querySelectorAll('.overplay-updateleader');
+    for (let i = 0; i < updateLeader.length; i++){
+        updateLeader[i].addEventListener('click', ()=> {
+            showUpdateLeader[i].style.display = 'flex';
+            overplayUpdate[i].style.display = 'block'
+        })
+        cancleUpdate[i].addEventListener('click', ()=>{
+            showUpdateLeader[i].style.display = 'none';
+            overplayUpdate[i].style.display = 'none'
+        })
+        overplayUpdate[i].addEventListener('click',()=>{
+            showUpdateLeader[i].style.display = 'none';
+            overplayUpdate[i].style.display = 'none'
+        })
+    }
 </script>

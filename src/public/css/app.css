@@ -855,7 +855,8 @@ input#postal::-webkit-inner-spin-button {
   background-color: rgba(0, 0, 0, 0.1); }
 
 .overplay-postjob,
-.overplay-postleadership {
+.overplay-postleadership,
+.overplay-updateleader {
   position: fixed;
   width: 100%;
   height: 120%;
@@ -865,8 +866,14 @@ input#postal::-webkit-inner-spin-button {
   transform: translatey(-12%);
   cursor: pointer; }
 
+.overplay-updateleader {
+  transform: translateY(0px);
+  transform: translateX(-20%);
+  width: 200%; }
+
 #postjob,
-#postleadership {
+#postleadership,
+#updateleadership {
   display: none;
   flex-direction: column;
   justify-content: space-around;
@@ -876,11 +883,17 @@ input#postal::-webkit-inner-spin-button {
   z-index: 20;
   transform: translateY(-8%); }
 
-#postleadership {
+#updateleadership {
+  width: 95%;
+  transform: translateY(0); }
+
+#postleadership,
+#updateleadership {
   height: 600px; }
 
 #postjob h2,
-#postleadership h2 {
+#postleadership h2,
+#updateleadership h2 {
   text-align: center;
   color: white; }
 
@@ -945,7 +958,8 @@ input#postal::-webkit-inner-spin-button {
 
 .btn-postjob,
 .btn-postjob-cancle,
-.btn-postleader-cancle {
+.btn-postleader-cancle,
+.btn-updateleader-cancle {
   outline: none;
   border: 1px solid #fedb00;
   height: 50%;
@@ -957,13 +971,15 @@ input#postal::-webkit-inner-spin-button {
   border-radius: 10px; }
 
 .btn-postjob-cancle,
-.btn-postleader-cancle {
+.btn-postleader-cancle,
+.btn-updateleader-cancle {
   width: 80px;
   border: 1px solid #FC0404;
   color: #FC0404; }
 
 .btn-postjob-cancle:hover,
-.btn-postleader-cancle:hover {
+.btn-postleader-cancle:hover,
+.btn-updateleader-cancle:hover {
   background-color: #FC0404;
   color: white; }
 
@@ -1026,6 +1042,36 @@ li.content-listleadership img {
   font-size: 14px;
   font-weight: 800;
   height: 18px; }
+
+.action-leader {
+  position: relative;
+  right: 0; }
+
+.show-action {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 70px;
+  width: 120px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 7px 29px 0px;
+  position: absolute;
+  transform: translateX(-50%); }
+
+span.update-leader {
+  font-size: 18px; }
+
+span.update-leader:hover {
+  color: #26B7ED; }
+
+.show-action a {
+  text-decoration: none;
+  color: black; }
+
+.show-action a:hover {
+  color: #FC0404; }
 
 .namejobs {
   font-size: 20px !important;
