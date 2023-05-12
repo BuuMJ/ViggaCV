@@ -56,13 +56,13 @@ class ProfileController {
       console.log(req.file);
 
       //uploads file
-      if (req.file) {
-        console.log("đã có file");
+      if (req.file) {xxxxxxxx 
+        console.log("đã có file" +  password);
         // Kiểm tra xem có file được tải lên không
         const data = await fs.promises.readFile(req.file.path); // sửa chỗ này
         if (data) {
           console.log("đã tới đây và có file");
-          if (password != undefined) {
+          if (password) {
             console.log("đã tới đây có file và có password");
             const hash = await bcrypt.hash(password, 10);
             const updateUser = await UserModel.findByIdAndUpdate(
@@ -132,7 +132,7 @@ class ProfileController {
         }
       } else {
         console.log("không có file");
-        if (password != undefined) {
+        if (password) {
           console.log("đã tới đây không có file nhưng có password");
           const hash = await bcrypt.hash(password, 10);
           const updateUser = await UserModel.findByIdAndUpdate(

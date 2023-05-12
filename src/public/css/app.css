@@ -1951,6 +1951,10 @@ header.company-detail .background-company-detail {
   font-weight: 500;
   align-self: start; }
 
+html, body {
+  margin: 0;
+  padding: 0; }
+
 .container-create-cv {
   max-width: 700px;
   background: #fff;
@@ -1963,6 +1967,16 @@ header.company-detail .background-company-detail {
   background-image: url("/img/bgcv.jpeg");
   background-repeat: no-repeat;
   background-size: 111%; }
+
+#form-id {
+  margin: 0;
+  padding: 0; }
+
+.review-create-cv {
+  max-width: unset !important;
+  margin: unset;
+  width: 100%;
+  min-height: 100vh; }
 
 .container-create-cv input {
   border: none;

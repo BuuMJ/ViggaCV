@@ -17,21 +17,22 @@ class CvController {
   async createCV(req, res, next) {
     // const iduser = req.user.id;
     const data = await CVModel.findOne({ iduser: req.user.id });
-    console.log(req.user._id + " = Thông tin của user");
+    // console.log(req.user._id + " = Thông tin của user");
     if (data) {
-      console.log(data + " = Thông tin của user sau khi tra cứu");
+      // console.log(data + " = Thông tin của user sau khi tra cứu");
       res.render("createCV", {
         title: "Create CV",
         cvuser: data,
         user: req.user,
       });
       next();
+    } else {
+      res.render("createCV", {
+        title: "Create CV",
+        user: req.user,
+        usercv: req.user,
+      });
     }
-    res.render("createCV", {
-      title: "Create CV",
-      user: req.user,
-      usercv: req.user,
-    });
   }
 
   //[GET] CV PDF
@@ -40,18 +41,19 @@ class CvController {
     const data = await CVModel.findOne({ iduser: iduser });
     console.log("đây là id của user khi thực hiện xuất pdf: " + iduser);
     if (data) {
-      console.log(data + " = Thông tin của user sau khi tra cứu");
+      // console.log(data + " = Thông tin của user sau khi tra cứu");
       res.render("cvpdf", {
         title: "Export PDF",
         cvuser: data,
         user: req.user,
       });
+    } else {
+      res.render("cvpdf", {
+        title: "Export PDF",
+        user: req.user,
+        usercv: req.user,
+      });
     }
-    res.render("cvpdf", {
-      title: "Export PDF",
-      user: req.user,
-      usercv: req.user,
-    });
   }
 
   //[POST] Export CV to PDF
@@ -102,12 +104,60 @@ class CvController {
         await webPage.goto(url, {
           waitUntil: "networkidle0",
         });
-        await webPage
-          .pdf({
+
+        // // Đợi cho phần tử "form-id" được hiển thị trên trang web trước khi tính kích thước
+        // // await webPage.waitForSelector("#form-id");
+        // // Xác định phần tử cần in ra
+        // const element = await webPage.$("#form-id");
+        
+        // // Tính kích thước và vị trí của phần tử
+        // const boundingBox = await element.boundingBox();
+        
+        // await webPage.setViewport({ x: boundingBox.x,
+        //   y: boundingBox.y,
+        //   width: boundingBox.width,
+        //   height: boundingBox.height,
+        //    deviceScaleFactor: 1});
+        // // In ra phần tử với kích thước và vị trí chỉ định
+        // await webPage.emulateMediaType("screen");
+        // await webPage
+        //   .pdf({
+        //     path: "output.pdf",
+        //     clip: {
+        //       x: boundingBox.x,
+        //       y: boundingBox.y,
+        //       width: boundingBox.width,
+        //       height: boundingBox.height,
+        //     },
+        //   })
+          // // Xác định form
+          // const form = await webPage.$("#form-id");
+
+          // // Tính kích thước của phần tử form
+          // const formBoundingBox = await form.boundingBox();
+          // const { x, y, width, height } = formBoundingBox;
+
+          // // Chụp màn hình của phần tử form và xuất ra dưới dạng tệp PDF
+          // await webPage.pdf({
+          //   path: 'form.pdf',
+          //   clip: {
+          //     x: formBoundingBox.x,
+          //     y: formBoundingBox.y,
+          //     width: formBoundingBox.width,
+          //     height: formBoundingBox.height
+          //   },
+          //   margin: {
+          //     top: 0,
+          //     bottom: 0,
+          //     left: 0,
+          //     right: 0
+          //   }
+          // })
+          await webPage.pdf({
             printBackground: true,
             displayHeaderFooter: false,
             path: "CV of " + req.user.fullname + ".pdf",
-            clip: { x: 1000, y: -500, width: 500, height: 500 },
+            clip: { x: 100, y: 100, width: 800, height: 600 },
             format: "Tabloid",
             landscape: false,
             margin: {
@@ -117,12 +167,12 @@ class CvController {
               right: "20px",
             },
           })
-          .then((_) => {
-            console.log("Tạo file pdf thành công");
-          })
-          .catch((e) => {
-            console.log(e);
-          });
+          // .then((_) => {
+          //   console.log("Tạo file pdf thành công");
+          // })
+          // .catch((e) => {
+          //   console.log(e);
+          // });
         await browser.close();
         return res.download("CV of " + req.user.fullname + ".pdf");
       } else {

@@ -147,8 +147,8 @@
     </form>
 {{/if}}
 {{#if cvuser}}
-<form method="POST" action="/cv/exportcv">
-<div class="container-create-cv">
+<form id='form-id' method="POST" action="/cv/exportcv" >
+<div class="container-create-cv review-create-cv">
   <div class="header-create-cv">
     <div class="full-name-create-cv">
       <input type="text" name="fullnamecv" id="fullname-cv" value="{{getfullnamecv cvuser}}">
