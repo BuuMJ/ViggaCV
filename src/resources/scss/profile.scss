@@ -483,6 +483,7 @@ input#postal::-webkit-inner-spin-button {
     margin: 0 12px;
 }
 .btn-postjob,
+.btn-update-leadership,
 .btn-postjob-cancle,
 .btn-postleader-cancle,
 .btn-updateleader-cancle{
@@ -509,10 +510,12 @@ input#postal::-webkit-inner-spin-button {
     background-color: #FC0404;
     color: white;
 }
-.btn-postleader{
+.btn-postleader,
+.btn-update-leadership{
     width: 180px;
 }
-.btn-postjob:hover{
+.btn-postjob:hover,
+.btn-update-leadership:hover{
     background-color: rgba(255,255,255,0.5);
 }
 .listjobs ul,

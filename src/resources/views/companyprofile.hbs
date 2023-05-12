@@ -111,7 +111,7 @@ Today we are on the cusp of a new journey with our customers, to help them Power
                     {{!-- form update --}}
                     <ul>
                         {{#each leadership}}
-                        <li class="content-listleadership" data-id="{{this._id}}">
+                        <li class="content-listleadership" >
                             <img src="{{getAvatarleadership this}}" alt="">
                             <div class="infoleadership">
                                 <span class="nameleadership">{{this.name}}</span>
@@ -127,7 +127,7 @@ Today we are on the cusp of a new journey with our customers, to help them Power
                                 </div>
                             </div>
                              <div class="overplay-updateleader"></div>
-                         <div id="updateleadership">
+                         <div id="updateleadership" data-id="{{this._id}}">
                                 <h2>Update for {{this.name}}</h2>
                                 <div class="avatar-leadership">
                                     <label class="leadership-avatar" for="avatar-leadership"><img class="leadership-img" src="{{getAvatarleadership this}}" alt=""></label>
@@ -147,7 +147,7 @@ Today we are on the cusp of a new journey with our customers, to help them Power
                                     <textarea id="jobdesc" name="introduce" type="text">{{this.introduce}}</textarea>
                                 </div>
                                 <div class="info-job postleader-cancle updateleader-cancle">
-                                    <button type="button" id="btn-update-leadership" class="btn-postjob btn-postleader">Update for {{this.name}}</button>
+                                    <button type="button" class="btn-update-leadership">Update for {{this.name}}</button>
                                     <button type="button" class="btn-updateleader-cancle">Cancle</button>
                                 </div>
                         </div>
@@ -289,9 +289,9 @@ Andrew leads the strategic direction of the business with a dedicated and divers
 {{! delete hidden form }}
 <form method="POST" name="delete-leadership-form"></form>
 <script>
-   var dataIdUpdate = document.querySelectorAll('.content-listleadership');
+ var dataIdUpdate = document.querySelectorAll('#updateleadership');
 var updateForm = document.forms['update-leadership-form'];
-var btnUpdateLeadership = document.querySelectorAll('#btn-update-leadership');
+var btnUpdateLeadership = document.querySelectorAll('.btn-update-leadership');
 btnUpdateLeadership.forEach((btn, index) => {
   btn.addEventListener('click', () => {
     var updateLeadershipID = dataIdUpdate[index].getAttribute('data-id');
@@ -299,6 +299,7 @@ btnUpdateLeadership.forEach((btn, index) => {
     updateForm.submit();
   });
 });
+
 
     var deleteLeadership = document.getElementById('delete-leadership')
   var leadershipID; 

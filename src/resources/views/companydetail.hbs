@@ -46,32 +46,44 @@
                     <span class="leadership__first-text">LEADERSHIP</span>
                     <span class="leadership__second-text">The {{getCompanyname company}} company was founded on {{getEstablisheddate company}}, and has {{getCompanyyears company}} years of experience in the industry. A summary of our company's Leadership</span>
                 </div>
+                <div class="leadership-carousel">
                 <div class="company-leadership__info-total">
                     {{#each leadership}}
                     <div class="company-leadership__info">
-                        <div class="total-leadership" style="background:linear-gradient(-180deg, transparent, rgba(254, 219, 0,0.3)), url('{{getAvatarleadership this}}') center/cover no-repeat; ;" ></div>
-                        <div class="company-leadership__info-text">
-                            <span class="first">{{this.name}}</span>
-                            <span class="second">{{this.position}}</span>
-                        </div>
+                    <div class="total-leadership" style="background:linear-gradient(-180deg, transparent, rgba(254, 219, 0,0.3)), url('{{getAvatarleadership this}}') center/cover no-repeat; ;" ></div>
+                    <div class="company-leadership__info-text">
+                        <span class="first">{{this.name}}</span>
+                        <span class="second">{{this.position}}</span>
+                    </div>
                     </div>
                     
                     <div class="show__main-info-leadership">
-                        <img src="{{getAvatarleadership this}}" alt="">
-                        <div class="introduce-leadership">
-                            <span class="first">{{this.name}}</span>
-                            <span class="second">{{this.position}}</span>
-                            <p>{{this.introduce}}</p>
-                        </div>
-                        <i class="bi bi-x-square-fill"></i>
+                    <img src="{{getAvatarleadership this}}" alt="">
+                    <div class="introduce-leadership">
+                        <span class="first">{{this.name}}</span>
+                        <span class="second">{{this.position}}</span>
+                        <p>{{this.introduce}}</p>
+                    </div>
+                    <i class="bi bi-x-square-fill"></i>
                     </div>
                     {{/each}}
+                </div>
                 </div>
             </div>
         </div>
 </div>
 <div class="overplay"></div>
 <script>
+    $(document).ready(function(){
+  $('.leadership-carousel .company-leadership__info-total').slick({
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    adaptiveHeight: true
+  });
+});
+
   const overplay = document.querySelector('.overplay');
 const body = document.querySelector('body');
 const showLeadership = document.querySelectorAll('.company-leadership__info');
