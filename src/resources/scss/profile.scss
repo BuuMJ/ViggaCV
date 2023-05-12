@@ -392,14 +392,8 @@ input#postal::-webkit-inner-spin-button {
     transform: translatey(-12%);
     cursor: pointer;
 }
-.overplay-updateleader{
-    transform: translateY(0px);
-    transform: translateX(-20%);
-    width: 200%;
-}
 #postjob,
-#postleadership,
-#updateleadership{
+#postleadership{
     display: none;
     flex-direction: column;
     justify-content: space-around;
@@ -418,8 +412,7 @@ input#postal::-webkit-inner-spin-button {
     height: 600px;
 }
 #postjob h2,
-#postleadership h2,
-#updateleadership h2{
+#postleadership h2{
     text-align: center;
     color: white;
 }
