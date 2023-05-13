@@ -4,20 +4,26 @@ const fs = require("fs");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 const subVN = require("sub-vn");
-const {staffMongoseToObject} = require('../../util/mongoose')
+const { staffMongoseToObject } = require("../../util/mongoose");
 
 class CompanyProfileController {
-  //[GET]
+  //[GET] Company profile
   async companyprofile(req, res, next) {
     const location = subVN.getProvinces();
     const address = location.map((location) => location.name);
     // console.log(req.user._id);
     const company = await CompanyModel.findOne({ iduser: req.user._id });
+    if(company){
+      var leadership = company.leadership
+    }else{
+      var leadership = null
+    }
     // console.log(
     //   company.leadership +
     //     "ĐÂY LÀ GIÁ TRỊ CỦA COMPANY PROFILEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
     // );
     // const listjob = await JobModel.findone({ iduser: req.user._id });
+    // console.log('Đây là leadership ở func [GET] Company profile :' + leadership)
     const listcompany = await CompanyModel.find({});
     const Listcompany = listcompany.map((listcompany) =>
       listcompany.toObject()
@@ -33,8 +39,8 @@ class CompanyProfileController {
         listcompany: Listcompany,
         listjob,
         address,
-        leader: company.leadership,
-        leadership: staffMongoseToObject(company.leadership),
+        leader: leadership,
+        leadership: staffMongoseToObject(leadership),
       });
     });
   }
@@ -279,7 +285,7 @@ class CompanyProfileController {
         } else {
           const company = await CompanyModel.findOne({ iduser: req.user._id });
           if (company) {
-            console.log("Đã tới đây không có file nhưng đã có dữ liệu");
+            console.log("Đã tới đây không có file nhưng đã có dữ liệu1");
             const idCompany = company._id;
             await CompanyModel.findByIdAndUpdate(
               idCompany,
@@ -361,8 +367,7 @@ class CompanyProfileController {
         await company.save();
         res.redirect("/companyprofile");
       }
-    }
-    else {
+    } else {
       company.leadership.push({
         name: nameleadership,
         position: position,
@@ -396,6 +401,16 @@ class CompanyProfileController {
     });
     res.redirect("/companyprofile");
   }
+
+  //[DELETE] Delete leadership
+  async deleteLeadership(req, res, next) {
+    const company = await CompanyModel.findOne({ iduser: req.user._id });
+    const leadershipId = req.params.id;
+    company.leadership.pull({ _id: leadershipId });
+    await company.save();
+    res.redirect("/companyprofile");
+  }
+
 }
 
 module.exports = new CompanyProfileController();

@@ -56,7 +56,7 @@ class ProfileController {
       console.log(req.file);
 
       //uploads file
-      if (req.file) {xxxxxxxx 
+      if (req.file) {
         console.log("đã có file" +  password);
         // Kiểm tra xem có file được tải lên không
         const data = await fs.promises.readFile(req.file.path); // sửa chỗ này

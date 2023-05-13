@@ -3,6 +3,7 @@ const fs = require("fs");
 const pdf = require("html-pdf");
 const path = require("path");
 const CVModel = require("../models/CV");
+const {staffMongoseToObject} = require('../../util/mongoose')
 
 class CvController {
   //[GET] CV
@@ -22,7 +23,7 @@ class CvController {
       // console.log(data + " = Thông tin của user sau khi tra cứu");
       res.render("createCV", {
         title: "Create CV",
-        cvuser: data,
+        inforCV: staffMongoseToObject(data),
         user: req.user,
       });
       next();
@@ -105,54 +106,6 @@ class CvController {
           waitUntil: "networkidle0",
         });
 
-        // // Đợi cho phần tử "form-id" được hiển thị trên trang web trước khi tính kích thước
-        // // await webPage.waitForSelector("#form-id");
-        // // Xác định phần tử cần in ra
-        // const element = await webPage.$("#form-id");
-        
-        // // Tính kích thước và vị trí của phần tử
-        // const boundingBox = await element.boundingBox();
-        
-        // await webPage.setViewport({ x: boundingBox.x,
-        //   y: boundingBox.y,
-        //   width: boundingBox.width,
-        //   height: boundingBox.height,
-        //    deviceScaleFactor: 1});
-        // // In ra phần tử với kích thước và vị trí chỉ định
-        // await webPage.emulateMediaType("screen");
-        // await webPage
-        //   .pdf({
-        //     path: "output.pdf",
-        //     clip: {
-        //       x: boundingBox.x,
-        //       y: boundingBox.y,
-        //       width: boundingBox.width,
-        //       height: boundingBox.height,
-        //     },
-        //   })
-          // // Xác định form
-          // const form = await webPage.$("#form-id");
-
-          // // Tính kích thước của phần tử form
-          // const formBoundingBox = await form.boundingBox();
-          // const { x, y, width, height } = formBoundingBox;
-
-          // // Chụp màn hình của phần tử form và xuất ra dưới dạng tệp PDF
-          // await webPage.pdf({
-          //   path: 'form.pdf',
-          //   clip: {
-          //     x: formBoundingBox.x,
-          //     y: formBoundingBox.y,
-          //     width: formBoundingBox.width,
-          //     height: formBoundingBox.height
-          //   },
-          //   margin: {
-          //     top: 0,
-          //     bottom: 0,
-          //     left: 0,
-          //     right: 0
-          //   }
-          // })
           await webPage.pdf({
             printBackground: true,
             displayHeaderFooter: false,
@@ -160,19 +113,14 @@ class CvController {
             clip: { x: 100, y: 100, width: 800, height: 600 },
             format: "Tabloid",
             landscape: false,
-            margin: {
-              top: "10px",
-              bottom: "20px",
-              left: "10px",
-              right: "20px",
-            },
+            
           })
-          // .then((_) => {
-          //   console.log("Tạo file pdf thành công");
-          // })
-          // .catch((e) => {
-          //   console.log(e);
-          // });
+          .then((_) => {
+            console.log("Tạo file pdf thành công");
+          })
+          .catch((e) => {
+            console.log(e);
+          });
         await browser.close();
         return res.download("CV of " + req.user.fullname + ".pdf");
       } else {
@@ -184,62 +132,6 @@ class CvController {
       console.error(err);
       res.status(500).send("Error saving CV");
     }
-    //-----------------------------------------------------------------------
-    //IN RA ĐƯỢC TRANG WEB NHƯNG CHƯA LẤY ĐƯỢC DỮ LIỆU ĐẦU VÀO
-    // const browser = await puppeteer.launch();
-    // const webPage = await browser.newPage();
-    // const url = "http://localhost:3000/cv/createcv";
-    // console.log("aaaaaaaaaaaaaaaaaaa " + browser);
-    // await webPage.goto(url, {
-    //   waitUntil: "networkidle0",
-    // });
-    // await webPage
-    //   .pdf({
-    //     printBackground: true,
-    //     displayHeaderFooter: false,
-    //     path: "testttt.pdf",
-    //     format: "A4",
-    //     landscape: false,
-    //     margin: {
-    //       top: "10px",
-    //       bottom: "20px",
-    //       left: "10px",
-    //       right: "20px",
-    //     },
-    //   })
-    //   .then((_) => {
-    //     console.log("Tạo file pdf thành công");
-    //   })
-    //   .catch((e) => {
-    //     console.log(e);
-    //   });
-    // await browser.close();
-    //-----------------------------------------------------------------------------------------------------
-    //CHỈ IN RA FILE HTML
-    // const { filename, name, email, phone } = req.body; // Lấy thông tin từ form
-    // console.log(filename, name, email, phone);
-    // // Đọc file HTML vào biến html và truyền các giá trị vào
-    // let html = fs.readFileSync(
-    //   path.join(__dirname, "../../resources/views/createcv.hbs"),
-    //   "utf8"
-    // );
-    // html = html.replace("{name}", name);
-    // html = html.replace("{email}", email);
-    // html = html.replace("{phone}", phone);
-    // // Tạo file PDF và lưu vào thư mục của bạn
-    // const options = {
-    //   format: "A4",
-    //   border: "1cm",
-    // };
-    // pdf.create(html, options).toFile(`${filename}.pdf`, function (err, _) {
-    //   if (err) {
-    //     console.log(err);
-    //     return res.sendStatus(500);
-    //   } else {
-    //     console.log("Tạo file PDF thành công");
-    //     return res.download(`${filename}.pdf`);
-    //   }
-    // });
   }
 
   //quy
