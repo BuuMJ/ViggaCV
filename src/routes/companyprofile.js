@@ -3,13 +3,14 @@ const router = express.Router();
 const companyprofileComtroller = require("../app/controllers//CompanyProfileController");
 const { upload } = require("../util/data");
 
+router.delete("/leadership/delete/:id", companyprofileComtroller.deleteLeadership)
+router.post('/leadership',  upload.single("avatarleadership"), companyprofileComtroller.leadership)
+router.post("/postjob", companyprofileComtroller.postjob);
 router.put(
   "/edit",
   upload.fields([{ name: "avatar" }, { name: "background" }]),
   companyprofileComtroller.apicompanyprofile
 );
-router.post('/leadership',  upload.single("avatarleadership"), companyprofileComtroller.leadership)
-router.post("/postjob", companyprofileComtroller.postjob);
 router.get("/", companyprofileComtroller.companyprofile);
 
 module.exports = router;

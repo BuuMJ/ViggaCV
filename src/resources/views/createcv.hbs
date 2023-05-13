@@ -146,28 +146,28 @@
     <button type="submit">Review Your CV</button>
     </form>
 {{/if}}
-{{#if cvuser}}
+{{#if inforCV}}
 <form method="POST" action="/cv/exportcv">
 <div class="container-create-cv">
   <div class="header-create-cv">
     <div class="full-name-create-cv">
-      <input type="text" name="fullnamecv" id="fullname-cv" value="{{getfullnamecv cvuser}}">
+      <input type="text" name="fullnamecv" id="fullname-cv" value="{{inforCV.fullname}}">
       {{!-- <img src="{{getAvatar user}}" alt=""> --}}
     </div>
     <div class="contact-info-create-cv">
         <div class="list-contact-info">
             <label for="email-cv">Email:</label>
-            <input id="email-cv" name="emailcv" value="{{getemailcv cvuser}}">
+            <input id="email-cv" name="emailcv" value="{{inforCV.emailcv}}">
         </div>
         <div class="list-contact-info">
             <label class="phone-cv" for="phone-cv">Phone: </label>
-            <input id="phone-cv" name="phonecv" value="{{getphonecv cvuser}}">
+            <input id="phone-cv" name="phonecv" value="{{inforCV.phonevc}}">
         </div>
     </div>
     
     <div class="about-create-cv">
       <span class="position">Overview:</span>
-      <textarea id="desc-overview" class="desc" name="overview" placeholder="I am a front-end developer with more than 3 years of experience writing html, css, and js. I'm motivated, result-focused and seeking a successful team-oriented company with opportunity to grow.">{{getoverview cvuser}}</textarea>
+      <textarea id="desc-overview" class="desc" name="overview" placeholder="I am a front-end developer with more than 3 years of experience writing html, css, and js. I'm motivated, result-focused and seeking a successful team-oriented company with opportunity to grow.">{{inforCV.overview}}</textarea>
     </div>
   </div>
    <div class="details">
@@ -176,13 +176,13 @@
       <div class="section__list">
         <div class="section__list-item">
           <div class="left">
-            <input class="name-company" name="namecompany" value="{{getnamecompany cvuser}}" placeholder="Thien Phu Company">
-            <input class="addr-company" name="addrcompany" value="{{getaddrcompany cvuser}}" placeholder="Le Hong Phong, Nha Trang">
-            <input class="duration-company" name="durationcompany" value="{{getdurationcompany cvuser}}" placeholder="4 years">
+            <input class="name-company" name="namecompany" value="{{inforCV.namecompany}}" placeholder="Thien Phu Company">
+            <input class="addr-company" name="addrcompany" value="{{inforCV.addrcompany}}" placeholder="Le Hong Phong, Nha Trang">
+            <input class="duration-company" name="durationcompany" value="{{inforCV.durationcompany}}" placeholder="4 years">
           </div>
           <div class="right">
-            <input class="name-profession" name="nameprofession" value="{{getnameprofession cvuser}}" placeholder="Front-end Developer">
-            <input class="desc-profession" name="descprofession" value="{{getdescprofession cvuser}}" placeholder="Develop a website for company">
+            <input class="name-profession" name="nameprofession" value="{{inforCV.nameprofession}}" placeholder="Front-end Developer">
+            <input class="desc-profession" name="descprofession" value="{{inforCV.descprofession}}" placeholder="Develop a website for company">
           </div>
         </div>
       </div>
@@ -192,13 +192,13 @@
        <div class="section__list">
         <div class="section__list-item">
           <div class="left">
-            <input class="name-school" name="nameschool" value="{{getnameschool cvuser}}" placeholder="Greenwich University">
-            <input class="addr-school" name="addrschool" value="{{getaddrschool cvuser}}" placeholder="20 Cong Hoa">
-            <input class="duration-school" name="durationschool" value="{{getdurationschool cvuser}}"  placeholder="Sep 2017 - Nov 2023">
+            <input class="name-school" name="nameschool" value="{{inforCV.nameschool}}" placeholder="Greenwich University">
+            <input class="addr-school" name="addrschool" value="{{inforCV.addrschool}}" placeholder="20 Cong Hoa">
+            <input class="duration-school" name="durationschool" value="{{inforCV.durationschool}}"  placeholder="Sep 2017 - Nov 2023">
           </div>
           <div class="right">
-            <input class="name-profession" name="nameprofessionschool" value="{{getnameprofessionschool cvuser}}" placeholder="Front-end Developer">
-            <input class="desc-profession" name="descprofessionschool"  value="{{getdescprofessionschool cvuser}}" placeholder="Web Development">
+            <input class="name-profession" name="nameprofessionschool" value="{{inforCV.nameprofessionschool}}" placeholder="Front-end Developer">
+            <input class="desc-profession" name="descprofessionschool"  value="{{inforCV.descprofessionschool}}" placeholder="Web Development">
           </div>
         </div>
       </div>
@@ -208,8 +208,8 @@
       <div class="section__title">Projects</div> 
        <div class="section__list">
          <div class="section__list-item project">
-           <textarea id="name-project" name="nameproject"  placeholder="Your Name Project">{{getnameproject cvuser}}</textarea>
-           <textarea id="desc-project" name="descproject"  placeholder="I am a front-end developer with more than 3 years of experience writing html, css, and js. I'm motivated, result-focused and seeking a successful team-oriented company with opportunity to grow.">{{getdescproject cvuser}}</textarea>
+           <textarea id="name-project" name="nameproject"  placeholder="Your Name Project">{{inforCV.nameproject}}</textarea>
+           <textarea id="desc-project" name="descproject"  placeholder="I am a front-end developer with more than 3 years of experience writing html, css, and js. I'm motivated, result-focused and seeking a successful team-oriented company with opportunity to grow.">{{inforCV.descproject}}</textarea>
          </div>
        </div>
     </div>
@@ -217,20 +217,20 @@
        <div class="section__title">Skills</div>
        <div class="skills">
          <div class="skills__item">
-           <div class="left"><input class="nameskill" name="nameskill" value="{{getnameskill cvuser}}"></div>
+           <div class="left"><input class="nameskill" name="nameskill" value="{{inforCV.nameskill}}"></div>
            <div class="right">
-                          <input  id="ck1" name="skilllv1" value="{{getskilllv1 cvuser}}" type="checkbox" checked/>
+                          <input  id="ck1" name="skilllv1" value="{{inforCV.skilllv1}}" type="checkbox" checked/>
 
              <label for="ck1"></label>
-                          <input id="ck2" name="skilllv2" value="{{getskilllv2 cvuser}}" type="checkbox" checked/>
+                          <input id="ck2" name="skilllv2" value="{{inforCV.skilllv2}}" type="checkbox" checked/>
 
               <label for="ck2"></label>
-                         <input id="ck3" name="skilllv3" value="{{getskilllv3 cvuser}}" type="checkbox" />
+                         <input id="ck3" name="skilllv3" value="{{inforCV.skilllv3}}" type="checkbox" />
 
               <label for="ck3"></label>
-                           <input id="ck4" name="skilllv4" value="{{getskilllv4 cvuser}}" type="checkbox" />
+                           <input id="ck4" name="skilllv4" value="{{inforCV.skilllv4}}" type="checkbox" />
             <label for="ck4"></label>
-                          <input id="ck5" name="skilllv5"  value="{{getskilllv5 cvuser}}" type="checkbox" />
+                          <input id="ck5" name="skilllv5"  value="{{inforCV.skilllv5}}" type="checkbox" />
               <label for="ck5"></label>
            </div>
          </div>
@@ -241,7 +241,7 @@
        Activities
        </div>
        <div class="section__list">
-         <textarea id="activities" name="activities" placeholder="Football, programming, swimming.">{{getactivities cvuser}}</textarea>
+         <textarea id="activities" name="activities" placeholder="Football, programming, swimming.">{{inforCV.activities}}</textarea>
        </div>
      </div>
      </div>

@@ -9,12 +9,14 @@ class JobController {
   async job(req, res, next) {
     const user = req.user;
     const job = await JobModel.find({});
+    const count = await JobModel.countDocuments()
     const company = await CompanyModel.find({});
     res.render("job", {
       title: "List Job",
       job: mutipleMongooseToObject(job),
       company: mutipleMongooseToObject(company),
       user,
+      count: count,
     });
   }
 
