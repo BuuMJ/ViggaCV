@@ -214,6 +214,7 @@ transition: .3s;
 .card-company:hover{
 border: 1px solid $primarycolor;
 }
+
 .card-company:hover  .list-detail{
 opacity: 1;
 cursor: pointer;
@@ -472,25 +473,60 @@ header.company-detail .background-company-detail{
   width: 40%;
 }
 
-.company-leadership__info-total {
+.company-leadership__info-total,
+.carousel {
   width: 55%;
   display: flex;
   flex-direction: row;
   justify-content: space-between; /* changed from space-around */
   align-items: center;
-  overflow-x: scroll;
+  position: relative;
+  scroll-behavior: smooth;
 }
-
+.carousel {
+  width: 100%;
+  overflow: hidden;
+}
+.company-leadership__info-total button#left{
+  position: absolute;
+  font-size: 48px;
+  left: -36px;
+  z-index: 20;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  display: none;
+}
+.company-leadership__info-total button#right{
+  position: absolute;
+  font-size: 48px;
+  right: -36px;
+  z-index: 20;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.company-leadership__info-total button#left:hover,
+.company-leadership__info-total button#right:hover{
+  color: $primarycolor;
+}
 .company-leadership__info-total .company-leadership__info {
   display: flex;
   flex-direction: row;
   width: 100%;
   position: relative;
+  justify-content: center;
+  align-items: center;
+  margin-left: 28px;
+}
+.company-leadership__info-total .company-leadership__info:first-child{
+  margin-left: 0;
 }
 .total-leadership {
   width: 360px;
   height: 579px;
-  margin-right: 30px;
   cursor: pointer;
   transition: .3s;
 }
@@ -540,17 +576,17 @@ header.company-detail .background-company-detail{
   left: 0;
   margin: 0 auto;
   z-index: 100;
-  overflow: scroll;
 }
 .show__main-info-leadership img{
   height: 100%;
-  width: 363px;
+  width: 30%;
 }
 .show__main-info-leadership .introduce-leadership{
   padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 70%;
 }
 .show__main-info-leadership .introduce-leadership span.first{
   height: 40px;
@@ -573,6 +609,9 @@ header.company-detail .background-company-detail{
   cursor: pointer;
   transform: translate(2px,-14px);
   color: black;
+}
+.show__main-info-leadership i:hover{
+  color: #FC0404;
 }
 .overplay{
   position: fixed;

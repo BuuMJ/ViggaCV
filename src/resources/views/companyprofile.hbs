@@ -127,25 +127,25 @@ Today we are on the cusp of a new journey with our customers, to help them Power
                                 </div>
                             </div>
                          <div id="updateleadership">
-                                <div class="show__main-info-leadership">
-                                    <img src="{{getAvatarleadership this}}" alt="">
-                                    <div class="introduce-leadership">
-                                        <span class="first">{{this.name}}</span>
-                                        <span class="second">{{this.position}}</span>
-                                        <p>{{this.introduce}}</p>
-                                    </div>
-                                    <i class="bi bi-x-square-fill"></i>
+                            <div class="book">
+                                <p>{{this.introduce}}</p>
+                            <span class="close-book"><i class="bi bi-x-lg"></i></span>
+                                <div class="cover">
+                                    <img src="{{getAvatarleadership this}}">
+                                    <h1>{{this.name}}</h1>
+                                    <span>{{this.position}}</span>
                                 </div>
+                            </div>
                         </div>
                         </li>
                         {{/each}}
                     </ul>
-                    <div class="overplay-updateleader"></div>
                     <div class="leadership-action-view">
                         <button type="button" id="view-more-btn">View more</button>
                         <button type="button" id="view-less-btn">View less</button>
                     </div>                  
                 </div>
+                <div class="overplay-review"></div>
                 <span>LIST JOBS</span>
                 <div class="listjobs">
                     <div class="listjobs-action">
@@ -508,22 +508,22 @@ viewMoreBtn.addEventListener("click", function() {
             showActionLeader[i].style.display = 'none'
         })
     }
-</script>
-    {{!-- var updateLeader = document.querySelectorAll('.update-leader');
+    var updateLeader = document.querySelectorAll('.update-leader');
     var showUpdateLeader = document.querySelectorAll('#updateleadership');
-    var cancleUpdate = document.querySelectorAll('.btn-updateleader-cancle');
-    var overplayUpdate = document.querySelectorAll('.overplay-updateleader');
+    var cancleUpdate = document.querySelectorAll('.close-book');
+    var overplayReview = document.querySelector('.overplay-review')
     for (let i = 0; i < updateLeader.length; i++){
         updateLeader[i].addEventListener('click', ()=> {
             showUpdateLeader[i].style.display = 'flex';
-            overplayUpdate[i].style.display = 'block'
+            overplayReview.style.display = 'block'
         })
         cancleUpdate[i].addEventListener('click', ()=>{
             showUpdateLeader[i].style.display = 'none';
-            overplayUpdate[i].style.display = 'none'
+            overplayReview.style.display = 'none';
         })
-        overplayUpdate[i].addEventListener('click',()=>{
-            showUpdateLeader[i].style.display = 'none';
-            overplayUpdate[i].style.display = 'none'
+        overplayReview.addEventListener('click', ()=>{
+             showUpdateLeader[i].style.display = 'none';
+            overplayReview.style.display = 'none';
         })
-    } --}}
+    }
+</script>

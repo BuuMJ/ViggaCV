@@ -46,8 +46,10 @@
                     <span class="leadership__first-text">LEADERSHIP</span>
                     <span class="leadership__second-text">The {{getCompanyname company}} company was founded on {{getEstablisheddate company}}, and has {{getCompanyyears company}} years of experience in the industry. A summary of our company's Leadership</span>
                 </div>
-                <div class="leadership-carousel">
                 <div class="company-leadership__info-total">
+                    <button id="left"><i class="bi bi-caret-left"></i></button>
+                    <button id="right"><i class="bi bi-caret-right"></i></button>
+                    <div class="carousel">
                     {{#each leadership}}
                     <div class="company-leadership__info">
                     <div class="total-leadership" style="background:linear-gradient(-180deg, transparent, rgba(254, 219, 0,0.3)), url('{{getAvatarleadership this}}') center/cover no-repeat; ;" ></div>
@@ -58,32 +60,56 @@
                     </div>
                     
                     <div class="show__main-info-leadership">
-                    <img src="{{getAvatarleadership this}}" alt="">
+                    <img src="{{getAvatarleadership this}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
                     <div class="introduce-leadership">
                         <span class="first">{{this.name}}</span>
                         <span class="second">{{this.position}}</span>
                         <p>{{this.introduce}}</p>
                     </div>
-                    <i class="bi bi-x-square-fill"></i>
+                    <i class="bi bi-x-lg"></i>
                     </div>
                     {{/each}}
-                </div>
+                    </div>
                 </div>
             </div>
         </div>
 </div>
 <div class="overplay"></div>
 <script>
-    $(document).ready(function(){
-  $('.leadership-carousel .company-leadership__info-total').slick({
-    dots: true,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 1,
-    adaptiveHeight: true
-  });
-});
-
+   const carousel = document.querySelector('.carousel');
+   firstItem = carousel.querySelectorAll('.company-leadership__info')[0];
+   arrowButtons = document.querySelectorAll('.company-leadership__info-total button')
+   let isDragStart = false , prevPageX, prevScrollLeft;
+   let firstItemWidth = firstItem.clientWidth + 28;
+   let scrollWidth = carousel.scrollWidth - carousel.clientWidth;
+   const showHideButtons = () =>{
+    arrowButtons[0].style.display = carousel.scrollLeft == 0 ? "none" : "block";
+    arrowButtons[1].style.display = carousel.scrollLeft == scrollWidth ? "none" : "block";
+   }
+   arrowButtons.forEach(button => {
+    button.addEventListener('click',()=>{
+        carousel.scrollLeft += button.id == "left" ? -firstItemWidth : firstItemWidth;
+       setTimeout(()=>  showHideButtons(), 60);
+    })
+   })
+   const draggStart = (e)=> {
+    isDragStart = true;
+    prevPageX = e.pageX;
+    prevScrollLeft = carousel.scrollLeft;
+   }
+   const dragging = (e)=>{
+    if(!isDragStart) return;
+    e.preventDefault();
+    let positionDiff = e.pageX - prevPageX;
+    carousel.scrollLeft = prevScrollLeft - positionDiff;
+    showHideButtons()
+   }
+   const draggStop = ()=>{
+    isDragStart = false;
+   }
+   carousel.addEventListener('mousedown', draggStart);
+   carousel.addEventListener('mousemove', dragging);
+   carousel.addEventListener('mouseup', draggStop);
   const overplay = document.querySelector('.overplay');
 const body = document.querySelector('body');
 const showLeadership = document.querySelectorAll('.company-leadership__info');
@@ -97,7 +123,7 @@ for (let i = 0; i < showLeadership.length; i++) {
   });
 }
 
-const closeLeadership = document.querySelectorAll('.bi-x-square-fill');
+const closeLeadership = document.querySelectorAll('.bi-x-lg');
 for (let i = 0; i < closeLeadership.length; i++) {
   closeLeadership[i].addEventListener('click', () => {
     tableLeadership[i].style.display = 'none';
