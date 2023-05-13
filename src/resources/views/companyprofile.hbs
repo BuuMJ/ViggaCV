@@ -14,7 +14,7 @@
         </div>
         <div class="content-profile company-profile">
             <div class="profile-img">
-                <label for="file-user"><img class="user-avatar" src="{{getAvatarcompany company}}" alt=""></label>
+                <label for="file-user"><img class="user-avatar" src="{{getAvatarcompany company}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'"></label>
                 <input id="file-user" name="avatar" type="file" accept="image/*">
                 <label for="file-user" class="edit-img edit-logo"><span>Change Logo</span></label>
                 <label class="camera-edit" for="file-user"><i class="bi bi-camera"></i></label>
@@ -112,7 +112,7 @@ Today we are on the cusp of a new journey with our customers, to help them Power
                     <ul>
                         {{#each leadership}}
                         <li class="content-listleadership" >
-                            <img src="{{getAvatarleadership this}}" alt="">
+                            <img src="{{getAvatarleadership this}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
                             <div class="infoleadership">
                                 <span class="nameleadership">{{this.name}}</span>
                                 <span class="position">{{this.position}}</span>
@@ -131,7 +131,7 @@ Today we are on the cusp of a new journey with our customers, to help them Power
                                 <p>{{this.introduce}}</p>
                             <span class="close-book"><i class="bi bi-x-lg"></i></span>
                                 <div class="cover">
-                                    <img src="{{getAvatarleadership this}}">
+                                    <img src="{{getAvatarleadership this}}" onerror="this.src='/img/notfoundavatar.jpeg'">
                                     <h1>{{this.name}}</h1>
                                     <span>{{this.position}}</span>
                                 </div>

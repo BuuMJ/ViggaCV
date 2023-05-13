@@ -33,8 +33,8 @@
                 <div class="card-companies">
                     <div class="card-company">
                         <div class="header-card-company">
-                            <img class="background-card-company" src="/{{this.background}}" alt="">
-                            <img class="avatar-card-company" src="/{{this.avatar}}" alt="">
+                            <img class="background-card-company" src="/{{this.background}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
+                            <img class="avatar-card-company" src="/{{this.avatar}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
                         </div>
                         <div class="main-card-company">
                             <span class="card-company-name">{{this.TOB}} {{this.companyname}}</span>

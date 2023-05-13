@@ -1,10 +1,10 @@
 <div class="main-company-detail">
     <header class="company-detail">
-        <img src="{{getBackground company}}" alt="" class="background-company-detail">
+        <img src="{{getBackground company}}" alt="" class="background-company-detail" onerror="this.src='/img/notfoundavatar.jpeg'">
         <div class="main__header-company-detail">
             <div class="header__primary-company-detail">
                 <div class="logo-company-detail">
-                    <img src="{{getAvatarcompany company}}" alt="">
+                    <img src="{{getAvatarcompany company}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
                     <span>{{getCompanyname company}} {{getTOB company}}</span>
                 </div>
                 <form class="follow-company-detail" method="post" action="/company/{{company._id}}/follow">
