@@ -421,15 +421,20 @@ input#postal::-webkit-inner-spin-button {
     display: none;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
-    
+    position: fixed;
+    z-index: 30;
+    width: 600px;
+    height: 700px;
+    top: 49%;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
 }
 .book {
     position: relative;
     border-radius: 10px;
-    width: 400px;
-    height: 500px;
+    width: 600px;
+    height: 700px;
     background-color: whitesmoke;
     -webkit-box-shadow: 1px 1px 12px #000;
     box-shadow: 1px 1px 12px #000;
@@ -450,7 +455,6 @@ input#postal::-webkit-inner-spin-button {
     justify-content: center;
     color: #000;
     overflow: hidden;
-    z-index: 30;
   }
  .book .close-book{
     position: absolute;
@@ -463,10 +467,10 @@ input#postal::-webkit-inner-spin-button {
     color: #FC0404;
   }
   .book p {
-    font-size: 13px;
+    font-size: 20px;
     font-weight: 500;
     letter-spacing: 1.2px;
-    padding: 16px 12px 16px 48px;
+    padding: 16px 24px 16px 48px;
     margin: unset !important;
   }
   .cover {
@@ -505,13 +509,19 @@ input#postal::-webkit-inner-spin-button {
   .cover h1 {
     margin: unset;
     height: 13%;
+    text-align: center;
+    padding: 24px 0;
+    width: 100%;
   }
   .cover span{
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 700;
     letter-spacing: 1.4px;
     height: 7%;
     padding: unset !important;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
   }
   .book:hover .cover {
     -webkit-transition: all 0.5s;
@@ -669,6 +679,8 @@ li.content-listleadership img{
     font-size: 14px;
     font-weight: 800;
     height: 18px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
 }
 .action-leader{
     position: relative;

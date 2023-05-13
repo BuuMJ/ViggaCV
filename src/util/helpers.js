@@ -65,7 +65,7 @@ module.exports = {
     if (leader && leader.avatar) {
       return `/${leader.avatar}`;
     } else {
-      return "/img/logoleadership.jpeg";
+      return "/img/logoleadership.png";
     }
   },
   getBackground: function (company) {

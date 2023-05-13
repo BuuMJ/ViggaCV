@@ -41,6 +41,7 @@
                 <span class="desc__first-text">Our History</span>
                 <span class="desc__second-text">{{getHistory company}}</span>
             </div>
+            {{#if leadership}}
             <div class="company-leadership">
                 <div class="company-leadership__text">
                     <span class="leadership__first-text">LEADERSHIP</span>
@@ -72,6 +73,8 @@
                     </div>
                 </div>
             </div>
+            {{else}}
+            {{/if}}
         </div>
 </div>
 <div class="overplay"></div>
