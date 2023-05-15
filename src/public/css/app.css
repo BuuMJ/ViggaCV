@@ -1221,7 +1221,10 @@ ul.listpageleadership li {
   margin: 0 8px;
   cursor: pointer;
   box-sizing: unset;
-  list-style-type: none; }
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 ul.listpagejob li:hover {
   background-color: rgba(0, 0, 0, 0.1);
@@ -1689,17 +1692,27 @@ header.company-detail .background-company-detail {
 
 .follow-company-detail button {
   outline: none;
-  width: 80px;
+  width: 100px;
   height: 40px;
   background-color: #fedb00;
   color: black;
   border: 1px solid #fedb00;
   border-radius: 10px;
-  font-weight: 500; }
+  font-weight: 600;
+  transition: .5s; }
+
+.follow-company-detail button.following {
+  width: 120px; }
 
 .follow-company-detail button:hover {
-  background-color: #efce01;
-  border: 1px solid #efce01; }
+  background-color: white;
+  color: #1CACF4;
+  border: 1px solid #1CACF4; }
+
+.follow-company-detail button.following:hover {
+  background-color: white;
+  color: #FC0404;
+  border: 1px solid #FC0404; }
 
 .header__info-company-detail {
   width: 100%;

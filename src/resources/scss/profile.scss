@@ -749,6 +749,9 @@ ul.listpageleadership {
     cursor: pointer;
     box-sizing: unset;
     list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   ul.listpagejob li:hover {
     background-color: rgba(0,0,0,0.1);

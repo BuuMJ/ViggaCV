@@ -8,7 +8,7 @@
                     <span>{{getCompanyname company}} {{getTOB company}}</span>
                 </div>
                 <form class="follow-company-detail" method="post" action="/company/{{company._id}}/follow">
-                    <button type="submit">{{checkFl checkfl}}</button>
+                    <button id="followButton" type="submit">{{checkFl checkfl}}</button>
                 </form>
             </div>
             <div class="header__info-company-detail">
@@ -140,5 +140,27 @@ for (let i = 0; i < closeLeadership.length; i++) {
     overplay.style.display = 'none';
   });
 }
-
+var followButton = document.getElementById("followButton");
+if(followButton.textContent === "Following"){
+    followButton.classList.add('following')
+}
+else{
+    followButton.classList.remove('following')
+}
+followButton.addEventListener("mouseover", function() {
+  if (followButton.textContent.trim() === "Follow") {
+    followButton.textContent = "Following";
+  }
+  else if (followButton.textContent.trim() === "Following") {
+    followButton.textContent = "Unfollowing";
+  }
+});
+followButton.addEventListener("mouseout", function() {
+  if (followButton.textContent.trim() === "Following") {
+    followButton.textContent = "Follow";
+  }
+  else if (followButton.textContent.trim() === "Unfollowing") {
+    followButton.textContent = "Following";
+  }
+});
 </script>
