@@ -9,4 +9,24 @@
         </div>
         {{/each}}
     </div>
+    <form id="pagination" action="" data-id="{{total}}">
+        <button type="submit" class="number-pagination"></button>
+    </form>
 </div>
+<script>
+    var pagination = document.getElementById('pagination');
+    var getPagination = pagination.getAttribute('data-id');
+    for(let i = 0; i <= getPagination.length; i++){
+        var newPage = document.createElement('input');
+        newPage.setAttribute("type", "radio");
+        newPage.name = 'pagination'
+        newPage.value = i + 1;
+       newPage.addEventListener('change', function() {
+        if (newPage.checked) {
+            pagination.submit(); // Tự động nhấn submit khi được chọn
+        }
+    });
+
+         document.querySelector('.number-pagination').appendChild(newPage);
+    }
+</script>

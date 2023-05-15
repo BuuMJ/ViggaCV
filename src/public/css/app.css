@@ -506,6 +506,24 @@ input#email-apply {
   border: 1px solid black;
   margin: 20px 0; }
 
+#pagination {
+  width: 100%; }
+
+#pagination button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: transparent;
+  outline: none;
+  border: none; }
+
+#pagination button input {
+  margin: 0 8px;
+  width: 20px;
+  height: 20px; }
+
 .main-profile {
   display: flex;
   flex-direction: column;
