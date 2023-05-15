@@ -2462,6 +2462,9 @@ textarea#activities {
   border: none;
   border-bottom: 1px solid #fedb00; }
 
+#selectrole * {
+  background-color: rgba(0, 0, 0, 0.8); }
+
 .action-login {
   display: flex;
   flex-direction: row;
