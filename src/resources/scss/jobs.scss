@@ -342,3 +342,25 @@ input#email-apply{
     font-weight: 500;
     border-radius: 10px;
 }
+.main-jobs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.main-jobs .card-jobs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+.main-jobs .card-jobs .card-job{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+    height: 200px;
+    border: 1px solid black;
+    margin: 20px 0;
+}
