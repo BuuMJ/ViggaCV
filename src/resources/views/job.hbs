@@ -9,24 +9,37 @@
         </div>
         {{/each}}
     </div>
-    <form id="pagination" action="" data-id="{{total}}">
-        <button type="submit" class="number-pagination"></button>
+    <form id="paginationForm" action="" data-id="{{total}}">
+        <button type="button" class="number-pagination"></button>
     </form>
 </div>
 <script>
-    var pagination = document.getElementById('pagination');
-    var getPagination = pagination.getAttribute('data-id');
-    for(let i = 0; i <= getPagination.length; i++){
-        var newPage = document.createElement('input');
-        newPage.setAttribute("type", "radio");
-        newPage.name = 'pagination'
-        newPage.value = i + 1;
-       newPage.addEventListener('change', function() {
-        if (newPage.checked) {
-            pagination.submit(); // Tự động nhấn submit khi được chọn
-        }
-    });
+var paginationForm = document.getElementById('paginationForm');
+var getPagination = paginationForm.getAttribute('data-id');
+var currentPage = localStorage.getItem('currentPage') || 1; 
 
-         document.querySelector('.number-pagination').appendChild(newPage);
+for (let i = 1; i <= (getPagination.length * getPagination); i++) {
+  var newPage = document.createElement('input');
+  newPage.setAttribute("type", "button");
+  newPage.name = 'pagination';
+  newPage.value = i;
+  newPage.setAttribute("readonly", "readonly");
+  if (i === parseInt(currentPage)) {
+    newPage.classList.add('active'); 
+  }
+  document.querySelector('.number-pagination').appendChild(newPage);
+}
+
+var newPages = document.querySelectorAll('input[name="pagination"]');
+newPages.forEach(function(newPage) {
+  newPage.addEventListener('click', function() {
+    if (!newPage.classList.contains('active')) {
+      currentPage = parseInt(newPage.value);
+      localStorage.setItem('currentPage', currentPage);
+      paginationForm.submit();
     }
+  });
+});
+
+
 </script>

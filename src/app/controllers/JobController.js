@@ -14,6 +14,10 @@ class JobController {
     var page = req.query.page;
     var PAGE_SIZE = 5;
     var total = Math.ceil(count / PAGE_SIZE);
+    const pages = [];
+    for (let i = 1; i <= total; i++) {
+      pages.push(i);
+    }
     console.log("đây là tổng số trang cần có = " + total);
     if (page) {
       //Get page
@@ -31,6 +35,7 @@ class JobController {
             user,
             count: count,
             total: total,
+            pages: pages,
           });
         });
     } else {
@@ -48,6 +53,7 @@ class JobController {
             company: mutipleMongooseToObject(company),
             user,
             count: count,
+            pages: pages,
             total: total,
           });
         });

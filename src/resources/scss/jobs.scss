@@ -364,10 +364,10 @@ input#email-apply{
     border: 1px solid black;
     margin: 20px 0;
 }
-#pagination{
-    width: 100%;
+#paginationForm{
+    width: 80%;
 }
-#pagination button{
+#paginationForm button{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -376,9 +376,18 @@ input#email-apply{
     background-color: transparent;
     outline: none;
     border: none;
+    cursor: unset;
 }
-#pagination button input{
+#paginationForm button input{
     margin: 0 8px;
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+#paginationForm button input.active{
+    border: 1px solid $primarycolor;
+    cursor: not-allowed;
+    padding: 2px;
 }
