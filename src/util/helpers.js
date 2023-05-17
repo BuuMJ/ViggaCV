@@ -139,53 +139,52 @@ module.exports = {
     }
   },
   getService: function (company) {
-    if (company && company.servicedesc ) {
-      return company.servicedesc ;
+    if (company && company.servicedesc) {
+      return company.servicedesc;
     } else {
       return "There is no information about the service, you can contact the company to learn more";
     }
   },
   getEstablisheddate: function (company) {
-    if (company && company.establisheddate ) {
-      return company.establisheddate ;
+    if (company && company.establisheddate) {
+      return company.establisheddate;
     } else {
       return "";
     }
   },
   getNoofemployee: function (company) {
-    if (company && company.noofemployee ) {
-      return company.noofemployee ;
+    if (company && company.noofemployee) {
+      return company.noofemployee;
     } else {
       return "The company has not updated the total number of employees";
     }
   },
   getMission: function (company) {
-    if (company && company.mission ) {
-      return company.mission ;
+    if (company && company.mission) {
+      return company.mission;
     } else {
       return "There is no information about the mission, you can contact the company to learn more";
     }
   },
   getHistory: function (company) {
-    if (company && company.history ) {
-      return company.history ;
+    if (company && company.history) {
+      return company.history;
     } else {
       return "The company has not updated its operating history";
     }
   },
   getJobcount: function (jobcount) {
-    if (jobcount ) {
+    if (jobcount) {
       return jobcount;
     } else {
       return "0";
     }
   },
-  checkFl: function (checkfl){
-    if(checkfl){
-      return "Following"
-    }
-    else{
-      return "Follow"
+  checkFl: function (checkfl) {
+    if (checkfl) {
+      return "Following";
+    } else {
+      return "Follow";
     }
   },
   ifeq: function (user, y, options) {
@@ -274,5 +273,26 @@ module.exports = {
     } else {
       return "";
     }
+  },
+  ifCond: function (v1, operator, v2, options) {
+    const operators = {
+      "==": (a, b) => a == b,
+      "===": (a, b) => a === b,
+      "!=": (a, b) => a != b,
+      "!==": (a, b) => a !== b,
+      "<": (a, b) => a < b,
+      "<=": (a, b) => a <= b,
+      ">": (a, b) => a > b,
+      ">=": (a, b) => a >= b,
+      "&&": (a, b) => a && b,
+      "||": (a, b) => a || b,
+    };
+
+    if (operators.hasOwnProperty(operator)) {
+      const result = operators[operator](v1, v2);
+      return result ? options.fn(this) : options.inverse(this);
+    }
+
+    return options.inverse(this);
   },
 };
