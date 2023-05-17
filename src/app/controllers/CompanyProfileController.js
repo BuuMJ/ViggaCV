@@ -398,6 +398,7 @@ class CompanyProfileController {
       salary: salary,
       jobrequi: jobrequi,
       joblocation: joblocation,
+      avatar: companyname.avatar,
     });
     res.redirect("/companyprofile");
   }

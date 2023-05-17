@@ -12,7 +12,7 @@ class JobController {
     const count = await JobModel.countDocuments();
     const company = await CompanyModel.find({});
     var page = req.query.page;
-    var PAGE_SIZE = 5;
+    var PAGE_SIZE = 10;
     var total = Math.ceil(count / PAGE_SIZE);
     const pages = [];
     for (let i = 1; i <= total; i++) {

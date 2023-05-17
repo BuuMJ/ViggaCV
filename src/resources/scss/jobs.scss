@@ -355,14 +355,12 @@ input#email-apply{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
 }
 .main-jobs .card-jobs{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 67%;
+    margin-bottom: 50px;
 }
 .main-jobs .card-jobs .card-job{
     display: flex;
@@ -391,6 +389,15 @@ input#email-apply{
 }
 .card-job .avatar-company{
     width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+.card-job .avatar-company img{
+    width: 90%;
+    border-radius: 5px;
+    object-fit: contain;
 }
 .card-job .card-job__info{
     width: 60%;
@@ -402,6 +409,7 @@ input#email-apply{
     text-align: unset;
     font-size: 16px;
     color: #BCBCBC;
+    padding: 4px 0;
 }
 .card-job .card-job__info p.job-name{
     font-size: 20px;
@@ -455,7 +463,8 @@ input#email-apply{
     margin: 20px 0;
 }
 .jobs-ads .ads-TPcompany,
-.jobs-ads .ads-NYcompany{
+.jobs-ads .ads-NYcompany,
+.jobs-ads .ads-LRcompany{
     width: 403px;
     height: 483px;
     overflow: hidden;
@@ -463,7 +472,8 @@ input#email-apply{
     border: 1px solid #BCBCBC;
 }
 .ads-TPcompany img,
-.ads-NYcompany img{
+.ads-NYcompany img,
+.ads-LRcompany img{
     width: 403px;
     height: 483px;
 }

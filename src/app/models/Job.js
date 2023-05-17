@@ -11,6 +11,7 @@ const Job = new Schema(
     jobrequi: String,
     joblocation: String,
     salary: String,
+    avatar: String,
   },
   {
     timestamps: true,

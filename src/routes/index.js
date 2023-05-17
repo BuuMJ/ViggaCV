@@ -14,7 +14,7 @@ function route(app) {
 
   app.use("/job", sendDataUser, jobRouter);
 
-  app.use("/company", companyRouter);
+  app.use("/company",sendDataUser, companyRouter);
 
   app.use("/profile", checkLogin, profileRouter);
 
