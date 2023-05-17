@@ -1,22 +1,72 @@
-<div class="main-jobs">
+  <header class="job-search">
+
+  </header>
+  <div class="container-jobs">
+      <p>{{count}} jobs matched</p>
+  <div class="main-jobs">
     <div class="card-jobs">
-        <p>{{count}}</p>
-        {{#each job}}
-        <div class="card-job">
-            <p>{{this.jobname}}</p>
-            <p>{{this.salary}}</p>
-            <p>{{this.jobdesc}}</p>
+      {{#each job}}
+      <div class="card-job">
+        <div class="avatar-company">
+          <img src="" alt="">
         </div>
-        {{/each}}
+        <div class="card-job__info">
+        <p class="job-name">{{this.jobname}}</p>
+        <p class="job__company-name">{{this.companyname}}</p>
+        <p>{{this.jobdesc}}</p>
+        <p>{{this.joblocation}}</p>
+        </div>
+        <div class="card-job__action">
+          <p class="job-salary">{{this.salary}}</p>
+        </div>
+      </div>
+      {{/each}}
+    <div class="pagination">
+      {{#each pages}}
+      <a href="/job?page={{this}}" data-page="{{this}}">{{this}}</a>
+      {{/each}}
     </div>
-    <form id="paginationForm" action="" data-id="{{total}}">
-        <button type="button" class="number-pagination"></button>
-    </form>
-</div>
+    </div>
+    <div class="jobs-ads">
+      <div class="ads-TPcompany">
+        <img src="/img/posterads2.png" alt="">
+      </div>
+      <div class="ads-NYcompany">
+        <img src="/img/posteradsNhuY.png" alt="">
+      </div>
+    </div>
+  </div>
+  </div>
 <script>
+var getPagination = document.querySelectorAll('.pagination a');
+getPagination.forEach(function(pageLink) {
+  pageLink.addEventListener('click', function(event) {
+    if (pageLink.classList.contains('active')) {
+      event.preventDefault();
+    } else {
+      var page = pageLink.getAttribute('data-page');
+      localStorage.setItem('currentPage', page);
+    }
+  });
+});
+document.addEventListener('DOMContentLoaded', function() {
+  var currentPage = localStorage.getItem('currentPage');
+  if (currentPage !== null) {
+    getPagination.forEach(function(pageLink) {
+      var page = pageLink.getAttribute('data-page');
+      if (page == currentPage) {
+        pageLink.classList.add('active');
+      }
+    });
+  }
+});
+</script>
+
+{{!-- <script>
 var paginationForm = document.getElementById('paginationForm');
 var getPagination = paginationForm.getAttribute('data-id');
 var currentPage = localStorage.getItem('currentPage') || 1; 
+
 for (let i = 1; i <= (getPagination.length * getPagination); i++) {
   var newPage = document.createElement('input');
   newPage.setAttribute("type", "button");
@@ -28,6 +78,7 @@ for (let i = 1; i <= (getPagination.length * getPagination); i++) {
   }
   document.querySelector('.number-pagination').appendChild(newPage);
 }
+
 var newPages = document.querySelectorAll('input[name="pagination"]');
 newPages.forEach(function(newPage) {
   newPage.addEventListener('click', function() {
@@ -38,6 +89,5 @@ newPages.forEach(function(newPage) {
     }
   });
 });
+</script> --}}
 
-
-</script>
