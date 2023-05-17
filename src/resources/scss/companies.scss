@@ -426,8 +426,13 @@ header.company-detail .background-company-detail{
   text-align: center;
   height: 100%;
   cursor: pointer;
+  margin: 0 4px;
 }
 .header__info-company-detail span:hover{
+  color: $primarycolor;
+  border-bottom: 3px solid $primarycolor;
+}
+.header__info-company-detail span.about-us{
   color: $primarycolor;
   border-bottom: 3px solid $primarycolor;
 }

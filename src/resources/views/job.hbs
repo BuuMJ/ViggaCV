@@ -1,8 +1,12 @@
   <header class="job-search">
-
-  </header>
+  <a class="best-companyFL">
+    <div class="background-image" style="background: url('{{bestFL.background}}') center/cover no-repeat;"></div>
+    <span class="best-fl-name">{{bestFL.companyname}} {{bestFL.typeofbusiness}} is the company with the most followers on the website</span>
+    <span class="close-best-fl"><i class="bi bi-x-lg"></i></span>
+  </a>
+</header>
   <div class="container-jobs">
-      <p>{{count}} jobs matched</p>
+      <p>{{count}} Jobs Matched</p>
   <div class="main-jobs">
     <div class="card-jobs">
       {{#each job}}
@@ -28,6 +32,17 @@
     </div>
     </div>
     <div class="jobs-ads">
+      <div class="best-job">
+        <a class="best-job__link" href="/company/{{bestCP._id}}">
+        <span class="primary-text">Top Hirring Company</span>
+        <img src="{{bestCP.background}}" alt="" class="best-job__background">
+        <img src="{{bestCP.avatar}}" alt="" class="best-job__avatar">
+        </a>
+        <div class="main__best-job">
+          <span class="best-job__company-name">{{bestCP.companyname}} {{bestCP.typeofbusiness}}</span>
+          <a href="/company/job/{{bestCP._id}}" class="best-job__count">{{bestCP.jobcount}} Opening Jobs</a>
+        </div>
+      </div>
       <div class="ads-TPcompany">
         <img src="/img/posterads2.png" alt="">
       </div>
@@ -41,6 +56,24 @@
   </div>
   </div>
 <script>
+  var closeBestFL = document.querySelector('.close-best-fl i');
+  var boxBestCompanyFl = document.querySelector('.best-companyFL');
+  var deleteMargin = document.querySelector('.container-jobs');
+  closeBestFL.addEventListener('click',()=>{
+    boxBestCompanyFl.style.cssText = "opacity: 0"
+    deleteMargin.style.margin = '0'
+    setTimeout(function(){
+      boxBestCompanyFl.style.display = 'none'
+    },400)
+  })
+document.body.onscroll = function() {scrollContent()};
+function scrollContent() {
+if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+  boxBestCompanyFl.style.cssText = 'position: fixed;'
+} else {
+  boxBestCompanyFl.style.cssText = 'position: unset;'
+}
+}
 var getPagination = document.querySelectorAll('.pagination a');
 getPagination.forEach(function(pageLink) {
   pageLink.addEventListener('click', function(event) {

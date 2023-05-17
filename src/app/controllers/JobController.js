@@ -18,7 +18,64 @@ class JobController {
     for (let i = 1; i <= total; i++) {
       pages.push(i);
     }
-    console.log("đây là tổng số trang cần có = " + total);
+
+    //tìm số job cao nhất
+    const highest = await JobModel.aggregate([
+      {
+        $group: {
+          _id: "$companyname",
+          job_count: { $sum: 1 },
+          iduser: { $first: "$iduser" },
+        },
+      },
+      {
+        $sort: {
+          job_count: -1,
+        },
+      },
+      {
+        $limit: 1,
+      },
+    ]);
+    //tìm công ty có số job cao nhất
+    const bestCP = await CompanyModel.findOne({ iduser: highest[0].iduser });
+
+    //tìm số follow cao nhất
+    const mostFL = await CompanyModel.aggregate([
+      {
+        $group: {
+          _id: null,
+          companies: {
+            $push: {
+              _id: "$_id",
+              iduser: "$iduser", // Thêm trường iduser vào đối tượng company
+              companyname: "$companyname",
+              follow: "$follow",
+            },
+          },
+          max_follow: { $max: "$follow" },
+        },
+      },
+      {
+        $project: {
+          _id: 0,
+          companies: {
+            $filter: {
+              input: "$companies",
+              as: "company",
+              cond: { $eq: ["$$company.follow", "$max_follow"] },
+            },
+          },
+        },
+      },
+      {
+        $limit: 1, // Giới hạn kết quả trả về là 1
+      },
+    ]);
+    const bestFL = await CompanyModel.findOne({
+      iduser: mostFL[0].companies[0].iduser,
+    });
+
     if (page) {
       //Get page
       page = parseInt(page);
@@ -29,13 +86,15 @@ class JobController {
         .limit(PAGE_SIZE)
         .then((data) => {
           res.render("job", {
-            title: "List Job",
-            job: mutipleMongooseToObject(data),
-            company: mutipleMongooseToObject(company),
             user,
             count: count,
             total: total,
             pages: pages,
+            title: "List Job",
+            job: mutipleMongooseToObject(data),
+            bestCP: staffMongoseToObject(bestCP),
+            bestFL: staffMongoseToObject(bestFL),
+            company: mutipleMongooseToObject(company),
           });
         });
     } else {
@@ -48,13 +107,15 @@ class JobController {
         .limit(PAGE_SIZE)
         .then((data) => {
           res.render("job", {
-            title: "List Job",
-            job: mutipleMongooseToObject(data),
-            company: mutipleMongooseToObject(company),
             user,
             count: count,
-            pages: pages,
             total: total,
+            pages: pages,
+            title: "List Job",
+            job: mutipleMongooseToObject(data),
+            bestCP: staffMongoseToObject(bestCP),
+            bestFL: staffMongoseToObject(bestFL),
+            company: mutipleMongooseToObject(company),
           });
         });
     }

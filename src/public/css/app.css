@@ -484,8 +484,54 @@ input#email-apply {
   font-weight: 500;
   border-radius: 10px; }
 
+header.job-search {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 89px;
+  right: 0; }
+
+header.job-search .best-companyFL {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 140px;
+  text-decoration: none;
+  color: #04B4F4;
+  transition: .5s; }
+
+header.job-search .best-companyFL span {
+  z-index: 3; }
+
+header.job-search .best-companyFL .background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(6px);
+  z-index: 1; }
+
+.best-companyFL .best-fl-name {
+  font-size: 30px;
+  font-weight: 600;
+  text-shadow: 2px 2px 10px black; }
+
+.best-companyFL .close-best-fl {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 30px;
+  color: black;
+  cursor: pointer; }
+
 .container-jobs {
-  background-color: #F7F7F7; }
+  background-color: #F7F7F7;
+  margin-top: 150px; }
 
 .container-jobs p {
   font-size: 40px;
@@ -606,12 +652,65 @@ input#email-apply {
 
 .jobs-ads .ads-TPcompany,
 .jobs-ads .ads-NYcompany,
-.jobs-ads .ads-LRcompany {
+.jobs-ads .ads-LRcompany,
+.jobs-ads .best-job {
   width: 403px;
   height: 483px;
   overflow: hidden;
   border-radius: 5px;
   border: 1px solid #BCBCBC; }
+
+.jobs-ads .best-job,
+.best-job a.best-job__link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  height: 403px;
+  text-decoration: none;
+  color: black; }
+
+.jobs-ads .best-job span.primary-text {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 12px 0; }
+
+.jobs-ads .best-job .best-job__background {
+  width: 100%;
+  height: auto; }
+
+.jobs-ads .best-job .best-job__avatar {
+  width: 120px;
+  height: 90px;
+  transform: translateY(-60%);
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px #838080; }
+
+.best-job .main__best-job {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  transform: translateY(-50%); }
+
+.best-job .main__best-job .best-job__company-name {
+  font-size: 20px;
+  font-weight: 600;
+  padding-top: 4px; }
+
+.best-job .main__best-job .best-job__count {
+  font-size: 18px;
+  font-weight: 600;
+  color: #04B4F4;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  padding-bottom: 8px; }
+
+.best-job .main__best-job .best-job__count:hover {
+  text-decoration: underline; }
 
 .ads-TPcompany img,
 .ads-NYcompany img,
@@ -1863,9 +1962,14 @@ header.company-detail .background-company-detail {
   padding: 0 10px;
   text-align: center;
   height: 100%;
-  cursor: pointer; }
+  cursor: pointer;
+  margin: 0 4px; }
 
 .header__info-company-detail span:hover {
+  color: #fedb00;
+  border-bottom: 3px solid #fedb00; }
+
+.header__info-company-detail span.about-us {
   color: #fedb00;
   border-bottom: 3px solid #fedb00; }
 
