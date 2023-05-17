@@ -17,7 +17,6 @@
 var paginationForm = document.getElementById('paginationForm');
 var getPagination = paginationForm.getAttribute('data-id');
 var currentPage = localStorage.getItem('currentPage') || 1; 
-
 for (let i = 1; i <= (getPagination.length * getPagination); i++) {
   var newPage = document.createElement('input');
   newPage.setAttribute("type", "button");
@@ -29,7 +28,6 @@ for (let i = 1; i <= (getPagination.length * getPagination); i++) {
   }
   document.querySelector('.number-pagination').appendChild(newPage);
 }
-
 var newPages = document.querySelectorAll('input[name="pagination"]');
 newPages.forEach(function(newPage) {
   newPage.addEventListener('click', function() {
