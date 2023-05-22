@@ -1,12 +1,17 @@
   <header class="job-search">
-  <a class="best-companyFL">
+  <a data-href="{{bestFL._id}}" class="best-companyFL">
     <div class="background-image" style="background: url('{{bestFL.background}}') center/cover no-repeat;"></div>
-    <span class="best-fl-name">{{bestFL.companyname}} {{bestFL.typeofbusiness}} is the company with the most followers on the website</span>
+    <div class="info-bestfl">
+    <span>&#62;&#62;&#62;</span>
+    <span class="best-fl-name"> {{bestFL.companyname}} {{bestFL.typeofbusiness}} is the company with the most followers on the website</span>
+    <span>&#60;&#60;&#60;</span>
+    </div>
+    <img src="/img/applynow.png" class="apply-bestfl">
     <span class="close-best-fl"><i class="bi bi-x-lg"></i></span>
   </a>
 </header>
   <div class="container-jobs">
-      <p>{{count}} Jobs Matched</p>
+      <h1 class="jobs-matched">{{count}} Jobs Matched</h1>
   <div class="main-jobs">
     <div class="card-jobs">
       {{#each job}}
@@ -59,21 +64,22 @@
   var closeBestFL = document.querySelector('.close-best-fl i');
   var boxBestCompanyFl = document.querySelector('.best-companyFL');
   var deleteMargin = document.querySelector('.container-jobs');
-  closeBestFL.addEventListener('click',()=>{
-    boxBestCompanyFl.style.cssText = "opacity: 0"
-    deleteMargin.style.margin = '0'
-    setTimeout(function(){
-      boxBestCompanyFl.style.display = 'none'
-    },400)
+  var link = boxBestCompanyFl.getAttribute('data-href');
+  var clickBTN = document.querySelector('.background-image');
+  var applyBestFL = document.querySelector('.apply-bestfl');
+  applyBestFL.addEventListener('clicl',()=>{
+    boxBestCompanyFl.href = `/company/${link}`;
   })
-document.body.onscroll = function() {scrollContent()};
-function scrollContent() {
-if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
-  boxBestCompanyFl.style.cssText = 'position: fixed;'
-} else {
-  boxBestCompanyFl.style.cssText = 'position: unset;'
-}
-}
+  clickBTN.addEventListener('click',()=>{
+    boxBestCompanyFl.href = `/company/${link}`;
+  });
+  closeBestFL.addEventListener('click',()=>{
+    boxBestCompanyFl.style.cssText = "opacity: 0";
+    deleteMargin.style.margin = '0';
+    setTimeout(function(){
+      boxBestCompanyFl.style.display = 'none';
+    },200)
+  });
 var getPagination = document.querySelectorAll('.pagination a');
 getPagination.forEach(function(pageLink) {
   pageLink.addEventListener('click', function(event) {
