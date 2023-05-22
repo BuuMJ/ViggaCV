@@ -80,6 +80,17 @@
       boxBestCompanyFl.style.display = 'none';
     },200)
   });
+  window.addEventListener('scroll', function() {
+  var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (scrollPosition >= 70 && window.getComputedStyle(boxBestCompanyFl).display === 'flex') {
+    document.querySelector('.job-search').style.cssText = 'position: fixed; top: -10px';
+    deleteMargin.style.cssText = 'margin-top: 160px';
+  } else {
+    document.querySelector('.job-search').style.cssText = 'position: unset';
+    deleteMargin.style.margin = '0';
+  }
+});
 var getPagination = document.querySelectorAll('.pagination a');
 getPagination.forEach(function(pageLink) {
   pageLink.addEventListener('click', function(event) {
