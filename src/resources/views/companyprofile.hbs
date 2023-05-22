@@ -65,12 +65,13 @@
                     <div class="about-user ">
                         <label for="TOB">Type of business</label>
                         <select id="TOB" name="typeOfBusiness">
-                            <option value="{{getTOB user}}" selected>{{getTOB company}}</option>
+                            <option value="{{getTOB company}}" selected>{{getTOB company}}</option>
                             <option value="Sole Proprietorships">Sole Proprietorships.</option>
                             <option value="Partnerships">Partnerships.</option>
-                            <option value="Corporations">Corporations.</option>
+                            <option value="JSC">Corporations. (JSC)</option>
                             <option value="S Corporations">S Corporations.</option>
-                            <option value="Limited Liability Company">Limited Liability Company.</option>
+                            <option value="CO., LTD">Limited Liability Company. (CO., LTD)</option>
+                            <option value="PTE">Private Enterprise (PTE)</option>
                         </select>
                     </div>
                     <div class="about-user ">
@@ -202,7 +203,7 @@ Today we are on the cusp of a new journey with our customers, to help them Power
         </div>
         <div class="info-job">
             <label for="namecompanyjob">Benefit</label>
-            <input id="namecompanyjob" name="benefit" type="text" >
+            <textarea id="namecompanyjob" name="benefit" type="text" ></textarea>
         </div>
         <div class="info-job info-job-salary">
             <div class="job-location">

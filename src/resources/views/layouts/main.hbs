@@ -65,5 +65,10 @@ document.querySelector('.stepbystep-cv').style.cssText = "transform: translateX(
 document.querySelector('.stepbystep-cv').style.cssText = "transform: translateX(400%);";
 }
 }
+var resetLocalStorage = document.querySelector('.reset-localstorage');
+
+resetLocalStorage.addEventListener('click', function() {
+  localStorage.setItem('currentPageJob', 1);
+});
 </script>
 </html>

@@ -737,13 +737,20 @@ ul.listpageleadership {
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-top: 20px;
     margin-bottom: 30px !important;
+    padding: unset !important;
   }
   ul.listpagejob li,
   ul.listpageleadership li {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     color: black;
+    background-color: white;
+    border: 1px solid #DEE2E6;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
     text-align: center;
     margin: 0 8px;
     cursor: pointer;
@@ -754,16 +761,16 @@ ul.listpageleadership {
     align-items: center;
   }
   ul.listpagejob li:hover {
-    background-color: rgba(0,0,0,0.1);
-    border-radius: 10px;
+    border: 1px solid #ddcf76;
+    background-color: $primarycolor;
+    color: white;
   }
   ul.listpagejob .active,
   ul.listpageleadership .active {
-    border: 1px solid $primarycolor ;
-    border-radius: 10px;
-    transform: scale(1.2);
+    border: 1px solid #ddcf76;
     cursor: not-allowed;
-    text-align: center;
+    background-color: $primarycolor;
+    color: white;
   }
   .avatar-leadership{
     width: 100%;

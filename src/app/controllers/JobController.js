@@ -38,7 +38,12 @@ class JobController {
       },
     ]);
     //tìm công ty có số job cao nhất
-    const bestCP = await CompanyModel.findOne({ iduser: highest[0].iduser });
+
+    if (highest[0]) {
+      var bestCP = await CompanyModel.findOne({ iduser: highest[0].iduser });
+    } else {
+      var bestCP = null;
+    }
 
     //tìm số follow cao nhất
     const mostFL = await CompanyModel.aggregate([
@@ -72,9 +77,13 @@ class JobController {
         $limit: 1, // Giới hạn kết quả trả về là 1
       },
     ]);
-    const bestFL = await CompanyModel.findOne({
-      iduser: mostFL[0].companies[0].iduser,
-    });
+    if (mostFL) {
+      var bestFL = await CompanyModel.findOne({
+        iduser: mostFL[0].companies[0].iduser,
+      });
+    } else {
+      var bestFL = null;
+    }
 
     if (page) {
       //Get page

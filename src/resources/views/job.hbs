@@ -1,14 +1,28 @@
   <header class="job-search">
-  <a data-href="{{bestFL._id}}" class="best-companyFL">
+     <a data-href="{{bestFL._id}}" class="best-companyFL">
     <div class="background-image" style="background: url('{{bestFL.background}}') center/cover no-repeat;"></div>
     <div class="info-bestfl">
     <span>&#62;&#62;&#62;</span>
     <span class="best-fl-name"> {{bestFL.companyname}} {{bestFL.typeofbusiness}} is the company with the most followers on the website</span>
     <span>&#60;&#60;&#60;</span>
     </div>
-    <img src="/img/applynow.png" class="apply-bestfl">
+    <img src="/img/viewnow.png" class="apply-bestfl">
     <span class="close-best-fl"><i class="bi bi-x-lg"></i></span>
   </a>
+    <div class="header-search">
+      <div class="navbar-left">
+        <div class="header-text">
+            <a href="#toTop"><span>ViggaWorks</span></a>
+            <a class="litle-text" href="#toTop"><p >empower growth</p></a>
+        </div>
+        <a class="navbar-left-img" href="#toTop"><img src="/img/LOGOVGA.png" alt=""></a>
+      </div>
+      <div class="input-search">
+      <input id="search" type="search">
+      <label for="search"><i class="bi bi-search"></i></label>
+      <button type="button">Search</button>
+      </div>
+    </div>
 </header>
   <div class="container-jobs">
       <h1 class="jobs-matched">{{count}} Jobs Matched</h1>
@@ -17,12 +31,12 @@
       {{#each job}}
       <div class="card-job">
         <div class="avatar-company">
-          <img src="{{this.avatar}}" alt="">
+          <img src="{{this.avatar}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
         </div>
         <div class="card-job__info">
-        <p class="job-name">{{this.jobname}}</p>
-        <p class="job__company-name">{{this.companyname}}</p>
-        <p>{{this.jobdesc}}</p>
+        <a href="/job/{{this._id}}" class="job-name">{{this.jobname}}</a>
+        <a href="/company/{{this.idcompany}}" class="job__company-name">{{this.companyname}}</a>
+        <p class="job-desc" title="{{this.jobdesc}}">{{this.jobdesc}}</p>
         <p>{{this.joblocation}}</p>
         </div>
         <div class="card-job__action">
@@ -40,8 +54,8 @@
       <div class="best-job">
         <a class="best-job__link" href="/company/{{bestCP._id}}">
         <span class="primary-text">Top Hirring Company</span>
-        <img src="{{bestCP.background}}" alt="" class="best-job__background">
-        <img src="{{bestCP.avatar}}" alt="" class="best-job__avatar">
+        <img src="{{bestCP.background}}" alt="" class="best-job__background" onerror="this.src='/img/notfoundavatar.jpeg'" >
+        <img src="{{bestCP.avatar}}" alt="" class="best-job__avatar" onerror="this.src='/img/notfoundavatar.jpeg'">
         </a>
         <div class="main__best-job">
           <span class="best-job__company-name">{{bestCP.companyname}} {{bestCP.typeofbusiness}}</span>
@@ -67,9 +81,13 @@
   var link = boxBestCompanyFl.getAttribute('data-href');
   var clickBTN = document.querySelector('.background-image');
   var applyBestFL = document.querySelector('.apply-bestfl');
-  applyBestFL.addEventListener('clicl',()=>{
+  var infoBestFL = document.querySelector('.info-bestfl');
+  infoBestFL.addEventListener('click',()=>{
     boxBestCompanyFl.href = `/company/${link}`;
-  })
+  });
+  applyBestFL.addEventListener('click',()=>{
+    boxBestCompanyFl.href = `/company/${link}`;
+  });
   clickBTN.addEventListener('click',()=>{
     boxBestCompanyFl.href = `/company/${link}`;
   });
@@ -80,30 +98,47 @@
       boxBestCompanyFl.style.display = 'none';
     },200)
   });
-  window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function() {
   var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+  var boxDisplay = getComputedStyle(boxBestCompanyFl).getPropertyValue('display');
 
-  if (scrollPosition >= 70 && window.getComputedStyle(boxBestCompanyFl).display === 'flex') {
-    document.querySelector('.job-search').style.cssText = 'position: fixed; top: -10px';
-    deleteMargin.style.cssText = 'margin-top: 160px';
-  } else {
-    document.querySelector('.job-search').style.cssText = 'position: unset';
-    deleteMargin.style.margin = '0';
+  if (boxDisplay === 'none') {
+    if (scrollPosition >= 85) {
+      document.querySelector('.header-search').style.cssText = 'position: fixed; top: 0; box-shadow: 1px 1px 10px rgba(0,0,0,0.5);';
+      deleteMargin.style.cssText = 'margin-top: 80px';
+    } else {
+      document.querySelector('.header-search').style.cssText = 'position: unset; box-shadow: unset;';
+      deleteMargin.style.margin = '0';
+    }
+  } else if (boxDisplay === 'flex') {
+    if (scrollPosition >= 192) {
+      document.querySelector('.header-search').style.cssText = 'position: fixed; top: 0; box-shadow: 1px 1px 10px rgba(0,0,0,0.5);';
+      deleteMargin.style.cssText = 'margin-top: 85px';
+    } else {
+      document.querySelector('.header-search').style.cssText = 'position: unset; box-shadow: unset;';
+      deleteMargin.style.margin = '0';
+    }
   }
 });
 var getPagination = document.querySelectorAll('.pagination a');
+var paginationContainer = document.querySelector('.pagination');
+if (getPagination.length > 1) {
+  paginationContainer.style.display = 'flex';
+} else {
+  paginationContainer.style.display = 'none';
+}
 getPagination.forEach(function(pageLink) {
   pageLink.addEventListener('click', function(event) {
     if (pageLink.classList.contains('active')) {
       event.preventDefault();
     } else {
       var page = pageLink.getAttribute('data-page');
-      localStorage.setItem('currentPage', page);
+      localStorage.setItem('currentPageJob', page);
     }
   });
 });
 document.addEventListener('DOMContentLoaded', function() {
-  var currentPage = localStorage.getItem('currentPage');
+  var currentPage = localStorage.getItem('currentPageJob');
   if (currentPage !== null) {
     getPagination.forEach(function(pageLink) {
       var page = pageLink.getAttribute('data-page');

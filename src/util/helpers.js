@@ -135,7 +135,7 @@ module.exports = {
     if (company && company.typeofbusiness) {
       return company.typeofbusiness;
     } else {
-      return "Choose Type Of Your Business";
+      return "";
     }
   },
   getService: function (company) {

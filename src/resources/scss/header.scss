@@ -86,7 +86,7 @@
     border-bottom: 2px solid $primarycolor;
     text-align: center;
     padding: unset;
-    z-index: 20;
+    z-index: 100;
 }
 .down__tools{
     left: -43%;
@@ -137,7 +137,7 @@
 .drop-down__contact{
     position: relative;
     padding: 30px 0;
-    z-index: 10;
+    z-index: 100;
 }
 .contact i {
     font-size: 20px;
@@ -159,19 +159,20 @@
     border-bottom: 2px solid $primarycolor;
     text-align: center;
     padding-left: unset;
-    z-index: 20;
+    z-index: 100;
 }
 .down__user{
     width: 150px;
     height: 100px;
     top: 92px;
     left: -55px;
+    z-index: 100;
 }
 .down__user-company{
     width: 230px;
     height: 150px;
     left: -130px;
-    z-index: 20;
+    z-index: 100;
 }
 .down__contact li,
 .down__user li {
