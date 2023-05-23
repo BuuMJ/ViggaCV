@@ -39,10 +39,12 @@ if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
 document.getElementById('moveTopBtn').style.cssText = "opacity: 1; transition: .5s;";
 document.querySelector('.header-cv').style.cssText = "transform: translatey(0);";
 document.querySelector('.free-design').style.cssText = "transform: translatex(0);";
+document.querySelector('.animation-roll').style.display = 'none';
 } else {
 document.getElementById('moveTopBtn').style.cssText = "opacity: 0; transition: .5s;";
-document.querySelector('.header-cv').style.cssText = "transform: translatey(80%);";
+document.querySelector('.header-cv').style.cssText = "transform: translatey(70%);";
 document.querySelector('.free-design').style.cssText = "transform: translatex(400%);";
+document.querySelector('.animation-roll').style.display = 'flex';
 }
 if (document.body.scrollTop > 450 || document.documentElement.scrollTop > 450) {
 document.querySelector('.easy-operation').style.cssText = "transform: translateX(0);";

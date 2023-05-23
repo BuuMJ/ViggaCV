@@ -604,10 +604,12 @@ header.job-search .best-companyFL .background-image {
   height: 70px;
   z-index: 15;
   margin-left: 50px;
-  transition: .5s; }
-
-.best-companyFL .apply-bestfl:hover {
-  transform: scale(1.1) rotate(-10deg); }
+  transition: .5s;
+  animation-name: pulse;
+  animation-duration: 1.5s;
+  animation-timing-function: cubic-bezier(0.9, 0.7, 0.5, 0.9);
+  animation-iteration-count: infinite;
+  animation-fill-mode: backwards; }
 
 .best-companyFL .close-best-fl {
   position: absolute;
@@ -2314,8 +2316,7 @@ header.company-detail .background-company-detail {
   align-items: center;
   margin-bottom: 100px;
   color: white;
-  margin-top: 30px;
-  transform: translateY(80%);
+  transform: translateY(70%);
   transition: 0.5s; }
 
 .header-cv .intro-title {
@@ -2353,6 +2354,21 @@ header.company-detail .background-company-detail {
 
 .header-cv .btn-cv:hover {
   background-color: rgba(255, 255, 255, 0.1); }
+
+.header-cv .animation-roll {
+  margin-top: 30px;
+  animation-fill-mode: forwards;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white; }
+
+.header-cv .animation-roll i {
+  font-size: 50px;
+  position: relative;
+  cursor: pointer; }
 
 .free-design,
 .easy-operation {
@@ -3183,6 +3199,27 @@ button#moveTopBtn {
     transform: scale(0); }
   100% {
     transform: scale(1); } }
+
+@keyframes shake {
+  10%, 90% {
+    transform: translateY(-4px);
+    opacity: 0.6; }
+  20%, 80% {
+    transform: translateY(12px);
+    opacity: 0.8; }
+  30%, 50%, 70% {
+    transform: translateY(-8px);
+    opacity: 0.7; }
+  40%, 60% {
+    transform: translateY(16px);
+    opacity: 1; } }
+
+@keyframes pulse {
+  0% {
+    opacity: 0; }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.4; } }
 
 * {
   padding: 0;

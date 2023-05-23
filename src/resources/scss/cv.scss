@@ -13,8 +13,7 @@
     align-items: center;
     margin-bottom: 100px;
     color: white;
-    margin-top: 30px;
-    transform: translateY(80%);
+    transform: translateY(70%);
     transition: 0.5s;
 }
 .header-cv .intro-title{
@@ -52,6 +51,21 @@
 }
 .header-cv .btn-cv:hover{
     background-color: rgba(255, 255, 255, 0.1);
+}
+.header-cv .animation-roll{
+  margin-top: 30px;
+  animation-fill-mode: forwards;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.header-cv .animation-roll i {
+  font-size: 50px;
+  position: relative;
+  cursor: pointer;
 }
 .free-design,
 .easy-operation{
