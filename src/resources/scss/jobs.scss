@@ -510,7 +510,7 @@ header.job-search .best-companyFL {
     flex-direction: row;
     justify-content: space-around;
     width: 90%;
-    height: 174px;
+    height: 220px;
     border: 1px solid $primarycolor;
     margin: 20px 0;
     align-self: flex-end;
@@ -540,7 +540,7 @@ header.job-search .best-companyFL {
 .card-job .avatar-company img{
     width: 90%;
     border-radius: 5px;
-    height: 142px;
+    height: 180px;
 }
 .card-job .card-job__info{
     width: 60%;
@@ -553,23 +553,29 @@ header.job-search .best-companyFL {
     text-align: unset;
     font-size: 16px;
     color: #BCBCBC;
-    padding: 4px 0;
     text-decoration: none;
     text-transform: capitalize;
 }
 .card-job .card-job__info a.job-name{
     font-size: 20px;
     color:#454646 ;
+    font-weight: 600;
 }
 .card-job .card-job__info a.job__company-name{
     color: #696b6d;
     font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 4px;
 }
 .card-job .card-job__info p.job-desc{
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   display: -webkit-box;
+  white-space: pre-wrap;
+}
+.card-job .card-job__info p.job-location{
+    padding: 4px 0;
 }
 .card-job .card-job__info a.job-name:hover{
     color: #04B4F4;

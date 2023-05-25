@@ -1,6 +1,6 @@
   <header class="job-search">
      <a data-href="{{bestFL._id}}" class="best-companyFL">
-    <div class="background-image" style="background: url('{{bestFL.background}}') center/cover no-repeat;"></div>
+    <div class="background-image" style="background: url('{{getbackgroundJobBest bestFL}}') center/cover no-repeat;"></div>
     <div class="info-bestfl">
     <span>&#62;&#62;&#62;</span>
     <span class="best-fl-name"> {{bestFL.companyname}} {{bestFL.typeofbusiness}} is the company with the most followers on the website</span>
@@ -17,11 +17,11 @@
         </div>
         <a class="navbar-left-img" href="#toTop"><img src="/img/LOGOVGA.png" alt=""></a>
       </div>
-      <div class="input-search">
-      <input id="search" type="search">
+      <form class="input-search" action="/job/search">
+      <input name="search" id="search" type="search">
       <label for="search"><i class="bi bi-search"></i></label>
-      <button type="button">Search</button>
-      </div>
+      <button type="submit">Search</button>
+      </form>
     </div>
 </header>
   <div class="container-jobs">
@@ -31,13 +31,13 @@
       {{#each job}}
       <div class="card-job">
         <div class="avatar-company">
-          <img src="{{this.avatar}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
+          <img src="{{getAvatarJoba this}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
         </div>
         <div class="card-job__info">
         <a href="/job/{{this._id}}" class="job-name">{{this.jobname}}</a>
         <a href="/company/{{this.idcompany}}" class="job__company-name">{{this.companyname}}</a>
         <p class="job-desc" title="{{this.jobdesc}}">{{this.jobdesc}}</p>
-        <p>{{this.joblocation}}</p>
+        <p class="job-location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</p>
         </div>
         <div class="card-job__action">
           <p class="job-salary">{{this.salary}}</p>
@@ -54,8 +54,8 @@
       <div class="best-job">
         <a class="best-job__link" href="/company/{{bestCP._id}}">
         <span class="primary-text">Top Hirring Company</span>
-        <img src="{{bestCP.background}}" alt="" class="best-job__background" onerror="this.src='/img/notfoundavatar.jpeg'" >
-        <img src="{{bestCP.avatar}}" alt="" class="best-job__avatar" onerror="this.src='/img/notfoundavatar.jpeg'">
+        <img src="{{getbackgroundJobBest bestCP}}" alt="" class="best-job__background" onerror="this.src='/img/notfoundavatar.jpeg'" >
+        <img src="{{getAvatarCPBest bestCP}}" alt="" class="best-job__avatar" onerror="this.src='/img/notfoundavatar.jpeg'">
         </a>
         <div class="main__best-job">
           <span class="best-job__company-name">{{bestCP.companyname}} {{bestCP.typeofbusiness}}</span>
