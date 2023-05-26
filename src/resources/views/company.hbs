@@ -35,6 +35,7 @@
                         <div class="header-card-company">
                             <img class="background-card-company" src="/{{this.background}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
                             <img class="avatar-card-company" src="/{{this.avatar}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
+                            <span data-followers="{{this.follow}}" class="count-follow"><i class="bi bi-people-fill"></i> {{this.follow}} Followers</span>
                         </div>
                         <div class="main-card-company">
                             <span class="card-company-name">{{this.TOB}} {{this.companyname}}</span>
@@ -145,5 +146,15 @@ function search() {
     searchResults.removeChild(noResults);
   }
 }
-
+list.forEach(function(item) {
+  const showFollow = item.querySelector('.count-follow');
+  const countFollow = showFollow.getAttribute('data-followers');
+  console.log(countFollow)
+  if (countFollow <= 1 ){
+    showFollow.innerHTML = '<i class="bi bi-people-fill"></i> ' + `${countFollow} ` + 'Follower';
+  }
+  else{
+    showFollow.innerHTML = '<i class="bi bi-people-fill"></i>' + `${countFollow}` + 'Followers';
+  }
+})
 </script>

@@ -68,6 +68,35 @@ module.exports = {
       return "/img/logoleadership.png";
     }
   },
+  getAvatarJoba: function (joba) {
+    if (joba && joba.avatar) {
+      return `/${joba.avatar}`;
+    } else {
+      return "/img/logocompany.jpeg";
+    }
+  },
+  getAvatarCPBest: function (bestCP) {
+    if (bestCP && bestCP.avatar) {
+      return `/${bestCP.avatar}`;
+    } else {
+      return "/img/logocompany.jpeg";
+    }
+  },
+  getbackgroundJobBest: function (bestFL) {
+    if (bestFL && bestFL.background) {
+      return `/${bestFL.background}`;
+    } else {
+      return "/img/logocompany.jpeg";
+    }
+  },
+  getbackgroundCPBest: function (bestCP) {
+    if (bestCP && bestCP.background) {
+      return `/${bestCP.background}`;
+    } else {
+      return "/img/logocompany.jpeg";
+    }
+  },
+
   getBackground: function (company) {
     if (company && company.background) {
       return `/${company.background}`;

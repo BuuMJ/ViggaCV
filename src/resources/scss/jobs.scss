@@ -363,7 +363,6 @@ header.job-search{
     align-items: center;
     z-index: 10;
     background-color: #F7F7F7;
-    border-bottom: 1px solid #ededed;
 }
 .header-search{
     display: flex;
@@ -372,30 +371,44 @@ header.job-search{
     align-items: center;
     width: 100%;
     height: 80px;
-    background-color: white;
+    background-color: #F7F7F7;
     z-index: 20;
 }
 .header-search .navbar-left{
-    width: 202px;
+    width: 22%;
     padding-left: 40px;
+    position: relative;
+}
+.header-search .navbar-left .navbar-left__primary a.navbar-left-name{
+    color: #0E0E23;
+}
+.header-search .navbar-left a.litle-text {
+    color: #4C4949;
+    font-weight: 600;
+    position: absolute;
+    left: 25%;
+    bottom: 12px;
 }
 .header-search .input-search{
-    width: 864px;
+    width: 50%;
     position: relative;
+    text-align: center;
 }
 .header-search .input-search input{
     width: 700px;
-    margin-left: 12px;
     height: 48px;
     border: none;
     outline: none;
-    background-color: #F7F7F7;
-    padding: 4px 4px 4px 38px;
+    background-color: white;
+    padding: 4px 4px 4px 56px;
     border-radius: 5px;
+    color: rgb(51,51,51);
+    font-size: 14px;
+    font-weight: 500;
 }
 .header-search .input-search label{
     position: absolute;
-    left: 20px;
+    left: 6%;
     top: 10px;
     font-size: 20px;
 }
@@ -411,6 +424,44 @@ header.job-search{
 }
 .header-search .input-search button:hover{
     background-color: $primarycolor;
+}
+.header-search .header-search__login{
+    width: 20%;
+}
+.header-search .header-search__login .search-login{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 48px;
+    border: 1px solid rgb(204,204,204);
+    border-radius: 5px;
+    background-color: white;
+    overflow: hidden;
+    text-decoration: none;
+    transition: .2s ease-in-out;
+}
+.header-search .header-search__login .search-login:hover{
+    border: 1px solid #04B4F4;
+}
+.header-search__login .search-login .icon-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    height: 100%;
+    background-color: #F5F5F5;
+    color: #B6B6B6;
+    font-size: 30px;
+}
+.header-search__login .search-login .sign-in{
+    width: 65%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $primarycolor;
+    font-size: 18px;
 }
 header.job-search .best-companyFL {
     width: 100%;
@@ -463,9 +514,11 @@ header.job-search .best-companyFL {
     z-index: 15;
     margin-left: 50px;
     transition: .5s;
-  }
-  .best-companyFL .apply-bestfl:hover{
-    transform: scale(1.1) rotate(-10deg);
+    animation-name: pulse;
+    animation-duration: 1.5s;
+    animation-timing-function: cubic-bezier(0.9, 0.7, 0.5, 0.9);
+    animation-iteration-count: infinite;
+    animation-fill-mode: backwards;
   }
   .best-companyFL .close-best-fl{
     position: absolute;
@@ -508,7 +561,7 @@ header.job-search .best-companyFL {
     flex-direction: row;
     justify-content: space-around;
     width: 90%;
-    height: 174px;
+    height: 220px;
     border: 1px solid $primarycolor;
     margin: 20px 0;
     align-self: flex-end;
@@ -538,7 +591,7 @@ header.job-search .best-companyFL {
 .card-job .avatar-company img{
     width: 90%;
     border-radius: 5px;
-    height: 142px;
+    height: 180px;
 }
 .card-job .card-job__info{
     width: 60%;
@@ -551,23 +604,29 @@ header.job-search .best-companyFL {
     text-align: unset;
     font-size: 16px;
     color: #BCBCBC;
-    padding: 4px 0;
     text-decoration: none;
     text-transform: capitalize;
 }
 .card-job .card-job__info a.job-name{
     font-size: 20px;
     color:#454646 ;
+    font-weight: 600;
 }
 .card-job .card-job__info a.job__company-name{
     color: #696b6d;
     font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 4px;
 }
 .card-job .card-job__info p.job-desc{
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   display: -webkit-box;
+  white-space: pre-wrap;
+}
+.card-job .card-job__info p.job-location{
+    padding: 4px 0;
 }
 .card-job .card-job__info a.job-name:hover{
     color: #04B4F4;

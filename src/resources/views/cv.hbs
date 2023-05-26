@@ -4,6 +4,9 @@
         <span class="intro-surprise">ViggaWorks NiceCV</span>
         <span class="intro-text">Create a quick and free CV template, so that employers must <b>"Surprise!"</b>  as soon as I see your CV.</span>
         <a class="btn-cv" href="/cv/createcv">Create CV</a>
+        <div class="animation-roll">
+            <i class="bi bi-chevron-double-down"></i>
+        </div>
     </div>
     <div class="free-design">
         <div class="free-design-left">
@@ -63,3 +66,17 @@
         </div>
     </div>
 </div>
+<script>
+var animationElement = document.querySelector('.animation-roll');
+function runAnimation() {
+  animationElement.style.animation = 'shake 2.5s cubic-bezier(.36,.07,.19,.97) both';
+  setTimeout(function() {
+    animationElement.style.animation = '';
+    setTimeout(runAnimation, 1200);
+  }, 2500);
+}
+runAnimation();
+animationElement.querySelector('i').addEventListener('click',()=>{
+ window.scrollTo(0, 100);
+})
+</script>
