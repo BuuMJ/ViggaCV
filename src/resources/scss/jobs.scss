@@ -386,8 +386,9 @@ header.job-search{
     color: $primarycolor;
     font-weight: 600;
     position: absolute;
-    left: 25%;
+    left: 25.3%;
     bottom: 12px;
+    letter-spacing: 1.6px;
 }
 .header-search .input-search{
     width: 50%;
@@ -448,14 +449,14 @@ header.job-search{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 35%;
+    width: 40%;
     height: 100%;
     background-color: #F5F5F5;
     color: #B6B6B6;
     font-size: 30px;
 }
 .header-search__login .search-login .sign-in{
-    width: 65%;
+    width: 60%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -549,6 +550,7 @@ header.job-search .best-companyFL {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 .main-jobs .card-jobs{
     display: flex;
@@ -750,4 +752,9 @@ header.job-search .best-companyFL {
 .ads-LRcompany img{
     width: 403px;
     height: 483px;
+}
+.suggest-company{
+    width: 67%;
+    display: flex;
+    flex-direction: column;
 }
