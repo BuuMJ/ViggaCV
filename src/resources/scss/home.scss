@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    scroll-behavior: smooth;
 }
 .first-content{
     display: flex;
@@ -12,14 +13,15 @@
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    height: 650px;
-    background: url("/img/bgcontent.jpg") center / cover no-repeat;
+    height: 100vh;
+    background: linear-gradient(83.78deg,rgba(84, 84, 84,0.8) 1.64%,rgba(255,255,255,0.1) 93.62%),url("/img/bgcontent.jpg") center / cover no-repeat;
 }
 .first-content-left{
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 55%;
+    transform: translateY(-25%);
 }
 .first-content-left .left-secondary-text{
     font-size: 26px;
@@ -45,7 +47,7 @@
 .first-content-right{
     padding: 10px;
     border: 4px solid black;
-    transform: translateY(-12%);
+    transform: translateY(-37%);
 }
 .first-content-right img{
     display: none;
@@ -156,9 +158,9 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 90%;
+    width: 100%;
     height: 100vh;
-    background: url("/img/bgbody.jpg") center / cover no-repeat;
+    background: linear-gradient(83.78deg,rgba(48, 48, 48,0.9) 1.64%,rgba(255,255,255,0.1) 93.62%),url("/img/bgbody2.jpg") center / cover no-repeat;
     position: relative;
 }
 .company-job .home-company,
@@ -185,7 +187,7 @@
     text-align: center;
     width: 50%;
     text-decoration: none;
-    color: black;
+    color: white;
     text-transform: uppercase;
 }
 .company-job .home-job a{
