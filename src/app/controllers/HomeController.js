@@ -32,10 +32,7 @@ class HomeController {
           console.log(err);
         } else {
           console.log(info);
-          res.render("home", {
-            msg: "You have responded successfully",
-            user: req.user,
-          });
+          res.redirect('back');
         }
       });
     } else {

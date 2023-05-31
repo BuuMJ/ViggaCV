@@ -254,7 +254,10 @@ class JobController {
     console.log(
       "đây là công ty có nhiều follow nhất sau khi search: " + bestFL.background
     );
-
+    const randomIndex = Math.floor(Math.random() * company.length);
+    const randomCompany = company[randomIndex];
+    const jobs = await JobModel.find({ iduser: randomCompany.iduser });
+    const randomJobs = jobs.sort(() => 0.5 - Math.random()).slice(0, 3);
     if (page) {
       //Get page
       page = parseInt(page);

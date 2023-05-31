@@ -77,7 +77,7 @@
     <div class="suggest-company">
       <div class="card-suggest" style="background: url('{{getbackgroundCPRandom random}}') center/cover no-repeat;">
         <header class="header-suggest">
-          <img src="{{getAvatarCPRandom random}}" alt="">
+          <img src="{{getAvatarCPRandom random}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
           <span class="name-suggest">{{random.companyname}} {{random.typeofbusiness}}</span>
         </header>
         <ul class="random-job">
