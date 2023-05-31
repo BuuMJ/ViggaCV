@@ -82,6 +82,20 @@ module.exports = {
       return "/img/logocompany.jpeg";
     }
   },
+  getAvatarCPRandom: function (random) {
+    if (random && random.avatar) {
+      return `/${random.avatar}`;
+    } else {
+      return "/img/logocompany.jpeg";
+    }
+  },
+  getbackgroundCPRandom: function (random) {
+    if (random && random.background) {
+      return `/${random.background}`;
+    } else {
+      return "/img/logocompany.jpeg";
+    }
+  },
   getbackgroundJobBest: function (bestFL) {
     if (bestFL && bestFL.background) {
       return `/${bestFL.background}`;
@@ -164,7 +178,7 @@ module.exports = {
     if (company && company.typeofbusiness) {
       return company.typeofbusiness;
     } else {
-      return "";
+      return "Choose Your Type Of Business";
     }
   },
   getService: function (company) {

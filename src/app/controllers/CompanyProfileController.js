@@ -57,14 +57,17 @@ class CompanyProfileController {
       const companyemail = req.body.companyEmail;
       const companyphone = req.body.companyPhone;
       const companyyears = req.body.companyYears;
-      const typeofbusiness = req.body.typeOfBusiness;
       const companydesc = req.body.companyDesc;
       const noofemployee = req.body.noofemployee;
       const servicedesc = req.body.serviceDesc;
       const establisheddate = req.body.establisheddate;
       const mission = req.body.mission;
       const history = req.body.history;
-
+      if (req.body.typeOfBusiness === "Choose Type Of Your Business") {
+        var typeofbusiness = null;
+      } else {
+        var typeofbusiness = req.body.typeOfBusiness;
+      }
       // console.log(iduser + " đây là những gì bạn nhập vào!!!!!!!");
       // console.log(companyname + " đây là những gì bạn nhập vào!!!!!!!");
       // console.log(companyaddress + " đây là những gì bạn nhập vào!!!!!!!");

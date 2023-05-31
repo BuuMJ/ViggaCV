@@ -74,6 +74,37 @@
       <a href="/job?page={{this}}" data-page="{{this}}">{{this}}</a>
       {{/each}}
     </div>
+    <div class="suggest-company">
+      <div class="card-suggest" style="background: url('{{getbackgroundCPRandom random}}') center/cover no-repeat;">
+        <header class="header-suggest">
+          <img src="{{getAvatarCPRandom random}}" alt="">
+          <span class="name-suggest">{{random.companyname}} {{random.typeofbusiness}}</span>
+        </header>
+        <ul class="random-job">
+          <span class="suggest-text">suggested jobs</span>
+          {{#each randomJobs}}
+          <a href="/job/{{this._id}}">
+            <li>
+              <span class="suggest-jobname" title="{{this.jobname}}">{{this.jobname}}</span>
+              <div class="suggestion-deal">
+                <span class="suggest-jobsalary" title="Salary: {{this.salary}}"><i class="bi bi-currency-dollar"></i> {{this.salary}}</span>
+                <span class="suggest-joblocation"title="{{this.joblocation}}"><i class="bi bi-geo-alt-fill"></i> {{this.joblocation}}</span>
+              </div>
+            </li>
+          </a>
+          {{/each}}
+        </ul>
+        <footer class="footer-suggest">
+          <a href="/company/{{random._id}}">Apply {{random.companyname}} Now</a>
+        </footer>
+        <img class="icon-suggestion" src="/img/suggestion.png" alt="">
+        <i id="close-suggest" class="bi bi-three-dots-vertical"></i>
+        <div class="box-contain-close">
+          <i class="bi bi-eye-slash"></i>
+          <span>hide this content</span>
+        </div>
+      </div>
+    </div>
     </div>
     <div class="jobs-ads">
       <div class="best-job">
@@ -97,15 +128,24 @@
         <img src="/img/posteradsLR.jpg" alt="">
       </div>
     </div>
-    {{!-- <div class="suggest-company">
-      <div class="card-suggest">
-        <span class="name-suggest">{{random.companyname}}</span>
-        <span class="job-suggest">{{random.job}}</span>
-      </div>
-    </div> --}}
   </div>
   </div>
 <script>
+  var showCloseBox = document.getElementById('close-suggest');
+  var boxClose = document.querySelector('.box-contain-close');
+  var closeSuggest = document.querySelector('.card-suggest');
+  showCloseBox.addEventListener('click',()=>{
+    event.stopPropagation();
+    boxClose.style.top = '20px';
+  });
+  document.addEventListener('click', function(event) {
+  if (event.target !== boxClose ){
+    boxClose.style.top = '-50%';
+  }
+});
+  boxClose.addEventListener('click',()=>{
+    closeSuggest.style.display = 'none';
+  });
   var closeBestFL = document.querySelector('.close-best-fl i');
   var boxBestCompanyFl = document.querySelector('.best-companyFL');
   var deleteMargin = document.querySelector('.container-jobs');
@@ -140,7 +180,7 @@ window.addEventListener('scroll', function() {
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: #F7F7F7;';
       document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #fedb00';
       document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: black;';
-      document.getElementById('change-logo').src = '/img/LOGOVGA.png;';
+      document.getElementById('change-logo').src = '/img/LOGOVGA.png';
       document.querySelector('.header-search .header-search__login .search-login').style.display = 'flex';
     } else {
       document.querySelector('.header-search').style.cssText = 'position: unset; box-shadow: unset;';
