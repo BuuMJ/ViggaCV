@@ -9,14 +9,19 @@ const {
 class CompanyController {
   //[GET] List job
   async company(req, res, next) {
-    const company = await CompanyModel.findOne({ iduser: req.user._id });
+    if (req.user) {
+      var user_id = req.user._id;
+    }
+    const company = await CompanyModel.findOne({ iduser: user_id });
     // const listjob = await JobModel.findone({ iduser: req.user._id });
     const count = await CompanyModel.countDocuments({});
     const listcompany = await CompanyModel.find({});
     const Listcompany = listcompany.map((listcompany) =>
       listcompany.toObject()
     );
-    JobModel.find({ iduser: req.user._id }).then((listjob) => {
+    const randomIndex = Math.floor(Math.random() * Listcompany.length);
+    const randomCompany = Listcompany[randomIndex];
+    JobModel.find({ iduser: user_id }).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
       // console.log(company + " = ĐÂY LÀ COMPANY SAU KHI TÌM KIẾM");
       res.render("company", {
@@ -26,6 +31,7 @@ class CompanyController {
         company: company,
         listcompany: Listcompany,
         listjob,
+        randomCompany: randomCompany,
         count: count,
       });
     });
@@ -79,7 +85,7 @@ class CompanyController {
       await action.save();
       company.follow++;
       await company.save();
-      res.redirect('/company/' + idCompany);
+      res.redirect("/company/" + idCompany);
       console.log("ĐÃ THÊM FOLLOW" + checkfl);
     }
   }
