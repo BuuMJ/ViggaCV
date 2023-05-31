@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
 .container-home {
   display: flex;
   flex-direction: column;
@@ -11,7 +12,7 @@
   align-items: center;
   width: 100%;
   height: 650px;
-  background: url("/img/bgcontent.jpeg") center/cover no-repeat; }
+  background: url("/img/bgcontent.jpg") center/cover no-repeat; }
 
 .first-content-left {
   display: flex;
@@ -23,7 +24,8 @@
   font-size: 26px;
   font-weight: 600;
   padding: 10px 0 10px 0;
-  transform: translatey(-10%); }
+  transform: translatey(-10%);
+  text-shadow: 4px -2px 5px rgba(255, 255, 255, 0.8); }
 
 .home-create-cv {
   width: 25%;
@@ -140,6 +142,66 @@
   color: #777876;
   height: 45%;
   padding: 0 30px 0 0; }
+
+.company-job {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 100vh;
+  background: url("/img/bgbody.jpg") center/cover no-repeat;
+  position: relative; }
+
+.company-job .home-company,
+.company-job .home-job {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  font-size: 72px;
+  font-weight: 700;
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  transition: .3s;
+  font-family: 'Lilita One', cursive; }
+
+.company-job .home-company {
+  left: 0;
+  width: 100%;
+  clip-path: polygon(0 0, 30% 0, 70% 100%, 0% 100%); }
+
+.company-job .home-company a {
+  align-self: start;
+  text-align: center;
+  width: 50%;
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase; }
+
+.company-job .home-job a {
+  align-self: end;
+  text-align: center;
+  width: 50%;
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase; }
+
+.company-job .home-job {
+  right: 0;
+  width: 100%;
+  clip-path: polygon(100% 0, 100% 100%, 70% 100%, 30% 0); }
+
+.company-job .home-company:hover,
+.company-job .home-job:hover {
+  background-color: #100a09; }
+
+.company-job .home-company:hover a,
+.company-job .home-job:hover a {
+  background: linear-gradient(to left, #fedb00, #F80404);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; }
 
 header.jobdetail {
   width: 100%;
