@@ -5,7 +5,7 @@
     align-items: center;
     width: 100%;
     height: 80px;
-    background-color: black;
+    background-color: #363636;
     padding: unset;
     // background-color: $primarycolor;
     // background-image: linear-gradient(to bottom right, rgba(255,255,255,0.1),rgba(255,255,255,0.4));
@@ -25,7 +25,7 @@
 .navbar-left .litle-text{
     font-size: 12px;
     font-weight: 500;
-    color: white;
+    color: #f99c04;
     letter-spacing: 2.1px;
     position: absolute;
     bottom: 13px;
@@ -61,10 +61,10 @@
     width: 40%;
     font-size: 20px;
     font-weight: 700;
-    color: $primarycolor;
+    color: white;
 }
 .navbar-center a {
-    color: $primarycolor;
+    color: white;
     text-decoration: none;
 }
 .navbar-center ul {
@@ -82,7 +82,7 @@
     left: -83%;
     display: none;
     list-style-type: none;
-    color: $primarycolor;
+    color: white;
     font-size: 20px;
     font-weight: 700;
     width: 130px;
@@ -136,7 +136,7 @@
     text-decoration: none;
     font-size: 20px;
     font-weight: 700;
-    color: $primarycolor;
+    color: white;
 }
 
 .drop-down__contact{
@@ -146,7 +146,7 @@
 }
 .contact i {
     font-size: 20px;
-    color: $primarycolor;
+    color: white;
 }
 .down__contact,
 .down__user{
@@ -155,7 +155,7 @@
     left: -40px;
     display: none;
     list-style-type: none;
-    color: $primarycolor;
+    color: white;
     font-size: 20px;
     font-weight: 700;
     width: 220px;

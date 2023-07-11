@@ -28,7 +28,8 @@
     font-weight: 600;
     padding: 10px 0 10px 0;
     transform: translatey(-10%);
-    text-shadow: 4px -2px 5px rgba(255, 255, 255, 0.8);
+    -webkit-text-stroke: 1px white;
+    -webkit-text-fill-color: black;
 }
 .home-create-cv{
     width: 25%;
@@ -68,10 +69,9 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    width: 90%;
-    height: 650px;
-    background-color: #303030;
-    margin: 50px 0;
+    width: 100%;
+    height: 800px;
+    background-color: $primarycolor;
 }
 .templates-img{
     display: flex;
@@ -79,7 +79,7 @@
     justify-content: center;
     align-items: center;
     height: 550px;
-    width: 45%;
+    width: 40%;
     overflow: hidden;
     position: relative;
 }
@@ -95,15 +95,23 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    width: 45%;
+    align-items: center;
+    width: 60%;
     color: $primarycolor;
+    -webkit-clip-path: polygon(100% 0%, 100% 47%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+    clip-path: polygon(100% 0%, 100% 47%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+    background-color: #100a09;
+    height: 100%;
 }
 
 .templates-text span{
     font-size: 30px;
     font-weight: 700;
     margin-bottom: 30px;
+    padding: 0 30px 0 90px;
+    text-align: center;
+    -webkit-text-stroke: 1px $primarycolor;
+    -webkit-text-fill-color: black;
 }
 .templates-text__action{
     text-decoration: none;
@@ -122,36 +130,53 @@
 .advantages{
     display: flex;
     flex-direction: row;
+    width: 100%;
+    background-color: $primarycolor;
+    height: 320px;
+}
+.advantage-before,
+.advantage-after{
+    width: 45%;
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    width: 85%;
-    flex-wrap: wrap;
-    margin-bottom: 50px;
+}
+.advantage-before{
+    width: 55%;
+    background-color: black;
+    -webkit-clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0 49%, 0% 0%);
+clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0 49%, 0% 0%);
 }
 .advantage{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: center;
     width: 45%;
     height: 250px;
     margin: 20px 0;
 }
-.advantage i {
-    font-size: 50px;
-    height: 30%;
+.advantage-before .advantage{
+    color: $primarycolor;
 }
-.advantage h3{
-    font-size: 25px;
-    font-weight: 700;
+.advantage-after .advantage span{
+    padding: 0 12px;
+}
+.advantage i {
+    font-size: 40px;
     height: 15%;
 }
+.advantage h3{
+    font-size: 18px;
+    font-weight: 700;
+    height: 10%;
+}
 .advantage span {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
-    color: #777876;
-    height: 45%;
-    padding: 0 30px 0 0;
+    height: 50%;
+    text-align: center;
+    padding: 0 30px;
 }
 .company-job{
     display: flex;
@@ -176,13 +201,14 @@
     cursor: pointer;
     transition: .3s;
     font-family: 'Bree Serif', serif;
+    text-decoration: none;
 }
 .company-job .home-company{
     left: 0;
     width: 100%;
     clip-path: polygon(0 0, 30% 0, 70% 100%, 0% 100%);
 }
-.company-job .home-company a{
+.company-job .home-company span{
     align-self: start;
     text-align: center;
     width: 50%;
@@ -190,7 +216,7 @@
     color: white;
     text-transform: uppercase;
 }
-.company-job .home-job a{
+.company-job .home-job span{
     align-self: end;
     text-align: center;
     width: 50%;
@@ -207,8 +233,8 @@
 .company-job .home-job:hover{
     background-color: #100a09;
 }
-.company-job .home-company:hover a,
-.company-job .home-job:hover a{
+.company-job .home-company:hover span,
+.company-job .home-job:hover span{
     background: linear-gradient(to left, $primarycolor , #ffb901, #F80404 );
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
