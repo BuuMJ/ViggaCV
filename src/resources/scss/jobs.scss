@@ -553,10 +553,12 @@ header.job-search .best-companyFL {
   .best-companyFL .info-bestfl .best-fl-name {
     font-size: 26px;
     font-weight: 600;
-    text-shadow:  2px 2px 10px black;
+    text-shadow:  2px 2px 14px white;
     text-align: center;
     width: 724px;
     padding: 0 8px;
+    -webkit-text-stroke: 1.2px black;
+    -webkit-text-fill-color: #04B4F4;
   }
   .best-companyFL .apply-bestfl{
     width: 160px;

@@ -117,15 +117,21 @@
     text-decoration: none;
     font-size: 30px;
     font-weight: 700;
-    color: black;
-    background-color: $primarycolor;
+    -webkit-text-stroke: 1px $primarycolor;
+    -webkit-text-fill-color: black;
+    // background-color: $primarycolor;
     padding: 10px;
-    border: 2px solid black;
+    border: 2px solid $primarycolor;
     margin-top: 30px;
-    box-shadow: 2px 2px 30px $primarycolor;
+    // box-shadow: 2px 2px 30px $primarycolor;
+    transition: .3s;
 }
 .templates-text__action:hover{
-    opacity: 0.9;
+    background-color: $primarycolor;
+    -webkit-text-stroke: 1px black;
+    -webkit-text-fill-color: $primarycolor;
+    box-shadow: 2px 2px 30px $primarycolor;
+    border: 2px solid black;
 }
 .advantages{
     display: flex;

@@ -110,15 +110,19 @@
   text-decoration: none;
   font-size: 30px;
   font-weight: 700;
-  color: black;
-  background-color: #fed200;
+  -webkit-text-stroke: 1px #fed200;
+  -webkit-text-fill-color: black;
   padding: 10px;
-  border: 2px solid black;
+  border: 2px solid #fed200;
   margin-top: 30px;
-  box-shadow: 2px 2px 30px #fed200; }
+  transition: .3s; }
 
 .templates-text__action:hover {
-  opacity: 0.9; }
+  background-color: #fed200;
+  -webkit-text-stroke: 1px black;
+  -webkit-text-fill-color: #fed200;
+  box-shadow: 2px 2px 30px #fed200;
+  border: 2px solid black; }
 
 .advantages {
   display: flex;
@@ -786,10 +790,12 @@ header.job-search .best-companyFL .background-image {
 .best-companyFL .info-bestfl .best-fl-name {
   font-size: 26px;
   font-weight: 600;
-  text-shadow: 2px 2px 10px black;
+  text-shadow: 2px 2px 14px white;
   text-align: center;
   width: 724px;
-  padding: 0 8px; }
+  padding: 0 8px;
+  -webkit-text-stroke: 1.2px black;
+  -webkit-text-fill-color: #04B4F4; }
 
 .best-companyFL .apply-bestfl {
   width: 160px;
@@ -3302,7 +3308,8 @@ textarea#activities {
 
 .footer-send-feed-back label {
   top: 100px;
-  position: absolute; }
+  position: absolute;
+  transition: .5s; }
 
 .footer-send-feed-back span {
   margin-bottom: 16px;
