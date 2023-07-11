@@ -36,3 +36,13 @@
       opacity: 0.4;
     }
   }
+  @keyframes tickscancv{
+    from{
+      transform: translateX(-4px);
+      opacity: 0.5;
+    }
+    to{
+      transform: translateX(204px);
+      opacity: 1;
+    }
+  }

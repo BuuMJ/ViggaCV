@@ -659,8 +659,57 @@ header.job-search {
 .header-search .input-search button:hover {
   background-color: #fed200; }
 
-.header-search .header-search__login {
+.header-search .header-search__login,
+.header-search .header-search__scancv {
   width: 20%; }
+
+.header-search .header-search__scancv label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 48px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  transition: .5s; }
+
+.header-search .header-search__scancv label .text-scancv {
+  width: 70%;
+  color: #B6B6B6;
+  font-size: 20px;
+  border-right: 1px solid #cccccc;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.header-search .header-search__scancv label .icon-scancv {
+  width: 25%;
+  height: 90%;
+  padding-left: 4px; }
+
+.header-search .header-search__scancv label .tick-scancv {
+  position: absolute;
+  background-color: #fed200;
+  height: 110%;
+  width: 2px;
+  left: -4px;
+  opacity: 0; }
+
+.header-search .header-search__scancv label:hover .tick-scancv {
+  animation-name: tickscancv;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards; }
+
+.header-search .header-search__scancv label:hover .text-scancv {
+  color: white; }
+
+.header-search .header-search__scancv label:hover {
+  background-color: #8C8C8C; }
 
 .header-search .header-search__login .search-login {
   display: none;
@@ -3557,6 +3606,14 @@ button#moveTopBtn {
   50% {
     transform: scale(1.1);
     opacity: 0.4; } }
+
+@keyframes tickscancv {
+  from {
+    transform: translateX(-4px);
+    opacity: 0.5; }
+  to {
+    transform: translateX(204px);
+    opacity: 1; } }
 
 * {
   padding: 0;
