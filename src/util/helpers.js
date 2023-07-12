@@ -47,6 +47,12 @@ module.exports = {
   getId: function (user) {
     return user._id;
   },
+  getSpecialized: function (user) {
+    return user.specialized;
+  },
+  getBirthday: function (user) {
+    return user.birthday;
+  },
   getAvatar: function (user) {
     if (user.avatar) {
       return `/${user.avatar}`;

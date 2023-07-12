@@ -472,6 +472,7 @@ header.job-search{
     animation-duration: 2s;
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
 }
 .header-search .header-search__scancv label:hover .text-scancv{
     color: white;
