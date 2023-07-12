@@ -23,15 +23,22 @@
       <label for="search"><i class="bi bi-search"></i></label>
       <button type="submit">Search</button>
       </form>
-      <div class="header-search__scancv">
+      <form action="" method="" class="header-search__scancv" enctype="multipart/form-data">
         <input type="file" name="scancv" id="scancv" hidden>
         <label for="scancv">
           <span class="text-scancv">Scan Your CV</span> 
           <img class="icon-scancv" src="/img/scancv.png" alt="">
           <div class="tick-scancv"></div>
         </label>
-    
-      </div>
+      <div class="alert-scancv">
+          <span>Below is the file you need to scan ?</span>
+          <span class="file-name"></span>
+          <div class="alert-scancv__action">
+            <button type="button" class="submit-scancv">yes</button>
+            <button type="button" class="refuse-scancv">no</button>
+          </div>
+        </div>
+      </form>
     </div>
     {{else}}
     <div class="header-search">
@@ -186,7 +193,7 @@ window.addEventListener('scroll', function() {
       deleteMargin.style.cssText = 'margin-top: 80px';
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: #F7F7F7;';
       document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #fedb00';
-      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: black;';
+      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #f99c04;';
       document.getElementById('change-logo').src = '/img/LOGOVGA.png';
       document.querySelector('.header-search .header-search__login .search-login').style.display = 'flex';
     } else {
@@ -204,7 +211,7 @@ window.addEventListener('scroll', function() {
       deleteMargin.style.cssText = 'margin-top: 85px';
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: #F7F7F7;';
       document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #fedb00';
-      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: black;';
+      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #f99c04;';
       document.getElementById('change-logo').src = '/img/LOGOVGA.png';
       document.querySelector('.header-search .header-search__login .search-login').style.display = 'flex';
     } else {
@@ -235,7 +242,7 @@ getPagination.forEach(function(pageLink) {
     }
   });
 });
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', ()=> {
   var currentPage = localStorage.getItem('currentPageJob');
   if (currentPage !== null) {
     getPagination.forEach(function(pageLink) {
@@ -245,6 +252,35 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+});
+document.addEventListener('DOMContentLoaded', () => {
+  var fileInput = document.getElementById('scancv');
+  var form = document.querySelector('.header-search__scancv');
+  fileInput.addEventListener('change', () => {
+    var input = fileInput; 
+    if (input.files.length > 0) {
+      var fileName = input.value.split('\\').pop();
+      document.querySelector('.file-name').innerHTML = fileName;
+      var confirmed = document.querySelector('.alert-scancv');
+      confirmed.style.cssText = 'transform: translateY(0)';
+      acceptFile = document.querySelector('.submit-scancv');
+      refuseFile = document.querySelector('.refuse-scancv');
+      acceptFile.addEventListener('click', () => {
+        form.submit();
+      });
+      refuseFile.addEventListener('click', () => {
+        var stopScan = confirm('Do you want to stop scanning?');
+        if (stopScan) {
+          confirmed.style.cssText = 'transform: translateY(-500%)';
+          setTimeout(function() {
+            alert("Action not successful");
+          }, 300);
+        } else {
+
+        }
+      });
+    }
+  });
 });
 </script>
 

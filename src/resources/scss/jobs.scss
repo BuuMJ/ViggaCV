@@ -373,6 +373,7 @@ header.job-search{
     height: 80px;
     background-color: #F7F7F7;
     z-index: 20;
+    position: relative;
 }
 .header-search .navbar-left{
     width: 22%;
@@ -478,6 +479,64 @@ header.job-search{
 .header-search .header-search__scancv label:hover{
     background-color: #8C8C8C;
 }
+.header-search .alert-scancv{
+    position: absolute;
+    width: 500px;
+    height: 200px;
+    background-color: white;
+    color: black;
+    top: 20%;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-shadow: 4px 2px 16px rgba(0,0,0,0.8);
+    transform: translateY(-500%);
+    transition: .5s;
+    font-size: 20px;
+    padding: 0 14px;
+}
+.header-search .alert-scancv .file-name{
+    color: #0494FC;
+}
+.header-search .alert-scancv .alert-scancv__action{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 20px;
+}
+.header-search .alert-scancv .alert-scancv__action button{
+    border: none;
+    outline: none;
+    width: 80px;
+    height: 40px;
+    margin: 0 12px;
+    transition: .3s;
+    font-size: 18px;
+    font-weight: 600;
+}
+.header-search .alert-scancv .alert-scancv__action .submit-scancv{
+    background-color: white;
+    color: #04FC44;
+    border: 1px solid #04FC44;
+}
+.header-search .alert-scancv .alert-scancv__action .submit-scancv:hover{
+    background-color: #04FC44;
+    color: white;
+}
+.header-search .alert-scancv .alert-scancv__action .refuse-scancv{
+    background-color: #F80404;
+    color: white;
+    border: 1px solid #F80404;
+}
+.header-search .alert-scancv .alert-scancv__action .refuse-scancv:hover{
+    background-color: white;
+    color: #F80404;
+}
 .header-search .header-search__login .search-login{
     display: none;
     justify-content: center;
@@ -577,12 +636,23 @@ header.job-search .best-companyFL {
     top: 5px;
     right: 10px;
     font-size: 30px;
-    color: black;
+    color: white;
     cursor: pointer;
   }
-  .best-companyFL .close-best-fl:hover{
-    color: #FC0404;
+  .best-companyFL .close-best-fl::before{
+    content: "";
+    position: absolute;
+    background-color: rgba(166,172,178,0.4);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    top: 2px;
+    right: -4.5px;
   }
+  .best-companyFL .close-best-fl:hover::before{
+    background-color: rgba(166,172,178,0.6);
+  }
+
 .container-jobs{
     background-color: #F7F7F7;
 }
