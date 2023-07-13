@@ -52,11 +52,11 @@
 </div>
 </form>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
   var textareas = document.querySelectorAll('textarea');
 
   textareas.forEach(function(textarea) {
-    textarea.addEventListener('change', function() {
+    textarea.addEventListener('input', function() {
       var lineHeight = parseInt(getComputedStyle(textarea).lineHeight, 10);
       var rows = textarea.value.split('\n').length;
       var minHeight = lineHeight * 1; // Đặt min-height
@@ -75,6 +75,7 @@
     });
   });
 });
+
 var showChangeAvatar = document.querySelector('.body__create-cv header .avatar__user-cv img');
 var boxChangeAvatar = document.querySelector('.change-avatar__user-cv');
 showChangeAvatar.addEventListener('mouseover',()=>{

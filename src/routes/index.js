@@ -8,13 +8,16 @@ const cvRouter = require("./cv");
 const companyRouter = require("./company");
 const companyprofileRouter = require("./companyprofile");
 const jobRouter = require("./job");
+const applyCVRouter = require("./applycv");
 
 function route(app) {
   app.use("/companyprofile", checkLogin, companyprofileRouter);
 
+  app.use("/scan", applyCVRouter);
+
   app.use("/job", sendDataUser, jobRouter);
 
-  app.use("/company",sendDataUser, companyRouter);
+  app.use("/company", sendDataUser, companyRouter);
 
   app.use("/profile", checkLogin, profileRouter);
 

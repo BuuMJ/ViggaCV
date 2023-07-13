@@ -70,10 +70,27 @@ const storage = multer.diskStorage({
   },
 });
 
+// Upload file CV
+const storage2 = multer.diskStorage({
+  destination: function (req, file, cb) {
+    // Tạo đường dẫn đầy đủ cho thư mục lưu trữ của CV đó
+    var path = "uploads/Cv";
+    // Tạo thư mục nếu chưa tồn tại
+    fs.mkdirSync(path, { recursive: true });
+    cb(null, path);
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
 // Hàm filter
 const imageFilter = function (req, file, cb) {
   // Chỉ chấp nhận file hình ảnh
-  if (!file.originalname.match(/\.(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF|heic|HEIC|webp|WEBP)$/)) {
+  if (
+    !file.originalname.match(
+      /\.(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF|heic|HEIC|webp|WEBP)$/
+    )
+  ) {
     return cb(new Error("Chỉ chấp nhận file hình ảnh"), false);
   }
   cb(null, true);
@@ -84,4 +101,8 @@ const upload = multer({
   fileFilter: imageFilter, // sử dụng hàm filter để chỉ lấy file ảnh
 });
 
-module.exports = { sendDataUser, jobcount, upload };
+const uploadCV = multer({
+  storage: storage2,
+});
+
+module.exports = { sendDataUser, jobcount, upload, uploadCV };
