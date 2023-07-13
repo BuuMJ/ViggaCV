@@ -1,5 +1,5 @@
 {
-  "name": "viggawork",
+  "name": "ViggaCareers",
   "version": "1.0.0",
   "description": "A website that allows users to seek for employment, offers a CV generating option (with customizable templates), and handles payroll for users. On the company's side, employee recruiting workers might be posted.",
   "main": "index.js",

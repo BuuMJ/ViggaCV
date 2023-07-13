@@ -143,6 +143,24 @@
      </div>
      </div>
   </div>
+  <div class="container-create-cv-second">
+    <div class="header-create-cv">
+      <div class="avatar-user">
+        <img src="{{getAvatar user}}" alt="">
+      </div>
+      <div class="infor-user">
+        <div class="header__infor-user">
+          <input type="text" value="{{getFullname user}}">
+          <input type="text" value="{{getSpecialized user}}">
+        </div>
+        <div class="body__infor-user">
+          <input type="text" name="" id="" value="{{getBirthday user}}">
+          <input type="text" value="{{getAddress user}}">
+          <input type="text" value="{{getPhone user}}">
+        </div>
+      </div>
+    </div>
+  </div>
     <button type="submit">Review Your CV</button>
     </form>
 {{/if}}
