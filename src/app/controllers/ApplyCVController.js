@@ -1,61 +1,56 @@
 const textract = require("textract");
 const nlp = require("compromise");
+const JobModel = require("../models/Job");
+const CompanyModel = require("../models/Company");
 
 class ApplyCVController {
   async apply(req, res, next) {
-    textract.fromFileWithPath(req.file.path, function (error, text) {
+    textract.fromFileWithPath(req.file.path, async function (error, text) {
+      console.log("đây là văn bản sau khi scan cv: " + text);
       if (error) {
         console.log(error);
-        return res
-          .status(500)
-          .send({ message: "Lỗi khi trích xuất văn bản từ tệp tài liệu." });
+        return res.status(500);
+        // .send({ message: "Lỗi khi trích xuất văn bản từ tệp tài liệu." });
       } else {
-        const terms = nlp(text).terms().data();
-
-        console.log(text);
-        // Tìm các thuật ngữ liên quan đến kinh nghiệm làm việc
-        const experienceTerms = terms.filter((term) => {
-          if (
-            term.terms &&
-            Array.isArray(term.terms) &&
-            term.terms.length > 0
-          ) {
-            const firstTerm = term.terms[0];
-            return (
-              firstTerm.normal.includes("years of experience") &&
-              firstTerm.tags.includes("Noun")
+        try {
+          const skillsSection = text.match(/Skills\s*(.*?)\s*Other/);
+          const skills = skillsSection ? skillsSection[1] : "";
+          if (skills == "") {
+            const companyfield = await CompanyModel.distinct("companyfield");
+            const matchedFields = companyfield.filter((field) => {
+              const regex = new RegExp(`\\b${field}\\b`, "i");
+              return regex.test(text);
+            });
+            const filteredFields = matchedFields.filter(
+              (field) => field.length > 0
             );
+            req.session.companyfield = filteredFields;
+            fs.unlink(req.file.path, (err) => {
+              if (err) {
+                console.error(err);
+                return;
+              }
+            });
+            res.redirect("/job/scan");
+          } else {
+            const skillWords = skills.split(" ").map((word) => {
+              return word.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+            });
+            req.session.jobs = skillWords;
+            fs.unlink(req.file.path, (err) => {
+              if (err) {
+                console.error(err);
+                return;
+              }
+            });
+            res.redirect("/job/scan");
           }
-          return false;
-        });
-        console.log("Experience terms: ", experienceTerms);
-
-        const experienceTerm = terms.find((term) => term.text === "years");
-
-        if (experienceTerm) {
-          console.log("Experience term: ", experienceTerm);
-
-          // Truy cập vào thuộc tính terms của experienceTerm để lấy thông tin chi tiết
-          const experienceTermDetail = experienceTerm.terms[0];
-          console.log("Experience term detail: ", experienceTermDetail);
-          console.log("Term text: ", experienceTermDetail.text);
-          console.log("Term normal: ", experienceTermDetail.normal);
-          console.log("Term tags: ", experienceTermDetail.tags);
-        } else {
-          console.log("Không tìm thấy thuật ngữ experience.");
+        } catch (err) {
+          console.log(err);
+          return res
+            .status(500)
+            .send({ message: "Lỗi khi xử lý và tìm kiếm công ty phù hợp." });
         }
-        if (experienceTerms.length > 0) {
-          // Lấy giá trị kinh nghiệm từ thuật ngữ đầu tiên có liên quan đến kinh nghiệm làm việc
-          const experienceValue = parseInt(
-            experienceTerms[0].text.replace(/\D/g, "")
-          );
-          console.log("Kinh nghiệm làm việc:", experienceValue, "năm");
-        } else {
-          console.log(
-            "Không tìm thấy thông tin kinh nghiệm làm việc trong CV."
-          );
-        }
-        // console.log(terms);
       }
     });
   }
