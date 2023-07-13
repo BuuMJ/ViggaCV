@@ -15,29 +15,29 @@
       <div class="secondary__user-cv">
         <div class="box__user-cv">
           <label for="fullname">Name</label>
-          <textarea id="fullname" type="text" rows="1" >{{getFullname user}}</textarea>
+          <textarea id="fullname" type="text" rows="1" cols="50" >{{getFullname user}}</textarea>
         </div>
         <div class="box__user-cv">
           <label for="phone">Phone</label>
-          <textarea id="phone" type="text" rows="1" >{{getPhone user}}</textarea>
+          <textarea id="phone" type="text" rows="1" cols="50">{{getPhone user}}</textarea>
         </div>
         <div class="box__user-cv">
           <label for="address">Address</label>
-          <textarea id="address" type="text" rows="1" >{{getAddress user}}</textarea>
+          <textarea id="address" type="text" rows="1" cols="50">{{getAddress user}}</textarea>
         </div>
         <div class="box__user-cv">
           <label for="birthday">Birth</label>
-          <textarea id="birthday" type="text" rows="1" >{{getBirthday user}}</textarea>
+          <textarea id="birthday" type="text" rows="1" cols="50">{{getBirthday user}}</textarea>
         </div>
         <div class="box__user-cv">
           <label for="email">Email</label>
-          <textarea id="email" type="text" rows="1" >{{getEmail user}}</textarea>
+          <textarea id="email" type="text" rows="1" cols="50">{{getEmail user}}</textarea>
         </div>
       </div>
     </div>
     <div class="avatar__user-cv">
       <input type="file" id="avataruser" hidden>
-      <img src="{{getAvatar user}}" alt="">
+      <img class="img__user-cv" src="{{getAvatar user}}" alt="">
       <div class="change-avatar__user-cv">
         <div class="upload-avatar__user-cv">
           <label for="avataruser"><i class="bi bi-cloud-arrow-up"></i></label>
@@ -49,22 +49,52 @@
       </div>
     </div>
   </header>
+  <div class="body__user-cv">
+    <div class="overview__user-cv">
+      <textarea class="overview-text" rows="1">Overview</textarea>
+      <textarea rows="15">
+- Over 2 years of experience in programming with good communication and quick learning skills
+- Strengths: Front-end technology and Back-end web application development
+- Proficiency in HTML, CSS, JavaScript
+- Strong proficiency in JavaScript, including DOM manipulation and the JavaScript object model
+- Thorough under standing of React.js and it score principles
+- Experience with popular React.js workflows (such as Flux or Redux)
+- Familiarity with newer specifications of EcmaScript
+- Experience with data structure libraries
+- Familiarity with RESTful APIs
+- Strong Experience in: PHP, JavaScript (ReactJS, React-native), MySQL, NoSQL, GraphQL, Redis, JSON, API, Docker, Kubernetes, Rancher, AWS services
+- Proficient use of source code management tools: SVN, GIT
+- Proficiency in operating systems: Linux (Ubuntu, OSX), Windows
+- Ability to learn and apply new technology quickly
+- Current working location: Ha Noi, Viet Nam
+      </textarea>
+    </div>
+    <div class="overview__user-cv">
+      <textarea class="workexp-text" rows="1">Work experience</textarea>
+      <div class="work-exp">
+        <div class="date__work-exp">
+          <textarea rows="1">07/2017 - Present</textarea>
+        </div>
+        <div class="info__work-exp">
+          <textarea rows="1">Vigga Company</textarea>
+          <textarea rows="1">FullStack Developer</textarea>
+          <textarea class="job__work-exp" rows="3" oninput="addBulletPoints(this)">Programme outsourcing projects</textarea>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </form>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  var textareas = document.querySelectorAll('textarea');
-
+  var textareas = document.querySelectorAll('header textarea');
   textareas.forEach(function(textarea) {
     textarea.addEventListener('input', function() {
       var lineHeight = parseInt(getComputedStyle(textarea).lineHeight, 10);
       var rows = textarea.value.split('\n').length;
-      var minHeight = lineHeight * 1; // Đặt min-height
-      var maxHeight = lineHeight * 3; // Đặt max-height
-
-      // Điều chỉnh độ cao của textarea
+      var minHeight = lineHeight * 1;
+      var maxHeight = lineHeight * 3; 
       textarea.style.height = '';
-
       if (rows >= 1 && rows <= 3) {
         textarea.style.height = rows * lineHeight + 'px';
       } else if (rows < 1) {
@@ -75,7 +105,39 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
-
+document.addEventListener('DOMContentLoaded', function() {
+  var textareas = document.querySelectorAll('.body__user-cv textarea');
+  textareas.forEach(function(textarea) {
+    textarea.addEventListener('input', function() {
+      var lineHeight = parseInt(getComputedStyle(textarea).lineHeight, 10);
+      var rows = textarea.value.split('\n').length;
+      var minHeight = lineHeight * 1;
+      var maxHeight = lineHeight * 3; 
+      textarea.style.height = '';
+      if (rows < 1) {
+        textarea.style.height = minHeight + 'px';
+      } else {
+        textarea.style.height = textarea.scrollHeight + 'px';
+      }
+    });
+  });
+});
+function addBulletPoints(textarea) {
+  var lines = textarea.value.split('\n');
+  var formattedLines = [];
+  
+  for (var i = 0; i < lines.length; i++) {
+    var line = lines[i].trim();
+    
+    if (line !== '') {
+      formattedLines.push('- ' + line);
+    } else {
+      formattedLines.push('');
+    }
+  }
+  
+  textarea.value = formattedLines.join('\n');
+}
 var showChangeAvatar = document.querySelector('.body__create-cv header .avatar__user-cv img');
 var boxChangeAvatar = document.querySelector('.change-avatar__user-cv');
 showChangeAvatar.addEventListener('mouseover',()=>{
@@ -86,16 +148,43 @@ boxChangeAvatar.addEventListener('mouseleave',()=>{
 });
 var offAvatar = document.querySelector('.off-avatar');
 var icon = document.querySelector('.off-avatar i');
+var data = localStorage.getItem('offavatar');
+if (data === null) {
+  data = 'false';
+  localStorage.setItem('offavatar', data);
+}
+if (data === 'true') {
+  showChangeAvatar.style.opacity = '0';
+  icon.classList.remove('bi-eye-slash');
+  icon.classList.add('bi-eye');
+} else {
+  showChangeAvatar.style.opacity = '1';
+  icon.classList.remove('bi-eye');
+  icon.classList.add('bi-eye-slash');
+}
 offAvatar.addEventListener('click', function() {
   if (showChangeAvatar.style.opacity === '0') {
     showChangeAvatar.style.opacity = '1';
     icon.classList.remove('bi-eye');
     icon.classList.add('bi-eye-slash');
+    localStorage.setItem('offavatar', 'false');
   } else {
     showChangeAvatar.style.opacity = '0';
     icon.classList.remove('bi-eye-slash');
     icon.classList.add('bi-eye');
+    localStorage.setItem('offavatar', 'true');
   }
 });
-
+var file = document.querySelector('#avataruser');
+    var img = document.querySelector('.img__user-cv');
+    file.addEventListener('change', () => {
+        const chooseFile = file.files[0];
+        if (chooseFile) {
+            const reader = new FileReader();
+            reader.addEventListener('load', () => {
+                img.setAttribute('src', reader.result);
+            });
+            reader.readAsDataURL(chooseFile);
+        }
+    });
 </script>
