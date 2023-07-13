@@ -1,269 +1,100 @@
-{{!-- <div class="container-create-cv">
-    {{#if user}}
-    <form action="" class="create-cv">
-        <div class="form-cv-left">
-            <img src="{{getAvatar user}}" alt="">
+<form class="main__create-cv">
+<header class="action-create-cv">
+  <span class="font-cv"><i class="bi bi-file-earmark-font"></i> Font</span>
+  <span class="color-cv"><i class="bi bi-palette"></i> Color</span>
+  <span class="templates-action-cv"><i class="bi bi-images"></i> Templates</span>
+  <span class="download-create-cv"><button><i class="bi bi-cloud-arrow-down"></i> Download</button></span>
+</header>
+<div class="body__create-cv">
+  <header>
+    <div class="info__user-cv">
+      <div class="primary__user-cv">
+        <input class="fullname__user-cv" type="text" value="{{getFullname user}}">
+        <input class="specialized" type="text" value="{{getSpecialized user}}">
+      </div>
+      <div class="secondary__user-cv">
+        <div class="box__user-cv">
+          <label for="fullname">Name</label>
+          <textarea id="fullname" type="text" rows="1" >{{getFullname user}}</textarea>
         </div>
-        <div class="form-cv-right">
-        <div class="header-form">
-            <div class="info-header-cv">
-                <input id="fullname-cv" name="fullname-cv" type="text" value="{{getFullname user}}">
-                <input id="profession" type="text" name="profession" placeholder="FullStack Developer">
-                <div class="list-info-header">
-                    <div class="info-header-item">
-                        <label for="name-cv">Name:</label>
-                        <input type="text" name="name-cv" id="name-cv" value="{{getFullname user}}">
-                    </div>
-                    <div class="info-header-item">
-                        <label for="birth-cv">Birth:</label>
-                        <input type="text" name="birth-cv" id="birth-cv" placeholder="03/09/1999">
-                    </div>
-                    <div class="info-header-item">
-                        <label for="phone-cv">Phone:</label>
-                        <input type="text" name="phone-cv" id="phone-cv" value="{{getPhone user}}">
-                    </div>
-                    <div class="info-header-item">
-                        <label for="email-cv">Email:</label>
-                        <input type="text" name="email-cv" id="email-cv" value="{{getEmail user}}">
-                    </div>
-                    <div class="info-header-item address-header-item">
-                        <label for="address-cv">Address:</label>
-                        <input type="text" name="address-cv" id="address-cv" value="{{getCity user}}, {{getCountry user}} ">
-                    </div>
-                </div>
-            </div>
+        <div class="box__user-cv">
+          <label for="phone">Phone</label>
+          <textarea id="phone" type="text" rows="1" >{{getPhone user}}</textarea>
         </div>
-        <div class="body-cv">
-
+        <div class="box__user-cv">
+          <label for="address">Address</label>
+          <textarea id="address" type="text" rows="1" >{{getAddress user}}</textarea>
         </div>
-        <div class="footer-cv"></div>
+        <div class="box__user-cv">
+          <label for="birthday">Birth</label>
+          <textarea id="birthday" type="text" rows="1" >{{getBirthday user}}</textarea>
         </div>
-    </form>
-    {{/if}}
-</div> --}}
-
-<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
-{{#if usercv}}
-<form method="POST" action="/cv/exportcv">
-<div class="container-create-cv">
-  <div class="header-create-cv">
-    <div class="full-name-create-cv">
-      <input type="text" name="fullnamecv" id="fullname-cv" value="{{getFullname user}}">
+        <div class="box__user-cv">
+          <label for="email">Email</label>
+          <textarea id="email" type="text" rows="1" >{{getEmail user}}</textarea>
+        </div>
+      </div>
+    </div>
+    <div class="avatar__user-cv">
+      <input type="file" id="avataruser" hidden>
       <img src="{{getAvatar user}}" alt="">
-    </div>
-    <div class="contact-info-create-cv">
-        <div class="list-contact-info">
-            <label for="email-cv">Email:</label>
-            <input id="email-cv" name="emailcv" value="{{getEmail user}}">
+      <div class="change-avatar__user-cv">
+        <div class="upload-avatar__user-cv">
+          <label for="avataruser"><i class="bi bi-cloud-arrow-up"></i></label>
         </div>
-        <div class="list-contact-info">
-            <label class="phone-cv" for="phone-cv">Phone: </label>
-            <input id="phone-cv" name="phonecv" value="{{getPhone user}}">
-        </div>
-    </div>
-    
-    <div class="about-create-cv">
-      <span class="position">Overview:</span>
-      <textarea id="desc-overview" class="desc" name="overview" placeholder="I am a front-end developer with more than 3 years of experience writing html, css, and js. I'm motivated, result-focused and seeking a successful team-oriented company with opportunity to grow."></textarea>
-    </div>
-  </div>
-   <div class="details">
-    <div class="section">
-      <div class="section__title">Experience</div>
-      <div class="section__list">
-        <div class="section__list-item">
-          <div class="left">
-            <input class="name-company" name="namecompany" placeholder="Thien Phu Company">
-            <input class="addr-company" name="addrcompany" placeholder="Le Hong Phong, Nha Trang">
-            <input class="duration-company" name="durationcompany" placeholder="4 years">
-          </div>
-          <div class="right">
-            <input class="name-profession" name="nameprofession" placeholder="Front-end Developer">
-            <input class="desc-profession" name="descprofession" placeholder="Develop a website for company">
-          </div>
+        <div class="none-avatar">
+          <label for="avataruser"><i class="bi bi-cloud-arrow-up"></i></label>
+          <span class="off-avatar"><i class="bi bi-eye-slash"></i></span>
         </div>
       </div>
     </div>
-    <div class="section">
-      <div class="section__title">Education</div>
-       <div class="section__list">
-        <div class="section__list-item">
-          <div class="left">
-            <input class="name-school" name="nameschool" placeholder="Greenwich University">
-            <input class="addr-school" name="addrschool" placeholder="20 Cong Hoa">
-            <input class="duration-school" name="durationschool" placeholder="Sep 2017 - Nov 2023">
-          </div>
-          <div class="right">
-            <input class="name-profession" name="nameprofessionschool" placeholder="Front-end Developer">
-            <input class="desc-profession" name="descprofessionschool" placeholder="Web Development">
-          </div>
-        </div>
-      </div>
-      
-  </div>
-     <div class="section">
-      <div class="section__title">Projects</div> 
-       <div class="section__list">
-         <div class="section__list-item project">
-           <textarea id="name-project" name="nameproject" placeholder="Your Name Project"></textarea>
-           <textarea id="desc-project" name="descproject" placeholder="I am a front-end developer with more than 3 years of experience writing html, css, and js. I'm motivated, result-focused and seeking a successful team-oriented company with opportunity to grow."></textarea>
-         </div>
-       </div>
-    </div>
-     <div class="section">
-       <div class="section__title">Skills</div>
-       <div class="skills">
-         <div class="skills__item">
-           <div class="left"><input class="nameskill" value="{{getSkills user}}"></div>
-           <div class="right">
-                          <input  id="ck1" name="skilllv1" type="checkbox" checked/>
+  </header>
+</div>
+</form>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  var textareas = document.querySelectorAll('textarea');
 
-             <label for="ck1"></label>
-                          <input id="ck2" name="skilllv2" type="checkbox" checked/>
+  textareas.forEach(function(textarea) {
+    textarea.addEventListener('change', function() {
+      var lineHeight = parseInt(getComputedStyle(textarea).lineHeight, 10);
+      var rows = textarea.value.split('\n').length;
+      var minHeight = lineHeight * 1; // Đặt min-height
+      var maxHeight = lineHeight * 3; // Đặt max-height
 
-              <label for="ck2"></label>
-                         <input id="ck3" name="skilllv3" type="checkbox" />
+      // Điều chỉnh độ cao của textarea
+      textarea.style.height = '';
 
-              <label for="ck3"></label>
-                           <input id="ck4" name="skilllv4" type="checkbox" />
-            <label for="ck4"></label>
-                          <input id="ck5" name="skilllv5" type="checkbox" />
-              <label for="ck5"></label>
-           </div>
-         </div>
-       </div>
-       </div>
-     <div class="section">
-     <div class="section__title section__acti">
-       Activities
-       </div>
-       <div class="section__list">
-         <textarea id="activities" name="activities" placeholder="Football, programming, swimming."></textarea>
-       </div>
-     </div>
-     </div>
-  </div>
-  <div class="container-create-cv-second">
-    <div class="header-create-cv">
-      <div class="avatar-user">
-        <img src="{{getAvatar user}}" alt="">
-      </div>
-      <div class="infor-user">
-        <div class="header__infor-user">
-          <input type="text" value="{{getFullname user}}">
-          <input type="text" value="{{getSpecialized user}}">
-        </div>
-        <div class="body__infor-user">
-          <input type="text" name="" id="" value="{{getBirthday user}}">
-          <input type="text" value="{{getAddress user}}">
-          <input type="text" value="{{getPhone user}}">
-        </div>
-      </div>
-    </div>
-  </div>
-    <button type="submit">Review Your CV</button>
-    </form>
-{{/if}}
-{{#if inforCV}}
-<form method="POST" action="/cv/exportcv">
-<div class="container-create-cv">
-  <div class="header-create-cv">
-    <div class="full-name-create-cv">
-      <input type="text" name="fullnamecv" id="fullname-cv" value="{{inforCV.fullname}}">
-      {{!-- <img src="{{getAvatar user}}" alt=""> --}}
-    </div>
-    <div class="contact-info-create-cv">
-        <div class="list-contact-info">
-            <label for="email-cv">Email:</label>
-            <input id="email-cv" name="emailcv" value="{{inforCV.emailcv}}">
-        </div>
-        <div class="list-contact-info">
-            <label class="phone-cv" for="phone-cv">Phone: </label>
-            <input id="phone-cv" name="phonecv" value="{{inforCV.phonevc}}">
-        </div>
-    </div>
-    
-    <div class="about-create-cv">
-      <span class="position">Overview:</span>
-      <textarea id="desc-overview" class="desc" name="overview" placeholder="I am a front-end developer with more than 3 years of experience writing html, css, and js. I'm motivated, result-focused and seeking a successful team-oriented company with opportunity to grow.">{{inforCV.overview}}</textarea>
-    </div>
-  </div>
-   <div class="details">
-    <div class="section">
-      <div class="section__title">Experience</div>
-      <div class="section__list">
-        <div class="section__list-item">
-          <div class="left">
-            <input class="name-company" name="namecompany" value="{{inforCV.namecompany}}" placeholder="Thien Phu Company">
-            <input class="addr-company" name="addrcompany" value="{{inforCV.addrcompany}}" placeholder="Le Hong Phong, Nha Trang">
-            <input class="duration-company" name="durationcompany" value="{{inforCV.durationcompany}}" placeholder="4 years">
-          </div>
-          <div class="right">
-            <input class="name-profession" name="nameprofession" value="{{inforCV.nameprofession}}" placeholder="Front-end Developer">
-            <input class="desc-profession" name="descprofession" value="{{inforCV.descprofession}}" placeholder="Develop a website for company">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="section">
-      <div class="section__title">Education</div>
-       <div class="section__list">
-        <div class="section__list-item">
-          <div class="left">
-            <input class="name-school" name="nameschool" value="{{inforCV.nameschool}}" placeholder="Greenwich University">
-            <input class="addr-school" name="addrschool" value="{{inforCV.addrschool}}" placeholder="20 Cong Hoa">
-            <input class="duration-school" name="durationschool" value="{{inforCV.durationschool}}"  placeholder="Sep 2017 - Nov 2023">
-          </div>
-          <div class="right">
-            <input class="name-profession" name="nameprofessionschool" value="{{inforCV.nameprofessionschool}}" placeholder="Front-end Developer">
-            <input class="desc-profession" name="descprofessionschool"  value="{{inforCV.descprofessionschool}}" placeholder="Web Development">
-          </div>
-        </div>
-      </div>
-      
-  </div>
-     <div class="section">
-      <div class="section__title">Projects</div> 
-       <div class="section__list">
-         <div class="section__list-item project">
-           <textarea id="name-project" name="nameproject"  placeholder="Your Name Project">{{inforCV.nameproject}}</textarea>
-           <textarea id="desc-project" name="descproject"  placeholder="I am a front-end developer with more than 3 years of experience writing html, css, and js. I'm motivated, result-focused and seeking a successful team-oriented company with opportunity to grow.">{{inforCV.descproject}}</textarea>
-         </div>
-       </div>
-    </div>
-     <div class="section">
-       <div class="section__title">Skills</div>
-       <div class="skills">
-         <div class="skills__item">
-           <div class="left"><input class="nameskill" name="nameskill" value="{{inforCV.nameskill}}"></div>
-           <div class="right">
-                          <input  id="ck1" name="skilllv1" value="{{inforCV.skilllv1}}" type="checkbox" checked/>
+      if (rows >= 1 && rows <= 3) {
+        textarea.style.height = rows * lineHeight + 'px';
+      } else if (rows < 1) {
+        textarea.style.height = minHeight + 'px';
+      } else {
+        textarea.style.height = maxHeight + 'px';
+      }
+    });
+  });
+});
+var showChangeAvatar = document.querySelector('.body__create-cv header .avatar__user-cv img');
+var boxChangeAvatar = document.querySelector('.change-avatar__user-cv');
+showChangeAvatar.addEventListener('mouseover',()=>{
+  boxChangeAvatar.style.display = 'flex';
+});
+boxChangeAvatar.addEventListener('mouseleave',()=>{
+  boxChangeAvatar.style.display = 'none';
+});
+var offAvatar = document.querySelector('.off-avatar');
+var icon = document.querySelector('.off-avatar i');
+offAvatar.addEventListener('click', function() {
+  if (showChangeAvatar.style.opacity === '0') {
+    showChangeAvatar.style.opacity = '1';
+    icon.classList.remove('bi-eye');
+    icon.classList.add('bi-eye-slash');
+  } else {
+    showChangeAvatar.style.opacity = '0';
+    icon.classList.remove('bi-eye-slash');
+    icon.classList.add('bi-eye');
+  }
+});
 
-             <label for="ck1"></label>
-                          <input id="ck2" name="skilllv2" value="{{inforCV.skilllv2}}" type="checkbox" checked/>
-
-              <label for="ck2"></label>
-                         <input id="ck3" name="skilllv3" value="{{inforCV.skilllv3}}" type="checkbox" />
-
-              <label for="ck3"></label>
-                           <input id="ck4" name="skilllv4" value="{{inforCV.skilllv4}}" type="checkbox" />
-            <label for="ck4"></label>
-                          <input id="ck5" name="skilllv5"  value="{{inforCV.skilllv5}}" type="checkbox" />
-              <label for="ck5"></label>
-           </div>
-         </div>
-       </div>
-       </div>
-     <div class="section">
-     <div class="section__title section__acti">
-       Activities
-       </div>
-       <div class="section__list">
-         <textarea id="activities" name="activities" placeholder="Football, programming, swimming.">{{inforCV.activities}}</textarea>
-       </div>
-     </div>
-     </div>
-  </div>
-    <button type="submit">Review Your CV</button>
-    </form>
-{{/if}}
+</script>
