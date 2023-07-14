@@ -40,10 +40,10 @@ async function jobcount(req, res, next) {
 
     for (const result of jobcount) {
       const { _id, jobcount } = result;
-      console.log(
-        result._id +
-          " day la gia tri resulttttttttttttttttttttttttttttttttttttttttttttttt"
-      );
+      // console.log(
+      //   result._id +
+      //     " day la gia tri resulttttttttttttttttttttttttttttttttttttttttttttttt"
+      // );
 
       await CompanyModel.updateOne(
         { companyname: _id },
