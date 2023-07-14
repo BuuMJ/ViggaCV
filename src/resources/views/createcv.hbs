@@ -58,7 +58,7 @@
       <textarea class="workexp-text" rows="1">Work experience</textarea>
       <div class="work-exp">
         <div class="date__work-exp">
-          <textarea rows="1" placeholder="07/2017 - Present"></textarea>
+          <textarea  rows="1" placeholder="07/2017 - Present"></textarea>
           <div class="action__add-remove" >
             <span title="Add more work experience" class="add-work-exp"><i class="bi bi-plus-circle"></i></span>
             <span title="Remove this work experience" class="remove-work-exp"><i class="bi bi-dash-circle"></i></span>
@@ -66,7 +66,7 @@
         </div>
         <div class="info__work-exp">
           <textarea id="name-company" rows="1" placeholder="Vigga Company"></textarea>
-          <textarea class="job__work-exp" rows="3" placeholder="FullStacl Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10"></textarea>
+          <textarea class="job__work-exp" rows="3" placeholder="FullStack Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10"></textarea>
         </div>
       </div>
     </div>
@@ -119,30 +119,36 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 document.addEventListener('DOMContentLoaded', function() {
-  var textareas = document.querySelectorAll('.body__user-cv .workexp__user-cv textarea');
-
-  for (var i = 0; i < textareas.length; i++) {
-    textareas[i].addEventListener('focus', function() {
+  var textareas = document.querySelectorAll('.body__user-cv .workexp__user-cv .work-exp textarea');
+  var textareasShowAction = document.querySelectorAll('.body__user-cv .workexp__user-cv .work-exp .date__work-exp textarea')
+  for(var k = 0; k < textareasShowAction.length; k++){
+    textareasShowAction[k].addEventListener('focus', function() {
       var actionAddRemove = this.parentNode.parentNode.querySelector('.action__add-remove');
-
       actionAddRemove.style.opacity = '1';
       this.style.cssText = 'background-color: #fff;outline: 1px solid #ccc;border-radius: 2px;box-shadow: 0px 0px 0px 60px rgba(255, 255, 255, 0.8);';
     });
-
-    textareas[i].addEventListener('focusout', function() {
+    textareasShowAction[k].addEventListener('focusout', function() {
       var actionAddRemove = this.parentNode.parentNode.querySelector('.action__add-remove');
-
       actionAddRemove.style.opacity = '0';
       this.style.cssText = 'background-color: transparent; outline:none; border:none;box-shadow: unset;';
     });
+    };
+  for (var i = 0; i < textareas.length; i++) {
+    textareas[i].addEventListener('focus', function() {
+      this.style.cssText = 'background-color: #fff;outline: 1px solid #ccc;border-radius: 2px;box-shadow: 0px 0px 0px 60px rgba(255, 255, 255, 0.8);';
+    });
+    textareas[i].addEventListener('focusout', function() {
+      this.style.cssText = 'background-color: transparent; outline:none; border:none;box-shadow: unset;';
+    });
   }
-function setupAddMoreWorkExp() {
-  var addMoreWorkExp = document.getElementsByClassName('add-work-exp');
-  var canCreateNewDiv = true; // Biến flag để kiểm tra trạng thái của các div đã tạo
-
-  for (var i = 0; i < addMoreWorkExp.length; i++) {
-    addMoreWorkExp[i].addEventListener('click', function() {
-      // Kiểm tra biến cờ trước khi tạo div mới
+  var RemoveWorkExp = document.querySelector('.remove-work-exp');
+        RemoveWorkExp.addEventListener('click', function() {
+          document.querySelector('.work-exp').remove();
+        });
+  function setupAddMoreWorkExp() {
+    var addMoreWorkExp = document.getElementsByClassName('add-work-exp');
+    var canCreateNewDiv = true;
+    var addWorkExpClickHandler = function() {
       if (canCreateNewDiv) {
         var newDiv = document.createElement('div');
         newDiv.classList.add('work-exp', 'work-exp-more');
@@ -157,41 +163,31 @@ function setupAddMoreWorkExp() {
             <textarea id="name-company" rows="1" placeholder="Vigga Company"></textarea>
             <textarea class="job__work-exp" rows="3" placeholder="FullStacl Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10"></textarea>
           </div>`;
-
         var overviewWorkExp = document.querySelector('.overview__user-cv.workexp__user-cv');
         overviewWorkExp.appendChild(newDiv);
-
         var textarea = newDiv.querySelector('.date__work-exp textarea');
         var actionAddRemove = newDiv.querySelector('.action__add-remove');
-
         textarea.addEventListener('focus', function() {
           actionAddRemove.style.opacity = '1';
         });
-
         textarea.addEventListener('focusout', function() {
           actionAddRemove.style.opacity = '0';
         });
         var newRemoveWorkExp = newDiv.querySelector('.remove-work-exp');
         newRemoveWorkExp.addEventListener('click', function() {
-          newDiv.remove(); // Xóa phần tử div khi click vào class remove-work-exp
-          // Cập nhật trạng thái của biến flag
-          canCreateNewDiv = document.getElementsByClassName('work-exp').length === 1;
+          newDiv.remove();
+          canCreateNewDiv = document.getElementsByClassName('work-exp').length > 1;
         });
-
-        // Cập nhật trạng thái của biến flag
-        canCreateNewDiv = false;
+        canCreateNewDiv = document.getElementsByClassName('work-exp').length > 1;
         setupAddMoreWorkExp();
       }
-    });
+    };
+    for (var i = 0; i < addMoreWorkExp.length; i++) {
+      addMoreWorkExp[i].addEventListener('click', addWorkExpClickHandler);
+    }
   }
-}
-
-setupAddMoreWorkExp();
-
-
+  setupAddMoreWorkExp();
 });
-
-
 var showChangeAvatar = document.querySelector('.body__create-cv header .avatar__user-cv img');
 var boxChangeAvatar = document.querySelector('.change-avatar__user-cv');
 showChangeAvatar.addEventListener('mouseover',()=>{
