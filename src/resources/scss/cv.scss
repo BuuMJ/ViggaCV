@@ -240,6 +240,7 @@
 }
 .main__create-cv{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 500px;
@@ -252,12 +253,13 @@
   align-items: center;
   width: 60%;
   height: 56px;
-  position: fixed;
   background-color: black;
   color: white;
-  top: 12%;
   border-radius: 1000px ;
   font-size: 20px;
+  z-index: 100;
+  position: absolute;
+  top: 12%;
 }
 .main__create-cv header.action-create-cv span{
   height: 40px;
@@ -288,6 +290,7 @@
 }
 .body__create-cv{
   width: 60%;
+  margin-top: 100px;
 }
 .body__create-cv header{
   display: flex;
@@ -442,7 +445,7 @@
   padding: 0 8px;
 }
 .body__user-cv textarea:hover{
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 .body__user-cv textarea:focus{
   background-color: #fff;
@@ -454,7 +457,7 @@
 .body__user-cv textarea.overview-text:focus,
 .body__user-cv textarea.workexp-text:focus{
   color: $primarycolor;
-  box-shadow: 0px 0px 0px 40px rgba(255, 255, 255, 0.8);;
+  box-shadow: 0px 0px 0px 40px rgba(255, 255, 255, 0.8);
 }
 .body__user-cv textarea.overview-text,
 .body__user-cv textarea.workexp-text{
@@ -464,3 +467,42 @@
   border-bottom: 1px solid #d5d6d6;
   margin-bottom: 18px;
 }
+.overview__user-cv .work-exp{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  position: relative;
+}
+.overview__user-cv .work-exp .date__work-exp{
+  width: 20%;
+}
+.overview__user-cv .work-exp .action__add-remove{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items:center;
+  position: absolute;
+  top: -35%;
+  left: -7%;
+  height: 100%;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+}
+.overview__user-cv .work-exp .date__work-exp .action__add-remove span:hover{
+  color: $primarycolor;
+}
+.overview__user-cv .work-exp .date__work-exp textarea{
+  font-weight: 700;
+}
+.overview__user-cv .work-exp .info__work-exp{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+}
+.overview__user-cv .work-exp .info__work-exp #name-company{
+  font-weight: 700;
+}
+

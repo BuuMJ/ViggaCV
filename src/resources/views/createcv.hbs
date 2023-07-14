@@ -52,33 +52,21 @@
   <div class="body__user-cv">
     <div class="overview__user-cv">
       <textarea class="overview-text" rows="1">Overview</textarea>
-      <textarea rows="15">
-- Over 2 years of experience in programming with good communication and quick learning skills
-- Strengths: Front-end technology and Back-end web application development
-- Proficiency in HTML, CSS, JavaScript
-- Strong proficiency in JavaScript, including DOM manipulation and the JavaScript object model
-- Thorough under standing of React.js and it score principles
-- Experience with popular React.js workflows (such as Flux or Redux)
-- Familiarity with newer specifications of EcmaScript
-- Experience with data structure libraries
-- Familiarity with RESTful APIs
-- Strong Experience in: PHP, JavaScript (ReactJS, React-native), MySQL, NoSQL, GraphQL, Redis, JSON, API, Docker, Kubernetes, Rancher, AWS services
-- Proficient use of source code management tools: SVN, GIT
-- Proficiency in operating systems: Linux (Ubuntu, OSX), Windows
-- Ability to learn and apply new technology quickly
-- Current working location: Ha Noi, Viet Nam
-      </textarea>
+      <textarea rows="15" placeholder="- Over 2 years of experience in programming with good communication and quick learning skills&#10;- Strengths: Front-end technology and Back-end web application development&#10;- Proficiency in HTML, CSS, JavaScript&#10;- Strong proficiency in JavaScript, including DOM manipulation and the JavaScript object model&#10;- Thorough under standing of React.js and it score principles&#10;- Experience with popular React.js workflows (such as Flux or Redux)&#10;- Familiarity with newer specifications of EcmaScript&#10;- Experience with data structure libraries&#10;- Familiarity with RESTful APIs&#10;- Strong Experience in: PHP, JavaScript (ReactJS, React-native), MySQL, NoSQL, GraphQL, Redis, JSON, API, Docker, Kubernetes, Rancher, AWS services&#10;- Proficient use of source code management tools: SVN, GIT&#10;- Proficiency in operating systems: Linux (Ubuntu, OSX), Windows&#10;- Ability to learn and apply new technology quickly&#10;- Current working location: Ha Noi, Viet Nam&#10;"></textarea>
     </div>
-    <div class="overview__user-cv">
+    <div class="overview__user-cv workexp__user-cv">
       <textarea class="workexp-text" rows="1">Work experience</textarea>
       <div class="work-exp">
         <div class="date__work-exp">
-          <textarea rows="1">07/2017 - Present</textarea>
+          <textarea rows="1" placeholder="07/2017 - Present"></textarea>
+          <div class="action__add-remove" >
+            <span title="Add more work experience" class="add-work-exp"><i class="bi bi-plus-circle"></i></span>
+            <span title="Remove this work experience" class="remove-work-exp"><i class="bi bi-dash-circle"></i></span>
+          </div>
         </div>
         <div class="info__work-exp">
-          <textarea rows="1">Vigga Company</textarea>
-          <textarea rows="1">FullStack Developer</textarea>
-          <textarea class="job__work-exp" rows="3" oninput="addBulletPoints(this)">Programme outsourcing projects</textarea>
+          <textarea id="name-company" rows="1" placeholder="Vigga Company"></textarea>
+          <textarea class="job__work-exp" rows="3" placeholder="FullStacl Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10"></textarea>
         </div>
       </div>
     </div>
@@ -86,6 +74,14 @@
 </div>
 </form>
 <script>
+  document.addEventListener("scroll", function() {
+  if (window.pageYOffset > 90) {
+    document.querySelector("header.action-create-cv").style.cssText = "position: fixed; top: 0";
+
+  } else {
+    document.querySelector("header.action-create-cv").style.cssText = "position: absolute; top:12%;";
+  }
+});
 document.addEventListener('DOMContentLoaded', function() {
   var textareas = document.querySelectorAll('header textarea');
   textareas.forEach(function(textarea) {
@@ -122,22 +118,80 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
-function addBulletPoints(textarea) {
-  var lines = textarea.value.split('\n');
-  var formattedLines = [];
-  
-  for (var i = 0; i < lines.length; i++) {
-    var line = lines[i].trim();
-    
-    if (line !== '') {
-      formattedLines.push('- ' + line);
-    } else {
-      formattedLines.push('');
-    }
+document.addEventListener('DOMContentLoaded', function() {
+  var textareas = document.querySelectorAll('.body__user-cv .workexp__user-cv textarea');
+
+  for (var i = 0; i < textareas.length; i++) {
+    textareas[i].addEventListener('focus', function() {
+      var actionAddRemove = this.parentNode.parentNode.querySelector('.action__add-remove');
+
+      actionAddRemove.style.opacity = '1';
+      this.style.cssText = 'background-color: #fff;outline: 1px solid #ccc;border-radius: 2px;box-shadow: 0px 0px 0px 60px rgba(255, 255, 255, 0.8);';
+    });
+
+    textareas[i].addEventListener('focusout', function() {
+      var actionAddRemove = this.parentNode.parentNode.querySelector('.action__add-remove');
+
+      actionAddRemove.style.opacity = '0';
+      this.style.cssText = 'background-color: transparent; outline:none; border:none;box-shadow: unset;';
+    });
   }
-  
-  textarea.value = formattedLines.join('\n');
+function setupAddMoreWorkExp() {
+  var addMoreWorkExp = document.getElementsByClassName('add-work-exp');
+  var canCreateNewDiv = true; // Biến flag để kiểm tra trạng thái của các div đã tạo
+
+  for (var i = 0; i < addMoreWorkExp.length; i++) {
+    addMoreWorkExp[i].addEventListener('click', function() {
+      // Kiểm tra biến cờ trước khi tạo div mới
+      if (canCreateNewDiv) {
+        var newDiv = document.createElement('div');
+        newDiv.classList.add('work-exp', 'work-exp-more');
+        newDiv.innerHTML = `<div class="date__work-exp">
+            <textarea rows="1" placeholder="07/2017 - Present"></textarea>
+            <div class="action__add-remove">
+              <span title="Add more work experience" class="add-work-exp"><i class="bi bi-plus-circle"></i></span>
+              <span title="Remove this work experience" class="remove-work-exp"><i class="bi bi-dash-circle"></i></span>
+            </div>
+          </div>
+          <div class="info__work-exp">
+            <textarea id="name-company" rows="1" placeholder="Vigga Company"></textarea>
+            <textarea class="job__work-exp" rows="3" placeholder="FullStacl Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10"></textarea>
+          </div>`;
+
+        var overviewWorkExp = document.querySelector('.overview__user-cv.workexp__user-cv');
+        overviewWorkExp.appendChild(newDiv);
+
+        var textarea = newDiv.querySelector('.date__work-exp textarea');
+        var actionAddRemove = newDiv.querySelector('.action__add-remove');
+
+        textarea.addEventListener('focus', function() {
+          actionAddRemove.style.opacity = '1';
+        });
+
+        textarea.addEventListener('focusout', function() {
+          actionAddRemove.style.opacity = '0';
+        });
+        var newRemoveWorkExp = newDiv.querySelector('.remove-work-exp');
+        newRemoveWorkExp.addEventListener('click', function() {
+          newDiv.remove(); // Xóa phần tử div khi click vào class remove-work-exp
+          // Cập nhật trạng thái của biến flag
+          canCreateNewDiv = document.getElementsByClassName('work-exp').length === 1;
+        });
+
+        // Cập nhật trạng thái của biến flag
+        canCreateNewDiv = false;
+        setupAddMoreWorkExp();
+      }
+    });
+  }
 }
+
+setupAddMoreWorkExp();
+
+
+});
+
+
 var showChangeAvatar = document.querySelector('.body__create-cv header .avatar__user-cv img');
 var boxChangeAvatar = document.querySelector('.change-avatar__user-cv');
 showChangeAvatar.addEventListener('mouseover',()=>{
