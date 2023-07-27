@@ -13,10 +13,10 @@ class CompanyProfileController {
     const address = location.map((location) => location.name);
     // console.log(req.user._id);
     const company = await CompanyModel.findOne({ iduser: req.user._id });
-    if(company){
-      var leadership = company.leadership
-    }else{
-      var leadership = null
+    if (company) {
+      var leadership = company.leadership;
+    } else {
+      var leadership = null;
     }
     // console.log(
     //   company.leadership +
@@ -30,8 +30,7 @@ class CompanyProfileController {
     );
     // console.log(listcompany + "DAY LA DANH SACH COMPANY SAU KHI TIM");
     JobModel.find({ iduser: req.user._id }).then((listjob) => {
-      listjob = listjob.map((listjob) => listjob.toObject());
-      // console.log(company + " = ĐÂY LÀ COMPANY SAU KHI TÌM KIẾM");
+      listjob = listjob.map((job) => job.toJSON());
       res.render("companyprofile", {
         title: "Company",
         user: req.user,
@@ -390,10 +389,12 @@ class CompanyProfileController {
     const salary = req.body.salary;
     const joblocation = req.body.joblocation;
     const benefit = req.body.benefit;
+    const DoP = req.body.DoP;
     const companyname = await CompanyModel.findOne({ iduser: iduser });
 
-    JobModel.create({
+    const job = new JobModel({
       iduser: iduser,
+      DoP: DoP,
       benefit: benefit,
       companyname: companyname.companyname,
       jobname: jobname,
@@ -402,8 +403,12 @@ class CompanyProfileController {
       jobrequi: jobrequi,
       joblocation: joblocation,
       avatar: companyname.avatar,
-      idcompany: companyname._id
+      idcompany: companyname._id,
     });
+
+    const jobJSON = job.toJSON();
+    console.log("Đây là ngày giờ sau khi định dạng: " + jobJSON);
+    await job.save();
     res.redirect("/companyprofile");
   }
 
@@ -415,7 +420,6 @@ class CompanyProfileController {
     await company.save();
     res.redirect("/companyprofile");
   }
-
 }
 
 module.exports = new CompanyProfileController();

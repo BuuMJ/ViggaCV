@@ -12,7 +12,7 @@ class HomeController {
   feedback(req, res, next) {
     const feedback = req.body.feedback;
     const user = req.user;
-    console.log(user + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    const mail = user.email;
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -22,7 +22,8 @@ class HomeController {
     });
     if (user != undefined) {
       const mailOptions = {
-        to: "nxt03091999@gmail.com", // list of receivers
+        from: `"Phản hồi từ khách hàng" <${mail}>`,
+        to: "duoc6694@gmail.com", // list of receivers
         subject: "test mail", // Subject line
         html: "Feedback: " + feedback + " from " + user.email, // plain text body
       };
@@ -32,7 +33,7 @@ class HomeController {
           console.log(err);
         } else {
           console.log(info);
-          res.redirect('back');
+          res.redirect("back");
         }
       });
     } else {

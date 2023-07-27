@@ -160,6 +160,9 @@ Today we are on the cusp of a new journey with our customers, to help them Power
                                 <span class="locationjobs"><i class="bi bi-geo"></i> Location: {{this.joblocation}}</span>
                                 <span class="timejobs"><i class="bi bi-calendar-date"></i> {{this.createdAt}}</span>
                            </div> 
+                           <form action="/pay/{{this._id}}" method="POST">
+                            <input type="submit" value="Payment">
+                           </form>
                         </li>
                         {{/each}}
                     </ul>
