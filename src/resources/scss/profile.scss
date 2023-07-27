@@ -565,14 +565,15 @@ input#postal::-webkit-inner-spin-button {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 48%;
+    width: 32%;
     height: 100%;
 }
-.job-salary{
+.job-salary,
+.job-position{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 48%;
+    width: 32%;
     height: 100%;
 }
 #salary-range{
