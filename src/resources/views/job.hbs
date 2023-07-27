@@ -29,6 +29,14 @@
              {{/each}}
         </select>
       </div>
+      <div class="categories-select__position">
+         <select name="categories-position" id="categories-search__position">
+             <option  value="" selected>All Position</option>
+             {{#each jobs}}
+             <option value="{{this.position}}">{{this.position}}</option>
+             {{/each}}
+        </select>
+      </div>
       <button type="submit">Search</button>
       </form>
       <form action="/scan" method="POST" class="header-search__scancv" enctype="multipart/form-data">
