@@ -649,6 +649,43 @@ li.content-listleadership{
     font-size: 20px;
     text-transform: capitalize;
 }
+li.content-listjob{
+    position: relative;
+}
+li.content-listjob a.payment{
+    position: absolute;
+    color: black;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    height: 40px;
+    width: 40px;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+li.content-listjob a.payment::after{
+    position: absolute;
+    content: "advertise this job";
+    background-color: rgba(0,0,0,0.3);
+    color: white;
+    text-align: center;
+    padding: 4px 8px;
+    font-size: 16px;
+    width: 160px;
+    height: 30px;
+    display: none;
+    text-align: center;
+    bottom: 15%;
+    left: 42px;
+}
+li.content-listjob a.payment:hover::after{
+    display: block;
+}
+li.content-listjob a.payment:hover{
+    color: $primarycolor;
+}
 li.content-listleadership{
     flex-direction: row;
     height: 80px;
