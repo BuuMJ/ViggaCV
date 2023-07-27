@@ -638,7 +638,7 @@ header.job-search {
   border: none;
   outline: none;
   background-color: white;
-  padding: 4px 4px 4px 56px;
+  padding: 4px 36% 4px 56px;
   border-radius: 5px;
   color: #333333;
   font-size: 14px;
@@ -649,6 +649,19 @@ header.job-search {
   left: 6%;
   top: 10px;
   font-size: 20px; }
+
+.header-search .input-search .categories-select {
+  position: absolute;
+  right: 36%;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.header-search .input-search .categories-select #categories-search {
+  width: 140px;
+  height: 48px;
+  border-radius: unset;
+  border: 1px solid transparent;
+  border-left: 1px solid #767676; }
 
 .header-search .input-search button {
   outline: none;
@@ -874,7 +887,8 @@ header.job-search .best-companyFL .background-image {
   right: 10px;
   font-size: 30px;
   color: white;
-  cursor: pointer; }
+  cursor: pointer;
+  z-index: 20; }
 
 .best-companyFL .close-best-fl::before {
   content: "";

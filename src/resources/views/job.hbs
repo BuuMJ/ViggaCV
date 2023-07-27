@@ -21,7 +21,14 @@
       <form class="input-search" action="/job/search">
       <input name="search" id="search" type="search" placeholder="Looking for jobs or companies">
       <label for="search"><i class="bi bi-search"></i></label>
-      
+      <div class="categories-select">
+         <select name="categories" id="categories-search">
+             <option  value="" selected>All Categories</option>
+             {{#each listcompany}}
+             <option value="{{this.companyfield}}">{{this.companyfield}}</option>
+             {{/each}}
+        </select>
+      </div>
       <button type="submit">Search</button>
       </form>
       <form action="/scan" method="POST" class="header-search__scancv" enctype="multipart/form-data">
@@ -161,7 +168,7 @@
   boxClose.addEventListener('click',()=>{
     closeSuggest.style.display = 'none';
   });
-  var closeBestFL = document.querySelector('.close-best-fl i');
+  var closeBestFL = document.querySelector('.close-best-fl ');
   var boxBestCompanyFl = document.querySelector('.best-companyFL');
   var deleteMargin = document.querySelector('.container-jobs');
   var link = boxBestCompanyFl.getAttribute('data-href');
