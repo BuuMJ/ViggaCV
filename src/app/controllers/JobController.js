@@ -133,6 +133,7 @@ class JobController {
             company1: company,
             random: staffMongoseToObject(randomCompany),
             randomJobs: mutipleMongooseToObject(randomJobs),
+            listcompany: mutipleMongooseToObject(company),
           });
         });
     } else {
@@ -156,6 +157,7 @@ class JobController {
             company: mutipleMongooseToObject(company),
             random: staffMongoseToObject(randomCompany),
             randomJobs: mutipleMongooseToObject(randomJobs),
+            listcompany: mutipleMongooseToObject(company),
             company1: company,
           });
         });
@@ -165,13 +167,24 @@ class JobController {
   async search(req, res, next) {
     const user = req.user;
     const search = req.query.search;
-
-    const job = await JobModel.find({
+    const categories = req.query.categories;
+    const position = req.query.position;
+    let query = {
       $or: [
         { jobname: { $regex: search, $options: "i" } },
         { companyname: { $regex: search, $options: "i" } },
       ],
-    });
+    };
+
+    if (categories) {
+      query.categories = categories;
+    }
+
+    if (position) {
+      query.position = position;
+    }
+
+    const job = await JobModel.find(query);
     const count = job.length;
     const company = await CompanyModel.find({});
     var page = req.query.page;
@@ -263,12 +276,7 @@ class JobController {
       page = parseInt(page);
       var skip = (page - 1) * PAGE_SIZE;
 
-      JobModel.find({
-        $or: [
-          { jobname: { $regex: search, $options: "i" } },
-          { companyname: { $regex: search, $options: "i" } },
-        ],
-      })
+      JobModel.find(query)
         .skip(skip)
         .limit(PAGE_SIZE)
         .then((data) => {
@@ -293,12 +301,7 @@ class JobController {
       page = 1;
       var skip = (page - 1) * PAGE_SIZE;
 
-      JobModel.find({
-        $or: [
-          { jobname: { $regex: search, $options: "i" } },
-          { companyname: { $regex: search, $options: "i" } },
-        ],
-      })
+      JobModel.find(query)
         .skip(skip)
         .limit(PAGE_SIZE)
         .then((data) => {

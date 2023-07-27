@@ -17,6 +17,7 @@ const Job = new Schema(
     benefit: String,
     DoP: Date,
     position: String,
+    categories: String,
   },
   {
     timestamps: true,

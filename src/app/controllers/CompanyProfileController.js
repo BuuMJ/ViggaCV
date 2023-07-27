@@ -389,6 +389,7 @@ class CompanyProfileController {
     const salary = req.body.salary;
     const joblocation = req.body.joblocation;
     const benefit = req.body.benefit;
+    const position = req.body.position;
     const DoP = req.body.DoP;
     const companyname = await CompanyModel.findOne({ iduser: iduser });
 
@@ -397,10 +398,12 @@ class CompanyProfileController {
       DoP: DoP,
       benefit: benefit,
       companyname: companyname.companyname,
+      categories: companyname.categories,
       jobname: jobname,
       jobdesc: jobdesc,
       salary: salary,
       jobrequi: jobrequi,
+      position: position,
       joblocation: joblocation,
       avatar: companyname.avatar,
       idcompany: companyname._id,
