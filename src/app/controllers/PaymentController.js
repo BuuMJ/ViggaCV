@@ -1,4 +1,5 @@
 const paypal = require("paypal-rest-sdk");
+const axios = require("axios");
 
 class PaymentController {
   pay(req, res, next) {
@@ -48,6 +49,7 @@ class PaymentController {
     });
   }
   success(req, res, next) {
+    const jobID = req.session.jobID;
     var payerID = req.query.PayerID;
     var execute_payment_json = {
       payer_id: payerID,
@@ -73,7 +75,9 @@ class PaymentController {
         } else {
           console.log("Get Payment Response");
           console.log(JSON.stringify(payment));
-          res.render("confirm");
+          res.render("confirm", {
+            jobID: jobID,
+          });
         }
       }
     );
@@ -81,13 +85,8 @@ class PaymentController {
 
   check(req, res, next) {
     const jobID = req.params.id;
-    if (req.session.jobID) {
-      delete req.session.jobID;
-      req.session.jobID = jobID;
-    } else {
-      req.session.jobID = jobID;
-      res.redirect("/payment");
-    }
+    req.session.jobID = jobID;
+    res.redirect("/pay");
   }
 }
 

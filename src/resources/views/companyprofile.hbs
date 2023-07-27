@@ -159,10 +159,8 @@ Today we are on the cusp of a new journey with our customers, to help them Power
                            <div class="secondary-listjob">
                                 <span class="locationjobs"><i class="bi bi-geo"></i> Location: {{this.joblocation}}</span>
                                 <span class="timejobs"><i class="bi bi-calendar-date"></i> {{this.createdAt}}</span>
-                           </div> 
-                           <form action="/pay/{{this._id}}" method="POST">
-                            <input type="submit" value="Payment">
-                           </form>
+                           </div>
+                           <a title="advertise this job" class="payment" href="/pay/{{this._id}}"><i class="bi bi-star"></i></a>
                         </li>
                         {{/each}}
                     </ul>
@@ -404,7 +402,6 @@ viewMoreBtn.addEventListener("click", function() {
     });
   }
 });
-
 </script>
 <script>
     var changeBackground = document.querySelector('.changebackground-profile')
