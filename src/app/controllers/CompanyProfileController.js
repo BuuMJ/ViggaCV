@@ -392,13 +392,16 @@ class CompanyProfileController {
     const position = req.body.position;
     const DoP = req.body.DoP;
     const companyname = await CompanyModel.findOne({ iduser: iduser });
+    console.log(
+      "đây là categories của công ty post jobs: " + companyname.companyfield
+    );
 
     const job = new JobModel({
       iduser: iduser,
       DoP: DoP,
       benefit: benefit,
       companyname: companyname.companyname,
-      categories: companyname.categories,
+      categories: companyname.companyfield,
       jobname: jobname,
       jobdesc: jobdesc,
       salary: salary,
