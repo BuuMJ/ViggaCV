@@ -633,7 +633,7 @@ header.job-search {
   text-align: center; }
 
 .header-search .input-search input {
-  width: 75%;
+  width: 80%;
   height: 48px;
   border: none;
   outline: none;
@@ -650,18 +650,27 @@ header.job-search {
   top: 10px;
   font-size: 20px; }
 
-.header-search .input-search .categories-select {
+.header-search .input-search .categories-select,
+.header-search .input-search .categories-select__position {
   position: absolute;
-  right: 36%;
+  right: 38%;
   top: 50%;
   transform: translateY(-50%); }
 
-.header-search .input-search .categories-select #categories-search {
+.header-search .input-search .categories-select__position {
+  right: 19%; }
+
+.header-search .input-search .categories-select #categories-search,
+.header-search .input-search .categories-select__position #categories-search__position {
   width: 140px;
   height: 48px;
   border-radius: unset;
   border: 1px solid transparent;
-  border-left: 1px solid #767676; }
+  border-left: 1px solid #dcdcdc;
+  background-color: transparent; }
+
+.header-search .input-search .categories-select__position #categories-search__position {
+  width: 130px; }
 
 .header-search .input-search button {
   outline: none;
