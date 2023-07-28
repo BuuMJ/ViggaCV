@@ -3165,7 +3165,11 @@ header.company-detail .background-company-detail {
   border: none;
   background-color: transparent;
   color: white;
-  padding: 0 8px; }
+  padding: 0 8px;
+  text-transform: capitalize; }
+
+.body__create-cv header textarea#email {
+  text-transform: none; }
 
 .body__create-cv header textarea::placeholder {
   color: white; }
@@ -3185,11 +3189,19 @@ header.company-detail .background-company-detail {
 .body__create-cv header .info__user-cv .primary__user-cv input.fullname__user-cv {
   font-size: 32px;
   font-weight: 700;
-  width: 80%; }
+  width: 80%;
+  text-transform: capitalize; }
+
+.body__create-cv header .info__user-cv .primary__user-cv input.fullname__user-cv::placeholder {
+  color: white; }
 
 .body__create-cv header .info__user-cv .primary__user-cv input.specialized {
-  font-weight: 500;
-  width: 80%; }
+  font-weight: 600;
+  width: 80%;
+  text-transform: capitalize; }
+
+.body__create-cv header .info__user-cv .primary__user-cv input.specialized::placeholder {
+  color: white; }
 
 .body__create-cv header .info__user-cv .secondary__user-cv {
   display: flex;
