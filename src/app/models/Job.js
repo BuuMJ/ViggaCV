@@ -18,6 +18,10 @@ const Job = new Schema(
     DoP: Date,
     position: String,
     categories: String,
+    prioritize: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

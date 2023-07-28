@@ -1,5 +1,5 @@
 const paypal = require("paypal-rest-sdk");
-const axios = require("axios");
+const JobModel = require("../models/Job");
 
 class PaymentController {
   pay(req, res, next) {
@@ -68,11 +68,18 @@ class PaymentController {
     paypal.payment.execute(
       paymentId,
       execute_payment_json,
-      function (error, payment) {
+      async function (error, payment) {
         if (error) {
           console.log(error.response);
           throw error;
         } else {
+          try {
+            let job = await JobModel.findById(jobID);
+            job.prioritize = true;
+            await job.save();
+          } catch (err) {
+            console.log(err);
+          }
           console.log("Get Payment Response");
           console.log(JSON.stringify(payment));
           res.render("confirm", {
