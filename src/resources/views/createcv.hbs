@@ -1,11 +1,14 @@
 <form class="main__create-cv">
+<div class="header-background">
+  <span>Create Your CV</span>
+</div>
 <header class="action-create-cv">
   <span class="font-cv"><i class="bi bi-file-earmark-font"></i> Font</span>
   <span class="color-cv"><i class="bi bi-palette"></i> Color</span>
   <span class="templates-action-cv"><i class="bi bi-images"></i> Templates</span>
   <span class="download-create-cv"><button><i class="bi bi-cloud-arrow-down"></i> Download</button></span>
 </header>
-<div class="body__create-cv">
+<div class="body__create-cv a4">
   <header>
     <div class="info__user-cv">
       <div class="primary__user-cv">
@@ -22,16 +25,16 @@
           <textarea id="phone" type="text" rows="1" cols="50">{{getPhone user}}</textarea>
         </div>
         <div class="box__user-cv">
-          <label for="address">Address</label>
-          <textarea id="address" type="text" rows="1" cols="50">{{getAddress user}}</textarea>
-        </div>
-        <div class="box__user-cv">
           <label for="birthday">Birth</label>
-          <textarea id="birthday" type="text" rows="1" cols="50">{{getBirthday user}}</textarea>
+          <textarea id="birthday" type="text" rows="1" cols="50" placeholder="03/09/1999">{{getBirthday user}}</textarea>
         </div>
         <div class="box__user-cv">
           <label for="email">Email</label>
           <textarea id="email" type="text" rows="1" cols="50">{{getEmail user}}</textarea>
+        </div>
+        <div class="box__user-cv">
+          <label for="address">Address</label>
+          <textarea id="address" type="text" rows="2" cols="50">{{getAddress user}}, {{getCity user}}, {{getCountry user}}</textarea>
         </div>
       </div>
     </div>
@@ -50,10 +53,12 @@
     </div>
   </header>
   <div class="body__user-cv">
+    {{!-- overview --}}
     <div class="overview__user-cv">
       <textarea class="overview-text" rows="1">Overview</textarea>
       <textarea rows="15" placeholder="- Over 2 years of experience in programming with good communication and quick learning skills&#10;- Strengths: Front-end technology and Back-end web application development&#10;- Proficiency in HTML, CSS, JavaScript&#10;- Strong proficiency in JavaScript, including DOM manipulation and the JavaScript object model&#10;- Thorough under standing of React.js and it score principles&#10;- Experience with popular React.js workflows (such as Flux or Redux)&#10;- Familiarity with newer specifications of EcmaScript&#10;- Experience with data structure libraries&#10;- Familiarity with RESTful APIs&#10;- Strong Experience in: PHP, JavaScript (ReactJS, React-native), MySQL, NoSQL, GraphQL, Redis, JSON, API, Docker, Kubernetes, Rancher, AWS services&#10;- Proficient use of source code management tools: SVN, GIT&#10;- Proficiency in operating systems: Linux (Ubuntu, OSX), Windows&#10;- Ability to learn and apply new technology quickly&#10;- Current working location: Ha Noi, Viet Nam&#10;"></textarea>
     </div>
+    {{!-- work experience --}}
     <div class="overview__user-cv workexp__user-cv">
       <textarea class="workexp-text" rows="1">Work experience</textarea>
       <div class="work-exp">
@@ -70,124 +75,271 @@
         </div>
       </div>
     </div>
+    {{!-- education --}}
+    <div class="overview__user-cv education__user-cv">
+      <textarea class=" education-text" rows="1">Education</textarea>
+      <div class="education-user">
+        <div class="date__education">
+          <textarea  rows="1" placeholder="07/2017 - Present"></textarea>
+          <div class="action__add-remove-education" >
+            <span title="Add more education" class="add-education"><i class="bi bi-plus-circle"></i></span>
+            <span title="Remove this education" class="remove-education"><i class="bi bi-dash-circle"></i></span>
+          </div>
+        </div>
+        <div class="info__education">
+          <textarea id="name-education" rows="1" placeholder="FPT GreenWich"></textarea>
+          <textarea class="major__education" rows="2" placeholder="Major - Website, Mobile&#10;Level - Good"></textarea>
+        </div>
+      </div>
+    </div>
+    {{!-- skill --}}
+     <div class="overview__user-cv skill__user-cv">
+      <textarea class="skill-text" rows="1">Skill</textarea>
+      <div class="main-skill">
+        <div class="main-info">
+           <textarea name="main" id="main" rows="1" class="main" placeholder="Main"></textarea>
+        </div>
+        <textarea name="main-content" id="main-content" rows="3" class="main-content" placeholder="• HTML&#10;• Javascrip&#10;• ReactJS"></textarea>
+      </div>
+      <div class="other-skill">
+         <div class="other-info">
+           <textarea name="other" id="other" rows="1" placeholder="Other"></textarea>
+        </div>
+        <textarea name="other-content" id="other-content" rows="3" placeholder="• Ruby&#10;• Mongose&#10;• NodeJS"></textarea>
+        <span class="remove__other-skill"><i class="bi bi-trash"></i></span>
+      </div>
+    </div>
+    {{!-- project --}}
+    <div class="overview__user-cv project__user-cv">
+      <textarea class="project-text" rows="1">Project</textarea>
+      <div class="table-project">
+        <div class="box-project client-project">
+          <div class="title-project">
+            <textarea name="client" id="client" rows="1" placeholder="Client"></textarea>
+          </div>
+          <textarea name="client-content" class="content-project" id="client-content" rows="1" placeholder="ViggaCareers"></textarea>
+        </div>
+        <div class="box-project descript-project">
+          <div class="title-project">
+            <textarea name="descript" id="descript" rows="1" placeholder="Description"></textarea>
+          </div>
+          <textarea name="descript-content" class="content-project" id="descript-content" rows="2" placeholder="For employers looking for talent&#10; Creating their own cv and looking for work"></textarea>
+        </div>
+        <div class="box-project members-project">
+          <div class="title-project">
+            <textarea name="members" id="members" rows="1" placeholder="Member count"></textarea>
+          </div>
+          <textarea name="members-content" class="content-project" id="members-content" rows="1" placeholder="2 people"></textarea>
+        </div>
+        <div class="box-project position-project">
+          <div class="title-project">
+            <textarea name="position" id="position" rows="1" placeholder="Position"></textarea>
+          </div>
+          <textarea name="position-content" class="content-project" id="position-content" rows="2" placeholder="Team Leader&#10;Front-end Developer"></textarea>
+        </div>
+        <div class="box-project respon-project">
+          <div class="title-project">
+            <textarea name="respon" id="respon" rows="1" placeholder="Responsibilities"></textarea>
+          </div>
+          <textarea name="respon-content" class="content-project" id="respon-content" rows="2" placeholder="Developer&#10;Solution architect"></textarea>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 </form>
 <script>
+  // check A4 page 
+  function checkOverflow() {
+    let container = document.querySelector('.a4');
+    while (container.scrollHeight > container.offsetHeight) {
+        let newContainer = container.cloneNode(false);
+        container.after(newContainer);
+        let nodes = Array.from(container.childNodes);
+        while (container.scrollHeight > container.offsetHeight && nodes.length > 0) {
+            newContainer.prepend(nodes.pop());
+        }
+        container = newContainer;
+    }
+}
+checkOverflow();
+//scroll navbar
   document.addEventListener("scroll", function() {
-  if (window.pageYOffset > 90) {
-    document.querySelector("header.action-create-cv").style.cssText = "position: fixed; top: 0";
+  if (window.pageYOffset > 500) {
+    document.querySelector("header.action-create-cv").style.cssText = "position: fixed; top: 1%; border-radius: 1000px; width: 60%; border-bottom: unset; background-color: black;";
 
   } else {
-    document.querySelector("header.action-create-cv").style.cssText = "position: absolute; top:12%;";
+    document.querySelector("header.action-create-cv").style.cssText = "position: absolute; top:53%; border-bottom: 2px solid black; background-color: transparent;";
   }
 });
+// textarea auto height
 document.addEventListener('DOMContentLoaded', function() {
-  var textareas = document.querySelectorAll('header textarea');
+  var textareas = document.querySelectorAll('.main__create-cv textarea');
   textareas.forEach(function(textarea) {
-    textarea.addEventListener('input', function() {
-      var lineHeight = parseInt(getComputedStyle(textarea).lineHeight, 10);
-      var rows = textarea.value.split('\n').length;
-      var minHeight = lineHeight * 1;
-      var maxHeight = lineHeight * 3; 
-      textarea.style.height = '';
-      if (rows >= 1 && rows <= 3) {
-        textarea.style.height = rows * lineHeight + 'px';
-      } else if (rows < 1) {
-        textarea.style.height = minHeight + 'px';
-      } else {
-        textarea.style.height = maxHeight + 'px';
-      }
+    textarea.addEventListener('keyup', function(e) {
+      textarea.style.height = 'auto';
+      let scHeight = e.target.scrollHeight;
+      textarea.style.height = `${scHeight}px`;
     });
   });
 });
+// add or remove work experience
 document.addEventListener('DOMContentLoaded', function() {
-  var textareas = document.querySelectorAll('.body__user-cv textarea');
-  textareas.forEach(function(textarea) {
-    textarea.addEventListener('input', function() {
-      var lineHeight = parseInt(getComputedStyle(textarea).lineHeight, 10);
-      var rows = textarea.value.split('\n').length;
-      var minHeight = lineHeight * 1;
-      var maxHeight = lineHeight * 3; 
-      textarea.style.height = '';
-      if (rows < 1) {
-        textarea.style.height = minHeight + 'px';
-      } else {
-        textarea.style.height = textarea.scrollHeight + 'px';
-      }
-    });
-  });
-});
-document.addEventListener('DOMContentLoaded', function() {
-  var textareas = document.querySelectorAll('.body__user-cv .workexp__user-cv .work-exp textarea');
-  var textareasShowAction = document.querySelectorAll('.body__user-cv .workexp__user-cv .work-exp .date__work-exp textarea')
-  for(var k = 0; k < textareasShowAction.length; k++){
-    textareasShowAction[k].addEventListener('focus', function() {
-      var actionAddRemove = this.parentNode.parentNode.querySelector('.action__add-remove');
-      actionAddRemove.style.opacity = '1';
-      this.style.cssText = 'background-color: #fff;outline: 1px solid #ccc;border-radius: 2px;box-shadow: 0px 0px 0px 60px rgba(255, 255, 255, 0.8);';
-    });
-    textareasShowAction[k].addEventListener('focusout', function() {
-      var actionAddRemove = this.parentNode.parentNode.querySelector('.action__add-remove');
-      actionAddRemove.style.opacity = '0';
-      this.style.cssText = 'background-color: transparent; outline:none; border:none;box-shadow: unset;';
-    });
-    };
-  for (var i = 0; i < textareas.length; i++) {
-    textareas[i].addEventListener('focus', function() {
-      this.style.cssText = 'background-color: #fff;outline: 1px solid #ccc;border-radius: 2px;box-shadow: 0px 0px 0px 60px rgba(255, 255, 255, 0.8);';
-    });
-    textareas[i].addEventListener('focusout', function() {
-      this.style.cssText = 'background-color: transparent; outline:none; border:none;box-shadow: unset;';
-    });
-  }
-  var RemoveWorkExp = document.querySelector('.remove-work-exp');
-        RemoveWorkExp.addEventListener('click', function() {
-          document.querySelector('.work-exp').remove();
-        });
-  function setupAddMoreWorkExp() {
-    var addMoreWorkExp = document.getElementsByClassName('add-work-exp');
-    var canCreateNewDiv = true;
-    var addWorkExpClickHandler = function() {
-      if (canCreateNewDiv) {
-        var newDiv = document.createElement('div');
-        newDiv.classList.add('work-exp', 'work-exp-more');
-        newDiv.innerHTML = `<div class="date__work-exp">
-            <textarea rows="1" placeholder="07/2017 - Present"></textarea>
-            <div class="action__add-remove">
-              <span title="Add more work experience" class="add-work-exp"><i class="bi bi-plus-circle"></i></span>
-              <span title="Remove this work experience" class="remove-work-exp"><i class="bi bi-dash-circle"></i></span>
-            </div>
-          </div>
-          <div class="info__work-exp">
-            <textarea id="name-company" rows="1" placeholder="Vigga Company"></textarea>
-            <textarea class="job__work-exp" rows="3" placeholder="FullStacl Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10"></textarea>
-          </div>`;
-        var overviewWorkExp = document.querySelector('.overview__user-cv.workexp__user-cv');
-        overviewWorkExp.appendChild(newDiv);
-        var textarea = newDiv.querySelector('.date__work-exp textarea');
-        var actionAddRemove = newDiv.querySelector('.action__add-remove');
+    function applyTextareaFocusStyles(textarea) {
+        textarea.style.cssText = 'background-color: #fff; outline: 1px solid #ccc; border-radius: 2px; box-shadow: 0px 0px 0px 60px rgba(255, 255, 255, 0.8);';
+    }
+    function applyTextareaBlurStyles(textarea) {
+        textarea.style.cssText = 'background-color: transparent; outline: none; border: none; box-shadow: unset;';
+    }
+    function setupDateWorkExpTextareaEvents(textarea) {
         textarea.addEventListener('focus', function() {
-          actionAddRemove.style.opacity = '1';
+            var actionAddRemove = this.parentNode.querySelector('.action__add-remove');
+            actionAddRemove.style.opacity = '1';
+            applyTextareaFocusStyles(this);
         });
         textarea.addEventListener('focusout', function() {
-          actionAddRemove.style.opacity = '0';
+            var actionAddRemove = this.parentNode.querySelector('.action__add-remove');
+            actionAddRemove.style.opacity = '0';
+            applyTextareaBlurStyles(this);
         });
-        var newRemoveWorkExp = newDiv.querySelector('.remove-work-exp');
-        newRemoveWorkExp.addEventListener('click', function() {
-          newDiv.remove();
-          canCreateNewDiv = document.getElementsByClassName('work-exp').length > 1;
-        });
-        canCreateNewDiv = document.getElementsByClassName('work-exp').length > 1;
-        setupAddMoreWorkExp();
-      }
-    };
-    for (var i = 0; i < addMoreWorkExp.length; i++) {
-      addMoreWorkExp[i].addEventListener('click', addWorkExpClickHandler);
     }
-  }
-  setupAddMoreWorkExp();
+    function setupWorkExpEventListeners(workExpDiv) {
+    var textarea = workExpDiv.querySelector('.date__work-exp textarea');
+    setupDateWorkExpTextareaEvents(textarea);
+    var jobTextarea = workExpDiv.querySelector('.job__work-exp');
+    jobTextarea.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' || event.keyCode === 13) {
+            event.preventDefault();
+            var startPosition = this.selectionStart;
+            var endPosition = this.selectionEnd;
+            this.value = this.value.substring(0, startPosition) 
+                + '\n• ' 
+                + this.value.substring(endPosition);
+            this.selectionStart = this.selectionEnd = startPosition + 3;
+        }
+    });
+    var removeButton = workExpDiv.querySelector('.remove-work-exp');
+    removeButton.addEventListener('click', function() {
+        workExpDiv.remove();
+    });
+    var addButton = workExpDiv.querySelector('.add-work-exp');
+    addButton.addEventListener('click', function() {
+        addNewWorkExp();
+    });
+    }
+    function addNewWorkExp() {
+        var newDiv = document.createElement('div');
+        newDiv.classList.add('work-exp', 'work-exp-more');
+        newDiv.innerHTML = `
+            <div class="date__work-exp">
+                <textarea rows="1" placeholder="07/2017 - Present"></textarea>
+                <div class="action__add-remove">
+                    <span title="Add more work experience" class="add-work-exp"><i class="bi bi-plus-circle"></i></span>
+                    <span title="Remove this work experience" class="remove-work-exp"><i class="bi bi-dash-circle"></i></span>
+                </div>
+            </div>
+            <div class="info__work-exp">
+                <textarea id="name-company" rows="1" placeholder="Vigga Company"></textarea>
+                <textarea class="job__work-exp" rows="3" placeholder="FullStack Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10"></textarea>
+            </div>`;
+        var overviewWorkExp = document.querySelector('.overview__user-cv.workexp__user-cv');
+        overviewWorkExp.appendChild(newDiv);
+        setupWorkExpEventListeners(newDiv);
+    }
+    var workExps = document.querySelectorAll('.work-exp');
+    workExps.forEach(function(workExpDiv) {
+        setupWorkExpEventListeners(workExpDiv);
+    });
+
 });
+// add or remove education 
+document.addEventListener('DOMContentLoaded', function() {
+    function addEducationEntry() {
+        var educationContainer = document.querySelector('.overview__user-cv.education__user-cv');
+        var newEducationDiv = document.createElement('div');
+        newEducationDiv.classList.add('education-user');
+        newEducationDiv.innerHTML = `
+            <div class="date__education">
+                <textarea rows="1" placeholder="07/2017 - Present"></textarea>
+                <div class="action__add-remove-education">
+                    <span title="Add more education" class="add-education"><i class="bi bi-plus-circle"></i></span>
+                    <span title="Remove this education" class="remove-education"><i class="bi bi-dash-circle"></i></span>
+                </div>
+            </div>
+            <div class="info__education">
+                <textarea id="name-education" rows="1" placeholder="FPT GreenWich"></textarea>
+                <textarea class="major__education" rows="2" placeholder="Major - Website, Mobile&#10;Level - Good"></textarea>
+            </div>`;
+        educationContainer.appendChild(newEducationDiv);
+        addEducationEventListeners(newEducationDiv);
+    }
+    function addEducationEventListeners(educationDiv) {
+        var addEducationButton = educationDiv.querySelector('.add-education');
+        addEducationButton.addEventListener('click', addEducationEntry);
+        var removeEducationButton = educationDiv.querySelector('.remove-education');
+        removeEducationButton.addEventListener('click', function() {
+            educationDiv.remove();
+        });
+        var dateEducation = educationDiv.querySelector('.date__education textarea');
+        var actionButtons = educationDiv.querySelector('.action__add-remove-education');
+        dateEducation.addEventListener('focus', function() {
+            actionButtons.style.opacity = '1';
+        });
+        dateEducation.addEventListener('focusout', function() {
+            actionButtons.style.opacity = '0';
+        });
+    }
+    var initialEducationDiv = document.querySelector('.education-user');
+    addEducationEventListeners(initialEducationDiv);
+
+});
+// textarea skill 
+document.addEventListener('DOMContentLoaded', function() {
+    function ensureBulletPoints(textarea) {
+        let lines = textarea.value.split('\n');
+        let updatedLines = lines.map(line => {
+            if (!line.startsWith('• ') && line.trim() !== '') {
+                return '• ' + line;
+            }
+            return line;
+        });
+        textarea.value = updatedLines.join('\n');
+    }
+    function handleBackspace(event) {
+        if (event.key === "Backspace") {
+            let cursorPosition = event.target.selectionStart;
+            let lines = event.target.value.split('\n');
+            let currentLine = Math.max(0, event.target.value.substr(0, cursorPosition).split('\n').length - 1);
+            if (lines[currentLine].startsWith('• ') && cursorPosition >= 2 && event.target.value.substring(cursorPosition - 2, cursorPosition) === '• ') {
+                event.preventDefault();
+                event.target.value = event.target.value.substring(0, cursorPosition - 2) + event.target.value.substring(cursorPosition);
+                event.target.selectionStart = cursorPosition - 2;
+                event.target.selectionEnd = cursorPosition - 2;
+            }
+        }
+    }
+    let textareas = document.querySelectorAll('.main-content, .other-content');
+    textareas.forEach(textarea => {
+        textarea.addEventListener('input', function() {
+            ensureBulletPoints(this);
+        });
+        textarea.addEventListener('keydown', handleBackspace);
+    });
+});
+// action remove other skill
+var removeOtherSkill = document.querySelector('span.remove__other-skill');
+var boxOtherSkill = document.querySelector('.skill__user-cv .other-skill');
+var textareaFocus = document.querySelector('.skill__user-cv .other-skill .other-info textarea');
+removeOtherSkill.addEventListener('click',()=>{
+  boxOtherSkill.style.display = 'none'
+})
+textareaFocus.addEventListener('focus',()=>{
+  removeOtherSkill.style.opacity = '1'
+})
+textareaFocus.addEventListener('focusout',()=>{
+  removeOtherSkill.style.opacity = '0'
+})
+// change avatar user
 var showChangeAvatar = document.querySelector('.body__create-cv header .avatar__user-cv img');
 var boxChangeAvatar = document.querySelector('.change-avatar__user-cv');
 showChangeAvatar.addEventListener('mouseover',()=>{

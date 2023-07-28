@@ -3066,27 +3066,43 @@ header.company-detail .background-company-detail {
   min-height: 500px;
   background-color: #313131; }
 
+.main__create-cv .header-background {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  width: 100%;
+  height: 420px;
+  background: linear-gradient(to top, #31313133, #fed20033), url("/img/header-createcv.jpg") center/cover no-repeat; }
+
+.main__create-cv .header-background span {
+  font-size: 40px;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 50px;
+  text-transform: uppercase; }
+
 .main__create-cv header.action-create-cv {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  width: 60%;
+  width: 100%;
   height: 56px;
-  background-color: black;
+  background-color: transparent;
   color: white;
-  border-radius: 1000px;
   font-size: 20px;
   z-index: 100;
   position: absolute;
-  top: 12%; }
+  top: 53%;
+  border-bottom: 2px solid black; }
 
 .main__create-cv header.action-create-cv span {
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer; }
+  cursor: pointer;
+  margin: 0 70px; }
 
 .main__create-cv header.action-create-cv span > * {
   margin: 0 8px; }
@@ -3109,8 +3125,17 @@ header.company-detail .background-company-detail {
   color: #fed200; }
 
 .body__create-cv {
-  width: 60%;
-  margin-top: 100px; }
+  width: 60%; }
+
+.a4 {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
+  page-break-after: always;
+  margin-top: 100px;
+  margin-bottom: 100px; }
 
 .body__create-cv header {
   display: flex;
@@ -3141,6 +3166,9 @@ header.company-detail .background-company-detail {
   background-color: transparent;
   color: white;
   padding: 0 8px; }
+
+.body__create-cv header textarea::placeholder {
+  color: white; }
 
 .body__create-cv header input:hover,
 .body__create-cv header textarea:hover {
@@ -3181,8 +3209,7 @@ header.company-detail .background-company-detail {
 .body__create-cv header .info__user-cv .secondary__user-cv label {
   font-size: 16px;
   font-weight: 700;
-  width: 25%;
-  align-self: center; }
+  width: 25%; }
 
 .body__create-cv header .info__user-cv .secondary__user-cv textarea {
   font-size: 14px;
@@ -3275,29 +3302,38 @@ header.company-detail .background-company-detail {
   border-radius: 2px; }
 
 .body__user-cv textarea.overview-text:focus,
-.body__user-cv textarea.workexp-text:focus {
+.body__user-cv textarea.workexp-text:focus,
+.body__user-cv textarea.education-text:focus,
+.body__user-cv textarea.skill-text:focus,
+.body__user-cv textarea.project-text:focus {
   color: #fed200;
   box-shadow: 0px 0px 0px 40px rgba(255, 255, 255, 0.8); }
 
 .body__user-cv textarea.overview-text,
-.body__user-cv textarea.workexp-text {
+.body__user-cv textarea.workexp-text,
+.body__user-cv textarea.education-text,
+.body__user-cv textarea.skill-text,
+.body__user-cv textarea.project-text {
   color: #fed200;
   font-weight: 700;
   font-size: 16px;
   border-bottom: 1px solid #d5d6d6;
   margin-bottom: 18px; }
 
-.overview__user-cv .work-exp {
+.overview__user-cv .work-exp,
+.overview__user-cv .education-user {
   display: flex;
   flex-direction: row;
   justify-content: start;
   align-items: start;
   position: relative; }
 
-.overview__user-cv .work-exp .date__work-exp {
+.overview__user-cv .work-exp .date__work-exp,
+.overview__user-cv .education-user .date__education {
   width: 20%; }
 
-.overview__user-cv .work-exp .action__add-remove {
+.overview__user-cv .work-exp .action__add-remove,
+.overview__user-cv .education-user .action__add-remove-education {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -3310,20 +3346,75 @@ header.company-detail .background-company-detail {
   cursor: pointer;
   opacity: 0; }
 
-.overview__user-cv .work-exp .date__work-exp .action__add-remove span:hover {
+.overview__user-cv .work-exp .date__work-exp .action__add-remove span:hover,
+.overview__user-cv .education-user .action__add-remove-education span:hover {
   color: #fed200; }
 
-.overview__user-cv .work-exp .date__work-exp textarea {
+.overview__user-cv .work-exp .date__work-exp textarea,
+.overview__user-cv .education-user .date__education textarea,
+.skill__user-cv .main-skill .main-info textarea#main,
+.skill__user-cv .other-skill .other-info textarea#other,
+.project__user-cv .box-project .title-project textarea {
   font-weight: 700; }
 
-.overview__user-cv .work-exp .info__work-exp {
+.overview__user-cv .work-exp .info__work-exp,
+.overview__user-cv .education-user .info__education {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 80%; }
 
-.overview__user-cv .work-exp .info__work-exp #name-company {
+.overview__user-cv .work-exp .info__work-exp #name-company,
+.overview__user-cv .education-user .info__education #name-education {
   font-weight: 700; }
+
+.skill__user-cv .main-skill,
+.skill__user-cv .other-skill {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%; }
+
+.skill__user-cv .other-skill {
+  margin-top: 20px;
+  position: relative; }
+
+.skill__user-cv .other-skill .remove__other-skill {
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: -6.5%;
+  opacity: 0; }
+
+.skill__user-cv .other-skill .remove__other-skill i:hover {
+  color: #FC0404; }
+
+.skill__user-cv .main-skill .main-info,
+.skill__user-cv .other-skill .other-info,
+.body__user-cv .project__user-cv .box-project .title-project {
+  width: 20%; }
+
+.skill__user-cv .main-skill textarea#main-content,
+.skill__user-cv .other-skill textarea#other-content {
+  width: 80%; }
+
+.project__user-cv .table-project {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%; }
+
+.body__user-cv .project__user-cv .box-project {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 12px; }
+
+.body__user-cv .project__user-cv .box-project .content-project {
+  width: 80%; }
 
 .main-login {
   display: flex;
