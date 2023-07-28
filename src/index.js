@@ -11,7 +11,7 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const methodOverride = require("method-override");
 const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const paypal = require("paypal-rest-sdk");
 
 const helpers = require("handlebars-helpers");
 
@@ -24,24 +24,13 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-// passport.use(
-//   new GoogleStrategy(
-//     {
-//       clientID: process.env.GOOGLE_CLIENT_ID,
-//       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-//       callbackURL: "/auth/google/callback",
-//     },
-//     (accessToken, refreshToken, profile, done) => {
-//       const user = {
-//         id: profile.id,
-//         name: profile.displayName,
-//         email: profile.emails[0].value,
-//         photo: profile.photos[0].value,
-//       };
-//       done(null, user);
-//     }
-//   )
-// );
+paypal.configure({
+  mode: "sandbox", //sandbox or live
+  client_id:
+    "AV47xaGE8MDMMRXmXaYQzBESVzCGF3sigEaJpopAWgwJJB4XpHIyQggJv5X6qeX6Ie5QAlGUjWAs-eq4",
+  client_secret:
+    "EPmovspX-8kl0V--Q1p0Aup3ipVkGU3n16CvR4L3DsSFhV1SoNwcYYIsL-fAxtKU1LBS31CZQgDoASPa",
+});
 
 const hbs = handlebars.create({
   helpers: require("./util/helpers"),

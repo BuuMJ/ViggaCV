@@ -131,8 +131,10 @@ class JobController {
             bestFL: staffMongoseToObject(bestFL),
             company: mutipleMongooseToObject(company),
             company1: company,
+            jobs: mutipleMongooseToObject(job),
             random: staffMongoseToObject(randomCompany),
             randomJobs: mutipleMongooseToObject(randomJobs),
+            listcompany: mutipleMongooseToObject(company),
           });
         });
     } else {
@@ -155,7 +157,9 @@ class JobController {
             bestFL: staffMongoseToObject(bestFL),
             company: mutipleMongooseToObject(company),
             random: staffMongoseToObject(randomCompany),
+            jobs: mutipleMongooseToObject(job),
             randomJobs: mutipleMongooseToObject(randomJobs),
+            listcompany: mutipleMongooseToObject(company),
             company1: company,
           });
         });
@@ -163,15 +167,27 @@ class JobController {
   }
 
   async search(req, res, next) {
+    const allJobs = await JobModel.find({});
     const user = req.user;
     const search = req.query.search;
-
-    const job = await JobModel.find({
+    const categories = req.query.categories;
+    const position = req.query.position;
+    let query = {
       $or: [
         { jobname: { $regex: search, $options: "i" } },
         { companyname: { $regex: search, $options: "i" } },
       ],
-    });
+    };
+
+    if (categories) {
+      query.categories = categories;
+    }
+
+    if (position) {
+      query.position = position;
+    }
+
+    const job = await JobModel.find(query);
     const count = job.length;
     const company = await CompanyModel.find({});
     var page = req.query.page;
@@ -263,12 +279,7 @@ class JobController {
       page = parseInt(page);
       var skip = (page - 1) * PAGE_SIZE;
 
-      JobModel.find({
-        $or: [
-          { jobname: { $regex: search, $options: "i" } },
-          { companyname: { $regex: search, $options: "i" } },
-        ],
-      })
+      JobModel.find(query)
         .skip(skip)
         .limit(PAGE_SIZE)
         .then((data) => {
@@ -279,6 +290,7 @@ class JobController {
             total: total,
             pages: pages,
             title: "List Job",
+            jobs: mutipleMongooseToObject(allJobs),
             job: mutipleMongooseToObject(data),
             bestCP: staffMongoseToObject(bestCP),
             bestFL: staffMongoseToObject(bestFL),
@@ -286,6 +298,7 @@ class JobController {
             random: staffMongoseToObject(randomCompany),
             randomJobs: mutipleMongooseToObject(randomJobs),
             company1: company,
+            listcompany: mutipleMongooseToObject(company),
           });
         });
     } else {
@@ -293,12 +306,7 @@ class JobController {
       page = 1;
       var skip = (page - 1) * PAGE_SIZE;
 
-      JobModel.find({
-        $or: [
-          { jobname: { $regex: search, $options: "i" } },
-          { companyname: { $regex: search, $options: "i" } },
-        ],
-      })
+      JobModel.find(query)
         .skip(skip)
         .limit(PAGE_SIZE)
         .then((data) => {
@@ -309,12 +317,14 @@ class JobController {
             total: total,
             pages: pages,
             title: "List Job",
+            jobs: mutipleMongooseToObject(allJobs),
             job: mutipleMongooseToObject(data),
             bestCP: staffMongoseToObject(bestCP),
             bestFL: staffMongoseToObject(bestFL),
             company: mutipleMongooseToObject(company),
             random: staffMongoseToObject(randomCompany),
             randomJobs: mutipleMongooseToObject(randomJobs),
+            listcompany: mutipleMongooseToObject(company),
             company1: company,
           });
         });
@@ -323,6 +333,8 @@ class JobController {
 
   async scan(req, res, next) {
     const user = req.user;
+    const allJobs = await JobModel.find({});
+
     if (req.session.jobs) {
       var search = req.session.jobs;
       var job = await JobModel.find({
@@ -451,12 +463,14 @@ class JobController {
               total: total,
               pages: pages,
               title: "List Job",
+              jobs: mutipleMongooseToObject(allJobs),
               job: mutipleMongooseToObject(data),
               bestCP: staffMongoseToObject(bestCP),
               bestFL: staffMongoseToObject(bestFL),
               company: mutipleMongooseToObject(company),
               random: staffMongoseToObject(randomCompany),
               randomJobs: mutipleMongooseToObject(randomJobs),
+              listcompany: mutipleMongooseToObject(company),
               company1: company,
             });
           });
@@ -474,12 +488,14 @@ class JobController {
               total: total,
               pages: pages,
               title: "List Job",
+              jobs: mutipleMongooseToObject(allJobs),
               job: mutipleMongooseToObject(data),
               bestCP: staffMongoseToObject(bestCP),
               bestFL: staffMongoseToObject(bestFL),
               company: mutipleMongooseToObject(company),
               random: staffMongoseToObject(randomCompany),
               randomJobs: mutipleMongooseToObject(randomJobs),
+              listcompany: mutipleMongooseToObject(company),
               company1: company,
             });
           });
@@ -504,12 +520,14 @@ class JobController {
               total: total,
               pages: pages,
               title: "List Job",
+              jobs: mutipleMongooseToObject(allJobs),
               job: mutipleMongooseToObject(data),
               bestCP: staffMongoseToObject(bestCP),
               bestFL: staffMongoseToObject(bestFL),
               company: mutipleMongooseToObject(company),
               random: staffMongoseToObject(randomCompany),
               randomJobs: mutipleMongooseToObject(randomJobs),
+              listcompany: mutipleMongooseToObject(company),
               company1: company,
             });
           });
@@ -527,12 +545,14 @@ class JobController {
               total: total,
               pages: pages,
               title: "List Job",
+              jobs: mutipleMongooseToObject(allJobs),
               job: mutipleMongooseToObject(data),
               bestCP: staffMongoseToObject(bestCP),
               bestFL: staffMongoseToObject(bestFL),
               company: mutipleMongooseToObject(company),
               random: staffMongoseToObject(randomCompany),
               randomJobs: mutipleMongooseToObject(randomJobs),
+              listcompany: mutipleMongooseToObject(company),
               company1: company,
             });
           });
