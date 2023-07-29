@@ -1,34 +1,35 @@
 const nodemailer = require("nodemailer");
 const JobModel = require("../models/Job");
 const CompanyModel = require("../models/Company");
-
+const {
+  mutipleMongooseToObject,
+  staffMongoseToObject,
+} = require("../../util/mongoose");
 class HomeController {
-  home(req, res, next) {
-    JobModel.find({}, function (err, jobs) {
-      if (err) {
-        console.log(err);
-      } else {
-        CompanyModel.find({}, function (err, companies) {
-          if (err) {
-            console.log(err);
-          } else {
-            JobModel.find({ prioritize: true }, function (err, prioritizeJobs) {
-              if (err) {
-                console.log(err);
-              } else {
-                res.render("home", {
-                  title: "Vigga Home",
-                  user: req.user,
-                  jobs: jobs,
-                  companies: companies,
-                  prioritizeJobs: prioritizeJobs,
-                });
-              }
-            });
-          }
-        });
-      }
-    });
+  async home(req, res, next) {
+    try {
+      const jobs = await JobModel.find({});
+      const companies = await CompanyModel.find({});
+      const prioritizeJobs = await JobModel.find({ prioritize: true });
+      const totalJobs = await JobModel.countDocuments({});
+      const topCompanies = await CompanyModel.find()
+        .sort({ follow: -1 })
+        .limit(4);
+
+      console.log(jobs);
+
+      res.render("home", {
+        title: "Vigga Home",
+        user: req.user,
+        jobs: mutipleMongooseToObject(jobs),
+        companies: mutipleMongooseToObject(companies),
+        prioritizeJobs: mutipleMongooseToObject(prioritizeJobs),
+        topCompanies: mutipleMongooseToObject(topCompanies),
+        totalJobs: totalJobs,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
   //[POST] feedback
   feedback(req, res, next) {

@@ -1,27 +1,205 @@
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lilita+One&display=swap');
 .container-home{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    perspective: 10px;
     scroll-behavior: smooth;
 }
 .first-content{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(83.78deg,rgba(84, 84, 84,0.8) 1.64%,rgba(255,255,255,0.1) 93.62%),url("/img/bgcontent.jpg") center / cover no-repeat;
+    background: linear-gradient(83.78deg,rgba(84, 84, 84,0.8) 1.64%,rgba(255,255,255,0.1) 93.62%);
+    position: relative;
+    transform-style: preserve-3d;
+    z-index: -1;
+}
+.first-content img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    transform: translateZ(-10px) scale(2);
+}
+.container-home .first-content .search-home{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 495px;
+    border-radius: 5px;
+}
+.container-home .first-content .search-home span.title{
+    font-size: 24px;
+    font-weight: 500;
+    width: 100%;
+    margin-bottom: 0;
+    padding: 10px 30px 0 30px ;
+}
+.container-home .first-content .search-home span.countjob{
+    font-size: 24px;
+    font-weight: 700;
+    width: 100%;
+    padding: 0 30px 4px 30px ;
+}
+.container-home .first-content .search-home .box-search__home{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 30px;
+    margin-bottom: 20px;
+}
+.container-home .first-content .search-home .box-search__home .search-namecompany{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    margin: 12px 0;
+}
+.container-home .first-content .search-home .box-search__home .search-pc{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.container-home .first-content .search-home .box-search__home .search-namecompany label,
+.container-home .first-content .search-home .box-search__home .search-position label,
+.container-home .first-content .search-home .box-search__home .search-categories label{
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.container-home .first-content .search-home .box-search__home .search-position label,
+.container-home .first-content .search-home .box-search__home .search-categories label{
+    width: 20%;
+}
+.container-home .first-content .search-home .box-search__home .search-namecompany input{
+    width: 89%;
+    height: 98%;
+    border: none;
+    outline: none;
+}
+.container-home .first-content .search-home .box-search__home .search-position select,
+.container-home .first-content .search-home .box-search__home .search-categories select,
+.container-home .first-content .search-home .box-search__home .search-position select:focus,
+.container-home .first-content .search-home .box-search__home .search-categories select:focus {
+    width: 79%;
+    height: 98%;
+    border: none !important;
+    outline: none !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.container-home .first-content .search-home .box-search__home .search-position,
+.container-home .first-content .search-home .box-search__home .search-categories{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 47%;
+    height: 50px;
+}
+.container-home .first-content .search-home .box-search__home .search-categories{
+    margin-right: 12px;
+}
+.container-home .first-content .search-home .box-search__home .search-namecompany,
+.container-home .first-content .search-home .box-search__home .search-position,
+.container-home .first-content .search-home .box-search__home .search-categories{
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+}
+.container-home .first-content .search-home .action-search{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 30px;
+}
+.container-home .first-content .search-home .action-search button{
+    width: 100%;
+    height: 100%;
+    border: 1px solid $primarycolor;
+    background-color: transparent;
+    color: $primarycolor;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: .5s;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+.container-home .first-content .search-home .action-search button:hover{
+    color: white;
+    background-color: $primarycolor;
+}  
+.container-home .first-content .search-home .find-company{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(254,210,0,0.1);
+    margin: unset;
+    padding: 12px 30px 20px 30px;
+} 
+.container-home .first-content .search-home .find-company span{
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 12px;
+    align-self: start;
+    color: #5f697c;
+}
+.container-home .first-content .search-home .find-company .discover-company{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 12px 0;
+}
+.container-home .first-content .search-home .find-company a{
+    width: 100%;
+    height: 100%;
+    border: 2px solid $primarycolor;
+    background-color: transparent;
+    color: $primarycolor;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: .5s;
+}
+.container-home .first-content .search-home .find-company a:hover{
+    background-color: $primarycolor;
+    color: white;
 }
 .first-content-left{
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 55%;
-    transform: translateY(-25%);
+    position: absolute;
 }
 .first-content-left .left-secondary-text{
     font-size: 26px;
