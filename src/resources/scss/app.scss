@@ -24,3 +24,9 @@ body.modal-open{
     color: $primarycolor;
     background-color: black;
 }
+@media print {
+    .header-app,
+    .footer-app {
+      display: none !important;
+    }
+  }

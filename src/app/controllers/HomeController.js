@@ -12,11 +12,10 @@ class HomeController {
       const companies = await CompanyModel.find({});
       const prioritizeJobs = await JobModel.find({ prioritize: true });
       const totalJobs = await JobModel.countDocuments({});
+      const latestJobs = await JobModel.find().sort({ createdAt: -1 }).limit(4);
       const topCompanies = await CompanyModel.find()
         .sort({ follow: -1 })
         .limit(4);
-
-      console.log(jobs);
 
       res.render("home", {
         title: "Vigga Home",
@@ -25,6 +24,7 @@ class HomeController {
         companies: mutipleMongooseToObject(companies),
         prioritizeJobs: mutipleMongooseToObject(prioritizeJobs),
         topCompanies: mutipleMongooseToObject(topCompanies),
+        latestJobs: mutipleMongooseToObject(latestJobs),
         totalJobs: totalJobs,
       });
     } catch (err) {
