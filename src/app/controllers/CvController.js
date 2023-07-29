@@ -1,9 +1,8 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs");
-const pdf = require("html-pdf");
 const path = require("path");
 const CVModel = require("../models/CV");
-const {staffMongoseToObject} = require('../../util/mongoose')
+const { staffMongoseToObject } = require("../../util/mongoose");
 
 class CvController {
   //[GET] CV
@@ -61,7 +60,6 @@ class CvController {
   async exportCV(req, res, next) {
     try {
       req.body.iduser = req.user._id;
-      console.log(req.body.iduser);
       const data = await CVModel.findOne({ iduser: req.body.iduser });
       let savedCv;
       if (data) {
@@ -106,14 +104,14 @@ class CvController {
           waitUntil: "networkidle0",
         });
 
-          await webPage.pdf({
+        await webPage
+          .pdf({
             printBackground: true,
             displayHeaderFooter: false,
             path: "CV of " + req.user.fullname + ".pdf",
             clip: { x: 100, y: 100, width: 800, height: 600 },
             format: "Tabloid",
             landscape: false,
-            
           })
           .then((_) => {
             console.log("Tạo file pdf thành công");
@@ -134,41 +132,89 @@ class CvController {
     }
   }
 
-  //quy
-  async exportPDF(req, res, next) {
+  async export(req, res, next) {
     try {
-      const tuition = await Tuition.find();
-      const data = {
-        tuition: tuition,
-      };
-      const filePathName = path.resolve(
-        __dirname,
-        "../../resources/views/invoice.hbs"
-      );
-      const htmlString = fs.readFileSync(filePathName).toString();
-      let option = {
-        format: "Letter",
-      };
-      const ejsData = ejs.render(htmlString, data);
-      // console.log(ejsData);
-      pdf.create(ejsData, option).toFile("tuition.pdf", (err, response) => {
-        if (err) console.log(err);
-        const filePath = path.resolve(__dirname, "../../../tuition.pdf");
+      const token = req.cookies.token;
+      console.log(token);
+      const browser = await puppeteer.launch({ headless: false });
+      const page = await browser.newPage();
 
-        fs.readFile(filePath, (err, file) => {
-          if (err) {
-            console.log(err);
-            return res.status(500).send("could not dowload file");
-          }
-
-          res.set("Content-Type", "application/pdf");
-          res.set("Content-Disposition", 'attachment;filename="tuition.pdf"');
-
-          res.send(file);
-        });
+      // Set cookie with the token
+      await page.setCookie({
+        name: "token",
+        value: token,
+        url: "http://localhost:3000",
       });
-    } catch (error) {
-      console.log(error.message);
+
+      // Navigate to the page you want and create PDF
+      await page.goto("http://localhost:3000/cv/createcv", {
+        waitUntil: "networkidle0",
+      });
+      // Wait until the element appears on the page
+      await page.waitForSelector(".body__create-cv.a4");
+
+      await page.addStyleTag({
+        content: ".header-app, .footer-app { display: none !important; }",
+      });
+
+      await page.addStyleTag({
+        content:
+          ".header-background, .action-create-cv { display: none !important; }",
+      });
+
+      await page.addStyleTag({
+        content: ".body__create-cv.a4 { margin-top: 0px; margin-bottom: 0px; }",
+      });
+
+      // Get the element you want to print
+      const element = await page.$(".body__create-cv.a4"); // Select the element with class "body__create-cv a4"
+
+      // Get information about the bounding box of the element
+      const bounding_box = await element.boundingBox();
+      console.log(bounding_box.x);
+      console.log(bounding_box.y);
+      console.log(bounding_box.width);
+      console.log(bounding_box.height);
+
+      await page
+        .pdf({
+          printBackground: true,
+          displayHeaderFooter: false,
+          landscape: false,
+          format: "A4",
+          path: "CV of " + req.user.fullname + ".pdf",
+          clip: {
+            x: bounding_box.x,
+            y: bounding_box.y,
+            width: bounding_box.width,
+            height: bounding_box.height,
+          },
+        })
+        .then((_) => {
+          console.log("Tạo file pdf thành công");
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+
+      await browser.close();
+      res.download("CV of " + req.user.fullname + ".pdf", function (err) {
+        if (err) {
+          // Handle error, but keep in mind the response may be partially-sent
+          // so check res.headersSent
+        } else {
+          // decrement a download credit, etc.
+          fs.unlink("CV of " + req.user.fullname + ".pdf", function (err) {
+            if (err) console.log(err);
+            console.log("File deleted!");
+          });
+        }
+      });
+      // return res.redirect("back");
+    } catch (err) {
+      console.log("alooooo");
+      console.error(err);
+      res.status(500).send("Error saving CV");
     }
   }
 }
