@@ -583,7 +583,7 @@
   padding: 8px;
   border-radius: 5px;
   overflow: hidden;
-  border-radius: 1px solid #fff; }
+  border: 1px solid #fff; }
 
 .container-home .home-jobs .swiper-slide a.box-jobnew:hover {
   background-color: #f6f6f6;
@@ -599,7 +599,8 @@
 
 .container-home .home-jobs .swiper-slide a.box-jobnew .top-jobnew img {
   width: 30%;
-  height: 100%; }
+  height: 100%;
+  background-color: transparent; }
 
 .container-home .home-jobs .swiper-slide a.box-jobnew .top-jobnew .left-info__jobnew {
   width: 70%;
@@ -1914,7 +1915,8 @@ header.job-search .best-companyFL .background-image {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%; }
+  width: 100%;
+  min-height: 620px; }
 
 .form-company-profile {
   width: 100%;
@@ -1927,7 +1929,7 @@ header.job-search .best-companyFL .background-image {
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  height: 550px;
+  height: 620px;
   background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.2)), url("/img/headerprofile.jpeg") center/cover no-repeat;
   position: relative; }
 
@@ -4585,7 +4587,7 @@ body.modal-open {
   overflow: hidden; }
 
 ::selection {
-  background-color: rgba(0, 0, 0, 0.3); }
+  background-color: rgba(0, 0, 0, 0.1); }
 
 @media print {
   .header-app,

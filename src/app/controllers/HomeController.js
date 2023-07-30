@@ -8,8 +8,10 @@ const {
 class HomeController {
   async home(req, res, next) {
     try {
-      const jobs = await JobModel.find({}); // thay thế bằng 20 việc làm mới nhất + thêm tổng số count vào
-      const companies = await CompanyModel.find({}); // thay bằng công ty có nhiều công việc nhất
+      const jobs = await JobModel.find({});
+      // thêm chức năng 20 việc làm mới nhất + thêm tổng số count vào
+      const companies = await CompanyModel.find({}); 
+      // thêm chức năng công ty có nhiều công việc nhất
       const prioritizeJobs = await JobModel.find({ prioritize: true }); // công việc giá trị cao
       const totalJobs = await JobModel.countDocuments({});
       const latestJobs = await JobModel.find().sort({ createdAt: -1 }).limit(4);

@@ -91,6 +91,7 @@
         <div class="box-hotjob">
             <div class="swiper">
                 <div class="swiper-wrapper">
+                    {{!-- thay thế bằng job có nhiều tim nhất  --}}
                     {{#each jobs}}
                         <div class="swiper-slide">
                             <a href="/job/{{this._id}}" class="box__info-job">
@@ -123,6 +124,7 @@
         <span class="title-jobs">There are 20 new positions awaiting your application.</span>
          <div class="swiper mySwiper">
             <div class="swiper-wrapper">
+                {{!-- thay bằng job việc làm mới nhất --}}
                 {{#each jobs}}
                 <div class="swiper-slide">
                     <a href="/job/{{this._id}}" class="box-jobnew">

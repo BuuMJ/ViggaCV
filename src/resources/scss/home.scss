@@ -649,7 +649,7 @@
     padding: 8px;
     border-radius: 5px;
     overflow: hidden;
-    border-radius: 1px solid #fff;
+    border: 1px solid #fff;
   }
   .container-home .home-jobs .swiper-slide a.box-jobnew:hover{
     background-color: #f6f6f6;
@@ -666,6 +666,7 @@
   .container-home .home-jobs .swiper-slide a.box-jobnew .top-jobnew img{
     width: 30%;
     height: 100%;
+    background-color: transparent;
   }
   .container-home .home-jobs .swiper-slide a.box-jobnew .top-jobnew .left-info__jobnew{
     width: 70%;
