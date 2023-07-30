@@ -48,7 +48,7 @@
                 </div>
             </div>
         </form>
-        <span class="slogan">ViggaCareers is Southeast Asia's most significant HR ecosystem. Our objective is to assist 120 million talents in Southeast Asia in advancing their careers and to assist companies in locating the most qualified candidates. More than three million talents have been supported by ViggaCareers, and several organizations have realized their full human potential as a result.</span>
+        {{!-- <span class="slogan">ViggaCareers is Southeast Asia's most significant HR ecosystem. Our objective is to assist 120 million talents in Southeast Asia in advancing their careers and to assist companies in locating the most qualified candidates. More than three million talents have been supported by ViggaCareers, and several organizations have realized their full human potential as a result.</span> --}}
     </div>
     <div class="company-feature">
         <div class="header__company-feature">
@@ -120,7 +120,31 @@
         </form>
     </div>
     <div class="home-jobs">
-
+        <span class="title-jobs">There are 20 new positions awaiting your application.</span>
+         <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                {{#each jobs}}
+                <div class="swiper-slide">
+                    <a href="/job/{{this._id}}" class="box-jobnew">
+                        <div class="top-jobnew">
+                            <img src="/{{this.avatar}}" alt="">
+                            <div class="left-info__jobnew">
+                                <span class="jobnew__name">{{this.jobname}}</span>
+                                <span class="jobnew__company">{{this.companyname}}</span>
+                            </div>
+                        </div>
+                        <div class="bottom-jobnew">
+                            <span class="jobnew__salary">{{this.salary}}</span>
+                            <span class="jobnew__location">{{this.joblocation}}</span>
+                        </div>
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
     </div>
     <div class="templates-cv">
         <div class="templates-img">
@@ -263,5 +287,45 @@ var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
         }, 1780);
     });
     // carousel jobs
-    
+     var swiper = new Swiper(".container-home .home-jobs .mySwiper", {
+        slidesPerView: 3,
+        slidesPerColumn: 4,
+        slidesPerGroup :12,
+        spaceBetween: 20,
+        autoplay: {
+        delay: 3500,
+        disableOnInteraction: false
+        },
+        grid: {
+          rows: 4,
+        },
+      pagination: {
+        el: ".container-home .home-jobs .swiper-pagination",
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + (index + 1) + "</span>";
+        },
+      },
+      navigation: {                       
+            nextEl: ".container-home .home-jobs .swiper-button-next",
+            prevEl: ".container-home .home-jobs .swiper-button-prev",
+        }, 
+        on: {
+            init: function () {},
+            orientationchange: function(){},
+            beforeResize: function(){
+                let vw = window.innerWidth;
+                if(vw > 1000){
+                mySwiper.params.slidesPerView = 3
+                    mySwiper.params.slidesPerColumn = 3
+                    mySwiper.params.slidesPerGroup = 3;
+                } else {
+                mySwiper.params.slidesPerView = 4
+                    mySwiper.params.slidesPerColumn = 2
+                    mySwiper.params.slidesPerGroup =4;
+                }
+                mySwiper.init();
+            },
+    },
+});
 </script>

@@ -8,12 +8,12 @@ const {
 class HomeController {
   async home(req, res, next) {
     try {
-      const jobs = await JobModel.find({});
-      const companies = await CompanyModel.find({});
-      const prioritizeJobs = await JobModel.find({ prioritize: true });
+      const jobs = await JobModel.find({}); // thay thế bằng 20 việc làm mới nhất + thêm tổng số count vào
+      const companies = await CompanyModel.find({}); // thay bằng công ty có nhiều công việc nhất
+      const prioritizeJobs = await JobModel.find({ prioritize: true }); // công việc giá trị cao
       const totalJobs = await JobModel.countDocuments({});
       const latestJobs = await JobModel.find().sort({ createdAt: -1 }).limit(4);
-      const topCompanies = await CompanyModel.find()
+      const topCompanies = await CompanyModel.find() // công ty có nhiều follow
         .sort({ follow: -1 })
         .limit(4);
 
