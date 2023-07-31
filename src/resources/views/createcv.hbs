@@ -12,35 +12,35 @@
   <header>
     <div class="info__user-cv">
       <div class="primary__user-cv">
-        <input class="fullname__user-cv" name="name" type="text" value="{{getFullname user}}">
-        <input class="specialized" type="text" name="specialized" placeholder="Front-end Developer" value="{{getSpecialized user}}">
+        <input class="fullname__user-cv" type="text" value="{{inforCV.fullname}}">
+        <input class="specialized" type="text" placeholder="Front-end Developer" value="{{inforCV.specialized}}">
       </div>
       <div class="secondary__user-cv">
         <div class="box__user-cv">
           <label for="fullname">Name</label>
-          <textarea id="fullname" type="text" name="fullname" rows="1" cols="50" >{{getFullname user}}</textarea>
+          <textarea id="fullname" type="text" rows="1" cols="50" >{{inforCV.fullname}}</textarea>
         </div>
         <div class="box__user-cv">
           <label for="phone">Phone</label>
-          <textarea id="phone" type="text" rows="1" name="phone" cols="50">{{getPhone user}}</textarea>
+          <textarea id="phone" type="text" rows="1" cols="50">{{inforCV.phone}}</textarea>
         </div>
         <div class="box__user-cv">
           <label for="birthday">Birth</label>
-          <textarea id="birthday" type="text" rows="1" name="birthday" cols="50" placeholder="03/09/1999">{{getBirthday user}}</textarea>
+          <textarea id="birthday" type="text" rows="1" cols="50" placeholder="03/09/1999">{{inforCV.birthday}}</textarea>
         </div>
         <div class="box__user-cv">
           <label for="email">Email</label>
-          <textarea id="email" type="text" rows="1" name="email" cols="50">{{getEmail user}}</textarea>
+          <textarea id="email" type="text" rows="1" cols="50">{{inforCV.email}}</textarea>
         </div>
         <div class="box__user-cv">
           <label for="address">Address</label>
-          <textarea id="address" type="text" rows="2" name="address" cols="50">{{getAddress user}}, {{getCity user}}, {{getCountry user}}</textarea>
+          <textarea id="address" type="text" rows="2" cols="50">{{inforCV.address}}, {{inforCV.city}}, {{inforCV.country}}</textarea>
         </div>
       </div>
     </div>
     <div class="avatar__user-cv">
-      <input type="file" name="avatar" id="avataruser" hidden>
-      <img class="img__user-cv" src="{{getAvatar user}}" alt="">
+      <input type="file" id="avataruser" hidden>
+      <img class="img__user-cv" src="/{{inforCV.avatar}}" alt="">
       <div class="change-avatar__user-cv">
         <div class="upload-avatar__user-cv">
           <label for="avataruser"><i class="bi bi-cloud-arrow-up"></i></label>

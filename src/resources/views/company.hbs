@@ -51,7 +51,7 @@
                 {{/each}}
                 <div class="pagination">
                   {{#each pages}}
-                  <a href="/job?page={{this}}" data-page="{{this}}">{{this}}</a>
+                  <a href="/company?page={{this}}" data-page-company="{{this}}">{{this}}</a>
                   {{/each}}
                 </div>
             </div>
@@ -64,11 +64,50 @@
   categoriesSubmit.addEventListener('change',()=>{
     formCategories.submit();
   })
+var getPaginationCompany = document.querySelectorAll('.pagination a');
+var paginationContainerCompany = document.querySelector('.pagination');
+if (getPaginationCompany.length > 0) {
+  paginationContainerCompany.style.display = 'flex';
+} else {
+  paginationContainerCompany.style.display = 'none';
+}
+getPaginationCompany.forEach(function(pageLinkCompany) {
+  pageLinkCompany.addEventListener('click', function(event) {
+    if (pageLinkCompany.classList.contains('active')) {
+      event.preventDefault();
+    } else {
+      var pageCompany = pageLinkCompany.getAttribute('data-page-company');
+      localStorage.setItem('currentPageCompany', pageCompany);
+    }
+  });
+});
+document.addEventListener('DOMContentLoaded', ()=> {
+  var currentPageCompany = localStorage.getItem('currentPageCompany');
+  if (currentPageCompany !== null) {
+    getPaginationCompany.forEach(function(pageLinkCompany) {
+      var pageCompany = pageLinkCompany.getAttribute('data-page-company');
+      if (pageCompany == currentPageCompany) {
+        pageLinkCompany.classList.add('active');
+      }
+    });
+  }
+});
+ var list = document.querySelectorAll('.card-companies')
+ list.forEach(function(item) {
+  const showFollow = item.querySelector('.count-follow');
+  const countFollow = showFollow.getAttribute('data-followers');
+  console.log(countFollow)
+  if (countFollow <= 1 ){
+    showFollow.innerHTML = '<i class="bi bi-people-fill"></i> ' + `${countFollow} ` + 'Follower';
+  }
+  else{
+    showFollow.innerHTML = '<i class="bi bi-people-fill"></i>' + ` ${countFollow} ` + 'Followers';
+  }
+})
 </script>
 {{!-- <script>
   var thisPage = 1;
   var limit = 6;
-  var list = document.querySelectorAll('.card-companies')
 function loadIteam() {
   list.forEach((item, key) => {
     item.style.display = 'none';
@@ -157,15 +196,5 @@ function search() {
     searchResults.removeChild(noResults);
   }
 }
-list.forEach(function(item) {
-  const showFollow = item.querySelector('.count-follow');
-  const countFollow = showFollow.getAttribute('data-followers');
-  console.log(countFollow)
-  if (countFollow <= 1 ){
-    showFollow.innerHTML = '<i class="bi bi-people-fill"></i> ' + `${countFollow} ` + 'Follower';
-  }
-  else{
-    showFollow.innerHTML = '<i class="bi bi-people-fill"></i>' + `${countFollow}` + 'Followers';
-  }
-})
+
 </script> --}}

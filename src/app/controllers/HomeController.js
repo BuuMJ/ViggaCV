@@ -23,7 +23,6 @@ class HomeController {
       const topCompanies = await CompanyModel.find() // công ty có nhiều follow
         .sort({ follow: -1 })
         .limit(4);
-      console.log(count);
       res.render("home", {
         title: "Vigga Home",
         user: req.user,

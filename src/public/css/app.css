@@ -235,10 +235,11 @@
   justify-content: center;
   align-items: center;
   padding: 30px 0;
-  cursor: pointer; }
+  cursor: pointer;
+  color: #fed200; }
 
 .company-feature .header__company-feature span.hotcompany {
-  border-bottom: 4px solid #fed200; }
+  border-bottom: 4px solid #0072bc; }
 
 .custom-loader {
   width: 50px;
@@ -269,7 +270,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  background-color: #f5f5f5; }
 
 .company-feature .box-hotcompany .swiper {
   width: 100%;
@@ -549,7 +551,7 @@
   position: relative; }
 
 .container-home .home-jobs .title-jobs {
-  font-size: 24px;
+  font-size: 40px;
   font-weight: 600;
   color: #fed200; }
 
@@ -666,6 +668,152 @@
 .container-home .home-jobs .swiper-button-next,
 .container-home .home-jobs .swiper-button-prev {
   color: #0072bc; }
+
+.container-home .toprecruiters {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #f5f5f5; }
+
+.container-home .toprecruiters span.title-toprecruiters {
+  font-size: 40px;
+  font-weight: 600;
+  margin: 20px 0;
+  color: #fed200; }
+
+.container-home .toprecruiters .list-toprecruiters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin-bottom: 20px; }
+
+.container-home .toprecruiters .card-toprecruiter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 280px;
+  margin: 16px;
+  border: 1px solid #d3d5d9;
+  border-radius: 5px;
+  background-color: white; }
+
+.container-home .toprecruiters .card-toprecruiter:hover {
+  border: 1px solid #0072bc;
+  box-shadow: 0 5px 10px #0072bc; }
+
+.container-home .toprecruiters .card-toprecruiter img {
+  width: 95%;
+  height: 60%;
+  padding: 6px 0; }
+
+.container-home .toprecruiters .card-toprecruiter span.toprecruiter-companyname {
+  font-size: 16px;
+  color: black;
+  font-weight: 600;
+  height: 20%;
+  padding: 6px 0; }
+
+.container-home .toprecruiters .card-toprecruiter .box-toprecruiter__jobcount {
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.container-home .toprecruiters .card-toprecruiter .box-toprecruiter__jobcount span.toprecruiter-jobcount {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 6px;
+  background-color: #b2b2af;
+  border-radius: 5px; }
+
+.container-home .home-personal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #f5f5f5; }
+
+.container-home .home-personal .title-personal {
+  font-size: 40px;
+  font-weight: 600;
+  color: #fed200;
+  margin: 50px 0 30px 0; }
+
+.container-home .home-personal .list-personal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin-bottom: 50px; }
+
+.container-home .home-personal .list-personal .card-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+  width: 48%;
+  height: 270px;
+  background: linear-gradient(90deg, #c0c4c7 23.92%, #0072bc33);
+  border-radius: 5px;
+  border: 1px solid #f5f5f5;
+  transition: .5s; }
+
+.container-home .home-personal .list-personal .card-profile:hover {
+  background: linear-gradient(90deg, #f5f5f5 23.92%, #0072bc33);
+  border: 1px solid #0072bc;
+  box-shadow: 0 6px 18px #0072bc; }
+
+.container-home .home-personal .list-personal .card-profile .profile-left {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  height: 100%; }
+
+.container-home .home-personal .list-personal .card-profile .profile-left .title-profile {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 16px 12px 6px 16px;
+  transition: .5s;
+  height: 20%; }
+
+.container-home .home-personal .list-personal .card-profile:hover .profile-left .title-profile {
+  color: #0072bc; }
+
+.container-home .home-personal .list-personal .card-profile .profile-left .content-profile__personal {
+  font-size: 16px;
+  font-weight: 400;
+  padding: 6px 16px;
+  text-align: justify;
+  height: 60%; }
+
+.container-home .home-personal .list-personal .card-profile .profile-left .action-personal {
+  margin: 6px 0 20px 16px;
+  padding: 6px 12px;
+  font-size: 14px;
+  background-color: #0072bc;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none; }
+
+.container-home .home-personal .list-personal .card-profile .profile-right {
+  width: 30%;
+  height: 267px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.container-home .home-personal .list-personal .card-profile .profile-right img {
+  width: 100%;
+  height: 80%; }
 
 .templates-cv {
   display: flex;
@@ -788,7 +936,7 @@
   align-items: center;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(83.78deg, rgba(48, 48, 48, 0.9) 1.64%, rgba(255, 255, 255, 0.1) 93.62%), url("/img/bgbody2.jpg") center/cover no-repeat;
+  background: linear-gradient(to right, #0072bc33, #fed20033), url("/img/bgbody2.jpg") center/cover no-repeat;
   position: relative; }
 
 .company-job .home-company,

@@ -124,8 +124,7 @@
         <span class="title-jobs">There are 20 new positions awaiting your application.</span>
          <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                {{!-- thay bằng job việc làm mới nhất --}}
-                {{#each jobs}}
+                {{#each latestJobs}}
                 <div class="swiper-slide">
                     <a href="/job/{{this._id}}" class="box-jobnew">
                         <div class="top-jobnew">
@@ -148,6 +147,28 @@
             <div class="swiper-pagination"></div>
         </div>
     </div>
+         <div class="company-job">
+        <a href="/company" class="home-company">
+            <span>Companies</span>
+        </a>
+        <a href="/job" class="home-job">
+            <span>Jobs</span>
+        </a>
+    </div>
+    <div class="toprecruiters">
+        <span class="title-toprecruiters">Top 5 recruitment companies</span>
+        <div class="list-toprecruiters">
+            {{#each mostJobs}}
+                <div class="card-toprecruiter">
+                    <img src="{{this.avatar}}" alt="">
+                    <span class="toprecruiter-companyname">{{this.companyname}}</span>
+                    <div class="box-toprecruiter__jobcount">
+                        <span class="toprecruiter-jobcount">{{this.jobcount}} jobs</span>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
     <div class="templates-cv">
         <div class="templates-img">
             <img class="templates-img1" src="/img/cv1.jpeg" alt="">
@@ -162,13 +183,30 @@ Create a quick and free CV template, so that employers must
             <a class="templates-text__action" href="/cv">Discover Now</a>
         </div>
     </div>
-     <div class="company-job">
-        <a href="/company" class="home-company">
-            <span>Companies</span>
-        </a>
-        <a href="/job" class="home-job">
-            <span>Jobs</span>
-        </a>
+    <div class="home-personal">
+        <span class="title-personal">Setting up a personal brand through Vigga Careers</span>
+        <div class="list-personal">
+            <div class="card-profile">
+                <div class="profile-left">
+                    <span class="title-profile">Vigga Careers Profile</span>
+                    <span class="content-profile__personal">The Vigga Careers Profile helps people promote themselves with a full competency profile. This profile highlights strengths by including education, Specialized, experience, and Certifications.</span>
+                    <a class="action-personal" href="/profile">Making a profile </a>
+                </div>
+                <div class="profile-right">
+                    <img src="/img/personalleft.png" alt="">
+                </div>
+            </div>
+             <div class="card-profile">
+                <div class="profile-left">
+                    <span class="title-profile">Vigga Careers NiceCV</span>
+                    <span class="content-profile__personal">Develop a concise and cost-free curriculum vitae (CV) template that elicits a sense of astonishment from employers upon initial review.</span>
+                    <a class="action-personal" href="/cv">Making a CV </a>
+                </div>
+                <div class="profile-right">
+                    <img src="/img/personalright.png" alt="">
+                </div>
+            </div>
+        </div>
     </div>
          <div class="advantages">
         <div class="advantage-before">
@@ -265,7 +303,7 @@ var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
     var clickJobHot = document.querySelector('.company-feature .header__company-feature span.hotjob');
     var boxJobHot = document.querySelector('.company-feature .box-hotjob');
     clickJobHot.addEventListener('click',()=>{
-        clickJobHot.style.cssText = 'border-bottom: 4px solid #fed200;';
+        clickJobHot.style.cssText = 'border-bottom: 4px solid #0072bc;';
         clickCompanyHot.style.cssText = 'border-bottom: unset;';
         boxCompanyHot.style.display = 'none';
         loadingFeatureCompany.style.display = 'grid';
@@ -277,7 +315,7 @@ var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
         }, 1780);
     });
     clickCompanyHot.addEventListener('click',()=>{
-        clickCompanyHot.style.cssText = 'border-bottom: 4px solid #fed200;';
+        clickCompanyHot.style.cssText = 'border-bottom: 4px solid #0072bc;';
         clickJobHot.style.cssText = 'border-bottom: unser;';
         boxJobHot.style.display = 'none';
         loadingFeatureCompany.style.display = 'grid';
