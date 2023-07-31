@@ -9,14 +9,21 @@ class HomeController {
   async home(req, res, next) {
     try {
       const jobs = await JobModel.find({});
+      // thêm chức năng 20 việc làm mới nhất + thêm tổng số count vào
       const companies = await CompanyModel.find({});
-      const prioritizeJobs = await JobModel.find({ prioritize: true });
+      // thêm chức năng công ty có nhiều công việc nhất
+      const prioritizeJobs = await JobModel.find({ prioritize: true }); // công việc giá trị cao
       const totalJobs = await JobModel.countDocuments({});
-      const latestJobs = await JobModel.find().sort({ createdAt: -1 }).limit(4);
-      const topCompanies = await CompanyModel.find()
+      const latestJobs = await JobModel.find()
+        .sort({ createdAt: -1 })
+        .limit(20);
+      const mostJobs = await CompanyModel.find()
+        .sort({ jobcount: -1 })
+        .limit(5);
+      const topCompanies = await CompanyModel.find() // công ty có nhiều follow
         .sort({ follow: -1 })
         .limit(4);
-
+      console.log(count);
       res.render("home", {
         title: "Vigga Home",
         user: req.user,
@@ -26,6 +33,7 @@ class HomeController {
         topCompanies: mutipleMongooseToObject(topCompanies),
         latestJobs: mutipleMongooseToObject(latestJobs),
         totalJobs: totalJobs,
+        mostJobs: mutipleMongooseToObject(mostJobs),
       });
     } catch (err) {
       console.log(err);

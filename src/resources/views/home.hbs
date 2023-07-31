@@ -1,17 +1,151 @@
 <div class="container-home">
     <div class="first-content">
-        <div class="first-content-left">
-            <span class="left-secondary-text">ViggaCareers is Southeast Asia's most significant HR ecosystem. Our objective is to assist 120 million talents in Southeast Asia in advancing their careers and to assist companies in locating the most qualified candidates. More than three million talents have been supported by ViggaCareers, and several organizations have realized their full human potential as a result.</span>
-            <a class="home-create-cv" href="/job">Find Dream Job</a>
-        </div>
-        <form action="/cv/export" method="POST">
-        <input type="submit" value="Payment">
+        <img src="/img/bgcontent.jpg" alt="">
+        <form class="search-home" action="/job/search">
+            <span class="title">Savor success with</span>
+            <span class="countjob">{{totalJobs}} career options</span>
+            <div class="box-search__home">
+                <div class="search-namecompany">
+                    <label for="namecompany"><i class="bi bi-search"></i></label>
+                    <input type="search" id="namecompany" name="search" placeholder="Name Company, Name Job">
+                </div>
+                <div class="search-pc">
+                <div class="search-categories">
+                    <label for="categories">
+                        <span class="material-symbols-outlined">
+                        menu
+                        </span>
+                    </label>
+                    <select name="categories" id="categories">
+                        <option  value="" selected>Categiries</option>
+                        {{#each companies}}
+                        <option value="{{this.companyfield}}">{{this.companyfield}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="search-position">
+                    <label for="position">
+                        <span class="material-symbols-outlined">
+                        business_center
+                        </span>
+                    </label>
+                    <select name="position" id="position">
+                        <option  value="" selected>Position</option>
+                        {{#each jobs}}
+                        <option value="{{this.position}}">{{this.position}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                </div>
+            </div>
+            <div class="action-search">
+                <button type="submit">Search</button>
+            </div>
+            <div class="find-company">
+                <span>Find your favorite company</span>
+                <div class="discover-company">
+                    <a href="/company">Discover Now</a>
+                </div>
+            </div>
         </form>
-        <div id="slideshow" class="first-content-right">
-            <img src="/img/companyTP.jpg" alt="">
-            <img src="/img/companyHM.png" alt="">
-            <img src="/img/companyLR.jpg" alt="">
-            <img src="/img/companyTHG.jpg" alt="">
+        {{!-- <span class="slogan">ViggaCareers is Southeast Asia's most significant HR ecosystem. Our objective is to assist 120 million talents in Southeast Asia in advancing their careers and to assist companies in locating the most qualified candidates. More than three million talents have been supported by ViggaCareers, and several organizations have realized their full human potential as a result.</span> --}}
+    </div>
+    <div class="company-feature">
+        <div class="header__company-feature">
+            <span class="hotcompany">Featured Companies</span>
+            <span class="hotjob">Outstanding Jobs</span>
+        </div>
+        <div class="custom-loader"></div>
+        <div class="box-hotcompany">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                {{#each topCompanies}}
+                <div class="swiper-slide">
+                    <div class="background-company" style="background: url('{{getBackground this}}') center / cover no-repeat;"></div>
+                    <div class="box__info-company">
+                        <img src="{{getAvatar this}}" alt="">
+                        <div class="left-info">
+                        <span class="company-name">{{this.companyname}}</span>
+                        <span class="company-field">{{this.companyfield}}</span>
+                        <div class="view-detail__desc">
+                            <span class="company-desc-info">{{this.companydesc}}</span>
+                            <a href="/company/{{this._id}}">View More</a>
+                        </div>
+                        <span class="job-count__company">{{this.jobcount}} Jobs</span>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+                <div class="autoplay-progress">
+                <svg viewBox="0 0 48 48">
+                    <circle cx="24" cy="24" r="20"></circle>
+                </svg>
+                <span></span>
+                </div>
+            </div>
+        </div>
+        <div class="box-hotjob">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    {{!-- thay thế bằng job có nhiều tim nhất  --}}
+                    {{#each jobs}}
+                        <div class="swiper-slide">
+                            <a href="/job/{{this._id}}" class="box__info-job">
+                                <img src="{{getAvatarJoba this}}" alt="">
+                                <div class="left__info-job">
+                                    <span class="hot__job-name">{{this.jobname}}</span>
+                                    <span class="hot__job__company-name">{{this.companyname}}</span>
+                                    <span class="hot__job-salary"><i class="bi bi-currency-dollar"></i> {{this.salary}}</span>
+                                    <span class="hot__location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</span>
+                                </div>
+                            </a>
+                        </div>
+                    {{/each}}
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+    <div class="home-subscribe">
+        <span class="title-subscribe">Follow the latest company and job updates on Vigga Careers by subscribing.</span>
+        <form action="" class="box-subscribe">
+            <input type="text" id="subscribe" name="subscribe" required>
+            <label for="subscribe"><button>Subscribe Now</button></label>
+            <label for="subscribe" class="label-title">Your Email</label>
+        </form>
+    </div>
+    <div class="home-jobs">
+        <span class="title-jobs">There are 20 new positions awaiting your application.</span>
+         <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                {{!-- thay bằng job việc làm mới nhất --}}
+                {{#each jobs}}
+                <div class="swiper-slide">
+                    <a href="/job/{{this._id}}" class="box-jobnew">
+                        <div class="top-jobnew">
+                            <img src="/{{this.avatar}}" alt="">
+                            <div class="left-info__jobnew">
+                                <span class="jobnew__name">{{this.jobname}}</span>
+                                <span class="jobnew__company">{{this.companyname}}</span>
+                            </div>
+                        </div>
+                        <div class="bottom-jobnew">
+                            <span class="jobnew__salary">{{this.salary}}</span>
+                            <span class="jobnew__location">{{this.joblocation}}</span>
+                        </div>
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
         </div>
     </div>
     <div class="templates-cv">
@@ -62,20 +196,9 @@ Create a quick and free CV template, so that employers must
             </div>
         </div>
     </div>
+    {{> footer}}
 </div>
-<script>
-    
-      const images = ["image1.jpg", "image2.jpg", "image3.jpg","image4.jpg"];
-
-      let currentImageIndex = 0;
-      const slideshowElement = document.getElementById("slideshow");
-      const slideshowInterval = setInterval(function() {
-        slideshowElement.children[currentImageIndex].style.display = "none";
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-        slideshowElement.children[currentImageIndex].style.display = "block";
-      }, 3000);
-      
-</script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script>
   const listImages = document.querySelectorAll('.templates-img img');
 
@@ -89,4 +212,122 @@ Create a quick and free CV template, so that employers must
 
     listImages[currentImageIndexA].style.transform = 'translateY(0)';
   }, 5000);
+ var formSearch = document.querySelector('.search-home');
+var containerScroll = document.querySelector('.container-home');
+containerScroll.addEventListener('scroll', () => {
+    let rollHeight = containerScroll.scrollTop;
+    formSearch.style.transform = `translatex(${rollHeight * -0.8}px)`;
+});
+// carousel hot company
+  const progressCircle = document.querySelector(".company-feature .box-hotcompany .swiper .autoplay-progress svg");
+    const progressContent = document.querySelector(".company-feature .box-hotcompany .swiper .autoplay-progress span");
+    var swiper = new Swiper(".company-feature .box-hotcompany .mySwiper", {
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false
+      },
+      pagination: {
+        el: ".company-feature .box-hotcompany .swiper-pagination",
+        clickable: true
+      },
+      navigation: {
+        nextEl: ".company-feature .box-hotcompany .swiper-button-next",
+        prevEl: ".company-feature .box-hotcompany .swiper-button-prev"
+      },
+      on: {
+        autoplayTimeLeft(s, time, progress) {
+          progressCircle.style.setProperty("--progress", 1 - progress);
+          progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+        }
+      }
+    });
+// carousel hot job
+var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
+      slidesPerView: 3,
+      grid: {
+        rows: 2,
+      },
+      spaceBetween: 30,
+      pagination: {
+        el: ".box-hotjob  .swiper-pagination",
+        clickable: true
+      },
+      navigation: {
+        nextEl: ".box-hotjob .swiper-button-next",
+        prevEl: ".box-hotjob .swiper-button-prev"
+      }
+    });
+    var clickCompanyHot = document.querySelector('.company-feature .header__company-feature span.hotcompany');
+    var boxCompanyHot = document.querySelector('.company-feature .box-hotcompany');
+    var loadingFeatureCompany = document.querySelector('.company-feature .custom-loader');
+    var clickJobHot = document.querySelector('.company-feature .header__company-feature span.hotjob');
+    var boxJobHot = document.querySelector('.company-feature .box-hotjob');
+    clickJobHot.addEventListener('click',()=>{
+        clickJobHot.style.cssText = 'border-bottom: 4px solid #fed200;';
+        clickCompanyHot.style.cssText = 'border-bottom: unset;';
+        boxCompanyHot.style.display = 'none';
+        loadingFeatureCompany.style.display = 'grid';
+        setTimeout(function(){
+            loadingFeatureCompany.style.display = 'none';
+        }, 1750);
+        setTimeout(function(){
+            boxJobHot.style.display = 'flex';
+        }, 1780);
+    });
+    clickCompanyHot.addEventListener('click',()=>{
+        clickCompanyHot.style.cssText = 'border-bottom: 4px solid #fed200;';
+        clickJobHot.style.cssText = 'border-bottom: unser;';
+        boxJobHot.style.display = 'none';
+        loadingFeatureCompany.style.display = 'grid';
+        setTimeout(function(){
+            loadingFeatureCompany.style.display = 'none';
+        }, 1750);
+        setTimeout(function(){
+            boxCompanyHot.style.display = 'flex';
+        }, 1780);
+    });
+    // carousel jobs
+     var swiper = new Swiper(".container-home .home-jobs .mySwiper", {
+        slidesPerView: 3,
+        slidesPerColumn: 4,
+        slidesPerGroup :12,
+        spaceBetween: 20,
+        autoplay: {
+        delay: 3500,
+        disableOnInteraction: false
+        },
+        grid: {
+          rows: 4,
+        },
+      pagination: {
+        el: ".container-home .home-jobs .swiper-pagination",
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + (index + 1) + "</span>";
+        },
+      },
+      navigation: {                       
+            nextEl: ".container-home .home-jobs .swiper-button-next",
+            prevEl: ".container-home .home-jobs .swiper-button-prev",
+        }, 
+        on: {
+            init: function () {},
+            orientationchange: function(){},
+            beforeResize: function(){
+                let vw = window.innerWidth;
+                if(vw > 1000){
+                mySwiper.params.slidesPerView = 3
+                    mySwiper.params.slidesPerColumn = 3
+                    mySwiper.params.slidesPerGroup = 3;
+                } else {
+                mySwiper.params.slidesPerView = 4
+                    mySwiper.params.slidesPerColumn = 2
+                    mySwiper.params.slidesPerGroup =4;
+                }
+                mySwiper.init();
+            },
+    },
+});
 </script>

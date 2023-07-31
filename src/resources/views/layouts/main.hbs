@@ -10,21 +10,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/css/app.css">
     <title>{{title}}</title>
 </head>
 <body>
     <div class="app">
-<div class="header-app">
- {{> header}}
-</div>
-       
-
+      <div class="header-app">
+        {{> header}}
+      </div>
         {{{body}}}
-<div class="footer-app">
+      <div class="footer-app">
         {{> footer}}
-</div>
-        
+      </div>
     </div>
 </body>
 <script>
@@ -74,6 +73,16 @@ var resetLocalStorage = document.querySelector('.reset-localstorage');
 
 resetLocalStorage.addEventListener('click', function() {
   localStorage.setItem('currentPageJob', 1);
+});
+document.addEventListener("DOMContentLoaded", function() {
+    let currentHref = window.location.pathname;
+    if (currentHref === '/' || currentHref === '') {
+        let elements = document.querySelectorAll('.footer-app');
+        for(let i = 0; i < elements.length; i++) {
+            elements[i].style.display = 'none';
+        }
+        document.querySelector('.navbar').style.cssText = 'position: fixed; top: 0; z-index: 20;'
+    }
 });
 </script>
 </html>

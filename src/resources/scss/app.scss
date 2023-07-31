@@ -21,8 +21,7 @@ body.modal-open{
     overflow: hidden;
 }
 ::selection{
-    color: $primarycolor;
-    background-color: black;
+    background-color: rgba(0,0,0,0.1);
 }
 @media print {
     .header-app,

@@ -25,7 +25,7 @@ class CvController {
       res.render("createCV", {
         title: "Create CV",
         inforCV: staffMongoseToObject(data),
-        user: data,
+        user: req.user,
       });
       next();
     } else {
