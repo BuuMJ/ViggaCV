@@ -1,4 +1,4 @@
-<form class="main__create-cv">
+<form class="main__create-cv" method="post" action="/cv/export">
 <div class="header-background">
   <span>Create Your CV</span>
 </div>
@@ -12,34 +12,34 @@
   <header>
     <div class="info__user-cv">
       <div class="primary__user-cv">
-        <input class="fullname__user-cv" type="text" value="{{getFullname user}}">
-        <input class="specialized" type="text" placeholder="Front-end Developer" value="{{getSpecialized user}}">
+        <input class="fullname__user-cv" name="name" type="text" value="{{getFullname user}}">
+        <input class="specialized" type="text" name="specialized" placeholder="Front-end Developer" value="{{getSpecialized user}}">
       </div>
       <div class="secondary__user-cv">
         <div class="box__user-cv">
           <label for="fullname">Name</label>
-          <textarea id="fullname" type="text" rows="1" cols="50" >{{getFullname user}}</textarea>
+          <textarea id="fullname" type="text" name="fullname" rows="1" cols="50" >{{getFullname user}}</textarea>
         </div>
         <div class="box__user-cv">
           <label for="phone">Phone</label>
-          <textarea id="phone" type="text" rows="1" cols="50">{{getPhone user}}</textarea>
+          <textarea id="phone" type="text" rows="1" name="phone" cols="50">{{getPhone user}}</textarea>
         </div>
         <div class="box__user-cv">
           <label for="birthday">Birth</label>
-          <textarea id="birthday" type="text" rows="1" cols="50" placeholder="03/09/1999">{{getBirthday user}}</textarea>
+          <textarea id="birthday" type="text" rows="1" name="birthday" cols="50" placeholder="03/09/1999">{{getBirthday user}}</textarea>
         </div>
         <div class="box__user-cv">
           <label for="email">Email</label>
-          <textarea id="email" type="text" rows="1" cols="50">{{getEmail user}}</textarea>
+          <textarea id="email" type="text" rows="1" name="email" cols="50">{{getEmail user}}</textarea>
         </div>
         <div class="box__user-cv">
           <label for="address">Address</label>
-          <textarea id="address" type="text" rows="2" cols="50">{{getAddress user}}, {{getCity user}}, {{getCountry user}}</textarea>
+          <textarea id="address" type="text" rows="2" name="address" cols="50">{{getAddress user}}, {{getCity user}}, {{getCountry user}}</textarea>
         </div>
       </div>
     </div>
     <div class="avatar__user-cv">
-      <input type="file" id="avataruser" hidden>
+      <input type="file" name="avatar" id="avataruser" hidden>
       <img class="img__user-cv" src="{{getAvatar user}}" alt="">
       <div class="change-avatar__user-cv">
         <div class="upload-avatar__user-cv">
@@ -56,22 +56,22 @@
     {{!-- overview --}}
     <div class="overview__user-cv">
       <textarea class="overview-text" rows="1">Overview</textarea>
-      <textarea rows="15" placeholder="- Over 2 years of experience in programming with good communication and quick learning skills&#10;- Strengths: Front-end technology and Back-end web application development&#10;- Proficiency in HTML, CSS, JavaScript&#10;- Strong proficiency in JavaScript, including DOM manipulation and the JavaScript object model&#10;- Thorough under standing of React.js and it score principles&#10;- Experience with popular React.js workflows (such as Flux or Redux)&#10;- Familiarity with newer specifications of EcmaScript&#10;- Experience with data structure libraries&#10;- Familiarity with RESTful APIs&#10;- Strong Experience in: PHP, JavaScript (ReactJS, React-native), MySQL, NoSQL, GraphQL, Redis, JSON, API, Docker, Kubernetes, Rancher, AWS services&#10;- Proficient use of source code management tools: SVN, GIT&#10;- Proficiency in operating systems: Linux (Ubuntu, OSX), Windows&#10;- Ability to learn and apply new technology quickly&#10;- Current working location: Ha Noi, Viet Nam&#10;"></textarea>
+      <textarea rows="15" name="overview" placeholder="- Over 2 years of experience in programming with good communication and quick learning skills&#10;- Strengths: Front-end technology and Back-end web application development&#10;- Proficiency in HTML, CSS, JavaScript&#10;- Strong proficiency in JavaScript, including DOM manipulation and the JavaScript object model&#10;- Thorough under standing of React.js and it score principles&#10;- Experience with popular React.js workflows (such as Flux or Redux)&#10;- Familiarity with newer specifications of EcmaScript&#10;- Experience with data structure libraries&#10;- Familiarity with RESTful APIs&#10;- Strong Experience in: PHP, JavaScript (ReactJS, React-native), MySQL, NoSQL, GraphQL, Redis, JSON, API, Docker, Kubernetes, Rancher, AWS services&#10;- Proficient use of source code management tools: SVN, GIT&#10;- Proficiency in operating systems: Linux (Ubuntu, OSX), Windows&#10;- Ability to learn and apply new technology quickly&#10;- Current working location: Ha Noi, Viet Nam&#10;"></textarea>
     </div>
     {{!-- work experience --}}
     <div class="overview__user-cv workexp__user-cv">
       <textarea class="workexp-text" rows="1">Work experience</textarea>
       <div class="work-exp">
         <div class="date__work-exp">
-          <textarea  rows="1" placeholder="07/2017 - Present"></textarea>
+          <textarea  rows="1" name="timeexperience" placeholder="07/2017 - Present"></textarea>
           <div class="action__add-remove" >
             <span title="Add more work experience" class="add-work-exp"><i class="bi bi-plus-circle"></i></span>
             <span title="Remove this work experience" class="remove-work-exp"><i class="bi bi-dash-circle"></i></span>
           </div>
         </div>
         <div class="info__work-exp">
-          <textarea id="name-company" rows="1" placeholder="Vigga Company"></textarea>
-          <textarea class="job__work-exp" rows="3" placeholder="FullStack Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10"></textarea>
+          <textarea id="name-company" name="nameexperience" rows="1" placeholder="Vigga Company"></textarea>
+          <textarea class="job__work-exp" name="experience" rows="3" placeholder="FullStack Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10"></textarea>
         </div>
       </div>
     </div>
@@ -80,15 +80,15 @@
       <textarea class=" education-text" rows="1">Education</textarea>
       <div class="education-user">
         <div class="date__education">
-          <textarea  rows="1" placeholder="07/2017 - Present"></textarea>
+          <textarea  rows="1" name="timeeducation" placeholder="07/2017 - Present"></textarea>
           <div class="action__add-remove-education" >
             <span title="Add more education" class="add-education"><i class="bi bi-plus-circle"></i></span>
             <span title="Remove this education" class="remove-education"><i class="bi bi-dash-circle"></i></span>
           </div>
         </div>
         <div class="info__education">
-          <textarea id="name-education" rows="1" placeholder="FPT GreenWich"></textarea>
-          <textarea class="major__education" rows="2" placeholder="Major - Website, Mobile&#10;Level - Good"></textarea>
+          <textarea id="name-education" name="nameeducation" rows="1" placeholder="FPT GreenWich"></textarea>
+          <textarea class="major__education" name="education" rows="2" placeholder="Major - Website, Mobile&#10;Level - Good"></textarea>
         </div>
       </div>
     </div>
@@ -99,13 +99,13 @@
         <div class="main-info">
            <textarea name="main" id="main" rows="1" class="main" placeholder="Main"></textarea>
         </div>
-        <textarea name="main-content" id="main-content" rows="3" class="main-content" placeholder="• HTML&#10;• Javascrip&#10;• ReactJS"></textarea>
+        <textarea name="maincontent"  id="main-content" rows="3" class="main-content" placeholder="• HTML&#10;• Javascrip&#10;• ReactJS"></textarea>
       </div>
       <div class="other-skill">
          <div class="other-info">
            <textarea name="other" id="other" rows="1" placeholder="Other"></textarea>
         </div>
-        <textarea name="other-content" id="other-content" rows="3" placeholder="• Ruby&#10;• Mongose&#10;• NodeJS"></textarea>
+        <textarea name="othercontent" id="other-content" rows="3" placeholder="• Ruby&#10;• Mongose&#10;• NodeJS"></textarea>
         <span class="remove__other-skill"><i class="bi bi-trash"></i></span>
       </div>
     </div>
@@ -115,9 +115,9 @@
       <div class="table-project">
         <div class="box-project client-project">
           <div class="title-project">
-            <textarea name="client" id="client" rows="1" placeholder="Client"></textarea>
+            <textarea name="nameclient" id="client" rows="1" placeholder="Client"></textarea>
           </div>
-          <textarea name="client-content" class="content-project" id="client-content" rows="1" placeholder="ViggaCareers"></textarea>
+          <textarea name="clientcontent" class="content-project" id="client-content" rows="1" placeholder="ViggaCareers"></textarea>
         </div>
         <div class="box-project descript-project">
           <div class="title-project">

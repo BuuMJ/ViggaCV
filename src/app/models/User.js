@@ -27,6 +27,7 @@ const User = new Schema(
     companyemail: String,
     companyphone: String,
     companyyears: String,
+    specialized: String,
     companydesc: String,
     TOB: String,
     isVerified: { type: Boolean, default: false },

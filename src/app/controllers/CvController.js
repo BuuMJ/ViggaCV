@@ -16,17 +16,20 @@ class CvController {
   //[GET] Create CV
   async createCV(req, res, next) {
     // const iduser = req.user.id;
-    const data = await CVModel.findOne({ iduser: req.user.id });
+    const data = await CVModel.findOne({ iduser: req.user._id });
+    console.log(data);
     // console.log(req.user._id + " = Thông tin của user");
     if (data) {
       // console.log(data + " = Thông tin của user sau khi tra cứu");
+      console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
       res.render("createCV", {
         title: "Create CV",
         inforCV: staffMongoseToObject(data),
-        user: req.user,
+        user: data,
       });
       next();
     } else {
+      console.log("bbbbbbbbbbbbbbbbbbbbbbbbb");
       res.render("createCV", {
         title: "Create CV",
         user: req.user,
@@ -124,7 +127,6 @@ class CvController {
       } else {
         const cv = new CVModel(req.body);
         savedCv = await cv.save();
-        res.json(savedCv);
       }
     } catch (err) {
       console.error(err);
@@ -134,6 +136,44 @@ class CvController {
 
   async export(req, res, next) {
     try {
+      const iduser = req.user._id;
+      req.body.iduser = req.user._id;
+      const data = await CVModel.findOne({ iduser: iduser });
+      let savedCv;
+
+      if (data) {
+        const cv = await CVModel.findByIdAndUpdate(
+          data._id,
+          {
+            iduser: req.body.iduser,
+            fullname: req.body.fullname,
+            specialized: req.body.specialized,
+            email: req.body.email,
+            avatar: req.body.avatar,
+            phone: req.body.phone,
+            overview: req.body.overview,
+            name: req.body.birthday,
+            birthday: req.body.address,
+            address: req.body.address,
+            timeexperience: req.body.timeexperience,
+            nameexperience: req.body.nameexperience,
+            experience: req.body.experience,
+            timeeducation: req.body.timeeducation,
+            nameeducation: req.body.nameeducation,
+            education: req.body.education,
+            maincontent: req.body.maincontent,
+            othercontent: req.body.othercontent,
+            nameclient: req.body.nameclient,
+          },
+          {
+            new: true,
+          }
+        ).exec();
+      } else {
+        const cv = new CVModel(req.body);
+        savedCv = await cv.save();
+      }
+
       const token = req.cookies.token;
       console.log(token);
       const browser = await puppeteer.launch({ headless: false });

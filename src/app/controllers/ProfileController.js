@@ -7,7 +7,7 @@ const fs = require("fs");
 
 class ProfileController {
   profile(req, res, next) {
-    console.log('DAY LA THONG TIN CUA USER: ' + req.user.role)
+    console.log("DAY LA THONG TIN CUA USER: " + req.user.role);
     res.render("profile", {
       title: "Profile User",
       user: req.user,
@@ -40,6 +40,7 @@ class ProfileController {
       const companyyears = req.body.companyYears;
       const companydesc = req.body.companyDesc;
       const TOB = req.body.typeOfBusiness;
+      const specialized = req.body.specialized;
 
       console.log("da toi day5" + id);
       console.log("da toi day5" + password);
@@ -57,7 +58,7 @@ class ProfileController {
 
       //uploads file
       if (req.file) {
-        console.log("đã có file" +  password);
+        console.log("đã có file" + password);
         // Kiểm tra xem có file được tải lên không
         const data = await fs.promises.readFile(req.file.path); // sửa chỗ này
         if (data) {
@@ -69,6 +70,7 @@ class ProfileController {
               id,
               {
                 address: address,
+                specialized: specialized,
                 fullname: fullname,
                 password: hash,
                 city: city,
@@ -121,6 +123,7 @@ class ProfileController {
                 companyyears: companyyears,
                 companydesc: companydesc,
                 TOB: TOB,
+                specialized: specialized,
               },
               { new: true }
             );
@@ -158,6 +161,7 @@ class ProfileController {
               companyyears: companyyears,
               companydesc: companydesc,
               TOB: TOB,
+              specialized: specialized,
             },
             { new: true }
           );
@@ -190,6 +194,7 @@ class ProfileController {
               companyyears: companyyears,
               companydesc: companydesc,
               TOB: TOB,
+              specialized: specialized,
             },
             { new: true }
           );
