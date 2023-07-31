@@ -1,6 +1,7 @@
 const nodemailer = require("nodemailer");
 const JobModel = require("../models/Job");
 const CompanyModel = require("../models/Company");
+const SubscribeModel = require("../models/Subscribe");
 const {
   mutipleMongooseToObject,
   staffMongoseToObject,
@@ -23,7 +24,6 @@ class HomeController {
       const topCompanies = await CompanyModel.find() // công ty có nhiều follow
         .sort({ follow: -1 })
         .limit(4);
-      console.log(count);
       res.render("home", {
         title: "Vigga Home",
         user: req.user,
@@ -69,6 +69,33 @@ class HomeController {
       });
     } else {
       res.render("login");
+    }
+  }
+
+  async subscribe(req, res, next) {
+    const email = req.body.subscribe;
+    const data = await SubscribeModel.findOne({ email: email });
+    console.log("đã tới đây1" + email);
+    if (email != "") {
+      if (data) {
+        console.log("đã tới đây2");
+
+        req.session.msg = "Địa chỉ email của bạn đã đăng ký thành công!";
+        res.redirect("/");
+      } else {
+        console.log("đã tới đây3");
+
+        await SubscribeModel.create({
+          email: email,
+        });
+        req.session.msg = "Địa chỉ email của bạn đã đăng ký thành công!";
+        res.redirect("/");
+      }
+    } else {
+      console.log("đã tới đây4");
+
+      req.session.msg = "Vui lòng nhập địa chỉ email của bạn!";
+      res.redirect("/");
     }
   }
 }

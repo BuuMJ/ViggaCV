@@ -4,7 +4,12 @@ const fs = require("fs");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 const subVN = require("sub-vn");
+const SubscribeModel = require("../models/Subscribe");
+const nodemailer = require("nodemailer");
+const ActionModel = require("../models/Action");
 const { staffMongoseToObject } = require("../../util/mongoose");
+const { subscribe } = require("./HomeController");
+const UserModel = require("../models/User");
 
 class CompanyProfileController {
   //[GET] Company profile
@@ -391,7 +396,16 @@ class CompanyProfileController {
     const benefit = req.body.benefit;
     const position = req.body.position;
     const DoP = req.body.DoP;
+    const subscribes = await SubscribeModel.find().distinct("email");
     const companyname = await CompanyModel.findOne({ iduser: iduser });
+    const companyfollow = await ActionModel.find({
+      companyid: companyname._id,
+    }).distinct("userid");
+    const listEmail = await UserModel.find({
+      _id: { $in: companyfollow },
+    }).distinct("email");
+    const combinedEmails = subscribes.concat(listEmail);
+    console.log(combinedEmails);
     console.log(
       "đây là categories của công ty post jobs: " + companyname.companyfield
     );
@@ -411,6 +425,69 @@ class CompanyProfileController {
       avatar: companyname.avatar,
       idcompany: companyname._id,
     });
+    if (job) {
+      if (combinedEmails.length > 0) {
+        var transporter = nodemailer.createTransport({
+          service: "gmail",
+          auth: {
+            user: "duoc6694@gmail.com",
+            pass: "wdymtvgbhblstfbj",
+          },
+        });
+        const linkJob = `http://localhost:3000/job/${job._id}`;
+        const mailOptions = {
+          to: combinedEmails, // list of receivers
+          subject: "ViggaCareers ", // Subject line<a href="${linkJob}">here</a>
+          html: `
+    <html>
+      <head>
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+          }
+          h1 {
+            color: #0066cc;
+          }
+          .message {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+          }
+          .cta-button {
+            display: inline-block;
+            background-color: #0066cc;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 3px;
+          }
+          .cta-button:hover {
+            background-color: #004c99;
+          }
+        </style>
+      </head>
+      <body>
+        <h1>ViggaCareers</h1>
+        <div class="message">
+          <p>Có một việc làm mới đã được đăng bởi công ty ${job.companyname}.</p>
+          <p>Vui lòng nhấp vào nút bên dưới để xem công việc mới.</p>
+          <p><a href="${linkJob}" class="cta-button">Xem công việc mới</a></p>
+        </div>
+      </body>
+    </html>
+  `, // plain text body
+        };
+        transporter.sendMail(mailOptions, function (err, info) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("Đã gửi mail cho người đăng kí Jobs");
+          }
+        });
+      }
+    }
 
     const jobJSON = job.toJSON();
     console.log("Đây là ngày giờ sau khi định dạng: " + jobJSON);
