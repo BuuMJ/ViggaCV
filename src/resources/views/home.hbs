@@ -1,6 +1,6 @@
 <div class="container-home">
     <div class="first-content">
-        <img src="/img/bgcontent.jpg" alt="">
+        <img class="parallax-img" src="/img/bgcontent.jpg" alt="">
         <form class="search-home" action="/job/search">
             <span class="title">Savor success with</span>
             <span class="countjob">{{totalJobs}} career options</span>
@@ -48,7 +48,20 @@
                 </div>
             </div>
         </form>
-        {{!-- <span class="slogan">ViggaCareers is Southeast Asia's most significant HR ecosystem. Our objective is to assist 120 million talents in Southeast Asia in advancing their careers and to assist companies in locating the most qualified candidates. More than three million talents have been supported by ViggaCareers, and several organizations have realized their full human potential as a result.</span> --}}
+        <div class="toprecruiters">
+            <span class="title-toprecruiters">Top 5 recruitment companies</span>
+            <div class="list-toprecruiters">
+                {{#each mostJobs}}
+                    <div class="card-toprecruiter">
+                        <div class="top__card-recruiter">
+                            <span id="content-top__recruiter"><i class="bi bi-gem"></i> Top</span>
+                        </div>
+                        <img class="top__recruiter-avatar" src="{{this.avatar}}" alt="">
+                        <span class="recruiter__jobcount">{{this.jobcount}} jobs</span>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
     </div>
     <div class="company-feature">
         <div class="header__company-feature">
@@ -73,6 +86,7 @@
                         </div>
                         <span class="job-count__company">{{this.jobcount}} Jobs</span>
                         </div>
+                        <span data-follow-info="{{this.follow}}" class="info-company__follow">{{this.follow}} Followers</span>
                     </div>
                 </div>
                 {{/each}}
@@ -112,13 +126,19 @@
             </div>
         </div>
     </div>
-    <div class="home-subscribe">
-        <span class="title-subscribe">Follow the latest company and job updates on Vigga Careers by subscribing.</span>
-        <form action="/subscribe" method="POST" class="box-subscribe">
-            <input type="text" id="subscribe" name="subscribe" required>
-            <label for="subscribe"><button type="submit">Subscribe Now</button></label>
-            <label for="subscribe" class="label-title">Your Email</label>
-        </form>
+       <div class="templates-cv">
+        <div class="templates-img">
+            <img class="templates-img1" src="/img/cv1.jpeg" alt="">
+            <img class="templates-img2" src="/img/cv2.jpeg" alt="">
+            <img class="templates-img3" src="/img/cv3.png" alt="">
+            <img class="templates-img4" src="/img/cv4.jpeg" alt="">
+        </div>
+        <div class="templates-text">
+            <span>Impress Employers With ViggaCareers NiceCV
+Create a quick and free CV template, so that employers must
+"Surprise" as soon as I see your CV.</span>
+            <a class="templates-text__action" href="/cv">Discover Now</a>
+        </div>
     </div>
     <div class="home-jobs">
         <span class="title-jobs">There are 20 new positions awaiting your application.</span>
@@ -147,41 +167,13 @@
             <div class="swiper-pagination"></div>
         </div>
     </div>
-         <div class="company-job">
-        <a href="/company" class="home-company">
-            <span>Companies</span>
-        </a>
-        <a href="/job" class="home-job">
-            <span>Jobs</span>
-        </a>
-    </div>
-    <div class="toprecruiters">
-        <span class="title-toprecruiters">Top 5 recruitment companies</span>
-        <div class="list-toprecruiters">
-            {{#each mostJobs}}
-                <div class="card-toprecruiter">
-                    <img src="{{this.avatar}}" alt="">
-                    <span class="toprecruiter-companyname">{{this.companyname}}</span>
-                    <div class="box-toprecruiter__jobcount">
-                        <span class="toprecruiter-jobcount">{{this.jobcount}} jobs</span>
-                    </div>
-                </div>
-            {{/each}}
-        </div>
-    </div>
-    <div class="templates-cv">
-        <div class="templates-img">
-            <img class="templates-img1" src="/img/cv1.jpeg" alt="">
-            <img class="templates-img2" src="/img/cv2.jpeg" alt="">
-            <img class="templates-img3" src="/img/cv3.png" alt="">
-            <img class="templates-img4" src="/img/cv4.jpeg" alt="">
-        </div>
-        <div class="templates-text">
-            <span>Impress Employers With ViggaCareers NiceCV
-Create a quick and free CV template, so that employers must
-"Surprise" as soon as I see your CV.</span>
-            <a class="templates-text__action" href="/cv">Discover Now</a>
-        </div>
+         <div class="home-subscribe">
+        <span class="title-subscribe">Follow the latest company and job updates on Vigga Careers by subscribing.</span>
+        <form action="/subscribe" method="POST" class="box-subscribe">
+            <input type="text" id="subscribe" name="subscribe" required>
+            <label for="subscribe"><button type="submit">Subscribe Now</button></label>
+            <label for="subscribe" class="label-title">Your Email</label>
+        </form>
     </div>
     <div class="home-personal">
         <span class="title-personal">Setting up a personal brand through Vigga Careers</span>
@@ -208,36 +200,74 @@ Create a quick and free CV template, so that employers must
             </div>
         </div>
     </div>
+            {{!-- <div class="company-job">
+        <a href="/company" class="home-company">
+            <span>Companies</span>
+        </a>
+        <a href="/job" class="home-job">
+            <span>Jobs</span>
+        </a>
+    </div> --}}
          <div class="advantages">
+            <span class="title-advantages">Benefit</span>
+            <div class="box-advantages">
         <div class="advantage-before">
             <div class="advantage">
-                <i class="bi bi-cash-coin"></i>
-                <h3>Free, as in no cost</h3>
-                <span>Your first resume is completely free and will be watermark-free. There are no premium-only alternatives, and you may download your resume as frequently as you like for free.</span>
+                <div class="left-avantage">
+                    <i class="bi bi-cash-coin"></i>
+                </div>
+                <div class="right-advantage">
+                    <h3>Free, as in no cost</h3>
+                    <span>Your first resume is completely free and will be watermark-free. There are no premium-only alternatives, and you may download your resume as frequently as you like for free.</span>
+                </div>
             </div>
             <div class="advantage">
-                <i class="bi bi-filetype-pdf"></i>
-                <h3>High-quality PDF</h3>
-                <span>Several hours were spent ensuring that your PDF looks as sharp as possible when printed or shared.</span>
+                <div class="left-avantage">
+                    <i class="bi bi-filetype-pdf"></i>
+                </div>
+                <div class="right-advantage">
+                    <h3>High-quality PDF</h3>
+                    <span>Several hours were spent ensuring that your PDF looks as sharp as possible when printed or shared.</span>
+                </div>
             </div>
+        </div>
+        <div class="advantage-center">
         </div>
         <div class="advantage-after">
             <div class="advantage">
-                <i class="bi bi-file-earmark-lock2"></i>
-                <h3>Data privacy</h3>
-                <span>We don't sell your info. Ever. Instead, we are GDPR-compliant and allow you to erase all of your data in an instant if you so want.</span>
+                <div class="left-avantage">
+                    <i class="bi bi-file-earmark-lock2"></i>
+                </div>
+                <div class="right-advantage">
+                    <h3>Data privacy</h3>
+                    <span>We don't sell your info. Ever. Instead, we are GDPR-compliant and allow you to erase all of your data in an instant if you so want.</span>
+                </div>
             </div>
             <div class="advantage">
-                <i class="bi bi-chat-left-text"></i>
-                <h3>Get feedback</h3>
-                <span>So that you don't have to provide a new version every time you make a change, you may ask your friends for input via a link and have any changes made instantly.</span>
+                <div class="left-avantage">
+                    <i class="bi bi-chat-left-text"></i>
+                </div>
+                <div class="right-advantage">
+                    <h3>Get feedback</h3>
+                    <span>So that you don't have to provide a new version every time you make a change, you may ask your friends for input via a link and have any changes made instantly.</span>
+                </div>
             </div>
+        </div>
         </div>
     </div>
     {{> footer}}
 </div>
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script>
+      // parallax
+ var formSearch = document.querySelector('.search-home');
+var containerScroll = document.querySelector('.container-home');
+var topCompany = document.querySelector('.container-home .first-content .toprecruiters');
+containerScroll.addEventListener('scroll', () => {
+    let rollHeight = containerScroll.scrollTop;
+    formSearch.style.transform = `translatey(${rollHeight * -0.2}px)`;
+    topCompany.style.transform = `translatey(${rollHeight * 0.5}px)`;
+});
   const listImages = document.querySelectorAll('.templates-img img');
 
   let currentImageIndexA = 0;
@@ -250,12 +280,6 @@ Create a quick and free CV template, so that employers must
 
     listImages[currentImageIndexA].style.transform = 'translateY(0)';
   }, 5000);
- var formSearch = document.querySelector('.search-home');
-var containerScroll = document.querySelector('.container-home');
-containerScroll.addEventListener('scroll', () => {
-    let rollHeight = containerScroll.scrollTop;
-    formSearch.style.transform = `translatex(${rollHeight * -0.8}px)`;
-});
 // carousel hot company
   const progressCircle = document.querySelector(".company-feature .box-hotcompany .swiper .autoplay-progress svg");
     const progressContent = document.querySelector(".company-feature .box-hotcompany .swiper .autoplay-progress span");
@@ -368,4 +392,15 @@ var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
             },
     },
 });
+ var listBox = document.querySelectorAll('.box__info-company')
+ listBox.forEach(function(item) {
+  const showFollowBox = item.querySelector('.info-company__follow');
+  const countFollowBox = showFollowBox.getAttribute('data-follow-info');
+  if (countFollowBox <= 1 ){
+    showFollowBox.innerHTML = `${countFollowBox} ` + 'Follower';
+  }
+  else{
+    showFollowBox.innerHTML = ` ${countFollowBox} ` + 'Followers';
+  }
+})
 </script>
