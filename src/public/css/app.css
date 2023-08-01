@@ -682,7 +682,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: justify; }
+  text-align: start; }
 
 .container-home .home-jobs .swiper-slide a.box-jobnew .top-jobnew img {
   width: 30%;
@@ -851,13 +851,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 450px;
+  height: calc(100% - 50px);
   width: 40%;
   overflow: hidden;
   position: relative; }
 
 .templates-img img {
-  height: 450px;
+  height: 100%;
   width: 70%;
   transform: translateY(-100%);
   position: absolute;
@@ -1041,6 +1041,95 @@
   .advantage span {
     font-size: 14px;
     padding: 0 0 0 20px; } }
+
+@media screen and (max-width: 1024px) {
+  .container-home .first-content .toprecruiters {
+    bottom: 38%; }
+  .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter {
+    height: 164px; }
+  .advantages {
+    height: 1000px; }
+  .advantages .title-advantages {
+    height: 10%;
+    width: 100%;
+    text-align: center;
+    padding-top: 30px; }
+  .box-advantages {
+    width: 80%;
+    height: 90%;
+    flex-direction: column; }
+  .advantage-before,
+  .advantage-after,
+  .advantage-center {
+    height: 26%;
+    width: 100%; }
+  .advantage-before {
+    justify-content: end; }
+  .advantage-after .advantage {
+    margin: 0 0 20px 0; }
+  .advantage-before .advantage {
+    margin: 20px 0 0 0; }
+  .advantage-center {
+    height: 48%;
+    margin: 16px 0; } }
+
+@media screen and (max-width: 768px) {
+  .container-home .first-content .toprecruiters {
+    bottom: 22%; }
+  .company-feature .box-hotjob .swiper .swiper-slide {
+    height: calc((100% - 30px) / 2) !important;
+    margin-top: unset !important; }
+  .company-feature .box-hotjob .swiper .swiper-slide .box__info-job {
+    flex-direction: column; }
+  .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job {
+    width: 100%;
+    padding: 20px 10px; }
+  .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job span.hot__job-name {
+    font-size: 14px; }
+  .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job span.hot__job__company-name {
+    font-size: 13px; }
+  .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job span.hot__job-salary,
+  .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job span.hot__location {
+    font-size: 11px; }
+  .templates-cv {
+    height: 400px; }
+  .templates-text span,
+  .templates-text__action {
+    font-size: 22px; }
+  .container-home .home-jobs .title-jobs {
+    font-size: 28px; }
+  .container-home .home-jobs .swiper-slide a.box-jobnew .bottom-jobnew .jobnew__salary,
+  .container-home .home-jobs .swiper-slide a.box-jobnew .bottom-jobnew .jobnew__location {
+    font-size: 10px; }
+  .container-home .home-subscribe span.title-subscribe {
+    font-size: 24px;
+    padding: 0 40px;
+    text-align: center; }
+  .container-home .home-personal .title-personal {
+    font-size: 28px; }
+  .container-home .home-personal .list-personal {
+    flex-direction: column; }
+  .container-home .home-personal .list-personal .card-profile {
+    width: 100%;
+    margin-top: 20px; } }
+
+@media screen and (max-width: 600px) {
+  .container-home .first-content .toprecruiters {
+    bottom: 5%; }
+  .templates-cv {
+    height: 350px; }
+  .templates-text span {
+    padding: 39px 30px 0 94px;
+    font-size: 18px; }
+  .templates-text__action {
+    transform: translateX(26%);
+    font-size: 18px; }
+  .container-home .home-jobs .title-jobs {
+    font-size: 22px; }
+  .container-home .home-personal .title-personal {
+    font-size: 22px; }
+  .advantage-center {
+    height: 35%; } }
 
 header.jobdetail {
   width: 100%;
