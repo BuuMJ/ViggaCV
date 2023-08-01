@@ -15,12 +15,15 @@ const Job = new Schema(
     avatar: String,
     idcompany: String,
     benefit: String,
-    DoP: Date,
     position: String,
     categories: String,
     prioritize: {
       type: Boolean,
       default: false,
+    },
+    prioritizeUpdatedAt: {
+      type: Date,
+      default: Date.now,
     },
   },
   {

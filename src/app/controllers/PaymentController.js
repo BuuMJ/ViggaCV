@@ -3,6 +3,13 @@ const JobModel = require("../models/Job");
 
 class PaymentController {
   pay(req, res, next) {
+    const price = 1.43;
+    if (req.body.days) {
+      var days = req.body.days;
+    } else {
+      var days = 30;
+    }
+    req.session.total = price * days;
     var create_payment_json = {
       intent: "sale",
       payer: {
@@ -19,7 +26,7 @@ class PaymentController {
               {
                 name: "job advertisement",
                 sku: "001",
-                price: "10.00",
+                price: price * days,
                 currency: "USD",
                 quantity: 1,
               },
@@ -27,7 +34,7 @@ class PaymentController {
           },
           amount: {
             currency: "USD",
-            total: "10.00",
+            total: price * days,
           },
           description: "This is the payment description.",
         },
@@ -50,6 +57,8 @@ class PaymentController {
   }
   success(req, res, next) {
     const jobID = req.session.jobID;
+    const total = req.session.total;
+    const days = 7;
     var payerID = req.query.PayerID;
     var execute_payment_json = {
       payer_id: payerID,
@@ -57,7 +66,7 @@ class PaymentController {
         {
           amount: {
             currency: "USD",
-            total: "10.00",
+            total: total,
           },
         },
       ],
@@ -76,6 +85,7 @@ class PaymentController {
           try {
             let job = await JobModel.findById(jobID);
             job.prioritize = true;
+            job.prioritizeUpdatedAt = moment().add(days, "days").toDate();
             await job.save();
           } catch (err) {
             console.log(err);
@@ -90,10 +100,16 @@ class PaymentController {
     );
   }
 
-  check(req, res, next) {
+  async check(req, res, next) {
     const jobID = req.params.id;
     req.session.jobID = jobID;
-    res.redirect("/pay");
+    const job = await JobModel.findById({ _id: jobID });
+    if (job.prioritize == false) {
+      // res.redirect("/pay");
+      res.render("check");
+    } else {
+      res.redirect("back");
+    }
   }
 }
 
