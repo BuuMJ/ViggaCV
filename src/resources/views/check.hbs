@@ -1,0 +1,47 @@
+<div class="container-checkpayment">
+    <form class="box__dates-payment" action="/pay">
+        <span class="primary-text">Advertising Payment</span>
+        <span class="title-payment"><b>Job Name:</b> {{job.jobname}}</span>
+        <div class="card-payment one-day">
+            <input id="onedays" type="radio" name="paymentday" value="1" required>
+            <label for="onedays">advertise current job for <b>One</b> day</label>
+        </div>
+        <div class="card-payment three-day">
+            <input id="threedays" type="radio" name="paymentday" value="3" required>
+            <label for="threedays">advertise current job for <b>Three</b> days</label>
+        </div>
+        <div class="card-payment seven-day">
+            <input id="sevendays" type="radio" name="paymentday" value="7" required>
+            <label for="sevendays">advertise current job for <b>Seven</b> days</label>
+        </div>
+        <div class="card-payment fifteen-day">
+            <input id="fifteendays" type="radio" name="paymentday" value="15" required>
+            <label for="fifteendays">advertise current job for <b>Fifteen</b> days</label>
+        </div>
+        <div class="card-payment one-month">
+            <input id="onemonth" type="radio" name="paymentday" value="30" required>
+            <label for="onemonth">advertise current job for <b>One</b> month</label>
+        </div>
+        <div class="accept-payment">
+            <input type="checkbox" required id="accept" required>
+            <label for="accept">Accept payment</label>
+            <span class="content">This job will be posted to the home page and the top of the job page when your payment is
+            successful</span>
+        </div>
+        <button type="submit">Payment</button>
+    </form>
+</div>
+<script>
+    var checkAccept = document.getElementById('accept');
+    function updateNote(){
+    if (checkAccept.checked) {
+    document.querySelector('.container-checkpayment .box__dates-payment .accept-payment span.content').style.display = 'block';
+    }
+    else{
+        document.querySelector('.container-checkpayment .box__dates-payment .accept-payment span.content').style.display = 'none';
+    }
+    };
+    checkAccept.addEventListener('change',() =>{
+        updateNote()
+    });
+</script>

@@ -1,5 +1,9 @@
 const paypal = require("paypal-rest-sdk");
 const JobModel = require("../models/Job");
+const {
+  mutipleMongooseToObject,
+  staffMongoseToObject,
+} = require("../../util/mongoose");
 
 class PaymentController {
   pay(req, res, next) {
@@ -106,7 +110,10 @@ class PaymentController {
     const job = await JobModel.findById({ _id: jobID });
     if (job.prioritize == false) {
       // res.redirect("/pay");
-      res.render("check");
+      res.render("check",{
+        user: req.user,
+        job: staffMongoseToObject(job),
+      });
     } else {
       res.redirect("back");
     }

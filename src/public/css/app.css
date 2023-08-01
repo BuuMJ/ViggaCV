@@ -2984,6 +2984,96 @@ ul.listpageleadership .active {
   box-shadow: 2px 2px 1px 6px #FC0404;
   font-weight: 600; }
 
+.container-checkpayment {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  min-height: 100vh; }
+
+.container-checkpayment .box__dates-payment {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px #0072bc;
+  margin-top: 50px; }
+
+.container-checkpayment .box__dates-payment .primary-text {
+  font-size: 30px;
+  font-weight: 600;
+  margin: 12px 0 12px 20px;
+  width: 100%; }
+
+.container-checkpayment .box__dates-payment .title-payment {
+  font-size: 18px;
+  font-weight: 400;
+  margin-left: 20px;
+  margin-bottom: 12px;
+  padding-right: 70px;
+  width: 100%; }
+
+.container-checkpayment .box__dates-payment .card-payment {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  height: 50px; }
+
+.container-checkpayment .box__dates-payment .card-payment input {
+  width: 18px;
+  height: 18px;
+  margin: 0 8px 0 20px; }
+
+.container-checkpayment .box__dates-payment .card-payment label {
+  font-size: 18px; }
+
+.container-checkpayment .box__dates-payment .accept-payment {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-left: 22px;
+  margin: 12px 0;
+  min-height: 50px; }
+
+.container-checkpayment .box__dates-payment .accept-payment span.content {
+  font-size: 16px;
+  font-weight: 400;
+  color: #b1b1b1;
+  width: 100%;
+  text-align: justify;
+  padding-right: 70px;
+  margin-top: 8px;
+  display: none; }
+
+.container-checkpayment .box__dates-payment .accept-payment input {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px; }
+
+.container-checkpayment .box__dates-payment .accept-payment label {
+  font-size: 18px; }
+
+.container-checkpayment .box__dates-payment button {
+  align-self: center;
+  margin: 12px 0;
+  outline: none;
+  border: 1px solid #0072bc;
+  color: #0072bc;
+  width: 90%;
+  height: 50px;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: white;
+  border-radius: 5px; }
+
+.container-checkpayment .box__dates-payment button:hover {
+  background-color: #0072bc;
+  color: white; }
+
 .container-companies {
   display: flex;
   flex-direction: column;
