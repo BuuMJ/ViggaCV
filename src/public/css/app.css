@@ -881,7 +881,7 @@
   font-size: 26px;
   font-weight: 700;
   margin-bottom: 30px;
-  padding: 0 30px 0 90px;
+  padding: 0 30px 0 145px;
   text-align: center;
   color: #fed200; }
 
@@ -907,13 +907,16 @@
   align-items: center;
   width: 100%;
   background-color: #f5f5f5;
-  height: 420px;
+  height: 500px;
   color: black; }
 
 .advantages .title-advantages {
   font-size: 40px;
-  font-weight: 600;
-  color: #fed200; }
+  font-weight: 600; }
+
+.advantages .title-advantages b {
+  color: #fed200;
+  font-weight: 600; }
 
 .box-advantages {
   display: flex;
@@ -931,10 +934,10 @@
 
 .advantage-center {
   height: 90%;
-  display: flex;
   justify-content: center;
   align-items: center;
-  background: url("/img/advantage.png") center/cover no-repeat; }
+  background: url("/img/advantage.png") center/cover no-repeat;
+  margin: 0 16px; }
 
 .advantage {
   display: flex;
@@ -942,37 +945,43 @@
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 120px;
-  margin: 20px 0; }
+  margin: 20px 0;
+  border-radius: 5px;
+  border: 1px solid #0072bc;
+  box-shadow: 0 5px 10px #0072bc;
+  padding: 10px 14px; }
 
 .advantage .right-advantage {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
+  justify-content: start;
+  align-items: start;
+  text-align: justify;
+  width: 85%;
   height: 100%; }
 
 .advantage .left-avantage {
   height: 100%;
-  width: 70%;
+  width: 15%;
   display: flex;
   justify-content: center;
   align-items: center; }
 
 .advantage i {
-  font-size: 40px; }
+  font-size: 60px;
+  color: #0072bc; }
 
 .advantage h3 {
   font-size: 18px;
   font-weight: 700;
-  height: 10%; }
+  color: black;
+  padding: 0 30px;
+  margin: 8px 0; }
 
 .advantage span {
   font-size: 16px;
-  font-weight: 600;
-  height: 50%;
-  text-align: center;
+  font-weight: 400;
+  text-align: justify;
   padding: 0 30px; }
 
 header.jobdetail {
