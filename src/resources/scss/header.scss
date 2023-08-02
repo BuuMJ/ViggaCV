@@ -41,7 +41,7 @@
     letter-spacing: 2.1px;
     position: absolute;
     bottom: 12px;
-    left: 17%;
+    left: 18%;
 }
 .litle-text p {
     margin: unset;
@@ -434,13 +434,17 @@
         width: 100%;
         height: 100%;
         padding: 60px 0;
+        cursor: pointer;
     }
     .responsive__navbar-center header.navbar-center .user-left .drop-down__action span i {
         font-size: 30px;
         padding: 12px;
         border-radius: 50%;
-        background-color: #888787;
+        background-color: rgba(136,135,135,0.2);
         color: white;
+    }
+    .responsive__navbar-center header.navbar-center .user-left .drop-down__action:hover span i{
+        background-color: rgb(136,135,135);
     }
     .responsive__navbar-center header.navbar-center .user-left .drop-down__action .action-down{
         position: absolute;
@@ -516,6 +520,9 @@
     }
 }
 @media screen and (max-width: 600px) {
+    .responsive__navbar-center {
+        top: 10%;
+    }
     .navbar-responsive .navbar-left .litle-text{
         left: 54%;
     }
@@ -524,14 +531,35 @@
     .navbar-responsive .navbar-left .litle-text{
         left: 80%;
     }
+    .responsive__navbar-center header.navbar-center .user-left .drop-down__action span i{
+        font-size: 26px;
+        padding: 10px;
+    }
+    .navbar-responsive .navbar-right .show-menu{
+        height: 60%;
+        width: 50px;
+    }
+    .show-menu input#menu:checked + .menu-lines .top-line,
+    .show-menu input#menu:checked + .menu-lines .bottom-line{
+        top: 22px;
+    }
 }
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 376px) {
+    .responsive__navbar-center {
+        top: 9.5%;
+    }
     .navbar-responsive .navbar-left .litle-text{
         left: 89%;
     }
 }
 @media screen and (max-width: 320px) {
+    .responsive__navbar-center {
+        top: 14%;
+    }
     .navbar-responsive .navbar-left .litle-text{
         left: 105%;
+    }
+    .responsive__navbar-center header.navbar-center .user-left .drop-down__action span i{
+        font-size: 22px;
     }
 }

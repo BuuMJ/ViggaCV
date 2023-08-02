@@ -388,47 +388,53 @@ var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
         }, 1780);
     });
     // carousel jobs
-     var swiper = new Swiper(".container-home .home-jobs .mySwiper", {
-        slidesPerView: 3,
-        slidesPerColumn: 4,
-        slidesPerGroup :12,
-        spaceBetween: 20,
-        autoplay: {
+    var swiper = new Swiper(".container-home .home-jobs .mySwiper", {
+    slidesPerView: 3,
+    slidesPerColumn: 4,
+    slidesPerGroup: 12,
+    spaceBetween: 30,
+    autoplay: {
         delay: 3500,
         disableOnInteraction: false
-        },
-        grid: {
-          rows: 4,
-        },
-      pagination: {
+    },
+    breakpoints: {
+        768: {
+            spaceBetween: 40
+        }
+    },
+    grid: {
+        rows: 4,
+    },
+    pagination: {
         el: ".container-home .home-jobs .swiper-pagination",
         clickable: true,
         renderBullet: function (index, className) {
-          return '<span class="' + className + '">' + (index + 1) + "</span>";
+            return '<span class="' + className + '">' + (index + 1) + "</span>";
         },
-      },
-      navigation: {                       
-            nextEl: ".container-home .home-jobs .swiper-button-next",
-            prevEl: ".container-home .home-jobs .swiper-button-prev",
-        }, 
-        on: {
-            init: function () {},
-            orientationchange: function(){},
-            beforeResize: function(){
-                let vw = window.innerWidth;
-                if(vw > 1000){
-                mySwiper.params.slidesPerView = 3
-                    mySwiper.params.slidesPerColumn = 3
-                    mySwiper.params.slidesPerGroup = 3;
-                } else {
-                mySwiper.params.slidesPerView = 4
-                    mySwiper.params.slidesPerColumn = 2
-                    mySwiper.params.slidesPerGroup =4;
-                }
-                mySwiper.init();
-            },
+    },
+    navigation: {                       
+        nextEl: ".container-home .home-jobs .swiper-button-next",
+        prevEl: ".container-home .home-jobs .swiper-button-prev",
+    }, 
+    on: {
+        init: function () {},
+        orientationchange: function(){},
+        beforeResize: function(){
+            let vw = window.innerWidth;
+            if(vw > 1000){
+                mySwiper.params.slidesPerView = 3;
+                mySwiper.params.slidesPerColumn = 3;
+                mySwiper.params.slidesPerGroup = 3;
+            } else {
+                mySwiper.params.slidesPerView = 4;
+                mySwiper.params.slidesPerColumn = 2;
+                mySwiper.params.slidesPerGroup = 4;
+            }
+            mySwiper.init();
+        },
     },
 });
+
 // carousel home job responsive 
 var swiper = new Swiper(".container-home .home-jobs__responsive .mySwiper", {
       spaceBetween: 30,

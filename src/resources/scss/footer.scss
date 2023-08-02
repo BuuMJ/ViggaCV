@@ -69,11 +69,9 @@
     font-size: 20px;
     font-weight: 700;
 }
-.footer-send-feed-back input:focus ~ label {
-    top: 80px
-}
+.footer-send-feed-back input:focus ~ label,
 .footer-send-feed-back input:valid + label {
-    top: 80px;
+    top: 80px
 }
 .footer-send-feed-back .icon-sendmail{
     position: absolute;
@@ -133,4 +131,62 @@
     color: $primarycolor;
     z-index: 5;
     cursor: pointer;
+  }
+  @media screen and (max-width: 1024px) {
+    .footer-content-left{
+        width: 54%;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .underline{
+        width: 90%;
+    } 
+    .footer-send-feed-back input {
+        width: 55%;
+    }
+    .footer-send-feed-back .icon-sendmail {
+        left: 47%;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .footer-send-feed-back input {
+        width: 72%;
+    }
+    .footer-send-feed-back .icon-sendmail {
+        left: 62%;
+    }
+  }
+  @media screen and (max-width: 414px) {
+    .footer{
+        height: 500px;
+    }
+    .footer-content{
+        flex-direction: column;
+        height: 60%;
+    }
+    .footer-content-left{
+        width: 80%;
+    }
+    .footer-content ul{
+        padding: unset;
+        width: 80%;
+    }
+    .footer-send-feed-back label {
+        top: 86px;
+    }
+    .footer-send-feed-back input:focus ~ label,
+    .footer-send-feed-back input:valid + label {
+        top: 66px
+    }
+    .footer-send-feed-back .icon-sendmail {
+        top: 68px;
+    }
+    .footer-bottom {
+        height: 39%;
+    }
+  }
+  @media screen and (max-width: 320px) {
+    .footer-send-feed-back span {
+        font-size: 19px;
+    }
   }

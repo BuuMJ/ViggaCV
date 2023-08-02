@@ -1243,6 +1243,12 @@
     .container-home .home-subscribe span.title-subscribe{
         font-size: 25px;
     }
+    .container-home .home-jobs .swiper{
+        overflow-y: unset;
+    }
+    .container-home .home-jobs .swiper .swiper-pagination{
+        bottom: -10px;
+    }
     .advantages{
         height: 1000px;
     }
@@ -1333,6 +1339,21 @@
     .container-home .home-jobs .swiper-slide a.box-jobnew .bottom-jobnew .jobnew__salary, 
     .container-home .home-jobs .swiper-slide a.box-jobnew .bottom-jobnew .jobnew__location{
         font-size: 10px;
+    }
+    .container-home .home-jobs .swiper-slide a.box-jobnew .bottom-jobnew{
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+    }
+    .container-home .home-jobs .swiper-slide a.box-jobnew .bottom-jobnew .jobnew__salary, 
+    .container-home .home-jobs .swiper-slide a.box-jobnew .bottom-jobnew .jobnew__location{
+        padding: 2px 6px;
+    }
+    .container-home .home-jobs .swiper-slide a.box-jobnew .bottom-jobnew .jobnew__location{
+        margin: 4px 0;
+    }
+    .container-home .home-jobs .swiper .swiper-pagination{
+        bottom: -26px;
     }
     .container-home .home-subscribe span.title-subscribe{
         font-size: 24px;
