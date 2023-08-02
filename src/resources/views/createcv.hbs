@@ -227,25 +227,31 @@ document.addEventListener('DOMContentLoaded', function() {
         addNewWorkExp();
     });
     }
+    let timeExpCount = 0;
+    let nameExpCount = 0;
+    let workExpCount = 0;
     function addNewWorkExp() {
-        var newDiv = document.createElement('div');
-        newDiv.classList.add('work-exp', 'work-exp-more');
-        newDiv.innerHTML = `
-            <div class="date__work-exp">
-                <textarea rows="1" placeholder="07/2017 - Present"></textarea>
-                <div class="action__add-remove">
-                    <span title="Add more work experience" class="add-work-exp"><i class="bi bi-plus-circle"></i></span>
-                    <span title="Remove this work experience" class="remove-work-exp"><i class="bi bi-dash-circle"></i></span>
-                </div>
+    timeExpCount++;
+    nameExpCount++;
+    workExpCount++;
+    var newDiv = document.createElement('div');
+    newDiv.classList.add('work-exp', 'work-exp-more');
+    newDiv.innerHTML = `
+        <div class="date__work-exp">
+            <textarea rows="1" name="timeexperience${timeExpCount}" placeholder="07/2017 - Present"></textarea>
+            <div class="action__add-remove">
+                <span title="Add more work experience" class="add-work-exp"><i class="bi bi-plus-circle"></i></span>
+                <span title="Remove this work experience" class="remove-work-exp"><i class="bi bi-dash-circle"></i></span>
             </div>
-            <div class="info__work-exp">
-                <textarea id="name-company" rows="1" placeholder="Vigga Company"></textarea>
-                <textarea class="job__work-exp" rows="3" placeholder="FullStack Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10"></textarea>
-            </div>`;
-        var overviewWorkExp = document.querySelector('.overview__user-cv.workexp__user-cv');
-        overviewWorkExp.appendChild(newDiv);
-        setupWorkExpEventListeners(newDiv);
-    }
+        </div>
+        <div class="info__work-exp">
+            <textarea id="name-company" rows="1" name="nameexperience${nameExpCount}" placeholder="Vigga Company"></textarea>
+            <textarea class="job__work-exp" rows="3" name="experience${workExpCount}" placeholder="FullStack Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10"></textarea>
+        </div>`;
+    var overviewWorkExp = document.querySelector('.overview__user-cv.workexp__user-cv');
+    overviewWorkExp.appendChild(newDiv);
+    setupWorkExpEventListeners(newDiv); 
+}
     var workExps = document.querySelectorAll('.work-exp');
     workExps.forEach(function(workExpDiv) {
         setupWorkExpEventListeners(workExpDiv);
@@ -254,21 +260,27 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 // add or remove education 
 document.addEventListener('DOMContentLoaded', function() {
+    let timeEducationCount = 0;
+    let nameEducationCount = 0;
+    let educationCount = 0;
     function addEducationEntry() {
+      timeEducationCount++;
+      nameEducationCount++;
+      educationCount++;
         var educationContainer = document.querySelector('.overview__user-cv.education__user-cv');
         var newEducationDiv = document.createElement('div');
         newEducationDiv.classList.add('education-user');
         newEducationDiv.innerHTML = `
             <div class="date__education">
-                <textarea rows="1" placeholder="07/2017 - Present"></textarea>
+                <textarea rows="1" name="timeeducation${timeEducationCount}" placeholder="07/2017 - Present"></textarea>
                 <div class="action__add-remove-education">
                     <span title="Add more education" class="add-education"><i class="bi bi-plus-circle"></i></span>
                     <span title="Remove this education" class="remove-education"><i class="bi bi-dash-circle"></i></span>
                 </div>
             </div>
             <div class="info__education">
-                <textarea id="name-education" rows="1" placeholder="FPT GreenWich"></textarea>
-                <textarea class="major__education" rows="2" placeholder="Major - Website, Mobile&#10;Level - Good"></textarea>
+                <textarea id="name-education" rows="1" name="nameeducation${nameEducationCount}" placeholder="FPT GreenWich"></textarea>
+                <textarea class="major__education" name="education${educationCount}" rows="2" placeholder="Major - Website, Mobile&#10;Level - Good"></textarea>
             </div>`;
         educationContainer.appendChild(newEducationDiv);
         addEducationEventListeners(newEducationDiv);

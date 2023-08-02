@@ -56,7 +56,7 @@
                         <div class="top__card-recruiter">
                             <span id="content-top__recruiter"><i class="bi bi-gem"></i> Top</span>
                         </div>
-                        <img class="top__recruiter-avatar" src="{{this.avatar}}" alt="">
+                        <img class="top__recruiter-avatar" src="{{this.avatar}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
                         <span class="recruiter__jobcount">{{this.jobcount}} jobs</span>
                     </div>
                 {{/each}}
@@ -76,7 +76,7 @@
                 <div class="swiper-slide">
                     <div class="background-company" style="background: url('{{getBackground this}}') center / cover no-repeat;"></div>
                     <a href="/company/{{this._id}}" class="box__info-company">
-                        <img src="{{getAvatar this}}" alt="">
+                        <img src="{{getAvatar this}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
                         <div class="left-info">
                         <span class="company-name">{{this.companyname}}</span>
                         <span class="company-field">{{this.companyfield}}</span>
@@ -108,7 +108,7 @@
                     {{#each jobs}}
                         <div class="swiper-slide">
                             <a href="/job/{{this._id}}" class="box__info-job">
-                                <img src="{{getAvatarJoba this}}" alt="">
+                                <img src="{{getAvatarJoba this}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
                                 <div class="left__info-job">
                                     <span class="hot__job-name">{{this.jobname}}</span>
                                     <span class="hot__job__company-name">{{this.companyname}}</span>
@@ -147,7 +147,7 @@ Create a quick and free CV template, so that employers must
                 <div class="swiper-slide">
                     <a href="/job/{{this._id}}" class="box-jobnew">
                         <div class="top-jobnew">
-                            <img src="/{{this.avatar}}" alt="">
+                            <img src="/{{this.avatar}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
                             <div class="left-info__jobnew">
                                 <span class="jobnew__name">{{this.jobname}}</span>
                                 <span class="jobnew__company">{{this.companyname}}</span>
@@ -176,7 +176,7 @@ Create a quick and free CV template, so that employers must
                 <div class="swiper-slide">
                     <a href="/job/{{this._id}}" class="box-jobnew">
                             <div class="top-jobnew">
-                                <img src="/{{this.avatar}}" alt="">
+                                <img src="/{{this.avatar}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
                             </div>
                             <div class="left-info__jobnew">
                                 <span class="jobnew__name">{{this.jobname}}</span>

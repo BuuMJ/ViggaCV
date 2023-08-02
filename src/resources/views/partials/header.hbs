@@ -13,7 +13,7 @@
         <a href="/"><span>Home</span></a>
         <a class="reset-localstorage" href="/job">Jobs</a>
         <ul class="drop-down__company">
-            <a href="/company"><span>Companies</span></a>
+            <a href="/company" class="reset-localstorage__company"><span>Companies</span></a>
             {{!-- <ul class="down__company">
                 <li><a href="/company/listcompany">List Company</a></li>
                 <li><a href="/company/postjob">Post Job</a></li>
@@ -32,7 +32,7 @@
         <a href="/"><span>Home</span></a>
         <a class="reset-localstorage" href="/job">Jobs</a>
         <ul class="drop-down__company">
-            <a href="/company"><span>Companies</span></a>
+            <a href="/company" class="reset-localstorage__company"><span>Companies</span></a>
             {{!-- <ul class="down__company">
                 <li><a href="/company">List Company</a></li>
             </ul> --}}
@@ -50,7 +50,7 @@
         <a href="/"><span>Home</span></a>
         <a class="reset-localstorage" href="/job">Jobs</a>
         <ul class="drop-down__company">
-            <a href="/company"><span>Companies</span></a>
+            <a href="/company" class="reset-localstorage__company"><span>Companies</span></a>
             {{!-- <ul class="down__company">
                 <li><a href="/company/listcompany">List Company</a></li>
             </ul> --}}
@@ -97,6 +97,103 @@
         {{/if}}
     </div>
 </div>
+{{!-- header responsive --}}
+<div class="navbar-responsive">
+    <div class="navbar-left">
+        <div class="navbar-left__primary">
+            <a class="navbar-left-img" href="/"><img src="/img/LOGOVGA.png" alt=""></a>
+            <a class="navbar-left-name" href="/"><span>ViggaCareers</span></a>
+        </div>
+        <a class="litle-text" href="/"><p >Unlock Your Potential</p></a>
+    </div>
+    <div class="navbar-right">
+        <div class="show-menu">
+            <input type="checkbox" id="menu" hidden>
+            <label class="menu-lines" for="menu">
+                <div class="lines top-line"></div>
+                <div class="lines middle-line"></div>
+                <div class="lines bottom-line"></div>
+            </label>
+        </div>
+    </div>
+</div>
+
+{{!-- overflow --}}
+<div class="overflow-header"></div>
+    {{#if user}}
+    <div class="responsive__navbar-center">
+        <header class="navbar-center">
+                {{#ifeq user 'user'}}
+                    <div class="user-right">
+                        <img src="{{getAvatarcompany user}}" alt="">
+                        <div class="right-info__user">
+                            <p class="navbar__name-user">{{getFullname user}}</p>
+                            <a href="/profile">View your profile</a>
+                        </div>
+                    </div>
+                    <div class="user-left">
+                        <ul class="drop-down__action">
+                            <span><i class="bi bi-three-dots"></i></span>
+                            <ul class="action-down action-down__user">
+                                <li><a onclick="logout()" href="/login">Sign Out</a></li>
+                            </ul>
+                        </ul>
+                    </div>
+                {{else ifeq user 'company'}}
+                    <div class="user-right">
+                        <img src="{{getAvatarcompany user}}" alt="">
+                        <div class="right-info__user">
+                            <p class="navbar__name-user">{{getFullname user}}</p>
+                            <a href="/profile">View your profile</a>
+                        </div>
+                    </div>
+                    <div class="user-left">
+                        <ul class="drop-down__action">
+                            <span><i class="bi bi-three-dots"></i></span>
+                            <ul class="action-down">
+                                <li><a href="/companyprofile">Your Company Profile</a></li>
+                                <li><a onclick="logout()" href="/login">Sign Out</a></li>
+                            </ul>
+                        </ul>
+                    </div>
+                {{/ifeq}}
+        </header>
+        <a href="/"><span>Home</span></a>
+        <a class="reset-localstorage" href="/job">Jobs</a>
+        <ul class="drop-down__company">
+            <a href="/company" class="reset-localstorage__company"><span>Companies</span></a>
+            {{!-- <ul class="down__company">
+                <li><a href="/company">List Company</a></li>
+            </ul> --}}
+        </ul>
+        <ul class="drop-down__tools-responsive">
+            <span>Tools <i class="bi bi-caret-down-fill"></i></span>
+        </ul>
+        <ul class="down__tools-responsive">
+                <li><a href="/cv">NiceCV</a></li>
+                <li><a href="">Payroll</a></li>
+        </ul>
+    </div>
+    {{else}}
+    <div class="responsive__navbar-center" style="justify-content: flex-start;">
+        <a href="/"><span>Home</span></a>
+        <a class="reset-localstorage" href="/job">Jobs</a>
+        <ul class="drop-down__company">
+            <a href="/company" class="reset-localstorage__company"><span>Companies</span></a>
+            {{!-- <ul class="down__company">
+                <li><a href="/company/listcompany">List Company</a></li>
+            </ul> --}}
+        </ul>
+        <ul class="drop-down__tools-responsive">
+            <span>Tools <i class="bi bi-caret-down-fill"></i></span>
+            <ul class="down__tools-responsive">
+                <li><a href="/cv">NiceCV</a></li>
+                <li><a href="">Payroll</a></li>
+            </ul>
+        </ul>
+        <a href="/login">Sign In</a>
+    </div>
+{{/if}}
 {{/if}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -104,5 +201,42 @@
     document.cookie = 'token =; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     window.location.href = "/login"
   }
-  
+  document.addEventListener("DOMContentLoaded", function() {
+    var checkShowMenu = document.querySelector('.show-menu input#menu');
+  function updateMenu(){
+    if (checkShowMenu.checked) {
+    document.querySelector('.responsive__navbar-center').style.transform = 'translateY(0)';
+    setTimeout(function(){
+        document.querySelector('.overflow-header').style.display = 'block';
+    },200);
+    }
+    else{
+    document.querySelector('.responsive__navbar-center').style.transform = 'translateY(-200%)';
+    document.querySelector('.overflow-header').style.display = 'none';
+    }
+    };
+    checkShowMenu.addEventListener('change',()=>{
+        updateMenu();
+    })
+    document.querySelector('.overflow-header').addEventListener('click',()=>{
+        checkShowMenu.checked = false;
+        document.querySelector('.overflow-header').style.display = 'none';
+        document.querySelector('.responsive__navbar-center').style.transform = 'translateY(-200%)';
+    })
+});
+var clickShowTools = document.querySelector('.drop-down__tools-responsive span');
+var showTools = document.querySelector('.responsive__navbar-center .down__tools-responsive');
+clickShowTools.addEventListener('click', function() {
+    if (showTools.style.display === 'none' || showTools.style.display === '') {
+        showTools.style.display = 'block';
+    } else {
+        showTools.style.display = 'none';
+    }
+});
+document.addEventListener('click', function(event) {
+    if (showTools.contains(event.target) || clickShowTools.contains(event.target)) {
+        return;
+    }
+    showTools.style.display = 'none';
+});
 </script>

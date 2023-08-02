@@ -740,10 +740,12 @@
     border-radius: 5px;
     overflow: hidden;
     border: 1px solid #fff;
+    transition: .5s;
   }
   .container-home .home-jobs .swiper-slide a.box-jobnew:hover{
     background-color: #f6f6f6;
-    border: 1px solid #d3d5d9;
+    border: 1px solid $secondarycolor;
+    box-shadow: 0 5px 10px $secondarycolor;
   }
   .container-home .home-jobs .swiper-slide a.box-jobnew .top-jobnew{
     width: 100%;

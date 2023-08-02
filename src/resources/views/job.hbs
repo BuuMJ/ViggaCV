@@ -22,20 +22,22 @@
       <input name="search" id="search" type="search" placeholder="Looking for jobs or companies">
       <label for="search"><i class="bi bi-search"></i></label>
       <div class="categories-select">
-         <select name="categories" id="categories-search">
+          <select name="categories" id="categories-search">
              <option  value="" selected>All Categories</option>
              {{#each listcompany}}
              <option value="{{this.companyfield}}">{{this.companyfield}}</option>
              {{/each}}
-        </select>
+          </select>
+          <i class="bi bi-caret-down-fill"></i>
       </div>
       <div class="categories-select__position">
-         <select name="position" id="categories-search__position">
+          <select name="position" id="categories-search__position">
              <option  value="" selected>All Position</option>
              {{#each jobs}}
              <option value="{{this.position}}">{{this.position}}</option>
              {{/each}}
-        </select>
+          </select>
+          <i class="bi bi-caret-down-fill"></i>
       </div>
       <button type="submit">Search</button>
       </form>
@@ -95,7 +97,8 @@
         <p class="job-location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</p>
         </div>
         <div class="card-job__action">
-          <p class="job-salary">{{this.salary}}</p>
+          <p class="salary-job__action">{{this.salary}}</p>
+          <a class="detail-job__action" href="/job/{{this._id}}">View Detail <i class="bi bi-chevron-double-right"></i></a>
         </div>
       </div>
       {{/each}}
@@ -258,13 +261,17 @@ getPagination.forEach(function(pageLink) {
     }
   });
 });
-document.addEventListener('DOMContentLoaded', ()=> {
-  var currentPage = localStorage.getItem('currentPageJob');
+document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const pageFromURL = urlParams.get('page');
+  const currentPage = pageFromURL || localStorage.getItem('currentPageJob');
   if (currentPage !== null) {
     getPagination.forEach(function(pageLink) {
       var page = pageLink.getAttribute('data-page');
       if (page == currentPage) {
         pageLink.classList.add('active');
+      } else {
+        pageLink.classList.remove('active');
       }
     });
   }
