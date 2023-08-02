@@ -712,6 +712,7 @@
 .container-home .home-jobs .swiper {
     width: 80%;
     height: 80%;
+    overflow-y: unset;
   }
 .container-home .home-jobs .swiper .swiper-wrapper{
     display: flex;
@@ -825,6 +826,9 @@
   .container-home .home-jobs .swiper-button-next,
   .container-home .home-jobs .swiper-button-prev{
     color: $secondarycolor;
+  }
+  .container-home .home-jobs .swiper-pagination{
+    bottom: -30px;
   }
   // home jobs responsive
   .container-home .home-jobs__responsive .swiper {
