@@ -5279,7 +5279,7 @@ button#moveTopBtn {
 #moveTopBtn i {
   font-size: 30px;
   color: #fed200;
-  z-index: 5;
+  z-index: 21;
   cursor: pointer; }
 
 @media screen and (max-width: 1024px) {
