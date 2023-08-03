@@ -1,6 +1,6 @@
 const JobModel = require("../models/Job");
 const CompanyModel = require("../models/Company");
-const FavouriteModel = require("../models/Favourite")
+const FavouriteModel = require("../models/Favourite");
 const {
   mutipleMongooseToObject,
   staffMongoseToObject,
@@ -120,6 +120,7 @@ class JobController {
       JobModel.find({})
         .skip(skip)
         .limit(PAGE_SIZE)
+        .sort({ prioritizeUpdatedAt: -1 })
         .then((data) => {
           res.render("job", {
             user,
@@ -146,6 +147,7 @@ class JobController {
       JobModel.find({})
         .skip(skip)
         .limit(PAGE_SIZE)
+        .sort({ prioritizeUpdatedAt: -1 })
         .then((data) => {
           res.render("job", {
             user,
@@ -565,8 +567,17 @@ class JobController {
   async detail(req, res, next) {
     try {
       const user = req.user;
-      const checksave = 2;
       const idjob = req.params.id;
+      const favourite = await FavouriteModel.findOne({ jobid: idjob });
+      if (req.user) {
+        if (favourite) {
+          var checksave;
+        } else {
+          var checksave = undefined;
+        }
+      } else {
+        var checksave = undefined;
+      }
       const detail = await JobModel.findOne({ _id: idjob });
       const company = await CompanyModel.findOne({ iduser: detail.iduser });
       const job = await JobModel.find({ iduser: detail.iduser });
@@ -575,7 +586,7 @@ class JobController {
         title: "Job Detail",
         detail: staffMongoseToObject(detail),
         user,
-        checksave: checksave,
+        checksave,
         company: staffMongoseToObject(company),
         job: mutipleMongooseToObject(job),
       });
@@ -584,36 +595,41 @@ class JobController {
     }
   }
 
-  async favourite(req, res, next){
-    const iduser = req.user._id
-    const idjob = req.query.id
-
+  async favourite(req, res, next) {
+    const iduser = req.user._id;
+    const idjob = req.query.id;
+    console.log(idjob);
     const checkFR = await FavouriteModel.findOne({
       userid: iduser,
-      jobid: idjob
-    })
-    if(checkFR){
-
-    }else{
+      jobid: idjob,
+    });
+    if (checkFR) {
+      await FavouriteModel.findByIdAndRemove(checkFR._id);
+      console.log("Đã xoá khỏi công việc yêu thích ");
+    } else {
       const action = new FavouriteModel({
         userid: iduser,
-      jobid: idjob
-      })
+        jobid: idjob,
+      });
       await action.save();
-      res.redirect("/job/job_favourite")
+      console.log("Đã lưu công việc yêu thích ");
+
+      res.redirect("/job/job_favourite");
     }
   }
 
-  async job_favourite(req, res, next){
-    const iduser = req.user._id
-    const jobs = await FavouriteModel.find({userid: iduser}).distinct("jobid")
+  async job_favourite(req, res, next) {
+    const iduser = req.user._id;
+    const jobs = await FavouriteModel.find({ userid: iduser }).distinct(
+      "jobid"
+    );
     const listjob = await JobModel.find({
-      _id: {$in: jobs}
-    })
+      _id: { $in: jobs },
+    });
 
-    res.render("job_favourite",{
-      listjob: staffMongoseToObject(listjob)
-    })
+    res.render("job_favourite", {
+      listjob: mutipleMongooseToObject(listjob),
+    });
   }
 }
 

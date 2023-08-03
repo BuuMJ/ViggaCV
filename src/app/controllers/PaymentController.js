@@ -1,5 +1,6 @@
 const paypal = require("paypal-rest-sdk");
 const JobModel = require("../models/Job");
+const moment = require("moment-timezone");
 const {
   mutipleMongooseToObject,
   staffMongoseToObject,
@@ -84,10 +85,12 @@ class PaymentController {
           throw error;
         } else {
           try {
+            console.log("đã tới đây");
             let job = await JobModel.findById(jobID);
             job.prioritize = true;
             job.prioritizeUpdatedAt = moment().add(days, "days").toDate();
             await job.save();
+            console.log(job.prioritize);
           } catch (err) {
             console.log(err);
           }

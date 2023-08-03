@@ -8,7 +8,7 @@
     </div>
     <div class="jobdetail-action">
         <button class="btn-apply" type="button" >Apply Now</button>
-        <form class="function__check-save" action="">
+        <form class="function__check-save" action="/job/favourite?id={{detail._id}}" method="POST">
             <button class="check-save__job" type="submit" data-check-save="{{checkSave checksave}}"><i class="bi bi-heart"></i></button>
         </form>
         <a href="/cv/createcv">create cv to apply</a>

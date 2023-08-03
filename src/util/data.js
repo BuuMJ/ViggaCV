@@ -74,7 +74,7 @@ const storage = multer.diskStorage({
 const storage2 = multer.diskStorage({
   destination: function (req, file, cb) {
     // Tạo đường dẫn đầy đủ cho thư mục lưu trữ của CV đó
-    var path = "uploads/Cv";
+    var path = req.customPath || "uploads/Cv";
     // Tạo thư mục nếu chưa tồn tại
     fs.mkdirSync(path, { recursive: true });
     cb(null, path);
