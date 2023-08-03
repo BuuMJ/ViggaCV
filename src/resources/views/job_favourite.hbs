@@ -5,12 +5,19 @@
             <p>Everything you store or apply for a job is saved on this page.Take a look at the history of jobs you've saved. Apply immediately to avoid missing out on this employment opportunity.</p>
         </header>
         <section>
-            <span class="list__job-saved">List: {{count}} jobs saved</span>
-            {{#each listjob}}
-            <div class="card__job-save">
-
+            <div class="header-section">
+                <span class="saved-job">Saved Jobs</span>
+                <span class="viewd-job">Recent Viewed Jobs</span>
+                <span class="applied-job">Applied Jobs</span>
             </div>
-            {{/each}}
+            <div class="box__saved-job">
+                <span class="list__job-saved">List: {{count}} jobs saved</span>
+                {{#each listjob}}
+                    <div class="card__job-save">
+
+                    </div>
+                {{/each}}
+            </div>
         </section>
     </div>
 </div>
