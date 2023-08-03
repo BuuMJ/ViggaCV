@@ -2576,7 +2576,8 @@ header.job-search .best-companyFL .background-image {
   justify-content: start;
   align-items: center;
   width: 100%;
-  background-color: #f5f5f5; }
+  background-color: #f5f5f5;
+  min-height: 100vh; }
 
 .container__job-saved .main__job-saved {
   display: flex;
@@ -2586,7 +2587,7 @@ header.job-search .best-companyFL .background-image {
   width: 80%;
   border-radius: 5px;
   overflow: hidden;
-  margin-top: 20px;
+  margin-top: 30px;
   background-color: white; }
 
 .container__job-saved .main__job-saved header {
@@ -2605,11 +2606,37 @@ header.job-search .best-companyFL .background-image {
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  padding: 0 30px;
   width: 100%; }
 
+.container__job-saved .main__job-saved section .header-section {
+  font-size: 20px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  padding: 0 30px;
+  border-bottom: 1px solid #B6B6B6; }
+
+.container__job-saved .main__job-saved section .header-section span {
+  margin-right: 30px;
+  padding: 8px 0;
+  font-weight: 600; }
+
+.container__job-saved .main__job-saved section .header-section span.saved-job {
+  border-bottom: 3px solid #0072bc;
+  color: #fed200; }
+
+.container__job-saved .main__job-saved section .box__saved-job {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 16px 30px; }
+
 .container__job-saved .main__job-saved section .list__job-saved {
-  font-size: 20px; }
+  font-size: 20px;
+  width: 100%; }
 
 .main-profile {
   display: flex;
@@ -5556,8 +5583,8 @@ button#moveTopBtn {
 
 .down__user {
   width: 150px;
-  height: 100px;
-  top: 92px;
+  height: 150px;
+  top: 95px;
   left: -55px;
   z-index: 100; }
 
