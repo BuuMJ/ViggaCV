@@ -11,7 +11,12 @@
     {{#ifeq user 'admin'}}
     <div class="navbar-center">
         <a href="/"><span>Home</span></a>
-        <a class="reset-localstorage" href="/job">Jobs</a>
+        <ul class="drop-down__job">
+             <a class="reset-localstorage" href="/job">Jobs</a>
+             <ul class="down__job">
+                <li><a href="/job/job_favourite">Archived jobs</a></li>
+             </ul>
+        </ul>
         <ul class="drop-down__company">
             <a href="/company" class="reset-localstorage__company"><span>Companies</span></a>
             {{!-- <ul class="down__company">
@@ -30,7 +35,12 @@
     {{else ifeq user 'company'}}
     <div class="navbar-center">
         <a href="/"><span>Home</span></a>
-        <a class="reset-localstorage" href="/job">Jobs</a>
+        <ul class="drop-down__job">
+             <a class="reset-localstorage" href="/job">Jobs</a>
+             <ul class="down__job">
+                <li><a href="/job/job_favourite">Archived jobs</a></li>
+             </ul>
+        </ul>
         <ul class="drop-down__company">
             <a href="/company" class="reset-localstorage__company"><span>Companies</span></a>
             {{!-- <ul class="down__company">
@@ -48,7 +58,12 @@
     {{else}}
     <div class="navbar-center">
         <a href="/"><span>Home</span></a>
-        <a class="reset-localstorage" href="/job">Jobs</a>
+        <ul class="drop-down__job">
+             <a class="reset-localstorage" href="/job">Jobs</a>
+             <ul class="down__job">
+                <li><a href="/job/job_favourite">Archived jobs</a></li>
+             </ul>
+        </ul>
         <ul class="drop-down__company">
             <a href="/company" class="reset-localstorage__company"><span>Companies</span></a>
             {{!-- <ul class="down__company">

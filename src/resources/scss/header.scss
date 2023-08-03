@@ -83,12 +83,14 @@
     margin: unset;
 }
 .drop-down__tools,
+.drop-down__job,
 .drop-down__company{
     position: relative;
     padding: 25px 0 25px 0;
 }
 .down__tools,
-.down__company{
+.down__company,
+.down__job{
     position: absolute;
     top: 78px;
     left: -83%;
@@ -113,20 +115,29 @@
     left: -42%;
     width: 160px;
 }
+.down__job{
+    width: 160px;
+    left: -120%;
+    height: 50px;
+    padding-top: 6px ;
+}
 .down__tools li,
 .down__company li{
     padding: 8px 10px ;
 }
 .drop-down__tools:hover,
-.drop-down__company:hover{
+.drop-down__company:hover,
+.drop-down__job:hover{
     cursor: pointer;
 }
 .drop-down__tools:hover .down__tools,
-.drop-down__company:hover .down__company {
+.drop-down__company:hover .down__company,
+.drop-down__job:hover .down__job {
     display: block;
 }
 .down__tools a:hover,
-.down__company a:hover{
+.down__company a:hover,
+.down__job a:hover{
     text-decoration: underline;
 }
 .navbar-right{

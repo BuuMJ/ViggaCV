@@ -31,12 +31,12 @@ class JobController {
     const randomJobs = jobs.sort(() => 0.5 - Math.random()).slice(0, 3);
 
     // In ra kết quả
-    console.log(
-      "3 công việc ngẫu nhiên của công ty",
-      randomCompany.companyname,
-      "là:",
-      randomJobs
-    );
+    // console.log(
+    //   "3 công việc ngẫu nhiên của công ty",
+    //   randomCompany.companyname,
+    //   "là:",
+    //   randomJobs
+    // );
 
     //tìm số job cao nhất
     const highest = await JobModel.aggregate([
@@ -104,13 +104,13 @@ class JobController {
       var bestFL = null;
     }
 
-    console.log(
-      "đây là công ty có nhiều job nhất trước khi search: " + bestCP.avatar
-    );
-    console.log(
-      "đây là công ty có nhiều follow nhất trước khi search: " +
-        bestFL.background
-    );
+    // console.log(
+    //   "đây là công ty có nhiều job nhất trước khi search: " + bestCP.avatar
+    // );
+    // console.log(
+    //   "đây là công ty có nhiều follow nhất trước khi search: " +
+    //     bestFL.background
+    // );
 
     if (page) {
       //Get page
@@ -267,12 +267,12 @@ class JobController {
       var bestFL = null;
     }
 
-    console.log(
-      "đây là công ty có nhiều job nhất sau khi search: " + bestCP.avatar
-    );
-    console.log(
-      "đây là công ty có nhiều follow nhất sau khi search: " + bestFL.background
-    );
+    // console.log(
+    //   "đây là công ty có nhiều job nhất sau khi search: " + bestCP.avatar
+    // );
+    // console.log(
+    //   "đây là công ty có nhiều follow nhất sau khi search: " + bestFL.background
+    // );
     const randomIndex = Math.floor(Math.random() * company.length);
     const randomCompany = company[randomIndex];
     const jobs = await JobModel.find({ iduser: randomCompany.iduser });
@@ -435,12 +435,12 @@ class JobController {
       var bestFL = null;
     }
 
-    console.log(
-      "đây là công ty có nhiều job nhất sau khi search: " + bestCP.avatar
-    );
-    console.log(
-      "đây là công ty có nhiều follow nhất sau khi search: " + bestFL.background
-    );
+    // console.log(
+    //   "đây là công ty có nhiều job nhất sau khi search: " + bestCP.avatar
+    // );
+    // console.log(
+    //   "đây là công ty có nhiều follow nhất sau khi search: " + bestFL.background
+    // );
     const randomIndex = Math.floor(Math.random() * company.length);
     const randomCompany = company[randomIndex];
     const jobs = await JobModel.find({ iduser: randomCompany.iduser });
@@ -571,17 +571,18 @@ class JobController {
       const favourite = await FavouriteModel.findOne({ jobid: idjob });
       if (req.user) {
         if (favourite) {
-          var checksave;
+          var checksave = 2;
         } else {
           var checksave = undefined;
         }
       } else {
         var checksave = undefined;
       }
+      console.log(checksave)
       const detail = await JobModel.findOne({ _id: idjob });
       const company = await CompanyModel.findOne({ iduser: detail.iduser });
       const job = await JobModel.find({ iduser: detail.iduser });
-      console.log(job + "asdasdgjahgsjhagsfhagjdhgajsdajgajsg");
+      // console.log(job + "asdasdgjahgsjhagsfhagjdhgajsdajgajsg");
       res.render("jobdetail", {
         title: "Job Detail",
         detail: staffMongoseToObject(detail),
@@ -603,9 +604,11 @@ class JobController {
       userid: iduser,
       jobid: idjob,
     });
+    console.log("da toi trang yeu thich job")
     if (checkFR) {
       await FavouriteModel.findByIdAndRemove(checkFR._id);
       console.log("Đã xoá khỏi công việc yêu thích ");
+      res.redirect("back")
     } else {
       const action = new FavouriteModel({
         userid: iduser,
@@ -614,7 +617,7 @@ class JobController {
       await action.save();
       console.log("Đã lưu công việc yêu thích ");
 
-      res.redirect("/job/job_favourite");
+      res.redirect("back");
     }
   }
 
@@ -626,9 +629,16 @@ class JobController {
     const listjob = await JobModel.find({
       _id: { $in: jobs },
     });
+    const count = await JobModel.countDocuments({
+      _id: { $in: jobs },
+    });
+console.log(count)
+
 
     res.render("job_favourite", {
       listjob: mutipleMongooseToObject(listjob),
+      user: req.user,
+      count,
     });
   }
 }

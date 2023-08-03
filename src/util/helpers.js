@@ -237,10 +237,10 @@ module.exports = {
   //   }
   // },
   checkSave: function (checksave) {
-    if (checksave) {
-      return "true";
-    } else {
+    if (checksave === undefined) {
       return "false";
+    } else {
+      return "true";
     }
   },
   ifeq: function (user, y, options) {

@@ -1154,3 +1154,45 @@ header.job-search .best-companyFL {
     color:#F80404;
     background-color: white;
 }
+// job saved 
+.container__job-saved{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    background-color: $backgroundcolor;
+}
+.container__job-saved .main__job-saved{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 20px;
+    background-color: white;
+}
+.container__job-saved .main__job-saved header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    height: 220px;
+    background: url('/img/bgjobsave.jpeg') center / cover no-repeat;
+    padding: 0 30px;
+    color: $primarycolor;
+}
+.container__job-saved .main__job-saved section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding: 0 30px;
+    width: 100%;
+}
+.container__job-saved .main__job-saved section .list__job-saved{
+    font-size: 20px;
+}
