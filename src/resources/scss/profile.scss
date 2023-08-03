@@ -976,3 +976,212 @@ ul.listpageleadership {
     background-color: $secondarycolor;
     color: white;
 }
+// payment success
+.container__success-payment{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    min-height: 100vh;
+    width: 100%;
+    background-color: $backgroundcolor;
+}
+.container__success-payment .main__success-payment{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 40%;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px $secondarycolor;
+    margin-top: 20px;
+}
+.container__success-payment .main__success-payment .navbar-left{
+    margin: 12px 0;
+}
+.container__success-payment .main__success-payment .navbar-left .litle-text{
+    width: 170px;
+    left: 63%;
+    bottom: -3px;
+}
+.container__success-payment .main__success-payment .body__success-payment{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.container__success-payment .main__success-payment .body__success-payment header.logo-success{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.container__success-payment .main__success-payment .body__success-payment header.logo-success img{
+    width: 40%;
+    height: 140px;
+}
+.container__success-payment .main__success-payment .body__success-payment header.logo-success .welcome b{
+    color: $secondarycolor;
+    margin-top: 6px;
+}
+.container__success-payment .main__success-payment .body__success-payment header.logo-success h1{
+    color: $secondarycolor;
+}
+.container__success-payment .main__success-payment .body__success-payment header.logo-success .total{
+    color: #ff7d55;
+}
+.container__success-payment .main__success-payment .body__success-payment header.logo-success .time-payment{
+    color: #bdc0c0;
+    font-size: 14px;
+}
+.container__success-payment .main__success-payment .body__success-payment section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    padding-left: 30px;
+}
+.container__success-payment .main__success-payment .body__success-payment .bottom{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 30px;
+    width: 100%;
+}
+.container__success-payment .main__success-payment .action-confirm{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 12px 0;
+}
+.container__success-payment .main__success-payment .action-confirm a{
+    width: 80%;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: $secondarycolor;
+    border: 1px solid $secondarycolor;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: .5s;
+}
+.container__success-payment .main__success-payment .confirm-payment{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    padding-left: 30px;
+}
+.container__success-payment .main__success-payment .confirm-payment input{
+    height: 20px;
+    width: 20px;
+    margin-right: 6px;
+}
+.container__success-payment .main__success-payment .confirm-payment label{
+    font-size: 16px;
+}
+.container__success-payment .main__success-payment .action-confirm a:hover{
+    background-color: $secondarycolor;
+    color: white;
+}
+// cancel payment
+.container__cancel-payment{
+    background-color: $backgroundcolor;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+}
+.container__cancel-payment .main__cancel-payment{
+    background-color: white;
+    box-shadow: 0 10px 20px #bc2627;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+}
+.container__cancel-payment .main__cancel-payment .navbar-left{
+    margin: 12px 0 12px 30px;
+    width: 100%;
+}
+.container__cancel-payment .main__cancel-payment .navbar-left .litle-text{
+    width: 170px;
+    left: 12.5%;
+    bottom: -3px;
+}
+.container__cancel-payment .main__cancel-payment .body__cancel-payment{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 12px 30px;
+}
+.container__cancel-payment .main__cancel-payment .body__cancel-payment img{
+    width: 50%;
+    height: 200px;
+    filter: drop-shadow(0 3px 6px #bc2627);
+    margin-bottom: 12px;
+}
+.container__cancel-payment .main__cancel-payment .body__cancel-payment h1{
+    color: #bc2627;
+}
+.container__cancel-payment .main__cancel-payment .body__cancel-payment p b{
+    color: #bc2627;
+}
+.container__cancel-payment .main__cancel-payment .body__cancel-payment p b.sorry{
+    font-weight: 700;
+    color: black;
+}
+.container__cancel-payment .main__cancel-payment .body__cancel-payment .option{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    margin: 12px 0;
+}
+.container__cancel-payment .main__cancel-payment .body__cancel-payment input{
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+}
+.container__cancel-payment .main__cancel-payment .body__cancel-payment label{
+    font-size: 16px;
+}
+.container__cancel-payment .main__cancel-payment .body__cancel-payment .action__cancel-payment{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 12px 0;
+}
+.container__cancel-payment .main__cancel-payment .body__cancel-payment .action__cancel-payment a{
+    width: 80%;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: #bc2627;
+    border: 1px solid #bc2627;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: .5s;
+}
+.container__cancel-payment .main__cancel-payment .body__cancel-payment .action__cancel-payment a:hover{
+    background-color: #bc2627;
+    color: white;
+}

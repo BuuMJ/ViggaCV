@@ -1,0 +1,50 @@
+<div class="container__cancel-payment">
+    <div class="main__cancel-payment">
+         <div class="navbar-left">
+            <div class="navbar-left__primary">
+                <a class="navbar-left-img" href="/"><img src="/img/LOGOVGA.png" alt=""></a>
+                <a class="navbar-left-name" href="/"><span>ViggaCareers</span></a>
+            </div>
+            <a class="litle-text" href="/"><p >Unlock Your Potential</p></a>
+        </div>
+        <div class="body__cancel-payment">
+            <img src="/img/paymentcancel.png" alt="">
+            <h1>Payment Fail</h1>
+            <p><b class="sorry">Sorry!</b> <b>{{job.companyname}}</b>, your payment has failed please try the ways below</p>
+            <div class="option">
+                <input type="radio" name="option" id="retry" data-id-job="{{job._id}}" value="Retry Payment">
+                <label for="retry">Retry Payment</label>
+            </div>
+            <div class="option">
+                 <input type="radio" name="option" id="back" value="Back To Comapny Profile">
+                <label for="back">Back To Comapny Profile</label>
+            </div>
+            <div class="action__cancel-payment">
+                <a class="option-action">Select Option Above To Do It</a>
+            </div>         
+        </div>
+    </div>
+</div>
+<script>
+    var retry = document.querySelector('#retry');
+    var backCompanyPage = document.querySelector('#back');
+    var IDHref = retry.getAttribute('data-id-job');
+    var textButton = document.querySelector('.option-action');
+    var selectOption = false;
+    retry.addEventListener('click',()=>{
+        selectOption = true;
+        textButton.innerHTML = retry.value;
+        textButton.href = `/pay/${IDHref}`;
+    });
+    backCompanyPage.addEventListener('click',()=>{
+        selectOption = true;
+        textButton.innerHTML = backCompanyPage.value;
+        textButton.href = '/companyprofile';
+    });
+    textButton.addEventListener('click', (event) => {
+    if (!selectOption) {
+        alert("Please select the options above to follow that choice.");
+        event.preventDefault();
+    }
+});
+</script>

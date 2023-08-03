@@ -5,12 +5,18 @@ const {
   mutipleMongooseToObject,
   staffMongoseToObject,
 } = require("../../util/mongoose");
+const { job } = require("./JobController");
 
 class PaymentController {
   pay(req, res, next) {
-    const price = 1.43;
-    var days = req.body.paymentday;
-    console.log(days);
+    const price = 1.5;
+    if (req.body.paymentday) {
+      var days = req.body.paymentday;
+      console.log(days + "concccccccccccc");
+    } else {
+      var days = 30;
+    }
+    req.session.days = days;
     req.session.total = price * days;
     var create_payment_json = {
       intent: "sale",
@@ -57,10 +63,11 @@ class PaymentController {
       }
     });
   }
-  success(req, res, next) {
+  async success(req, res, next) {
     const jobID = req.session.jobID;
     const total = req.session.total;
-    const days = 7;
+    const days = req.session.days;
+    const jobsuccess = await JobModel.findById(jobID);
     var payerID = req.query.PayerID;
     var execute_payment_json = {
       payer_id: payerID,
@@ -98,10 +105,22 @@ class PaymentController {
           console.log(JSON.stringify(payment));
           res.render("confirm", {
             jobID: jobID,
+            job: staffMongoseToObject(jobsuccess),
+            user: req.user,
+            days: req.session.days,
           });
         }
       }
     );
+  }
+
+  async cancel(req, res, next) {
+    const jobID = "646b3b9912eaed3af0ede0ff";
+    const job = await JobModel.findById({ _id: jobID });
+    res.render("cancel", {
+      user: req.user,
+      job: staffMongoseToObject(job),
+    });
   }
 
   async check(req, res, next) {
