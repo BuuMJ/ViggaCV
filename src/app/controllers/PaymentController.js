@@ -8,11 +8,8 @@ const {
 class PaymentController {
   pay(req, res, next) {
     const price = 1.43;
-    if (req.body.days) {
-      var days = req.body.days;
-    } else {
-      var days = 30;
-    }
+    var days = req.body.paymentday;
+    console.log(days);
     req.session.total = price * days;
     var create_payment_json = {
       intent: "sale",
@@ -110,7 +107,7 @@ class PaymentController {
     const job = await JobModel.findById({ _id: jobID });
     if (job.prioritize == false) {
       // res.redirect("/pay");
-      res.render("check",{
+      res.render("check", {
         user: req.user,
         job: staffMongoseToObject(job),
       });

@@ -4,7 +4,7 @@ const JobModel = require("../models/Job");
 const CompanyModel = require("../models/Company");
 
 class ApplyCVController {
-  async apply(req, res, next) {
+  async scan(req, res, next) {
     textract.fromFileWithPath(req.file.path, async function (error, text) {
       console.log("đây là văn bản sau khi scan cv: " + text);
       if (error) {
@@ -45,6 +45,46 @@ class ApplyCVController {
             });
             res.redirect("/job/scan");
           }
+        } catch (err) {
+          console.log(err);
+          return res
+            .status(500)
+            .send({ message: "Lỗi khi xử lý và tìm kiếm công ty phù hợp." });
+        }
+      }
+    });
+  }
+
+  apply(req, res, next) {
+    textract.fromFileWithPath(req.file.path, async function (error, text) {
+      // console.log("đây là văn bản sau khi scan cv: " + text);
+      if (error) {
+        console.log(error);
+        return res.status(500);
+        // .send({ message: "Lỗi khi trích xuất văn bản từ tệp tài liệu." });
+      } else {
+        try {
+          const jobID = req.query.id;
+          console.log(jobID);
+          const job = await JobModel.findById({ _id: jobID });
+          const jobDescription = job.jobrequi;
+          const cvText = text;
+          const doc = nlp(jobDescription);
+          const nouns = doc.nouns().out("array");
+          const namedEntities = doc
+            .people()
+            .concat(doc.places())
+            .concat(doc.organizations())
+            .out("array");
+          const keywords = [...new Set([...nouns, ...namedEntities])];
+
+          let score = 0;
+          keywords.forEach((keyword) => {
+            if (cvText.includes(keyword)) {
+              score++;
+            }
+          });
+          console.log(`Score: ${score}/${keywords.length}`);
         } catch (err) {
           console.log(err);
           return res

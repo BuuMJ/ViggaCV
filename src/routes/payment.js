@@ -4,6 +4,6 @@ const paymentController = require("../app/controllers/PaymentController");
 
 router.get("/success", paymentController.success);
 router.get("/:id", paymentController.check);
-router.get("/", paymentController.pay);
+router.post("/", paymentController.pay);
 
 module.exports = router;
