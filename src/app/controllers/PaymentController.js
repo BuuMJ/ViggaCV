@@ -111,6 +111,15 @@ class PaymentController {
     );
   }
 
+async cancel(req, res, next){
+  const jobID = "646b3b9912eaed3af0ede0ff"
+  const job = await JobModel.findById({ _id: jobID });
+  res.render("cancel", {
+    user: req.user,
+    job: staffMongoseToObject(job)
+  })
+}
+
   async check(req, res, next) {
     const jobID = req.params.id;
     req.session.jobID = jobID;
