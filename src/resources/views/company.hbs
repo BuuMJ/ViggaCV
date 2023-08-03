@@ -81,13 +81,17 @@ getPaginationCompany.forEach(function(pageLinkCompany) {
     }
   });
 });
-document.addEventListener('DOMContentLoaded', ()=> {
-  var currentPageCompany = localStorage.getItem('currentPageCompany');
+document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const pageFromURL = urlParams.get('page');
+  const currentPageCompany = pageFromURL || localStorage.getItem('currentPageCompany');
   if (currentPageCompany !== null) {
     getPaginationCompany.forEach(function(pageLinkCompany) {
       var pageCompany = pageLinkCompany.getAttribute('data-page-company');
       if (pageCompany == currentPageCompany) {
         pageLinkCompany.classList.add('active');
+      } else {
+        pageLinkCompany.classList.remove('active');
       }
     });
   }

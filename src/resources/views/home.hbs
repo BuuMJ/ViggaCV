@@ -56,7 +56,7 @@
                         <div class="top__card-recruiter">
                             <span id="content-top__recruiter"><i class="bi bi-gem"></i> Top</span>
                         </div>
-                        <img class="top__recruiter-avatar" src="{{this.avatar}}" alt="">
+                        <img class="top__recruiter-avatar" src="{{this.avatar}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
                         <span class="recruiter__jobcount">{{this.jobcount}} jobs</span>
                     </div>
                 {{/each}}
@@ -75,19 +75,18 @@
                 {{#each topCompanies}}
                 <div class="swiper-slide">
                     <div class="background-company" style="background: url('{{getBackground this}}') center / cover no-repeat;"></div>
-                    <div class="box__info-company">
-                        <img src="{{getAvatar this}}" alt="">
+                    <a href="/company/{{this._id}}" class="box__info-company">
+                        <img src="{{getAvatar this}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
                         <div class="left-info">
                         <span class="company-name">{{this.companyname}}</span>
                         <span class="company-field">{{this.companyfield}}</span>
                         <div class="view-detail__desc">
                             <span class="company-desc-info">{{this.companydesc}}</span>
-                            <a href="/company/{{this._id}}">View More</a>
                         </div>
                         <span class="job-count__company">{{this.jobcount}} Jobs</span>
                         </div>
                         <span data-follow-info="{{this.follow}}" class="info-company__follow">{{this.follow}} Followers</span>
-                    </div>
+                    </a>
                 </div>
                 {{/each}}
                 </div>
@@ -109,7 +108,7 @@
                     {{#each jobs}}
                         <div class="swiper-slide">
                             <a href="/job/{{this._id}}" class="box__info-job">
-                                <img src="{{getAvatarJoba this}}" alt="">
+                                <img src="{{getAvatarJoba this}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
                                 <div class="left__info-job">
                                     <span class="hot__job-name">{{this.jobname}}</span>
                                     <span class="hot__job__company-name">{{this.companyname}}</span>
@@ -148,7 +147,7 @@ Create a quick and free CV template, so that employers must
                 <div class="swiper-slide">
                     <a href="/job/{{this._id}}" class="box-jobnew">
                         <div class="top-jobnew">
-                            <img src="/{{this.avatar}}" alt="">
+                            <img src="/{{this.avatar}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
                             <div class="left-info__jobnew">
                                 <span class="jobnew__name">{{this.jobname}}</span>
                                 <span class="jobnew__company">{{this.companyname}}</span>
@@ -167,6 +166,31 @@ Create a quick and free CV template, so that employers must
             <div class="swiper-pagination"></div>
         </div>
     </div>
+    {{!-- home-jobs responsive --}}
+     {{!-- swiper responsive --}}
+     <div class="home-jobs__responsive">
+        <span class="title-jobs">There are 20 new positions awaiting your application.</span>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                {{#each latestJobs}}
+                <div class="swiper-slide">
+                    <a href="/job/{{this._id}}" class="box-jobnew">
+                            <div class="top-jobnew">
+                                <img src="/{{this.avatar}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
+                            </div>
+                            <div class="left-info__jobnew">
+                                <span class="jobnew__name">{{this.jobname}}</span>
+                                <span class="jobnew__company">{{this.companyname}}</span>
+                                <span class="jobnew__salary">{{this.salary}}</span>
+                                <span class="jobnew__location">{{this.joblocation}}</span>
+                            </div>
+                    </a>
+                </div>
+                {{/each}}
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+     </div>
          <div class="home-subscribe">
         <span class="title-subscribe">Follow the latest company and job updates on Vigga Careers by subscribing.</span>
         <form action="/subscribe" method="POST" class="box-subscribe">
@@ -236,21 +260,20 @@ Create a quick and free CV template, so that employers must
         <div class="advantage-after">
             <div class="advantage">
                 <div class="left-avantage">
-                    <i class="bi bi-chat-left-text"></i>
-                </div>
-                <div class="right-advantage">
-                    <h3>Get feedback</h3>
-                    <span>So that you don't have to provide a new version every time you make a change, you may ask your friends for
-                        input via a link and have any changes made instantly.</span>
-                </div>
-            </div>
-            <div class="advantage">
-                <div class="left-avantage">
                     <i class="bi bi-file-earmark-lock2"></i>
                 </div>
                 <div class="right-advantage">
                     <h3>Data privacy</h3>
                     <span>We don't sell your info. Ever. Instead, we are GDPR-compliant and allow you to erase all of your data in an instant if you so want.</span>
+                </div>
+            </div>
+            <div class="advantage">
+                <div class="left-avantage">
+                    <i class="bi bi-chat-left-text"></i>
+                </div>
+                <div class="right-advantage">
+                    <h3>Get feedback</h3>
+                    <span>So that you don't have to provide a new version every time you make a change, you may ask your friends for input via a link and have any changes made instantly.</span>
                 </div>
             </div>
         </div>
@@ -261,13 +284,26 @@ Create a quick and free CV template, so that employers must
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script>
       // parallax
- var formSearch = document.querySelector('.search-home');
+var formSearch = document.querySelector('.search-home');
 var containerScroll = document.querySelector('.container-home');
 var topCompany = document.querySelector('.container-home .first-content .toprecruiters');
+
 containerScroll.addEventListener('scroll', () => {
     let rollHeight = containerScroll.scrollTop;
-    formSearch.style.transform = `translatey(${rollHeight * -0.2}px)`;
-    topCompany.style.transform = `translatey(${rollHeight * 0.5}px)`;
+    let width = window.innerWidth;
+    if (width <= 320){
+        formSearch.style.transform = `translatey(${rollHeight * -1.5}px)`;
+        topCompany.style.transform = `translatey(${rollHeight * -1.5}px)`;
+    }
+    else if (width <= 375) {
+        // Các hành động bạn muốn thực hiện tại chiều rộng 375px
+        formSearch.style.transform = `translatey(${rollHeight * -0.5}px)`;
+        topCompany.style.transform = `translatey(${rollHeight * -1}px)`;
+    } else {
+        // Hành động ban đầu
+        formSearch.style.transform = `translatey(${rollHeight * -0.2}px)`;
+        topCompany.style.transform = `translatey(${rollHeight * 0.5}px)`;
+    }
 });
   const listImages = document.querySelectorAll('.templates-img img');
 
@@ -352,47 +388,65 @@ var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
         }, 1780);
     });
     // carousel jobs
-     var swiper = new Swiper(".container-home .home-jobs .mySwiper", {
-        slidesPerView: 3,
-        slidesPerColumn: 4,
-        slidesPerGroup :12,
-        spaceBetween: 20,
-        autoplay: {
+    var swiper = new Swiper(".container-home .home-jobs .mySwiper", {
+    slidesPerView: 3,
+    slidesPerColumn: 4,
+    slidesPerGroup: 12,
+    spaceBetween: 30,
+    autoplay: {
         delay: 3500,
         disableOnInteraction: false
-        },
-        grid: {
-          rows: 4,
-        },
-      pagination: {
+    },
+    breakpoints: {
+        768: {
+            spaceBetween: 40
+        }
+    },
+    grid: {
+        rows: 4,
+    },
+    pagination: {
         el: ".container-home .home-jobs .swiper-pagination",
         clickable: true,
         renderBullet: function (index, className) {
-          return '<span class="' + className + '">' + (index + 1) + "</span>";
+            return '<span class="' + className + '">' + (index + 1) + "</span>";
         },
-      },
-      navigation: {                       
-            nextEl: ".container-home .home-jobs .swiper-button-next",
-            prevEl: ".container-home .home-jobs .swiper-button-prev",
-        }, 
-        on: {
-            init: function () {},
-            orientationchange: function(){},
-            beforeResize: function(){
-                let vw = window.innerWidth;
-                if(vw > 1000){
-                mySwiper.params.slidesPerView = 3
-                    mySwiper.params.slidesPerColumn = 3
-                    mySwiper.params.slidesPerGroup = 3;
-                } else {
-                mySwiper.params.slidesPerView = 4
-                    mySwiper.params.slidesPerColumn = 2
-                    mySwiper.params.slidesPerGroup =4;
-                }
-                mySwiper.init();
-            },
+    },
+    navigation: {                       
+        nextEl: ".container-home .home-jobs .swiper-button-next",
+        prevEl: ".container-home .home-jobs .swiper-button-prev",
+    }, 
+    on: {
+        init: function () {},
+        orientationchange: function(){},
+        beforeResize: function(){
+            let vw = window.innerWidth;
+            if(vw > 1000){
+                mySwiper.params.slidesPerView = 3;
+                mySwiper.params.slidesPerColumn = 3;
+                mySwiper.params.slidesPerGroup = 3;
+            } else {
+                mySwiper.params.slidesPerView = 4;
+                mySwiper.params.slidesPerColumn = 2;
+                mySwiper.params.slidesPerGroup = 4;
+            }
+            mySwiper.init();
+        },
     },
 });
+
+// carousel home job responsive 
+var swiper = new Swiper(".container-home .home-jobs__responsive .mySwiper", {
+      spaceBetween: 30,
+      pagination: {
+        el: ".container-home .home-jobs__responsive .mySwiper .swiper-pagination",
+        clickable: true,
+      },
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false
+        },
+    });
  var listBox = document.querySelectorAll('.box__info-company')
  listBox.forEach(function(item) {
   const showFollowBox = item.querySelector('.info-company__follow');
