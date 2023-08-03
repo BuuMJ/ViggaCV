@@ -568,7 +568,7 @@ class JobController {
     try {
       const user = req.user;
       const idjob = req.params.id;
-      const favourite = await FavouriteModel.findOne({ jobid: idjob });
+      const favourite = await FavouriteModel.findOne({ jobid: idjob, userid: user._id });
       if (req.user) {
         if (favourite) {
           var checksave = 2;

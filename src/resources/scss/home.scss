@@ -991,6 +991,7 @@
     margin-top: 30px;
     // box-shadow: 2px 2px 30px $primarycolor;
     transition: .5s;
+    transform: translateX(35%);
 }
 
 .templates-text__action:hover {
@@ -1338,6 +1339,9 @@
     .templates-text__action  {
         font-size: 22px;
     }
+    .templates-text__action{
+        transform: translateX(37%);
+    }
     .container-home .home-jobs .title-jobs{
         font-size: 28px;
     }
@@ -1413,6 +1417,7 @@
     .templates-text__action{
         transform: translateX(26%);
         font-size: 18px;
+        margin-top: unset;
     }
     .container-home .home-jobs .swiper{
         width: 67%;
@@ -1491,6 +1496,7 @@
     .templates-text__action{
         margin-bottom: 62px;
         transform: unset;
+        margin-top: 20px;
     }
     .container-home .home-personal .title-personal{
         text-align: center;
