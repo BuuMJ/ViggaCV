@@ -24,6 +24,16 @@ class HomeController {
       const topCompanies = await CompanyModel.find() // công ty có nhiều follow
         .sort({ follow: -1 })
         .limit(4);
+
+      // Kiểm tra và cập nhật trường prioritize
+      await JobModel.updateMany(
+        {
+          prioritize: true,
+          prioritizeUpdatedAt: { $lt: new Date() },
+        },
+        { prioritize: false }
+      );
+
       res.render("home", {
         title: "Vigga Home",
         user: req.user,

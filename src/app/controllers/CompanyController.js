@@ -229,17 +229,28 @@ class CompanyController {
     const idcompany = req.params.id;
     const company = await CompanyModel.findOne({ _id: idcompany });
     const leadership = company.leadership;
-    const checkfl = await ActionModel.findOne({
-      companyid: idcompany,
-      userid: req.user._id,
-      follow: "following",
-    });
+    var checkfl;
+    if (req.user) {
+      var data = await ActionModel.findOne({
+        companyid: idcompany,
+        userid: req.user._id,
+        follow: "following",
+      });
+      if (data) {
+        checkfl = { follow: "following" };
+      } else {
+        checkfl = { follow: "follow" };
+      }
+    } else {
+      checkfl = { follow: "follow" };
+    }
+    console.log(checkfl.follow);
     JobModel.find({ iduser: company.iduser }).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
       res.render("companydetail", {
         title: "Company Detail",
         user: req.user,
-        checkfl,
+        checkfl: checkfl,
         company: staffMongoseToObject(company),
         leadership: staffMongoseToObject(company.leadership),
         listjob: listjob,
@@ -251,29 +262,32 @@ class CompanyController {
   async follow(req, res, next) {
     const idCompany = req.params.id;
     const company = await CompanyModel.findById(idCompany);
-
-    const checkfl = await ActionModel.findOne({
-      companyid: idCompany,
-      userid: req.user._id,
-      follow: "following",
-    });
-    if (checkfl) {
-      await ActionModel.findByIdAndRemove(checkfl._id);
-      company.follow--;
-      await company.save();
-      res.redirect("/company/" + idCompany);
-      console.log("ĐÃ XOÁ FOLLOW");
-    } else {
-      const action = new ActionModel({
+    if (req.user) {
+      const checkfl = await ActionModel.findOne({
         companyid: idCompany,
         userid: req.user._id,
         follow: "following",
       });
-      await action.save();
-      company.follow++;
-      await company.save();
-      res.redirect("/company/" + idCompany);
-      console.log("ĐÃ THÊM FOLLOW" + checkfl);
+      if (checkfl) {
+        await ActionModel.findByIdAndRemove(checkfl._id);
+        company.follow--;
+        await company.save();
+        res.redirect("/company/" + idCompany);
+        console.log("ĐÃ XOÁ FOLLOW");
+      } else {
+        const action = new ActionModel({
+          companyid: idCompany,
+          userid: req.user._id,
+          follow: "following",
+        });
+        await action.save();
+        company.follow++;
+        await company.save();
+        res.redirect("/company/" + idCompany);
+        console.log("ĐÃ THÊM FOLLOW" + checkfl);
+      }
+    } else {
+      res.redirect("/login");
     }
   }
 
