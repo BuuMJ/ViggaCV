@@ -1,2 +1,67 @@
-<h1>thành công</h1>
-<h1>{{jobID}}</h1>
+<div class="container__success-payment">
+    <div class="main__success-payment">
+        <div class="navbar-left">
+            <div class="navbar-left__primary">
+                <a class="navbar-left-img" href="/"><img src="/img/LOGOVGA.png" alt=""></a>
+                <a class="navbar-left-name" href="/"><span>ViggaCareers</span></a>
+            </div>
+            <a class="litle-text" href="/"><p >Unlock Your Potential</p></a>
+        </div>
+        <div class="body__success-payment">
+            <header class="logo-success">
+                <img src="/img/paymentsuccess.png" alt="">
+                <p class="welcome">hi <b>{{job.companyname}}</b>, Congratulations</p>
+                <h1>Payment Successful !</h1>
+                <p class="total" data-total="{{days}}"></p>
+                <p class="time-payment"></p>
+            </header>
+            <section>
+                <p>Name Job: {{job.jobname}}</p>
+                <p>Duration: {{days}} day</p>
+                <p class="startday"></p>
+                <p class="endday"></p>
+            </section>
+            <div class="bottom">
+                <p>Thank you <b>{{job.companyname}}</b> for trusting and using our service</p>
+            </div>
+        </div>
+        <div class="confirm-payment">
+            <input id="confirm" type="checkbox" required>
+            <label for="confirm">confirm payment information</label>
+        </div>
+        <div class="action-confirm">
+            <a id="joblink" href="/job">back to job page</a>
+        </div>
+    </div>
+</div>
+<script>
+    var textTotal = document.querySelector('.total');
+    var textTotal = document.querySelector('[data-total]');
+    var daysDuration = parseInt(textTotal.getAttribute('data-total'), 10);
+    textTotal.innerHTML = 'Total: ' + daysDuration * 1.5 + '$';
+    
+    var textStartDay = document.querySelector('.startday');
+    var today = new Date();
+    var formattedDate = today.getDate().toString().padStart(2, '0') + '-' + (today.getMonth() + 1).toString().padStart(2, '0') + '-' + today.getFullYear();
+    textStartDay.innerHTML = 'Start Day: ' + formattedDate;
+
+    var textTimePayment = document.querySelector('.time-payment');
+    textTimePayment.innerHTML = 'Payment Date: ' + formattedDate;
+
+    var textEndDay = document.querySelector('.endday');
+    var endDate = new Date();  
+    endDate.setDate(today.getDate() + daysDuration);
+    var formattedEndDate = endDate.getDate().toString().padStart(2, '0') + '-' + (endDate.getMonth() + 1).toString().padStart(2, '0') + '-' + endDate.getFullYear();
+    textEndDay.innerHTML = 'End Day: ' + formattedEndDate;
+    
+    document.addEventListener("DOMContentLoaded", function() {
+    var checkBox = document.getElementById('confirm');
+    var jobLink = document.getElementById('joblink');
+    jobLink.addEventListener('click', function(event) {
+        if (!checkBox.checked) {
+            alert("Please confirm payment information before proceeding & Click on the box to confirm payment information.");
+            event.preventDefault();
+        }
+    });
+});
+</script>

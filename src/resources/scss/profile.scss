@@ -976,3 +976,118 @@ ul.listpageleadership {
     background-color: $secondarycolor;
     color: white;
 }
+// payment success
+.container__success-payment{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    min-height: 100vh;
+    width: 100%;
+    background-color: $backgroundcolor;
+}
+.container__success-payment .main__success-payment{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 40%;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px $secondarycolor;
+    margin-top: 20px;
+}
+.container__success-payment .main__success-payment .navbar-left{
+    margin: 12px 0;
+}
+.container__success-payment .main__success-payment .navbar-left .litle-text{
+    width: 170px;
+    left: 63%;
+    bottom: -3px;
+}
+.container__success-payment .main__success-payment .body__success-payment{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.container__success-payment .main__success-payment .body__success-payment header.logo-success{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.container__success-payment .main__success-payment .body__success-payment header.logo-success img{
+    width: 40%;
+    height: 140px;
+}
+.container__success-payment .main__success-payment .body__success-payment header.logo-success .welcome b{
+    color: $secondarycolor;
+    margin-top: 6px;
+}
+.container__success-payment .main__success-payment .body__success-payment header.logo-success h1{
+    color: $secondarycolor;
+}
+.container__success-payment .main__success-payment .body__success-payment header.logo-success .total{
+    color: #ff7d55;
+}
+.container__success-payment .main__success-payment .body__success-payment header.logo-success .time-payment{
+    color: #bdc0c0;
+    font-size: 14px;
+}
+.container__success-payment .main__success-payment .body__success-payment section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    padding-left: 30px;
+}
+.container__success-payment .main__success-payment .body__success-payment .bottom{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 30px;
+    width: 100%;
+}
+.container__success-payment .main__success-payment .action-confirm{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 12px 0;
+}
+.container__success-payment .main__success-payment .action-confirm a{
+    width: 80%;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: $secondarycolor;
+    border: 1px solid $secondarycolor;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: .5s;
+}
+.container__success-payment .main__success-payment .confirm-payment{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    padding-left: 30px;
+}
+.container__success-payment .main__success-payment .confirm-payment input{
+    height: 20px;
+    width: 20px;
+    margin-right: 6px;
+}
+.container__success-payment .main__success-payment .confirm-payment label{
+    font-size: 16px;
+}
+.container__success-payment .main__success-payment .action-confirm a:hover{
+    background-color: $secondarycolor;
+    color: white;
+}
