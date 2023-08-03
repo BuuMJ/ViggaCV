@@ -1424,7 +1424,6 @@
 
 header.jobdetail {
   width: 100%;
-  height: 120px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -1432,40 +1431,73 @@ header.jobdetail {
 
 header.jobdetail img {
   width: 12%;
-  height: 90%;
-  margin: 0 20px 0 0; }
+  height: 90%; }
 
 header.jobdetail .center-jobdetail {
   width: 50%;
-  height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-around; }
 
 .center-jobdetail .primary-text {
   font-size: 27px;
-  font-weight: 500; }
+  font-weight: 500;
+  padding: 12px 50px 8px 20px; }
 
 .center-jobdetail .secondary-text {
   font-size: 14px;
   font-weight: 500;
-  color: #FCCB0C; }
+  color: #FCCB0C;
+  padding: 4px 50px 4px 20px; }
 
 .center-jobdetail .third-text {
   font-size: 14px;
-  font-weight: 400; }
+  font-weight: 400;
+  padding: 4px 50px 4px 20px; }
 
 .center-jobdetail .forth-text {
   font-size: 14px;
   font-weight: 500;
-  color: #ff7d55; }
+  color: #ff7d55;
+  padding: 4px 50px 12px 20px; }
 
 .jobdetail-action {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center; }
+
+.jobdetail-action form {
+  margin: 4px 0; }
+
+.jobdetail-action form button.check-save__job {
+  background-color: transparent;
+  border: 1px solid #58b9f9;
+  outline: none;
+  color: #58b9f9;
+  padding: 4px;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
-  height: 100%; }
+  font-size: 20px;
+  height: 32px;
+  width: 120px;
+  font-weight: 400; }
+
+.jobdetail-action form button.check-save__job:hover {
+  text-shadow: unset;
+  border: 1px solid #0072bc;
+  color: #0072bc; }
+
+.jobdetail-action form button.saved {
+  background-color: #0072bc;
+  color: white;
+  border: 1px solid #0072bc; }
+
+.jobdetail-action form button.saved:hover {
+  border: 1px solid #0072bc;
+  color: white;
+  background-color: #0072bc; }
 
 .jobdetail-action button {
   outline: none;
@@ -5305,7 +5337,7 @@ button#moveTopBtn {
 
 @media screen and (max-width: 1440px) {
   .navbar-left .litle-text {
-    left: 22.5%; } }
+    left: 25%; } }
 
 @media screen and (max-width: 1024px) {
   .navbar-left .navbar-left__primary a {

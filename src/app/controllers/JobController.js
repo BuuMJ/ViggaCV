@@ -1,5 +1,6 @@
 const JobModel = require("../models/Job");
 const CompanyModel = require("../models/Company");
+const FavouriteModel = require("../models/Favourite")
 const {
   mutipleMongooseToObject,
   staffMongoseToObject,
@@ -564,6 +565,7 @@ class JobController {
   async detail(req, res, next) {
     try {
       const user = req.user;
+      const checksave = 2;
       const idjob = req.params.id;
       const detail = await JobModel.findOne({ _id: idjob });
       const company = await CompanyModel.findOne({ iduser: detail.iduser });
@@ -573,12 +575,45 @@ class JobController {
         title: "Job Detail",
         detail: staffMongoseToObject(detail),
         user,
+        checksave: checksave,
         company: staffMongoseToObject(company),
         job: mutipleMongooseToObject(job),
       });
     } catch (err) {
       console.log(err);
     }
+  }
+
+  async favourite(req, res, next){
+    const iduser = req.user._id
+    const idjob = req.query.id
+
+    const checkFR = await FavouriteModel.findOne({
+      userid: iduser,
+      jobid: idjob
+    })
+    if(checkFR){
+
+    }else{
+      const action = new FavouriteModel({
+        userid: iduser,
+      jobid: idjob
+      })
+      await action.save();
+      res.redirect("/job/job_favourite")
+    }
+  }
+
+  async job_favourite(req, res, next){
+    const iduser = req.user._id
+    const jobs = await FavouriteModel.find({userid: iduser}).distinct("jobid")
+    const listjob = await JobModel.find({
+      _id: {$in: jobs}
+    })
+
+    res.render("job_favourite",{
+      listjob: staffMongoseToObject(listjob)
+    })
   }
 }
 

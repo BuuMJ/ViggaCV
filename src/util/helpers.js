@@ -236,6 +236,13 @@ module.exports = {
   //     return "Follow";
   //   }
   // },
+  checkSave: function (checksave) {
+    if (checksave) {
+      return "true";
+    } else {
+      return "false";
+    }
+  },
   ifeq: function (user, y, options) {
     // console.log(user)
     var currentRole = user == undefined ? "" : user.role;

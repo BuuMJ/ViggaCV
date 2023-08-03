@@ -1,5 +1,5 @@
 <header class="jobdetail">
-    <img src="{{getAvatarcompany company}}" alt="">
+    <img src="{{getAvatarcompany company}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
     <div class="center-jobdetail">
         <span class="primary-text">{{detail.jobname}}</span>
         <span class="secondary-text">{{getCompanyname company}} {{getTOB company}}</span>
@@ -8,6 +8,9 @@
     </div>
     <div class="jobdetail-action">
         <button class="btn-apply" type="button" >Apply Now</button>
+        <form class="function__check-save" action="">
+            <button class="check-save__job" type="submit" data-check-save="{{checkSave checksave}}"><i class="bi bi-heart"></i></button>
+        </form>
         <a href="/cv/createcv">create cv to apply</a>
     </div>
 </header>
@@ -151,4 +154,14 @@
         boxApply.style.cssText = "transform: translateY(-200%);"
         body.classList.remove('modal-open');
     });
+    var buttonSave = document.querySelector('.check-save__job');
+    var checkSave = buttonSave.getAttribute('data-check-save');
+    if(checkSave == 'true'){
+        buttonSave.innerHTML = '<i class="bi bi-heart-fill"></i> Saved';
+        buttonSave.classList.add('saved')
+    }
+    else{
+        buttonSave.innerHTML = '<i class="bi bi-heart"></i> Save';
+        buttonSave.classList.remove('saved')
+    };
 </script>
