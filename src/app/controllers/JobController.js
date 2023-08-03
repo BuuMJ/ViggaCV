@@ -578,10 +578,10 @@ class JobController {
       } else {
         var checksave = undefined;
       }
+      console.log(checksave);
       const detail = await JobModel.findOne({ _id: idjob });
       const company = await CompanyModel.findOne({ iduser: detail.iduser });
       const job = await JobModel.find({ iduser: detail.iduser });
-      console.log(job + "asdasdgjahgsjhagsfhagjdhgajsdajgajsg");
       res.render("jobdetail", {
         title: "Job Detail",
         detail: staffMongoseToObject(detail),

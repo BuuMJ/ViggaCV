@@ -1,7 +1,9 @@
-const textract = require("textract");
 const nlp = require("compromise");
+const textract = require("textract");
 const JobModel = require("../models/Job");
 const CompanyModel = require("../models/Company");
+const QualifiedModel = require("../models/Qualified");
+const UnsatisfactoryModel = require("../models/Unsatisfactory");
 
 class ApplyCVController {
   async scan(req, res, next) {
@@ -67,6 +69,7 @@ class ApplyCVController {
           const jobID = req.query.id;
           console.log(jobID);
           const job = await JobModel.findById({ _id: jobID });
+          const company = await CompanyModel.findById(job.idcompany);
           const jobDescription = job.jobrequi;
           const cvText = text;
           const doc = nlp(jobDescription);
@@ -85,6 +88,34 @@ class ApplyCVController {
             }
           });
           console.log(`Score: ${score}/${keywords.length}`);
+          let destinationFolder;
+          if (score / keywords.length > 0.5) {
+            QualifiedModel.create({
+              name: req.file.name,
+              part: a, // nhớ sửa chỗ này
+              jobid: job._id,
+              companyid: company._id,
+            });
+            destinationFolder = `/uploads/applyCV/${company.companyname}/${job.jobname}/Qualified`;
+          } else {
+            destinationFolder = `/uploads/applyCV/${company.companyname}/${job.jobname}/Unsatisfactory`;
+          }
+          // Tạo thư mục nếu chưa tồn tại
+          fs.mkdirSync(destinationFolder, { recursive: true });
+
+          // Di chuyển file
+          const newPath = `${destinationFolder}`;
+          fs.rename(req.file.path, newPath, (err) => {
+            if (err) {
+              console.error("Error moving file:", err);
+              return res
+                .status(500)
+                .send({ message: "Lỗi khi di chuyển file." });
+            }
+
+            // (phần xử lý khác sau khi di chuyển file thành công)
+            console.log(`File has been moved to: ${newPath}`);
+          });
         } catch (err) {
           console.log(err);
           return res
