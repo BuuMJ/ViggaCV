@@ -7,12 +7,55 @@
         <section>
             <div class="header-section">
                 <span class="saved-job">Saved Jobs</span>
-                <span class="viewd-job">Recent Viewed Jobs</span>
+                <span class="viewed-job">Recent Viewed Jobs</span>
                 <span class="applied-job">Applied Jobs</span>
             </div>
+            <div class="custom-loader"></div>
             <div class="box__saved-job">
                 <span class="list__job-saved">List: {{count}} Jobs Saved</span>
                 {{#each listjob}}
+                    <div class="card__job-saved">
+                        <h1>{{this.jobname}}</h1>
+                        <div class="job-saved__company">
+                            <img src="/{{this.avatar}}" alt="">
+                            <span>{{this.companyname}}</span>
+                        </div>
+                        <p class="job-saved__salary"><i class="bi bi-currency-dollar"></i> {{this.salary}}</p>
+                        <p class="job-saved__location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</p>
+                        <div class="action__job-saved">
+                            <a href="/job/{{this._id}}">Apply Now</a>
+                            <form class="function__check-save" action="/job/favourite?id={{this._id}}" method="POST">
+                                <button title="Save Job" class="check-save__job" type="submit"><i class="bi bi-heart-fill"></i></button>
+                            </form>
+                        </div>
+                        <span class="check-hot" data-hot-saved="{{this.prioritize}}"></span>
+                    </div>
+                {{/each}}
+            </div>
+            <div class="box__saved-job box__viewed-job">
+                <span class="list__job-saved">List: {{countViewed}} jobs you just viewed</span>
+                {{#each listViewed}}
+                    <div class="card__job-saved">
+                        <h1>{{this.jobname}}</h1>
+                        <div class="job-saved__company">
+                            <img src="/{{this.avatar}}" alt="">
+                            <span>{{this.companyname}}</span>
+                        </div>
+                        <p class="job-saved__salary"><i class="bi bi-currency-dollar"></i> {{this.salary}}</p>
+                        <p class="job-saved__location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</p>
+                        <div class="action__job-saved">
+                            <a href="/job/{{this._id}}">Apply Now</a>
+                            <form class="function__check-save" action="/job/favourite?id={{this._id}}" method="POST">
+                                <button title="Save Job" class="check-save__job" type="submit"><i class="bi bi-heart-fill"></i></button>
+                            </form>
+                        </div>
+                        <span class="check-hot" data-hot-saved="{{this.prioritize}}"></span>
+                    </div>
+                {{/each}}
+            </div>
+            <div class="box__saved-job box__applied-job">
+                <span class="list__job-saved">List: {{countApply}} jobs you just applied</span>
+                {{#each listApply}}
                     <div class="card__job-saved">
                         <h1>{{this.jobname}}</h1>
                         <div class="job-saved__company">
@@ -47,6 +90,73 @@
             }
             else{
                 textJobSaved.style.display = 'none';
+            }
+        });
+        var clickSavedJob = document.querySelector('.saved-job');
+        var clickViewedJob = document.querySelector('.viewed-job');
+        var clickApplyJob = document.querySelector('.applied-job');
+        var containerSavedJob = document.querySelector('.box__saved-job');
+        var containerViewedJob = document.querySelector('.box__viewed-job');
+        var containerApllyJob = document.querySelector('.box__applied-job');
+        var loadingYourJob = document.querySelector('.custom-loader')
+        var savedClicked = false;
+        var viewedClicked = false;
+        var applyClicked = false;
+        clickSavedJob.addEventListener('click',()=>{
+            if(!savedClicked){
+                savedClicked = true;
+                viewedClicked = false;
+                applyClicked = false;
+                containerViewedJob.style.display = 'none';
+                containerApllyJob.style.display = 'none';
+                clickSavedJob.style.cssText = 'border-bottom: 3px solid #0072bc; color: #fed200; cursor: default;';
+                clickApplyJob.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
+                clickViewedJob.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
+                loadingYourJob.style.display = 'grid';
+                setTimeout(function(){
+                    loadingYourJob.style.display = 'none';
+                }, 1750);
+                setTimeout(function(){
+                    containerSavedJob.style.display = 'flex';
+                }, 1780);
+            }
+        });
+        clickViewedJob.addEventListener('click',()=>{
+            if(!viewedClicked){
+                viewedClicked = true;
+                savedClicked = false;
+                applyClicked = false;
+                containerSavedJob.style.display = 'none';
+                containerApllyJob.style.display = 'none';
+                clickSavedJob.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
+                clickViewedJob.style.cssText = 'border-bottom: 3px solid #0072bc; color: #fed200; cursor: default;';
+                clickApplyJob.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
+                loadingYourJob.style.display = 'grid';
+                setTimeout(function(){
+                    loadingYourJob.style.display = 'none';
+                }, 1750);
+                setTimeout(function(){
+                    containerViewedJob.style.display = 'flex';
+                }, 1780);
+            }
+        });
+        clickApplyJob.addEventListener('click',()=>{
+            if(!applyClicked){
+                applyClicked = true;
+                viewedClicked = false;
+                savedClicked = false;
+                containerSavedJob.style.display = 'none';
+                containerViewedJob.style.display = 'none';
+                clickSavedJob.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
+                clickViewedJob.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
+                clickApplyJob.style.cssText = 'border-bottom: 3px solid #0072bc; color: #fed200; cursor: default;';
+                loadingYourJob.style.display = 'grid';
+                setTimeout(function(){
+                    loadingYourJob.style.display = 'none';
+                }, 1750);
+                setTimeout(function(){
+                    containerApllyJob.style.display = 'flex';
+                }, 1780);
             }
         });
     });

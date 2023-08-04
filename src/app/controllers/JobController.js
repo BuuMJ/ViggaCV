@@ -683,6 +683,10 @@ class JobController {
       _id: { $in: uniqueMerged },
       active: true,
     });
+    const countApply = await JobModel.countDocuments({
+      _id: { $in: uniqueMerged },
+      active: true,
+    });
     const jobs = await FavouriteModel.find({ userid: iduser }).distinct(
       "jobid"
     );
@@ -693,7 +697,12 @@ class JobController {
       active: true,
       _id: { $in: viewed },
     });
-    const listjob = await JobModel.find({ active: true, _id: { $in: jobs } });
+    const countViewed = await JobModel.countDocuments({
+      _id: { $in: viewed },
+    });
+    const listjob = await JobModel.find({
+      _id: { $in: jobs },
+    });
     const count = await JobModel.countDocuments({
       _id: { $in: jobs },
     });
@@ -702,10 +711,11 @@ class JobController {
     res.render("job_favourite", {
       listjob: mutipleMongooseToObject(listjob),
       listViewed: mutipleMongooseToObject(listViewed),
-      listapply: mutipleMongooseToObject(listapply),
-      jobsWithFavouriteFlag: mutipleMongooseToObject(jobsWithFavouriteFlag),
+      listApply: mutipleMongooseToObject(listapply),
       user: req.user,
       count,
+      countViewed,
+      countApply,
     });
   }
 }
