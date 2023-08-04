@@ -39,9 +39,10 @@ header.jobdetail .center-jobdetail{
 }
 .jobdetail-action{
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
+    width: 220px;
 }
 .jobdetail-action form {
     margin: 4px 0;
@@ -50,54 +51,59 @@ header.jobdetail .center-jobdetail{
     background-color: transparent;
     border: 1px solid #58b9f9;
     outline: none;
-    color: #58b9f9;
+    color: #E63946;
     padding: 4px;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 20px;
-    height: 32px;
-    width: 120px;
-    font-weight: 400;
+    justify-content: center;
+    align-items: start;
+    font-size: 30px;
+    height: 50px;
+    width: 50px;
+    font-weight: 700;
+    transition: .5s;
 }
 .jobdetail-action form button.check-save__job:hover{
     text-shadow: unset;
     border: 1px solid $secondarycolor;
-    color: $secondarycolor;
+    background-color: $secondarycolor;
 }
 .jobdetail-action form button.saved{
     background-color: $secondarycolor;
-    color: white;
+    color: #E63946;
     border: 1px solid $secondarycolor;
+    transition: .5s;
 }
 .jobdetail-action form button.saved:hover{
     border: 1px solid $secondarycolor;
-    color: white;
-    background-color: $secondarycolor;
+    color: #E63946;
+    background-color: white;
 }
-.jobdetail-action button{
+.jobdetail-action button.btn-apply{
     outline: none;
-    border: 1px solid $primarycolor;
+    border: 1px solid $secondarycolor;
     height: 50px;
     width: 160px;
-    background-color: #FCCB0C;
-    color: white;
+    background-color: white;
+    color: $secondarycolor;
     font-size: 20px;
     font-weight: 600;
-    transition: .3s;
+    transition: .5s;
 }
-.jobdetail-action button:hover{
-    background-color: $primarycolor;
-    text-shadow: 4px 4px 4px black;
+.jobdetail-action button.btn-apply:hover{
+    background-color: $secondarycolor;
+    color: white;
 }
 .jobdetail-action a{
     text-decoration: none;
+    width: 100%;
+    text-align: end;
 }
 .jobdetail-action a{
     color: #FCCB0C;
 }
 .jobdetail-action a:hover{
     color: $primarycolor;
+    text-decoration: underline;
 }
 .body-jobdetail{
     width: 100%;
@@ -959,7 +965,7 @@ header.job-search .best-companyFL {
 .jobs-ads .ads-NYcompany,
 .jobs-ads .ads-LRcompany,
 .jobs-ads .best-job{
-    width: 403px;
+    width: 100%;
     height: 483px;
     overflow: hidden;
     border-radius: 5px;
@@ -1058,14 +1064,12 @@ header.job-search .best-companyFL {
     border-radius: 5px;
 }
 .card-suggest .header-suggest .name-suggest{
-    color: $secondarycolor;
-    font-size: 30px;
+    color: white;
+    font-size: 20px;
     font-weight: 600;
-    // text-shadow: 2px 2px 20px $boxshadowPrimary;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     text-transform: capitalize;
     text-align: center;
-    background-color: rgba(255,255,255,0.4);
-    backdrop-filter: blur(10px);
     border-radius: 5px;
     margin-top: 8px;
     padding: 4px 8px;
@@ -1102,7 +1106,7 @@ header.job-search .best-companyFL {
     font-weight: 600;
     color: white;
     text-transform: capitalize;
-    text-shadow: 4px 4px 2px rgba(0,0,0,0.8);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 .random-job li .suggest-jobname{
     color: black;
@@ -1379,7 +1383,7 @@ header.job-search .best-companyFL {
 .container__job-saved .main__job-saved section .box__saved-job .card__job-saved .action__job-saved .function__check-save button{
     border: 1px solid $secondarycolor;
     background-color: $secondarycolor;
-    color: white;
+    color: #E63946;
     font-size: 30px;
     display: flex;
     justify-content: center;
@@ -1412,5 +1416,45 @@ header.job-search .best-companyFL {
     .header-search .input-search .categories-select #categories-search:focus, 
     .header-search .input-search .categories-select__position #categories-search__position:focus{
         padding-left: 8px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .header-search .input-search{
+        width: 76%;
+    }
+    .header-search .header-search__scancv label{
+        width: 150px;
+    }
+    .header-search .header-search__scancv label .text-scancv{
+        font-size: 16px;
+    }
+    .header-search .input-search .categories-select,
+    .header-search .input-search .categories-select__position{
+        font-size: 14px;
+    }
+    .header-search .input-search input{
+        padding: 4px 37% 4px 42px;
+    }
+    .header-search .input-search .categories-select #categories-search, 
+    .header-search .input-search .categories-select #categories-search:focus{
+        width: 130px;
+    }
+    .header-search .input-search .categories-select__position #categories-search__position, 
+    .header-search .input-search .categories-select__position #categories-search__position:focus{
+        width: 100px;
+    }
+    .header-search .input-search .categories-select__position{
+        right: 18%;
+    }
+    .header-search .input-search .categories-select__position i{
+        right: 4%;
+    }
+    .header-search .navbar-left .navbar-left__primary a.navbar-left-name{
+        font-size: 22px;
+    }
+    .header-search .navbar-left a.litle-text{
+        left: 30%;
+        bottom: 20px;
+        font-size: 11px;
     }
 }

@@ -643,7 +643,7 @@ li.content-listleadership{
     display: flex;
     flex-direction: column;
     width: 95%;
-    height: 60px;
+    height: 90px;
     padding: unset;
     border-bottom: 1px solid #f0f0f0;
     margin-bottom: 12px;
@@ -654,6 +654,7 @@ li.content-listleadership{
 }
 li.content-listjob{
     position: relative;
+    height: 102px;
 }
 li.content-listjob a.payment{
     position: absolute;
@@ -700,6 +701,26 @@ li.content-listjob .remove-blocked{
     box-shadow: 0 4px 8px rgba(0,0,0,0.8);
     z-index: 19;
 }
+li.content-listjob .cv-applied{
+    font-size: 14px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border: 1px solid $secondarycolor;
+    background-color: white;
+    color: $secondarycolor;
+    border-radius: 5px;
+    text-decoration: none;
+    width: 120px;
+    height: 30px;
+    margin-top: 6px;
+    margin-left: 24px;
+    text-align: center;
+    transition: .5s;
+}
+li.content-listjob .cv-applied:hover{
+    background-color: $secondarycolor;
+    color: white;
+}
 li.content-listjob .remove-blocked span{
     font-size: 20px;
     margin: 6px 0;
@@ -714,7 +735,6 @@ li.content-listleadership{
 }
 li.content-listjob:hover .namejobs{
     color: $primarycolor;
-    
 }
 li.content-listleadership img{
     width: 60px;
@@ -775,7 +795,6 @@ span.update-leader:hover{
     font-size: 20px !important;
     font-weight: 400 !important;
     padding: 0 0 0 2px !important;
-    height: 20px;
 }
 .namejobs i{
     visibility: hidden;
@@ -786,7 +805,6 @@ li.content-listjob:hover i.bi-three-dots-vertical{
 }
 .secondary-listjob{
     display: inline-block;
-    height: 20px;
     padding-left: 24px;
 }
 span.timejobs,

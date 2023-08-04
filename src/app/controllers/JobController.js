@@ -712,8 +712,8 @@ class JobController {
     res.render("job_favourite", {
       company,
       listjob: mutipleMongooseToObject(listjob),
-      listViewed: mutipleMongooseToObject(viewWithFlag),
-      listApply: mutipleMongooseToObject(applyWithFlag),
+      listViewed: viewWithFlag,
+      listApply: applyWithFlag,
       user: req.user,
       count,
       countViewed,
