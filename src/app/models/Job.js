@@ -17,6 +17,10 @@ const Job = new Schema(
     benefit: String,
     position: String,
     categories: String,
+    active: {
+      type: Boolean,
+      default: true,
+    },
     prioritize: {
       type: Boolean,
       default: false,

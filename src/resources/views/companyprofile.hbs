@@ -573,22 +573,17 @@ viewMoreBtn.addEventListener("click", function() {
         removeAction.addEventListener('mouseout',()=>{
             removeAction.querySelector('i').style.color = 'black'
         });
-        blockedAction.addEventListener('mouseover',()=>{
-            blockedAction.innerHTML = '<i class="bi bi-lock-fill"></i>';
-        });
-        blockedAction.addEventListener('mouseout',()=>{
-            blockedAction.innerHTML = '<i class="bi bi-unlock-fill"></i>';
-        });
+       
         //action
         removeAction.addEventListener('click',()=>{
             const userConfirmed = confirm("Are you sure you want to delete this job?");
             if(userConfirmed) {
-                formRemoveJob.action = `/companyprofile/delete/${getIDJob}`;
+                formRemoveJob.action = `/companyprofile/delete/${getIDJob}?_method=DELETE`;
                 formRemoveJob.submit();
             }
         })
         blockedAction.addEventListener('click',()=>{
-            formBlockedJob.action `/companyprofile/blocked/${getIDJob}`;
+            formBlockedJob.action = `/companyprofile/blocked/${getIDJob}?_method=PUT`;
             formBlockedJob.submit();
         })
     })

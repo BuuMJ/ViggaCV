@@ -69,7 +69,7 @@ class ApplyCVController {
       } else {
         try {
           const jobID = req.query.id;
-          const job = await JobModel.findById({ _id: jobID });
+          const job = await JobModel.findById({ _id: jobID, active: true });
           console.log(job);
           const company = await CompanyModel.findById(job.idcompany);
           console.log(company);
@@ -100,7 +100,7 @@ class ApplyCVController {
           }
 
           // Tạo newPath
-          const projectRoot = path.join(__dirname, "..", "..");
+          const projectRoot = path.join(__dirname, "..", "..", "..");
           const absoluteDestination = path.join(
             projectRoot,
             "uploads",

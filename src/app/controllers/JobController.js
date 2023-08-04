@@ -13,7 +13,7 @@ const {
 class JobController {
   async job(req, res, next) {
     const user = req.user;
-    const job = await JobModel.find({});
+    const job = await JobModel.find({ active: true });
     const count = await JobModel.countDocuments();
     const company = await CompanyModel.find({});
     var page = req.query.page;
@@ -28,7 +28,10 @@ class JobController {
     const randomIndex = Math.floor(Math.random() * company.length);
     const randomCompany = company[randomIndex];
     // Tìm job của random company
-    const jobs = await JobModel.find({ iduser: randomCompany.iduser });
+    const jobs = await JobModel.find({
+      iduser: randomCompany.iduser,
+      active: true,
+    });
 
     // Lấy ngẫu nhiên 3 công việc
     const randomJobs = jobs.sort(() => 0.5 - Math.random()).slice(0, 3);
@@ -120,7 +123,7 @@ class JobController {
       page = parseInt(page);
       var skip = (page - 1) * PAGE_SIZE;
 
-      JobModel.find({})
+      JobModel.find({ active: true })
         .skip(skip)
         .limit(PAGE_SIZE)
         .sort({ prioritizeUpdatedAt: -1 })
@@ -147,7 +150,7 @@ class JobController {
       page = 1;
       var skip = (page - 1) * PAGE_SIZE;
 
-      JobModel.find({})
+      JobModel.find({ active: true })
         .skip(skip)
         .limit(PAGE_SIZE)
         .sort({ prioritizeUpdatedAt: -1 })
@@ -173,7 +176,7 @@ class JobController {
   }
 
   async search(req, res, next) {
-    const allJobs = await JobModel.find({});
+    const allJobs = await JobModel.find({ active: true });
     const user = req.user;
     const search = req.query.search;
     const categories = req.query.categories;
@@ -183,6 +186,7 @@ class JobController {
         { jobname: { $regex: search, $options: "i" } },
         { companyname: { $regex: search, $options: "i" } },
       ],
+      active: true,
     };
 
     if (categories) {
@@ -278,7 +282,10 @@ class JobController {
     // );
     const randomIndex = Math.floor(Math.random() * company.length);
     const randomCompany = company[randomIndex];
-    const jobs = await JobModel.find({ iduser: randomCompany.iduser });
+    const jobs = await JobModel.find({
+      iduser: randomCompany.iduser,
+      active: true,
+    });
     const randomJobs = jobs.sort(() => 0.5 - Math.random()).slice(0, 3);
     if (page) {
       //Get page
@@ -339,11 +346,12 @@ class JobController {
 
   async scan(req, res, next) {
     const user = req.user;
-    const allJobs = await JobModel.find({});
+    const allJobs = await JobModel.find({ active: true });
 
     if (req.session.jobs) {
       var search = req.session.jobs;
       var job = await JobModel.find({
+        active: true,
         jobrequi: { $regex: new RegExp(req.session.jobs.join("|"), "i") },
       });
       // console.log(job);
@@ -359,7 +367,10 @@ class JobController {
       const companyIDs = companies.map((company) => company._id);
       var companyscan = { ids: companyIDs };
       // console.log(company);
-      var job = await JobModel.find({ idcompany: { $in: companyscan.ids } });
+      var job = await JobModel.find({
+        idcompany: { $in: companyscan.ids },
+        active: true,
+      });
       // console.log("đây là sanh sách các công việc phù hợp với bạn: " + job);
     }
     const count = job.length;
@@ -446,7 +457,10 @@ class JobController {
     // );
     const randomIndex = Math.floor(Math.random() * company.length);
     const randomCompany = company[randomIndex];
-    const jobs = await JobModel.find({ iduser: randomCompany.iduser });
+    const jobs = await JobModel.find({
+      iduser: randomCompany.iduser,
+      active: true,
+    });
     const randomJobs = jobs.sort(() => 0.5 - Math.random()).slice(0, 3);
 
     if (page) {
@@ -456,6 +470,7 @@ class JobController {
 
       if (req.session.jobs) {
         JobModel.find({
+          active: true,
           jobrequi: { $regex: new RegExp(req.session.jobs.join("|"), "i") },
         })
           .skip(skip)
@@ -482,7 +497,7 @@ class JobController {
           });
       }
       if (req.session.companyfield) {
-        JobModel.find({ idcompany: { $in: companyscan.ids } })
+        JobModel.find({ idcompany: { $in: companyscan.ids }, active: true })
           .skip(skip)
           .limit(PAGE_SIZE)
           .then((data) => {
@@ -513,6 +528,7 @@ class JobController {
 
       if (req.session.jobs) {
         JobModel.find({
+          active: true,
           jobrequi: { $regex: new RegExp(req.session.jobs.join("|"), "i") },
         })
           .skip(skip)
@@ -539,7 +555,7 @@ class JobController {
           });
       }
       if (req.session.companyfield) {
-        JobModel.find({ idcompany: { $in: companyscan.ids } })
+        JobModel.find({ active: true, idcompany: { $in: companyscan.ids } })
           .skip(skip)
           .limit(PAGE_SIZE)
           .then((data) => {
@@ -596,10 +612,9 @@ class JobController {
       } else {
         var checksave = undefined;
       }
-      console.log(checksave);
-      const detail = await JobModel.findOne({ _id: idjob });
+      const detail = await JobModel.findOne({ _id: idjob, active: true });
       const company = await CompanyModel.findOne({ iduser: detail.iduser });
-      const job = await JobModel.find({ iduser: detail.iduser });
+      const job = await JobModel.find({ iduser: detail.iduser, active: true });
       res.render("jobdetail", {
         title: "Job Detail",
         detail: staffMongoseToObject(detail),
@@ -640,6 +655,22 @@ class JobController {
 
   async job_favourite(req, res, next) {
     const iduser = req.user._id;
+
+    // Lấy danh sách job yêu thích của user từ bảng favourite
+    const favouriteJobs = await FavouriteModel.find({ iduser });
+
+    // Lấy danh sách jobID từ kết quả truy vấn trước
+    const favouriteJobIds = favouriteJobs.map((fav) => fav.jobid);
+
+    // Lấy thông tin chi tiết của các jobs
+    const job = await JobModel.find({ active: true });
+
+    // Thêm thuộc tính isFavourite cho mỗi job
+    const jobsWithFavouriteFlag = job.map((job) => ({
+      ...job.toObject(),
+      isFavourite: favouriteJobIds.includes(job._id.toString()),
+    }));
+
     const apply1 = await QualifiedModel.find({ userid: iduser }).distinct(
       "jobid"
     );
@@ -650,6 +681,7 @@ class JobController {
     const uniqueMerged = Array.from(new Set(merged));
     const listapply = await JobModel.find({
       _id: { $in: uniqueMerged },
+      active: true,
     });
     const jobs = await FavouriteModel.find({ userid: iduser }).distinct(
       "jobid"
@@ -658,11 +690,10 @@ class JobController {
       userid: iduser,
     }).distinct("jobid");
     const listViewed = await JobModel.find({
+      active: true,
       _id: { $in: viewed },
     });
-    const listjob = await JobModel.find({
-      _id: { $in: jobs },
-    });
+    const listjob = await JobModel.find({ active: true, _id: { $in: jobs } });
     const count = await JobModel.countDocuments({
       _id: { $in: jobs },
     });
@@ -672,6 +703,7 @@ class JobController {
       listjob: mutipleMongooseToObject(listjob),
       listViewed: mutipleMongooseToObject(listViewed),
       listapply: mutipleMongooseToObject(listapply),
+      jobsWithFavouriteFlag: mutipleMongooseToObject(jobsWithFavouriteFlag),
       user: req.user,
       count,
     });

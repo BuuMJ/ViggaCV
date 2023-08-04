@@ -513,6 +513,34 @@ class CompanyProfileController {
     await JobModel.findByIdAndDelete(jobId);
     res.redirect("back");
   }
+
+  async block(req, res, next) {
+    const jobId = req.params.id;
+
+    try {
+      const job = await JobModel.findById(jobId);
+      if (job.active === true) {
+        const updatedJob = await JobModel.findByIdAndUpdate(
+          jobId,
+          { active: false },
+          { new: true }
+        );
+      } else {
+        const updatedJob = await JobModel.findByIdAndUpdate(
+          jobId,
+          { active: true },
+          { new: true }
+        );
+      }
+
+      res.redirect("back");
+    } catch (error) {
+      console.error("Error:", error);
+      res
+        .status(500)
+        .send({ message: "An error occurred while blocking the job." });
+    }
+  }
 }
 
 module.exports = new CompanyProfileController();
