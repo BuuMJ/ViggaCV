@@ -503,6 +503,10 @@ class CompanyProfileController {
     await company.save();
     res.redirect("/companyprofile");
   }
+
+  managerCV(req, res, next) {
+    res.render("cvManager");
+  }
 }
 
 module.exports = new CompanyProfileController();

@@ -1,3 +1,5 @@
+const fs = require("fs");
+const path = require("path");
 const nlp = require("compromise");
 const textract = require("textract");
 const JobModel = require("../models/Job");
@@ -67,13 +69,15 @@ class ApplyCVController {
       } else {
         try {
           const jobID = req.query.id;
-          console.log(jobID);
           const job = await JobModel.findById({ _id: jobID });
+          console.log(job);
           const company = await CompanyModel.findById(job.idcompany);
+          console.log(company);
           const jobDescription = job.jobrequi;
           const cvText = text;
           const doc = nlp(jobDescription);
           const nouns = doc.nouns().out("array");
+          const user = req.user;
           const namedEntities = doc
             .people()
             .concat(doc.places())
@@ -83,28 +87,45 @@ class ApplyCVController {
 
           let score = 0;
           keywords.forEach((keyword) => {
-            if (cvText.includes(keyword)) {
+            if (cvText.toLowerCase().includes(keyword.toLowerCase())) {
               score++;
             }
           });
           console.log(`Score: ${score}/${keywords.length}`);
           let destinationFolder;
           if (score / keywords.length > 0.5) {
-            QualifiedModel.create({
+            destinationFolder = `/applyCV/${company.companyname}/${job.jobname}/Qualified`;
+          } else {
+            destinationFolder = `/applyCV/${company.companyname}/${job.jobname}/Unsatisfactory`;
+          }
+
+          // Tạo newPath
+          const projectRoot = path.join(__dirname, "..", "..");
+          const absoluteDestination = path.join(
+            projectRoot,
+            "uploads",
+            destinationFolder
+          );
+          const newPath = `${absoluteDestination}/${user.fullname}.pdf`;
+
+          // Tạo thư mục nếu chưa tồn tại
+          fs.mkdirSync(absoluteDestination, { recursive: true });
+
+          if (score / keywords.length > 0.5) {
+            await QualifiedModel.create({
               name: req.file.name,
-              part: a, // nhớ sửa chỗ này
+              part: newPath,
               jobid: job._id,
               companyid: company._id,
             });
-            destinationFolder = `/uploads/applyCV/${company.companyname}/${job.jobname}/Qualified`;
           } else {
-            destinationFolder = `/uploads/applyCV/${company.companyname}/${job.jobname}/Unsatisfactory`;
+            await UnsatisfactoryModel.create({
+              name: req.file.name,
+              part: newPath,
+              jobid: job._id,
+              companyid: company._id,
+            });
           }
-          // Tạo thư mục nếu chưa tồn tại
-          fs.mkdirSync(destinationFolder, { recursive: true });
-
-          // Di chuyển file
-          const newPath = `${destinationFolder}`;
           fs.rename(req.file.path, newPath, (err) => {
             if (err) {
               console.error("Error moving file:", err);
@@ -113,8 +134,8 @@ class ApplyCVController {
                 .send({ message: "Lỗi khi di chuyển file." });
             }
 
-            // (phần xử lý khác sau khi di chuyển file thành công)
             console.log(`File has been moved to: ${newPath}`);
+            res.redirect("back");
           });
         } catch (err) {
           console.log(err);

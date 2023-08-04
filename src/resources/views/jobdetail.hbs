@@ -9,7 +9,7 @@
     <div class="jobdetail-action">
         <button class="btn-apply" type="button" >Apply Now</button>
         <form class="function__check-save" action="/job/favourite?id={{detail._id}}" method="POST">
-            <button class="check-save__job" type="submit" data-check-save="{{checkSave checksave}}"><i class="bi bi-heart"></i></button>
+            <button title="Save Job" class="check-save__job" type="submit" data-check-save="{{checkSave checksave}}"><i class="bi bi-heart"></i></button>
         </form>
         <a href="/cv/createcv">create cv to apply</a>
     </div>
@@ -158,10 +158,12 @@
     var checkSave = buttonSave.getAttribute('data-check-save');
     if(checkSave == 'true'){
         buttonSave.innerHTML = '<i class="bi bi-heart-fill"></i> Saved';
-        buttonSave.classList.add('saved')
+        buttonSave.classList.add('saved');
+        buttonSave.title = 'Unsave';
     }
     else{
         buttonSave.innerHTML = '<i class="bi bi-heart"></i> Save';
-        buttonSave.classList.remove('saved')
+        buttonSave.classList.remove('saved');
+        buttonSave.title = 'Save Job';
     };
 </script>

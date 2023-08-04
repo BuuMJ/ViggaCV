@@ -24,7 +24,8 @@
   height: 100%;
   object-fit: cover;
   z-index: -1;
-  transform: translateZ(-10px) scale(2); }
+  transform: translateZ(-10px) scale(2);
+  background: linear-gradient(269.85deg, #0072bc33 0%, #12121233 54.89%); }
 
 .container-home .first-content .search-home {
   background-color: rgba(255, 255, 255, 0.8);
@@ -2568,6 +2569,74 @@ header.job-search .best-companyFL .background-image {
 .card-suggest .box-contain-close:hover {
   color: #F80404;
   background-color: white; }
+
+.container__job-saved {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  background-color: #f5f5f5;
+  min-height: 100vh; }
+
+.container__job-saved .main__job-saved {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 30px;
+  background-color: white; }
+
+.container__job-saved .main__job-saved header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  height: 220px;
+  background: url("/img/bgjobsave.jpeg") center/cover no-repeat;
+  padding: 0 30px;
+  color: #fed200; }
+
+.container__job-saved .main__job-saved section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 100%; }
+
+.container__job-saved .main__job-saved section .header-section {
+  font-size: 20px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  padding: 0 30px;
+  border-bottom: 1px solid #B6B6B6; }
+
+.container__job-saved .main__job-saved section .header-section span {
+  margin-right: 30px;
+  padding: 8px 0;
+  font-weight: 600; }
+
+.container__job-saved .main__job-saved section .header-section span.saved-job {
+  border-bottom: 3px solid #0072bc;
+  color: #fed200; }
+
+.container__job-saved .main__job-saved section .box__saved-job {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 16px 30px; }
+
+.container__job-saved .main__job-saved section .list__job-saved {
+  font-size: 20px;
+  width: 100%; }
 
 .main-profile {
   display: flex;
@@ -5155,7 +5224,7 @@ header.company-detail .background-company-detail {
   justify-content: space-between;
   width: 100%;
   height: 300px;
-  background-color: black;
+  background-color: #121212;
   color: #fed200; }
 
 .footer-content {
@@ -5279,7 +5348,7 @@ button#moveTopBtn {
 #moveTopBtn i {
   font-size: 30px;
   color: #fed200;
-  z-index: 5;
+  z-index: 21;
   cursor: pointer; }
 
 @media screen and (max-width: 1024px) {
@@ -5332,7 +5401,7 @@ button#moveTopBtn {
   align-items: center;
   width: 100%;
   height: 80px;
-  background-color: black;
+  background: linear-gradient(269.85deg, #0072bc 0%, #121212 54.89%);
   padding: unset;
   z-index: 20; }
 
@@ -5407,12 +5476,14 @@ button#moveTopBtn {
   margin: unset; }
 
 .drop-down__tools,
+.drop-down__job,
 .drop-down__company {
   position: relative;
   padding: 25px 0 25px 0; }
 
 .down__tools,
-.down__company {
+.down__company,
+.down__job {
   position: absolute;
   top: 78px;
   left: -83%;
@@ -5437,20 +5508,29 @@ button#moveTopBtn {
   left: -42%;
   width: 160px; }
 
+.down__job {
+  width: 160px;
+  left: -120%;
+  height: 50px;
+  padding-top: 6px; }
+
 .down__tools li,
 .down__company li {
   padding: 8px 10px; }
 
 .drop-down__tools:hover,
-.drop-down__company:hover {
+.drop-down__company:hover,
+.drop-down__job:hover {
   cursor: pointer; }
 
 .drop-down__tools:hover .down__tools,
-.drop-down__company:hover .down__company {
+.drop-down__company:hover .down__company,
+.drop-down__job:hover .down__job {
   display: block; }
 
 .down__tools a:hover,
-.down__company a:hover {
+.down__company a:hover,
+.down__job a:hover {
   text-decoration: underline; }
 
 .navbar-right {
@@ -5503,8 +5583,8 @@ button#moveTopBtn {
 
 .down__user {
   width: 150px;
-  height: 100px;
-  top: 92px;
+  height: 150px;
+  top: 95px;
   left: -55px;
   z-index: 100; }
 
