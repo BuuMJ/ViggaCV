@@ -655,21 +655,13 @@ class JobController {
 
   async job_favourite(req, res, next) {
     const iduser = req.user._id;
-
     // Lấy danh sách job yêu thích của user từ bảng favourite
-    const favouriteJobs = await FavouriteModel.find({ iduser });
+    const favouriteJobs = await FavouriteModel.find({ userid: iduser });
 
     // Lấy danh sách jobID từ kết quả truy vấn trước
     const favouriteJobIds = favouriteJobs.map((fav) => fav.jobid);
 
-    // Lấy thông tin chi tiết của các jobs
-    const job = await JobModel.find({ active: true });
-
-    // Thêm thuộc tính isFavourite cho mỗi job
-    const jobsWithFavouriteFlag = job.map((job) => ({
-      ...job.toObject(),
-      isFavourite: favouriteJobIds.includes(job._id.toString()),
-    }));
+    const favouriteJobIdsAsString = favouriteJobIds.map((id) => id.toString());
 
     const apply1 = await QualifiedModel.find({ userid: iduser }).distinct(
       "jobid"
@@ -683,6 +675,10 @@ class JobController {
       _id: { $in: uniqueMerged },
       active: true,
     });
+    const applyWithFlag = listapply.map((job) => ({
+      ...job.toObject(),
+      isFavourite: favouriteJobIdsAsString.includes(job._id.toString()),
+    }));
     const countApply = await JobModel.countDocuments({
       _id: { $in: uniqueMerged },
       active: true,
@@ -697,6 +693,10 @@ class JobController {
       active: true,
       _id: { $in: viewed },
     });
+    const viewWithFlag = listViewed.map((job) => ({
+      ...job.toObject(),
+      isFavourite: favouriteJobIdsAsString.includes(job._id.toString()),
+    }));
     const countViewed = await JobModel.countDocuments({
       _id: { $in: viewed },
     });
@@ -710,8 +710,8 @@ class JobController {
 
     res.render("job_favourite", {
       listjob: mutipleMongooseToObject(listjob),
-      listViewed: mutipleMongooseToObject(listViewed),
-      listApply: mutipleMongooseToObject(listapply),
+      listViewed: mutipleMongooseToObject(viewWithFlag),
+      listApply: mutipleMongooseToObject(applyWithFlag),
       user: req.user,
       count,
       countViewed,
