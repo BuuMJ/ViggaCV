@@ -117,6 +117,7 @@ class ApplyCVController {
               part: newPath,
               jobid: job._id,
               companyid: company._id,
+              userid: user._id,
             });
           } else {
             await UnsatisfactoryModel.create({
@@ -124,6 +125,7 @@ class ApplyCVController {
               part: newPath,
               jobid: job._id,
               companyid: company._id,
+              userid: user._id,
             });
           }
           fs.rename(req.file.path, newPath, (err) => {

@@ -6,6 +6,7 @@ const Unsatisfactory = new Schema({
   path: String,
   jobid: String,
   companyid: String,
+  userid: String,
   // ... các trường khác của CV
 });
 

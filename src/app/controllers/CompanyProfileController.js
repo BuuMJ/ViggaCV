@@ -507,6 +507,12 @@ class CompanyProfileController {
   managerCV(req, res, next) {
     res.render("cvManager");
   }
+
+  async deletejob(req, res, next) {
+    const jobId = req.params.id;
+    await JobModel.findByIdAndDelete(jobId);
+    res.redirect("back");
+  }
 }
 
 module.exports = new CompanyProfileController();

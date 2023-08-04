@@ -1,6 +1,10 @@
 const JobModel = require("../models/Job");
 const CompanyModel = require("../models/Company");
 const FavouriteModel = require("../models/Favourite");
+const ViewedModel = require("../models/Viewed");
+const QualifiedModel = require("../models/Qualified");
+const UnsatisfactoryModel = require("../models/Unsatisfactory");
+
 const {
   mutipleMongooseToObject,
   staffMongoseToObject,
@@ -21,7 +25,6 @@ class JobController {
     }
 
     // Tìm random company
-
     const randomIndex = Math.floor(Math.random() * company.length);
     const randomCompany = company[randomIndex];
     // Tìm job của random company
@@ -568,6 +571,18 @@ class JobController {
     try {
       const user = req.user;
       const idjob = req.params.id;
+      const viewed = await ViewedModel.findOne({
+        userid: user._id,
+        jobid: idjob,
+      });
+      if (viewed) {
+        await ViewedModel.findByIdAndUpdate(viewed._id, {});
+      } else {
+        await ViewedModel.create({
+          userid: user._id,
+          jobid: idjob,
+        });
+      }
       const favourite = await FavouriteModel.findOne({
         jobid: idjob,
         userid: user._id,
@@ -625,9 +640,26 @@ class JobController {
 
   async job_favourite(req, res, next) {
     const iduser = req.user._id;
+    const apply1 = await QualifiedModel.find({ userid: iduser }).distinct(
+      "jobid"
+    );
+    const apply2 = await UnsatisfactoryModel.find({ userid: iduser }).distinct(
+      "jobid"
+    );
+    const merged = apply1.concat(apply2);
+    const uniqueMerged = Array.from(new Set(merged));
+    const listapply = await JobModel.find({
+      _id: { $in: uniqueMerged },
+    });
     const jobs = await FavouriteModel.find({ userid: iduser }).distinct(
       "jobid"
     );
+    const viewed = await ViewedModel.find({
+      userid: iduser,
+    }).distinct("jobid");
+    const listViewed = await JobModel.find({
+      _id: { $in: viewed },
+    });
     const listjob = await JobModel.find({
       _id: { $in: jobs },
     });
@@ -638,6 +670,8 @@ class JobController {
 
     res.render("job_favourite", {
       listjob: mutipleMongooseToObject(listjob),
+      listViewed: mutipleMongooseToObject(listViewed),
+      listapply: mutipleMongooseToObject(listapply),
       user: req.user,
       count,
     });
