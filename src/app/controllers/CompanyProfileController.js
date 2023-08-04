@@ -401,6 +401,21 @@ class CompanyProfileController {
     const benefit = req.body.benefit;
     const position = req.body.position;
     const DoP = req.body.DoP;
+    req.session.jobData = {
+      iduser: req.user._id,
+      jobname: req.body.jobname,
+      jobdesc: req.body.jobdesc,
+      jobrequi: req.body.jobrequirement,
+      salary: req.body.salary,
+      joblocation: req.body.joblocation,
+      benefit: req.body.benefit,
+      position: req.body.position,
+      DoP: req.body.DoP,
+    };
+    const checkSalary = parseInt(salary, 10);
+    if (checkSalary >= 4000) {
+      return res.redirect("/pay/payjob");
+    }
     const subscribes = await SubscribeModel.find().distinct("email");
     const companyname = await CompanyModel.findOne({ iduser: iduser });
     const companyfollow = await ActionModel.find({
@@ -410,10 +425,6 @@ class CompanyProfileController {
       _id: { $in: companyfollow },
     }).distinct("email");
     const combinedEmails = subscribes.concat(listEmail);
-    console.log(combinedEmails);
-    console.log(
-      "đây là categories của công ty post jobs: " + companyname.companyfield
-    );
 
     const job = new JobModel({
       iduser: iduser,
@@ -497,6 +508,7 @@ class CompanyProfileController {
     const jobJSON = job.toJSON();
     console.log("Đây là ngày giờ sau khi định dạng: " + jobJSON);
     await job.save();
+
     res.redirect("/companyprofile");
   }
 
@@ -516,6 +528,12 @@ class CompanyProfileController {
     const cvPassed = await QualifiedModel.find({ jobid: idjob });
     const cvFailed = await UnsatisfactoryModel.find({ jobid: idjob });
     const company = await CompanyModel.findOne({ iduser: req.user._id });
+    const countPassed = await QualifiedModel.countDocuments({ jobid: idjob });
+    const countFailed = await UnsatisfactoryModel.countDocuments({
+      jobid: idjob,
+    });
+    const count = countPassed + countFailed;
+    console.log(count);
     res.render("cvManager", {
       cvPassed: mutipleMongooseToObject(cvPassed),
       cvFailed: mutipleMongooseToObject(cvFailed),

@@ -7,6 +7,7 @@ router.delete(
   "/leadership/delete/:id",
   companyprofileComtroller.deleteLeadership
 );
+
 router.delete("/delete/:id", companyprofileComtroller.deletejob);
 router.put("/blocked/:id", companyprofileComtroller.block);
 router.post(

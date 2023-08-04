@@ -213,7 +213,7 @@ class CompanyController {
               user: req.user,
               pages: pages,
               jobcount: listcompany,
-              company: company,
+              company: company, //cần sửa company để thấy được avatar
               listcompany: mutipleMongooseToObject(data),
               listjob,
               randomCompany: randomCompany,
@@ -251,7 +251,7 @@ class CompanyController {
         title: "Company Detail",
         user: req.user,
         checkfl: checkfl,
-        company: staffMongoseToObject(company),
+        company: staffMongoseToObject(company), //cần sửa company để thấy được avatar
         leadership: staffMongoseToObject(company.leadership),
         listjob: listjob,
       });
@@ -309,7 +309,7 @@ class CompanyController {
       res.render("companyinformation", {
         title: "Company Information",
         user: req.user,
-        company: staffMongoseToObject(company),
+        company: staffMongoseToObject(company), //cần sửa company để thấy được avatar
         listjob: listjob,
       });
     });
