@@ -1239,9 +1239,13 @@ header.job-search .best-companyFL {
 .container__job-saved .main__job-saved section{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: start;
+    justify-content: start;
+    align-items: center;
     width: 100%;
+    min-height: 500px;
+}
+.container__job-saved .main__job-saved section .custom-loader{
+    margin-top: 30px;
 }
 .container__job-saved .main__job-saved section .header-section{
     font-size: 20px;
@@ -1256,6 +1260,7 @@ header.job-search .best-companyFL {
     margin-right: 30px;
     padding: 16px 0;
     font-weight: 600;
+    cursor: pointer;
 }
 .container__job-saved .main__job-saved section .header-section span.saved-job{
     border-bottom: 3px solid $secondarycolor;
@@ -1269,10 +1274,15 @@ header.job-search .best-companyFL {
     width: 100%;
     padding: 30px;
 }
+.container__job-saved .main__job-saved section .box__viewed-job,
+.container__job-saved .main__job-saved section .box__applied-job{
+    display: none;
+}
 .container__job-saved .main__job-saved section .box__saved-job .list__job-saved{
     font-size: 20px;
     width: 100%;
     font-weight: 600;
+    text-transform: capitalize;
 }
 .container__job-saved .main__job-saved section .box__saved-job .card__job-saved{
     display: flex;
