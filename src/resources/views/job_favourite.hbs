@@ -110,6 +110,13 @@
         var savedClicked = false;
         var viewedClicked = false;
         var applyClicked = false;
+        window.addEventListener('DOMContentLoaded', (event) => {
+            savedClicked = true;
+            clickSavedJob.style.cssText = 'border-bottom: 3px solid #0072bc; color: #fed200; cursor: default;';
+            containerViewedJob.style.display = 'none';
+            containerApllyJob.style.display = 'none';
+            containerSavedJob.style.display = 'flex';
+        });
         clickSavedJob.addEventListener('click',()=>{
             if(!savedClicked){
                 savedClicked = true;

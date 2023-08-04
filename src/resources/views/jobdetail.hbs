@@ -157,12 +157,12 @@
     var buttonSave = document.querySelector('.check-save__job');
     var checkSave = buttonSave.getAttribute('data-check-save');
     if(checkSave == 'true'){
-        buttonSave.innerHTML = '<i class="bi bi-heart-fill"></i> Saved';
+        buttonSave.innerHTML = '<i class="bi bi-heart-fill"></i>';
         buttonSave.classList.add('saved');
         buttonSave.title = 'Unsave';
     }
     else{
-        buttonSave.innerHTML = '<i class="bi bi-heart"></i> Save';
+        buttonSave.innerHTML = '<i class="bi bi-heart"></i>';
         buttonSave.classList.remove('saved');
         buttonSave.title = 'Save Job';
     };

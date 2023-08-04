@@ -1,0 +1,86 @@
+<div class="container__manager-cv">
+    <div class="main__manager-cv">
+        <header>
+            <h1>Manage CV of {{job.jobname}} job</h1>
+            <p>This job has a total of {{count}} CVs applying</p>
+        </header>
+        <section>
+            <div class="header-section">
+                <span class="cv-passed">Passed CVs</span>
+                <span class="cv-failed">Failed CVs</span>
+            </div>
+            <div class="loading-manager">
+                <div class="custom-loader"></div>
+            </div>
+                <div class="box__passed-cv">
+                    <h2>{{countPassed}}</h2>
+                {{#each cvPassed}}
+                    <a href="/applyCV/{{job.companyname}}/{{job.jobname}}/qualified/{{this.nameCV}}" class="card__passed-cv" download>
+                        <span class="name-file">Name CV: <b>{{this.nameCV}}</b></span>
+                        <span class="person-applied">Applicant's Name: {{this.name}}</span>
+                        <span class="email-applied">Applicant's Email: {{this.email}}</span>
+                        <span class="phone-applied">Applicant's Phone: {{this.phone}}</span>
+                    </a>
+                {{/each}}
+                </div>
+                <div class="box__failed-cv">
+                    <h2>{{countFailed}}</h2>
+                {{#each cvFailed}}
+                    <a href="/applyCV/{{job.companyname}}/{{job.jobname}}/unsatisfactory/{{this.nameCV}}" class="card__failed-cv" download>
+                        <span class="name-file">Name CV: <b>{{this.nameCV}}</b></span>
+                        <span class="person-applied">Applicant's Name: {{this.name}}</span>
+                        <span class="email-applied">Applicant's Email: {{this.email}}</span>
+                        <span class="phone-applied">Applicant's Phone: {{this.phone}}</span>
+                    </a>
+                {{/each}}
+                </div>
+        </section>
+    </div>
+</div>
+<script>
+    var clickPassed = document.querySelector('.cv-passed');
+    var clickFailed = document.querySelector('.cv-failed');
+    var containerPassed = document.querySelector('.box__passed-cv');
+    var containerFailed = document.querySelector('.box__failed-cv');
+    var loadingManagerCV = document.querySelector('.loading-manager');
+    var passedClicked = false;
+    var failedClicked = false;
+    document.addEventListener("DOMContentLoaded", function() {
+    containerPassed.style.display = 'none';
+    clickPassed.click();
+    setTimeout(function(){
+            containerPassed.style.display = 'flex';
+            },1780);
+    passedClicked = false;
+    });
+    clickPassed.addEventListener('click',()=>{
+        if(!passedClicked){
+            passedClicked = true;
+            clickPassed.style.cssText = 'border-bottom: 3px solid #0072bc; color: #fed200; cursor: default;';
+            clickFailed.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
+            containerFailed.style.display = 'none';
+            loadingManagerCV.style.display = 'flex';
+            setTimeout(function(){
+            loadingManagerCV.style.display = 'none';
+            },1750);
+            setTimeout(function(){
+            containerPassed.style.display = 'flex';
+            },1780)
+        }
+    });
+    clickFailed.addEventListener('click',()=>{
+        if(!failedClicked){
+            failedClicked = true;
+            clickFailed.style.cssText = 'border-bottom: 3px solid #0072bc; color: #fed200; cursor: default';
+            clickPassed.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
+            containerPassed.style.display = 'none';
+            loadingManagerCV.style.display = 'flex';
+            setTimeout(function(){
+            loadingManagerCV.style.display = 'none';
+            },1750);
+            setTimeout(function(){
+            containerFailed.style.display = 'flex';
+            },1780)
+        }
+    });
+</script>

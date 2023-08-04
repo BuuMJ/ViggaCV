@@ -610,3 +610,123 @@
 .body__user-cv .project__user-cv .box-project .content-project{
   width: 80%;
 }
+// manager cv
+.container__manager-cv{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background-color: $backgroundcolor;
+}
+.main__manager-cv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  background-color: white;
+  margin-top: 30px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.main__manager-cv header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  padding: 8px 20px;
+  background: linear-gradient(269.85deg, #0072bc 0%, #121212 54.89%);
+  height: 220px;
+  color: $primarycolor;
+}
+.main__manager-cv section{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
+  min-height: 280px;
+}
+.main__manager-cv section .header-section{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 1px solid #d5d6d6;
+  width: 100%;
+  font-size: 20px;
+}
+.main__manager-cv section .header-section span{
+  font-weight: 600;
+  margin-right: 30px;
+  padding: 16px 0;
+  cursor: pointer;
+  text-align: center;
+}
+.main__manager-cv section .header-section span.cv-passed{
+  border-bottom: 3px solid $secondarycolor;
+  color: $primarycolor;
+}
+.main__manager-cv section .loading-manager{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.main__manager-cv section .loading-manager .custom-loader{
+  display: grid;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.main__manager-cv section .box__passed-cv,
+.main__manager-cv section .box__failed-cv{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 12px 20px;
+}
+.main__manager-cv section .box__failed-cv{
+  display: none;
+}
+.main__manager-cv section .box__passed-cv h2,
+.main__manager-cv section .box__failed-cv h2{
+  font-size: 20px;
+  font-weight: 600;
+  width: 100%;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv,
+.main__manager-cv section .box__failed-cv .card__failed-cv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 46%;
+  padding: 12px 16px;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 1px solid white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  margin-bottom: 30px;
+  color: black;
+  transition: .5s;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv span,
+.main__manager-cv section .box__failed-cv .card__failed-cv span{
+  padding: 0 20px 8px 0 ;
+  transition: .5s;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv:hover,
+.main__manager-cv section .box__failed-cv .card__failed-cv:hover{
+  border: 1px solid $secondarycolor;
+  box-shadow: 0 2px 4px $secondarycolor;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv:hover .name-file b,
+.main__manager-cv section .box__failed-cv .card__failed-cv:hover .name-file b{
+  color: #0072bc;
+  text-decoration: underline;
+}
