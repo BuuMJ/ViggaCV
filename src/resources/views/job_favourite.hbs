@@ -23,8 +23,8 @@
                         <p class="job-saved__location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</p>
                         <div class="action__job-saved">
                             <a href="/job/{{this._id}}">Apply Now</a>
-                            <form class="function__check-save" action="" method="POST">
-                                <button title="Save Job" class="check-save__job" type="submit" data-check-save="{{checkSave checksave}}"><i class="bi bi-heart"></i></button>
+                            <form class="function__check-save" action="/job/favourite?id={{this._id}}" method="POST">
+                                <button title="Save Job" class="check-save__job" type="submit"><i class="bi bi-heart-fill"></i></button>
                             </form>
                         </div>
                         <span class="check-hot" data-hot-saved="{{this.prioritize}}"></span>

@@ -155,12 +155,16 @@ Today we are on the cusp of a new journey with our customers, to help them Power
                     <ul>
                         {{#each listjob}}
                         <li class="content-listjob">
-                           <span class="namejobs">{{this.jobname}}</span>
+                           <span class="namejobs"><i class="bi bi-three-dots-vertical"></i> {{this.jobname}}</span>
                            <div class="secondary-listjob">
                                 <span class="locationjobs"><i class="bi bi-geo"></i> Location: {{this.joblocation}}</span>
                                 <span class="timejobs"><i class="bi bi-calendar-date"></i> {{this.createdAt}}</span>
                            </div>
                            <a title="advertise this job" data-payment="{{this.prioritize}}" data-id-paymen="{{this._id}}" class="payment" href="/pay/{{this._id}}"><i class="bi bi-star"></i></a>
+                            <div class="remove-blocked" data-remove-block="{{this._id}}">
+                                <span class="remove"><i class="bi bi-trash3-fill"></i></span>
+                                <span class="blocked"><i class="bi bi-unlock-fill"></i></span>
+                            </div>
                         </li>
                         {{/each}}
                     </ul>
@@ -279,6 +283,10 @@ Andrew leads the strategic direction of the business with a dedicated and divers
 </div>
 {{! delete hidden form }}
 <form method="POST" name="delete-leadership-form"></form>
+{{!-- delete job form --}}
+<form method="POST"  class="form__remove-job"></form>
+{{!-- blocked job form --}}
+<form method="POST" class="form__blocked-job"></form>
 <script>
     var deleteLeadership = document.getElementById('delete-leadership')
   var leadershipID; 
@@ -539,5 +547,49 @@ viewMoreBtn.addEventListener("click", function() {
                 checkButtonPayment.innerHTML = '<i class="bi bi-star-fill"></i>'
                 checkButtonPayment.style.cssText = 'color: #fed200;'
             }
+    })
+    var jobList = document.querySelectorAll('.content-listjob');
+    var formRemoveJob = document.querySelector('.form__remove-job');
+    var formBlockedJob = document.querySelector('.form__blocked-job');
+    jobList.forEach(function(job){
+        var action = job.querySelector('.namejobs i');
+        var menuAction = job.querySelector('.remove-blocked');
+        var getIDJob = menuAction.getAttribute('data-remove-block');
+        var removeAction = job.querySelector('.remove');
+        var blockedAction = job.querySelector('.blocked');
+        action.addEventListener('click',()=>{
+            menuAction.style.display = 'flex';
+            event.stopPropagation();
+        });
+        menuAction.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+        document.addEventListener('click', () => {
+            menuAction.style.display = 'none';
+        });
+        removeAction.addEventListener('mouseover',()=>{
+            removeAction.querySelector('i').style.color = '#FC0404'
+        });
+        removeAction.addEventListener('mouseout',()=>{
+            removeAction.querySelector('i').style.color = 'black'
+        });
+        blockedAction.addEventListener('mouseover',()=>{
+            blockedAction.innerHTML = '<i class="bi bi-lock-fill"></i>';
+        });
+        blockedAction.addEventListener('mouseout',()=>{
+            blockedAction.innerHTML = '<i class="bi bi-unlock-fill"></i>';
+        });
+        //action
+        removeAction.addEventListener('click',()=>{
+            const userConfirmed = confirm("Are you sure you want to delete this job?");
+            if(userConfirmed) {
+                formRemoveJob.action = `/companyprofile/delete/${getIDJob}`;
+                formRemoveJob.submit();
+            }
+        })
+        blockedAction.addEventListener('click',()=>{
+            formBlockedJob.action `/companyprofile/blocked/${getIDJob}`;
+            formBlockedJob.submit();
+        })
     })
 </script>
