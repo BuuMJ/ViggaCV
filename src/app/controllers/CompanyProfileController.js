@@ -510,17 +510,18 @@ class CompanyProfileController {
   }
 
   async managerCV(req, res, next) {
-    const idjob = req.params.id;
+    const user = req.user;
+    const idjob = req.query.id;
     const job = await JobModel.findById(idjob);
     const cvPassed = await QualifiedModel.find({ jobid: idjob });
     const cvFailed = await UnsatisfactoryModel.find({ jobid: idjob });
     const company = await CompanyModel.findOne({ iduser: req.user._id });
     res.render("cvManager", {
-      user: user.req,
       cvPassed: mutipleMongooseToObject(cvPassed),
       cvFailed: mutipleMongooseToObject(cvFailed),
       job: staffMongoseToObject(job),
       company,
+      user,
     });
   }
 

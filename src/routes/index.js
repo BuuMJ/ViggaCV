@@ -20,9 +20,9 @@ function route(app) {
 
   app.use("/scan", applyCVRouter);
 
-  app.use("/pay", paymentRouter);
+  app.use("/pay", checkLogin, paymentRouter);
 
-  app.use("/CVManager", cvManagerRouter);
+  app.use("/CVManager", checkLogin, cvManagerRouter);
 
   app.use("/job", sendDataUser, jobRouter);
 
