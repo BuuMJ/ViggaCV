@@ -632,7 +632,7 @@ class JobController {
     const count = await JobModel.countDocuments({
       _id: { $in: jobs },
     });
-console.log(count)
+console.log(listjob)
 
 
     res.render("job_favourite", {

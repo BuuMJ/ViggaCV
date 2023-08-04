@@ -87,6 +87,12 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('.navbar').style.cssText = 'position: fixed; top: 0; z-index: 20;';
         document.querySelector('.navbar-responsive').style.cssText = 'position: fixed; top: 0; z-index: 20;';
     }
+    var images = document.querySelectorAll('img');
+    images.forEach(function(img) {
+        img.onerror = function() {
+            this.src = '/img/notfoundavatar.jpeg';
+        };
+    });
 });
 </script>
 </html>

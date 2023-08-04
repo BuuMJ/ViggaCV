@@ -220,9 +220,10 @@
 }
 .drop-down__user img {
     border-radius: 50%;
-    padding: 2px;
-    border: 2px solid $primarycolor;
+    outline-offset: 2px;
+    outline: 2px solid #fed200;
     cursor: pointer;
+    background-color: white;
 }
 .drop-down__user:hover .down__user{
     display: block;

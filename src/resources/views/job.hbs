@@ -100,6 +100,7 @@
           <p class="salary-job__action">{{this.salary}}</p>
           <a class="detail-job__action" href="/job/{{this._id}}">View Detail <i class="bi bi-chevron-double-right"></i></a>
         </div>
+        <span class="check-hot" data-check-hot="{{this.prioritize}}"></span>
       </div>
       {{/each}}
     <div class="pagination">
@@ -304,6 +305,19 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+});
+var containerJobs = document.querySelectorAll('.card-job');
+containerJobs.forEach(function(cardJob){
+  var textHotJob = cardJob.querySelector('.check-hot');
+  var checkHotJob = textHotJob.getAttribute('data-check-hot');
+  if(checkHotJob === 'true'){
+    textHotJob.innerHTML = '<i class="bi bi-fire"></i> Hot';
+    textHotJob.style.display = 'block';
+    cardJob.classList.add('active-hot');
+  }
+  else{
+    textHotJob.style.display = 'none';
+  }
 });
 </script>
 

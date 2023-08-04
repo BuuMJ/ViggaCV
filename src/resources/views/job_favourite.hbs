@@ -27,6 +27,7 @@
                                 <button title="Save Job" class="check-save__job" type="submit" data-check-save="{{checkSave checksave}}"><i class="bi bi-heart"></i></button>
                             </form>
                         </div>
+                        <span class="check-hot" data-hot-saved="{{this.prioritize}}"></span>
                     </div>
                 {{/each}}
             </div>
@@ -34,4 +35,19 @@
     </div>
 </div>
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var containerJobsSaved = document.querySelectorAll('.card__job-saved');
+        containerJobsSaved.forEach(function(cardJobSaved){
+            var textJobSaved = cardJobSaved.querySelector('.check-hot');
+            var checkHotSaved = textJobSaved.getAttribute('data-hot-saved');
+            if(checkHotSaved === 'true'){
+                textJobSaved.innerHTML = '<i class="bi bi-fire"></i> Hot';
+                textJobSaved.style.display = 'block';
+                cardJobSaved.classList.add('active-hot');
+            }
+            else{
+                textJobSaved.style.display = 'none';
+            }
+        });
+    });
 </script>
