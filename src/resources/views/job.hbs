@@ -1,4 +1,4 @@
-  <header class="job-search">
+<header class="job-search">
      <a data-href="{{bestFL._id}}" class="best-companyFL">
     <div class="background-image" style="background: url('{{getbackgroundJobBest bestFL}}') center/cover no-repeat;"></div>
     <div class="info-bestfl">
@@ -113,7 +113,7 @@
       {{/each}}
     </div>
     <div class="suggest-company">
-      <div class="card-suggest" style="background: url('{{getbackgroundCPRandom random}}') center/cover no-repeat;">
+      <div class="card-suggest" style="background:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%), url('{{getbackgroundCPRandom random}}') center/cover no-repeat;">
         <header class="header-suggest">
           <img src="{{getAvatarCPRandom random}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
           <span class="name-suggest">{{random.companyname}} {{random.typeofbusiness}}</span>
@@ -374,4 +374,5 @@ newPages.forEach(function(newPage) {
   });
 });
 </script> --}}
+
 
