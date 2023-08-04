@@ -686,6 +686,24 @@ li.content-listjob a.payment::after{
 li.content-listjob a.payment:hover::after{
     display: block;
 }
+li.content-listjob .remove-blocked{
+    position: absolute;
+    top: -10%;
+    left: -14%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 6px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.8);
+    z-index: 19;
+}
+li.content-listjob .remove-blocked span{
+    font-size: 20px;
+    margin: 6px 0;
+}
 li.content-listjob a.payment:hover{
     color: $primarycolor;
 }
@@ -696,6 +714,7 @@ li.content-listleadership{
 }
 li.content-listjob:hover .namejobs{
     color: $primarycolor;
+    
 }
 li.content-listleadership img{
     width: 60px;
@@ -758,9 +777,17 @@ span.update-leader:hover{
     padding: 0 0 0 2px !important;
     height: 20px;
 }
+.namejobs i{
+    visibility: hidden;
+}
+li.content-listjob:hover i.bi-three-dots-vertical{
+    visibility: unset;
+    color: black;
+}
 .secondary-listjob{
     display: inline-block;
     height: 20px;
+    padding-left: 24px;
 }
 span.timejobs,
 span.locationjobs{
