@@ -100,6 +100,7 @@
           <p class="salary-job__action">{{this.salary}}</p>
           <a class="detail-job__action" href="/job/{{this._id}}">View Detail <i class="bi bi-chevron-double-right"></i></a>
         </div>
+        <span class="check-hot" data-check-hot="{{this.prioritize}}"></span>
       </div>
       {{/each}}
     <div class="pagination">
@@ -212,15 +213,15 @@ window.addEventListener('scroll', function() {
       deleteMargin.style.cssText = 'margin-top: 80px';
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: #F7F7F7;';
       document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #fedb00';
-      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #f99c04;';
+      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #0072bc;';
       document.getElementById('change-logo').src = '/img/LOGOVGA.png';
       document.querySelector('.header-search .header-search__login .search-login').style.display = 'flex';
     } else {
       document.querySelector('.header-search').style.cssText = 'position: unset; box-shadow: unset;';
       deleteMargin.style.margin = '0';
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: white;';
-      document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #fedb00';
-      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #0E0E23;';
+      document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: black';
+      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #fedb00;';
       document.getElementById('change-logo').src = '/img/LOGOVGAJOB.png';
       document.querySelector('.header-search .header-search__login .search-login').style.display = 'none';
     }
@@ -230,7 +231,7 @@ window.addEventListener('scroll', function() {
       deleteMargin.style.cssText = 'margin-top: 85px';
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: #F7F7F7;';
       document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #fedb00';
-      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #f99c04;';
+      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #0072bc;';
       document.getElementById('change-logo').src = '/img/LOGOVGA.png';
       document.querySelector('.header-search .header-search__login .search-login').style.display = 'flex';
     } else {
@@ -304,6 +305,19 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+});
+var containerJobs = document.querySelectorAll('.card-job');
+containerJobs.forEach(function(cardJob){
+  var textHotJob = cardJob.querySelector('.check-hot');
+  var checkHotJob = textHotJob.getAttribute('data-check-hot');
+  if(checkHotJob === 'true'){
+    textHotJob.innerHTML = '<i class="bi bi-fire"></i> Hot';
+    textHotJob.style.display = 'block';
+    cardJob.classList.add('active-hot');
+  }
+  else{
+    textHotJob.style.display = 'none';
+  }
 });
 </script>
 

@@ -11,13 +11,43 @@
                 <span class="applied-job">Applied Jobs</span>
             </div>
             <div class="box__saved-job">
-                <span class="list__job-saved">List: {{count}} jobs saved</span>
+                <span class="list__job-saved">List: {{count}} Jobs Saved</span>
                 {{#each listjob}}
-                    <div class="card__job-save">
-                        
+                    <div class="card__job-saved">
+                        <h1>{{this.jobname}}</h1>
+                        <div class="job-saved__company">
+                            <img src="/{{this.avatar}}" alt="">
+                            <span>{{this.companyname}}</span>
+                        </div>
+                        <p class="job-saved__salary"><i class="bi bi-currency-dollar"></i> {{this.salary}}</p>
+                        <p class="job-saved__location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</p>
+                        <div class="action__job-saved">
+                            <a href="/job/{{this._id}}">Apply Now</a>
+                            <form class="function__check-save" action="" method="POST">
+                                <button title="Save Job" class="check-save__job" type="submit" data-check-save="{{checkSave checksave}}"><i class="bi bi-heart"></i></button>
+                            </form>
+                        </div>
+                        <span class="check-hot" data-hot-saved="{{this.prioritize}}"></span>
                     </div>
                 {{/each}}
             </div>
         </section>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var containerJobsSaved = document.querySelectorAll('.card__job-saved');
+        containerJobsSaved.forEach(function(cardJobSaved){
+            var textJobSaved = cardJobSaved.querySelector('.check-hot');
+            var checkHotSaved = textJobSaved.getAttribute('data-hot-saved');
+            if(checkHotSaved === 'true'){
+                textJobSaved.innerHTML = '<i class="bi bi-fire"></i> Hot';
+                textJobSaved.style.display = 'block';
+                cardJobSaved.classList.add('active-hot');
+            }
+            else{
+                textJobSaved.style.display = 'none';
+            }
+        });
+    });
+</script>

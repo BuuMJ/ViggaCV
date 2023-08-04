@@ -89,11 +89,11 @@
                 <label for="phone">Phone number</label>
                 <input type="text" name="phoneApply" value="{{getPhone user}}" id="phone" required>
             </div>
-            <div class="main-apply-job">
+            <div class="main-apply-job file-cv">
                 <label for="cv">Resume</label>
                 <label for="cv" class="resume">
                     <span>Upload new CV <i class="bi bi-cloud-plus"></i></span>
-                    <span>.doc, .docx and .pdf files that are less than 5120KB in size</span>
+                    <span class="show-file">.doc, .docx and .pdf files that are less than 5120KB in size</span>
                 </label>
                 <input type="file" name="cv" id="cv" >
             </div>
@@ -166,4 +166,17 @@
         buttonSave.classList.remove('saved');
         buttonSave.title = 'Save Job';
     };
+    document.addEventListener('DOMContentLoaded', function() {
+        var inputFile = document.getElementById('cv');
+        var showFileSpan = document.querySelector('.show-file');
+
+        inputFile.addEventListener('change', function() {
+            if (this.files && this.files.length > 0) {
+                showFileSpan.innerHTML = this.files[0].name;
+                showFileSpan.style.cssText = 'color: #D3D3D3';
+            } else {
+                showFileSpan.innerHTML = ".doc, .docx and .pdf files that are less than 5120KB in size";
+            }
+        });
+    });
 </script>

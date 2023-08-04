@@ -322,9 +322,13 @@ a.jftc-namejobs:hover{
     flex-direction: row;
     align-items: center;
     height: 80px;
+
 }
 .main-apply-job > * {
     margin: 0 16px 0 0;
+}
+.file-cv{
+    margin-top: 20px;
 }
 .main-apply-job label{
     font-weight: 600;
@@ -354,7 +358,6 @@ input#email-apply{
     font-weight: 400;
     color: #717172;
     cursor: pointer;
-    padding-top: 40px;
 }
 .main-apply-job .resume span i{
     font-size: 20px;
@@ -767,12 +770,31 @@ header.job-search .best-companyFL {
     background-color: rgba(0,114,188,0.1);
     border-radius: 5px;
     overflow: hidden;
+    position: relative;
+}
+.main-jobs .card-jobs .card-job .check-hot,
+.card__job-saved .check-hot{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: rgba(255, 200, 170, 1);
+    padding: 4px 18px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FF4500;
+}
+.main-jobs .card-jobs .active-hot{
+    box-shadow: 0px 4px 8px rgba(255, 68, 0, 0.6);
+    border: 1px solid transparent;
+    transition: .5s;
 }
 .card-job__action{
     width: 15%;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
 }
 .card-job__action p.salary-job__action{
@@ -780,7 +802,7 @@ header.job-search .best-companyFL {
     margin: unset;
     width: 100%;
     color: #F99C05;
-    margin: 16px 0 48px 0;
+    // margin: 16px 0 48px 0;
 }
 .card-job__action a.detail-job__action{
     padding: 6px 8px;
@@ -856,6 +878,9 @@ header.job-search .best-companyFL {
 .card-job__action .detail-job__action:hover{
     background-color: $secondarycolor;
     color: white;
+}
+.main-jobs .card-jobs .active-hot:hover{
+    border: 1px solid #FF4500;
 }
 .pagination{
     display: none;
@@ -1182,7 +1207,8 @@ header.job-search .best-companyFL {
     align-items: start;
     width: 100%;
     height: 220px;
-    background: url('/img/bgjobsave.jpeg') center / cover no-repeat;
+    // background: url('/img/bgjobsave.jpeg') center / cover no-repeat;
+    background: linear-gradient(269.85deg, #0072bc 0%, #121212 54.89%);
     padding: 0 30px;
     color: $primarycolor;
 }
@@ -1204,7 +1230,7 @@ header.job-search .best-companyFL {
 }
 .container__job-saved .main__job-saved section .header-section span{
     margin-right: 30px;
-    padding: 8px 0;
+    padding: 16px 0;
     font-weight: 600;
 }
 .container__job-saved .main__job-saved section .header-section span.saved-job{
@@ -1214,12 +1240,142 @@ header.job-search .best-companyFL {
 .container__job-saved .main__job-saved section .box__saved-job{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 16px 30px;
+    padding: 30px;
 }
-.container__job-saved .main__job-saved section .list__job-saved{
+.container__job-saved .main__job-saved section .box__saved-job .list__job-saved{
     font-size: 20px;
     width: 100%;
+    font-weight: 600;
+}
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding: 18px 16px;
+    width: 30%;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    margin-top: 20px;
+    border: 1px solid white;
+    transition: .5s;
+    position: relative;
+}
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved:hover{
+    box-shadow: 0 2px 4px rgba(0,114,188,0.4);
+    border: 1px solid $secondarycolor;
+}
+.container__job-saved .main__job-saved section .box__saved-job .active-hot{
+    box-shadow: 0px 2px 4px rgba(255, 68, 0, 0.2);
+    padding: 38px 16px 18px 16px;
+    border: 1px solid transparent;
+    transition: .5s;
+}
+.container__job-saved .main__job-saved section .box__saved-job .active-hot:hover{
+    border: 1px solid #FF4500;
+}
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved h1{
+    font-size: 20px;
+    font-weight: 700;
+    height: 50px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    display: -webkit-box;
+}
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved img{
+    height: 70px;
+    width: 70px;
+    margin-right: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.01);
+    border-radius: 5px;
+    border: 1px solid #dedede;
+    padding: 1px;
+}
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__company{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    font-size: 16px;
+}
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__salary{
+    font-size: 14px;
+    font-weight: 600;
+    color: #F99C05;
+    margin: 12px 0;
+}
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__location{
+    font-size: 14px;
+    font-weight: 500;
+}
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__location i,
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__salary i{
+    font-weight: 700;
+    font-size: 16px;
+}
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved .action__job-saved{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+}
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved .action__job-saved a{
+    width: 80%;
+    height: 50px;
+    border-radius: 5px;
+    color: $secondarycolor;
+    border: 1px solid $secondarycolor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: .5s;
+}
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved .action__job-saved a:hover{
+    background-color: $secondarycolor;
+    color: white;
+}
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved .action__job-saved .function__check-save button{
+    border: 1px solid $secondarycolor;
+    background-color: $secondarycolor;
+    color: white;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+@media screen and (max-width: 1441px) {
+    .card-job__action a.detail-job__action{
+        font-size: 15px;
+    }
+    .header-search .input-search input{
+        padding: 4px 35% 4px 56px;
+    }
+    .header-search .input-search .categories-select__position{
+        right: 16%;
+    }
+    .header-search .input-search .categories-select{
+        right: 33%;
+    }
+    .header-search .input-search .categories-select i{
+        right: 8%;
+    }
+    .header-search .input-search .categories-select__position i{
+        right: 16%;
+    }
+    .header-search .input-search .categories-select #categories-search, 
+    .header-search .input-search .categories-select__position #categories-search__position, 
+    .header-search .input-search .categories-select #categories-search:focus, 
+    .header-search .input-search .categories-select__position #categories-search__position:focus{
+        padding-left: 8px;
+    }
 }

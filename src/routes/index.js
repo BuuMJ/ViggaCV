@@ -11,9 +11,12 @@ const jobRouter = require("./job");
 const applyCVRouter = require("./applycv");
 const paymentRouter = require("./payment");
 const cvManagerRouter = require("./CVManager");
+const favouriteRouter = require("./favourite");
 
 function route(app) {
   app.use("/companyprofile", checkLogin, companyprofileRouter);
+
+  app.use("/yourjobs", checkLogin, favouriteRouter);
 
   app.use("/scan", applyCVRouter);
 
