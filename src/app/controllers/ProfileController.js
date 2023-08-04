@@ -6,11 +6,13 @@ const bcrypt = require("bcrypt");
 const fs = require("fs");
 
 class ProfileController {
-  profile(req, res, next) {
+  async profile(req, res, next) {
+    const company = await CompanyModel.findOne({ iduser: req.user._id });
     console.log("DAY LA THONG TIN CUA USER: " + req.user.role);
     res.render("profile", {
       title: "Profile User",
       user: req.user,
+      company,
     });
   }
 
@@ -60,6 +62,7 @@ class ProfileController {
       if (req.file) {
         console.log("đã có file" + password);
         // Kiểm tra xem có file được tải lên không
+        const company = await CompanyModel.findOne({ iduser: req.user._id });
         const data = await fs.promises.readFile(req.file.path); // sửa chỗ này
         if (data) {
           console.log("đã tới đây và có file");
@@ -95,6 +98,7 @@ class ProfileController {
               { new: true }
             );
             res.render("profile", {
+              company,
               message: "User updated successfully",
               user: updateUser,
             });
@@ -130,6 +134,7 @@ class ProfileController {
             res.render("profile", {
               message: "User updated successfully",
               user: updatedUser,
+              company,
             });
           }
         }
@@ -168,6 +173,7 @@ class ProfileController {
           res.render("profile", {
             message: "User updated successfully",
             user: updateUser,
+            company,
           });
         } else {
           console.log("đã tới đây khônng có file và không có password");
@@ -201,6 +207,7 @@ class ProfileController {
           res.render("profile", {
             message: "User updated successfully",
             user: updatedUser,
+            company,
           });
         }
       }

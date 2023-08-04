@@ -9,6 +9,7 @@ const {
 class HomeController {
   async home(req, res, next) {
     try {
+      const company = await CompanyModel.findOne({ iduser: req._id });
       const jobs = await JobModel.find({ active: true });
       // thêm chức năng 20 việc làm mới nhất + thêm tổng số count vào
       const companies = await CompanyModel.find({});
@@ -47,6 +48,7 @@ class HomeController {
         latestJobs: mutipleMongooseToObject(latestJobs),
         totalJobs: totalJobs,
         mostJobs: mutipleMongooseToObject(mostJobs),
+        company,
       });
     } catch (err) {
       console.log(err);

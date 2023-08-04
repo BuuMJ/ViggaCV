@@ -82,6 +82,7 @@ class PaymentController {
     };
 
     var paymentId = req.query.paymentId;
+    const company = await CompanyModel.findOne({ iduser: req.user._id });
 
     paypal.payment.execute(
       paymentId,
@@ -108,6 +109,7 @@ class PaymentController {
             job: staffMongoseToObject(jobsuccess),
             user: req.user,
             days: req.session.days,
+            company,
           });
         }
       }
@@ -115,15 +117,18 @@ class PaymentController {
   }
 
   async cancel(req, res, next) {
+    const company = await CompanyModel.findOne({ iduser: req.user._id });
     const jobID = "646b3b9912eaed3af0ede0ff";
     const job = await JobModel.findById({ _id: jobID });
     res.render("cancel", {
       user: req.user,
       job: staffMongoseToObject(job),
+      company,
     });
   }
 
   async check(req, res, next) {
+    const company = await CompanyModel.findOne({ iduser: req.user._id });
     const jobID = req.params.id;
     req.session.jobID = jobID;
     const job = await JobModel.findById({ _id: jobID });
@@ -132,6 +137,7 @@ class PaymentController {
       res.render("check", {
         user: req.user,
         job: staffMongoseToObject(job),
+        company,
       });
     } else {
       res.redirect("back");

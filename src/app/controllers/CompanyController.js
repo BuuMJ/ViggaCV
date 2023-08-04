@@ -29,7 +29,7 @@ class CompanyController {
 
     const randomIndex = Math.floor(Math.random() * Listcompany.length);
     const randomCompany = Listcompany[randomIndex];
-    JobModel.find({ iduser: user_id }).then((listjob) => {
+    JobModel.find({ iduser: user_id, active: true }).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
       console.log(pages);
       if (page) {
@@ -100,7 +100,7 @@ class CompanyController {
 
     const randomIndex = Math.floor(Math.random() * Listcompany.length);
     const randomCompany = Listcompany[randomIndex];
-    JobModel.find({ iduser: user_id }).then((listjob) => {
+    JobModel.find({ iduser: user_id, active: true }).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
       console.log(pages);
       if (page) {
@@ -175,7 +175,7 @@ class CompanyController {
 
     const randomIndex = Math.floor(Math.random() * Listcompany.length);
     const randomCompany = Listcompany[randomIndex];
-    JobModel.find({ iduser: user_id }).then((listjob) => {
+    JobModel.find({ iduser: user_id, active: true }).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
       console.log(pages);
       if (page) {
@@ -192,7 +192,7 @@ class CompanyController {
               user: req.user,
               pages: pages,
               jobcount: listcompany,
-              company: company,
+              company: company, //cần sửa company để thấy được avatar
               listcompany: mutipleMongooseToObject(data),
               listjob,
               randomCompany: randomCompany,
@@ -245,7 +245,7 @@ class CompanyController {
       checkfl = { follow: "follow" };
     }
     console.log(checkfl.follow);
-    JobModel.find({ iduser: company.iduser }).then((listjob) => {
+    JobModel.find({ iduser: company.iduser, active: true }).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
       res.render("companydetail", {
         title: "Company Detail",
@@ -304,7 +304,7 @@ class CompanyController {
     //   company,
     //   listjob: listjob,
     // });
-    JobModel.find({ iduser: company.iduser }).then((listjob) => {
+    JobModel.find({ iduser: company.iduser, active: true }).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
       res.render("companyinformation", {
         title: "Company Information",

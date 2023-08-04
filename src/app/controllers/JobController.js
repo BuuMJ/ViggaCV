@@ -137,7 +137,7 @@ class JobController {
             job: mutipleMongooseToObject(data),
             bestCP: staffMongoseToObject(bestCP),
             bestFL: staffMongoseToObject(bestFL),
-            company: mutipleMongooseToObject(company),
+            company: mutipleMongooseToObject(company), //cần sửa company chỗ này
             company1: company,
             jobs: mutipleMongooseToObject(job),
             random: staffMongoseToObject(randomCompany),
@@ -164,7 +164,7 @@ class JobController {
             job: mutipleMongooseToObject(data),
             bestCP: staffMongoseToObject(bestCP),
             bestFL: staffMongoseToObject(bestFL),
-            company: mutipleMongooseToObject(company),
+            company: mutipleMongooseToObject(company), // cần sửa company chỗ này
             random: staffMongoseToObject(randomCompany),
             jobs: mutipleMongooseToObject(job),
             randomJobs: mutipleMongooseToObject(randomJobs),
@@ -307,7 +307,7 @@ class JobController {
             job: mutipleMongooseToObject(data),
             bestCP: staffMongoseToObject(bestCP),
             bestFL: staffMongoseToObject(bestFL),
-            company: mutipleMongooseToObject(company),
+            company: mutipleMongooseToObject(company), // cần sửa company chỗ này
             random: staffMongoseToObject(randomCompany),
             randomJobs: mutipleMongooseToObject(randomJobs),
             company1: company,
@@ -334,7 +334,7 @@ class JobController {
             job: mutipleMongooseToObject(data),
             bestCP: staffMongoseToObject(bestCP),
             bestFL: staffMongoseToObject(bestFL),
-            company: mutipleMongooseToObject(company),
+            company: mutipleMongooseToObject(company), //cần sửa company chỗ này
             random: staffMongoseToObject(randomCompany),
             randomJobs: mutipleMongooseToObject(randomJobs),
             listcompany: mutipleMongooseToObject(company),
@@ -488,7 +488,7 @@ class JobController {
               job: mutipleMongooseToObject(data),
               bestCP: staffMongoseToObject(bestCP),
               bestFL: staffMongoseToObject(bestFL),
-              company: mutipleMongooseToObject(company),
+              company: mutipleMongooseToObject(company), //cần sửa company chỗ này
               random: staffMongoseToObject(randomCompany),
               randomJobs: mutipleMongooseToObject(randomJobs),
               listcompany: mutipleMongooseToObject(company),
@@ -513,7 +513,7 @@ class JobController {
               job: mutipleMongooseToObject(data),
               bestCP: staffMongoseToObject(bestCP),
               bestFL: staffMongoseToObject(bestFL),
-              company: mutipleMongooseToObject(company),
+              company: mutipleMongooseToObject(company), //cần sửa company chỗ này
               random: staffMongoseToObject(randomCompany),
               randomJobs: mutipleMongooseToObject(randomJobs),
               listcompany: mutipleMongooseToObject(company),
@@ -546,7 +546,7 @@ class JobController {
               job: mutipleMongooseToObject(data),
               bestCP: staffMongoseToObject(bestCP),
               bestFL: staffMongoseToObject(bestFL),
-              company: mutipleMongooseToObject(company),
+              company: mutipleMongooseToObject(company), //cần sửa company chỗ này
               random: staffMongoseToObject(randomCompany),
               randomJobs: mutipleMongooseToObject(randomJobs),
               listcompany: mutipleMongooseToObject(company),
@@ -571,7 +571,7 @@ class JobController {
               job: mutipleMongooseToObject(data),
               bestCP: staffMongoseToObject(bestCP),
               bestFL: staffMongoseToObject(bestFL),
-              company: mutipleMongooseToObject(company),
+              company: mutipleMongooseToObject(company), //cần sửa company chỗ này
               random: staffMongoseToObject(randomCompany),
               randomJobs: mutipleMongooseToObject(randomJobs),
               listcompany: mutipleMongooseToObject(company),
@@ -620,7 +620,7 @@ class JobController {
         detail: staffMongoseToObject(detail),
         user,
         checksave,
-        company: staffMongoseToObject(company),
+        company: staffMongoseToObject(company), //cần sửa company chỗ này
         job: mutipleMongooseToObject(job),
       });
     } catch (err) {
@@ -707,8 +707,10 @@ class JobController {
       _id: { $in: jobs },
     });
     console.log(count);
+    const company = await CompanyModel.findOne({ iduser: req.user._id });
 
     res.render("job_favourite", {
+      company,
       listjob: mutipleMongooseToObject(listjob),
       listViewed: mutipleMongooseToObject(viewWithFlag),
       listApply: mutipleMongooseToObject(applyWithFlag),

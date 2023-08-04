@@ -3,11 +3,14 @@ const fs = require("fs");
 const path = require("path");
 const CVModel = require("../models/CV");
 const { staffMongoseToObject } = require("../../util/mongoose");
+const CompanyModel = require("../models/Company");
 
 class CvController {
   //[GET] CV
-  cv(req, res, next) {
+  async cv(req, res, next) {
+    const company = await CompanyModel.findOne({ iduser: req._id });
     res.render("cv", {
+      company,
       title: "NiceCV",
       user: req.user,
     });
@@ -16,6 +19,7 @@ class CvController {
   //[GET] Create CV
   async createCV(req, res, next) {
     // const iduser = req.user.id;
+    const company = await CompanyModel.findOne({ iduser: req._id });
     const data = await CVModel.findOne({ iduser: req.user._id });
     console.log(data);
     // console.log(req.user._id + " = Thông tin của user");
@@ -25,6 +29,7 @@ class CvController {
       res.render("createCV", {
         title: "Create CV",
         inforCV: staffMongoseToObject(data),
+        company,
         user: req.user,
       });
       next();
@@ -33,6 +38,7 @@ class CvController {
       res.render("createCV", {
         title: "Create CV",
         user: req.user,
+        company,
         usercv: req.user,
       });
     }
@@ -40,6 +46,7 @@ class CvController {
 
   //[GET] CV PDF
   async cvpdf(req, res, next) {
+    const company = await CompanyModel.findOne({ iduser: req._id });
     const iduser = req.params.id;
     const data = await CVModel.findOne({ iduser: iduser });
     console.log("đây là id của user khi thực hiện xuất pdf: " + iduser);
@@ -49,12 +56,14 @@ class CvController {
         title: "Export PDF",
         cvuser: data,
         user: req.user,
+        company,
       });
     } else {
       res.render("cvpdf", {
         title: "Export PDF",
         user: req.user,
         usercv: req.user,
+        company,
       });
     }
   }

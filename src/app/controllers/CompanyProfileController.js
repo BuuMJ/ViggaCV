@@ -7,9 +7,14 @@ const subVN = require("sub-vn");
 const SubscribeModel = require("../models/Subscribe");
 const nodemailer = require("nodemailer");
 const ActionModel = require("../models/Action");
-const { staffMongoseToObject } = require("../../util/mongoose");
+const {
+  staffMongoseToObject,
+  mutipleMongooseToObject,
+} = require("../../util/mongoose");
 const { subscribe } = require("./HomeController");
 const UserModel = require("../models/User");
+const QualifiedModel = require("../models/Qualified");
+const UnsatisfactoryModel = require("../models/Unsatisfactory");
 
 class CompanyProfileController {
   //[GET] Company profile
@@ -504,8 +509,19 @@ class CompanyProfileController {
     res.redirect("/companyprofile");
   }
 
-  managerCV(req, res, next) {
-    res.render("cvManager");
+  async managerCV(req, res, next) {
+    const idjob = req.params.id;
+    const job = await JobModel.findById(idjob);
+    const cvPassed = await QualifiedModel.find({ jobid: idjob });
+    const cvFailed = await UnsatisfactoryModel.find({ jobid: idjob });
+    const company = await CompanyModel.findOne({ iduser: req.user._id });
+    res.render("cvManager", {
+      user: user.req,
+      cvPassed: mutipleMongooseToObject(cvPassed),
+      cvFailed: mutipleMongooseToObject(cvFailed),
+      job: staffMongoseToObject(job),
+      company,
+    });
   }
 
   async deletejob(req, res, next) {
