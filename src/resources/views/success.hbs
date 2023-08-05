@@ -1,0 +1,45 @@
+<div class="container__success-payment">
+    <div class="main__success-payment">
+        <div class="navbar-left">
+            <div class="navbar-left__primary">
+                <a class="navbar-left-img" href="/"><img src="/img/LOGOVGA.png" alt=""></a>
+                <a class="navbar-left-name" href="/"><span>ViggaCareers</span></a>
+            </div>
+            <a class="litle-text" href="/"><p >Unlock Your Potential</p></a>
+        </div>
+        <div class="body__success-payment">
+            <header class="logo-success">
+                <img src="/img/paymentsuccess.png" alt="">
+                <p class="welcome">hi <b>{{job.companyname}}</b>, Congratulations</p>
+                <h1>Payment Successful !</h1>
+                <p class="total" >30$</p>
+                <p class="time-payment"></p>
+            </header>
+            <section>
+                <p>Name Job: {{job.jobname}}</p>
+            </section>
+            <div class="bottom">
+                <p>Thank you <b>{{job.companyname}}</b> for trusting and using our service</p>
+            </div>
+        </div>
+        <div class="confirm-payment">
+            <input id="confirm" type="checkbox" required>
+            <label for="confirm">confirm payment information</label>
+        </div>
+        <div class="action-confirm">
+            <a id="joblink" href="/job">back to job page</a>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    var checkBox = document.getElementById('confirm');
+    var jobLink = document.getElementById('joblink');
+    jobLink.addEventListener('click', function(event) {
+        if (!checkBox.checked) {
+            alert("Please confirm payment information before proceeding & Click on the box to confirm payment information.");
+            event.preventDefault();
+        }
+    });
+});
+</script>
