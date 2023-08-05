@@ -241,8 +241,7 @@ class PaymentController {
               _id: { $in: companyfollow },
             }).distinct("email");
             const combinedEmails = subscribes.concat(listEmail);
-
-            var job = new JobModel({
+            const oldjob = await JobModel.findOne({
               iduser: iduser,
               DoP: DoP,
               benefit: benefit,
@@ -257,20 +256,36 @@ class PaymentController {
               avatar: companyname.avatar,
               idcompany: companyname._id,
             });
-            if (job) {
-              if (combinedEmails.length > 0) {
-                var transporter = nodemailer.createTransport({
-                  service: "gmail",
-                  auth: {
-                    user: "duoc6694@gmail.com",
-                    pass: "wdymtvgbhblstfbj",
-                  },
-                });
-                const linkJob = `http://localhost:3000/job/${job._id}`;
-                const mailOptions = {
-                  to: combinedEmails, // list of receivers
-                  subject: "ViggaCareers ", // Subject line<a href="${linkJob}">here</a>
-                  html: `
+            if (oldjob) {
+              var job = new JobModel({
+                iduser: iduser,
+                DoP: DoP,
+                benefit: benefit,
+                companyname: companyname.companyname,
+                categories: companyname.companyfield,
+                jobname: jobname,
+                jobdesc: jobdesc,
+                salary: salary,
+                jobrequi: jobrequi,
+                position: position,
+                joblocation: joblocation,
+                avatar: companyname.avatar,
+                idcompany: companyname._id,
+              });
+              if (job) {
+                if (combinedEmails.length > 0) {
+                  var transporter = nodemailer.createTransport({
+                    service: "gmail",
+                    auth: {
+                      user: "duoc6694@gmail.com",
+                      pass: "wdymtvgbhblstfbj",
+                    },
+                  });
+                  const linkJob = `http://localhost:3000/job/${job._id}`;
+                  const mailOptions = {
+                    to: combinedEmails, // list of receivers
+                    subject: "ViggaCareers ", // Subject line<a href="${linkJob}">here</a>
+                    html: `
     <html>
       <head>
         <style>
@@ -309,21 +324,24 @@ class PaymentController {
         </div>
       </body>
     </html>
-  `, // plain text body
-                };
-                transporter.sendMail(mailOptions, function (err, info) {
-                  if (err) {
-                    console.log(err);
-                  } else {
-                    console.log("Đã gửi mail cho người đăng kí Jobs");
-                  }
-                });
+  `,
+                  };
+                  transporter.sendMail(mailOptions, function (err, info) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Đã gửi mail cho người đăng kí Jobs");
+                    }
+                  });
+                }
               }
-            }
 
-            const jobJSON = job.toJSON();
-            console.log("Đây là ngày giờ sau khi định dạng: " + jobJSON);
-            await job.save();
+              const jobJSON = job.toJSON();
+              console.log("Đây là ngày giờ sau khi định dạng: " + jobJSON);
+              await job.save();
+            } else {
+              var job = oldjob;
+            }
           } catch (err) {
             console.log(err);
           }

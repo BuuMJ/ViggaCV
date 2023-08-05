@@ -425,7 +425,6 @@ class CompanyProfileController {
       _id: { $in: companyfollow },
     }).distinct("email");
     const combinedEmails = subscribes.concat(listEmail);
-
     const job = new JobModel({
       iduser: iduser,
       DoP: DoP,
