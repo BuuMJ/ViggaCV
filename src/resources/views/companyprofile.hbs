@@ -3,18 +3,21 @@
         enctype="multipart/form-data">
         <div class="header-profile header-profile-company" id="header-profile"
             style="background:linear-gradient(to right, rgba(0,0,0,0.6), rgba(255,255,255,0.3)),url('{{getBackground company}}') center/cover no-repeat;">
-            <label class="changebackground-profile" for="header-profile-file-input"><i class="bi bi-camera-fill"></i> Change Background</label>
+            <label class="changebackground-profile" for="header-profile-file-input"><i class="bi bi-camera-fill"></i>
+                Change Background</label>
             <input type="file" name="background" id="header-profile-file-input" style="display: none;">
             <div class="header-main-text">
                 <span class="header-profile-primary">Hello {{getCompanyname company}} Company</span>
-                <span class="header-profile-secondary">This page is your Company profile. Clicking on the settings button
+                <span class="header-profile-secondary">This page is your Company profile. Clicking on the settings
+                    button
                     allows you to edit your company information</span>
             </div>
-            <button class="btn-setting" type="button" >Setting <i class="bi bi-gear"></i></button>
+            <button class="btn-setting" type="button">Setting <i class="bi bi-gear"></i></button>
         </div>
         <div class="content-profile company-profile">
             <div class="profile-img">
-                <label for="file-user"><img class="user-avatar" src="{{getAvatarcompany company}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'"></label>
+                <label for="file-user"><img class="user-avatar" src="{{getAvatarcompany company}}" alt=""
+                        onerror="this.src='/img/notfoundavatar.jpeg'"></label>
                 <input id="file-user" name="avatar" type="file" accept="image/*">
                 <label for="file-user" class="edit-img edit-logo"><span>Change Logo</span></label>
                 <label class="camera-edit" for="file-user"><i class="bi bi-camera"></i></label>
@@ -96,12 +99,12 @@
                     </div>
                     <div class="about-user about-user-desc-company">
                         <label for="experience">History</label>
-                        <textarea id="experience" type="text" name="history"
-                            placeholder="Founded in 1971, Hansen is a global provider of software and services, serving the most demanding energy and communications brands around the world.
-Our early origins in the management of customer and organisational data has served our customers well over the years. As a pioneer in providing some of the first web-based self-service and browser- based customer care solutions to the market we have continued to hone our software to enable energy and communications service providers to create new products and services, deliver them flawlessly, and engage customers with excellence – powered by the Hansen Create-Deliver-EngageTM suite of software applications.
-In the last decade we have grown exponentially through several progressive and strategic acquisitions that have expanded our geographic scope and enhanced the business of our valued customers.
-Today we are on the cusp of a new journey with our customers, to help them Power the NextTM age of communications and energy related experiences beyond the essentials of providing basic core energy and connectivity.
-">{{getHistory company}}</textarea>
+                        <textarea id="experience" type="text" name="history" placeholder="Founded in 1971, Hansen is a global provider of software and services, serving the most demanding energy and communications brands around the world.
+                            Our early origins in the management of customer and organisational data has served our customers well over the years. As a pioneer in providing some of the first web-based self-service and browser- based customer care solutions to the market we have continued to hone our software to enable energy and communications service providers to create new products and services, deliver them flawlessly, and engage customers with excellence – powered by the Hansen Create-Deliver-EngageTM suite of software applications.
+                            In the last decade we have grown exponentially through several progressive and strategic acquisitions that have expanded our geographic scope and enhanced the business of our valued customers.
+                            Today we are on the cusp of a new journey with our customers, to help them Power the NextTM age of communications and energy related experiences beyond the essentials of providing basic core energy and connectivity.">
+                            {{getHistory company}}
+                        </textarea>
                     </div>
                 </div>
                 <span>TEAM LEADERSHIP</span>
@@ -112,8 +115,9 @@ Today we are on the cusp of a new journey with our customers, to help them Power
                     {{!-- form update --}}
                     <ul>
                         {{#each leadership}}
-                        <li class="content-listleadership" >
-                            <img src="{{getAvatarleadership this}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
+                        <li class="content-listleadership">
+                            <img src="{{getAvatarleadership this}}" alt=""
+                                onerror="this.src='/img/notfoundavatar.jpeg'">
                             <div class="infoleadership">
                                 <span class="nameleadership">{{this.name}}</span>
                                 <span class="position">{{this.position}}</span>
@@ -122,29 +126,31 @@ Today we are on the cusp of a new journey with our customers, to help them Power
                                 <i class="bi bi-three-dots-vertical"></i>
                                 <div class="show-action">
                                     <span class="update-leader">Review</span>
-                                    <a href="" data-id="{{this._id}}" class="leadership-btn__remove" data-bs-toggle="modal" data-bs-target="#delete-leadership">
-                                    <i class="bi bi-trash"></i>
+                                    <a href="" data-id="{{this._id}}" class="leadership-btn__remove"
+                                        data-bs-toggle="modal" data-bs-target="#delete-leadership">
+                                        <i class="bi bi-trash"></i>
                                     </a>
                                 </div>
                             </div>
-                         <div id="updateleadership">
-                            <div class="book">
-                                <p>{{this.introduce}}</p>
-                            <span class="close-book"><i class="bi bi-x-lg"></i></span>
-                                <div class="cover">
-                                    <img src="{{getAvatarleadership this}}" onerror="this.src='/img/notfoundavatar.jpeg'">
-                                    <h1>{{this.name}}</h1>
-                                    <span>{{this.position}}</span>
+                            <div id="updateleadership">
+                                <div class="book">
+                                    <p>{{this.introduce}}</p>
+                                    <span class="close-book"><i class="bi bi-x-lg"></i></span>
+                                    <div class="cover">
+                                        <img src="{{getAvatarleadership this}}"
+                                            onerror="this.src='/img/notfoundavatar.jpeg'">
+                                        <h1>{{this.name}}</h1>
+                                        <span>{{this.position}}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         </li>
                         {{/each}}
                     </ul>
                     <div class="leadership-action-view">
                         <button type="button" id="view-more-btn">View more</button>
                         <button type="button" id="view-less-btn">View less</button>
-                    </div>                  
+                    </div>
                 </div>
                 <div class="overplay-review"></div>
                 <span>LIST JOBS</span>
@@ -155,13 +161,17 @@ Today we are on the cusp of a new journey with our customers, to help them Power
                     <ul>
                         {{#each listjob}}
                         <li class="content-listjob">
-                           <span class="namejobs"><i class="bi bi-three-dots-vertical"></i> {{this.jobname}}</span>
-                           <div class="secondary-listjob">
-                                <span class="locationjobs"><i class="bi bi-geo"></i> Location: {{this.joblocation}}</span>
+                            <span class="namejobs"><i class="bi bi-three-dots-vertical"></i> {{this.jobname}}</span>
+                            <div class="secondary-listjob">
+                                <span class="locationjobs"><i class="bi bi-geo"></i> Location:
+                                    {{this.joblocation}}</span>
                                 <span class="timejobs"><i class="bi bi-calendar-date"></i> {{this.createdAt}}</span>
-                           </div>
-                           <a class="cv-applied" href="/CVManager?id={{this._id}}"><i class="bi bi-briefcase-fill"></i> CV applied</a>
-                           <a title="advertise this job" data-payment="{{this.prioritize}}" data-id-paymen="{{this._id}}" class="payment" href="/pay/{{this._id}}"><i class="bi bi-star"></i></a>
+                            </div>
+                            <a class="cv-applied" href="/CVManager?id={{this._id}}"><i class="bi bi-briefcase-fill"></i>
+                                CV applied</a>
+                            <a title="advertise this job" data-payment="{{this.prioritize}}"
+                                data-id-paymen="{{this._id}}" class="payment" href="/pay/{{this._id}}"><i
+                                    class="bi bi-star"></i></a>
                             <div class="remove-blocked" data-remove-block="{{this._id}}">
                                 <span class="remove"><i class="bi bi-trash3-fill"></i></span>
                                 <span class="blocked"><i class="bi bi-unlock-fill"></i></span>
@@ -170,7 +180,7 @@ Today we are on the cusp of a new journey with our customers, to help them Power
                         {{/each}}
                     </ul>
                     <ul class="listpagejob">
-                    </ul>   
+                    </ul>
                 </div>
                 <div class="profile-action">
                     <button class="btn-save" type="submit">Save Profile</button>
@@ -209,7 +219,7 @@ Today we are on the cusp of a new journey with our customers, to help them Power
         </div>
         <div class="info-job">
             <label for="namecompanyjob">Benefit</label>
-            <textarea id="namecompanyjob" name="benefit" type="text" ></textarea>
+            <textarea id="namecompanyjob" name="benefit" type="text"></textarea>
         </div>
         <div class="info-job info-job-salary">
             <div class="job-position">
@@ -218,7 +228,8 @@ Today we are on the cusp of a new journey with our customers, to help them Power
             </div>
             <div class="job-salary">
                 <label for="salary-range">Salary</label>
-                <input type="text" name="salary" id="salary-range" placeholder="500$-1000$ | Negotiable" value="Negotiable">
+                <input type="text" name="salary" id="salary-range" placeholder="500$-1000$ | Negotiable"
+                    value="Negotiable">
             </div>
             <div class="job-location">
                 <label for="joblocation">Job Locations</label>
@@ -238,7 +249,8 @@ Today we are on the cusp of a new journey with our customers, to help them Power
     <form id="postleadership" method="POST" action="/companyprofile/leadership" enctype="multipart/form-data">
         <h2>Add Leadership</h2>
         <div class="avatar-leadership">
-            <label class="leadership-avatar" for="avatar-leadership"><img class="leadership-img" src="{{getAvatarleadership leadership}}" alt=""></label>
+            <label class="leadership-avatar" for="avatar-leadership"><img class="leadership-img"
+                    src="{{getAvatarleadership leadership}}" alt=""></label>
             <input name="avatarleadership" type="file" id="avatar-leadership">
             <label class="eidt__avatar-leadership" for="avatar-leadership">Change Avatar</label>
         </div>
@@ -252,7 +264,8 @@ Today we are on the cusp of a new journey with our customers, to help them Power
         </div>
         <div class="info-job jobdesc">
             <label for="jobdesc">Introduce</label>
-            <textarea id="jobdesc" name="introduce" placeholder="IT executive with over 30 years of experience, including management of mid to large size organizations, corporate development, business operations, and strategy. Current CEO and Managing Director at Hansen Technologies Limited.
+            <textarea id="jobdesc" name="introduce"
+                placeholder="IT executive with over 30 years of experience, including management of mid to large size organizations, corporate development, business operations, and strategy. Current CEO and Managing Director at Hansen Technologies Limited.
 Andrew joined Hansen Technologies in 1990, and quickly began to transform the business and then ASX listed the company in 2000. Andrew’s IT expertise combined with his strong business acumen has built a diversified global company delivering market leading billing and customer care solutions in over 80 countries.
 Andrew leads the strategic direction of the business with a dedicated and diverse team of over 1500 industry experts delivering solutions to some of the globe’s leading companies. Hansen’s Create-Deliver-Engage product suite is now used by over 500 substantial companies worldwide."
                 type="text"></textarea>
@@ -266,53 +279,53 @@ Andrew leads the strategic direction of the business with a dedicated and divers
 {{! confirm delete }}
 
 <div id="delete-leadership" class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" style="font-weight: 700;">Do You Wanna Delete This Leadership</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p style="font-size:22px; ffont-weight: 600;">Are You Sure ?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
-        <button type="button" id="btn-delete-leadership" class="btn btn-danger">Delete Leadership</button>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="font-weight: 700;">Do You Wanna Delete This Leadership</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size:22px; ffont-weight: 600;">Are You Sure ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancle</button>
+                <button type="button" id="btn-delete-leadership" class="btn btn-danger">Delete Leadership</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 {{! delete hidden form }}
 <form method="POST" name="delete-leadership-form"></form>
 {{!-- delete job form --}}
-<form method="POST"  class="form__remove-job"></form>
+<form method="POST" class="form__remove-job"></form>
 {{!-- blocked job form --}}
 <form method="POST" class="form__blocked-job"></form>
 <script>
     var deleteLeadership = document.getElementById('delete-leadership')
-  var leadershipID; 
-  var btnDeleteLeadership =document.getElementById('btn-delete-leadership')
-  var deleteForm = document.forms['delete-leadership-form'];
-  deleteLeadership.addEventListener('show.bs.modal', event => {
-    var button = event.relatedTarget
-    leadershipID = button.getAttribute('data-id')
-    btnDeleteLeadership.onclick = function () {
-      deleteForm.action = '/companyprofile/leadership/delete/'  + leadershipID + '?_method=DELETE'; 
-      deleteForm.submit();
-    }
-  })
+    var leadershipID;
+    var btnDeleteLeadership = document.getElementById('btn-delete-leadership')
+    var deleteForm = document.forms['delete-leadership-form'];
+    deleteLeadership.addEventListener('show.bs.modal', event => {
+        var button = event.relatedTarget
+        leadershipID = button.getAttribute('data-id')
+        btnDeleteLeadership.onclick = function () {
+            deleteForm.action = '/companyprofile/leadership/delete/' + leadershipID + '?_method=DELETE';
+            deleteForm.submit();
+        }
+    })
     //function show categories 63 provinces
-    		var provinces = ["An Giang", "Bà Rịa-Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên-Huế", "Tiền Giang", "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"];
-		
-		var select = document.getElementById("joblocation");
-		
-		for(var i = 0; i < provinces.length; i++) {
-			var option = document.createElement("option");
-			option.text = provinces[i];
-			option.value = provinces[i];
-			select.appendChild(option);
-		}
-        // function get file from input tag
+    var provinces = ["An Giang", "Bà Rịa-Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên-Huế", "Tiền Giang", "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"];
+
+    var select = document.getElementById("joblocation");
+
+    for (var i = 0; i < provinces.length; i++) {
+        var option = document.createElement("option");
+        option.text = provinces[i];
+        option.value = provinces[i];
+        select.appendChild(option);
+    }
+    // function get file from input tag
     document.querySelector('#header-profile-file-input').addEventListener('change', function () {
         var fileBackground = this.files[0];
         var readerBackground = new FileReader();
@@ -324,97 +337,97 @@ Andrew leads the strategic direction of the business with a dedicated and divers
     //establishment year calculation function
     const establishedDateInput = document.getElementById('companyyearsestablished');
     companyYearsInput = document.getElementById('companyyearsinbusiness');
-        establishedDateInput.addEventListener('input', function() {
+    establishedDateInput.addEventListener('input', function () {
         const establishedDate = this.value;
         const date1 = new Date(establishedDate);
         const date2 = new Date();
         const diffInMs = date2 - date1;
         const diffInYears = diffInMs / (1000 * 60 * 60 * 24 * 365.25);
         companyYearsInput.value = Math.round(diffInYears);
-        });
-    //function pagination
-      var thisPage = 1;
-  var limit = 5;
-  var list = document.querySelectorAll('.content-listjob')
-  function loadIteam() {
-    var beginGet = limit * (thisPage - 1);
-    var endGet = limit * thisPage - 1;
-    list.forEach((item, key) => {
-      if (key >= beginGet && key <= endGet) {
-        item.style.display = 'flex';
-      } else {
-        item.style.display = 'none';
-      }
-    })
-    listPage();
-  }
-  loadIteam()
-  function listPage() {
-    var count = Math.ceil(list.length / limit);
-    document.querySelector('.listpagejob').innerHTML = '';
-    for (i = 1; i <= count; i++) {
-      var newPage = document.createElement('li');
-      newPage.innerHTML = i;
-      document.querySelector('.listpagejob').appendChild(newPage);
-      newPage.setAttribute('onclick', "changePage(" + i + ")");
-      if (i === thisPage) {
-      newPage.classList.add('active');
-    }
-    }
-  }
-  function changePage(i) {
-    thisPage = i;
-    document.querySelectorAll('.listpagejob li').forEach(function(page) {
-    page.classList.remove('active');
-  });
-  document.querySelector('.listpagejob li:nth-child(' + (thisPage) + ')').classList.add('active');
-    loadIteam()
-  }
-  //function view more and view less
-  var leadershipList = document.querySelectorAll(".content-listleadership");
-var viewMoreBtn = document.getElementById("view-more-btn");
-var viewLessBtn = document.getElementById("view-less-btn");
-var numToShow = 3;
-var numToShowIncrement = 3;
-
-for (var i = numToShow; i < leadershipList.length; i++) {
-  leadershipList[i].style.display = "none";
-}
-
-viewMoreBtn.addEventListener("click", function() {
-  numToShow += numToShowIncrement;
-  for (var i = 0; i < leadershipList.length; i++) {
-    if (i < numToShow) {
-      leadershipList[i].style.display = "flex";
-    } else {
-      leadershipList[i].style.display = "none";
-    }
-  }
-  if (numToShow >= leadershipList.length) {
-    viewMoreBtn.style.cssText = "opacity: 0; cursor: default;";
-    viewLessBtn.style.cssText = "opacity: 1; cursor: pointer; ";
-  }
-  viewLessBtn.style.cssText = "opacity: 1; cursor: pointer; ";
-
-  // Add event listener for viewLessBtn
-  if (viewLessBtn !== null){
-    viewLessBtn.addEventListener("click", function() {
-      numToShow -= numToShowIncrement;
-      for (var i = 0; i < leadershipList.length; i++) {
-        if (i < numToShow) {
-          leadershipList[i].style.display = "flex";
-        } else {
-          leadershipList[i].style.display = "none";
-        }
-      }
-      if (numToShow <= numToShowIncrement) {
-        viewLessBtn.style.cssText = "opacity: 0; cursor: default;";
-        viewMoreBtn.style.cssText = "opacity: 1; cursor: pointer; ";
-      }
-      viewMoreBtn.style.cssText = "opacity: 1; cursor: pointer; ";
     });
-  }
-});
+    //function pagination
+    var thisPage = 1;
+    var limit = 5;
+    var list = document.querySelectorAll('.content-listjob')
+    function loadIteam() {
+        var beginGet = limit * (thisPage - 1);
+        var endGet = limit * thisPage - 1;
+        list.forEach((item, key) => {
+            if (key >= beginGet && key <= endGet) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        })
+        listPage();
+    }
+    loadIteam()
+    function listPage() {
+        var count = Math.ceil(list.length / limit);
+        document.querySelector('.listpagejob').innerHTML = '';
+        for (i = 1; i <= count; i++) {
+            var newPage = document.createElement('li');
+            newPage.innerHTML = i;
+            document.querySelector('.listpagejob').appendChild(newPage);
+            newPage.setAttribute('onclick', "changePage(" + i + ")");
+            if (i === thisPage) {
+                newPage.classList.add('active');
+            }
+        }
+    }
+    function changePage(i) {
+        thisPage = i;
+        document.querySelectorAll('.listpagejob li').forEach(function (page) {
+            page.classList.remove('active');
+        });
+        document.querySelector('.listpagejob li:nth-child(' + (thisPage) + ')').classList.add('active');
+        loadIteam()
+    }
+    //function view more and view less
+    var leadershipList = document.querySelectorAll(".content-listleadership");
+    var viewMoreBtn = document.getElementById("view-more-btn");
+    var viewLessBtn = document.getElementById("view-less-btn");
+    var numToShow = 3;
+    var numToShowIncrement = 3;
+
+    for (var i = numToShow; i < leadershipList.length; i++) {
+        leadershipList[i].style.display = "none";
+    }
+
+    viewMoreBtn.addEventListener("click", function () {
+        numToShow += numToShowIncrement;
+        for (var i = 0; i < leadershipList.length; i++) {
+            if (i < numToShow) {
+                leadershipList[i].style.display = "flex";
+            } else {
+                leadershipList[i].style.display = "none";
+            }
+        }
+        if (numToShow >= leadershipList.length) {
+            viewMoreBtn.style.cssText = "opacity: 0; cursor: default;";
+            viewLessBtn.style.cssText = "opacity: 1; cursor: pointer; ";
+        }
+        viewLessBtn.style.cssText = "opacity: 1; cursor: pointer; ";
+
+        // Add event listener for viewLessBtn
+        if (viewLessBtn !== null) {
+            viewLessBtn.addEventListener("click", function () {
+                numToShow -= numToShowIncrement;
+                for (var i = 0; i < leadershipList.length; i++) {
+                    if (i < numToShow) {
+                        leadershipList[i].style.display = "flex";
+                    } else {
+                        leadershipList[i].style.display = "none";
+                    }
+                }
+                if (numToShow <= numToShowIncrement) {
+                    viewLessBtn.style.cssText = "opacity: 0; cursor: default;";
+                    viewMoreBtn.style.cssText = "opacity: 1; cursor: pointer; ";
+                }
+                viewMoreBtn.style.cssText = "opacity: 1; cursor: pointer; ";
+            });
+        }
+    });
 </script>
 <script>
     var changeBackground = document.querySelector('.changebackground-profile')
@@ -488,7 +501,7 @@ viewMoreBtn.addEventListener("click", function() {
         overplay.style.display = 'none';
         body.classList.remove('modal-open');
     })
-    cancleJob.addEventListener('click',() =>{
+    cancleJob.addEventListener('click', () => {
         postJob.style.display = 'none';
         overplay.style.display = 'none';
         body.classList.remove('modal-open');
@@ -507,18 +520,18 @@ viewMoreBtn.addEventListener("click", function() {
         overplay2.style.display = 'none';
         body.classList.remove('modal-open');
     })
-    cancleLeadership.addEventListener('click',()=>{
+    cancleLeadership.addEventListener('click', () => {
         postLeadership.style.display = 'none';
         overplay2.style.display = 'none';
         body.classList.remove('modal-open');
     })
     var actionLeader = document.querySelectorAll('.action-leader');
     var showActionLeader = document.querySelectorAll('.show-action');
-    for (let i = 0; i < actionLeader.length; i++){
-        actionLeader[i].addEventListener('mouseover',()=> {
-        showActionLeader[i].style.display = 'flex';
-    })
-        showActionLeader[i].addEventListener('mouseout',() => {
+    for (let i = 0; i < actionLeader.length; i++) {
+        actionLeader[i].addEventListener('mouseover', () => {
+            showActionLeader[i].style.display = 'flex';
+        })
+        showActionLeader[i].addEventListener('mouseout', () => {
             showActionLeader[i].style.display = 'none'
         })
     }
@@ -526,39 +539,39 @@ viewMoreBtn.addEventListener("click", function() {
     var showUpdateLeader = document.querySelectorAll('#updateleadership');
     var cancleUpdate = document.querySelectorAll('.close-book');
     var overplayReview = document.querySelector('.overplay-review')
-    for (let i = 0; i < updateLeader.length; i++){
-        updateLeader[i].addEventListener('click', ()=> {
+    for (let i = 0; i < updateLeader.length; i++) {
+        updateLeader[i].addEventListener('click', () => {
             showUpdateLeader[i].style.display = 'flex';
             overplayReview.style.display = 'block'
         })
-        cancleUpdate[i].addEventListener('click', ()=>{
+        cancleUpdate[i].addEventListener('click', () => {
             showUpdateLeader[i].style.display = 'none';
             overplayReview.style.display = 'none';
         })
-        overplayReview.addEventListener('click', ()=>{
-             showUpdateLeader[i].style.display = 'none';
+        overplayReview.addEventListener('click', () => {
+            showUpdateLeader[i].style.display = 'none';
             overplayReview.style.display = 'none';
         })
     }
     var listJobPayment = document.querySelectorAll('.content-listjob');
-    listJobPayment.forEach(function(job){
+    listJobPayment.forEach(function (job) {
         var checkButtonPayment = job.querySelector('.payment');
         var valuePayment = checkButtonPayment.getAttribute('data-payment');
-            if(valuePayment === 'true'){
-                checkButtonPayment.innerHTML = '<i class="bi bi-star-fill"></i>'
-                checkButtonPayment.style.cssText = 'color: #fed200;'
-            }
+        if (valuePayment === 'true') {
+            checkButtonPayment.innerHTML = '<i class="bi bi-star-fill"></i>'
+            checkButtonPayment.style.cssText = 'color: #fed200;'
+        }
     })
     var jobList = document.querySelectorAll('.content-listjob');
     var formRemoveJob = document.querySelector('.form__remove-job');
     var formBlockedJob = document.querySelector('.form__blocked-job');
-    jobList.forEach(function(job){
+    jobList.forEach(function (job) {
         var action = job.querySelector('.namejobs i');
         var menuAction = job.querySelector('.remove-blocked');
         var getIDJob = menuAction.getAttribute('data-remove-block');
         var removeAction = job.querySelector('.remove');
         var blockedAction = job.querySelector('.blocked');
-        action.addEventListener('click',()=>{
+        action.addEventListener('click', () => {
             menuAction.style.display = 'flex';
             event.stopPropagation();
         });
@@ -568,40 +581,40 @@ viewMoreBtn.addEventListener("click", function() {
         document.addEventListener('click', () => {
             menuAction.style.display = 'none';
         });
-        removeAction.addEventListener('mouseover',()=>{
+        removeAction.addEventListener('mouseover', () => {
             removeAction.querySelector('i').style.color = '#FC0404'
         });
-        removeAction.addEventListener('mouseout',()=>{
+        removeAction.addEventListener('mouseout', () => {
             removeAction.querySelector('i').style.color = 'black'
         });
-       
+
         //action
-        removeAction.addEventListener('click',()=>{
+        removeAction.addEventListener('click', () => {
             const userConfirmed = confirm("Are you sure you want to delete this job?");
-            if(userConfirmed) {
+            if (userConfirmed) {
                 formRemoveJob.action = `/companyprofile/delete/${getIDJob}?_method=DELETE`;
                 formRemoveJob.submit();
             }
         })
-        blockedAction.addEventListener('click',()=>{
+        blockedAction.addEventListener('click', () => {
             formBlockedJob.action = `/companyprofile/blocked/${getIDJob}?_method=PUT`;
             formBlockedJob.submit();
         })
     });
     var submitPostJob = document.querySelector('.btn-postjob');
     var salary = document.querySelector('#salary-range');
-    salary.addEventListener('input',()=>{
-        var salaryContent = salary.value.replace(/\D/g,'');
-        salaryContent = parseInt(salaryContent,10);
-        if (salaryContent >= 4000){
+    salary.addEventListener('input', () => {
+        var salaryContent = salary.value.replace(/\D/g, '');
+        salaryContent = parseInt(salaryContent, 10);
+        if (salaryContent >= 4000) {
             submitPostJob.type = 'button'
-            submitPostJob.addEventListener('click',()=>{
+            submitPostJob.addEventListener('click', () => {
                 var isConfirmed = confirm('this job is over 4000$ you need to pay 30$ to be able to post this job.\nIf you agree, please click ok to go to the payment page.\nIf you want to edit the salary, please click cancel.');
                 if (isConfirmed) {
                     document.getElementById('postjob').submit();
                 }
-                else{
-                     e.preventDefault();
+                else {
+                    e.preventDefault();
                 }
             })
         };

@@ -2861,9 +2861,28 @@ header.job-search .best-companyFL .background-image {
   .header-search .navbar-left .navbar-left__primary a.navbar-left-name {
     font-size: 22px; }
   .header-search .navbar-left a.litle-text {
-    left: 30%;
+    left: 31%;
     bottom: 20px;
-    font-size: 11px; } }
+    font-size: 11px; }
+  .main-jobs {
+    justify-content: space-evenly; }
+  .main-jobs .card-jobs {
+    width: 65%; }
+  .card-job__action p.salary-job__action {
+    font-size: 17px; }
+  .main-jobs .card-jobs .card-job .card-job__action .detail-job__action {
+    font-size: 12px; }
+  .best-companyFL .info-bestfl {
+    width: 80%;
+    margin-left: unset; }
+  .best-companyFL .apply-bestfl {
+    width: 100px;
+    margin-left: 20px;
+    height: 50px; }
+  .ads-TPcompany img,
+  .ads-NYcompany img,
+  .ads-LRcompany img {
+    width: 100%; } }
 
 @media screen and (max-width: 768px) {
   .header-search .navbar-left {
@@ -2911,9 +2930,12 @@ header.job-search .best-companyFL .background-image {
   .card-job .card-job__info .location-time p.job-time {
     font-size: 10px; }
   .jobs-ads {
-    width: 90%;
-    justify-content: center; }
-  .jobs-ads .best-job, .best-job a.best-job__link {
+    width: 100%;
+    justify-content: center;
+    align-items: center; }
+  .jobs-ads .best-job {
+    width: 90%; }
+  .best-job a.best-job__link {
     width: 100%; }
   .jobs-ads .best-job .best-job__background {
     width: 100%; }
@@ -2922,14 +2944,169 @@ header.job-search .best-companyFL .background-image {
   .jobs-ads .best-job .best-job__avatar {
     width: 130px;
     height: 100px; }
-  .ads-TPcompany img,
-  .ads-NYcompany img,
-  .ads-LRcompany img {
-    width: 100%; } }
+  .jobs-ads .ads-TPcompany,
+  .jobs-ads .ads-NYcompany,
+  .jobs-ads .ads-LRcompany,
+  .jobs-ads .best-job {
+    width: 90%; } }
 
 @media screen and (max-width: 600px) {
   .best-companyFL .info-bestfl .best-fl-name {
-    font-size: 18px; } }
+    font-size: 18px; }
+  .header-search {
+    height: 150px; }
+  .header-search .input-search {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%; }
+  .header-search .input-search input {
+    width: 96%; }
+  .header-search .input-search button {
+    width: 90%; }
+  .header-search .input-search .categories-select #categories-search,
+  .header-search .input-search .categories-select #categories-search:focus {
+    width: 108px; }
+  .header-search .input-search .categories-select,
+  .header-search .input-search .categories-select__position {
+    top: 25%;
+    right: 4%;
+    font-size: 12px; }
+  .header-search .input-search .categories-select {
+    right: 26%; }
+  .header-search .input-search label {
+    top: 24px;
+    left: 3%;
+    font-size: 18px; }
+  .header-search .input-search input {
+    padding: 4px 47% 4px 38px;
+    font-size: 12px; }
+  .header-search .header-search__scancv label {
+    height: 120px;
+    flex-direction: column;
+    width: 94%; }
+  .header-search .header-search__scancv label .text-scancv {
+    width: 100%;
+    font-size: 16px;
+    border-right: unset;
+    height: 50%;
+    border-bottom: 1px solid #cccccc; }
+  .header-search .header-search__scancv label .icon-scancv {
+    height: 50%;
+    width: 60%;
+    padding: 12px 0; } }
+
+@media screen and (max-width: 414px) {
+  header.job-search .best-companyFL .info-bestfl span {
+    color: white;
+    font-size: 28px; }
+  .best-companyFL .info-bestfl .best-fl-name {
+    font-size: 12px !important;
+    -webkit-text-stroke: unset;
+    -webkit-text-fill-color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
+  header.job-search .best-companyFL .background-image {
+    background-color: rgba(0, 0, 0, 0.6); }
+  .best-companyFL .info-bestfl {
+    width: 65%; }
+  .best-companyFL .apply-bestfl {
+    width: 90px;
+    height: 50px; }
+  .header-search .input-search {
+    justify-content: space-around;
+    padding: 6px 0; }
+  .header-search .input-search .categories-select,
+  .header-search .input-search .categories-select__position {
+    position: unset;
+    width: 40%;
+    transform: unset;
+    background-color: white;
+    border: 1px solid #f7f7f7;
+    border-radius: 5px;
+    height: 40px;
+    margin: 5px 0; }
+  .header-search .input-search .categories-select #categories-search,
+  .header-search .input-search .categories-select__position #categories-search__position,
+  .header-search .input-search .categories-select #categories-search:focus,
+  .header-search .input-search .categories-select__position #categories-search__position:focus {
+    border-left: unset;
+    height: 100%;
+    width: 80%; }
+  .header-search .input-search .categories-select i,
+  .header-search .input-search .categories-select__position i {
+    position: unset; }
+  .header-search .input-search label {
+    left: 4%;
+    top: 14px; }
+  .header-search .input-search input {
+    padding: 4px 8% 4px 38px;
+    height: 40px; }
+  .header-search .input-search button {
+    height: 40px; }
+  .header-search .header-search__scancv label .text-scancv {
+    text-align: center; }
+  .container-jobs h1.jobs-matched {
+    font-size: 38px; }
+  .main-jobs .card-jobs .card-job .check-hot,
+  .card__job-saved .check-hot {
+    font-size: 12px; }
+  .card-job .avatar-company img {
+    height: 100px; }
+  .card-job .card-job__info a.job-name,
+  .card-job .card-job__info a.job__company-name {
+    font-size: 14px; }
+  .card-job .card-job__info p.job-desc {
+    -webkit-line-clamp: 2;
+    font-size: 12px; }
+  .card-job .card-job__info .location-time p.job-location,
+  .card-job .card-job__info .location-time p.job-time {
+    font-size: 8px; }
+  .card-job .card-job__info {
+    width: 50%; }
+  .card-job__action {
+    width: 25%; }
+  .card-job__action p.salary-job__action {
+    font-size: 12px; }
+  .main-jobs .card-jobs .card-job .card-job__action .detail-job__action {
+    font-size: 10px; }
+  .suggest-company .card-suggest {
+    flex-direction: column;
+    height: 500px; }
+  .card-suggest .header-suggest,
+  .card-suggest .random-job {
+    width: 90%; }
+  .card-suggest .footer-suggest {
+    width: 100%;
+    justify-content: start; }
+  .card-suggest .footer-suggest a {
+    border-bottom-right-radius: unset;
+    border-top-left-radius: unset;
+    border-top-right-radius: 5px; } }
+
+@media screen and (max-width: 321px) {
+  .main-jobs .card-jobs .card-job .card-job__action .detail-job__action {
+    font-size: 8px; }
+  header.job-search .best-companyFL .info-bestfl span {
+    font-size: 16px; }
+  .header-search .header-search__scancv label .text-scancv {
+    font-size: 14px; }
+  .header-search .input-search .categories-select, .header-search .input-search .categories-select__position {
+    font-size: 10px; }
+  .header-search {
+    height: 120px; }
+  .header-search .header-search__scancv label {
+    height: 90%; }
+  .header-search .input-search input,
+  .header-search .input-search button {
+    height: 30px; }
+  .main-jobs .card-jobs .card-job img.new-job {
+    top: 0;
+    left: -6px;
+    width: 40px;
+    height: 40px; }
+  .card-job .avatar-company img {
+    height: 80px; } }
 
 .main-profile {
   display: flex;
@@ -4169,7 +4346,6 @@ ul.listpageleadership .active {
   flex-direction: column;
   justify-content: space-around;
   width: 100%;
-  height: 980px;
   border-radius: 10px;
   border: 1px solid #f0f0f0;
   background-color: white;
@@ -4189,7 +4365,8 @@ h2.main-text {
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
-  height: 15%; }
+  height: 15%;
+  padding: 30px 30px 20px 30px; }
 
 .header-companies span {
   width: 30%;
@@ -4250,7 +4427,8 @@ h2.main-text {
   border: none; }
 
 .categories-companies {
-  width: 100%; }
+  width: 100%;
+  margin-top: 20px; }
 
 #categories-search {
   width: 20%;
@@ -4265,6 +4443,10 @@ h2.main-text {
   flex-wrap: wrap;
   width: 100%;
   height: 85%; }
+
+.body-companies .pagination {
+  margin-top: 30px;
+  width: 100%; }
 
 .card-companies {
   width: 32%;
