@@ -18,7 +18,7 @@ class HomeController {
         prioritize: true,
         active: true,
       }); // công việc giá trị cao
-      const totalJobs = await JobModel.countDocuments({});
+      const totalJobs = await JobModel.countDocuments({ active: true });
       const latestJobs = await JobModel.find({ active: true })
         .sort({ createdAt: -1 })
         .limit(20);

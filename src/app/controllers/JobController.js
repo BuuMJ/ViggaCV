@@ -14,7 +14,7 @@ class JobController {
   async job(req, res, next) {
     const user = req.user;
     const job = await JobModel.find({ active: true });
-    const count = await JobModel.countDocuments();
+    const count = await JobModel.countDocuments({ active: true });
     const company = await CompanyModel.find({});
     var page = req.query.page;
     var PAGE_SIZE = 10;
@@ -699,12 +699,14 @@ class JobController {
     }));
     const countViewed = await JobModel.countDocuments({
       _id: { $in: viewed },
+      active: true,
     });
     const listjob = await JobModel.find({
       _id: { $in: jobs },
     });
     const count = await JobModel.countDocuments({
       _id: { $in: jobs },
+      active: true,
     });
     console.log(count);
     const company = await CompanyModel.findOne({ iduser: req.user._id });

@@ -349,7 +349,6 @@ class PaymentController {
           console.log("Get Payment Response");
           console.log(JSON.stringify(payment));
           res.render("success", {
-            jobID: job._id,
             job: staffMongoseToObject(job),
             user: req.user,
             company,
