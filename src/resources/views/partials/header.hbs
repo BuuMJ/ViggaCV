@@ -97,6 +97,13 @@
                 <li><a href="/companyprofile">Your Company Profile</a></li>
                 <li><a onclick="logout()" href="/login">Sign Out</a></li>
             </ul>
+            {{else}}
+            <img src="{{getAvatar user}}" alt="">
+            <ul class="down__user down__user-company">
+                <li><a href="/profile">Your Profile </a></li>
+                <li><a href="/admin">Admin</a></li>
+                <li><a onclick="logout()" href="/login">Sign Out</a></li>
+            </ul>
             {{/ifeq}}
         </ul>
         {{else}}

@@ -587,5 +587,23 @@ viewMoreBtn.addEventListener("click", function() {
             formBlockedJob.action = `/companyprofile/blocked/${getIDJob}?_method=PUT`;
             formBlockedJob.submit();
         })
+    });
+    var submitPostJob = document.querySelector('.btn-postjob');
+    var salary = document.querySelector('#salary-range');
+    salary.addEventListener('input',()=>{
+        var salaryContent = salary.value.replace(/\D/g,'');
+        salaryContent = parseInt(salaryContent,10);
+        if (salaryContent >= 4000){
+            submitPostJob.type = 'button'
+            submitPostJob.addEventListener('click',()=>{
+                var isConfirmed = confirm('this job is over 4000$ you need to pay 30$ to be able to post this job.\nIf you agree, please click ok to go to the payment page.\nIf you want to edit the salary, please click cancel.');
+                if (isConfirmed) {
+                    document.getElementById('postjob').submit();
+                }
+                else{
+                     e.preventDefault();
+                }
+            })
+        };
     })
 </script>

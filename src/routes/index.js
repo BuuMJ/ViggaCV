@@ -12,6 +12,7 @@ const applyCVRouter = require("./applycv");
 const paymentRouter = require("./payment");
 const cvManagerRouter = require("./CVManager");
 const favouriteRouter = require("./favourite");
+const adminController = require("./admin")
 
 function route(app) {
   app.use("/companyprofile", checkLogin, companyprofileRouter);
@@ -19,6 +20,8 @@ function route(app) {
   app.use("/yourjobs", checkLogin, favouriteRouter);
 
   app.use("/scan", applyCVRouter);
+
+app.use("/admin", checkLogin, adminController);
 
   app.use("/pay", checkLogin, paymentRouter);
 
