@@ -540,6 +540,9 @@ class CompanyProfileController {
       job: staffMongoseToObject(job),
       company,
       user,
+      count,
+      countPassed,
+      countFailed,
     });
   }
 
