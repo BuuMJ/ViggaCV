@@ -168,6 +168,12 @@ header.jobdetail .center-jobdetail{
 .main-jobsfromthiscompany ul {
     padding-top: 20px;
 }
+.main-jobsfromthiscompany ul .content-listjob{
+    height: 70px;
+}
+.main-jobsfromthiscompany ul .content-listjob .secondary-listjob{
+    padding-left: unset;
+}
 .desc-jobinfo,
 .requirements-jobinfo,
 .benefit-jobinfo{
