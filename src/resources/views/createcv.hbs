@@ -503,6 +503,7 @@ var showMenuFont = document.querySelector('.library-font');
 clickFont.addEventListener('click',(event)=>{
   showMenuFont.style.display = 'flex';
   event.stopPropagation();
+  menuColor.style.display = 'none';
 });
 showMenuFont.addEventListener('click',(event)=>{
   event.stopPropagation();
@@ -577,8 +578,9 @@ fontBig.addEventListener('change', changeFontSize);
 var clickColor = document.querySelector('.color-cv');
 var menuColor = document.querySelector('.library-color');
 clickColor.addEventListener('click',(event)=>{
-  menuColor.style.display = 'flex'
+  menuColor.style.display = 'flex';
   event.stopPropagation();
+  showMenuFont.style.display = 'none';
 });
 document.addEventListener('click',(event)=>{
   menuColor.style.display = 'none'
