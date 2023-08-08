@@ -126,7 +126,7 @@ class JobController {
       JobModel.find({ active: true })
         .skip(skip)
         .limit(PAGE_SIZE)
-        .sort({ prioritizeUpdatedAt: -1 })
+        .sort({ prioritizeUpdatedAt: -1, createdAt: -1 })
         .then((data) => {
           res.render("job", {
             user,
@@ -153,7 +153,7 @@ class JobController {
       JobModel.find({ active: true })
         .skip(skip)
         .limit(PAGE_SIZE)
-        .sort({ prioritizeUpdatedAt: -1 })
+        .sort({ prioritizeUpdatedAt: -1, createdAt: -1 })
         .then((data) => {
           res.render("job", {
             user,

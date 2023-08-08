@@ -4,6 +4,7 @@ const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 const bcrypt = require("bcrypt");
 const fs = require("fs");
+const CompanyModel = require("../models/Company");
 
 class ProfileController {
   async profile(req, res, next) {
@@ -43,6 +44,7 @@ class ProfileController {
       const companydesc = req.body.companyDesc;
       const TOB = req.body.typeOfBusiness;
       const specialized = req.body.specialized;
+      const company = await CompanyModel.findOne({ iduser: req.user._id });
 
       console.log("da toi day5" + id);
       console.log("da toi day5" + password);
@@ -62,7 +64,6 @@ class ProfileController {
       if (req.file) {
         console.log("đã có file" + password);
         // Kiểm tra xem có file được tải lên không
-        const company = await CompanyModel.findOne({ iduser: req.user._id });
         const data = await fs.promises.readFile(req.file.path); // sửa chỗ này
         if (data) {
           console.log("đã tới đây và có file");
