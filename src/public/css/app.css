@@ -5335,6 +5335,77 @@ header.company-detail .background-company-detail {
 .notosans {
   font-family: 'Noto Sans', sans-serif; }
 
+.library-color {
+  position: absolute;
+  bottom: -300%;
+  left: 35%;
+  display: none;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+  width: 200px;
+  padding: 4px 12px;
+  background-color: black;
+  border-radius: 5px; }
+
+.library-color p.color-title {
+  font-size: 18px;
+  font-weight: 600;
+  width: 100%;
+  margin-top: 4px; }
+
+.library-color .option-color {
+  width: 25%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 8px 0; }
+
+.library-color .option-color label {
+  width: 50%;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer; }
+
+.library-color .option-color label.fed200 {
+  background-color: #fed200;
+  outline-offset: 4px;
+  outline: 2px solid #fed200; }
+
+.library-color .option-color label.f04c40 {
+  background-color: #f04c40; }
+
+.library-color .option-color label.f99e3d {
+  background-color: #f99e3d; }
+
+.library-color .option-color label.a3f59a8 {
+  background-color: #3f59a8; }
+
+.library-color .option-color label.a0072bc {
+  background-color: #0072bc; }
+
+.library-color .option-color label.a6f429a {
+  background-color: #6f429a; }
+
+.library-color .option-color label.a74c33a {
+  background-color: #74c33a; }
+
+.library-color .option-color label.caa878 {
+  background-color: #caa878; }
+
+.library-color .option-color label.eb4a3b {
+  background-color: #eb4a3b; }
+
+.library-color .option-color label.a555555 {
+  background-color: #555555; }
+
+.library-color .option-color label.a193042 {
+  background-color: #193042; }
+
+.library-color .option-color label.a4a1a67 {
+  background-color: #4a1a67; }
+
 .a4 {
   width: 210mm;
   min-height: 297mm;

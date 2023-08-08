@@ -37,6 +37,58 @@
         </div>
       </div>
   </div>
+  <div class="library-color">
+    <p class="color-title">Main Color</p>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#fed200" hidden>
+      <label class="fed200" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#f04c40" hidden>
+      <label class="f04c40" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#f99e3d" hidden>
+      <label class="f99e3d" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#3f59a8" hidden>
+      <label class="a3f59a8" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#0072bc" hidden>
+      <label class="a0072bc" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#6f429a" hidden>
+      <label class="a6f429a" for="color"></label>
+    </div>
+
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#74c33a" hidden>
+      <label class="a74c33a" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#caa878" hidden>
+      <label class="caa878" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#eb4a3b" hidden>
+      <label class="eb4a3b" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#555555" hidden>
+      <label class="a555555" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#193042" hidden>
+      <label class="a193042" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#4a1a67" hidden>
+      <label class="a4a1a67" for="color"></label>
+    </div>
+  </div>
 </header>
 <div class="body__create-cv a4">
   <header>
@@ -199,10 +251,12 @@ checkOverflow();
      if (window.pageYOffset > 500) {
     document.querySelector("header.action-create-cv").style.cssText = "position: fixed; top: 1%; border-radius: 1000px; width: 80%; border-bottom: unset; background-color: black;";
     document.querySelector(".library-font").style.cssText = 'left: 8%';
+    document.querySelector(".library-color").style.cssText = 'left: 30%';
 
   } else {
     document.querySelector("header.action-create-cv").style.cssText = "position: absolute; top:70%; border-bottom: 1px solid #5e5d5d; background-color: transparent;";
     document.querySelector(".library-font").style.cssText = 'left: 18%';
+    document.querySelector(".library-color").style.cssText = 'left: 35%';
   }
   }
   else{
@@ -443,9 +497,10 @@ var file = document.querySelector('#avataruser');
             reader.readAsDataURL(chooseFile);
         }
     });
+// change font
 var clickFont = document.querySelector('.font-cv');
 var showMenuFont = document.querySelector('.library-font');
-clickFont.addEventListener('click',()=>{
+clickFont.addEventListener('click',(event)=>{
   showMenuFont.style.display = 'flex';
   event.stopPropagation();
 });
@@ -518,4 +573,40 @@ function changeFontSize(){
 fontSmall.addEventListener('change', changeFontSize);
 fontMedium.addEventListener('change', changeFontSize);
 fontBig.addEventListener('change', changeFontSize);
+// change color
+var clickColor = document.querySelector('.color-cv');
+var menuColor = document.querySelector('.library-color');
+clickColor.addEventListener('click',(event)=>{
+  menuColor.style.display = 'flex'
+  event.stopPropagation();
+});
+document.addEventListener('click',(event)=>{
+  menuColor.style.display = 'none'
+});
+menuColor.addEventListener('click',(event)=>{
+  event.stopPropagation();
+});
+var optionColor = document.querySelectorAll('.option-color');
+var headerCV = document.querySelector('.body__create-cv header');
+var overviewText = document.querySelector('.body__user-cv textarea.overview-text');
+var workEXPText = document.querySelector('.body__user-cv textarea.workexp-text');
+var educationText = document.querySelector('.body__user-cv textarea.education-text');
+var skillText = document.querySelector('.body__user-cv textarea.skill-text');
+var projectText = document.querySelector('.body__user-cv textarea.project-text');
+optionColor.forEach(function(item){
+  var color = item.querySelector('input').value;
+  var chooseColor = item.querySelector('label')
+    chooseColor.addEventListener('click',()=>{
+    optionColor.forEach(otherItem => {
+      otherItem.querySelector('label').style.outline = 'unset';
+    });
+    chooseColor.style.cssText = `outline-offset: 4px; outline: 2px solid ${color};`;
+    headerCV.style.cssText = `background-color: ${color} `;
+    overviewText.style.cssText = `color: ${color}`;
+    workEXPText.style.cssText = `color: ${color}`;
+    educationText.style.cssText = `color: ${color}`;
+    skillText.style.cssText = `color: ${color}`;
+    projectText.style.cssText = `color: ${color}`;
+  })
+})
 </script>
