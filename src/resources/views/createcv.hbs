@@ -7,6 +7,88 @@
   <span class="color-cv"><i class="bi bi-palette"></i> Color</span>
   <span class="templates-action-cv"><i class="bi bi-images"></i> Templates</span>
   <span class="download-create-cv"><button><i class="bi bi-cloud-arrow-down"></i> Download</button></span>
+  <div class="library-font">
+    <p class="font-title">Font</p>
+      <div class="option-font">
+        <input id="arimo" name="font-family" type="radio" value="'Arimo', sans-serif" hidden>
+        <label class="arimo" for="arimo">Arimo</label>
+      </div>
+      <div class="option-font">
+        <input id="roboto" name="font-family" type="radio" value="'Roboto', sans-serif" hidden>
+        <label class="roboto" for="roboto">Roboto</label>
+      </div>
+      <div class="option-font">
+        <input id="sourcesans3" name="font-family" type="radio" value="'Source Sans 3', sans-serif" hidden>
+        <label class="sourcesans3" for="sourcesans3">Source Sans 3</label>
+      </div>
+      <div class="option-font">
+        <input id="notosans" name="font-family" type="radio" value="'Noto Sans', sans-serif" hidden>
+        <label class="notosans" for="notosans">Noto Sans</label>
+      </div>
+      <div class="option-font-size">
+        <p class="font-size__title">Font Size</p>
+        <div class="select-font__size">
+        <input id="small" name="font-size" type="radio" value="16px">
+        <label for="small">Small Size</label>
+        <input id="medium" name="font-size" type="radio" value="16.5px">
+        <label for="medium">Medium Size</label>
+        <input id="big" name="font-size" type="radio" value="17px">
+        <label for="big">Big Size</label>
+        </div>
+      </div>
+  </div>
+  <div class="library-color">
+    <p class="color-title">Main Color</p>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#fed200" hidden>
+      <label class="fed200" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#f04c40" hidden>
+      <label class="f04c40" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#f99e3d" hidden>
+      <label class="f99e3d" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#3f59a8" hidden>
+      <label class="a3f59a8" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#0072bc" hidden>
+      <label class="a0072bc" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#6f429a" hidden>
+      <label class="a6f429a" for="color"></label>
+    </div>
+
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#74c33a" hidden>
+      <label class="a74c33a" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#caa878" hidden>
+      <label class="caa878" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#eb4a3b" hidden>
+      <label class="eb4a3b" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#555555" hidden>
+      <label class="a555555" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#193042" hidden>
+      <label class="a193042" for="color"></label>
+    </div>
+    <div class="option-color">
+      <input id="color" name="color" type="radio" value="#4a1a67" hidden>
+      <label class="a4a1a67" for="color"></label>
+    </div>
+  </div>
 </header>
 <div class="body__create-cv a4">
   <header>
@@ -165,11 +247,25 @@
 checkOverflow();
 //scroll navbar
   document.addEventListener("scroll", function() {
+  if(window.innerWidth <= 1440){
+     if (window.pageYOffset > 500) {
+    document.querySelector("header.action-create-cv").style.cssText = "position: fixed; top: 1%; border-radius: 1000px; width: 80%; border-bottom: unset; background-color: black;";
+    document.querySelector(".library-font").style.cssText = 'left: 8%';
+    document.querySelector(".library-color").style.cssText = 'left: 30%';
+
+  } else {
+    document.querySelector("header.action-create-cv").style.cssText = "position: absolute; top:70%; border-bottom: 1px solid #5e5d5d; background-color: transparent;";
+    document.querySelector(".library-font").style.cssText = 'left: 18%';
+    document.querySelector(".library-color").style.cssText = 'left: 35%';
+  }
+  }
+  else{
   if (window.pageYOffset > 500) {
     document.querySelector("header.action-create-cv").style.cssText = "position: fixed; top: 1%; border-radius: 1000px; width: 60%; border-bottom: unset; background-color: black;";
 
   } else {
     document.querySelector("header.action-create-cv").style.cssText = "position: absolute; top:53%; border-bottom: 1px solid #5e5d5d; background-color: transparent;";
+  }
   }
 });
 // textarea auto height
@@ -401,4 +497,116 @@ var file = document.querySelector('#avataruser');
             reader.readAsDataURL(chooseFile);
         }
     });
+// change font
+var clickFont = document.querySelector('.font-cv');
+var showMenuFont = document.querySelector('.library-font');
+clickFont.addEventListener('click',(event)=>{
+  showMenuFont.style.display = 'flex';
+  event.stopPropagation();
+});
+showMenuFont.addEventListener('click',(event)=>{
+  event.stopPropagation();
+});
+document.addEventListener('click',()=>{
+  showMenuFont.style.display = 'none'
+});
+var arimoFont = document.querySelector('#arimo');
+var robotoFont = document.querySelector('#roboto');
+var sourcesans3Font = document.querySelector('#sourcesans3');
+var notosansFont = document.querySelector('#notosans');
+function changeFontCV(){
+  let containerCV = document.querySelector('.body__create-cv');
+  containerCV.classList.remove('arimo', 'roboto', 'sourcesans3', 'notosans');
+  if(arimoFont.checked){
+    containerCV.classList.add('arimo');
+    document.querySelector('label.arimo').style.color = '#fed200';
+    document.querySelector('label.roboto').style.color = 'white';
+    document.querySelector('label.sourcesans3').style.color = 'white';
+    document.querySelector('label.notosans').style.color = 'white';
+
+  }
+  else if(robotoFont.checked){
+    containerCV.classList.add('roboto');
+    document.querySelector('label.arimo').style.color = 'white';
+    document.querySelector('label.roboto').style.color = '#fed200';
+    document.querySelector('label.sourcesans3').style.color = 'white';
+    document.querySelector('label.notosans').style.color = 'white';
+  }
+  else if(sourcesans3Font.checked){
+    containerCV.classList.add('sourcesans3');
+    document.querySelector('label.arimo').style.color = 'white';
+    document.querySelector('label.roboto').style.color = 'white';
+    document.querySelector('label.sourcesans3').style.color = '#fed200';
+    document.querySelector('label.notosans').style.color = 'white';
+  }
+  else if(notosansFont.checked){
+    containerCV.classList.add('notosans');
+    document.querySelector('label.arimo').style.color = 'white';
+    document.querySelector('label.roboto').style.color = 'white';
+    document.querySelector('label.sourcesans3').style.color = 'white';
+    document.querySelector('label.notosans').style.color = '#fed200';
+  }
+}
+arimoFont.addEventListener('change', changeFontCV);
+robotoFont.addEventListener('change', changeFontCV);
+sourcesans3Font.addEventListener('change', changeFontCV);
+notosansFont.addEventListener('change', changeFontCV);
+
+var fontSmall = document.querySelector('#small');
+var fontMedium = document.querySelector('#medium');
+var fontBig = document.querySelector('#big');
+function changeFontSize(){
+  let containerCV = document.querySelector('.body__user-cv');
+  let childrenElements = containerCV.querySelectorAll('*');
+  let fontSize = '16px';
+  if (fontSmall.checked) {
+    fontSize = '16px';
+  } else if (fontMedium.checked) {
+    fontSize = '16.5px';
+  } else if (fontBig.checked) {
+    fontSize = '17px';
+  }
+  childrenElements.forEach(element => {
+    element.style.cssText = `font-size: ${fontSize}`;
+  });
+}
+fontSmall.addEventListener('change', changeFontSize);
+fontMedium.addEventListener('change', changeFontSize);
+fontBig.addEventListener('change', changeFontSize);
+// change color
+var clickColor = document.querySelector('.color-cv');
+var menuColor = document.querySelector('.library-color');
+clickColor.addEventListener('click',(event)=>{
+  menuColor.style.display = 'flex'
+  event.stopPropagation();
+});
+document.addEventListener('click',(event)=>{
+  menuColor.style.display = 'none'
+});
+menuColor.addEventListener('click',(event)=>{
+  event.stopPropagation();
+});
+var optionColor = document.querySelectorAll('.option-color');
+var headerCV = document.querySelector('.body__create-cv header');
+var overviewText = document.querySelector('.body__user-cv textarea.overview-text');
+var workEXPText = document.querySelector('.body__user-cv textarea.workexp-text');
+var educationText = document.querySelector('.body__user-cv textarea.education-text');
+var skillText = document.querySelector('.body__user-cv textarea.skill-text');
+var projectText = document.querySelector('.body__user-cv textarea.project-text');
+optionColor.forEach(function(item){
+  var color = item.querySelector('input').value;
+  var chooseColor = item.querySelector('label')
+    chooseColor.addEventListener('click',()=>{
+    optionColor.forEach(otherItem => {
+      otherItem.querySelector('label').style.outline = 'unset';
+    });
+    chooseColor.style.cssText = `outline-offset: 4px; outline: 2px solid ${color};`;
+    headerCV.style.cssText = `background-color: ${color} `;
+    overviewText.style.cssText = `color: ${color}`;
+    workEXPText.style.cssText = `color: ${color}`;
+    educationText.style.cssText = `color: ${color}`;
+    skillText.style.cssText = `color: ${color}`;
+    projectText.style.cssText = `color: ${color}`;
+  })
+})
 </script>

@@ -20,7 +20,6 @@
   flex-direction: column;
   justify-content: space-around;
   width: 100%;
-  height: 980px;
   border-radius: 10px;
   border: 1px solid #f0f0f0;
   background-color: white;
@@ -41,6 +40,7 @@ font-weight: 700;
   flex-wrap: wrap;
   width: 100%;
   height: 15%;
+  padding: 30px 30px 20px 30px;
 }
 .header-companies span{
   width: 30%;
@@ -110,6 +110,7 @@ font-weight: 700;
 }
 .categories-companies{
 width: 100%;
+margin-top: 20px;
 }
 #categories-search{
 width: 20%;
@@ -124,6 +125,10 @@ padding: 0 4px;
   flex-wrap: wrap;
   width: 100%;
   height: 85%;
+}
+.body-companies .pagination{
+  margin-top: 30px;
+  width: 100%;
 }
 .card-companies{
 width: 32%;
@@ -158,6 +163,7 @@ margin: 12px 10px 12px 0;
   border-radius: 10px;
   transform: translate(20%, -50%);
   box-shadow: 1px 1px 10px rgb(131, 128, 128);
+  background-color: white;
 }
 .count-follow {
   position: absolute;
