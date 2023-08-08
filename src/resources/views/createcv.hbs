@@ -7,6 +7,36 @@
   <span class="color-cv"><i class="bi bi-palette"></i> Color</span>
   <span class="templates-action-cv"><i class="bi bi-images"></i> Templates</span>
   <span class="download-create-cv"><button><i class="bi bi-cloud-arrow-down"></i> Download</button></span>
+  <div class="library-font">
+    <p class="font-title">Font</p>
+      <div class="option-font">
+        <input id="arimo" name="font-family" type="radio" value="'Arimo', sans-serif" hidden>
+        <label class="arimo" for="arimo">Arimo</label>
+      </div>
+      <div class="option-font">
+        <input id="roboto" name="font-family" type="radio" value="'Roboto', sans-serif" hidden>
+        <label class="roboto" for="roboto">Roboto</label>
+      </div>
+      <div class="option-font">
+        <input id="sourcesans3" name="font-family" type="radio" value="'Source Sans 3', sans-serif" hidden>
+        <label class="sourcesans3" for="sourcesans3">Source Sans 3</label>
+      </div>
+      <div class="option-font">
+        <input id="notosans" name="font-family" type="radio" value="'Noto Sans', sans-serif" hidden>
+        <label class="notosans" for="notosans">Noto Sans</label>
+      </div>
+      <div class="option-font-size">
+        <p class="font-size__title">Font Size</p>
+        <div class="select-font__size">
+        <input id="small" name="font-size" type="radio" value="16px">
+        <label for="small">Small Size</label>
+        <input id="medium" name="font-size" type="radio" value="16.5px">
+        <label for="medium">Medium Size</label>
+        <input id="big" name="font-size" type="radio" value="17px">
+        <label for="big">Big Size</label>
+        </div>
+      </div>
+  </div>
 </header>
 <div class="body__create-cv a4">
   <header>
@@ -165,11 +195,23 @@
 checkOverflow();
 //scroll navbar
   document.addEventListener("scroll", function() {
+  if(window.innerWidth <= 1440){
+     if (window.pageYOffset > 500) {
+    document.querySelector("header.action-create-cv").style.cssText = "position: fixed; top: 1%; border-radius: 1000px; width: 80%; border-bottom: unset; background-color: black;";
+    document.querySelector(".library-font").style.cssText = 'left: 8%';
+
+  } else {
+    document.querySelector("header.action-create-cv").style.cssText = "position: absolute; top:70%; border-bottom: 1px solid #5e5d5d; background-color: transparent;";
+    document.querySelector(".library-font").style.cssText = 'left: 18%';
+  }
+  }
+  else{
   if (window.pageYOffset > 500) {
     document.querySelector("header.action-create-cv").style.cssText = "position: fixed; top: 1%; border-radius: 1000px; width: 60%; border-bottom: unset; background-color: black;";
 
   } else {
     document.querySelector("header.action-create-cv").style.cssText = "position: absolute; top:53%; border-bottom: 1px solid #5e5d5d; background-color: transparent;";
+  }
   }
 });
 // textarea auto height
@@ -401,4 +443,79 @@ var file = document.querySelector('#avataruser');
             reader.readAsDataURL(chooseFile);
         }
     });
+var clickFont = document.querySelector('.font-cv');
+var showMenuFont = document.querySelector('.library-font');
+clickFont.addEventListener('click',()=>{
+  showMenuFont.style.display = 'flex';
+  event.stopPropagation();
+});
+showMenuFont.addEventListener('click',(event)=>{
+  event.stopPropagation();
+});
+document.addEventListener('click',()=>{
+  showMenuFont.style.display = 'none'
+});
+var arimoFont = document.querySelector('#arimo');
+var robotoFont = document.querySelector('#roboto');
+var sourcesans3Font = document.querySelector('#sourcesans3');
+var notosansFont = document.querySelector('#notosans');
+function changeFontCV(){
+  let containerCV = document.querySelector('.body__create-cv');
+  containerCV.classList.remove('arimo', 'roboto', 'sourcesans3', 'notosans');
+  if(arimoFont.checked){
+    containerCV.classList.add('arimo');
+    document.querySelector('label.arimo').style.color = '#fed200';
+    document.querySelector('label.roboto').style.color = 'white';
+    document.querySelector('label.sourcesans3').style.color = 'white';
+    document.querySelector('label.notosans').style.color = 'white';
+
+  }
+  else if(robotoFont.checked){
+    containerCV.classList.add('roboto');
+    document.querySelector('label.arimo').style.color = 'white';
+    document.querySelector('label.roboto').style.color = '#fed200';
+    document.querySelector('label.sourcesans3').style.color = 'white';
+    document.querySelector('label.notosans').style.color = 'white';
+  }
+  else if(sourcesans3Font.checked){
+    containerCV.classList.add('sourcesans3');
+    document.querySelector('label.arimo').style.color = 'white';
+    document.querySelector('label.roboto').style.color = 'white';
+    document.querySelector('label.sourcesans3').style.color = '#fed200';
+    document.querySelector('label.notosans').style.color = 'white';
+  }
+  else if(notosansFont.checked){
+    containerCV.classList.add('notosans');
+    document.querySelector('label.arimo').style.color = 'white';
+    document.querySelector('label.roboto').style.color = 'white';
+    document.querySelector('label.sourcesans3').style.color = 'white';
+    document.querySelector('label.notosans').style.color = '#fed200';
+  }
+}
+arimoFont.addEventListener('change', changeFontCV);
+robotoFont.addEventListener('change', changeFontCV);
+sourcesans3Font.addEventListener('change', changeFontCV);
+notosansFont.addEventListener('change', changeFontCV);
+
+var fontSmall = document.querySelector('#small');
+var fontMedium = document.querySelector('#medium');
+var fontBig = document.querySelector('#big');
+function changeFontSize(){
+  let containerCV = document.querySelector('.body__user-cv');
+  let childrenElements = containerCV.querySelectorAll('*');
+  let fontSize = '16px';
+  if (fontSmall.checked) {
+    fontSize = '16px';
+  } else if (fontMedium.checked) {
+    fontSize = '16.5px';
+  } else if (fontBig.checked) {
+    fontSize = '17px';
+  }
+  childrenElements.forEach(element => {
+    element.style.cssText = `font-size: ${fontSize}`;
+  });
+}
+fontSmall.addEventListener('change', changeFontSize);
+fontMedium.addEventListener('change', changeFontSize);
+fontBig.addEventListener('change', changeFontSize);
 </script>

@@ -308,6 +308,61 @@
 .body__create-cv{
   width: 60%;
 }
+.main__create-cv header.action-create-cv .library-font{
+  position: absolute;
+  left: 18%;
+  bottom: -450%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+}
+.main__create-cv header.action-create-cv .library-font p.font-title{
+  padding: 4px 12px;
+}
+.main__create-cv header.action-create-cv .library-font .option-font{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 4px 12px;
+  font-size: 18px;
+}
+.main__create-cv header.action-create-cv .library-font .option-font-size{
+  font-size: 18px;
+  padding: 4px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  border-top: 1px solid #d5d6d6;
+}
+.main__create-cv header.action-create-cv .library-font .option-font-size p.font-size__title,
+.main__create-cv header.action-create-cv .library-font p.font-title {
+  font-size: 18px;
+  margin-top: 4px;
+  margin-bottom: unset;
+  font-weight: 600;
+}
+.main__create-cv header.action-create-cv .library-font .option-font-size .select-font__size label,
+.main__create-cv header.action-create-cv .library-font .option-font-size .select-font__size input,
+.main__create-cv header.action-create-cv .library-font .option-font label{
+  cursor: pointer;
+}
+.arimo{
+  font-family: 'Arimo', sans-serif;
+}
+.roboto{
+  font-family: 'Roboto', sans-serif;
+}
+.sourcesans3{
+  font-family: 'Source Sans 3', sans-serif;
+}
+.notosans{
+  font-family: 'Noto Sans', sans-serif;
+}
 .a4 {
   width: 210mm; 
   min-height: 297mm;
@@ -729,4 +784,9 @@
 .main__manager-cv section .box__failed-cv .card__failed-cv:hover .name-file b{
   color: #0072bc;
   text-decoration: underline;
+}
+@media screen and (max-width: 1440px) {
+  .main__create-cv header.action-create-cv{
+    top: 70%;
+  }
 }
