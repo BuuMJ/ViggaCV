@@ -21,7 +21,7 @@ class CvController {
     // const iduser = req.user.id;
     const company = await CompanyModel.findOne({ iduser: req._id });
     const data = await CVModel.findOne({ iduser: req.user._id });
-    console.log(data);
+    // console.log(data);
     // console.log(req.user._id + " = Thông tin của user");
     if (data) {
       // console.log(data + " = Thông tin của user sau khi tra cứu");
@@ -34,7 +34,7 @@ class CvController {
       });
       next();
     } else {
-      console.log("bbbbbbbbbbbbbbbbbbbbbbbbb");
+      // console.log("bbbbbbbbbbbbbbbbbbbbbbbbb");
       res.render("createCV", {
         title: "Create CV",
         user: req.user,
@@ -72,6 +72,8 @@ class CvController {
   async exportCV(req, res, next) {
     try {
       req.body.iduser = req.user._id;
+      const color = req.body.color;
+      console.log('colorrrrrrrr' + color);
       const data = await CVModel.findOne({ iduser: req.body.iduser });
       let savedCv;
       if (data) {

@@ -422,8 +422,8 @@
 .library-color .option-color label.caa878{
   background-color: #caa878;
 }
-.library-color .option-color label.eb4a3b{
-  background-color: #eb4a3b;
+.library-color .option-color label.a9d1c38{
+  background-color: #9d1c38;
 }
 .library-color .option-color label.a555555{
   background-color: #555555;
@@ -859,5 +859,128 @@
 @media screen and (max-width: 1440px) {
   .main__create-cv header.action-create-cv{
     top: 70%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .header-cv{
+    transform: translateY(50%);
+  }
+  .free-design, 
+  .easy-operation,
+  .interview-cv,
+  .download-cv,
+  .stepbystep-cv {
+    width: 90%;
+  }
+  .free-design-title, 
+  .easy-tilte, 
+  .download-title, 
+  .interview-title{
+    font-size: 35px;
+  }
+  .easy-operation-right > *, 
+  .interview-right > *, 
+  .stepbystep-first > *{
+    padding: unset;
+  }
+  .interview-action{
+    width: 45%;
+    margin-left: unset;
+  }
+  .stepbystep-header{
+    height: unset;
+  }
+  .stepbystep-left > *{
+    margin: 4px 0;
+  }
+  .free-design-left{
+    width: 50%;
+    text-align: justify;
+  }
+}
+@media screen and (max-width: 600px) {
+  .header-cv .intro-text{
+    height: 50px;
+  }
+  .free-design-title, 
+  .easy-tilte, 
+  .download-title, 
+  .interview-title{
+    font-size: 30px;
+  }
+  .free-design-text, 
+  .easy-text, 
+  .download-text, 
+  .interview-text, 
+  .first-text{
+    font-size: 14px;
+  }
+  .interview-action {
+    width: 55%;
+  }
+}
+@media screen and (max-width: 415px) {
+  .header-cv .intro-title,
+  .header-cv .intro-surprise {
+    font-size: 24px;
+  }
+  .header-cv .intro-surprise{
+    margin-bottom: unset;
+  }
+  .header-cv .intro-text{
+    font-size: 14px;
+    padding: 0 18%;
+  }
+  .free-design, 
+  .easy-operation,
+  .download-cv,
+  .interview-cv,
+  .stepbystep-cv{
+    flex-direction: column;
+    margin-bottom: 50px;
+  }
+  .free-design-left,
+  .free-design-right,
+  .easy-operation-left,
+  .easy-operation-right,
+  .download-cv-left,
+  .download-cv-right,
+  .interview-left,
+  .interview-right,
+  .stepbystep-left,
+  .stepbystep-right{
+    width: 100%;
+    height: 200px;
+    align-items: center;
+    text-align: center;
+  }
+  .free-design-left,
+  .download-cv-left,
+  .stepbystep-left{
+    height: unset;
+    margin-bottom: 12px;
+  }
+  .easy-operation-right,
+  .interview-right{
+    margin-top: 12px;
+    height: unset;
+  }
+  .stepbystep-header{
+    font-size: 28px;
+  }
+  .first-title{
+    align-self: unset;
+  }
+}
+@media screen and (max-width: 321px) {
+  .header-cv{
+    transform: translateY(30%);
+  }
+  .header-cv .intro-title, 
+  .header-cv .intro-surprise {
+    font-size: 20px;
+  }
+  .header-cv .intro-text {
+    padding: 0 10%;
   }
 }
