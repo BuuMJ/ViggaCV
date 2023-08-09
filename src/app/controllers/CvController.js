@@ -4,8 +4,6 @@ const path = require("path");
 const CVModel = require("../models/CV");
 const { staffMongoseToObject } = require("../../util/mongoose");
 const CompanyModel = require("../models/Company");
-const { fontSize } = require("pdfkit");
-const { log } = require("console");
 
 class CvController {
   //[GET] CV
