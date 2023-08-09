@@ -2,8 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   width: 100%;
+  min-height: 80vh;
   background-color: #f4f4f7;
 }
 .main-companies{
@@ -78,7 +79,8 @@ font-weight: 700;
   color: rgb(131, 128, 128);
 }
 
-.input:focus,.input:not(:placeholder-shown) {
+.input:focus,
+.input:not(:placeholder-shown) {
   background-color: #fff;
   border: 1px solid black;
   width: 90%;
@@ -208,17 +210,19 @@ color: #777777;
   display: flex;
   justify-content: center;
   align-items: center;
-text-decoration: none;
-color: black;
-padding: 8px;
-border-radius: 10px;
-background-color: $primarycolor;
-width: 100px;
-height: 40px;
-text-align: center;
-font-weight: 600;
-cursor: pointer;
-font-size: 14px;
+  text-decoration: none;
+  color: black;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: $primarycolor;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  border: 2px solid $primarycolor;
+  transition: .5s;
 }
 .view-detail__company:hover,
 .view-detail__job:hover{
@@ -482,7 +486,7 @@ header.company-detail .background-company-detail{
 .company-leadership__text span.leadership__second-text{
   font-size: 16px;
   font-weight: 400;
-  padding: 10px 0 ;
+  padding: 4px 0 ;
   letter-spacing: 1.3px;
 }
 .company-leadership {
@@ -491,12 +495,6 @@ header.company-detail .background-company-detail{
   flex-direction: row;
   justify-content: space-between;
   padding: 26px 0;
-}
-.contact-company{
-  padding-bottom: 16px;
-}
-.contact-company span{
-  padding: unset !important;
 }
 .company-leadership .company-leadership__text {
   display: flex;
@@ -509,10 +507,11 @@ header.company-detail .background-company-detail{
   width: 55%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between; /* changed from space-around */
+  justify-content: space-between;
   align-items: center;
   position: relative;
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
 }
 .carousel {
   width: 100%;
@@ -551,6 +550,8 @@ header.company-detail .background-company-detail{
   justify-content: center;
   align-items: center;
   margin-left: 28px;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
 }
 .company-leadership__info-total .company-leadership__info:first-child{
   margin-left: 0;
@@ -655,4 +656,178 @@ header.company-detail .background-company-detail{
   cursor: pointer;
   top: 0;
   right: 0;
+}
+@media screen and (max-width: 1024px) {
+  h2.main-text{
+    font-size: 40px;
+  }
+  .header-companies span{
+    width: 40%;
+  }
+  .search-companies{
+    width: 60%;
+  }
+  .body-companies{
+    justify-content: space-evenly;
+  }
+  .card-companies{
+    margin: 12px 0;
+    height: 300px;
+  }
+  .view-detail__company, 
+  .view-detail__job{
+    width: unset;
+    height: 35px;
+    font-size: 12px;
+  }
+  .card-companies .list-detail {
+    height: 30px;
+  }
+  .card-company:hover .list-detail{
+    transform: translateY(40%);
+  }
+  .header__primary-company-detail .logo-company-detail span{
+    font-size: 26px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .main-companies {
+    width: 90%;
+  }
+  h2.main-text {
+    font-size: 38px;
+  }
+  #categories-search{
+    width: 22%;
+  }
+  .body-companies{
+    justify-content: space-between;
+  }
+  .card-companies {
+    width: 48%;
+  }
+  .header__primary-company-detail{
+    position: relative;
+  }
+  .logo-company-detail,
+  .follow-company-detail{
+    margin-top: 30px;
+  }
+  .header__primary-company-detail .logo-company-detail img{
+    position: absolute;
+    top: -60%;
+  }
+  .header__primary-company-detail .logo-company-detail span {
+    margin-left: unset;
+  }
+}
+@media screen and (max-width: 600px) {
+  .main-company-detail header.company-detail,
+  .body-about-us{
+    width: 90%;
+  }
+  h2.main-text {
+    font-size: 30px;
+  }
+  .header-companies span {
+    font-size: 17px;
+  }
+  #categories-search {
+    width: 28%;
+  }
+  .header__primary-company-detail {
+    flex-wrap: wrap;
+  }
+  .logo-company-detail{
+    width: 100%;
+  } 
+  .follow-company-detail{
+    width: 100%;
+    justify-content: start;
+    padding-left: 40px;
+    margin: unset;
+  }
+  .header__primary-company-detail .logo-company-detail span {
+    font-size: 24px;
+    padding-right: 20px;
+  }
+  .company-leadership {
+    flex-direction: column;
+  }
+  .company-leadership .company-leadership__text{
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .company-leadership__info-total, .carousel{
+    width: 100%;
+  }
+  .total-leadership{
+    width: 504px;
+  }
+}
+@media screen and (max-width: 415px) {
+  h2.main-text {
+    font-size: 20px;
+  }
+  .main-companies p.secondary-text{
+    padding-left: unset;
+    font-size: 14px;
+  }
+  .header-companies span {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .body-companies{
+    justify-content: center;
+  }
+  .card-companies {
+    width: 90%;
+  }
+  .categories-companies{
+    width: 40%;
+    margin-top: unset;
+  }
+  #categories-search {
+    width: 100%;
+    font-size: 14px;
+  }
+  .input-container .input{
+    font-size: 12px;
+    height: 30px;
+  }
+  .input:focus,
+  .input:not(:placeholder-shown) {
+    width: 98%;
+  }
+  .card-companies {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 321px) {
+  h2.main-text {
+    font-size: 16px;
+  }
+  .main-companies p.secondary-text {
+    font-size: 12px;
+  }
+  .header-companies{
+    padding: 30px 10px 20px 10px ;
+  }
+  .body-companies {
+    padding: 0 10px;
+  }
+  #categories-search {
+    font-size: 12px;
+  }
+  .input-container{
+    height: 30px;
+  }
+  .icon{
+    width: 30px;
+    height: 30px;
+  }
+  .input:focus,
+  .input:not(:placeholder-shown) {
+    padding: 18px 4px 18px 30px;
+  }
 }

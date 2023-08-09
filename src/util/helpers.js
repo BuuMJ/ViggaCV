@@ -135,49 +135,49 @@ module.exports = {
     if (company && company.companyaddress) {
       return company.companyaddress;
     } else {
-      return "";
+      return "Not updated yet";
     }
   },
   getCompanyfield: function (company) {
     if (company && company.companyfield) {
       return company.companyfield;
     } else {
-      return "";
+      return "Not updated yet";
     }
   },
   getTaxcode: function (company) {
     if (company && company.taxcode) {
       return company.taxcode;
     } else {
-      return "";
+      return "Not updated yet";
     }
   },
   getCompanyemail: function (company) {
     if (company && company.companyemail) {
       return company.companyemail;
     } else {
-      return "";
+      return "Not updated yet";
     }
   },
   getCompanyphone: function (company) {
     if (company && company.companyphone) {
       return company.companyphone;
     } else {
-      return "";
+      return "Not updated yet";
     }
   },
   getCompanyyears: function (company) {
     if (company && company.companyyears) {
       return company.companyyears;
     } else {
-      return "";
+      return "Not updated yet";
     }
   },
   getCompanydesc: function (company) {
     if (company && company.companydesc) {
       return company.companydesc;
     } else {
-      return "";
+      return "The information has not been updated";
     }
   },
   getTOB: function (company) {
@@ -198,14 +198,14 @@ module.exports = {
     if (company && company.establisheddate) {
       return company.establisheddate;
     } else {
-      return "";
+      return "Not updated yet";
     }
   },
   getNoofemployee: function (company) {
     if (company && company.noofemployee) {
-      return company.noofemployee;
+      return company.noofemployee + ' staff';
     } else {
-      return "The company has not updated the total number of employees";
+      return "Not updated yet";
     }
   },
   getMission: function (company) {

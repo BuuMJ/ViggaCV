@@ -22,12 +22,11 @@
                 <span class="desc__first-text">About {{getCompanyname company}} Company</span>
                 <div class="contact-company company-desc">
                     <span class="desc__second-text"><b>Address</b>: {{getCompanyaddress company}}</span>
-                    <span class="desc__second-text"><b>Size:</b> {{getNoofemployee company}} staff</span>
+                    <span class="desc__second-text"><b>Size:</b> {{getNoofemployee company}}</span>
                     <span class="desc__second-text"><b>Email:</b> {{getCompanyemail company}}</span>
                     <span class="desc__second-text"><b>HotLine:</b> {{getCompanyphone company}}</span>
                 </div>
-                <span class="desc__second-text">{{getCompanydesc company}}</span>
-
+                <span class="desc__second-text"><b>Description: </b>{{getCompanydesc company}}</span>
             </div>
             <div class="company-desc">
                 <span class="desc__first-text">Our Service</span>
@@ -87,11 +86,15 @@
    firstItem = carousel.querySelectorAll('.company-leadership__info')[0];
    arrowButtons = document.querySelectorAll('.company-leadership__info-total button')
    let isDragStart = false , prevPageX, prevScrollLeft;
-   let firstItemWidth = firstItem.clientWidth + 28;
-   let scrollWidth = carousel.scrollWidth - carousel.clientWidth;
+   let firstItemWidth = firstItem.clientWidth - 20;
+   console.log(firstItemWidth)
+   let scrollWidth = carousel.scrollWidth - carousel.clientWidth ;
+   console.log(carousel.scrollWidth + 'scrollwidth') 
+   console.log(scrollWidth)
    const showHideButtons = () =>{
     arrowButtons[0].style.display = carousel.scrollLeft == 0 ? "none" : "block";
     arrowButtons[1].style.display = carousel.scrollLeft == scrollWidth ? "none" : "block";
+    console.log(carousel.scrollLeft)
    }
    arrowButtons.forEach(button => {
     button.addEventListener('click',()=>{

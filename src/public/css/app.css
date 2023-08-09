@@ -4328,8 +4328,9 @@ ul.listpageleadership .active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   width: 100%;
+  min-height: 80vh;
   background-color: #f4f4f7; }
 
 .main-companies {
@@ -4399,7 +4400,8 @@ h2.main-text {
 .input:focus::placeholder {
   color: #838080; }
 
-.input:focus, .input:not(:placeholder-shown) {
+.input:focus,
+.input:not(:placeholder-shown) {
   background-color: #fff;
   border: 1px solid black;
   width: 90%;
@@ -4536,7 +4538,9 @@ h2.main-text {
   text-align: center;
   font-weight: 600;
   cursor: pointer;
-  font-size: 14px; }
+  font-size: 14px;
+  border: 2px solid #fed200;
+  transition: .5s; }
 
 .view-detail__company:hover,
 .view-detail__job:hover {
@@ -4797,7 +4801,7 @@ header.company-detail .background-company-detail {
 .company-leadership__text span.leadership__second-text {
   font-size: 16px;
   font-weight: 400;
-  padding: 10px 0;
+  padding: 4px 0;
   letter-spacing: 1.3px; }
 
 .company-leadership {
@@ -4806,12 +4810,6 @@ header.company-detail .background-company-detail {
   flex-direction: row;
   justify-content: space-between;
   padding: 26px 0; }
-
-.contact-company {
-  padding-bottom: 16px; }
-
-.contact-company span {
-  padding: unset !important; }
 
 .company-leadership .company-leadership__text {
   display: flex;
@@ -4824,10 +4822,10 @@ header.company-detail .background-company-detail {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* changed from space-around */
   align-items: center;
   position: relative;
-  scroll-behavior: smooth; }
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory; }
 
 .carousel {
   width: 100%;
@@ -4865,7 +4863,9 @@ header.company-detail .background-company-detail {
   position: relative;
   justify-content: center;
   align-items: center;
-  margin-left: 28px; }
+  margin-left: 28px;
+  scroll-snap-align: center;
+  scroll-snap-stop: always; }
 
 .company-leadership__info-total .company-leadership__info:first-child {
   margin-left: 0; }
@@ -4970,6 +4970,132 @@ header.company-detail .background-company-detail {
   cursor: pointer;
   top: 0;
   right: 0; }
+
+@media screen and (max-width: 1024px) {
+  h2.main-text {
+    font-size: 40px; }
+  .header-companies span {
+    width: 40%; }
+  .search-companies {
+    width: 60%; }
+  .body-companies {
+    justify-content: space-evenly; }
+  .card-companies {
+    margin: 12px 0;
+    height: 300px; }
+  .view-detail__company,
+  .view-detail__job {
+    width: unset;
+    height: 35px;
+    font-size: 12px; }
+  .card-companies .list-detail {
+    height: 30px; }
+  .card-company:hover .list-detail {
+    transform: translateY(40%); }
+  .header__primary-company-detail .logo-company-detail span {
+    font-size: 26px; } }
+
+@media screen and (max-width: 768px) {
+  .main-companies {
+    width: 90%; }
+  h2.main-text {
+    font-size: 38px; }
+  #categories-search {
+    width: 22%; }
+  .body-companies {
+    justify-content: space-between; }
+  .card-companies {
+    width: 48%; }
+  .header__primary-company-detail {
+    position: relative; }
+  .logo-company-detail,
+  .follow-company-detail {
+    margin-top: 30px; }
+  .header__primary-company-detail .logo-company-detail img {
+    position: absolute;
+    top: -60%; }
+  .header__primary-company-detail .logo-company-detail span {
+    margin-left: unset; } }
+
+@media screen and (max-width: 600px) {
+  .main-company-detail header.company-detail,
+  .body-about-us {
+    width: 90%; }
+  h2.main-text {
+    font-size: 30px; }
+  .header-companies span {
+    font-size: 17px; }
+  #categories-search {
+    width: 28%; }
+  .header__primary-company-detail {
+    flex-wrap: wrap; }
+  .logo-company-detail {
+    width: 100%; }
+  .follow-company-detail {
+    width: 100%;
+    justify-content: start;
+    padding-left: 40px;
+    margin: unset; }
+  .header__primary-company-detail .logo-company-detail span {
+    font-size: 24px;
+    padding-right: 20px; }
+  .company-leadership {
+    flex-direction: column; }
+  .company-leadership .company-leadership__text {
+    width: 100%;
+    margin-bottom: 20px; }
+  .company-leadership__info-total, .carousel {
+    width: 100%; }
+  .total-leadership {
+    width: 504px; } }
+
+@media screen and (max-width: 415px) {
+  h2.main-text {
+    font-size: 20px; }
+  .main-companies p.secondary-text {
+    padding-left: unset;
+    font-size: 14px; }
+  .header-companies span {
+    width: 100%;
+    margin-bottom: 20px; }
+  .body-companies {
+    justify-content: center; }
+  .card-companies {
+    width: 90%; }
+  .categories-companies {
+    width: 40%;
+    margin-top: unset; }
+  #categories-search {
+    width: 100%;
+    font-size: 14px; }
+  .input-container .input {
+    font-size: 12px;
+    height: 30px; }
+  .input:focus,
+  .input:not(:placeholder-shown) {
+    width: 98%; }
+  .card-companies {
+    width: 100%; } }
+
+@media screen and (max-width: 321px) {
+  h2.main-text {
+    font-size: 16px; }
+  .main-companies p.secondary-text {
+    font-size: 12px; }
+  .header-companies {
+    padding: 30px 10px 20px 10px; }
+  .body-companies {
+    padding: 0 10px; }
+  #categories-search {
+    font-size: 12px; }
+  .input-container {
+    height: 30px; }
+  .icon {
+    width: 30px;
+    height: 30px; }
+  .input:focus,
+  .input:not(:placeholder-shown) {
+    padding: 18px 4px 18px 30px; } }
 
 .container-cv {
   display: flex;
@@ -5394,8 +5520,8 @@ header.company-detail .background-company-detail {
 .library-color .option-color label.caa878 {
   background-color: #caa878; }
 
-.library-color .option-color label.eb4a3b {
-  background-color: #eb4a3b; }
+.library-color .option-color label.a9d1c38 {
+  background-color: #9d1c38; }
 
 .library-color .option-color label.a555555 {
   background-color: #555555; }
@@ -5829,6 +5955,105 @@ header.company-detail .background-company-detail {
 @media screen and (max-width: 1440px) {
   .main__create-cv header.action-create-cv {
     top: 70%; } }
+
+@media screen and (max-width: 768px) {
+  .header-cv {
+    transform: translateY(50%); }
+  .free-design,
+  .easy-operation,
+  .interview-cv,
+  .download-cv,
+  .stepbystep-cv {
+    width: 90%; }
+  .free-design-title,
+  .easy-tilte,
+  .download-title,
+  .interview-title {
+    font-size: 35px; }
+  .easy-operation-right > *,
+  .interview-right > *,
+  .stepbystep-first > * {
+    padding: unset; }
+  .interview-action {
+    width: 45%;
+    margin-left: unset; }
+  .stepbystep-header {
+    height: unset; }
+  .stepbystep-left > * {
+    margin: 4px 0; }
+  .free-design-left {
+    width: 50%;
+    text-align: justify; } }
+
+@media screen and (max-width: 600px) {
+  .header-cv .intro-text {
+    height: 50px; }
+  .free-design-title,
+  .easy-tilte,
+  .download-title,
+  .interview-title {
+    font-size: 30px; }
+  .free-design-text,
+  .easy-text,
+  .download-text,
+  .interview-text,
+  .first-text {
+    font-size: 14px; }
+  .interview-action {
+    width: 55%; } }
+
+@media screen and (max-width: 415px) {
+  .header-cv .intro-title,
+  .header-cv .intro-surprise {
+    font-size: 24px; }
+  .header-cv .intro-surprise {
+    margin-bottom: unset; }
+  .header-cv .intro-text {
+    font-size: 14px;
+    padding: 0 18%; }
+  .free-design,
+  .easy-operation,
+  .download-cv,
+  .interview-cv,
+  .stepbystep-cv {
+    flex-direction: column;
+    margin-bottom: 50px; }
+  .free-design-left,
+  .free-design-right,
+  .easy-operation-left,
+  .easy-operation-right,
+  .download-cv-left,
+  .download-cv-right,
+  .interview-left,
+  .interview-right,
+  .stepbystep-left,
+  .stepbystep-right {
+    width: 100%;
+    height: 200px;
+    align-items: center;
+    text-align: center; }
+  .free-design-left,
+  .download-cv-left,
+  .stepbystep-left {
+    height: unset;
+    margin-bottom: 12px; }
+  .easy-operation-right,
+  .interview-right {
+    margin-top: 12px;
+    height: unset; }
+  .stepbystep-header {
+    font-size: 28px; }
+  .first-title {
+    align-self: unset; } }
+
+@media screen and (max-width: 321px) {
+  .header-cv {
+    transform: translateY(30%); }
+  .header-cv .intro-title,
+  .header-cv .intro-surprise {
+    font-size: 20px; }
+  .header-cv .intro-text {
+    padding: 0 10%; } }
 
 .main-login {
   display: flex;

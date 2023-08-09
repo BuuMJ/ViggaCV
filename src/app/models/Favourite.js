@@ -13,7 +13,6 @@ const favouriteSchema = new Schema(
       ref: "Job",
       required: true,
     },
-    professional: String,
   },
   {
     timestamps: true,
