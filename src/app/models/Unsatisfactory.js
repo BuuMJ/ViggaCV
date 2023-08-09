@@ -9,6 +9,7 @@ const Unsatisfactory = new Schema({
   path: String,
   jobid: String,
   companyid: String,
+  professional: String,
   userid: String,
 });
 

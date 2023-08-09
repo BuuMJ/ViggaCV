@@ -10,6 +10,7 @@ const Qualified = new Schema({
   jobid: String,
   companyid: String,
   userid: String,
+  professional: String,
 });
 
 const QualifiedModel = mongoose.model("qualified", Qualified);

@@ -121,6 +121,7 @@ class ApplyCVController {
               name: req.user.fullname,
               email: req.user.email,
               phone: req.user.phone,
+              professional: req.body.professional,
             });
           } else {
             await UnsatisfactoryModel.create({
@@ -131,6 +132,7 @@ class ApplyCVController {
               userid: user._id,
               name: req.user.fullname,
               email: req.user.email,
+              professional: req.body.professional,
               phone: req.user.phone,
             });
           }

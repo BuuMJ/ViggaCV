@@ -39,8 +39,21 @@ class CompanyProfileController {
       listcompany.toObject()
     );
     // console.log(listcompany + "DAY LA DANH SACH COMPANY SAU KHI TIM");
-    JobModel.find({ iduser: req.user._id }).then((listjob) => {
-      listjob = listjob.map((job) => job.toJSON());
+    JobModel.find({ iduser: req.user._id }).then(async (listjob) => {
+      listjob = await Promise.all(
+        listjob.map(async (job) => {
+          const jobObject = job.toObject();
+          const qualifiedCount = await QualifiedModel.countDocuments({
+            jobid: job._id.toString(),
+          });
+          const unsatisfactoryCount = await UnsatisfactoryModel.countDocuments({
+            jobid: job._id.toString(),
+          });
+          jobObject.appliedCount = qualifiedCount + unsatisfactoryCount; // Tổng số CV đã apply
+          return jobObject;
+        })
+      );
+
       res.render("companyprofile", {
         title: "Company",
         user: req.user,

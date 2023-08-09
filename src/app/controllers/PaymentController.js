@@ -11,9 +11,11 @@ const CompanyModel = require("../models/Company");
 const ActionModel = require("../models/Action");
 const UserModel = require("../models/User");
 const nodemailer = require("nodemailer");
+const RevenueModel = require("../models/Revenua");
 
 class PaymentController {
   pay(req, res, next) {
+    delete req.session.revenueCreated;
     const price = 1.5;
     if (req.body.paymentday) {
       var days = req.body.paymentday;
@@ -102,7 +104,17 @@ class PaymentController {
             job.prioritize = true;
             job.prioritizeUpdatedAt = moment().add(days, "days").toDate();
             await job.save();
-            console.log(job.prioritize);
+            if (!req.session.revenueCreated) {
+              var revenue = new RevenueModel({
+                iduser: req.user._id,
+                idcompany: company._id,
+                idjob: jobID,
+                money: total,
+                type: "prioritize",
+              });
+              await revenue.save(); // Đảm bảo rằng bạn lưu bản ghi revenue này
+              req.session.revenueCreated = true;
+            }
           } catch (err) {
             console.log(err);
           }
@@ -149,6 +161,7 @@ class PaymentController {
   }
 
   payjob(req, res, next) {
+    delete req.session.success;
     var create_payment_json = {
       intent: "sale",
       payer: {
@@ -211,7 +224,6 @@ class PaymentController {
     };
 
     var paymentId = req.query.paymentId;
-    const company = await CompanyModel.findOne({ iduser: req.user._id });
 
     paypal.payment.execute(
       paymentId,
@@ -241,22 +253,7 @@ class PaymentController {
               _id: { $in: companyfollow },
             }).distinct("email");
             const combinedEmails = subscribes.concat(listEmail);
-            const oldjob = await JobModel.findOne({
-              iduser: iduser,
-              DoP: DoP,
-              benefit: benefit,
-              companyname: companyname.companyname,
-              categories: companyname.companyfield,
-              jobname: jobname,
-              jobdesc: jobdesc,
-              salary: salary,
-              jobrequi: jobrequi,
-              position: position,
-              joblocation: joblocation,
-              avatar: companyname.avatar,
-              idcompany: companyname._id,
-            });
-            if (oldjob) {
+            if (!req.session.success) {
               var job = new JobModel({
                 iduser: iduser,
                 DoP: DoP,
@@ -272,6 +269,16 @@ class PaymentController {
                 avatar: companyname.avatar,
                 idcompany: companyname._id,
               });
+              await job.save();
+              req.session.success = true;
+              var revenue = new RevenueModel({
+                iduser: iduser,
+                idcompany: companyname._id,
+                idjob: job._id,
+                money: 30,
+                type: "post job",
+              });
+              await revenue.save();
               if (job) {
                 if (combinedEmails.length > 0) {
                   var transporter = nodemailer.createTransport({

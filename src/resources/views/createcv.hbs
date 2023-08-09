@@ -1,338 +1,351 @@
-<form class="main__create-cv" method="post" action="/cv/export">
-<div class="header-background">
-  <span>Create Your CV</span>
-</div>
-<header class="action-create-cv">
-  <span class="font-cv"><i class="bi bi-file-earmark-font"></i> Font</span>
-  <span class="color-cv"><i class="bi bi-palette"></i> Color</span>
-  <span class="templates-action-cv"><i class="bi bi-images"></i> Templates</span>
-  <span class="download-create-cv"><button><i class="bi bi-cloud-arrow-down"></i> Download</button></span>
-  <div class="library-font">
-    <p class="font-title">Font</p>
+<form class="main__create-cv" method="POST" action="/cv/export">
+  <div class="header-background">
+    <span>Create Your CV</span>
+  </div>
+  <header class="action-create-cv">
+    <span class="font-cv"><i class="bi bi-file-earmark-font"></i> Font</span>
+    <span class="color-cv"><i class="bi bi-palette"></i> Color</span>
+    <span class="templates-action-cv"><i class="bi bi-images"></i> Templates</span>
+    <span class="download-create-cv"><button><i class="bi bi-cloud-arrow-down"></i> Download</button></span>
+    <div class="library-font">
+      <p class="font-title">Font</p>
       <div class="option-font">
-        <input id="arimo" name="font-family" type="radio" value="'Arimo', sans-serif" hidden>
+        <input id="arimo" name="fontfamily" type="radio" value="'Arimo', sans-serif" hidden>
         <label class="arimo" for="arimo">Arimo</label>
       </div>
       <div class="option-font">
-        <input id="roboto" name="font-family" type="radio" value="'Roboto', sans-serif" hidden>
+        <input id="roboto" name="fontfamily" type="radio" value="'Roboto', sans-serif" hidden>
         <label class="roboto" for="roboto">Roboto</label>
       </div>
       <div class="option-font">
-        <input id="sourcesans3" name="font-family" type="radio" value="'Source Sans 3', sans-serif" hidden>
+        <input id="sourcesans3" name="fontfamily" type="radio" value="'Source Sans 3', sans-serif" hidden>
         <label class="sourcesans3" for="sourcesans3">Source Sans 3</label>
       </div>
       <div class="option-font">
-        <input id="notosans" name="font-family" type="radio" value="'Noto Sans', sans-serif" hidden>
+        <input id="notosans" name="fontfamily" type="radio" value="'Noto Sans', sans-serif" hidden>
         <label class="notosans" for="notosans">Noto Sans</label>
       </div>
+      
       <div class="option-font-size">
         <p class="font-size__title">Font Size</p>
         <div class="select-font__size">
-        <input id="small" name="font-size" type="radio" value="16px">
-        <label for="small">Small Size</label>
-        <input id="medium" name="font-size" type="radio" value="16.5px">
-        <label for="medium">Medium Size</label>
-        <input id="big" name="font-size" type="radio" value="17px">
-        <label for="big">Big Size</label>
+          <input id="small" name="fontsize" type="radio" value="16px">
+          <label for="small">Small Size</label>
+          <input id="medium" name="fontsize" type="radio" value="16.5px">
+          <label for="medium">Medium Size</label>
+          <input id="big" name="fontsize" type="radio" value="17px">
+          <label for="big">Big Size</label>
         </div>
       </div>
-  </div>
-  <div class="library-color">
-    <p class="color-title">Main Color</p>
-    <div class="option-color">
-      <input id="color" name="color" type="radio" value="#fed200" hidden>
-      <label class="fed200" for="color"></label>
     </div>
-    <div class="option-color">
-      <input id="color" name="color" type="radio" value="#f04c40" hidden>
-      <label class="f04c40" for="color"></label>
-    </div>
-    <div class="option-color">
-      <input id="color" name="color" type="radio" value="#f99e3d" hidden>
-      <label class="f99e3d" for="color"></label>
-    </div>
-    <div class="option-color">
-      <input id="color" name="color" type="radio" value="#3f59a8" hidden>
-      <label class="a3f59a8" for="color"></label>
-    </div>
-    <div class="option-color">
-      <input id="color" name="color" type="radio" value="#0072bc" hidden>
-      <label class="a0072bc" for="color"></label>
-    </div>
-    <div class="option-color">
-      <input id="color" name="color" type="radio" value="#6f429a" hidden>
-      <label class="a6f429a" for="color"></label>
-    </div>
+    <div class="library-color">
+      <p class="color-title">Main Color</p>
+      <div class="option-color">
+        <input id="color" name="color" type="radio" value="#fed200" hidden>
+        <label class="fed200" for="color"></label>
+      </div>
+      <div class="option-color">
+        <input id="color" name="color" type="radio" value="#f04c40" hidden>
+        <label class="f04c40" for="color"></label>
+      </div>
+      <div class="option-color">
+        <input id="color" name="color" type="radio" value="#f99e3d" hidden>
+        <label class="f99e3d" for="color"></label>
+      </div>
+      <div class="option-color">
+        <input id="color" name="color" type="radio" value="#3f59a8" hidden>
+        <label class="a3f59a8" for="color"></label>
+      </div>
+      <div class="option-color">
+        <input id="color" name="color" type="radio" value="#0072bc" hidden>
+        <label class="a0072bc" for="color"></label>
+      </div>
+      <div class="option-color">
+        <input id="color" name="color" type="radio" value="#6f429a" hidden>
+        <label class="a6f429a" for="color"></label>
+      </div>
 
-    <div class="option-color">
-      <input id="color" name="color" type="radio" value="#74c33a" hidden>
-      <label class="a74c33a" for="color"></label>
-    </div>
-    <div class="option-color">
-      <input id="color" name="color" type="radio" value="#caa878" hidden>
-      <label class="caa878" for="color"></label>
-    </div>
-    <div class="option-color">
-      <input id="color" name="color" type="radio" value="#eb4a3b" hidden>
-      <label class="eb4a3b" for="color"></label>
-    </div>
-    <div class="option-color">
-      <input id="color" name="color" type="radio" value="#555555" hidden>
-      <label class="a555555" for="color"></label>
-    </div>
-    <div class="option-color">
-      <input id="color" name="color" type="radio" value="#193042" hidden>
-      <label class="a193042" for="color"></label>
-    </div>
-    <div class="option-color">
-      <input id="color" name="color" type="radio" value="#4a1a67" hidden>
-      <label class="a4a1a67" for="color"></label>
-    </div>
-  </div>
-</header>
-<div class="body__create-cv a4">
-  <header>
-    <div class="info__user-cv">
-      <div class="primary__user-cv">
-        <input class="fullname__user-cv" type="text" value="{{inforCV.fullname}}">
-        <input class="specialized" type="text" placeholder="Front-end Developer" value="{{inforCV.specialized}}">
+      <div class="option-color">
+        <input id="color" name="color" type="radio" value="#74c33a" hidden>
+        <label class="a74c33a" for="color"></label>
       </div>
-      <div class="secondary__user-cv">
-        <div class="box__user-cv">
-          <label for="fullname">Name</label>
-          <textarea id="fullname" type="text" rows="1" cols="50" >{{inforCV.fullname}}</textarea>
-        </div>
-        <div class="box__user-cv">
-          <label for="phone">Phone</label>
-          <textarea id="phone" type="text" rows="1" cols="50">{{inforCV.phone}}</textarea>
-        </div>
-        <div class="box__user-cv">
-          <label for="birthday">Birth</label>
-          <textarea id="birthday" type="text" rows="1" cols="50" placeholder="03/09/1999">{{inforCV.birthday}}</textarea>
-        </div>
-        <div class="box__user-cv">
-          <label for="email">Email</label>
-          <textarea id="email" type="text" rows="1" cols="50">{{inforCV.email}}</textarea>
-        </div>
-        <div class="box__user-cv">
-          <label for="address">Address</label>
-          <textarea id="address" type="text" rows="2" cols="50">{{inforCV.address}}, {{inforCV.city}}, {{inforCV.country}}</textarea>
-        </div>
+      <div class="option-color">
+        <input id="color" name="color" type="radio" value="#caa878" hidden>
+        <label class="caa878" for="color"></label>
       </div>
-    </div>
-    <div class="avatar__user-cv">
-      <input type="file" id="avataruser" hidden>
-      <img class="img__user-cv" src="/{{inforCV.avatar}}" alt="">
-      <div class="change-avatar__user-cv">
-        <div class="upload-avatar__user-cv">
-          <label for="avataruser"><i class="bi bi-cloud-arrow-up"></i></label>
-        </div>
-        <div class="none-avatar">
-          <label for="avataruser"><i class="bi bi-cloud-arrow-up"></i></label>
-          <span class="off-avatar"><i class="bi bi-eye-slash"></i></span>
-        </div>
+      <div class="option-color">
+        <input id="color" name="color" type="radio" value="#eb4a3b" hidden>
+        <label class="eb4a3b" for="color"></label>
+      </div>
+      <div class="option-color">
+        <input id="color" name="color" type="radio" value="#555555" hidden>
+        <label class="a555555" for="color"></label>
+      </div>
+      <div class="option-color">
+        <input id="color" name="color" type="radio" value="#193042" hidden>
+        <label class="a193042" for="color"></label>
+      </div>
+      <div class="option-color">
+        <input id="color" name="color" type="radio" value="#4a1a67" hidden>
+        <label class="a4a1a67" for="color"></label>
       </div>
     </div>
   </header>
-  <div class="body__user-cv">
-    {{!-- overview --}}
-    <div class="overview__user-cv">
-      <textarea class="overview-text" rows="1">Overview</textarea>
-      <textarea rows="15" name="overview" placeholder="- Over 2 years of experience in programming with good communication and quick learning skills&#10;- Strengths: Front-end technology and Back-end web application development&#10;- Proficiency in HTML, CSS, JavaScript&#10;- Strong proficiency in JavaScript, including DOM manipulation and the JavaScript object model&#10;- Thorough under standing of React.js and it score principles&#10;- Experience with popular React.js workflows (such as Flux or Redux)&#10;- Familiarity with newer specifications of EcmaScript&#10;- Experience with data structure libraries&#10;- Familiarity with RESTful APIs&#10;- Strong Experience in: PHP, JavaScript (ReactJS, React-native), MySQL, NoSQL, GraphQL, Redis, JSON, API, Docker, Kubernetes, Rancher, AWS services&#10;- Proficient use of source code management tools: SVN, GIT&#10;- Proficiency in operating systems: Linux (Ubuntu, OSX), Windows&#10;- Ability to learn and apply new technology quickly&#10;- Current working location: Ha Noi, Viet Nam&#10;"></textarea>
-    </div>
-    {{!-- work experience --}}
-    <div class="overview__user-cv workexp__user-cv">
-      <textarea class="workexp-text" rows="1">Work experience</textarea>
-      <div class="work-exp">
-        <div class="date__work-exp">
-          <textarea  rows="1" name="timeexperience" placeholder="07/2017 - Present"></textarea>
-          <div class="action__add-remove" >
-            <span title="Add more work experience" class="add-work-exp"><i class="bi bi-plus-circle"></i></span>
-            <span title="Remove this work experience" class="remove-work-exp"><i class="bi bi-dash-circle"></i></span>
-          </div>
+  <div class="body__create-cv a4">
+    <header>
+      <div class="info__user-cv">
+        <div class="primary__user-cv">
+          <input class="fullname__user-cv" type="text" value="{{inforCV.fullname}}">
+          <input class="specialized" type="text" placeholder="Front-end Developer" value="{{inforCV.specialized}}">
         </div>
-        <div class="info__work-exp">
-          <textarea id="name-company" name="nameexperience" rows="1" placeholder="Vigga Company"></textarea>
-          <textarea class="job__work-exp" name="experience" rows="3" placeholder="FullStack Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10"></textarea>
+        <div class="secondary__user-cv">
+          <div class="box__user-cv">
+            <label for="fullname">Name</label>
+            <textarea id="fullname" type="text" rows="1" cols="50">{{inforCV.fullname}}</textarea>
+          </div>
+          <div class="box__user-cv">
+            <label for="phone">Phone</label>
+            <textarea id="phone" type="text" rows="1" cols="50">{{inforCV.phone}}</textarea>
+          </div>
+          <div class="box__user-cv">
+            <label for="birthday">Birth</label>
+            <textarea id="birthday" type="text" rows="1" cols="50"
+              placeholder="03/09/1999">{{inforCV.birthday}}</textarea>
+          </div>
+          <div class="box__user-cv">
+            <label for="email">Email</label>
+            <textarea id="email" type="text" rows="1" cols="50">{{inforCV.email}}</textarea>
+          </div>
+          <div class="box__user-cv">
+            <label for="address">Address</label>
+            <textarea id="address" type="text" rows="2"
+              cols="50">{{inforCV.address}}, {{inforCV.city}}, {{inforCV.country}}</textarea>
+          </div>
         </div>
       </div>
-    </div>
-    {{!-- education --}}
-    <div class="overview__user-cv education__user-cv">
-      <textarea class=" education-text" rows="1">Education</textarea>
-      <div class="education-user">
-        <div class="date__education">
-          <textarea  rows="1" name="timeeducation" placeholder="07/2017 - Present"></textarea>
-          <div class="action__add-remove-education" >
-            <span title="Add more education" class="add-education"><i class="bi bi-plus-circle"></i></span>
-            <span title="Remove this education" class="remove-education"><i class="bi bi-dash-circle"></i></span>
+      <div class="avatar__user-cv">
+        <input type="file" id="avataruser" hidden>
+        <img class="img__user-cv" src="/{{inforCV.avatar}}" alt="">
+        <div class="change-avatar__user-cv">
+          <div class="upload-avatar__user-cv">
+            <label for="avataruser"><i class="bi bi-cloud-arrow-up"></i></label>
           </div>
-        </div>
-        <div class="info__education">
-          <textarea id="name-education" name="nameeducation" rows="1" placeholder="FPT GreenWich"></textarea>
-          <textarea class="major__education" name="education" rows="2" placeholder="Major - Website, Mobile&#10;Level - Good"></textarea>
+          <div class="none-avatar">
+            <label for="avataruser"><i class="bi bi-cloud-arrow-up"></i></label>
+            <span class="off-avatar"><i class="bi bi-eye-slash"></i></span>
+          </div>
         </div>
       </div>
-    </div>
-    {{!-- skill --}}
-     <div class="overview__user-cv skill__user-cv">
-      <textarea class="skill-text" rows="1">Skill</textarea>
-      <div class="main-skill">
-        <div class="main-info">
-           <textarea name="main" id="main" rows="1" class="main" placeholder="Main"></textarea>
-        </div>
-        <textarea name="maincontent"  id="main-content" rows="3" class="main-content" placeholder="• HTML&#10;• Javascrip&#10;• ReactJS"></textarea>
+    </header>
+    <div class="body__user-cv">
+      {{!-- overview --}}
+      <div class="overview__user-cv">
+        <textarea class="overview-text" rows="1">Overview</textarea>
+        <textarea rows="15" name="overview"
+          placeholder="- Over 2 years of experience in programming with good communication and quick learning skills&#10;- Strengths: Front-end technology and Back-end web application development&#10;- Proficiency in HTML, CSS, JavaScript&#10;- Strong proficiency in JavaScript, including DOM manipulation and the JavaScript object model&#10;- Thorough under standing of React.js and it score principles&#10;- Experience with popular React.js workflows (such as Flux or Redux)&#10;- Familiarity with newer specifications of EcmaScript&#10;- Experience with data structure libraries&#10;- Familiarity with RESTful APIs&#10;- Strong Experience in: PHP, JavaScript (ReactJS, React-native), MySQL, NoSQL, GraphQL, Redis, JSON, API, Docker, Kubernetes, Rancher, AWS services&#10;- Proficient use of source code management tools: SVN, GIT&#10;- Proficiency in operating systems: Linux (Ubuntu, OSX), Windows&#10;- Ability to learn and apply new technology quickly&#10;- Current working location: Ha Noi, Viet Nam&#10;"></textarea>
       </div>
-      <div class="other-skill">
-         <div class="other-info">
-           <textarea name="other" id="other" rows="1" placeholder="Other"></textarea>
+      {{!-- work experience --}}
+      <div class="overview__user-cv workexp__user-cv">
+        <textarea class="workexp-text" rows="1">Work experience</textarea>
+        <div class="work-exp">
+          <div class="date__work-exp">
+            <textarea rows="1" name="timeexperience" placeholder="07/2017 - Present"></textarea>
+            <div class="action__add-remove">
+              <span title="Add more work experience" class="add-work-exp"><i class="bi bi-plus-circle"></i></span>
+              <span title="Remove this work experience" class="remove-work-exp"><i class="bi bi-dash-circle"></i></span>
+            </div>
+          </div>
+          <div class="info__work-exp">
+            <textarea id="name-company" name="nameexperience" rows="1" placeholder="Vigga Company"></textarea>
+            <textarea class="job__work-exp" name="experience" rows="3"
+              placeholder="FullStack Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10"></textarea>
+          </div>
         </div>
-        <textarea name="othercontent" id="other-content" rows="3" placeholder="• Ruby&#10;• Mongose&#10;• NodeJS"></textarea>
-        <span class="remove__other-skill"><i class="bi bi-trash"></i></span>
       </div>
-    </div>
-    {{!-- project --}}
-    <div class="overview__user-cv project__user-cv">
-      <textarea class="project-text" rows="1">Project</textarea>
-      <div class="table-project">
-        <div class="box-project client-project">
-          <div class="title-project">
-            <textarea name="nameclient" id="client" rows="1" placeholder="Client"></textarea>
+      {{!-- education --}}
+      <div class="overview__user-cv education__user-cv">
+        <textarea class=" education-text" rows="1">Education</textarea>
+        <div class="education-user">
+          <div class="date__education">
+            <textarea rows="1" name="timeeducation" placeholder="07/2017 - Present"></textarea>
+            <div class="action__add-remove-education">
+              <span title="Add more education" class="add-education"><i class="bi bi-plus-circle"></i></span>
+              <span title="Remove this education" class="remove-education"><i class="bi bi-dash-circle"></i></span>
+            </div>
           </div>
-          <textarea name="clientcontent" class="content-project" id="client-content" rows="1" placeholder="ViggaCareers"></textarea>
+          <div class="info__education">
+            <textarea id="name-education" name="nameeducation" rows="1" placeholder="FPT GreenWich"></textarea>
+            <textarea class="major__education" name="education" rows="2"
+              placeholder="Major - Website, Mobile&#10;Level - Good"></textarea>
+          </div>
         </div>
-        <div class="box-project descript-project">
-          <div class="title-project">
-            <textarea name="descript" id="descript" rows="1" placeholder="Description"></textarea>
+      </div>
+      {{!-- skill --}}
+      <div class="overview__user-cv skill__user-cv">
+        <textarea class="skill-text" rows="1">Skill</textarea>
+        <div class="main-skill">
+          <div class="main-info">
+            <textarea name="main" id="main" rows="1" class="main" placeholder="Main"></textarea>
           </div>
-          <textarea name="descript-content" class="content-project" id="descript-content" rows="2" placeholder="For employers looking for talent&#10;Creating their own cv and looking for work"></textarea>
+          <textarea name="maincontent" id="main-content" rows="3" class="main-content"
+            placeholder="• HTML&#10;• Javascrip&#10;• ReactJS"></textarea>
         </div>
-        <div class="box-project members-project">
-          <div class="title-project">
-            <textarea name="members" id="members" rows="1" placeholder="Member count"></textarea>
+        <div class="other-skill">
+          <div class="other-info">
+            <textarea name="other" id="other" rows="1" placeholder="Other"></textarea>
           </div>
-          <textarea name="members-content" class="content-project" id="members-content" rows="1" placeholder="2 people"></textarea>
+          <textarea name="othercontent" id="other-content" rows="3"
+            placeholder="• Ruby&#10;• Mongose&#10;• NodeJS"></textarea>
+          <span class="remove__other-skill"><i class="bi bi-trash"></i></span>
         </div>
-        <div class="box-project position-project">
-          <div class="title-project">
-            <textarea name="position" id="position" rows="1" placeholder="Position"></textarea>
+      </div>
+      {{!-- project --}}
+      <div class="overview__user-cv project__user-cv">
+        <textarea class="project-text" rows="1">Project</textarea>
+        <div class="table-project">
+          <div class="box-project client-project">
+            <div class="title-project">
+              <textarea name="nameclient" id="client" rows="1" placeholder="Client"></textarea>
+            </div>
+            <textarea name="clientcontent" class="content-project" id="client-content" rows="1"
+              placeholder="ViggaCareers"></textarea>
           </div>
-          <textarea name="position-content" class="content-project" id="position-content" rows="2" placeholder="Team Leader&#10;Front-end Developer"></textarea>
-        </div>
-        <div class="box-project respon-project">
-          <div class="title-project">
-            <textarea name="respon" id="respon" rows="1" placeholder="Responsibilities"></textarea>
+          <div class="box-project descript-project">
+            <div class="title-project">
+              <textarea name="descript" id="descript" rows="1" placeholder="Description"></textarea>
+            </div>
+            <textarea name="descript-content" class="content-project" id="descript-content" rows="2"
+              placeholder="For employers looking for talent&#10;Creating their own cv and looking for work"></textarea>
           </div>
-          <textarea name="respon-content" class="content-project" id="respon-content" rows="2" placeholder="Developer&#10;Solution architect"></textarea>
+          <div class="box-project members-project">
+            <div class="title-project">
+              <textarea name="members" id="members" rows="1" placeholder="Member count"></textarea>
+            </div>
+            <textarea name="members-content" class="content-project" id="members-content" rows="1"
+              placeholder="2 people"></textarea>
+          </div>
+          <div class="box-project position-project">
+            <div class="title-project">
+              <textarea name="position" id="position" rows="1" placeholder="Position"></textarea>
+            </div>
+            <textarea name="position-content" class="content-project" id="position-content" rows="2"
+              placeholder="Team Leader&#10;Front-end Developer"></textarea>
+          </div>
+          <div class="box-project respon-project">
+            <div class="title-project">
+              <textarea name="respon" id="respon" rows="1" placeholder="Responsibilities"></textarea>
+            </div>
+            <textarea name="respon-content" class="content-project" id="respon-content" rows="2"
+              placeholder="Developer&#10;Solution architect"></textarea>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </form>
 <script>
   // check A4 page 
   function checkOverflow() {
     let container = document.querySelector('.a4');
     while (container.scrollHeight > container.offsetHeight) {
-        let newContainer = container.cloneNode(false);
-        container.after(newContainer);
-        let nodes = Array.from(container.childNodes);
-        while (container.scrollHeight > container.offsetHeight && nodes.length > 0) {
-            newContainer.prepend(nodes.pop());
-        }
-        container = newContainer;
+      let newContainer = container.cloneNode(false);
+      container.after(newContainer);
+      let nodes = Array.from(container.childNodes);
+      while (container.scrollHeight > container.offsetHeight && nodes.length > 0) {
+        newContainer.prepend(nodes.pop());
+      }
+      container = newContainer;
     }
-}
-checkOverflow();
-//scroll navbar
-  document.addEventListener("scroll", function() {
-  if(window.innerWidth <= 1440){
-     if (window.pageYOffset > 500) {
-    document.querySelector("header.action-create-cv").style.cssText = "position: fixed; top: 1%; border-radius: 1000px; width: 80%; border-bottom: unset; background-color: black;";
-    document.querySelector(".library-font").style.cssText = 'left: 8%';
-    document.querySelector(".library-color").style.cssText = 'left: 30%';
+  }
+  checkOverflow();
+  //scroll navbar
+  document.addEventListener("scroll", function () {
+    if (window.innerWidth <= 1440) {
+      if (window.pageYOffset > 500) {
+        document.querySelector("header.action-create-cv").style.cssText = "position: fixed; top: 1%; border-radius: 1000px; width: 80%; border-bottom: unset; background-color: black;";
+        document.querySelector(".library-font").style.cssText = 'left: 8%';
+        document.querySelector(".library-color").style.cssText = 'left: 30%';
 
-  } else {
-    document.querySelector("header.action-create-cv").style.cssText = "position: absolute; top:70%; border-bottom: 1px solid #5e5d5d; background-color: transparent;";
-    document.querySelector(".library-font").style.cssText = 'left: 18%';
-    document.querySelector(".library-color").style.cssText = 'left: 35%';
-  }
-  }
-  else{
-  if (window.pageYOffset > 500) {
-    document.querySelector("header.action-create-cv").style.cssText = "position: fixed; top: 1%; border-radius: 1000px; width: 60%; border-bottom: unset; background-color: black;";
+      } else {
+        document.querySelector("header.action-create-cv").style.cssText = "position: absolute; top:70%; border-bottom: 1px solid #5e5d5d; background-color: transparent;";
+        document.querySelector(".library-font").style.cssText = 'left: 18%';
+        document.querySelector(".library-color").style.cssText = 'left: 35%';
+      }
+    }
+    else {
+      if (window.pageYOffset > 500) {
+        document.querySelector("header.action-create-cv").style.cssText = "position: fixed; top: 1%; border-radius: 1000px; width: 60%; border-bottom: unset; background-color: black;";
 
-  } else {
-    document.querySelector("header.action-create-cv").style.cssText = "position: absolute; top:53%; border-bottom: 1px solid #5e5d5d; background-color: transparent;";
-  }
-  }
-});
-// textarea auto height
-document.addEventListener('DOMContentLoaded', function() {
-  var textareas = document.querySelectorAll('.main__create-cv textarea');
-  textareas.forEach(function(textarea) {
-    textarea.addEventListener('keyup', function(e) {
-      textarea.style.height = 'auto';
-      let scHeight = e.target.scrollHeight;
-      textarea.style.height = `${scHeight}px`;
+      } else {
+        document.querySelector("header.action-create-cv").style.cssText = "position: absolute; top:53%; border-bottom: 1px solid #5e5d5d; background-color: transparent;";
+      }
+    }
+  });
+  // textarea auto height
+  document.addEventListener('DOMContentLoaded', function () {
+    var textareas = document.querySelectorAll('.main__create-cv textarea');
+    textareas.forEach(function (textarea) {
+      textarea.addEventListener('keyup', function (e) {
+        textarea.style.height = 'auto';
+        let scHeight = e.target.scrollHeight;
+        textarea.style.height = `${scHeight}px`;
+      });
     });
   });
-});
-// add or remove work experience
-document.addEventListener('DOMContentLoaded', function() {
+  // add or remove work experience
+  document.addEventListener('DOMContentLoaded', function () {
     function applyTextareaFocusStyles(textarea) {
-        textarea.style.cssText = 'background-color: #fff; outline: 1px solid #ccc; border-radius: 2px; box-shadow: 0px 0px 0px 60px rgba(255, 255, 255, 0.8);';
+      textarea.style.cssText = 'background-color: #fff; outline: 1px solid #ccc; border-radius: 2px; box-shadow: 0px 0px 0px 60px rgba(255, 255, 255, 0.8);';
     }
     function applyTextareaBlurStyles(textarea) {
-        textarea.style.cssText = 'background-color: transparent; outline: none; border: none; box-shadow: unset;';
+      textarea.style.cssText = 'background-color: transparent; outline: none; border: none; box-shadow: unset;';
     }
     function setupDateWorkExpTextareaEvents(textarea) {
-        textarea.addEventListener('focus', function() {
-            var actionAddRemove = this.parentNode.querySelector('.action__add-remove');
-            actionAddRemove.style.opacity = '1';
-            applyTextareaFocusStyles(this);
-        });
-        textarea.addEventListener('focusout', function() {
-            var actionAddRemove = this.parentNode.querySelector('.action__add-remove');
-            actionAddRemove.style.opacity = '0';
-            applyTextareaBlurStyles(this);
-        });
+      textarea.addEventListener('focus', function () {
+        var actionAddRemove = this.parentNode.querySelector('.action__add-remove');
+        actionAddRemove.style.opacity = '1';
+        applyTextareaFocusStyles(this);
+      });
+      textarea.addEventListener('focusout', function () {
+        var actionAddRemove = this.parentNode.querySelector('.action__add-remove');
+        actionAddRemove.style.opacity = '0';
+        applyTextareaBlurStyles(this);
+      });
     }
     function setupWorkExpEventListeners(workExpDiv) {
-    var textarea = workExpDiv.querySelector('.date__work-exp textarea');
-    setupDateWorkExpTextareaEvents(textarea);
-    var jobTextarea = workExpDiv.querySelector('.job__work-exp');
-    jobTextarea.addEventListener('keydown', function(event) {
+      var textarea = workExpDiv.querySelector('.date__work-exp textarea');
+      setupDateWorkExpTextareaEvents(textarea);
+      var jobTextarea = workExpDiv.querySelector('.job__work-exp');
+      jobTextarea.addEventListener('keydown', function (event) {
         if (event.key === 'Enter' || event.keyCode === 13) {
-            event.preventDefault();
-            var startPosition = this.selectionStart;
-            var endPosition = this.selectionEnd;
-            this.value = this.value.substring(0, startPosition) 
-                + '\n• ' 
-                + this.value.substring(endPosition);
-            this.selectionStart = this.selectionEnd = startPosition + 3;
+          event.preventDefault();
+          var startPosition = this.selectionStart;
+          var endPosition = this.selectionEnd;
+          this.value = this.value.substring(0, startPosition)
+            + '\n• '
+            + this.value.substring(endPosition);
+          this.selectionStart = this.selectionEnd = startPosition + 3;
         }
-    });
-    var removeButton = workExpDiv.querySelector('.remove-work-exp');
-    removeButton.addEventListener('click', function() {
+      });
+      var removeButton = workExpDiv.querySelector('.remove-work-exp');
+      removeButton.addEventListener('click', function () {
         workExpDiv.remove();
-    });
-    var addButton = workExpDiv.querySelector('.add-work-exp');
-    addButton.addEventListener('click', function() {
+      });
+      var addButton = workExpDiv.querySelector('.add-work-exp');
+      addButton.addEventListener('click', function () {
         addNewWorkExp();
-    });
+      });
     }
     let timeExpCount = 0;
     let nameExpCount = 0;
     let workExpCount = 0;
     function addNewWorkExp() {
-    timeExpCount++;
-    nameExpCount++;
-    workExpCount++;
-    var newDiv = document.createElement('div');
-    newDiv.classList.add('work-exp', 'work-exp-more');
-    newDiv.innerHTML = `
+      timeExpCount++;
+      nameExpCount++;
+      workExpCount++;
+      var newDiv = document.createElement('div');
+      newDiv.classList.add('work-exp', 'work-exp-more');
+      newDiv.innerHTML = `
         <div class="date__work-exp">
             <textarea rows="1" name="timeexperience${timeExpCount}" placeholder="07/2017 - Present"></textarea>
             <div class="action__add-remove">
@@ -344,18 +357,18 @@ document.addEventListener('DOMContentLoaded', function() {
             <textarea id="name-company" rows="1" name="nameexperience${nameExpCount}" placeholder="Vigga Company"></textarea>
             <textarea class="job__work-exp" rows="3" name="experience${workExpCount}" placeholder="FullStack Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10"></textarea>
         </div>`;
-    var overviewWorkExp = document.querySelector('.overview__user-cv.workexp__user-cv');
-    overviewWorkExp.appendChild(newDiv);
-    setupWorkExpEventListeners(newDiv); 
-}
+      var overviewWorkExp = document.querySelector('.overview__user-cv.workexp__user-cv');
+      overviewWorkExp.appendChild(newDiv);
+      setupWorkExpEventListeners(newDiv);
+    }
     var workExps = document.querySelectorAll('.work-exp');
-    workExps.forEach(function(workExpDiv) {
-        setupWorkExpEventListeners(workExpDiv);
+    workExps.forEach(function (workExpDiv) {
+      setupWorkExpEventListeners(workExpDiv);
     });
 
-});
-// add or remove education 
-document.addEventListener('DOMContentLoaded', function() {
+  });
+  // add or remove education 
+  document.addEventListener('DOMContentLoaded', function () {
     let timeEducationCount = 0;
     let nameEducationCount = 0;
     let educationCount = 0;
@@ -363,10 +376,10 @@ document.addEventListener('DOMContentLoaded', function() {
       timeEducationCount++;
       nameEducationCount++;
       educationCount++;
-        var educationContainer = document.querySelector('.overview__user-cv.education__user-cv');
-        var newEducationDiv = document.createElement('div');
-        newEducationDiv.classList.add('education-user');
-        newEducationDiv.innerHTML = `
+      var educationContainer = document.querySelector('.overview__user-cv.education__user-cv');
+      var newEducationDiv = document.createElement('div');
+      newEducationDiv.classList.add('education-user');
+      newEducationDiv.innerHTML = `
             <div class="date__education">
                 <textarea rows="1" name="timeeducation${timeEducationCount}" placeholder="07/2017 - Present"></textarea>
                 <div class="action__add-remove-education">
@@ -378,235 +391,235 @@ document.addEventListener('DOMContentLoaded', function() {
                 <textarea id="name-education" rows="1" name="nameeducation${nameEducationCount}" placeholder="FPT GreenWich"></textarea>
                 <textarea class="major__education" name="education${educationCount}" rows="2" placeholder="Major - Website, Mobile&#10;Level - Good"></textarea>
             </div>`;
-        educationContainer.appendChild(newEducationDiv);
-        addEducationEventListeners(newEducationDiv);
+      educationContainer.appendChild(newEducationDiv);
+      addEducationEventListeners(newEducationDiv);
     }
     function addEducationEventListeners(educationDiv) {
-        var addEducationButton = educationDiv.querySelector('.add-education');
-        addEducationButton.addEventListener('click', addEducationEntry);
-        var removeEducationButton = educationDiv.querySelector('.remove-education');
-        removeEducationButton.addEventListener('click', function() {
-            educationDiv.remove();
-        });
-        var dateEducation = educationDiv.querySelector('.date__education textarea');
-        var actionButtons = educationDiv.querySelector('.action__add-remove-education');
-        dateEducation.addEventListener('focus', function() {
-            actionButtons.style.opacity = '1';
-        });
-        dateEducation.addEventListener('focusout', function() {
-            actionButtons.style.opacity = '0';
-        });
+      var addEducationButton = educationDiv.querySelector('.add-education');
+      addEducationButton.addEventListener('click', addEducationEntry);
+      var removeEducationButton = educationDiv.querySelector('.remove-education');
+      removeEducationButton.addEventListener('click', function () {
+        educationDiv.remove();
+      });
+      var dateEducation = educationDiv.querySelector('.date__education textarea');
+      var actionButtons = educationDiv.querySelector('.action__add-remove-education');
+      dateEducation.addEventListener('focus', function () {
+        actionButtons.style.opacity = '1';
+      });
+      dateEducation.addEventListener('focusout', function () {
+        actionButtons.style.opacity = '0';
+      });
     }
     var initialEducationDiv = document.querySelector('.education-user');
     addEducationEventListeners(initialEducationDiv);
 
-});
-// textarea skill 
-document.addEventListener('DOMContentLoaded', function() {
+  });
+  // textarea skill 
+  document.addEventListener('DOMContentLoaded', function () {
     function ensureBulletPoints(textarea) {
-        let lines = textarea.value.split('\n');
-        let updatedLines = lines.map(line => {
-            if (!line.startsWith('• ') && line.trim() !== '') {
-                return '• ' + line;
-            }
-            return line;
-        });
-        textarea.value = updatedLines.join('\n');
+      let lines = textarea.value.split('\n');
+      let updatedLines = lines.map(line => {
+        if (!line.startsWith('• ') && line.trim() !== '') {
+          return '• ' + line;
+        }
+        return line;
+      });
+      textarea.value = updatedLines.join('\n');
     }
     function handleBackspace(event) {
-        if (event.key === "Backspace") {
-            let cursorPosition = event.target.selectionStart;
-            let lines = event.target.value.split('\n');
-            let currentLine = Math.max(0, event.target.value.substr(0, cursorPosition).split('\n').length - 1);
-            if (lines[currentLine].startsWith('• ') && cursorPosition >= 2 && event.target.value.substring(cursorPosition - 2, cursorPosition) === '• ') {
-                event.preventDefault();
-                event.target.value = event.target.value.substring(0, cursorPosition - 2) + event.target.value.substring(cursorPosition);
-                event.target.selectionStart = cursorPosition - 2;
-                event.target.selectionEnd = cursorPosition - 2;
-            }
+      if (event.key === "Backspace") {
+        let cursorPosition = event.target.selectionStart;
+        let lines = event.target.value.split('\n');
+        let currentLine = Math.max(0, event.target.value.substr(0, cursorPosition).split('\n').length - 1);
+        if (lines[currentLine].startsWith('• ') && cursorPosition >= 2 && event.target.value.substring(cursorPosition - 2, cursorPosition) === '• ') {
+          event.preventDefault();
+          event.target.value = event.target.value.substring(0, cursorPosition - 2) + event.target.value.substring(cursorPosition);
+          event.target.selectionStart = cursorPosition - 2;
+          event.target.selectionEnd = cursorPosition - 2;
         }
+      }
     }
     let textareas = document.querySelectorAll('.main-content, .other-content');
     textareas.forEach(textarea => {
-        textarea.addEventListener('input', function() {
-            ensureBulletPoints(this);
-        });
-        textarea.addEventListener('keydown', handleBackspace);
+      textarea.addEventListener('input', function () {
+        ensureBulletPoints(this);
+      });
+      textarea.addEventListener('keydown', handleBackspace);
     });
-});
-// action remove other skill
-var removeOtherSkill = document.querySelector('span.remove__other-skill');
-var boxOtherSkill = document.querySelector('.skill__user-cv .other-skill');
-var textareaFocus = document.querySelector('.skill__user-cv .other-skill .other-info textarea');
-removeOtherSkill.addEventListener('click',()=>{
-  boxOtherSkill.style.display = 'none'
-})
-textareaFocus.addEventListener('focus',()=>{
-  removeOtherSkill.style.opacity = '1'
-})
-textareaFocus.addEventListener('focusout',()=>{
-  removeOtherSkill.style.opacity = '0'
-})
-// change avatar user
-var showChangeAvatar = document.querySelector('.body__create-cv header .avatar__user-cv img');
-var boxChangeAvatar = document.querySelector('.change-avatar__user-cv');
-showChangeAvatar.addEventListener('mouseover',()=>{
-  boxChangeAvatar.style.display = 'flex';
-});
-boxChangeAvatar.addEventListener('mouseleave',()=>{
-  boxChangeAvatar.style.display = 'none';
-});
-var offAvatar = document.querySelector('.off-avatar');
-var icon = document.querySelector('.off-avatar i');
-var data = localStorage.getItem('offavatar');
-if (data === null) {
-  data = 'false';
-  localStorage.setItem('offavatar', data);
-}
-if (data === 'true') {
-  showChangeAvatar.style.opacity = '0';
-  icon.classList.remove('bi-eye-slash');
-  icon.classList.add('bi-eye');
-} else {
-  showChangeAvatar.style.opacity = '1';
-  icon.classList.remove('bi-eye');
-  icon.classList.add('bi-eye-slash');
-}
-offAvatar.addEventListener('click', function() {
-  if (showChangeAvatar.style.opacity === '0') {
-    showChangeAvatar.style.opacity = '1';
-    icon.classList.remove('bi-eye');
-    icon.classList.add('bi-eye-slash');
-    localStorage.setItem('offavatar', 'false');
-  } else {
+  });
+  // action remove other skill
+  var removeOtherSkill = document.querySelector('span.remove__other-skill');
+  var boxOtherSkill = document.querySelector('.skill__user-cv .other-skill');
+  var textareaFocus = document.querySelector('.skill__user-cv .other-skill .other-info textarea');
+  removeOtherSkill.addEventListener('click', () => {
+    boxOtherSkill.style.display = 'none'
+  })
+  textareaFocus.addEventListener('focus', () => {
+    removeOtherSkill.style.opacity = '1'
+  })
+  textareaFocus.addEventListener('focusout', () => {
+    removeOtherSkill.style.opacity = '0'
+  })
+  // change avatar user
+  var showChangeAvatar = document.querySelector('.body__create-cv header .avatar__user-cv img');
+  var boxChangeAvatar = document.querySelector('.change-avatar__user-cv');
+  showChangeAvatar.addEventListener('mouseover', () => {
+    boxChangeAvatar.style.display = 'flex';
+  });
+  boxChangeAvatar.addEventListener('mouseleave', () => {
+    boxChangeAvatar.style.display = 'none';
+  });
+  var offAvatar = document.querySelector('.off-avatar');
+  var icon = document.querySelector('.off-avatar i');
+  var data = localStorage.getItem('offavatar');
+  if (data === null) {
+    data = 'false';
+    localStorage.setItem('offavatar', data);
+  }
+  if (data === 'true') {
     showChangeAvatar.style.opacity = '0';
     icon.classList.remove('bi-eye-slash');
     icon.classList.add('bi-eye');
-    localStorage.setItem('offavatar', 'true');
+  } else {
+    showChangeAvatar.style.opacity = '1';
+    icon.classList.remove('bi-eye');
+    icon.classList.add('bi-eye-slash');
   }
-});
-var file = document.querySelector('#avataruser');
-    var img = document.querySelector('.img__user-cv');
-    file.addEventListener('change', () => {
-        const chooseFile = file.files[0];
-        if (chooseFile) {
-            const reader = new FileReader();
-            reader.addEventListener('load', () => {
-                img.setAttribute('src', reader.result);
-            });
-            reader.readAsDataURL(chooseFile);
-        }
-    });
-// change font
-var clickFont = document.querySelector('.font-cv');
-var showMenuFont = document.querySelector('.library-font');
-clickFont.addEventListener('click',(event)=>{
-  showMenuFont.style.display = 'flex';
-  event.stopPropagation();
-});
-showMenuFont.addEventListener('click',(event)=>{
-  event.stopPropagation();
-});
-document.addEventListener('click',()=>{
-  showMenuFont.style.display = 'none'
-});
-var arimoFont = document.querySelector('#arimo');
-var robotoFont = document.querySelector('#roboto');
-var sourcesans3Font = document.querySelector('#sourcesans3');
-var notosansFont = document.querySelector('#notosans');
-function changeFontCV(){
-  let containerCV = document.querySelector('.body__create-cv');
-  containerCV.classList.remove('arimo', 'roboto', 'sourcesans3', 'notosans');
-  if(arimoFont.checked){
-    containerCV.classList.add('arimo');
-    document.querySelector('label.arimo').style.color = '#fed200';
-    document.querySelector('label.roboto').style.color = 'white';
-    document.querySelector('label.sourcesans3').style.color = 'white';
-    document.querySelector('label.notosans').style.color = 'white';
-
-  }
-  else if(robotoFont.checked){
-    containerCV.classList.add('roboto');
-    document.querySelector('label.arimo').style.color = 'white';
-    document.querySelector('label.roboto').style.color = '#fed200';
-    document.querySelector('label.sourcesans3').style.color = 'white';
-    document.querySelector('label.notosans').style.color = 'white';
-  }
-  else if(sourcesans3Font.checked){
-    containerCV.classList.add('sourcesans3');
-    document.querySelector('label.arimo').style.color = 'white';
-    document.querySelector('label.roboto').style.color = 'white';
-    document.querySelector('label.sourcesans3').style.color = '#fed200';
-    document.querySelector('label.notosans').style.color = 'white';
-  }
-  else if(notosansFont.checked){
-    containerCV.classList.add('notosans');
-    document.querySelector('label.arimo').style.color = 'white';
-    document.querySelector('label.roboto').style.color = 'white';
-    document.querySelector('label.sourcesans3').style.color = 'white';
-    document.querySelector('label.notosans').style.color = '#fed200';
-  }
-}
-arimoFont.addEventListener('change', changeFontCV);
-robotoFont.addEventListener('change', changeFontCV);
-sourcesans3Font.addEventListener('change', changeFontCV);
-notosansFont.addEventListener('change', changeFontCV);
-
-var fontSmall = document.querySelector('#small');
-var fontMedium = document.querySelector('#medium');
-var fontBig = document.querySelector('#big');
-function changeFontSize(){
-  let containerCV = document.querySelector('.body__user-cv');
-  let childrenElements = containerCV.querySelectorAll('*');
-  let fontSize = '16px';
-  if (fontSmall.checked) {
-    fontSize = '16px';
-  } else if (fontMedium.checked) {
-    fontSize = '16.5px';
-  } else if (fontBig.checked) {
-    fontSize = '17px';
-  }
-  childrenElements.forEach(element => {
-    element.style.cssText = `font-size: ${fontSize}`;
+  offAvatar.addEventListener('click', function () {
+    if (showChangeAvatar.style.opacity === '0') {
+      showChangeAvatar.style.opacity = '1';
+      icon.classList.remove('bi-eye');
+      icon.classList.add('bi-eye-slash');
+      localStorage.setItem('offavatar', 'false');
+    } else {
+      showChangeAvatar.style.opacity = '0';
+      icon.classList.remove('bi-eye-slash');
+      icon.classList.add('bi-eye');
+      localStorage.setItem('offavatar', 'true');
+    }
   });
-}
-fontSmall.addEventListener('change', changeFontSize);
-fontMedium.addEventListener('change', changeFontSize);
-fontBig.addEventListener('change', changeFontSize);
-// change color
-var clickColor = document.querySelector('.color-cv');
-var menuColor = document.querySelector('.library-color');
-clickColor.addEventListener('click',(event)=>{
-  menuColor.style.display = 'flex'
-  event.stopPropagation();
-});
-document.addEventListener('click',(event)=>{
-  menuColor.style.display = 'none'
-});
-menuColor.addEventListener('click',(event)=>{
-  event.stopPropagation();
-});
-var optionColor = document.querySelectorAll('.option-color');
-var headerCV = document.querySelector('.body__create-cv header');
-var overviewText = document.querySelector('.body__user-cv textarea.overview-text');
-var workEXPText = document.querySelector('.body__user-cv textarea.workexp-text');
-var educationText = document.querySelector('.body__user-cv textarea.education-text');
-var skillText = document.querySelector('.body__user-cv textarea.skill-text');
-var projectText = document.querySelector('.body__user-cv textarea.project-text');
-optionColor.forEach(function(item){
-  var color = item.querySelector('input').value;
-  var chooseColor = item.querySelector('label')
-    chooseColor.addEventListener('click',()=>{
-    optionColor.forEach(otherItem => {
-      otherItem.querySelector('label').style.outline = 'unset';
+  var file = document.querySelector('#avataruser');
+  var img = document.querySelector('.img__user-cv');
+  file.addEventListener('change', () => {
+    const chooseFile = file.files[0];
+    if (chooseFile) {
+      const reader = new FileReader();
+      reader.addEventListener('load', () => {
+        img.setAttribute('src', reader.result);
+      });
+      reader.readAsDataURL(chooseFile);
+    }
+  });
+  // change font
+  var clickFont = document.querySelector('.font-cv');
+  var showMenuFont = document.querySelector('.library-font');
+  clickFont.addEventListener('click', (event) => {
+    showMenuFont.style.display = 'flex';
+    event.stopPropagation();
+  });
+  showMenuFont.addEventListener('click', (event) => {
+    event.stopPropagation();
+  });
+  document.addEventListener('click', () => {
+    showMenuFont.style.display = 'none'
+  });
+  var arimoFont = document.querySelector('#arimo');
+  var robotoFont = document.querySelector('#roboto');
+  var sourcesans3Font = document.querySelector('#sourcesans3');
+  var notosansFont = document.querySelector('#notosans');
+  function changeFontCV() {
+    let containerCV = document.querySelector('.body__create-cv');
+    containerCV.classList.remove('arimo', 'roboto', 'sourcesans3', 'notosans');
+    if (arimoFont.checked) {
+      containerCV.classList.add('arimo');
+      document.querySelector('label.arimo').style.color = '#fed200';
+      document.querySelector('label.roboto').style.color = 'white';
+      document.querySelector('label.sourcesans3').style.color = 'white';
+      document.querySelector('label.notosans').style.color = 'white';
+
+    }
+    else if (robotoFont.checked) {
+      containerCV.classList.add('roboto');
+      document.querySelector('label.arimo').style.color = 'white';
+      document.querySelector('label.roboto').style.color = '#fed200';
+      document.querySelector('label.sourcesans3').style.color = 'white';
+      document.querySelector('label.notosans').style.color = 'white';
+    }
+    else if (sourcesans3Font.checked) {
+      containerCV.classList.add('sourcesans3');
+      document.querySelector('label.arimo').style.color = 'white';
+      document.querySelector('label.roboto').style.color = 'white';
+      document.querySelector('label.sourcesans3').style.color = '#fed200';
+      document.querySelector('label.notosans').style.color = 'white';
+    }
+    else if (notosansFont.checked) {
+      containerCV.classList.add('notosans');
+      document.querySelector('label.arimo').style.color = 'white';
+      document.querySelector('label.roboto').style.color = 'white';
+      document.querySelector('label.sourcesans3').style.color = 'white';
+      document.querySelector('label.notosans').style.color = '#fed200';
+    }
+  }
+  arimoFont.addEventListener('change', changeFontCV);
+  robotoFont.addEventListener('change', changeFontCV);
+  sourcesans3Font.addEventListener('change', changeFontCV);
+  notosansFont.addEventListener('change', changeFontCV);
+
+  var fontSmall = document.querySelector('#small');
+  var fontMedium = document.querySelector('#medium');
+  var fontBig = document.querySelector('#big');
+  function changeFontSize() {
+    let containerCV = document.querySelector('.body__user-cv');
+    let childrenElements = containerCV.querySelectorAll('*');
+    let fontSize = '16px';
+    if (fontSmall.checked) {
+      fontSize = '16px';
+    } else if (fontMedium.checked) {
+      fontSize = '16.5px';
+    } else if (fontBig.checked) {
+      fontSize = '17px';
+    }
+    childrenElements.forEach(element => {
+      element.style.cssText = `font-size: ${fontSize}`;
     });
-    chooseColor.style.cssText = `outline-offset: 4px; outline: 2px solid ${color};`;
-    headerCV.style.cssText = `background-color: ${color} `;
-    overviewText.style.cssText = `color: ${color}`;
-    workEXPText.style.cssText = `color: ${color}`;
-    educationText.style.cssText = `color: ${color}`;
-    skillText.style.cssText = `color: ${color}`;
-    projectText.style.cssText = `color: ${color}`;
+  }
+  fontSmall.addEventListener('change', changeFontSize);
+  fontMedium.addEventListener('change', changeFontSize);
+  fontBig.addEventListener('change', changeFontSize);
+  // change color
+  var clickColor = document.querySelector('.color-cv');
+  var menuColor = document.querySelector('.library-color');
+  clickColor.addEventListener('click', (event) => {
+    menuColor.style.display = 'flex'
+    event.stopPropagation();
+  });
+  document.addEventListener('click', (event) => {
+    menuColor.style.display = 'none'
+  });
+  menuColor.addEventListener('click', (event) => {
+    event.stopPropagation();
+  });
+  var optionColor = document.querySelectorAll('.option-color');
+  var headerCV = document.querySelector('.body__create-cv header');
+  var overviewText = document.querySelector('.body__user-cv textarea.overview-text');
+  var workEXPText = document.querySelector('.body__user-cv textarea.workexp-text');
+  var educationText = document.querySelector('.body__user-cv textarea.education-text');
+  var skillText = document.querySelector('.body__user-cv textarea.skill-text');
+  var projectText = document.querySelector('.body__user-cv textarea.project-text');
+  optionColor.forEach(function (item) {
+    var color = item.querySelector('input').value;
+    var chooseColor = item.querySelector('label')
+    chooseColor.addEventListener('click', () => {
+      optionColor.forEach(otherItem => {
+        otherItem.querySelector('label').style.outline = 'unset';
+      });
+      chooseColor.style.cssText = `outline-offset: 4px; outline: 2px solid ${color};`;
+      headerCV.style.cssText = `background-color: ${color} `;
+      overviewText.style.cssText = `color: ${color}`;
+      workEXPText.style.cssText = `color: ${color}`;
+      educationText.style.cssText = `color: ${color}`;
+      skillText.style.cssText = `color: ${color}`;
+      projectText.style.cssText = `color: ${color}`;
+    })
   })
-})
 </script>

@@ -5,7 +5,6 @@ const CompanyModel = require("../models/Company");
 const upload = multer({ dest: "uploads/" });
 const bcrypt = require("bcrypt");
 const fs = require("fs");
-const CompanyModel = require("../models/Company");
 
 class ProfileController {
   async profile(req, res, next) {

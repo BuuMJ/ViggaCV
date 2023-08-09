@@ -1,20 +1,23 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const favouriteSchema = new Schema({
+const favouriteSchema = new Schema(
+  {
     userid: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        required: true,
-      },
-    jobid: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Job",
-        required: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
-},{
+    jobid: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Job",
+      required: true,
+    },
+    professional: String,
+  },
+  {
     timestamps: true,
-}
-)
-const FavouriteModel = mongoose.model("favourite", favouriteSchema)
+  }
+);
+const FavouriteModel = mongoose.model("favourite", favouriteSchema);
 module.exports = FavouriteModel;
