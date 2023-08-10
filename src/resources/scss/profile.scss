@@ -186,7 +186,7 @@ button.btn-setting {
 .camera-edit{
     position: absolute;
     font-size: 30px;
-    right: 41%;
+    right: 44.5%;
     top: 2.5%;
     color: black;
     padding: 0 8px;
@@ -710,7 +710,7 @@ li.content-listjob .cv-applied{
     color: $secondarycolor;
     border-radius: 5px;
     text-decoration: none;
-    width: 120px;
+    width: 160px;
     height: 30px;
     margin-top: 6px;
     margin-left: 24px;
@@ -804,7 +804,8 @@ li.content-listjob:hover i.bi-three-dots-vertical{
     color: black;
 }
 .secondary-listjob{
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
     padding-left: 24px;
 }
 span.timejobs,
@@ -812,8 +813,8 @@ span.locationjobs{
     color: #b1b1b1;
     font-size: 12px;
     font-weight: 400;
-    width: 50%;
     padding: unset;
+    margin-right: 8px;
 }
 ul.listpagejob,
 ul.listpageleadership {
@@ -837,7 +838,7 @@ ul.listpageleadership {
     font-weight: 600;
     border-radius: 5px;
     text-align: center;
-    margin: 0 8px;
+    margin: 4px 8px;
     cursor: pointer;
     box-sizing: unset;
     list-style-type: none;
@@ -1230,4 +1231,203 @@ ul.listpageleadership {
 .container__cancel-payment .main__cancel-payment .body__cancel-payment .action__cancel-payment a:hover{
     background-color: #bc2627;
     color: white;
+}
+@media screen and (max-width: 1440px) {
+    .camera-edit{
+        right: 40.5%;
+        top: 2%;
+    }
+    .camera-user-edit{
+        right: 41.5%;
+    }
+}
+@media screen and (max-width: 1024px) {
+    button.btn-setting{
+        width: 16%;
+    }
+    .content-profile, 
+    .company-profile{
+        width: 80%;
+    }
+    .header-profile{
+        min-height: 1000px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .header-profile{
+        min-height: 65vh;
+    }
+    button.btn-setting {
+        width: 22%;
+    }
+    .content-profile, 
+    .company-profile{
+        width: 90%;
+    }
+    .btn-save{
+        width: 20%;
+    }
+    .camera-edit{
+        right: 38.5%;
+    }
+    .camera-user-edit{
+        top: 4%;
+        right: 38%;
+    }
+    li.content-listjob .remove-blocked{
+        padding: unset;
+        left: -8%;
+    }
+}
+@media screen and (max-width: 600px) {
+    button.btn-setting {
+        width: 28%;
+    }
+    .btn-save {
+        width: 26%;
+    }
+    .company-profile{
+        transform: translateY(-2%);
+    }
+    .camera-edit{
+        right: 34.5%;
+    }
+    .camera-user-edit{
+        right: 35%;
+    }
+    .listjobs-action button, 
+    .listleadership-action button {
+        width: 26%;
+    }
+}
+@media screen and (max-width: 415px) {
+    .header-main-text{
+        width: unset;
+    }
+    .header-profile-secondary{
+        font-size: 24px;
+    }
+    .header-profile-primary{
+        font-size: 30px;
+    }
+    button.btn-setting {
+        width: 40%;
+    }
+    .profile-img .user-avatar {
+        width: 160px;
+        height: 160px;
+    }
+    .content-profile{
+        transform: translateY(-4%);
+    }
+    .company-profile{
+        transform: translateY(-1%);
+    }
+    label.changebackground-profile {
+        font-size: 18px;
+    }
+    .content-profile-header span {
+        font-size: 26px;
+    }
+    .content-profile-main span{
+        font-size: 20px;
+    }
+    .profile-user, 
+    .about-user{
+        width: 85%;
+    }
+    .contact-user,
+    .contact-user-address{
+        width: 85%;
+    }
+    .contact-user input{
+        width: 100%;
+    }
+    .btn-save {
+        width: 38%;
+    }
+    .camera-edit {
+        right: 30%;
+        top: 1.5%;
+    }
+    .camera-user-edit {
+        top: 2.3%;
+        right: 30%;
+    }
+    .listjobs-action button, 
+    .listleadership-action button{
+        width: 40%;
+    }
+    span.timejobs, span.locationjobs{
+        font-size: 12px;
+    }
+    .namejobs{
+        font-size: 14px !important;
+    }
+    .secondary-listjob{
+        padding-left: 18px;
+    }
+    li.content-listjob .cv-applied{
+        margin-left: 19px;
+    }
+    .leadership-action-view{
+        width: 90%;
+    }
+}
+@media screen and (max-width: 376px) {
+    button.btn-setting {
+        width: 44%;
+    }
+    .content-profile, 
+    .company-profile {
+        transform: translateY(-2%);
+    }
+    label.changebackground-profile{
+        font-size: 14px;
+        border-radius: 6px;
+    }
+    li.content-listjob{
+        height: 90px;
+    }
+}
+@media screen and (max-width: 321px) {
+    button.btn-setting {
+        width: 52%;
+    }
+    .content-profile-main span {
+        font-size: 18px;
+    }
+    .btn-save {
+        width: 50%;
+    }
+    .camera-user-edit{
+        top: 3.3%;
+        right: 39%;
+    }
+    span.timejobs, span.locationjobs{
+        font-size: 12px;
+    }
+    li.content-listjob{
+        height: 100px;
+    }
+    .namejobs{
+        font-size: 12px !important;
+    }
+    .secondary-listjob {
+        flex-direction: column;
+    }
+    li.content-listjob .cv-applied {
+        font-size: 12px;
+        width: 140px;
+    }
+    .listjobs-action button, 
+    .listleadership-action button{
+        width: 50%;
+    }
+    .company-profile {
+        transform: translateY(-1%);
+    }
+    label.changebackground-profile {
+        font-size: 10px;
+    }
 }

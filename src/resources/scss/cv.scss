@@ -851,8 +851,8 @@
   border: 1px solid $secondarycolor;
   box-shadow: 0 2px 4px $secondarycolor;
 }
-.main__manager-cv section .box__passed-cv .card__passed-cv:hover .name-file b,
-.main__manager-cv section .box__failed-cv .card__failed-cv:hover .name-file b{
+.main__manager-cv section .box__passed-cv .card__passed-cv:hover .name-file span,
+.main__manager-cv section .box__failed-cv .card__failed-cv:hover .name-file span{
   color: #0072bc;
   text-decoration: underline;
 }
