@@ -172,6 +172,7 @@ class CompanyController {
     for (let i = 1; i <= total; i++) {
       pages.push(i);
     }
+    const avatarCompany = await CompanyModel.findOne({ iduser: user_id });
 
     const randomIndex = Math.floor(Math.random() * Listcompany.length);
     const randomCompany = Listcompany[randomIndex];
@@ -192,7 +193,7 @@ class CompanyController {
               user: req.user,
               pages: pages,
               jobcount: listcompany,
-              company: company, //cần sửa company để thấy được avatar
+              company: avatarCompany,
               listcompany: mutipleMongooseToObject(data),
               listjob,
               randomCompany: randomCompany,
@@ -213,7 +214,7 @@ class CompanyController {
               user: req.user,
               pages: pages,
               jobcount: listcompany,
-              company: company, //cần sửa company để thấy được avatar
+              company: avatarCompany,
               listcompany: mutipleMongooseToObject(data),
               listjob,
               randomCompany: randomCompany,
@@ -227,6 +228,7 @@ class CompanyController {
   //[GET] company detail
   async detail(req, res, next) {
     const idcompany = req.params.id;
+    const avatarCompany = await CompanyModel.findOne({ iduser: user_id });
     const company = await CompanyModel.findOne({ _id: idcompany });
     const leadership = company.leadership;
     var checkfl;
@@ -251,9 +253,10 @@ class CompanyController {
         title: "Company Detail",
         user: req.user,
         checkfl: checkfl,
-        company: staffMongoseToObject(company), //cần sửa company để thấy được avatar
+        companydetail: staffMongoseToObject(company),
         leadership: staffMongoseToObject(company.leadership),
         listjob: listjob,
+        company: avatarCompany,
       });
     });
   }
@@ -293,26 +296,47 @@ class CompanyController {
 
   async information(req, res, next) {
     const idcompany = req.params.id;
-    // console.log("day la gia tri của: " + idcompany.id)
+    var page = req.query.page;
+    var PAGE_SIZE = 10;
+    var total = Math.ceil(count / PAGE_SIZE);
+    const pages = [];
+    for (let i = 1; i <= total; i++) {
+      pages.push(i);
+    }
     const company = await CompanyModel.findOne({ _id: idcompany });
-    // const iduser = company.user;
-    // const list = await JobModel.find({iduser: iduser})
-    // const listjob = list.map((list) => list.toObject());
-    // res.render("companyinformation", {
-    //   title: "Company Information",
-    //   user: req.user,
-    //   company,
-    //   listjob: listjob,
-    // });
-    JobModel.find({ iduser: company.iduser, active: true }).then((listjob) => {
-      listjob = listjob.map((listjob) => listjob.toObject());
-      res.render("companyinformation", {
-        title: "Company Information",
-        user: req.user,
-        company: staffMongoseToObject(company), //cần sửa company để thấy được avatar
-        listjob: listjob,
-      });
-    });
+    if (page) {
+      page = parseInt(page);
+      var skip = (page - 1) * PAGE_SIZE;
+      JobModel.find({ iduser: company.iduser, active: true })
+        .skip(skip)
+        .limit(PAGE_SIZE)
+        .then((listjob) => {
+          listjob = listjob.map((listjob) => listjob.toObject());
+          res.render("companyinformation", {
+            title: "Company Information",
+            user: req.user,
+            company: staffMongoseToObject(company), //cần sửa company để thấy được avatar
+            listjob: listjob,
+            pages: pages,
+          });
+        });
+    } else {
+      page = 1;
+      var skip = (page - 1) * PAGE_SIZE;
+      JobModel.find({ iduser: company.iduser, active: true })
+        .skip(skip)
+        .limit(PAGE_SIZE)
+        .then((listjob) => {
+          listjob = listjob.map((listjob) => listjob.toObject());
+          res.render("companyinformation", {
+            title: "Company Information",
+            user: req.user,
+            company: staffMongoseToObject(company), //cần sửa company để thấy được avatar
+            listjob: listjob,
+            pages: pages,
+          });
+        });
+    }
   }
 }
 

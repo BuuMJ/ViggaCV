@@ -104,6 +104,7 @@ class PaymentController {
             job.prioritize = true;
             job.prioritizeUpdatedAt = moment().add(days, "days").toDate();
             await job.save();
+            const saleId = payment.transactions[0].related_resources[0].sale.id;
             if (!req.session.revenueCreated) {
               var revenue = new RevenueModel({
                 iduser: req.user._id,
@@ -111,8 +112,9 @@ class PaymentController {
                 idjob: jobID,
                 money: total,
                 type: "prioritize",
+                paymentId: saleId,
               });
-              await revenue.save(); // Đảm bảo rằng bạn lưu bản ghi revenue này
+              await revenue.save();
               req.session.revenueCreated = true;
             }
           } catch (err) {
@@ -270,6 +272,8 @@ class PaymentController {
                 idcompany: companyname._id,
               });
               await job.save();
+              const saleId =
+                payment.transactions[0].related_resources[0].sale.id;
               req.session.success = true;
               var revenue = new RevenueModel({
                 iduser: iduser,
@@ -277,6 +281,7 @@ class PaymentController {
                 idjob: job._id,
                 money: 30,
                 type: "post job",
+                paymentId: saleId,
               });
               await revenue.save();
               if (job) {
@@ -293,45 +298,45 @@ class PaymentController {
                     to: combinedEmails, // list of receivers
                     subject: "ViggaCareers ", // Subject line<a href="${linkJob}">here</a>
                     html: `
-    <html>
-      <head>
-        <style>
-          body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-          }
-          h1 {
-            color: #0066cc;
-          }
-          .message {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
-          }
-          .cta-button {
-            display: inline-block;
-            background-color: #0066cc;
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 3px;
-          }
-          .cta-button:hover {
-            background-color: #004c99;
-          }
-        </style>
-      </head>
-      <body>
-        <h1>ViggaCareers</h1>
-        <div class="message">
-          <p>Có một việc làm mới đã được đăng bởi công ty ${job.companyname}.</p>
-          <p>Vui lòng nhấp vào nút bên dưới để xem công việc mới.</p>
-          <p><a href="${linkJob}" class="cta-button">Xem công việc mới</a></p>
-        </div>
-      </body>
-    </html>
-  `,
+                            <html>
+                              <head>
+                                <style>
+                                  body {
+                                    font-family: Arial, sans-serif;
+                                    line-height: 1.6;
+                                    color: #333;
+                                  }
+                                  h1 {
+                                    color: #0066cc;
+                                  }
+                                  .message {
+                                    background-color: #f9f9f9;
+                                    padding: 15px;
+                                    border-radius: 5px;
+                                  }
+                                  .cta-button {
+                                    display: inline-block;
+                                    background-color: #0066cc;
+                                    color: #fff;
+                                    text-decoration: none;
+                                    padding: 10px 15px;
+                                    border-radius: 3px;
+                                  }
+                                  .cta-button:hover {
+                                    background-color: #004c99;
+                                  }
+                                </style>
+                              </head>
+                              <body>
+                                <h1>ViggaCareers</h1>
+                                <div class="message">
+                                  <p>Có một việc làm mới đã được đăng bởi công ty ${job.companyname}.</p>
+                                  <p>Vui lòng nhấp vào nút bên dưới để xem công việc mới.</p>
+                                  <p><a href="${linkJob}" class="cta-button">Xem công việc mới</a></p>
+                                </div>
+                              </body>
+                            </html>
+                          `,
                   };
                   transporter.sendMail(mailOptions, function (err, info) {
                     if (err) {
@@ -344,7 +349,6 @@ class PaymentController {
               }
 
               const jobJSON = job.toJSON();
-              console.log("Đây là ngày giờ sau khi định dạng: " + jobJSON);
               await job.save();
             } else {
               var job = oldjob;
@@ -360,6 +364,78 @@ class PaymentController {
             user: req.user,
             company,
           });
+        }
+      }
+    );
+  }
+
+  async refund(req, res, next) {
+    const idjob = req.params.id;
+    const type = req.body.type;
+    const email = req.user.email;
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "duoc6694@gmail.com",
+        pass: "wdymtvgbhblstfbj",
+      },
+    });
+    const revenue = await RevenueModel.findOne({
+      idjob: idjob,
+      type: type,
+    })
+      .sort({ createdAt: -1 })
+      .limit(1);
+    console.log(idjob);
+    console.log(revenue);
+    const amount = { total: revenue.money.toString(), currency: "USD" };
+    paypal.sale.refund(
+      revenue.paymentId,
+      { amount: amount },
+      async function (error, refund) {
+        if (error) {
+          console.log(error.response);
+          throw error;
+        } else {
+          if (type === "post job") {
+            await JobModel.findByIdAndDelete(idjob);
+            await RevenueModel.findByIdAndDelete(revenue._id);
+            console.log("Đã xoá job sau khi hoàn tiền");
+          } else {
+            await JobModel.findByIdAndUpdate(idjob, { prioritize: false });
+            await RevenueModel.findByIdAndDelete(revenue._id);
+            console.log(
+              "Đã xoá job khỏi danh sách job được ưu tiên sau khi hoàn tiền"
+            );
+          }
+          console.log("Refund Response");
+          // console.log(JSON.stringify(refund));
+          const transactionId = revenue.paymentId;
+          const refundAmount = revenue.money;
+          const currency = "USD";
+          const mailOptions = {
+            to: email, // list of receivers
+            subject: "Refund Notification", // Subject line
+            html: `<p style="font-family: Arial; color: #333;">Dear Customer,</p>
+         <p style="font-family: Arial; color: #333;">We are writing to inform you that a refund has been processed for your recent job posting. The refund details are as follows:</p>
+         <ul style="font-family: Arial; color: #333;">
+           <li>Transaction ID: ${transactionId}</li>
+           <li>Amount: ${refundAmount} ${currency}</li>
+         </ul>
+         <p style="font-family: Arial; color: #333;">Thank you for choosing our service!</p>
+         <p style="font-family: Arial; color: #333;">Best regards,</p>
+         <p style="font-family: Arial; color: #333;">ViggaCareers</p>`,
+          };
+          transporter.sendMail(mailOptions, function (err, info) {
+            if (err) {
+              console.log(err);
+            } else {
+              console.log("Đã gửi mail sau khi refund thành công");
+              res.redirect("back");
+            }
+          });
+
+          // Tiếp tục xử lý ở đây
         }
       }
     );

@@ -20,6 +20,7 @@ const revenueSchema = new Schema(
       enum: ["post job", "prioritize"],
       required: true,
     },
+    paymentId: String,
   },
   {
     timestamps: true,
