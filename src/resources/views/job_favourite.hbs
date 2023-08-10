@@ -22,6 +22,7 @@
                         </div>
                         <p class="job-saved__salary"><i class="bi bi-currency-dollar"></i> {{this.salary}}</p>
                         <p class="job-saved__location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</p>
+                        {{!-- <p>{{this.createdAt}}</p> --}}
                         <div class="action__job-saved">
                             <a href="/job/{{this._id}}">Apply Now</a>
                             <form class="function__check-save" action="/job/favourite?id={{this._id}}" method="POST">

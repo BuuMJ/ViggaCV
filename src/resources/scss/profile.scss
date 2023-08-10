@@ -186,7 +186,7 @@ button.btn-setting {
 .camera-edit{
     position: absolute;
     font-size: 30px;
-    right: 44.5%;
+    right: 43%;
     top: 2.5%;
     color: black;
     padding: 0 8px;
@@ -198,6 +198,9 @@ button.btn-setting {
 }
 .camera-user-edit{
     top: 4.5%;
+}
+.camera-user-company{
+    top: 8.5%;
 }
 .camera-edit:hover{
     background-color:#8f8d8d;
@@ -728,6 +731,20 @@ li.content-listjob .remove-blocked span{
 li.content-listjob a.payment:hover{
     color: $primarycolor;
 }
+.active__blocked-item{
+    opacity: 0.5;
+    position: relative;
+    cursor: not-allowed;
+    border: 2px solid #a0a0a0 !important;
+}
+.active__blocked-item:before {
+    content: "\1F512";
+    position: absolute;
+    font-size: 24px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 li.content-listleadership{
     flex-direction: row;
     height: 80px;
@@ -1240,6 +1257,9 @@ ul.listpageleadership {
     .camera-user-edit{
         right: 41.5%;
     }
+    .camera-user-company{
+        top: 8.5%;
+    }
 }
 @media screen and (max-width: 1024px) {
     button.btn-setting{
@@ -1251,6 +1271,17 @@ ul.listpageleadership {
     }
     .header-profile{
         min-height: 1000px;
+    }
+    .camera-edit {
+        right: 39%;
+        top: 2.5%;
+    }
+    .camera-user-edit{
+        right: 39%;
+        top: 3.5%;
+    }
+    .camera-user-company{
+        top: 8.5%;
     }
 }
 @media screen and (max-width: 768px) {
@@ -1274,6 +1305,9 @@ ul.listpageleadership {
         top: 4%;
         right: 38%;
     }
+    .camera-user-company{
+        top: 9.5%;
+    }
     li.content-listjob .remove-blocked{
         padding: unset;
         left: -8%;
@@ -1294,6 +1328,9 @@ ul.listpageleadership {
     }
     .camera-user-edit{
         right: 35%;
+    }
+    .camera-user-company{
+        top: 9.5%;
     }
     .listjobs-action button, 
     .listleadership-action button {
@@ -1348,11 +1385,19 @@ ul.listpageleadership {
     }
     .camera-edit {
         right: 30%;
-        top: 1.5%;
+        top: 2%;
     }
     .camera-user-edit {
         top: 2.3%;
         right: 30%;
+    }
+    .camera-user-company{
+        top: 6.5%;
+    }
+    .edit-img {
+        width: 152px;
+        height: 152px;
+        top: -60px;
     }
     .listjobs-action button, 
     .listleadership-action button{
@@ -1400,9 +1445,16 @@ ul.listpageleadership {
     .btn-save {
         width: 50%;
     }
+    .camera-edit {
+        right: 40.5%;
+        top: 2.7%;
+    }
     .camera-user-edit{
         top: 3.3%;
         right: 39%;
+    }
+    .camera-user-company{
+        top: 9%;
     }
     span.timejobs, span.locationjobs{
         font-size: 12px;

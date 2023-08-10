@@ -160,7 +160,7 @@
                     </div>
                     <ul>
                         {{#each listjob}}
-                        <li class="content-listjob">
+                        <li class="content-listjob" data-blocked={{this.active}}>
                             <span class="namejobs"><i class="bi bi-three-dots-vertical"></i> {{this.jobname}}</span>
                             <div class="secondary-listjob">
                                 <span class="locationjobs"><i class="bi bi-geo"></i> Location:
@@ -456,6 +456,9 @@ Andrew leads the strategic direction of the business with a dedicated and divers
     hover.addEventListener('mouseover', () => {
         edit.style.cssText = "display: flex;"
     })
+     edit.addEventListener('mouseover', () => {
+        edit.style.cssText = "display: flex;"
+    })
     edit.addEventListener('mouseout', () => {
         edit.style.cssText = "display: none;"
     })
@@ -557,9 +560,15 @@ Andrew leads the strategic direction of the business with a dedicated and divers
     listJobPayment.forEach(function (job) {
         var checkButtonPayment = job.querySelector('.payment');
         var valuePayment = checkButtonPayment.getAttribute('data-payment');
+        var checkBlocked = job.getAttribute('data-blocked');
+        console.log(checkBlocked)
         if (valuePayment === 'true') {
             checkButtonPayment.innerHTML = '<i class="bi bi-star-fill"></i>'
             checkButtonPayment.style.cssText = 'color: #fed200;'
+        }
+        if(checkBlocked == 'false'){
+            job.classList.add('active__blocked-item')
+            job.querySelector('.blocked').innerHTML = '<i class="bi bi-lock-fill"></i>';
         }
     })
     var jobList = document.querySelectorAll('.content-listjob');
