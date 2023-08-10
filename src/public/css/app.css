@@ -6263,6 +6263,40 @@ header.company-detail .background-company-detail {
   .header-cv .intro-text {
     padding: 0 10%; } }
 
+.container-salary {
+  background-color: #f5f5f5;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; }
+
+.salary-calculator {
+  width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #0072bc;
+  background-color: #ffffff; }
+
+.salary-calculator label,
+.salary-calculator input,
+.salary-calculator button {
+  display: block;
+  margin-bottom: 10px; }
+
+.salary-calculator button {
+  background-color: #0072bc;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer; }
+
+.text-primary {
+  color: #0072bc; }
+
+.text-secondary {
+  color: #fed200; }
+
 .main-login {
   display: flex;
   justify-content: center;

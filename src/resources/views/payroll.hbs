@@ -1,0 +1,38 @@
+<div class="container-salary">
+    <div class="salary-calculator">
+            <label for="grossSalary">Gross Salary:</label>
+            <input type="number" id="grossSalary" placeholder="Enter gross salary">
+            <button onclick="calculateSalary()">Calculate Salary</button>
+            <div class="result">
+                <p class="text-primary">Net Salary: <span id="netSalary"></span></p>
+                <p class="text-secondary">Total Tax: <span id="totalTax"></span></p>
+                <p class="text-secondary">National Insurance: <span id="insurance"></span></p>
+                <p class="text-primary">Total Take Home Pay: <span id="totalTakeHome"></span></p>
+            </div>
+    </div>
+</div>
+<script>
+function calculateSalary() {
+    var grossSalary = document.getElementById("grossSalary").value;
+    var totalTax = calculateTax(grossSalary);
+    var insurance = calculateNationalInsurance(grossSalary);
+    var netSalary = grossSalary - totalTax - insurance;
+    var totalTakeHome = netSalary;
+    document.getElementById("netSalary").textContent = "£" + netSalary.toFixed(2);
+    document.getElementById("totalTax").textContent = "£" + totalTax.toFixed(2);
+    document.getElementById("insurance").textContent = "£" + insurance.toFixed(2);
+    document.getElementById("totalTakeHome").textContent = "£" + totalTakeHome.toFixed(2);
+}
+function calculateTax(salary) {
+    if (salary <= 12500) return 0;
+    if (salary <= 50000) return (salary - 12500) * 0.2;
+    if (salary <= 150000) return (salary - 50000) * 0.4 + 7500;
+    return (salary - 150000) * 0.45 + 47500;
+}
+function calculateNationalInsurance(salary) {
+    if (salary <= 9500) return 0;
+    if (salary <= 50000) return (salary - 9500) * 0.12;
+    return (salary - 50000) * 0.02 + 4860;
+}
+
+</script>
