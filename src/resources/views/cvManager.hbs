@@ -16,10 +16,14 @@
                     <h2>In total, this job has {{countPassed}} CVs that have passed your company's requirements</h2>
                 {{#each cvPassed}}
                     <a href="/applyCV/{{job.companyname}}/{{job.jobname}}/qualified/{{this.nameCV}}" class="card__passed-cv" download>
-                        <span class="name-file">Name CV: <b>{{this.nameCV}}</b></span>
-                        <span class="person-applied">Applicant's Name: {{this.name}}</span>
-                        <span class="email-applied">Applicant's Email: {{this.email}}</span>
-                        <span class="phone-applied">Applicant's Phone: {{this.phone}}</span>
+                        <span class="name-file"><b>Name CV:</b> <span>{{this.nameCV}}</span></span>
+                        <span class="person-applied"><b>Applicant's Name:</b> {{this.name}}</span>
+                        {{#if this.professional}}
+                        <span class="headline"><b>Applicant's Professional Headline:</b> {{this.professional}}</span>
+                        {{else}}
+                        {{/if}}
+                        <span class="email-applied"><b>Applicant's Email:</b> {{this.email}}</span>
+                        <span class="phone-applied"><b>Applicant's Phone:</b> {{this.phone}}</span>
                     </a>
                 {{/each}}
                 </div>
@@ -27,10 +31,14 @@
                     <h2>In total, this job has {{countFailed}} CVs that have failed your company's requirements</h2>
                 {{#each cvFailed}}
                     <a href="/applyCV/{{job.companyname}}/{{job.jobname}}/unsatisfactory/{{this.nameCV}}" class="card__failed-cv" download>
-                        <span class="name-file">Name CV: <b>{{this.nameCV}}</b></span>
-                        <span class="person-applied">Applicant's Name: {{this.name}}</span>
-                        <span class="email-applied">Applicant's Email: {{this.email}}</span>
-                        <span class="phone-applied">Applicant's Phone: {{this.phone}}</span>
+                       <span class="name-file"><b>Name CV:</b> <span>{{this.nameCV}}</span></span>
+                        <span class="person-applied"><b>Applicant's Name:</b> {{this.name}}</span>
+                        {{#if this.professional}}
+                        <span class="headline"><b>Applicant's Professional Headline:</b> {{this.professional}}</span>
+                        {{else}}
+                        {{/if}}
+                        <span class="email-applied"><b>Applicant's Email:</b> {{this.email}}</span>
+                        <span class="phone-applied"><b>Applicant's Phone:</b> {{this.phone}}</span>
                     </a>
                 {{/each}}
                 </div>

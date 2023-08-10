@@ -42,7 +42,7 @@ class CompanyProfileController {
     JobModel.find({ iduser: req.user._id }).then(async (listjob) => {
       listjob = await Promise.all(
         listjob.map(async (job) => {
-          const jobObject = job.toObject();
+          const jobObject = job.toJSON();
           const qualifiedCount = await QualifiedModel.countDocuments({
             jobid: job._id.toString(),
           });
