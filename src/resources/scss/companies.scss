@@ -689,6 +689,18 @@ header.company-detail .background-company-detail{
   .header__primary-company-detail .logo-company-detail span{
     font-size: 26px;
   }
+  .show__main-info-leadership .introduce-leadership{
+    width: 50%;
+    padding: 40px 10px 40px 40px;
+  }
+  .show__main-info-leadership img{
+    width: 50%;
+  }
+  .show__main-info-leadership .introduce-leadership p{
+    font-size: 14px;
+    padding-right: 0px;
+    text-align: justify;
+  }
 }
 @media screen and (max-width: 768px) {
   .main-companies {
@@ -719,6 +731,23 @@ header.company-detail .background-company-detail{
   }
   .header__primary-company-detail .logo-company-detail span {
     margin-left: unset;
+  }
+  .show__main-info-leadership {
+    flex-direction: column;
+    height: 900px;
+  }
+  .show__main-info-leadership img{
+    height: 60%;
+    width: 100%;
+  }
+  .show__main-info-leadership .introduce-leadership{
+    height: 40%;
+    width: 100%;
+  }
+  .show__main-info-leadership i{
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }
 @media screen and (max-width: 600px) {
@@ -764,6 +793,30 @@ header.company-detail .background-company-detail{
   .total-leadership{
     width: 504px;
   }
+  .show__main-info-leadership {
+    height: 750px;
+    top: 4%;
+  }
+  .show__main-info-leadership img{
+    height: 55%;
+    width: 100%;
+  }
+  .show__main-info-leadership .introduce-leadership{
+    height: 45%;
+    width: 100%;
+    padding: 10px;
+  }
+  .show__main-info-leadership .introduce-leadership span.first{
+    font-size: 20px;
+  }
+  .show__main-info-leadership .introduce-leadership span.second{
+    font-size: 12px;
+  }
+  .show__main-info-leadership .introduce-leadership p {
+    font-size: 12px;
+    padding: 10px 0 0 0;
+    margin-bottom: unset;
+  }
 }
 @media screen and (max-width: 415px) {
   h2.main-text {
@@ -802,6 +855,35 @@ header.company-detail .background-company-detail{
   .card-companies {
     width: 100%;
   }
+  .show__main-info-leadership {
+    top: 2%;
+  }
+  .show__main-info-leadership img{
+    height: 50%;
+  }
+  .show__main-info-leadership .introduce-leadership{
+    height: 50%;
+    justify-content: start;
+  }
+  .show__main-info-leadership .introduce-leadership span.first {
+    height: 20px;
+    font-size: 18px;
+  }
+  .show__main-info-leadership .introduce-leadership span.second {
+    font-size: 10px;
+  }
+  .show__main-info-leadership .introduce-leadership p {
+    font-size: 10px;
+    padding-top: 6px;
+  }
+}
+@media screen and (max-width: 376px) {
+  .show__main-info-leadership img{
+    height: 40%;
+  }
+  .show__main-info-leadership .introduce-leadership{
+    height: 60%;
+  }
 }
 @media screen and (max-width: 321px) {
   h2.main-text {
@@ -829,5 +911,9 @@ header.company-detail .background-company-detail{
   .input:focus,
   .input:not(:placeholder-shown) {
     padding: 18px 4px 18px 30px;
+  }
+  .show__main-info-leadership .introduce-leadership p {
+    font-size: 7.5px;
+    padding-top: 2px;
   }
 }
