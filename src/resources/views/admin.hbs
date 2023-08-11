@@ -1,0 +1,335 @@
+<div class="container-admin">
+    <header>
+        <div class="box-total">
+            <p class="title">total revenue</p>
+            <p class="total-content">$ {{annualRevenue.0.totalRevenue}}</p>
+            <a class="view-detail__total" href="#revenue">View Detail <i class="bi bi-chevron-double-down"></i></a>
+        </div>
+        <div class="box-total box__total-user">
+            <p class="title">total user</p>
+            <p class="total-content" data-user="{{countUser}}" data-company="{{countCompany}}"></p>
+            <a class="view-detail__total" href="#myChart">View Detail <i class="bi bi-chevron-double-down"></i></a>
+        </div>
+        <div class="box-total box__total-thismonth">
+            <p class="title">total revenue this month</p>
+            <p class="total-content">$ {{totalRevenueCurrentMonth}}</p>
+            <a class="view-detail__total" href="#myChart">View Detail <i class="bi bi-chevron-double-down"></i></a>
+        </div>
+        <div class="box-total box__total-job">
+<p class="title">total revenue this month</p>
+            <p class="total-content">$ {{totalRevenueCurrentMonth}}</p>
+            <a class="view-detail__total" href="#myChart">View Detail <i class="bi bi-chevron-double-down"></i></a>
+        </div>
+    </header>
+    <div id="revenue" class="revenue-chart" 
+    {{!-- monthly --}}
+    data-monthly0="{{monthlyRevenue.0.totalRevenue}}" 
+    data-monthly1="{{monthlyRevenue.1.totalRevenue}}"
+    data-monthly2="{{monthlyRevenue.2.totalRevenue}}"
+    data-monthly3="{{monthlyRevenue.3.totalRevenue}}"
+    data-monthly4="{{monthlyRevenue.4.totalRevenue}}"
+    data-monthly5="{{monthlyRevenue.5.totalRevenue}}"
+    data-monthly6="{{monthlyRevenue.6.totalRevenue}}"
+    data-monthly7="{{monthlyRevenue.7.totalRevenue}}"
+    data-monthly8="{{monthlyRevenue.8.totalRevenue}}"
+    data-monthly9="{{monthlyRevenue.9.totalRevenue}}"
+    data-monthly10="{{monthlyRevenue.10.totalRevenue}}"
+    data-monthly11="{{monthlyRevenue.11.totalRevenue}}"
+    {{!-- quaterly --}}
+    data-quaterly0="{{quarterlyRevenue.0.totalRevenue}}"
+    data-quaterly1="{{quarterlyRevenue.1.totalRevenue}}"
+    data-quaterly2="{{quarterlyRevenue.2.totalRevenue}}"
+    data-quaterly3="{{quarterlyRevenue.3.totalRevenue}}"
+    {{!-- total --}}
+    data-total="{{annualRevenue.0.totalRevenue}}">
+        <canvas id="myChart"></canvas>
+    </div>
+    <div class="revenue-details">
+        <h1 class="title">revenue details</h1>
+        <p class="detail-total">$ {{annualRevenue.0.totalRevenue}}</p>
+        <p class="available">total available revenue</p>
+        <p class="total-ads">Total job ads revenue: <b>$ {{revenueSummary.0.prioritizeRevenue}}</b></p>
+        <p class="total-postjob">Total revenue job high salary : <b>$ {{revenueSummary.0.postJobRevenue}}</b></p>
+        <p class="total-refund">Total amount returned: <b>$ {{totalRefund}}</b></p>
+    </div>
+    <div class="detail-revenue">
+        <h1>quarterly revenue details</h1>
+        <div class="content__total-quarterly first-quarterly">
+            <ul class="dropdown__firstquarterly">
+                <span class="title">First Quarter </span>
+                <p class="view-detail">View Detail <i class="bi bi-caret-down-fill"></i></p>
+                <ul class="down__firstquarterly">
+                    <li>January Revenue: <b>$ {{monthlyRevenue.0.totalRevenue}}</b></li>
+                    <li>February Revenue: <b>$ {{monthlyRevenue.1.totalRevenue}}</b></li>
+                    <li>March Revenue: <b>$ {{monthlyRevenue.2.totalRevenue}}</b></li>
+                </ul>
+                <li class="bottom-total">Total First Quarter Revenue: <b>$ {{quarterlyRevenue.0.totalRevenue}}</b></li>
+            </ul>
+        </div>
+        <div class="content__total-quarterly second-quarterly">
+            <ul class="dropdown__secondquarterly">
+                <span class="title">Second Quarter</span>
+                <p class="view-detail">View Detail <i class="bi bi-caret-down-fill"></i></p>
+                <ul class="down__secondquarterly">
+                    <li>April Revenue: <b>$ {{monthlyRevenue.3.totalRevenue}}</b></li>
+                    <li>May Revenue: <b>$ {{monthlyRevenue.4.totalRevenue}}</b></li>
+                    <li>June Revenue: <b>$ {{monthlyRevenue.5.totalRevenue}}</b></li>
+                </ul>
+                <li class="bottom-total">Total Second Quarter Revenue: <b>$ {{quarterlyRevenue.1.totalRevenue}}</b></li>
+            </ul>
+        </div>
+        <div class="content__total-quarterly third-quarterly">
+            <ul class="dropdown__thirdquarterly">
+                <span class="title">Third Quarter</span>
+                <p class="view-detail">View Detail <i class="bi bi-caret-down-fill"></i></p>
+                <ul class="down__thirdquarterly">
+                    <li>July Revenue: <b>$ {{monthlyRevenue.6.totalRevenue}}</b></li>
+                    <li>August Revenue: <b>$ {{monthlyRevenue.7.totalRevenue}}</b></li>
+                    <li>September Revenue: <b>$ {{monthlyRevenue.8.totalRevenue}}</b></li>
+                </ul>
+                <li class="bottom-total">Total Third Quarter Revenue: <b>$ {{quarterlyRevenue.2.totalRevenue}}</b></li>
+            </ul>
+        </div>
+        <div class="content__total-quarterly fourth-quarterly">
+            <ul class="dropdown__fourthquarterly">
+                <span class="title">Fourth Quarter</span>
+                <p class="view-detail">View Detail <i class="bi bi-caret-down-fill"></i></p>
+                <ul class="down__fourthquarterly">
+                    <li>October Revenue: <b>$ {{monthlyRevenue.9.totalRevenue}}</b></li>
+                    <li>November Revenue: <b>$ {{monthlyRevenue.10.totalRevenue}}</b></li>
+                    <li>December Revenue: <b>$ {{monthlyRevenue.11.totalRevenue}}</b></li>
+                </ul>
+                <li class="bottom-total">Total Fourth Quarter Revenue: <b>$ {{quarterlyRevenue.3.totalRevenue}}</b></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.0.2/chartjs-plugin-annotation.min.js"></script>
+<script>
+    // chart total revenue
+  var ctx = document.querySelector('.revenue-chart #myChart').getContext('2d');
+  var totalYears = parseFloat(document.querySelector('.revenue-chart').getAttribute('data-total'));
+  var monthlyRevenues = [];
+    var revenueChartElement = document.querySelector('.revenue-chart');
+    for (var i = 0; i <= 11; i++) {
+    var monthlyRevenue = revenueChartElement.getAttribute(`data-monthly${i}`);
+    monthlyRevenues.push(parseFloat(monthlyRevenue));
+    }
+    var quarterlyRevenues = []
+    for (var k = 0; k <= 3; k++){
+        var quarterlyRevenue = revenueChartElement.getAttribute(`data-quaterly${k}`);
+        quarterlyRevenues.push(parseFloat(quarterlyRevenue));
+    }
+    console.log(quarterlyRevenues)
+  console.log(monthlyRevenues)
+function getRandomColor() {
+    var r = Math.floor(Math.random() * 256);
+    var g = Math.floor(Math.random() * 256);
+    var b = Math.floor(Math.random() * 256);
+    var a = 0.7;
+
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
+}
+
+var backgroundColors = [];
+var borderColors = [];
+for (var i = 0; i < 12; i++) {
+    var color = getRandomColor();
+    backgroundColors.push(color);
+    borderColors.push(color);
+}
+var revenueData = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        datasets: [{
+            label: 'Revenue',
+            data: monthlyRevenues,
+            backgroundColor: backgroundColors,
+            borderColor: borderColors,
+            borderWidth: 1
+        }]
+    };
+var revenueChart = new Chart(ctx, {
+    type: 'bar',
+    data: revenueData,
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: totalYears + 100
+            }
+        },
+        plugins: {
+            annotation: {
+                annotations: [
+                    {
+                        type: 'line',
+                        mode: 'vertical',
+                        scaleID: 'x',
+                        value: 2.5, 
+                        borderColor: 'black',
+                        borderWidth: 2,
+                        label: {
+                            content:'1st quarter',
+                            enabled: true,
+                            position: 'end',
+                            font: {
+                                size: 8
+                            }
+                        }
+                    },
+                    {
+                        type: 'line',
+                        mode: 'vertical',
+                        scaleID: 'x',
+                        value: 5.5, 
+                        borderColor: 'black',
+                        borderWidth: 2,
+                        label: {
+                            content:'2nd quarter',
+                            enabled: true,
+                            position: 'end',
+                            font: {
+                                size: 8
+                            }
+                        }
+                    },
+                    {
+                        type: 'line',
+                        mode: 'vertical',
+                        scaleID: 'x',
+                        value: 8.5,
+                        borderColor: 'black',
+                        borderWidth: 2,
+                        label: {
+                            content:'3rd quarter',
+                            enabled: true,
+                            position: 'end',
+                            font: {
+                                size: 8
+                            }
+                        }
+                    },
+                    {
+                        type: 'line',
+                        mode: 'horizontal',
+                        scaleID: 'y',
+                        value: totalYears,
+                        borderColor: 'rgba(255, 0, 0, 0.2)',
+                        borderWidth: 2,
+                        label: {
+                            content: 'Total Revenue: ' + totalYears,
+                            enabled: true,
+                            position: 'right',
+                            font: {
+                                size: 8
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+});
+// check total user
+var textTotalUser = document.querySelector('.box__total-user .total-content');
+var dataUser = textTotalUser.getAttribute('data-user');
+var dataCompany = textTotalUser.getAttribute('data-company');
+var totalUser = parseInt(dataUser) + parseInt(dataCompany);
+textTotalUser.innerHTML = '<i class="bi bi-people-fill"></i> ' + " " + totalUser;
+//click detail quarterly
+var clickDetailFirst = document.querySelector('.container-admin .detail-revenue .content__total-quarterly ul.dropdown__firstquarterly p.view-detail');
+var clickDetailSecond = document.querySelector('.container-admin .detail-revenue .content__total-quarterly ul.dropdown__secondquarterly p.view-detail');
+var clickDetailThird = document.querySelector('.container-admin .detail-revenue .content__total-quarterly ul.dropdown__thirdquarterly p.view-detail');
+var clickDetailFourth = document.querySelector('.container-admin .detail-revenue .content__total-quarterly ul.dropdown__fourthquarterly p.view-detail');
+var menuDetailFirst = document.querySelector('.container-admin .detail-revenue .content__total-quarterly .down__firstquarterly');
+var menuDetailSecond = document.querySelector('.container-admin .detail-revenue .content__total-quarterly .down__secondquarterly');
+var menuDetailThird = document.querySelector('.container-admin .detail-revenue .content__total-quarterly .down__thirdquarterly');
+var menuDetailFourth = document.querySelector('.container-admin .detail-revenue .content__total-quarterly .down__fourthquarterly');
+function updateArrow() {
+    if (menuDetailFirst.style.display === 'block') {
+        clickDetailFirst.innerHTML = 'View Detail <i class="bi bi-caret-up-fill"></i>';
+    } else {
+        clickDetailFirst.innerHTML = 'View Detail <i class="bi bi-caret-down-fill"></i>';
+    }
+
+    if (menuDetailSecond.style.display === 'block') {
+        clickDetailSecond.innerHTML = 'View Detail <i class="bi bi-caret-up-fill"></i>';
+    } else {
+        clickDetailSecond.innerHTML = 'View Detail <i class="bi bi-caret-down-fill"></i>';
+    }
+
+    if (menuDetailThird.style.display === 'block') {
+        clickDetailThird.innerHTML = 'View Detail <i class="bi bi-caret-up-fill"></i>';
+    } else {
+        clickDetailThird.innerHTML = 'View Detail <i class="bi bi-caret-down-fill"></i>';
+    }
+
+    if (menuDetailFourth.style.display === 'block') {
+        clickDetailFourth.innerHTML = 'View Detail <i class="bi bi-caret-up-fill"></i>';
+    } else {
+        clickDetailFourth.innerHTML = 'View Detail <i class="bi bi-caret-down-fill"></i>';
+    }
+};
+clickDetailFirst.addEventListener('click', (event) => {
+    if (menuDetailFirst.style.display === 'block') {
+        menuDetailFirst.style.display = 'none';
+    } else {
+        menuDetailFirst.style.display = 'block';
+    }
+    updateArrow()
+    event.stopPropagation();
+});
+clickDetailSecond.addEventListener('click', (event) => {
+    if (menuDetailSecond.style.display === 'block') {
+        menuDetailSecond.style.display = 'none';
+    } else {
+        menuDetailSecond.style.display = 'block';
+    }
+    updateArrow()
+    event.stopPropagation();
+});
+clickDetailThird.addEventListener('click', (event) => {
+    if (menuDetailThird.style.display === 'block') {
+        menuDetailThird.style.display = 'none';
+    } else {
+        menuDetailThird.style.display = 'block';
+    }
+    updateArrow()
+    event.stopPropagation();
+});
+clickDetailFourth.addEventListener('click', (event) => {
+    if (menuDetailFourth.style.display === 'block') {
+        menuDetailFourth.style.display = 'none';
+    } else {
+        menuDetailFourth.style.display = 'block';
+    }
+    updateArrow()
+    event.stopPropagation();
+});
+document.addEventListener('click', (event) => {
+    menuDetailFirst.style.display = 'none';
+    menuDetailSecond.style.display = 'none';
+    menuDetailThird.style.display = 'none';
+    menuDetailFourth.style.display = 'none';
+    updateArrow()
+});
+menuDetailFirst.addEventListener('click', (event) => {
+    event.stopPropagation();
+});
+menuDetailSecond.addEventListener('click', (event) => {
+    event.stopPropagation();
+});
+menuDetailThird.addEventListener('click', (event) => {
+    event.stopPropagation();
+});
+menuDetailFourth.addEventListener('click', (event) => {
+    event.stopPropagation();
+});
+if(menuDetailFirst.style.display === 'block'){
+    clickDetailFirst.innerHTML = 'View Detail <i class="bi bi-caret-up-fill"></i>'
+}
+else{
+    clickDetailFirst.innerHTML = 'View Detail <i class="bi bi-caret-down-fill"></i>'
+}
+</script>

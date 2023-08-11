@@ -254,6 +254,9 @@ module.exports = {
       return options.inverse(this);
     }
   },
+  get: function(array, index){
+    return array[index];
+  },
   getfullnamecv: function (cvuser) {
     return cvuser.fullnamecv;
   },
