@@ -113,7 +113,7 @@
             <label for="file-user"><img class="user-avatar" src="{{getAvatar user}}" alt=""></label>
             <input id="file-user" name="avatar" type="file" accept="image/*">
             <label for="file-user" class="edit-img"><span>Change Avatar</span></label>
-            <label class="camera-edit camera-user-edit" for="file-user"><i class="bi bi-camera"></i></label>
+            <label class="camera-edit camera-user-edit camera-user-company" for="file-user"><i class="bi bi-camera"></i></label>
         </div>
         <div class="content-profile-header">
             <span>Your Account</span>
@@ -168,6 +168,9 @@ btnSetting.addEventListener('click',()=>{
     var hover = document.querySelector('.user-avatar')
     var edit = document.querySelector('.edit-img')
     hover.addEventListener('mouseover',()=>{
+        edit.style.cssText = "display: flex;"
+    })
+    edit.addEventListener('mouseover',()=>{
         edit.style.cssText = "display: flex;"
     })
     edit.addEventListener('mouseout',()=>{

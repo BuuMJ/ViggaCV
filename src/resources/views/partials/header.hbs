@@ -23,7 +23,7 @@
             <span>Tools <i class="bi bi-caret-down-fill"></i></span>
             <ul class="down__tools">
                 <li><a href="/cv">NiceCV</a></li>
-                <li><a href="">Payroll</a></li>
+                <li><a href="/payroll">Payroll</a></li>
             </ul>
         </ul>
     </div>
@@ -43,7 +43,7 @@
             <span>Tools <i class="bi bi-caret-down-fill"></i></span>
             <ul class="down__tools">
                 <li><a href="/cv">NiceCV</a></li>
-                <li><a href="">Payroll</a></li>
+                <li><a href="/payroll">Payroll</a></li>
             </ul>
         </ul>
     </div>
@@ -63,7 +63,7 @@
             <span>Tools <i class="bi bi-caret-down-fill"></i></span>
             <ul class="down__tools">
                 <li><a href="/cv">NiceCV</a></li>
-                <li><a href="">Payroll</a></li>
+                <li><a href="/payroll">Payroll</a></li>
             </ul>
         </ul>
     </div>
@@ -141,6 +141,7 @@
                         <div class="right-info__user">
                             <p class="navbar__name-user">{{getFullname user}}</p>
                             <a href="/profile">View your profile</a>
+                            <a href="/yourjobs">Your Jobs</a>
                         </div>
                     </div>
                     <div class="user-left">
@@ -153,7 +154,7 @@
                     </div>
                 {{else ifeq user 'company'}}
                     <div class="user-right">
-                        <img src="{{getAvatarcompany company}}" alt="">
+                        <img src="{{getAvatar user}}" alt="">
                         <div class="right-info__user">
                             <p class="navbar__name-user">{{getFullname user}}</p>
                             <a href="/profile">View your profile</a>
