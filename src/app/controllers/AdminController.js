@@ -5,10 +5,12 @@ const JobModel = require("../models/Job");
 const QualifiedModel = require("../models/Qualified");
 const RevenueModel = require("../models/Revenua");
 const UnsatisfactoryModel = require("../models/Unsatisfactory");
+const UserModel = require("../models/User");
 
 class AdminController {
   async admin(req, res, next) {
     const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth() + 1;
     const user = req.user;
     const company = await CompanyModel.findOne({ iduser: user._id });
     //Công việc nhiều theo dõi nhất
@@ -90,6 +92,12 @@ class AdminController {
     //Doanh thu theo tháng
     const monthlyRevenue = await RevenueModel.aggregate([
       {
+        $match: {
+          type: { $in: ["post job", "prioritize"] },
+          type: { $ne: "refund" },
+        },
+      },
+      {
         $group: {
           _id: {
             month: { $month: "$createdAt" },
@@ -114,8 +122,23 @@ class AdminController {
       }
     }
 
+    const currentMonthRevenue = monthlyRevenue.find(
+      (item) => item._id.year === currentYear && item._id.month === currentMonth
+    );
+
+    // Tổng doanh thu tháng hiện tại
+    const totalRevenueCurrentMonth = currentMonthRevenue
+      ? currentMonthRevenue.totalRevenue
+      : 0;
+
     //Doanh thu theo quý
     const quarterlyRevenue = await RevenueModel.aggregate([
+      {
+        $match: {
+          type: { $in: ["post job", "prioritize"] },
+          type: { $ne: "refund" },
+        },
+      },
       {
         $group: {
           _id: {
@@ -150,6 +173,12 @@ class AdminController {
     //Doanh thu theo năm
     const annualRevenue = await RevenueModel.aggregate([
       {
+        $match: {
+          type: { $in: ["post job", "prioritize"] },
+          type: { $ne: "refund" },
+        },
+      },
+      {
         $group: {
           _id: { year: { $year: "$createdAt" } },
           totalRevenue: { $sum: "$money" },
@@ -179,9 +208,25 @@ class AdminController {
       },
     ]).sort({ "_id.year": 1, "_id.month": 1 });
 
-    console.log(filledMonthlyRevenue);
-    console.log(filledQuarterlyRevenue);
-    console.log(revenueSummary);
+    const totalRefund = await RevenueModel.aggregate([
+      {
+        $match: {
+          type: "refund",
+        },
+      },
+      {
+        $group: {
+          _id: null,
+          totalRefund: { $sum: "$money" },
+        },
+      },
+    ]);
+    const countUser = await UserModel.countDocuments({ role: "user" });
+    const countCompany = await UserModel.countDocuments({ role: "company" });
+
+    console.log(countUser);
+    console.log(countCompany);
+    console.log(totalRefund[0].totalRefund);
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,
@@ -191,18 +236,11 @@ class AdminController {
       quarterlyRevenue: filledQuarterlyRevenue,
       annualRevenue,
       company,
-      // January: filledMonthlyRevenue[0],
-      // February: filledMonthlyRevenue[1],
-      // March: filledMonthlyRevenue[2],
-      // April: filledMonthlyRevenue[3],
-      // May: filledMonthlyRevenue[4],
-      // June: filledMonthlyRevenue[5],
-      // July: filledMonthlyRevenue[6],
-      // Asgust: filledMonthlyRevenue[7],
-      // September: filledMonthlyRevenue[8],
-      // October: filledMonthlyRevenue[9],
-      // November: filledMonthlyRevenue[10],
-      // December: filledMonthlyRevenue[11],
+      totalRefund: totalRefund[0].totalRefund,
+      countUser,
+      countCompany,
+      revenueSummary,
+      totalRevenueCurrentMonth,
     });
   }
 }

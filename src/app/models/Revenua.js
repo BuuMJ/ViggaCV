@@ -17,7 +17,7 @@ const revenueSchema = new Schema(
     money: { type: Number, required: true },
     type: {
       type: String,
-      enum: ["post job", "prioritize"],
+      enum: ["post job", "prioritize", "refund"],
       required: true,
     },
     paymentId: String,

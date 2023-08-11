@@ -371,7 +371,7 @@ class PaymentController {
 
   async refund(req, res, next) {
     const idjob = req.params.id;
-    const type = req.body.type;
+    const type = "prioritize";
     const email = req.user.email;
     var transporter = nodemailer.createTransport({
       service: "gmail",
@@ -399,11 +399,16 @@ class PaymentController {
         } else {
           if (type === "post job") {
             await JobModel.findByIdAndDelete(idjob);
-            await RevenueModel.findByIdAndDelete(revenue._id);
+            await RevenueModel.findByIdAndUpdate(revenue._id, {
+              type: "refund",
+            });
             console.log("Đã xoá job sau khi hoàn tiền");
-          } else {
+          }
+          if (type === "prioritize") {
             await JobModel.findByIdAndUpdate(idjob, { prioritize: false });
-            await RevenueModel.findByIdAndDelete(revenue._id);
+            await RevenueModel.findByIdAndUpdate(revenue._id, {
+              type: "refund",
+            });
             console.log(
               "Đã xoá job khỏi danh sách job được ưu tiên sau khi hoàn tiền"
             );
