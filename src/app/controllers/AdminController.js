@@ -8,6 +8,7 @@ const UnsatisfactoryModel = require("../models/Unsatisfactory");
 
 class AdminController {
   async admin(req, res, next) {
+    const currentYear = new Date().getFullYear();
     const user = req.user;
     const company = await CompanyModel.findOne({ iduser: user._id });
     //Công việc nhiều theo dõi nhất
@@ -98,6 +99,20 @@ class AdminController {
         },
       },
     ]).sort({ "_id.year": 1, "_id.month": 1 });
+    const filledMonthlyRevenue = [];
+    for (let i = 1; i <= 12; i++) {
+      const monthRevenue = monthlyRevenue.find(
+        (item) => item._id.year === currentYear && item._id.month === i
+      );
+      if (monthRevenue) {
+        filledMonthlyRevenue.push(monthRevenue);
+      } else {
+        filledMonthlyRevenue.push({
+          _id: { month: i, year: currentYear },
+          totalRevenue: 0,
+        });
+      }
+    }
 
     //Doanh thu theo quý
     const quarterlyRevenue = await RevenueModel.aggregate([
@@ -111,6 +126,26 @@ class AdminController {
         },
       },
     ]).sort({ "_id.year": 1, "_id.quarter": 1 });
+    const filledQuarterlyRevenue = [];
+
+    // Vòng lặp qua 4 quý
+    for (let i = 1; i <= 4; i++) {
+      // Tìm doanh thu của quý hiện tại trong mảng `quarterlyRevenue`
+      const revenueOfQuarter = quarterlyRevenue.find(
+        (item) => item._id.quarter === i && item._id.year === currentYear
+      );
+
+      // Nếu tìm thấy doanh thu, thêm vào mảng kết quả
+      if (revenueOfQuarter) {
+        filledQuarterlyRevenue.push(revenueOfQuarter);
+      } else {
+        // Nếu không, thêm một đối tượng với doanh thu bằng 0
+        filledQuarterlyRevenue.push({
+          _id: { quarter: i, year: currentYear },
+          totalRevenue: 0,
+        });
+      }
+    }
 
     //Doanh thu theo năm
     const annualRevenue = await RevenueModel.aggregate([
@@ -121,18 +156,30 @@ class AdminController {
         },
       },
     ]).sort({ "_id.year": 1 });
-    console.log(monthlyRevenue);
-    console.log(quarterlyRevenue);
+    console.log(filledMonthlyRevenue);
+    console.log(filledQuarterlyRevenue);
     console.log(annualRevenue);
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,
       mostJobApplied: jobDetails,
       mostCompanyApplied: companiesWithAppliedCounts,
-      monthlyRevenue,
-      quarterlyRevenue,
+      monthlyRevenue: filledMonthlyRevenue,
+      quarterlyRevenue: filledQuarterlyRevenue,
       annualRevenue,
       company,
+      // January: filledMonthlyRevenue[0],
+      // February: filledMonthlyRevenue[1],
+      // March: filledMonthlyRevenue[2],
+      // April: filledMonthlyRevenue[3],
+      // May: filledMonthlyRevenue[4],
+      // June: filledMonthlyRevenue[5],
+      // July: filledMonthlyRevenue[6],
+      // Asgust: filledMonthlyRevenue[7],
+      // September: filledMonthlyRevenue[8],
+      // October: filledMonthlyRevenue[9],
+      // November: filledMonthlyRevenue[10],
+      // December: filledMonthlyRevenue[11],
     });
   }
 }

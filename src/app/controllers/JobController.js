@@ -9,6 +9,7 @@ const {
   mutipleMongooseToObject,
   staffMongoseToObject,
 } = require("../../util/mongoose");
+const RevenueModel = require("../models/Revenua");
 
 class JobController {
   async job(req, res, next) {
@@ -708,12 +709,32 @@ class JobController {
       _id: { $in: jobs },
       active: true,
     });
-    console.log(count);
+    const userid = req.user._id;
+    const result = await RevenueModel.aggregate([
+      {
+        $match: { userid: userid },
+      },
+      // {
+      //   $lookup: {
+      //     from: "job",
+      //     localField: "jobid",
+      //     foreignField: "_id",
+      //     as: "jobInfo",
+      //   },
+      // },
+      // {
+      //   $unwind: "$jobInfo",
+      // },
+      // {
+      //   $group: {
+      //     _id: "$jobInfo._id",
+      //     jobData: { $push: "$jobInfo" },
+      //   },
+      // },
+    ]);
+
+    console.log(userid);
     const company = await CompanyModel.findOne({ iduser: req.user._id });
-
-    console.log(listViewed[0]);
-    console.log(listViewed[5]);
-
     res.render("job_favourite", {
       company,
       listjob: mutipleMongooseToObject(listjob),
