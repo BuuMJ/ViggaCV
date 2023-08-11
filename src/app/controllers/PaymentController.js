@@ -317,7 +317,7 @@ class PaymentController {
                                   .cta-button {
                                     display: inline-block;
                                     background-color: #0066cc;
-                                    color: #fff;
+                                    color: #ffffff !important;
                                     text-decoration: none;
                                     padding: 10px 15px;
                                     border-radius: 3px;

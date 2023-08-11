@@ -3,7 +3,7 @@
         <div class="box-total">
             <p class="title">total revenue</p>
             <p class="total-content">$ {{annualRevenue.0.totalRevenue}}</p>
-            <a class="view-detail__total" href="#myChart">View Detail <i class="bi bi-chevron-double-down"></i></a>
+            <a class="view-detail__total" href="#revenue">View Detail <i class="bi bi-chevron-double-down"></i></a>
         </div>
         <div class="box-total box__total-user">
             <p class="title">total user</p>
@@ -21,7 +21,7 @@
             <a class="view-detail__total" href="#myChart">View Detail <i class="bi bi-chevron-double-down"></i></a>
         </div>
     </header>
-    <div class="revenue-chart" 
+    <div id="revenue" class="revenue-chart" 
     {{!-- monthly --}}
     data-monthly0="{{monthlyRevenue.0.totalRevenue}}" 
     data-monthly1="{{monthlyRevenue.1.totalRevenue}}"
