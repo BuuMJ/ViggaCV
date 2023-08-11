@@ -228,7 +228,7 @@ class CompanyController {
   //[GET] company detail
   async detail(req, res, next) {
     const idcompany = req.params.id;
-    const avatarCompany = await CompanyModel.findOne({ iduser: user_id });
+    const avatarCompany = await CompanyModel.findOne({ iduser: req.user._id });
     const company = await CompanyModel.findOne({ _id: idcompany });
     const leadership = company.leadership;
     var checkfl;
@@ -296,6 +296,8 @@ class CompanyController {
 
   async information(req, res, next) {
     const idcompany = req.params.id;
+    const company = await CompanyModel.findOne({ _id: idcompany });
+    var count = await JobModel.find({ iduser: company.iduser, active: true });
     var page = req.query.page;
     var PAGE_SIZE = 10;
     var total = Math.ceil(count / PAGE_SIZE);
@@ -303,7 +305,6 @@ class CompanyController {
     for (let i = 1; i <= total; i++) {
       pages.push(i);
     }
-    const company = await CompanyModel.findOne({ _id: idcompany });
     if (page) {
       page = parseInt(page);
       var skip = (page - 1) * PAGE_SIZE;

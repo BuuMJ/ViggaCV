@@ -711,6 +711,9 @@ class JobController {
     console.log(count);
     const company = await CompanyModel.findOne({ iduser: req.user._id });
 
+    console.log(listViewed[0]);
+    console.log(listViewed[5]);
+
     res.render("job_favourite", {
       company,
       listjob: mutipleMongooseToObject(listjob),
