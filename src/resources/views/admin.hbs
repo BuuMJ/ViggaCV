@@ -1,24 +1,63 @@
 <div class="container-admin">
-    <div class="revenue-chart" data-monthly="{{monthlyRevenue.0.totalRevenue}}" data-total="{{annualRevenue.totalRevenue}}">
-        <canvas id="myChart" width="800" height="400"></canvas>
+    <div class="revenue-chart" 
+    {{!-- monthly --}}
+    data-monthly0="{{monthlyRevenue.0.totalRevenue}}" 
+    data-monthly1="{{monthlyRevenue.1.totalRevenue}}"
+    data-monthly2="{{monthlyRevenue.2.totalRevenue}}"
+    data-monthly3="{{monthlyRevenue.3.totalRevenue}}"
+    data-monthly4="{{monthlyRevenue.4.totalRevenue}}"
+    data-monthly5="{{monthlyRevenue.5.totalRevenue}}"
+    data-monthly6="{{monthlyRevenue.6.totalRevenue}}"
+    data-monthly7="{{monthlyRevenue.7.totalRevenue}}"
+    data-monthly8="{{monthlyRevenue.8.totalRevenue}}"
+    data-monthly9="{{monthlyRevenue.9.totalRevenue}}"
+    data-monthly10="{{monthlyRevenue.10.totalRevenue}}"
+    data-monthly11="{{monthlyRevenue.11.totalRevenue}}"
+    {{!-- quaterly --}}
+    data-quaterly0="{{quarterlyRevenue.0.totalRevenue}}"
+    data-quaterly1="{{quarterlyRevenue.1.totalRevenue}}"
+    data-quaterly2="{{quarterlyRevenue.2.totalRevenue}}"
+    data-quaterly3="{{quarterlyRevenue.3.totalRevenue}}"
+    {{!-- total --}}
+    data-total="{{annualRevenue.0.totalRevenue}}">
+        <canvas id="myChart"></canvas>
+    </div>
+    <div class="revenue-details">
+        <h1 class="title">revenue details</h1>
+        <p class="detail-total">{{annualRevenue.0.totalRevenue}} $</p>
+        <p class="available">total available revenue</p>
+        <div class="box__total-revenue">
+            
+        </div>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.0.2/chartjs-plugin-annotation.min.js"></script>
 <script>
-  var ctx = document.getElementById('myChart').getContext('2d');
-  var totalYears = parseInt(document.querySelector('.revenue-chart').getAttribute('data-total'));
-  var monthly = document.querySelector('.revenue-chart').getAttribute('data-monthly');
-  console.log(monthly)
-  console.log(totalYears)
-  function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
+  var ctx = document.querySelector('.revenue-chart #myChart').getContext('2d');
+  var totalYears = parseFloat(document.querySelector('.revenue-chart').getAttribute('data-total'));
+  var monthlyRevenues = [];
+    var revenueChartElement = document.querySelector('.revenue-chart');
+    for (var i = 0; i <= 11; i++) {
+    var monthlyRevenue = revenueChartElement.getAttribute(`data-monthly${i}`);
+    monthlyRevenues.push(parseFloat(monthlyRevenue));
     }
-    return color;
+    var quarterlyRevenues = []
+    for (var k = 0; k <= 3; k++){
+        var quarterlyRevenue = revenueChartElement.getAttribute(`data-quaterly${k}`);
+        quarterlyRevenues.push(parseFloat(quarterlyRevenue));
+    }
+    console.log(quarterlyRevenues)
+  console.log(monthlyRevenues)
+function getRandomColor() {
+    var r = Math.floor(Math.random() * 256);
+    var g = Math.floor(Math.random() * 256);
+    var b = Math.floor(Math.random() * 256);
+    var a = 0.7;
+
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
 }
+
 var backgroundColors = [];
 var borderColors = [];
 for (var i = 0; i < 12; i++) {
@@ -28,14 +67,38 @@ for (var i = 0; i < 12; i++) {
 }
 var revenueData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    datasets: [{
-        label: 'Revenue',
-        data: [0, 30, 40, 80, 100, 20, 10, 1.45, 25, 100, 140, 50],
-        backgroundColor: backgroundColors,
-        borderColor: borderColors,
-        borderWidth: 1
-    }]
+    datasets: [
+        {
+            label: '1st Quarter ' + quarterlyRevenues[0] +'$ ,',
+            data: [monthlyRevenues[0], monthlyRevenues[1], monthlyRevenues[2], null, null, null, null, null, null, null, null, null],
+            backgroundColor: [backgroundColors[0], backgroundColors[1], backgroundColors[2]],
+            borderColor: [borderColors[0], borderColors[1], borderColors[2]],
+            borderWidth: 1
+        },
+        {
+            label: '2nd Quarter ' + quarterlyRevenues[1] +'$ ,',
+            data: [null, null, null, monthlyRevenues[3], monthlyRevenues[4], monthlyRevenues[5], null, null, null, null, null, null],
+            backgroundColor: [backgroundColors[3], backgroundColors[4], backgroundColors[5]],
+            borderColor: [borderColors[3], borderColors[4], borderColors[5]],
+            borderWidth: 1
+        },
+        {
+            label: '3rd Quarter ' + quarterlyRevenues[2] +'$ ,',
+            data: [null, null, null, null, null, null, monthlyRevenues[6], monthlyRevenues[7], monthlyRevenues[8], null, null, null],
+            backgroundColor: [backgroundColors[6], backgroundColors[7], backgroundColors[8]],
+            borderColor: [borderColors[6], borderColors[7], borderColors[8]],
+            borderWidth: 1
+        },
+        {
+            label: '4th Quarter ' + quarterlyRevenues[3] +'$',
+            data: [null, null, null, null, null, null, null, null, null, monthlyRevenues[9], monthlyRevenues[10], monthlyRevenues[11]],
+            backgroundColor: [backgroundColors[9], backgroundColors[10], backgroundColors[11]],
+            borderColor: [borderColors[9], borderColors[10], borderColors[11]],
+            borderWidth: 1
+        }
+    ]
 };
+
 
 var revenueChart = new Chart(ctx, {
     type: 'bar',
@@ -58,9 +121,12 @@ var revenueChart = new Chart(ctx, {
                         borderColor: 'black',
                         borderWidth: 2,
                         label: {
-                            content: 'Q1',
+                            content:'1st quarter',
                             enabled: true,
-                            position: 'top'
+                            position: 'end',
+                            font: {
+                                size: 8
+                            }
                         }
                     },
                     {
@@ -71,9 +137,12 @@ var revenueChart = new Chart(ctx, {
                         borderColor: 'black',
                         borderWidth: 2,
                         label: {
-                            content: 'Q2',
+                            content:'2nd quarter',
                             enabled: true,
-                            position: 'top'
+                            position: 'end',
+                            font: {
+                                size: 8
+                            }
                         }
                     },
                     {
@@ -84,9 +153,28 @@ var revenueChart = new Chart(ctx, {
                         borderColor: 'black',
                         borderWidth: 2,
                         label: {
-                            content: 'Q3',
+                            content:'3rd quarter',
                             enabled: true,
-                            position: 'top'
+                            position: 'end',
+                            font: {
+                                size: 8
+                            }
+                        }
+                    },
+                    {
+                        type: 'line',
+                        mode: 'horizontal',
+                        scaleID: 'y',
+                        value: totalYears,
+                        borderColor: 'red',
+                        borderWidth: 2,
+                        label: {
+                            content: 'Total Revenue: ' + totalYears,
+                            enabled: true,
+                            position: 'right',
+                            font: {
+                                size: 8
+                            }
                         }
                     }
                 ]

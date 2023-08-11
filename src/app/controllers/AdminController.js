@@ -258,15 +258,9 @@ class AdminController {
       mostJobFavourite: mostFavourite,
       mostJobApplied: jobDetails,
       mostCompanyApplied: companiesWithAppliedCounts,
-<<<<<<< HEAD
       monthlyRevenue: filledMonthlyRevenue,
       quarterlyRevenue: filledQuarterlyRevenue,
       annualRevenue,
-=======
-      monthlyRevenue,
-      quarterlyRevenue,
-      annualRevenue: annualRevenue[0],
->>>>>>> 309c587 (add chart for admin page)
       company,
       totalRefund: totalRefund[0].totalRefund,
       countUser,

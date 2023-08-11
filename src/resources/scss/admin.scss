@@ -1,0 +1,47 @@
+.container-admin{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    background-color: $backgroundcolor;
+    flex-wrap: wrap;
+}
+.revenue-chart{
+    width: 65%;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+.revenue-chart #myChart{
+    width: 95% !important;
+    height: 400px !important;
+    font-size: 16px;
+}
+.revenue-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    width: 25%;
+    padding: 20px;
+}
+.revenue-details .title{
+    text-transform: capitalize;
+    font-size: 28px;
+    width: 100%;
+}
+.revenue-details p{
+    margin-bottom: unset;
+}
+.revenue-details p.detail-total{
+    font-size: 20px;
+    font-weight: 600;
+}
+.revenue-details p.available{
+    text-transform: capitalize;
+}
