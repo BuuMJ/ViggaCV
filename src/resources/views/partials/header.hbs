@@ -169,6 +169,23 @@
                             </ul>
                         </ul>
                     </div>
+                {{else}}
+                <div class="user-right">
+                        <img src="{{getAvatar user}}" alt="">
+                        <div class="right-info__user">
+                            <p class="navbar__name-user">{{getFullname user}}</p>
+                            <a href="/profile">View your profile</a>
+                        </div>
+                    </div>
+                    <div class="user-left">
+                        <ul class="drop-down__action">
+                            <span><i class="bi bi-three-dots"></i></span>
+                            <ul class="action-down">
+                                <li><a href="/admin">Admin</a></li>
+                                <li><a onclick="logout()" href="/login">Sign Out</a></li>
+                            </ul>
+                        </ul>
+                    </div>
                 {{/ifeq}}
         </header>
         <a href="/"><span>Home</span></a>

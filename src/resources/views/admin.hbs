@@ -1,0 +1,97 @@
+<div class="container-admin">
+    <div class="revenue-chart" data-monthly="{{monthlyRevenue.0.totalRevenue}}" data-total="{{annualRevenue.totalRevenue}}">
+        <canvas id="myChart" width="800" height="400"></canvas>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.0.2/chartjs-plugin-annotation.min.js"></script>
+<script>
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var totalYears = parseInt(document.querySelector('.revenue-chart').getAttribute('data-total'));
+  var monthly = document.querySelector('.revenue-chart').getAttribute('data-monthly');
+  console.log(monthly)
+  console.log(totalYears)
+  function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+var backgroundColors = [];
+var borderColors = [];
+for (var i = 0; i < 12; i++) {
+    var color = getRandomColor();
+    backgroundColors.push(color);
+    borderColors.push(color);
+}
+var revenueData = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    datasets: [{
+        label: 'Revenue',
+        data: [0, 30, 40, 80, 100, 20, 10, 1.45, 25, 100, 140, 50],
+        backgroundColor: backgroundColors,
+        borderColor: borderColors,
+        borderWidth: 1
+    }]
+};
+
+var revenueChart = new Chart(ctx, {
+    type: 'bar',
+    data: revenueData,
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: totalYears + 100
+            }
+        },
+        plugins: {
+            annotation: {
+                annotations: [
+                    {
+                        type: 'line',
+                        mode: 'vertical',
+                        scaleID: 'x',
+                        value: 2.5, 
+                        borderColor: 'black',
+                        borderWidth: 2,
+                        label: {
+                            content: 'Q1',
+                            enabled: true,
+                            position: 'top'
+                        }
+                    },
+                    {
+                        type: 'line',
+                        mode: 'vertical',
+                        scaleID: 'x',
+                        value: 5.5, 
+                        borderColor: 'black',
+                        borderWidth: 2,
+                        label: {
+                            content: 'Q2',
+                            enabled: true,
+                            position: 'top'
+                        }
+                    },
+                    {
+                        type: 'line',
+                        mode: 'vertical',
+                        scaleID: 'x',
+                        value: 8.5,
+                        borderColor: 'black',
+                        borderWidth: 2,
+                        label: {
+                            content: 'Q3',
+                            enabled: true,
+                            position: 'top'
+                        }
+                    }
+                ]
+            }
+        }
+    }
+});
+    </script>
