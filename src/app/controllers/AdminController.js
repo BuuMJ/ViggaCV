@@ -94,6 +94,7 @@ class AdminController {
           _id: {
             month: { $month: "$createdAt" },
             year: { $year: "$createdAt" },
+            type: "$type",
           },
           totalRevenue: { $sum: "$money" },
         },

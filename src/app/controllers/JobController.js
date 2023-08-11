@@ -710,30 +710,30 @@ class JobController {
       active: true,
     });
     const userid = req.user._id;
-    const result = await RevenueModel.aggregate([
+    const revenue = await FavouriteModel.find({ userid: userid });
+    const result = await FavouriteModel.aggregate([
       {
         $match: { userid: userid },
       },
-      // {
-      //   $lookup: {
-      //     from: "job",
-      //     localField: "jobid",
-      //     foreignField: "_id",
-      //     as: "jobInfo",
-      //   },
-      // },
-      // {
-      //   $unwind: "$jobInfo",
-      // },
-      // {
-      //   $group: {
-      //     _id: "$jobInfo._id",
-      //     jobData: { $push: "$jobInfo" },
-      //   },
-      // },
+      {
+        $lookup: {
+          from: "jobs",
+          localField: "jobid",
+          foreignField: "_id",
+          as: "jobInfo",
+        },
+      },
+      {
+        $unwind: "$jobInfo",
+      },
+      {
+        $group: {
+          _id: "$jobInfo._id",
+          jobData: { $push: "$jobInfo" },
+        },
+      },
     ]);
-
-    console.log(userid);
+    console.log(result);
     const company = await CompanyModel.findOne({ iduser: req.user._id });
     res.render("job_favourite", {
       company,
