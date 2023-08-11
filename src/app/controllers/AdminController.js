@@ -252,7 +252,10 @@ class AdminController {
         $unwind: "$jobDetail",
       },
     ]);
-    console.log(mutipleJobToJSON(prioritizeJob));
+    const listUser = await UserModel.find({
+      role: { $in: ["user", "company"] },
+    });
+    console.log(listUser);
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,
