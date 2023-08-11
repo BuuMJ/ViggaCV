@@ -94,7 +94,6 @@ class AdminController {
           _id: {
             month: { $month: "$createdAt" },
             year: { $year: "$createdAt" },
-            type: "$type",
           },
           totalRevenue: { $sum: "$money" },
         },
@@ -157,9 +156,32 @@ class AdminController {
         },
       },
     ]).sort({ "_id.year": 1 });
+
+    const revenueSummary = await RevenueModel.aggregate([
+      {
+        $group: {
+          _id: {
+            month: { $month: "$createdAt" },
+            year: { $year: "$createdAt" },
+          },
+          postJobRevenue: {
+            $sum: {
+              $cond: [{ $eq: ["$type", "post job"] }, "$money", 0],
+            },
+          },
+          prioritizeRevenue: {
+            $sum: {
+              $cond: [{ $eq: ["$type", "prioritize"] }, "$money", 0],
+            },
+          },
+          totalRevenue: { $sum: "$money" },
+        },
+      },
+    ]).sort({ "_id.year": 1, "_id.month": 1 });
+
     console.log(filledMonthlyRevenue);
     console.log(filledQuarterlyRevenue);
-    console.log(annualRevenue);
+    console.log(revenueSummary);
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,
