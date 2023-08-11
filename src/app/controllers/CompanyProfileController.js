@@ -501,7 +501,7 @@ class CompanyProfileController {
         <div class="message">
           <p>Có một việc làm mới đã được đăng bởi công ty ${job.companyname}.</p>
           <p>Vui lòng nhấp vào nút bên dưới để xem công việc mới.</p>
-          <p><a href="${linkJob}" class="cta-button">Xem công việc mới</a></p>
+          <p><a href="${linkJob}" class="cta-button">Xem công việc mới đăng</a></p>
         </div>
       </body>
     </html>
@@ -511,7 +511,7 @@ class CompanyProfileController {
           if (err) {
             console.log(err);
           } else {
-            console.log("Đã gửi mail cho người đăng kí Jobs");
+            console.log("Đã gửi mail cho người post job");
           }
         });
       }

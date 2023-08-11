@@ -34,8 +34,10 @@ const Job = new Schema(
     timestamps: true,
     toJSON: {
       transform: function (doc, ret) {
-        if (ret.DoP) {
-          ret.DoP = moment(ret.DoP).tz("Asia/Ho_Chi_Minh").format("DD/MM/YYYY");
+        if (ret.prioritizeUpdatedAt) {
+          ret.prioritizeUpdatedAt = moment(ret.prioritizeUpdatedAt)
+            .tz("Asia/Ho_Chi_Minh")
+            .format("DD/MM/YYYY");
         }
         if (ret.createdAt) {
           ret.createdAt = moment(ret.createdAt)

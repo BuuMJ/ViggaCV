@@ -5,6 +5,7 @@ const textract = require("textract");
 const JobModel = require("../models/Job");
 const CompanyModel = require("../models/Company");
 const QualifiedModel = require("../models/Qualified");
+const nodemailer = require("nodemailer");
 const UnsatisfactoryModel = require("../models/Unsatisfactory");
 
 class ApplyCVController {
@@ -143,10 +144,67 @@ class ApplyCVController {
                 .status(500)
                 .send({ message: "Lỗi khi di chuyển file." });
             }
-
-            // console.log(`File has been moved to: ${newPath}`);
-            res.redirect("back");
           });
+          var transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+              user: "duoc6694@gmail.com",
+              pass: "wdymtvgbhblstfbj",
+            },
+          });
+          const linkJob = `http://localhost:3000/job`;
+          const mailOptions = {
+            to: req.user.email, // list of receivers
+            subject: "ViggaCareers ", // Subject line<a href="${linkJob}">here</a>
+            html: `
+                  <html>
+                    <head>
+                      <style>
+                        body {
+                          font-family: Arial, sans-serif;
+                          line-height: 1.6;
+                          color: #333;
+                        }
+                        h1 {
+                          color: #0066cc;
+                        }
+                        .message {
+                          background-color: #f9f9f9;
+                          padding: 15px;
+                          border-radius: 5px;
+                        }
+                        .cta-button {
+                          display: inline-block;
+                          background-color: #0066cc;
+                          color: #ffffff !important;
+                          text-decoration: none;
+                          padding: 10px 15px;
+                          border-radius: 3px;
+                        }
+                        .cta-button:hover {
+                          background-color: #004c99;
+                        }
+                      </style>
+                    </head>
+                    <body>
+                      <h1>ViggaCareers</h1>
+                      <div class="message">
+                        <p>Bạn đã apply công việc thành công.</p>
+                        <p>Vui lòng nhấp vào nút bên dưới để xem công việc mới.</p>
+                        <p><a href="${linkJob}" class="cta-button">Xem các công việc khác</a></p>
+                      </div>
+                    </body>
+                  </html>
+                `, // plain text body
+          };
+          transporter.sendMail(mailOptions, function (err, info) {
+            if (err) {
+              console.log(err);
+            } else {
+              console.log("Đã gửi mail cho người đăng kí Jobs");
+            }
+          });
+          res.redirect("back");
         } catch (err) {
           console.log(err);
           return res

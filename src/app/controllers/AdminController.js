@@ -1,4 +1,7 @@
-const { mutipleMongooseToObject } = require("../../util/mongoose");
+const {
+  mutipleMongooseToObject,
+  mutipleJobToJSON,
+} = require("../../util/mongoose");
 const CompanyModel = require("../models/Company");
 const FavouriteModel = require("../models/Favourite");
 const JobModel = require("../models/Job");
@@ -223,10 +226,33 @@ class AdminController {
     ]);
     const countUser = await UserModel.countDocuments({ role: "user" });
     const countCompany = await UserModel.countDocuments({ role: "company" });
-
-    console.log(countUser);
-    console.log(countCompany);
-    console.log(totalRefund[0].totalRefund);
+    const jobCount = await JobModel.countDocuments();
+    const listJob = await JobModel.find();
+    const lockedJob = await JobModel.find({ active: false });
+    const prioritizeJob = await JobModel.find({ prioritize: true });
+    const jobHighSalary = await JobModel.find({
+      salary: { $gte: 4000 },
+    });
+    const favouriteJobs = await FavouriteModel.aggregate([
+      {
+        $group: {
+          _id: "$jobid",
+          count: { $sum: 1 },
+        },
+      },
+      {
+        $lookup: {
+          from: "jobs",
+          localField: "_id",
+          foreignField: "_id",
+          as: "jobDetail",
+        },
+      },
+      {
+        $unwind: "$jobDetail",
+      },
+    ]);
+    console.log(mutipleJobToJSON(prioritizeJob));
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,
@@ -241,6 +267,12 @@ class AdminController {
       countCompany,
       revenueSummary,
       totalRevenueCurrentMonth,
+      jobCount,
+      listJob: mutipleJobToJSON(listJob),
+      lockedJob: mutipleJobToJSON(lockedJob),
+      prioritizeJob: mutipleJobToJSON(prioritizeJob),
+      jobHighSalary: mutipleJobToJSON(jobHighSalary),
+      favouriteJobs,
     });
   }
 }

@@ -342,7 +342,7 @@ class PaymentController {
                     if (err) {
                       console.log(err);
                     } else {
-                      console.log("Đã gửi mail cho người đăng kí Jobs");
+                      console.log("Đã gửi mail cho người post Jobs");
                     }
                   });
                 }
