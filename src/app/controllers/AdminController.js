@@ -280,7 +280,14 @@ class AdminController {
         .skip(skip)
         .limit(PAGE_SIZE);
     }
-    console.log(listUser);
+    const countPostJob = await RevenueModel.countDocuments({
+      type: "post job",
+    });
+    const countPrioritize = await RevenueModel.countDocuments({
+      type: "prioritize",
+    });
+    console.log(countPostJob);
+    console.log(countPrioritize);
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,
@@ -302,6 +309,8 @@ class AdminController {
       prioritizeJob: mutipleJobToJSON(prioritizeJob),
       jobHighSalary: mutipleJobToJSON(jobHighSalary),
       favouriteJobs,
+      countPostJob,
+      countPrioritize,
     });
   }
 }
