@@ -78,7 +78,8 @@ header.jobdetail .center-jobdetail{
     color: #E63946;
     background-color: white;
 }
-.jobdetail-action button.btn-apply{
+.jobdetail-action button.btn-apply,
+.jobdetail-action a.btn-apply__notuser{
     outline: none;
     border: 1px solid $secondarycolor;
     height: 50px;
@@ -89,9 +90,19 @@ header.jobdetail .center-jobdetail{
     font-weight: 600;
     transition: .5s;
 }
-.jobdetail-action button.btn-apply:hover{
+.jobdetail-action a.btn-apply__notuser{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.jobdetail-action button.btn-apply:hover,
+.jobdetail-action a.btn-apply__notuser:hover{
     background-color: $secondarycolor;
     color: white;
+}
+.jobdetail-action a.btn-apply__notuser:hover{
+    text-decoration: none !important;
 }
 .jobdetail-action a{
     text-decoration: none;

@@ -1508,7 +1508,8 @@ header.jobdetail .center-jobdetail {
   color: #E63946;
   background-color: white; }
 
-.jobdetail-action button.btn-apply {
+.jobdetail-action button.btn-apply,
+.jobdetail-action a.btn-apply__notuser {
   outline: none;
   border: 1px solid #0072bc;
   height: 50px;
@@ -1519,9 +1520,19 @@ header.jobdetail .center-jobdetail {
   font-weight: 600;
   transition: .5s; }
 
-.jobdetail-action button.btn-apply:hover {
+.jobdetail-action a.btn-apply__notuser {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.jobdetail-action button.btn-apply:hover,
+.jobdetail-action a.btn-apply__notuser:hover {
   background-color: #0072bc;
   color: white; }
+
+.jobdetail-action a.btn-apply__notuser:hover {
+  text-decoration: none !important; }
 
 .jobdetail-action a {
   text-decoration: none;
@@ -6374,10 +6385,18 @@ header.company-detail .background-company-detail {
   background-color: white;
   border-radius: 5px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   padding: 20px 30px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04); }
+
+.revenue-chart h1 {
+  width: 100%;
+  font-size: 24px;
+  font-weight: 600;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #CACACA; }
 
 .revenue-chart #myChart {
   font-size: 16px; }
@@ -6457,6 +6476,7 @@ header.company-detail .background-company-detail {
 .revenue-details .title {
   text-transform: capitalize;
   font-size: 28px;
+  font-weight: 600;
   width: 100%;
   margin-bottom: 20px; }
 
@@ -6500,7 +6520,9 @@ header.company-detail .background-company-detail {
   font-weight: 600;
   text-transform: capitalize;
   width: 100%;
-  margin-bottom: 30px; }
+  margin-bottom: 20px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #cacaca; }
 
 .container-admin .detail-revenue .content__total-quarterly {
   display: flex;
@@ -6549,7 +6571,16 @@ header.company-detail .background-company-detail {
   background-color: white;
   border-radius: 5px;
   margin-top: 30px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04); }
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04);
+  align-self: start; }
+
+.container-admin .user-chart h1 {
+  font-size: 24px;
+  font-weight: 600;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #cacaca;
+  width: 100%;
+  margin-bottom: 20px; }
 
 .container-admin .user-chart .percentage-bar {
   display: flex;
@@ -6558,17 +6589,17 @@ header.company-detail .background-company-detail {
   align-items: center;
   width: 100%; }
 
-.container-admin .user-chart .percentage-bar h1 {
+.container-admin .user-chart .percentage-bar h2 {
   font-size: 24px;
   font-weight: 600;
-  margin: 12px 0; }
+  margin: 30px 0 12px 0; }
 
 .container-admin .user-chart .percentage-bar .frame-percent {
   width: 100%;
   height: 20px;
   border-radius: 10px;
   border: 1px solid #CACACA;
-  margin: 12px 0; }
+  margin: 16px 0; }
 
 .container-admin .user-chart .percentage-bar .percent-user {
   background-color: rgba(254, 210, 0, 0.5);
@@ -6596,7 +6627,8 @@ header.company-detail .background-company-detail {
   font-size: 14px;
   font-weight: 600; }
 
-.container-admin .list-user {
+.container-admin .list-user,
+.container-admin .list-job {
   width: 65%;
   display: flex;
   flex-direction: column;
@@ -6606,10 +6638,25 @@ header.company-detail .background-company-detail {
   border-radius: 5px;
   overflow: hidden;
   margin-top: 30px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04); }
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04);
+  align-self: flex-start; }
+
+.container-admin .list-job {
+  width: 95%; }
+
+.container-admin .list-user h1,
+.container-admin .list-job h1 {
+  width: 100%;
+  padding: 20px 12px;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: unset;
+  background-color: rgba(0, 114, 188, 0.4); }
 
 .container-admin .list-user .header__list-user,
-.container-admin .list-user .body__list-user {
+.container-admin .list-user .body__list-user,
+.container-admin .list-job .header__list-job,
+.container-admin .list-job .body__list-job {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -6617,29 +6664,78 @@ header.company-detail .background-company-detail {
   align-items: center;
   padding: 0 12px; }
 
-.container-admin .list-user .header__list-user {
-  padding: 20px 12px;
-  background-color: rgba(0, 114, 188, 0.4); }
+.container-admin .list-user .header__list-user,
+.container-admin .list-job .header__list-job {
+  padding: 16px 12px;
+  border-bottom: 1px solid #cacaca; }
 
 .container-admin .list-user .header__list-user span,
 .container-admin .list-user .body__list-user span {
   width: 28.33%; }
 
-.container-admin .list-user .header__list-user span {
+.container-admin .list-user .header__list-user span,
+.container-admin .list-job .header__list-job span {
   font-weight: 600; }
 
 .container-admin .list-user .header__list-user span.role,
 .container-admin .list-user .body__list-user span.role {
-  width: 15%; }
+  width: 12%; }
 
-.container-admin .list-user .body__list-user span {
+.container-admin .list-user .header__list-user span.phone,
+.container-admin .list-user .body__list-user span.phone {
+  width: 12%; }
+
+.container-admin .list-user .body__list-user span,
+.container-admin .list-job .body__list-job span {
   padding: 12px 0; }
 
-.container-admin .list-user .body__list-user span img {
+.container-admin .list-user .body__list-user span img,
+.container-admin .list-job .body__list-job span img {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   margin-right: 8px; }
+
+.container-admin .list-job .body__list-job span img {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4)); }
+
+.container-admin .list-job .header__list-job span,
+.container-admin .list-job .body__list-job span {
+  width: 25%; }
+
+.container-admin .list-job .body__list-job span.status,
+.container-admin .list-job .body__list-job span.date,
+.container-admin .list-job .header__list-job span.statusjob,
+.container-admin .list-job .header__list-job span.datejob {
+  width: 8%;
+  text-align: center; }
+
+.container-admin .list-job .body__list-job span.name,
+.container-admin .list-job .header__list-job span.namejob {
+  width: 30%; }
+
+.container-admin .list-job .body__list-job span.name {
+  padding-left: 12px; }
+
+.container-admin .list-job .body__list-job span.owner,
+.container-admin .list-job .header__list-job span.ownerjob {
+  width: 15%; }
+
+.container-admin .list-job .body__list-job {
+  position: relative;
+  margin: 2px 0;
+  border-top: 1px solid #cacaca;
+  border-bottom: 1px solid #cacaca;
+  border-right: 1px solid #cacaca; }
+
+.container-admin .list-job .body__list-job::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 100%;
+  background-color: rgba(0, 114, 188, 0.4); }
 
 .container-salary {
   background-color: #f5f5f5;
