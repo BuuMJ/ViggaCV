@@ -151,6 +151,32 @@
                     <button class="remove-user" type="button"><i class="bi bi-trash3"></i></button>
                 </form>
             </div>
+        <form class="box__edit-user">
+            <h1>Edit For {{this.fullname}}</h1>
+            <div class="main__edit-user">
+                <label for="fullname">Full Name</label>
+                <input type="text" name="fullname" id="fullname" value="{{this.fullname}}">
+            </div>
+            <div class="main__edit-user">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="**********">
+            </div>
+            <div class="main__edit-user">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" value="{{this.email}}">
+            </div>
+            <div class="main__edit-user">
+                <label for="phone">Phone</label>
+                <input type="text" name="phone" id="phone" value="{{this.phone}}">
+            </div>
+            <div class="main__edit-user main__checkbox">
+                <input id="checkbox" type="checkbox" required>
+                <label for="checkbox">Agree to the changes</label>
+            </div>
+            <div class="submit__edit-user">
+                <button>Save Edit</button>
+            </div>
+        </form>
         </div>
         {{/each}}
         <div class="pagination" style="padding-top: 20px; width: 100%; border-top: 1px solid #CACACA">
@@ -166,6 +192,7 @@
             <span class="ownerjob">Owner</span>
             <span class="statusjob">Status</span>
             <span class="datejob">Date Posting</span>
+            <span class="action">Action</span>
         </div>
         {{#each listJob}}
         <div class="body__list-job">
@@ -173,29 +200,45 @@
             <span class="owner"><img src="/{{this.avatar}}" alt=""> {{this.companyname}}</span>
             <span class="status" data-status="{{this.active}}"></span>
             <span class="date">{{this.createdAt}}</span>
+            <form class="action" action=""><button class="remove-job" type="button"><i class="bi bi-trash3"></i></button></form>
         </div>
         {{/each}}
     </div>
+<div class="overflow"></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.0.2/chartjs-plugin-annotation.min.js"></script>
 <script>
-    //check value before delete user
+    var overflowAdmin = document.querySelector('.container-admin .overflow');
+    var body = document.querySelector('body')
+    //check value before delete user & edit user
     var emailAdminCheck = document.querySelector('.container-admin').getAttribute('data-admin');
     var boxListUser = document.querySelectorAll('.body__list-user');
     boxListUser.forEach(function(user){
         var clickDeleteUser = user.querySelector('.action form .remove-user');
         var formDeleteUser = user.querySelector('.action form');
         clickDeleteUser.addEventListener('click',()=>{
-            let check = prompt("Please enter your email to delete")
+            let check = prompt("Please enter your email to delete this user")
             if(check !== emailAdminCheck){
                 alert('Wrong Email')
             }
             else{
                 formDeleteUser.submit()
             }
-        })
-    })
+        });
+        var clickEditUser = user.querySelector('.action .edit-user');
+        var boxEditUser = user.querySelector('.box__edit-user');
+        clickEditUser.addEventListener('click',()=>{
+            boxEditUser.style.display = 'flex';
+            overflowAdmin.style.display = 'block';
+            body.classList.add('modal-open');
+        });
+        overflowAdmin.addEventListener('click',()=>{
+            boxEditUser.style.display = 'none';
+            overflowAdmin.style.display = 'none';
+            body.classList.remove('modal-open');
+        });
+    });
     //check status job
     var boxListJob = document.querySelectorAll('.body__list-job');
     boxListJob.forEach(function(job){
@@ -209,6 +252,17 @@
             textStatus.innerHTML = 'Ongoing'
             textStatus.style.cssText = 'background-color: rgba(4,252,68,0.6);'
         };
+        var clickDeleteJob = job.querySelector('.container-admin .list-job .body__list-job .action .remove-job');
+        var formDeleteJob = job.querySelector('.container-admin .list-job .body__list-job .action');
+        clickDeleteJob.addEventListener('click',()=>{
+            let check = prompt("Please enter your email to delete this job")
+            if(check !== emailAdminCheck){
+                alert('Wrong Email')
+            }
+            else{
+                formDeleteJob.submit();
+            }
+        });
     });
     // chart total revenue
   var ctx = document.querySelector('.revenue-chart #myChart').getContext('2d');
@@ -460,8 +514,8 @@ document.querySelector('.percent-user').style.width = userPercentage + "%";
 document.querySelector('.percent-company').style.width = companyPercentage + "%";
 var textDataCountUser = document.querySelector('.container-admin .user-chart .percentage-bar .percent-user .data-count-user');
 var textDataCountCompany = document.querySelector('.container-admin .user-chart .percentage-bar .percent-company .data-count-company');
-textDataCountUser.innerHTML = userPercentage + '%';
-textDataCountCompany.innerHTML = companyPercentage + '%';
+textDataCountUser.innerHTML = userPercentage.toFixed(2) + '%';
+textDataCountCompany.innerHTML = companyPercentage.toFixed(2) + '%';
 // chart circle current month
 var percentageCurrent = (totalCurrentMonth / totalYears) * 100;
 var el = document.querySelector('.main__revenue-detail .circle-chart');

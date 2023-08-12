@@ -6328,6 +6328,17 @@ header.company-detail .background-company-detail {
   flex-wrap: wrap;
   padding: 30px 0; }
 
+.container-admin .overflow {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 19;
+  cursor: pointer; }
+
 .container-admin header {
   width: 100%;
   display: flex;
@@ -6643,6 +6654,9 @@ header.company-detail .background-company-detail {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04);
   align-self: flex-start; }
 
+.container-admin .list-user {
+  position: relative; }
+
 .container-admin .list-user h1,
 .container-admin .list-job h1 {
   width: 100%;
@@ -6663,9 +6677,98 @@ header.company-detail .background-company-detail {
   align-items: center;
   padding: 0 12px; }
 
+.container-admin .list-user .body__list-user .box__edit-user {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: start;
+  width: 80%;
+  border-radius: 5px;
+  background-color: white;
+  padding: 20px;
+  z-index: 20; }
+
+.container-admin .list-user .body__list-user .box__edit-user h1 {
+  font-size: 26px;
+  font-weight: 600;
+  text-transform: capitalize;
+  width: 100%;
+  background-color: unset;
+  padding-left: unset;
+  padding-top: unset; }
+
+.container-admin .list-user .body__list-user .box__edit-user .main__edit-user {
+  width: 48%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 0;
+  margin: 8px 0; }
+
+.container-admin .list-user .body__list-user .box__edit-user .main__checkbox {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center; }
+
+.container-admin .list-user .body__list-user .box__edit-user .main__edit-user input {
+  width: 70%;
+  border-radius: 5px;
+  background-color: transparent;
+  height: 40px;
+  border: 1px solid #cacaca;
+  padding: 4px 8px; }
+
+.container-admin .list-user .body__list-user .box__edit-user .main__edit-user label {
+  font-size: 18px;
+  width: 25%; }
+
+.container-admin .list-user .body__list-user .box__edit-user .main__checkbox input {
+  height: unset;
+  width: unset;
+  margin-right: 8px; }
+
+.container-admin .list-user .body__list-user .box__edit-user .main__checkbox label {
+  width: unset; }
+
+.container-admin .list-user .body__list-user .box__edit-user .submit__edit-user {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin-top: 30px; }
+
+.container-admin .list-user .body__list-user .box__edit-user .submit__edit-user button {
+  border: 1px solid #0072bc;
+  background-color: white;
+  color: #0072bc;
+  height: 100%;
+  width: 50%;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  transition: .5s; }
+
+.container-admin .list-user .body__list-user .box__edit-user .submit__edit-user button:hover {
+  background-color: #0072bc;
+  color: white; }
+
 .container-admin .list-user .body__list-user .action,
-.container-admin .list-user .header__list-user .action {
+.container-admin .list-user .header__list-user .action,
+.container-admin .list-job .body__list-job .action,
+.container-admin .list-job .header__list-job .action {
   width: 8%; }
+
+.container-admin .list-job .body__list-job .action,
+.container-admin .list-job .header__list-job .action {
+  text-align: center; }
 
 .container-admin .list-user .header__list-user .action {
   text-align: center; }
@@ -6675,19 +6778,22 @@ header.company-detail .background-company-detail {
   justify-content: space-around;
   align-items: center; }
 
-.container-admin .list-user .body__list-user .action i {
+.container-admin .list-user .body__list-user .action i,
+.container-admin .list-job .body__list-job .action i {
   font-size: 24px;
   cursor: pointer; }
 
 .container-admin .list-user .body__list-user .action .edit-user:hover i {
   color: #0093E9; }
 
-.container-admin .list-user .body__list-user .action form .remove-user {
+.container-admin .list-user .body__list-user .action form .remove-user,
+.container-admin .list-job .body__list-job .action .remove-job {
   border: none;
   outline: none;
   background-color: transparent; }
 
-.container-admin .list-user .body__list-user .action form .remove-user:hover i {
+.container-admin .list-user .body__list-user .action form .remove-user:hover i,
+.container-admin .list-job .body__list-job .action .remove-job:hover i {
   color: #FC0412; }
 
 .container-admin .list-user .header__list-user,
@@ -6711,9 +6817,11 @@ header.company-detail .background-company-detail {
 .container-admin .list-user .body__list-user span.phone {
   width: 12%; }
 
-.container-admin .list-user .body__list-user span,
-.container-admin .list-job .body__list-job span {
+.container-admin .list-user .body__list-user span {
   padding: 12px 0; }
+
+.container-admin .list-job .body__list-job span {
+  padding: 20px 0; }
 
 .container-admin .list-user .body__list-user span img,
 .container-admin .list-job .body__list-job span img {
@@ -6731,18 +6839,25 @@ header.company-detail .background-company-detail {
   padding-right: 6px; }
 
 .container-admin .list-job .body__list-job span.status,
-.container-admin .list-job .body__list-job span.date,
-.container-admin .list-job .header__list-job span.statusjob,
-.container-admin .list-job .header__list-job span.datejob {
+.container-admin .list-job .header__list-job span.statusjob {
   width: 10%;
   text-align: center; }
 
+.container-admin .list-job .body__list-job span.date,
+.container-admin .list-job .header__list-job span.datejob {
+  text-align: center;
+  width: 15%; }
+
 .container-admin .list-job .body__list-job span.name,
 .container-admin .list-job .header__list-job span.namejob {
-  width: 30%; }
+  width: 42%; }
 
 .container-admin .list-job .body__list-job span.name {
   padding-left: 12px; }
+
+.container-admin .list-job .body__list-job span.owner,
+.container-admin .list-job .header__list-job span.ownerjob {
+  width: 26%; }
 
 .container-admin .list-job .body__list-job {
   position: relative;
