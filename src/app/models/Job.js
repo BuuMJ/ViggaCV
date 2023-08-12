@@ -29,6 +29,11 @@ const Job = new Schema(
       type: Date,
       default: Date.now,
     },
+    request: {
+      type: String,
+      enum: ["post job", "prioritize", "non"],
+      default: "non",
+    },
   },
   {
     timestamps: true,

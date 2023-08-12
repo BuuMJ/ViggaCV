@@ -227,7 +227,6 @@ class AdminController {
     const countUser = await UserModel.countDocuments({ role: "user" });
     const countCompany = await UserModel.countDocuments({ role: "company" });
     const jobCount = await JobModel.countDocuments();
-    const listJob = await JobModel.find();
     const lockedJob = await JobModel.find({ active: false });
     const prioritizeJob = await JobModel.find({ prioritize: true });
     const jobHighSalary = await JobModel.find({
@@ -257,6 +256,7 @@ class AdminController {
       role: { $in: ["user", "company"] },
     });
     var page = req.query.page;
+    var pageListJob = req.query.pageJob;
     var PAGE_SIZE = 10;
     var total = Math.ceil(count / PAGE_SIZE);
     const pages = [];
@@ -280,14 +280,30 @@ class AdminController {
         .skip(skip)
         .limit(PAGE_SIZE);
     }
+    if (pageListJob) {
+      pageListJob = parseInt(pageListJob);
+      var skip = (pageListJob - 1) * PAGE_SIZE;
+      var listJob = await JobModel.find().skip(skip).limit(PAGE_SIZE);
+    } else {
+      pageListJob = 1;
+      var skip = (pageListJob - 1) * PAGE_SIZE;
+      var listJob = await JobModel.find().skip(skip).limit(PAGE_SIZE);
+    }
+
     const countPostJob = await RevenueModel.countDocuments({
       type: "post job",
     });
     const countPrioritize = await RevenueModel.countDocuments({
       type: "prioritize",
     });
-    console.log(countPostJob);
-    console.log(countPrioritize);
+
+    const listJobRequest = await JobModel.find({
+      request: { $in: ["post job", "prioritize"] },
+    });
+    const listRefund = await RevenueModel.find({ type: "refund" })
+      .populate({ path: "iduser", select: "fullname", model: "user" }) // sử dụng tên model 'user'
+      .select("money type jobname createdAt");
+
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,
@@ -312,7 +328,22 @@ class AdminController {
       favouriteJobs,
       countPostJob,
       countPrioritize,
+      pageListJob,
+      listJobRequest,
+      listRefund: mutipleJobToJSON(listRefund),
     });
+  }
+
+  async deleteUser(req, res, next) {
+    const idUser = req.params.id;
+    await UserModel.findByIdAndDelete(idUser);
+    res.redirect("back?message=Delete user successful");
+  }
+
+  async updateUser(req, res, next) {
+    const idUser = req.params.id;
+    await UserModel.findByIdAndUpdate(idUser, req.body);
+    res.redirect("back?message=Update user successful");
   }
 }
 module.exports = new AdminController();

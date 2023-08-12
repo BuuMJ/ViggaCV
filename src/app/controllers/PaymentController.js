@@ -112,6 +112,7 @@ class PaymentController {
                 idjob: jobID,
                 money: total,
                 type: "prioritize",
+                jobname: job.jobname,
                 paymentId: saleId,
               });
               await revenue.save();
@@ -282,6 +283,7 @@ class PaymentController {
                 money: 30,
                 type: "post job",
                 paymentId: saleId,
+                jobname: job.jobname,
               });
               await revenue.save();
               if (job) {
