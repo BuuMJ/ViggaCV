@@ -185,6 +185,13 @@
             {{/each}}
         </div>
     </div>
+    <div class="chart-job"
+    data-job-count="{{jobCount}}"
+    data-postjob-count="{{countPostJob}}"
+    data-adsjob-count="{{countPrioritize}}"
+    data-lockedjob-count="{{lockedJobCount}}">
+        <canvas id="jobChart" width="400" height="200"></canvas>
+    </div>
     <div id="job" class="list-job">
         <h1><i class="bi bi-table"></i> Data Table Jobs</h1>
         <div class="header__list-job">
@@ -203,6 +210,11 @@
             <form class="action" action="/admin/deleteJob/{{this._id}}?_method=DELETE" method="POST"><button class="remove-job" type="button"><i class="bi bi-trash3"></i></button></form>
         </div>
         {{/each}}
+        <div class="pagination" style="padding-top: 20px; width: 100%;">
+            {{#each pages}}
+            <a href="/admin?pageJob={{this}}" data-page-admin="{{this}}">{{this}}</a>
+            {{/each}}
+        </div>
     </div>
 <div class="overflow"></div>
 </div>
@@ -523,8 +535,8 @@ el.style.background = `conic-gradient(from 0deg, #D9AFD9 0%, #97D9E1 ${percentag
 var content = document.querySelector('.main__revenue-detail .circle-chart .content');
 content.innerHTML = parseInt(percentageCurrent) + '%';
 // pagination list user
-var getPagination = document.querySelectorAll('.pagination a');
-var paginationContainer = document.querySelector('.pagination');
+var getPagination = document.querySelectorAll('.list-user .pagination a');
+var paginationContainer = document.querySelector('.list-user .pagination');
 if (getPagination.length > 1) {
   paginationContainer.style.display = 'flex';
 } else {
@@ -536,17 +548,107 @@ getPagination.forEach(function(pageLink) {
       event.preventDefault();
     } else {
       var page = pageLink.getAttribute('data-page');
-      localStorage.setItem('currentPageJob', page);
+      localStorage.setItem('currentPageUserAdmin', page);
     }
   });
 });
 document.addEventListener('DOMContentLoaded', () => {
   const urlParams = new URLSearchParams(window.location.search);
   const pageFromURL = urlParams.get('page');
-  const currentPage = pageFromURL || localStorage.getItem('currentPageJob');
+  const currentPage = pageFromURL || localStorage.getItem('currentPageUserAdmin');
   if (currentPage !== null) {
     getPagination.forEach(function(pageLink) {
       var page = pageLink.getAttribute('data-page');
+      if (page == currentPage) {
+        pageLink.classList.add('active');
+      } else {
+        pageLink.classList.remove('active');
+      }
+    });
+  }
+});
+//chart job
+var totalJobs = parseInt(document.querySelector('.container-admin .chart-job').getAttribute('data-job-count'));
+var advertisedJobs = parseInt(document.querySelector('.container-admin .chart-job').getAttribute('data-adsjob-count')) 
+var paidJobs = parseInt(document.querySelector('.container-admin .chart-job').getAttribute('data-postjob-count')) 
+var blockedJob = parseInt(document.querySelector('.container-admin .chart-job').getAttribute('data-lockedjob-count')) 
+var otherJobs = totalJobs - advertisedJobs - paidJobs - blockedJob;
+
+var ctx = document.getElementById('jobChart').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Advertised job', 'High Paying Jobs', 'locked job', 'Normal job'],
+        datasets: [
+            {
+                label: 'Total Of All Jobs',
+                data: [advertisedJobs, paidJobs, blockedJob, otherJobs],
+                backgroundColor: [
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255,99,132,1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(0, 114, 188, 0.5)'
+                ]
+            }
+        ]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: totalJobs + 10
+            }
+        },
+         plugins: {
+            annotation: {
+                annotations: [
+                    {
+                        type: 'line',
+                        mode: 'horizontal',
+                        scaleID: 'y',
+                        value: totalJobs,
+                        borderColor: 'rgba(255, 0, 0, 0.2)',
+                        borderWidth: 2,
+                        label: {
+                            content: 'Total of all jobs: ' + totalJobs + ' Jobs',
+                            enabled: true,
+                            position: 'right',
+                            font: {
+                                size: 8
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+});
+
+//pagination list job
+var getPaginationJobAdmin = document.querySelectorAll('.list-job .pagination a');
+var paginationContainerJobAdmin = document.querySelector('.list-job .pagination');
+if (getPaginationJobAdmin.length > 1) {
+  paginationContainerJobAdmin.style.display = 'flex';
+} else {
+  paginationContainerJobAdmin.style.display = 'none';
+}
+getPaginationJobAdmin.forEach(function(pageLink) {
+  pageLink.addEventListener('click', function(event) {
+    if (pageLink.classList.contains('active')) {
+      event.preventDefault();
+    } else {
+      var page = pageLink.getAttribute('data-page-admin');
+      localStorage.setItem('currentPageJobAdmin', page);
+    }
+  });
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const pageFromURL = urlParams.get('pageJob');
+  const currentPage = pageFromURL || localStorage.getItem('currentPageJobAdmin');
+  if (currentPage !== null) {
+    getPaginationJobAdmin.forEach(function(pageLink) {
+      var page = pageLink.getAttribute('data-page-admin');
       if (page == currentPage) {
         pageLink.classList.add('active');
       } else {

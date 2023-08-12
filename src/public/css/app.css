@@ -6884,6 +6884,14 @@ header.company-detail .background-company-detail {
 .container-admin .material-symbols-outlined {
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48; }
 
+.container-admin .chart-job {
+  width: 65%;
+  padding: 20px 30px;
+  border-radius: 5px;
+  background-color: white;
+  margin-top: 30px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04); }
+
 .container-salary {
   background-color: #f5f5f5;
   width: 100%;
