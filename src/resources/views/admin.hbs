@@ -8,16 +8,16 @@
         <div class="box-total box__total-user">
             <p class="title">total user</p>
             <p class="total-content" data-user="{{countUser}}" data-company="{{countCompany}}"></p>
-            <a class="view-detail__total" href="#myChart">View Detail <i class="bi bi-chevron-double-down"></i></a>
+            <a class="view-detail__total" href="#user-chart">View Detail <i class="bi bi-chevron-double-down"></i></a>
         </div>
         <div class="box-total box__total-thismonth">
             <p class="title">total revenue this month</p>
-            <p class="total-content">$ {{totalRevenueCurrentMonth}}</p>
-            <a class="view-detail__total" href="#myChart">View Detail <i class="bi bi-chevron-double-down"></i></a>
+            <p class="total-content" data-current-month="{{totalRevenueCurrentMonth}}">$ {{totalRevenueCurrentMonth}}</p>
+            <a class="view-detail__total" href="#revenue">View Detail <i class="bi bi-chevron-double-down"></i></a>
         </div>
         <div class="box-total box__total-job">
-<p class="title">total revenue this month</p>
-            <p class="total-content">$ {{totalRevenueCurrentMonth}}</p>
+            <p class="title">total jobs</p>
+            <p class="total-content"><i class="bi bi-briefcase-fill"></i> {{jobCount}}</p>
             <a class="view-detail__total" href="#myChart">View Detail <i class="bi bi-chevron-double-down"></i></a>
         </div>
     </header>
@@ -44,13 +44,22 @@
     data-total="{{annualRevenue.0.totalRevenue}}">
         <canvas id="myChart"></canvas>
     </div>
-    <div class="revenue-details">
-        <h1 class="title">revenue details</h1>
-        <p class="detail-total">$ {{annualRevenue.0.totalRevenue}}</p>
-        <p class="available">total available revenue</p>
-        <p class="total-ads">Total job ads revenue: <b>$ {{revenueSummary.0.prioritizeRevenue}}</b></p>
-        <p class="total-postjob">Total revenue job high salary : <b>$ {{revenueSummary.0.postJobRevenue}}</b></p>
-        <p class="total-refund">Total amount returned: <b>$ {{totalRefund}}</b></p>
+    <div class="main__revenue-detail">
+        <div class="revenue-details">
+            <h1 class="title">revenue details</h1>
+            <p class="detail-total">$ {{annualRevenue.0.totalRevenue}}</p>
+            <p class="available">total available revenue</p>
+            <p class="total-ads">Total job ads revenue: <b>$ {{revenueSummary.0.prioritizeRevenue}}</b></p>
+            <p class="total-postjob">Total revenue job high salary : <b>$ {{revenueSummary.0.postJobRevenue}}</b></p>
+            <p class="total-refund">Total amount returned: <b>$ {{totalRefund}}</b></p>
+        </div>
+        <div class="box__circle-chart">
+            <h1>This Month's Revenue</h1>
+            <div class="circle-chart">
+                <div class="content"></div>
+            </div>
+            <p>This Month's Revenue <b>$ {{totalRevenueCurrentMonth}}</b> / <b>$ {{annualRevenue.0.totalRevenue}}</b> Total Revenue</p>
+        </div>
     </div>
     <div class="detail-revenue">
         <h1>quarterly revenue details</h1>
@@ -103,6 +112,39 @@
             </ul>
         </div>
     </div>
+    <div id="user-chart" class="user-chart" data-count-company="{{countCompany}}" data-count-user="{{countUser}}">
+        <canvas id="pieChart" width="400" height="400"></canvas>
+        <div class="percentage-bar">
+            <h1>Summary</h1>
+            <div class="frame-percent">
+                <div class="percent-user">
+                    <span class="data-count-user"></span>
+                </div>
+            </div>
+            <div class="frame-percent">
+                <div class="percent-company">
+                    <span class="data-count-company"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="list-user">
+        <div class="header__list-user">
+            <span>Full Name</span>
+            <span class="role">Type User</span>
+            <span>Email</span>
+            <span>Phone</span>
+        </div>
+        {{#each listUser}}
+        <div class="body__list-user">
+            <span><img src="{{getAvatar this}}" alt="">{{this.fullname}}</span>
+            <span class="role">{{this.role}}</span>
+            <span>{{this.email}}</span>
+            <span>{{this.phone}}</span>
+        </div>
+        {{/each}}
+    </div>
+
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.0.2/chartjs-plugin-annotation.min.js"></script>
@@ -110,19 +152,21 @@
     // chart total revenue
   var ctx = document.querySelector('.revenue-chart #myChart').getContext('2d');
   var totalYears = parseFloat(document.querySelector('.revenue-chart').getAttribute('data-total'));
+  var totalCurrentMonth = parseFloat(document.querySelector('header .box__total-thismonth .total-content').getAttribute('data-current-month'));
   var monthlyRevenues = [];
     var revenueChartElement = document.querySelector('.revenue-chart');
     for (var i = 0; i <= 11; i++) {
     var monthlyRevenue = revenueChartElement.getAttribute(`data-monthly${i}`);
     monthlyRevenues.push(parseFloat(monthlyRevenue));
     }
-    var quarterlyRevenues = []
+    console.log(monthlyRevenues)
+    /*var quarterlyRevenues = []
     for (var k = 0; k <= 3; k++){
         var quarterlyRevenue = revenueChartElement.getAttribute(`data-quaterly${k}`);
         quarterlyRevenues.push(parseFloat(quarterlyRevenue));
     }
     console.log(quarterlyRevenues)
-  console.log(monthlyRevenues)
+    */
 function getRandomColor() {
     var r = Math.floor(Math.random() * 256);
     var g = Math.floor(Math.random() * 256);
@@ -332,4 +376,35 @@ if(menuDetailFirst.style.display === 'block'){
 else{
     clickDetailFirst.innerHTML = 'View Detail <i class="bi bi-caret-down-fill"></i>'
 }
+// chart user
+var dataCountUser = parseInt(document.querySelector('.user-chart').getAttribute('data-count-user'));
+var dataCountCompany = parseInt(document.querySelector('.user-chart').getAttribute('data-count-company'));
+console.log(dataCountUser , dataCountCompany)
+var ctx = document.getElementById('pieChart').getContext('2d');
+var data = {
+    labels: ['User', 'Company'],
+    datasets: [{
+        data: [dataCountUser, dataCountCompany],
+        backgroundColor: ['rgba(254,210,0,0.5)', 'rgba(0,114,188,0.5)']
+    }]
+};
+var pieChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: data
+});
+var userPercentage = (dataCountUser / (dataCountUser + dataCountCompany)) * 100;
+var companyPercentage = 100 - userPercentage;
+console.log(userPercentage)
+document.querySelector('.percent-user').style.width = userPercentage + "%";
+document.querySelector('.percent-company').style.width = companyPercentage + "%";
+var textDataCountUser = document.querySelector('.container-admin .user-chart .percentage-bar .percent-user .data-count-user');
+var textDataCountCompany = document.querySelector('.container-admin .user-chart .percentage-bar .percent-company .data-count-company');
+textDataCountUser.innerHTML = userPercentage + '%';
+textDataCountCompany.innerHTML = companyPercentage + '%';
+// chart circle current month
+var percentageCurrent = (totalCurrentMonth / totalYears) * 100;
+var el = document.querySelector('.main__revenue-detail .circle-chart');
+el.style.background = `conic-gradient(from 0deg, #D9AFD9 0%, #97D9E1 ${percentageCurrent}%, lightgray ${percentageCurrent}%, lightgray 100%)`;
+var content = document.querySelector('.main__revenue-detail .circle-chart .content');
+content.innerHTML = parseInt(percentageCurrent) + '%'
 </script>

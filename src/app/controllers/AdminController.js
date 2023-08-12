@@ -296,6 +296,7 @@ class AdminController {
       revenueSummary,
       totalRevenueCurrentMonth,
       jobCount,
+      listUser: mutipleMongooseToObject(listUser),
       listJob: mutipleJobToJSON(listJob),
       lockedJob: mutipleJobToJSON(lockedJob),
       prioritizeJob: mutipleJobToJSON(prioritizeJob),
