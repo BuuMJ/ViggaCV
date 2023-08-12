@@ -54,7 +54,7 @@ module.exports = {
     return user.birthday;
   },
   getAvatar: function (user) {
-    if (user.avatar) {
+    if (user && user.avatar) {
       return `/${user.avatar}`;
     } else {
       return "/img/profileimg.png";
@@ -203,7 +203,7 @@ module.exports = {
   },
   getNoofemployee: function (company) {
     if (company && company.noofemployee) {
-      return company.noofemployee + ' staff';
+      return company.noofemployee + " staff";
     } else {
       return "Not updated yet";
     }
@@ -254,7 +254,7 @@ module.exports = {
       return options.inverse(this);
     }
   },
-  get: function(array, index){
+  get: function (array, index) {
     return array[index];
   },
   getfullnamecv: function (cvuser) {

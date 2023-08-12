@@ -68,6 +68,7 @@
 </div>
    <div class="overplay-jobdetail">
 </div>
+{{#if user}}
 <form class="box-apply-job" action="/scan/apply?id={{detail._id}}" method="POST" enctype="multipart/form-data">
         <header>
             <span>You are applying for <b>{{detail.jobname}}</b></span>
@@ -103,6 +104,8 @@
             <button class="submit-apply" type="submit">Apply CV</button>
         </div>
     </form>
+    
+    {{/if}}
 <script>
     var clickShowJobInfo = document.querySelector('.jobinfo');
     var showJobInfo = document.querySelector('.main-jobinfo');

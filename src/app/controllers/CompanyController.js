@@ -228,7 +228,6 @@ class CompanyController {
   //[GET] company detail
   async detail(req, res, next) {
     const idcompany = req.params.id;
-    const avatarCompany = await CompanyModel.findOne({ iduser: req.user._id });
     const company = await CompanyModel.findOne({ _id: idcompany });
     const leadership = company.leadership;
     var checkfl;
@@ -246,17 +245,16 @@ class CompanyController {
     } else {
       checkfl = { follow: "follow" };
     }
-    console.log(checkfl.follow);
+    console.log(req.user);
     JobModel.find({ iduser: company.iduser, active: true }).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
       res.render("companydetail", {
         title: "Company Detail",
         user: req.user,
         checkfl: checkfl,
-        companydetail: staffMongoseToObject(company),
+        company: staffMongoseToObject(company),
         leadership: staffMongoseToObject(company.leadership),
         listjob: listjob,
-        company: avatarCompany,
       });
     });
   }

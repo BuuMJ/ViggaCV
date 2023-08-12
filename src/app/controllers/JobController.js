@@ -586,25 +586,30 @@ class JobController {
   //[GET] Job Detail
   async detail(req, res, next) {
     try {
-      const user = req.user;
-      const idjob = req.params.id;
-      const viewed = await ViewedModel.findOne({
-        userid: user._id,
-        jobid: idjob,
-      });
-      if (viewed) {
-        await ViewedModel.findByIdAndUpdate(viewed._id, {});
+      if (req.user) {
+        var user = req.user;
       } else {
-        await ViewedModel.create({
+        var user = null;
+      }
+      const idjob = req.params.id;
+
+      if (req.user) {
+        const viewed = await ViewedModel.findOne({
           userid: user._id,
           jobid: idjob,
         });
-      }
-      const favourite = await FavouriteModel.findOne({
-        jobid: idjob,
-        userid: user._id,
-      });
-      if (req.user) {
+        if (viewed) {
+          await ViewedModel.findByIdAndUpdate(viewed._id, {});
+        } else {
+          await ViewedModel.create({
+            userid: user._id,
+            jobid: idjob,
+          });
+        }
+        const favourite = await FavouriteModel.findOne({
+          jobid: idjob,
+          userid: user._id,
+        });
         if (favourite) {
           var checksave = 2;
         } else {
@@ -619,7 +624,7 @@ class JobController {
       res.render("jobdetail", {
         title: "Job Detail",
         detail: staffMongoseToObject(detail),
-        user,
+        user: req.user,
         checksave,
         company: staffMongoseToObject(company), //cần sửa company chỗ này
         job: mutipleMongooseToObject(job),
