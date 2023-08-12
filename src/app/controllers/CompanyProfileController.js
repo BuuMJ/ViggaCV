@@ -601,9 +601,9 @@ class CompanyProfileController {
     const check = await RevenueModel.findOne({ idjob: idJob, type: type });
     if (check) {
       await JobModel.findByIdAndUpdate(idJob, { request: type });
-      res.redirect("back?message=Request successful");
+      res.redirect("/companyprofile?message=Request successful");
     } else {
-      res.redirect("back?message=Request successful");
+      res.redirect("/companyprofile?message=Refund request is not accepted");
     }
   }
 }

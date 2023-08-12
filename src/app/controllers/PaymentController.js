@@ -373,8 +373,21 @@ class PaymentController {
 
   async refund(req, res, next) {
     const idjob = req.params.id;
-    const type = "prioritize";
+    const type = req.body.type;
     const email = req.user.email;
+    if (type === "post job") {
+      const check = await RevenueModel.find({
+        idjob: idjob,
+        type: "prioritize",
+      })
+        .sort({ createdAt: -1 })
+        .limit(1);
+      if (check) {
+        return res.redirect(
+          "/companyprofile?message=Please refund post job first"
+        );
+      }
+    }
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -441,8 +454,6 @@ class PaymentController {
               res.redirect("back");
             }
           });
-
-          // Tiếp tục xử lý ở đây
         }
       }
     );

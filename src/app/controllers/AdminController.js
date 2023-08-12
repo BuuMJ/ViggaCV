@@ -297,13 +297,21 @@ class AdminController {
       type: "prioritize",
     });
 
-    const listJobRequest = await JobModel.find({
-      request: { $in: ["post job", "prioritize"] },
+    const listJobRequestPrioritize = await JobModel.find({
+      request: { $in: ["post job"] },
+    });
+    const listJobRequestPostJob = await JobModel.find({
+      request: { $in: ["post job"] },
     });
     const listRefund = await RevenueModel.find({ type: "refund" })
-      .populate({ path: "iduser", select: "fullname", model: "user" }) // sử dụng tên model 'user'
-      .select("money type jobname createdAt");
-
+      .populate({ path: "iduser", select: "fullname", model: "user" })
+      .populate({
+        path: "idcompany",
+        select: "companyname avatar",
+        model: "company",
+      })
+      .select("money type jobname updatedAt");
+    console.log(listRefund);
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,
@@ -322,28 +330,35 @@ class AdminController {
       pages,
       listUser: mutipleMongooseToObject(listUser),
       listJob: mutipleJobToJSON(listJob),
-      lockedJob: mutipleJobToJSON(lockedJob),
-      prioritizeJob: mutipleJobToJSON(prioritizeJob),
-      jobHighSalary: mutipleJobToJSON(jobHighSalary),
-      favouriteJobs,
-      countPostJob,
-      countPrioritize,
-      pageListJob,
-      listJobRequest,
-      listRefund: mutipleJobToJSON(listRefund),
+      lockedJob: mutipleJobToJSON(lockedJob), // danh sách các công việc bị khoá
+      prioritizeJob: mutipleJobToJSON(prioritizeJob), // danh sách công việc được quảng cáo
+      jobHighSalary: mutipleJobToJSON(jobHighSalary), // danh sách công việc lương trên 4000$
+      favouriteJobs: mutipleMongooseToObject(favouriteJobs), // danh sách công việc yêu thích
+      countPostJob, // số công việc lươn trên 4000$
+      countPrioritize, // số công việc quảng cáo
+      pageListJob, // phân trang list job
+      listJobRequestPostJob: mutipleJobToJSON(listJobRequestPostJob), // danh sách công việc yêu cầu refund post job
+      listJobRequestPrioritize: mutipleJobToJSON(listJobRequestPrioritize), //danh sách công việc yêu cầu refund quảng cáo job
+      listRefund: mutipleJobToJSON(listRefund), // danh sách công việc đã refund thành công
     });
   }
 
   async deleteUser(req, res, next) {
     const idUser = req.params.id;
     await UserModel.findByIdAndDelete(idUser);
-    res.redirect("back?message=Delete user successful");
+    res.redirect("/admin?message=Delete user successful");
   }
 
   async updateUser(req, res, next) {
     const idUser = req.params.id;
     await UserModel.findByIdAndUpdate(idUser, req.body);
-    res.redirect("back?message=Update user successful");
+    res.redirect("/admin?message=Update user successful");
+  }
+
+  async deleteJob(req, res, next) {
+    const idJob = req.params.id;
+    await JobModel.findByIdAndDelete(idJob);
+    res.redirect("/admin?message=Delete job successful");
   }
 }
 module.exports = new AdminController();

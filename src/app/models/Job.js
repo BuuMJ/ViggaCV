@@ -31,7 +31,7 @@ const Job = new Schema(
     },
     request: {
       type: String,
-      enum: ["post job", "prioritize", "non"],
+      enum: ["post job", "prioritize", "non", "all"],
       default: "non",
     },
   },

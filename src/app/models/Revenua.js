@@ -34,6 +34,11 @@ const revenueSchema = new Schema(
             .tz("Asia/Ho_Chi_Minh")
             .format("DD/MM/YYYY");
         }
+        if (ret.updatedAt) {
+          ret.updatedAt = moment(ret.updatedAt)
+            .tz("Asia/Ho_Chi_Minh")
+            .format("DD/MM/YYYY");
+        }
       },
     },
   }
