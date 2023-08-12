@@ -192,6 +192,7 @@
             <span class="ownerjob">Owner</span>
             <span class="statusjob">Status</span>
             <span class="datejob">Date Posting</span>
+            <span class="action">Action</span>
         </div>
         {{#each listJob}}
         <div class="body__list-job">
@@ -199,6 +200,7 @@
             <span class="owner"><img src="/{{this.avatar}}" alt=""> {{this.companyname}}</span>
             <span class="status" data-status="{{this.active}}"></span>
             <span class="date">{{this.createdAt}}</span>
+            <form class="action" action=""><button class="remove-job" type="button"><i class="bi bi-trash3"></i></button></form>
         </div>
         {{/each}}
     </div>
@@ -216,7 +218,7 @@
         var clickDeleteUser = user.querySelector('.action form .remove-user');
         var formDeleteUser = user.querySelector('.action form');
         clickDeleteUser.addEventListener('click',()=>{
-            let check = prompt("Please enter your email to delete")
+            let check = prompt("Please enter your email to delete this user")
             if(check !== emailAdminCheck){
                 alert('Wrong Email')
             }
@@ -250,6 +252,17 @@
             textStatus.innerHTML = 'Ongoing'
             textStatus.style.cssText = 'background-color: rgba(4,252,68,0.6);'
         };
+        var clickDeleteJob = job.querySelector('.container-admin .list-job .body__list-job .action .remove-job');
+        var formDeleteJob = job.querySelector('.container-admin .list-job .body__list-job .action');
+        clickDeleteJob.addEventListener('click',()=>{
+            let check = prompt("Please enter your email to delete this job")
+            if(check !== emailAdminCheck){
+                alert('Wrong Email')
+            }
+            else{
+                formDeleteJob.submit();
+            }
+        });
     });
     // chart total revenue
   var ctx = document.querySelector('.revenue-chart #myChart').getContext('2d');

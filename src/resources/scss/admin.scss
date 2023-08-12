@@ -441,8 +441,14 @@
     color: white;
 }
 .container-admin .list-user .body__list-user .action,
-.container-admin .list-user .header__list-user .action{
+.container-admin .list-user .header__list-user .action,
+.container-admin .list-job .body__list-job .action,
+.container-admin .list-job .header__list-job .action{
     width: 8%;
+}
+.container-admin .list-job .body__list-job .action,
+.container-admin .list-job .header__list-job .action{
+    text-align: center;
 }
 .container-admin .list-user .header__list-user .action{
     text-align: center;
@@ -452,19 +458,22 @@
     justify-content: space-around;
     align-items: center;
 }
-.container-admin .list-user .body__list-user .action i{
+.container-admin .list-user .body__list-user .action i,
+.container-admin .list-job .body__list-job .action i{
     font-size: 24px;
     cursor: pointer;
 }
-.container-admin .list-user .body__list-user .action .edit-user:hover i {
+.container-admin .list-user .body__list-user .action .edit-user:hover i{
     color: #0093E9;
 }
-.container-admin .list-user .body__list-user .action form .remove-user{
+.container-admin .list-user .body__list-user .action form .remove-user,
+.container-admin .list-job .body__list-job .action .remove-job{
     border: none;
     outline: none;
     background-color: transparent;
 }
-.container-admin .list-user .body__list-user .action form .remove-user:hover i {
+.container-admin .list-user .body__list-user .action form .remove-user:hover i,
+.container-admin .list-job .body__list-job .action .remove-job:hover i {
     color: #FC0412;
 }
 .container-admin .list-user .header__list-user,
@@ -488,9 +497,11 @@
 .container-admin .list-user .body__list-user span.phone{
     width: 12%;
 }
-.container-admin .list-user .body__list-user span,
-.container-admin .list-job .body__list-job span{
+.container-admin .list-user .body__list-user span{
     padding: 12px 0;
+}
+.container-admin .list-job .body__list-job span{
+    padding: 20px 0;
 }
 .container-admin .list-user .body__list-user span img,
 .container-admin .list-job .body__list-job span img{
@@ -508,23 +519,26 @@
     padding-right: 6px;
 }
 .container-admin .list-job .body__list-job span.status,
-.container-admin .list-job .body__list-job span.date,
-.container-admin .list-job .header__list-job span.statusjob,
-.container-admin .list-job .header__list-job span.datejob{
+.container-admin .list-job .header__list-job span.statusjob{
     width: 10%;
     text-align: center;
 }
+.container-admin .list-job .body__list-job span.date,
+.container-admin .list-job .header__list-job span.datejob{
+    text-align: center;
+    width: 15%;
+}
 .container-admin .list-job .body__list-job span.name,
 .container-admin .list-job .header__list-job span.namejob{
-    width: 30%;
+    width: 42%;
 }
 .container-admin .list-job .body__list-job span.name{
     padding-left: 12px;
 }
-// .container-admin .list-job .body__list-job span.owner,
-// .container-admin .list-job .header__list-job span.ownerjob{
-//     width: 15%;
-// }
+.container-admin .list-job .body__list-job span.owner,
+.container-admin .list-job .header__list-job span.ownerjob{
+    width: 26%;
+}
 .container-admin .list-job .body__list-job{
     position: relative;
     margin: 2px 0;
