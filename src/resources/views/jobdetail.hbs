@@ -7,7 +7,11 @@
         <span class="forth-text">{{detail.salary}}</span>
     </div>
     <div class="jobdetail-action">
+        {{#if user}}
         <button class="btn-apply" type="button" >Apply Now</button>
+        {{else}}
+        <a class="btn-apply__notuser" href="/login">Apply Now</a>
+        {{/if}}
         <form class="function__check-save" action="/job/favourite?id={{detail._id}}" method="POST">
             <button title="Save Job" class="check-save__job" type="submit" data-check-save="{{checkSave checksave}}"><i class="bi bi-heart"></i></button>
         </form>
@@ -66,9 +70,9 @@
             </ul>
         </div>
 </div>
+{{#if user}}
    <div class="overplay-jobdetail">
 </div>
-{{#if user}}
 <form class="box-apply-job" action="/scan/apply?id={{detail._id}}" method="POST" enctype="multipart/form-data">
         <header>
             <span>You are applying for <b>{{detail.jobname}}</b></span>
