@@ -18,7 +18,7 @@
         <div class="box-total box__total-job">
             <p class="title">total jobs</p>
             <p class="total-content"><i class="bi bi-briefcase-fill"></i> {{jobCount}}</p>
-            <a class="view-detail__total" href="#myChart">View Detail <i class="bi bi-chevron-double-down"></i></a>
+            <a class="view-detail__total" href="#job">View Detail <i class="bi bi-chevron-double-down"></i></a>
         </div>
     </header>
     <div id="revenue" class="revenue-chart" 
@@ -42,7 +42,7 @@
     data-quaterly3="{{quarterlyRevenue.3.totalRevenue}}"
     {{!-- total --}}
     data-total="{{annualRevenue.0.totalRevenue}}">
-    <h1>Bar Chart Revenue</h1>
+    <h1><i class="bi bi-bar-chart-fill"></i> Bar Chart Revenue</h1>
         <canvas id="myChart"></canvas>
     </div>
     <div class="main__revenue-detail">
@@ -114,7 +114,7 @@
         </div>
     </div>
     <div id="user-chart" class="user-chart" data-count-company="{{countCompany}}" data-count-user="{{countUser}}">
-        <h1>Doughnut Chart user</h1>
+        <h1><span class="material-symbols-outlined">donut_small</span> Doughnut Chart user</h1>
         <canvas id="pieChart" width="400" height="400"></canvas>
         <div class="percentage-bar">
             <h2>Summary</h2>
@@ -131,7 +131,7 @@
         </div>
     </div>
     <div class="list-user">
-        <h1>Data Table User</h1>
+        <h1><i class="bi bi-table"></i> Data Table User</h1>
         <div class="header__list-user">
             <span>Full Name</span>
             <span class="role">Type User</span>
@@ -185,8 +185,8 @@
             {{/each}}
         </div>
     </div>
-    <div class="list-job">
-        <h1>Data Table Jobs</h1>
+    <div id="job" class="list-job">
+        <h1><i class="bi bi-table"></i> Data Table Jobs</h1>
         <div class="header__list-job">
             <span class="namejob">Name Job</span>
             <span class="ownerjob">Owner</span>
