@@ -1,4 +1,4 @@
-<div class="container-admin">
+<div class="container-admin" data-admin="{{getEmail user}}">
     <header>
         <div class="box-total">
             <p class="title">total revenue</p>
@@ -52,7 +52,7 @@
             <p class="available">total available revenue</p>
             <p class="total-ads">Total Job Ads Revenue: <b>$ {{revenueSummary.0.prioritizeRevenue}}</b></p>
             <p class="total-postjob">Total Revenue Job High Salary : <b>$ {{revenueSummary.0.postJobRevenue}}</b></p>
-            <p class="total-refund">Total Refunded Amount: <b>$ {{totalRefund}}</b></p>
+            <p class="total-refund">Total Refunded Amount: <b>-$ {{totalRefund}}</b></p>
         </div>
         <div class="box__circle-chart">
             <h1>This Month's Revenue</h1>
@@ -137,6 +137,7 @@
             <span class="role">Type User</span>
             <span>Email</span>
             <span class="phone">Phone</span>
+            <span class="action">Action</span>
         </div>
         {{#each listUser}}
         <div class="body__list-user">
@@ -144,6 +145,12 @@
             <span class="role">{{this.role}}</span>
             <span>{{this.email}}</span>
             <span class="phone">{{this.phone}}</span>
+            <div class="action">
+                <span class="edit-user"><i class="bi bi-gear"></i></span>
+                <form>
+                    <button class="remove-user" type="button"><i class="bi bi-trash3"></i></button>
+                </form>
+            </div>
         </div>
         {{/each}}
         <div class="pagination" style="padding-top: 20px; width: 100%; border-top: 1px solid #CACACA">
@@ -173,6 +180,22 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.0.2/chartjs-plugin-annotation.min.js"></script>
 <script>
+    //check value before delete user
+    var emailAdminCheck = document.querySelector('.container-admin').getAttribute('data-admin');
+    var boxListUser = document.querySelectorAll('.body__list-user');
+    boxListUser.forEach(function(user){
+        var clickDeleteUser = user.querySelector('.action form .remove-user');
+        var formDeleteUser = user.querySelector('.action form');
+        clickDeleteUser.addEventListener('click',()=>{
+            let check = prompt("Please enter your email to delete")
+            if(check !== emailAdminCheck){
+                alert('Wrong Email')
+            }
+            else{
+                formDeleteUser.submit()
+            }
+        })
+    })
     //check status job
     var boxListJob = document.querySelectorAll('.body__list-job');
     boxListJob.forEach(function(job){
