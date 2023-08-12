@@ -15,6 +15,7 @@ const { subscribe } = require("./HomeController");
 const UserModel = require("../models/User");
 const QualifiedModel = require("../models/Qualified");
 const UnsatisfactoryModel = require("../models/Unsatisfactory");
+const RevenueModel = require("../models/Revenua");
 
 class CompanyProfileController {
   //[GET] Company profile
@@ -39,38 +40,40 @@ class CompanyProfileController {
       listcompany.toObject()
     );
     // console.log(listcompany + "DAY LA DANH SACH COMPANY SAU KHI TIM");
-    JobModel.find({ iduser: req.user._id }).then(async (listjob) => {
-      listjob = await Promise.all(
-        listjob.map(async (job) => {
-          const jobObject = job.toJSON();
-          const qualifiedCount = await QualifiedModel.countDocuments({
-            jobid: job._id.toString(),
-          });
-          const unsatisfactoryCount = await UnsatisfactoryModel.countDocuments({
-            jobid: job._id.toString(),
-          });
-          jobObject.appliedCount = qualifiedCount + unsatisfactoryCount; // Tổng số CV đã apply
-          return jobObject;
-        })
-      );
+    JobModel.find({ iduser: req.user._id })
+      .sort({ createdAt: -1 })
+      .then(async (listjob) => {
+        listjob = await Promise.all(
+          listjob.map(async (job) => {
+            const jobObject = job.toJSON();
+            const qualifiedCount = await QualifiedModel.countDocuments({
+              jobid: job._id.toString(),
+            });
+            const unsatisfactoryCount =
+              await UnsatisfactoryModel.countDocuments({
+                jobid: job._id.toString(),
+              });
+            jobObject.appliedCount = qualifiedCount + unsatisfactoryCount; // Tổng số CV đã apply
+            return jobObject;
+          })
+        );
 
-      res.render("companyprofile", {
-        title: "Company",
-        user: req.user,
-        company: company,
-        listcompany: Listcompany,
-        listjob,
-        address,
-        leader: leadership,
-        leadership: staffMongoseToObject(leadership),
+        res.render("companyprofile", {
+          title: "Company",
+          user: req.user,
+          company: company,
+          listcompany: Listcompany,
+          listjob,
+          address,
+          leader: leadership,
+          leadership: staffMongoseToObject(leadership),
+        });
       });
-    });
   }
 
   //[PUT] edit  company profile
   async apicompanyprofile(req, res, next) {
     try {
-      console.log("Đã tới đâyyyyyyyyyyyyyyyyyyyyyy");
       const iduser = req.user._id;
       const companyname = req.body.companyName;
       const companyaddress = req.body.companyAddress;
@@ -589,6 +592,18 @@ class CompanyProfileController {
       res
         .status(500)
         .send({ message: "An error occurred while blocking the job." });
+    }
+  }
+
+  async request(req, res, next) {
+    const idJob = req.params.id;
+    const type = req.body.type;
+    const check = await RevenueModel.findOne({ idjob: idJob, type: type });
+    if (check) {
+      await JobModel.findByIdAndUpdate(idJob, { request: type });
+      res.redirect("/companyprofile?message=Request successful");
+    } else {
+      res.redirect("/companyprofile?message=Refund request is not accepted");
     }
   }
 }

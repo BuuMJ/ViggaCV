@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
+const moment = require("moment-timezone");
+
+const Schema = mongoose.Schema;
 
 const revenueSchema = new Schema(
   {
@@ -20,10 +22,25 @@ const revenueSchema = new Schema(
       enum: ["post job", "prioritize", "refund"],
       required: true,
     },
+    jobname: String,
     paymentId: String,
   },
   {
     timestamps: true,
+    toJSON: {
+      transform: function (doc, ret) {
+        if (ret.createdAt) {
+          ret.createdAt = moment(ret.createdAt)
+            .tz("Asia/Ho_Chi_Minh")
+            .format("DD/MM/YYYY");
+        }
+        if (ret.updatedAt) {
+          ret.updatedAt = moment(ret.updatedAt)
+            .tz("Asia/Ho_Chi_Minh")
+            .format("DD/MM/YYYY");
+        }
+      },
+    },
   }
 );
 

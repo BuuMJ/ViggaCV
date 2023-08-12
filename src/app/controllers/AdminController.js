@@ -227,7 +227,6 @@ class AdminController {
     const countUser = await UserModel.countDocuments({ role: "user" });
     const countCompany = await UserModel.countDocuments({ role: "company" });
     const jobCount = await JobModel.countDocuments();
-    const listJob = await JobModel.find();
     const lockedJob = await JobModel.find({ active: false });
     const prioritizeJob = await JobModel.find({ prioritize: true });
     const jobHighSalary = await JobModel.find({
@@ -257,6 +256,7 @@ class AdminController {
       role: { $in: ["user", "company"] },
     });
     var page = req.query.page;
+    var pageListJob = req.query.pageJob;
     var PAGE_SIZE = 10;
     var total = Math.ceil(count / PAGE_SIZE);
     const pages = [];
@@ -280,7 +280,37 @@ class AdminController {
         .skip(skip)
         .limit(PAGE_SIZE);
     }
-    console.log(listUser);
+    if (pageListJob) {
+      pageListJob = parseInt(pageListJob);
+      var skip = (pageListJob - 1) * PAGE_SIZE;
+      var listJob = await JobModel.find().skip(skip).limit(PAGE_SIZE);
+    } else {
+      pageListJob = 1;
+      var skip = (pageListJob - 1) * PAGE_SIZE;
+      var listJob = await JobModel.find().skip(skip).limit(PAGE_SIZE);
+    }
+
+    const countPostJob = await RevenueModel.countDocuments({
+      type: "post job",
+    });
+    const countPrioritize = await RevenueModel.countDocuments({
+      type: "prioritize",
+    });
+
+    const listJobRequestPrioritize = await JobModel.find({
+      request: { $in: ["post job"] },
+    });
+    const listJobRequestPostJob = await JobModel.find({
+      request: { $in: ["post job"] },
+    });
+    const listRefund = await RevenueModel.find({ type: "refund" })
+      .populate({ path: "iduser", select: "fullname", model: "user" })
+      .populate({
+        path: "idcompany",
+        select: "companyname avatar",
+        model: "company",
+      })
+      .select("money type jobname updatedAt");
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,
@@ -299,11 +329,45 @@ class AdminController {
       pages,
       listUser: mutipleMongooseToObject(listUser),
       listJob: mutipleJobToJSON(listJob),
-      lockedJob: mutipleJobToJSON(lockedJob),
-      prioritizeJob: mutipleJobToJSON(prioritizeJob),
-      jobHighSalary: mutipleJobToJSON(jobHighSalary),
-      favouriteJobs,
+      lockedJob: mutipleJobToJSON(lockedJob), // danh sách các công việc bị khoá
+      prioritizeJob: mutipleJobToJSON(prioritizeJob), // danh sách công việc được quảng cáo
+      jobHighSalary: mutipleJobToJSON(jobHighSalary), // danh sách công việc lương trên 4000$
+      favouriteJobs, // danh sách công việc yêu thích
+      countPostJob, // số công việc lươn trên 4000$
+      countPrioritize, // số công việc quảng cáo
+      pageListJob, // phân trang list job
+      listJobRequestPostJob: mutipleJobToJSON(listJobRequestPostJob), // danh sách công việc yêu cầu refund post job
+      listJobRequestPrioritize: mutipleJobToJSON(listJobRequestPrioritize), //danh sách công việc yêu cầu refund quảng cáo job
+      listRefund: mutipleJobToJSON(listRefund), // danh sách công việc đã refund thành công
     });
+  }
+
+  async deleteUser(req, res, next) {
+    const idUser = req.params.id;
+    await UserModel.findByIdAndDelete(idUser);
+    res.redirect("/admin?message=Delete user successful");
+  }
+
+  async updateUser(req, res, next) {
+    console.log("đã tới trang chỉnh sửa user");
+    console.log(req.body.email);
+    console.log(req.body.phone);
+    const idUser = req.params.id;
+    const checkEmail = await UserModel.findOne({ email: req.body.email });
+    const checkPhone = await UserModel.findOne({ phone: req.body.phone });
+    if (checkEmail || checkPhone) {
+      return res.redirect(
+        "/admin?message=phone number or email already in use"
+      );
+    }
+    await UserModel.findByIdAndUpdate(idUser, req.body);
+    res.redirect("/admin?message=Update user successful");
+  }
+
+  async deleteJob(req, res, next) {
+    const idJob = req.params.id;
+    await JobModel.findByIdAndDelete(idJob);
+    res.redirect("/admin?message=Delete job successful");
   }
 }
 module.exports = new AdminController();
