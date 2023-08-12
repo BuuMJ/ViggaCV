@@ -145,6 +145,50 @@
     </form>
 </div>
 {{else}}
+<div class="main-profile">
+    <div class="header-profile">
+        <div class="header-main-text">
+            <span class="header-profile-primary">Hello {{getFullname user}}</span>
+            <span class="header-profile-secondary">This page is your profile. Clicking the settings button allows you to edit the information</span>
+        </div>
+        <button class="btn-setting">Setting <i class="bi bi-gear"></i></button>
+    </div>
+    <form class="content-profile" method="POST" action="/profile/edit?_method=PUT" enctype="multipart/form-data">
+        <div class="profile-img">
+            <label for="file-user"><img class="user-avatar" src="{{getAvatar user}}" alt=""></label>
+            <input id="file-user" name="avatar" type="file" accept="image/*">
+            <label for="file-user" class="edit-img"><span>Change Avatar</span></label>
+            <label class="camera-edit camera-user-edit camera-user-company" for="file-user"><i class="bi bi-camera"></i></label>
+        </div>
+        <div class="content-profile-header">
+            <span>Your Account</span>
+        </div>
+        <div class="content-profile-main" >
+            <span>USER INFORMATION</span>
+            <div class="profile-info-user">
+                <div class="profile-user">
+                    <label for="username-profile">User Name</label>
+                    <input id="username-profile" type="text" value="{{getName user}}" readonly>
+                </div>
+                 <div class="profile-user email-profile">
+                    <label for="email-profile">Email Address</label>
+                    <input id="email-profile" type="email" value="{{getEmail user}}" readonly>
+                </div>
+                <div class="profile-user">
+                    <label for="fullname">Full Name</label>
+                    <input id="fullname" name="fullname" type="text" value="{{getFullname user}}">
+                </div>
+                <div class="profile-user password-profile">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password">
+                </div>
+            </div>
+            <div class="profile-action">
+                <button class="btn-save" type="submit">Save Profile</button>
+            </div>
+        </div>
+    </form>
+</div>
 {{/ifeq}}
 <script>
 var btnSetting = document.querySelector('.btn-setting');

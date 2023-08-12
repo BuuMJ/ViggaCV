@@ -181,6 +181,9 @@
 .revenue-details p.total-refund{
     border-bottom: unset;
 }
+.revenue-details p.total-refund b{
+    color: #FC0412;
+}
 .container-admin .detail-revenue{
     display: flex;
     flex-direction: row;
@@ -251,7 +254,6 @@
     border-radius: 5px;
     margin-top: 30px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.04);
-    align-self: start;
 }
 .container-admin .user-chart h1{
     font-size: 24px;
@@ -321,9 +323,6 @@
     box-shadow: 0 5px 10px rgba(0,0,0,0.04);
     align-self: flex-start;
 }
-.container-admin .list-job{
-    width: 95%;
-}
 .container-admin .list-user h1,
 .container-admin .list-job h1{
     width: 100%;
@@ -344,6 +343,33 @@
     align-items: center;
     padding: 0 12px;
 }
+.container-admin .list-user .body__list-user .action,
+.container-admin .list-user .header__list-user .action{
+    width: 8%;
+}
+.container-admin .list-user .header__list-user .action{
+    text-align: center;
+}
+.container-admin .list-user .body__list-user .action{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.container-admin .list-user .body__list-user .action i{
+    font-size: 24px;
+    cursor: pointer;
+}
+.container-admin .list-user .body__list-user .action .edit-user:hover i {
+    color: #0093E9;
+}
+.container-admin .list-user .body__list-user .action form .remove-user{
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+.container-admin .list-user .body__list-user .action form .remove-user:hover i {
+    color: #FC0412;
+}
 .container-admin .list-user .header__list-user,
 .container-admin .list-job .header__list-job{
     padding: 16px 12px;
@@ -351,7 +377,7 @@
 }
 .container-admin .list-user .header__list-user span,
 .container-admin .list-user .body__list-user span{
-    width: 28.33%;
+    width: 32%;
 }
 .container-admin .list-user .header__list-user span,
 .container-admin .list-job .header__list-job span{
@@ -359,7 +385,7 @@
 }
 .container-admin .list-user .header__list-user span.role,
 .container-admin .list-user .body__list-user span.role{
-    width: 12%;
+    width: 16%;
 }
 .container-admin .list-user .header__list-user span.phone,
 .container-admin .list-user .body__list-user span.phone{
@@ -382,12 +408,13 @@
 .container-admin .list-job .header__list-job span,
 .container-admin .list-job .body__list-job span{
     width: 25%;
+    padding-right: 6px;
 }
 .container-admin .list-job .body__list-job span.status,
 .container-admin .list-job .body__list-job span.date,
 .container-admin .list-job .header__list-job span.statusjob,
 .container-admin .list-job .header__list-job span.datejob{
-    width: 8%;
+    width: 10%;
     text-align: center;
 }
 .container-admin .list-job .body__list-job span.name,
@@ -397,10 +424,10 @@
 .container-admin .list-job .body__list-job span.name{
     padding-left: 12px;
 }
-.container-admin .list-job .body__list-job span.owner,
-.container-admin .list-job .header__list-job span.ownerjob{
-    width: 15%;
-}
+// .container-admin .list-job .body__list-job span.owner,
+// .container-admin .list-job .header__list-job span.ownerjob{
+//     width: 15%;
+// }
 .container-admin .list-job .body__list-job{
     position: relative;
     margin: 2px 0;
