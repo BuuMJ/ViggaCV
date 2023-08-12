@@ -311,7 +311,6 @@ class AdminController {
         model: "company",
       })
       .select("money type jobname updatedAt");
-    console.log(listRefund);
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,
@@ -333,7 +332,7 @@ class AdminController {
       lockedJob: mutipleJobToJSON(lockedJob), // danh sách các công việc bị khoá
       prioritizeJob: mutipleJobToJSON(prioritizeJob), // danh sách công việc được quảng cáo
       jobHighSalary: mutipleJobToJSON(jobHighSalary), // danh sách công việc lương trên 4000$
-      favouriteJobs: mutipleMongooseToObject(favouriteJobs), // danh sách công việc yêu thích
+      favouriteJobs, // danh sách công việc yêu thích
       countPostJob, // số công việc lươn trên 4000$
       countPrioritize, // số công việc quảng cáo
       pageListJob, // phân trang list job
@@ -350,7 +349,17 @@ class AdminController {
   }
 
   async updateUser(req, res, next) {
+    console.log("đã tới trang chỉnh sửa user");
+    console.log(req.body.email);
+    console.log(req.body.phone);
     const idUser = req.params.id;
+    const checkEmail = await UserModel.findOne({ email: req.body.email });
+    const checkPhone = await UserModel.findOne({ phone: req.body.phone });
+    if (checkEmail || checkPhone) {
+      return res.redirect(
+        "/admin?message=phone number or email already in use"
+      );
+    }
     await UserModel.findByIdAndUpdate(idUser, req.body);
     res.redirect("/admin?message=Update user successful");
   }

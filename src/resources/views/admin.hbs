@@ -151,7 +151,7 @@
                     <button class="remove-user" type="button"><i class="bi bi-trash3"></i></button>
                 </form>
             </div>
-        <form class="box__edit-user">
+        <form class="box__edit-user" action="/admin/updateUser/{{this._id}}?_method=PUT" method="POST">
             <h1>Edit For {{this.fullname}}</h1>
             <div class="main__edit-user">
                 <label for="fullname">Full Name</label>
@@ -174,7 +174,7 @@
                 <label for="checkbox">Agree to the changes</label>
             </div>
             <div class="submit__edit-user">
-                <button>Save Edit</button>
+                <button type="submit">Save Edit</button>
             </div>
         </form>
         </div>
@@ -200,7 +200,7 @@
             <span class="owner"><img src="/{{this.avatar}}" alt=""> {{this.companyname}}</span>
             <span class="status" data-status="{{this.active}}"></span>
             <span class="date">{{this.createdAt}}</span>
-            <form class="action" action=""><button class="remove-job" type="button"><i class="bi bi-trash3"></i></button></form>
+            <form class="action" action="/admin/deleteJob/{{this._id}}?_method=DELETE" method="POST"><button class="remove-job" type="button"><i class="bi bi-trash3"></i></button></form>
         </div>
         {{/each}}
     </div>
