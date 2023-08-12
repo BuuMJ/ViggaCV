@@ -252,9 +252,34 @@ class AdminController {
         $unwind: "$jobDetail",
       },
     ]);
-    const listUser = await UserModel.find({
+
+    var count = await UserModel.countDocuments({
       role: { $in: ["user", "company"] },
     });
+    var page = req.query.page;
+    var PAGE_SIZE = 2;
+    var total = Math.ceil(count / PAGE_SIZE);
+    const pages = [];
+    for (let i = 1; i <= total; i++) {
+      pages.push(i);
+    }
+    if (page) {
+      page = parseInt(page);
+      var skip = (page - 1) * PAGE_SIZE;
+      var listUser = await UserModel.find({
+        role: { $in: ["user", "company"] },
+      })
+        .skip(skip)
+        .limit(PAGE_SIZE);
+    } else {
+      page = 1;
+      var skip = (page - 1) * PAGE_SIZE;
+      var listUser = await UserModel.find({
+        role: { $in: ["user", "company"] },
+      })
+        .skip(skip)
+        .limit(PAGE_SIZE);
+    }
     console.log(listUser);
     res.render("admin", {
       user: req.user,

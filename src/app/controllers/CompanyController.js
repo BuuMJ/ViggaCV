@@ -297,7 +297,10 @@ class CompanyController {
   async information(req, res, next) {
     const idcompany = req.params.id;
     const company = await CompanyModel.findOne({ _id: idcompany });
-    var count = await JobModel.find({ iduser: company.iduser, active: true });
+    var count = await JobModel.countDocuments({
+      iduser: company.iduser,
+      active: true,
+    });
     var page = req.query.page;
     var PAGE_SIZE = 10;
     var total = Math.ceil(count / PAGE_SIZE);
