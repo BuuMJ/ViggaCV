@@ -63,22 +63,6 @@
             <p>This Month's Revenue <b>$ {{totalRevenueCurrentMonth}}</b> / <b>$ {{annualRevenue.0.totalRevenue}}</b> Total Revenue</p>
         </div>
     </div>
-    {{!-- <div class="success-payment__history">
-        <h1>Transaction History</h1>
-        <div class="header__payment-history">
-            <span class="time">Transaction Time</span>
-            <span class="customer">Customer</span>
-            <span class="amount">Amount</span>
-            <span class="type">Transaction Type</span>
-        </div>
-        {{#each listJob}}
-        <div class="main__payment-history" data-ads-check="{{this.prioritize}}" data-salary-check="{{this.salary}}">
-            <span>{{this.createdAt}}</span>
-            <span><img src="/{{this.avatar}}" alt="">{{this.companyname}}</span>
-            <span>{{}}</span>
-        </div>
-        {{/each}}
-    </div> --}}
     <div class="detail-refuned">
         <div class="box__request-refund">
             <div class="refuned-ads">
@@ -155,13 +139,30 @@
             {{#each listRefund}}
             <div class="main__history-refuned">
                 <span class="date">{{this.updatedAt}}</span>
-                <span class="customer"><img src="/{{this.idcompany.avatar}}" alt="">{{this.idcompany.companyname}}</span>
+                <p class="customer"><img src="/{{this.idcompany.avatar}}" alt="">{{this.idcompany.companyname}}</p>
                 <span class="amount">$ {{this.money}}</span>
                 <span class="refund-type" data-check-type="{{this.money}}"></span>
                 <span class="person">{{this.iduser.fullname}}</span>
             </div>
             {{/each}}
         </div>
+         <div class="success-payment__history">
+        <h1>Transaction History</h1>
+        <div class="header__payment-history">
+            <span class="time">Transaction Time</span>
+            <span class="customer">Customer</span>
+            <span class="amount">Amount</span>
+            <span class="type">Transaction Type</span>
+        </div>
+        {{#each listRevenue}}
+        <div class="main__payment-history" data-ads-check="{{this.prioritize}}" data-salary-check="{{this.salary}}">
+            <span>{{this.updatedAt}}</span>
+            <span class="customer"><img src="/{{this.idcompany.avatar}}" alt="">{{this.idcompany.companyname}}</span>
+            <span class="amount">$ {{this.money}}</span>
+            <span class="type">{{this.type}}</span>
+        </div>
+        {{/each}}
+    </div>
     </div>
     <div class="detail-revenue">
         <h1>quarterly revenue details</h1>

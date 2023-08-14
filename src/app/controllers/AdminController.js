@@ -331,7 +331,7 @@ class AdminController {
         model: "company",
       })
       .select("money type jobname updatedAt");
-    console.log(listJobRequestPrioritize);
+    console.log(listRevenue);
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,
