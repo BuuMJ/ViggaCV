@@ -228,6 +228,7 @@ class AdminController {
     const countCompany = await UserModel.countDocuments({ role: "company" });
     const jobCount = await JobModel.countDocuments();
     const lockedJob = await JobModel.find({ active: false });
+    const lockedJobCount = await JobModel.countDocuments({ active: false });
     const prioritizeJob = await JobModel.find({ prioritize: true });
     const jobHighSalary = await JobModel.find({
       salary: { $gte: 4000 },
@@ -341,6 +342,7 @@ class AdminController {
       pages,
       listUser: mutipleMongooseToObject(listUser),
       listJob: mutipleJobToJSON(listJob),
+      lockedJobCount,
       lockedJob: mutipleJobToJSON(lockedJob), // danh sách các công việc bị khoá
       prioritizeJob: mutipleJobToJSON(prioritizeJob), // danh sách công việc được quảng cáo
       jobHighSalary: mutipleJobToJSON(jobHighSalary), // danh sách công việc lương trên 4000$

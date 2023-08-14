@@ -704,6 +704,32 @@ li.content-listjob .remove-blocked{
     box-shadow: 0 4px 8px rgba(0,0,0,0.8);
     z-index: 19;
 }
+.remove-blocked .request-sending{
+    position: absolute;
+    top: 102%;
+    left: -100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding: 12px;
+    background-color: white;
+    border-radius: 5px;
+    width: 200px;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+.remove-blocked .request-sending .request-ads{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    padding: 6px 0;
+}
+.remove-blocked .request-sending .request-ads label{
+    margin-right: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
 li.content-listjob .cv-applied{
     font-size: 14px;
     font-weight: 600;

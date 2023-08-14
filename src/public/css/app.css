@@ -3816,6 +3816,32 @@ li.content-listjob .remove-blocked {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
   z-index: 19; }
 
+.remove-blocked .request-sending {
+  position: absolute;
+  top: 102%;
+  left: -100%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding: 12px;
+  background-color: white;
+  border-radius: 5px;
+  width: 200px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); }
+
+.remove-blocked .request-sending .request-ads {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  padding: 6px 0; }
+
+.remove-blocked .request-sending .request-ads label {
+  margin-right: 6px;
+  font-size: 16px;
+  cursor: pointer; }
+
 li.content-listjob .cv-applied {
   font-size: 14px;
   font-weight: 600;
@@ -6419,7 +6445,8 @@ header.company-detail .background-company-detail {
   justify-content: center;
   align-items: center; }
 
-.main__revenue-detail .revenue-details {
+.main__revenue-detail .revenue-details,
+.total-job__detail {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6430,7 +6457,11 @@ header.company-detail .background-company-detail {
   padding: 20px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04); }
 
-.main__revenue-detail .box__circle-chart {
+.total-job__detail {
+  width: 25%; }
+
+.main__revenue-detail .box__circle-chart,
+.container-admin .main-job__circle-chart .box__circle-chart {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6442,7 +6473,11 @@ header.company-detail .background-company-detail {
   padding: 20px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04); }
 
-.main__revenue-detail .box__circle-chart h1 {
+.container-admin .main-job__circle-chart .box__circle-chart {
+  width: 21%; }
+
+.main__revenue-detail .box__circle-chart h1,
+.container-admin .main-job__circle-chart .box__circle-chart h1 {
   font-size: 24px;
   font-weight: 600;
   width: 100%;
@@ -6450,14 +6485,19 @@ header.company-detail .background-company-detail {
   border-bottom: 1px solid #CACACA;
   padding-bottom: 6px; }
 
-.main__revenue-detail .box__circle-chart .circle-chart {
+.container-admin .main-job__circle-chart .box__circle-chart h1 {
+  font-size: 22px; }
+
+.main__revenue-detail .box__circle-chart .circle-chart,
+.container-admin .main-job__circle-chart .box__circle-chart .circle-chart {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   position: relative;
   background: conic-gradient(from 0deg, red 0%, red 0%, lightgray 0%, lightgray 100%); }
 
-.main__revenue-detail .box__circle-chart .circle-chart .content {
+.main__revenue-detail .box__circle-chart .circle-chart .content,
+.container-admin .main-job__circle-chart .box__circle-chart .circle-chart .content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -6466,7 +6506,8 @@ header.company-detail .background-company-detail {
   font-weight: bold;
   z-index: 2; }
 
-.main__revenue-detail .box__circle-chart .circle-chart::after {
+.main__revenue-detail .box__circle-chart .circle-chart::after,
+.container-admin .main-job__circle-chart .box__circle-chart .circle-chart::after {
   position: absolute;
   content: '';
   width: 170px;
@@ -6484,36 +6525,48 @@ header.company-detail .background-company-detail {
   margin-top: 16px;
   width: 100%; }
 
-.revenue-details .title {
+.revenue-details .title,
+.total-job__detail h1 {
   text-transform: capitalize;
   font-size: 28px;
   font-weight: 600;
   width: 100%;
   margin-bottom: 20px; }
 
-.revenue-details p {
+.revenue-details p,
+.total-job__detail p {
   margin-bottom: unset; }
 
-.revenue-details p.detail-total {
+.revenue-details p.detail-total,
+.total-job__detail p.job-available {
   font-size: 24px;
   font-weight: 600; }
 
-.revenue-details p.available {
+.revenue-details p.available,
+.total-job__detail p.available {
   text-transform: capitalize;
   color: #CACACA;
   margin-bottom: 20px; }
 
 .revenue-details p.total-ads,
 .revenue-details p.total-postjob,
-.revenue-details p.total-refund {
+.revenue-details p.total-revenue,
+.revenue-details p.total-refund,
+.total-job__detail p.adsjob,
+.total-job__detail p.highpayingjob,
+.total-job__detail p.normaljob,
+.total-job__detail p.locked-jobs,
+.total-job__detail p.total-jobs {
   width: 100%;
   padding: 12px 0 8px 0;
   border-bottom: 1px solid #CACACA; }
 
-.revenue-details p.total-refund {
+.revenue-details p.total-refund,
+.total-job__detail p.locked-jobs {
   border-bottom: unset; }
 
-.revenue-details p.total-refund b {
+.revenue-details p.total-refund b,
+.total-job__detail p.locked-jobs b {
   color: #FC0412; }
 
 .container-admin .detail-revenue {
@@ -6529,7 +6582,8 @@ header.company-detail .background-company-detail {
   flex-wrap: wrap;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04); }
 
-.container-admin .detail-revenue h1 {
+.container-admin .detail-revenue h1,
+.container-admin .chart-job h1 {
   font-size: 24px;
   font-weight: 600;
   text-transform: capitalize;
@@ -6593,7 +6647,13 @@ header.company-detail .background-company-detail {
   padding-bottom: 6px;
   border-bottom: 1px solid #cacaca;
   width: 100%;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: start;
+  align-items: center; }
+
+.container-admin .user-chart h1 span {
+  margin-right: 4px; }
 
 .container-admin .user-chart .percentage-bar {
   display: flex;
@@ -6821,7 +6881,7 @@ header.company-detail .background-company-detail {
   padding: 12px 0; }
 
 .container-admin .list-job .body__list-job span {
-  padding: 20px 0; }
+  padding: 0; }
 
 .container-admin .list-user .body__list-user span img,
 .container-admin .list-job .body__list-job span img {
@@ -6841,7 +6901,8 @@ header.company-detail .background-company-detail {
 .container-admin .list-job .body__list-job span.status,
 .container-admin .list-job .header__list-job span.statusjob {
   width: 10%;
-  text-align: center; }
+  text-align: center;
+  padding-left: 6px; }
 
 .container-admin .list-job .body__list-job span.date,
 .container-admin .list-job .header__list-job span.datejob {
@@ -6864,7 +6925,8 @@ header.company-detail .background-company-detail {
   margin: 2px 0;
   border-top: 1px solid #cacaca;
   border-bottom: 1px solid #cacaca;
-  border-right: 1px solid #cacaca; }
+  border-right: 1px solid #cacaca;
+  padding: 20px 12px; }
 
 .container-admin .list-job .body__list-job::after {
   position: absolute;
@@ -6874,6 +6936,126 @@ header.company-detail .background-company-detail {
   width: 12px;
   height: 100%;
   background-color: rgba(0, 114, 188, 0.4); }
+
+.container-admin .material-symbols-outlined {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48; }
+
+.container-admin .chart-job {
+  width: 65%;
+  padding: 20px 30px;
+  border-radius: 5px;
+  background-color: white;
+  margin-top: 30px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04); }
+
+.container-admin .main-job__circle-chart {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%; }
+
+.container-admin .detail-refuned {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 95%;
+  margin-top: 50px; }
+
+.container-admin .detail-refuned .box__request-refund {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.container-admin .detail-refuned .box__request-refund .refuned-ads,
+.container-admin .detail-refuned .box__request-refund .refuned-high {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04);
+  margin-bottom: 30px;
+  padding: 20px; }
+
+.container-admin .detail-refuned .history-refuned {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04);
+  padding: 20px; }
+
+.container-admin .detail-refuned .history-refuned h1,
+.container-admin .detail-refuned .refuned-ads h1,
+.container-admin .detail-refuned .refuned-high h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  width: 100%;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #cacaca; }
+
+.container-admin .detail-refuned .history-refuned .header__history-refuned {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; }
+
+.container-admin .detail-refuned .history-refuned .header__history-refuned span {
+  width: 20%;
+  padding: 8px 0;
+  font-weight: 600; }
+
+.container-admin .detail-refuned .history-refuned .main__history-refuned {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #cacaca;
+  padding: 12px 0; }
+
+.container-admin .detail-refuned .history-refuned .main__history-refuned span {
+  width: 20%; }
+
+.container-admin .detail-refuned .history-refuned .main__history-refuned span.customer img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+  margin-right: 4px; }
+
+.container-admin .detail-refuned .history-refuned .main__history-refuned span.amount {
+  color: #FC0412;
+  font-weight: 600; }
+
+.container-admin .detail-refuned .history-refuned .main__history-refuned span.customer,
+.container-admin .detail-refuned .history-refuned .main__history-refuned span.amount,
+.container-admin .detail-refuned .history-refuned .header__history-refuned span.customer,
+.container-admin .detail-refuned .history-refuned .header__history-refuned span.amount {
+  text-align: center; }
+
+.container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; }
+
+.container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads span {
+  width: 25%;
+  font-weight: 600; }
+
+.container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads span.person,
+.container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads span.action {
+  text-align: center; }
 
 .container-salary {
   background-color: #f5f5f5;
