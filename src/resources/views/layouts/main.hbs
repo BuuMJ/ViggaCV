@@ -80,12 +80,17 @@ document.querySelector('.stepbystep-cv').style.cssText = "transform: translateX(
 }
 var resetLocalStorage = document.querySelector('.reset-localstorage');
  var resetLocalStorageCompany = document.querySelector('.reset-localstorage__company');
+ var resetLocalStorageAdmin = document.querySelector('.reset-localstorage__admin');
 resetLocalStorage.addEventListener('click', function() {
   localStorage.setItem('currentPageJob', 1);
 });
 resetLocalStorageCompany.addEventListener('click',function(){
   localStorage.setItem('currentPageCompany', 1)
 });
+resetLocalStorageAdmin.addEventListener('click', function(){
+  localStorage.setItem('currentPageUserAdmin', 1);
+  localStorage.setItem('currentPageJobAdmin', 1)
+})
 document.addEventListener("DOMContentLoaded", function() {
     let currentHref = window.location.pathname;
     if (currentHref === '/' || currentHref === '') {

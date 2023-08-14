@@ -175,6 +175,18 @@
                             <div class="remove-blocked" data-remove-block="{{this._id}}">
                                 <span class="remove"><i class="bi bi-trash3-fill"></i></span>
                                 <span class="blocked"><i class="bi bi-unlock-fill"></i></span>
+                                <span class="request" title="Request Refund"><i class="bi bi-info-circle-fill"></i></span>
+                                <div class="request-sending">
+                                    <div class="request-ads">
+                                        <label for="ads">Advertising Refund</label>
+                                        <input name="request" type="checkbox" class="adsvalue" id="ads" value="prioritize">
+                                    </div>
+                                    <div class="request-ads">
+                                        <label for="high">High Paying Refund</label>
+                                        <input name="request" type="checkbox" class="highvalue" id="high" value="post job">
+                                    </div>
+                                    <button class="submit-request">Send Request</button>
+                                </div>
                             </div>
                         </li>
                         {{/each}}
@@ -301,6 +313,10 @@ Andrew leads the strategic direction of the business with a dedicated and divers
 <form method="POST" class="form__remove-job"></form>
 {{!-- blocked job form --}}
 <form method="POST" class="form__blocked-job"></form>
+{{!-- request refund form --}}
+<form class="form__request" method="POST" action="">
+    <input type="text" name="" id="allformrequestsending" value="123" hidden>
+</form>
 <script>
     var deleteLeadership = document.getElementById('delete-leadership')
     var leadershipID;
@@ -574,13 +590,49 @@ Andrew leads the strategic direction of the business with a dedicated and divers
     var jobList = document.querySelectorAll('.content-listjob');
     var formRemoveJob = document.querySelector('.form__remove-job');
     var formBlockedJob = document.querySelector('.form__blocked-job');
+    var formRequest = document.querySelector('.form__request');
+    var valueAllSending = document.getElementById('allformrequestsending');
+    console.log(valueAllSending.value)
     jobList.forEach(function (job) {
         var action = job.querySelector('.namejobs i');
         var menuAction = job.querySelector('.remove-blocked');
         var getIDJob = menuAction.getAttribute('data-remove-block');
         var removeAction = job.querySelector('.remove');
         var blockedAction = job.querySelector('.blocked');
-        action.addEventListener('click', () => {
+        var clickRequest = job.querySelector('span.request')
+        var requestBox = job.querySelector('.request-sending');
+        var sendADS = requestBox.querySelector('.adsvalue');
+        var sendHigh = requestBox.querySelector('.highvalue');
+        var sendAll = requestBox.querySelector('.allvalue')
+        var submitRequest = requestBox.querySelector('.submit-request');
+        submitRequest.addEventListener('click',()=>{
+            function updateValue() {
+        if (sendADS.checked && sendHigh.checked) {
+            valueAllSending.value = 'all';
+        } else if (sendADS.checked) {
+            valueAllSending.value = sendADS.value;
+        } else if (sendHigh.checked) {
+            valueAllSending.value = sendHigh.value;
+        } else {
+            valueAllSending.value = '';
+        }
+        console.log(valueAllSending.value);
+    }
+    sendADS.addEventListener('change', updateValue);
+    sendHigh.addEventListener('change', updateValue);
+    if (valueAllSending.value === '' || valueAllSending.value === null) {
+        e.preventDefault(); 
+        alert('Please choose the option you want to send the request.'); 
+        return;
+    }
+    formRequest.action = `/companyprofile/request/${getIDJob}`;
+        })
+        //request sending 
+        clickRequest.addEventListener('click',(event)=>{
+            requestBox.style.display = 'flex';
+            event.stopPropagation
+        })
+        action.addEventListener('click', (event) => {
             menuAction.style.display = 'flex';
             event.stopPropagation();
         });
@@ -589,6 +641,7 @@ Andrew leads the strategic direction of the business with a dedicated and divers
         });
         document.addEventListener('click', () => {
             menuAction.style.display = 'none';
+            requestBox.style.display = 'none';
         });
         removeAction.addEventListener('mouseover', () => {
             removeAction.querySelector('i').style.color = '#FC0404'

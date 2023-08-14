@@ -3816,6 +3816,32 @@ li.content-listjob .remove-blocked {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
   z-index: 19; }
 
+.remove-blocked .request-sending {
+  position: absolute;
+  top: 102%;
+  left: -100%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding: 12px;
+  background-color: white;
+  border-radius: 5px;
+  width: 200px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); }
+
+.remove-blocked .request-sending .request-ads {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  padding: 6px 0; }
+
+.remove-blocked .request-sending .request-ads label {
+  margin-right: 6px;
+  font-size: 16px;
+  cursor: pointer; }
+
 li.content-listjob .cv-applied {
   font-size: 14px;
   font-weight: 600;
@@ -6927,6 +6953,109 @@ header.company-detail .background-company-detail {
   justify-content: space-around;
   align-items: center;
   width: 100%; }
+
+.container-admin .detail-refuned {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 95%;
+  margin-top: 50px; }
+
+.container-admin .detail-refuned .box__request-refund {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.container-admin .detail-refuned .box__request-refund .refuned-ads,
+.container-admin .detail-refuned .box__request-refund .refuned-high {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04);
+  margin-bottom: 30px;
+  padding: 20px; }
+
+.container-admin .detail-refuned .history-refuned {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04);
+  padding: 20px; }
+
+.container-admin .detail-refuned .history-refuned h1,
+.container-admin .detail-refuned .refuned-ads h1,
+.container-admin .detail-refuned .refuned-high h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  width: 100%;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #cacaca; }
+
+.container-admin .detail-refuned .history-refuned .header__history-refuned {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; }
+
+.container-admin .detail-refuned .history-refuned .header__history-refuned span {
+  width: 20%;
+  padding: 8px 0;
+  font-weight: 600; }
+
+.container-admin .detail-refuned .history-refuned .main__history-refuned {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #cacaca;
+  padding: 12px 0; }
+
+.container-admin .detail-refuned .history-refuned .main__history-refuned span {
+  width: 20%; }
+
+.container-admin .detail-refuned .history-refuned .main__history-refuned span.customer img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+  margin-right: 4px; }
+
+.container-admin .detail-refuned .history-refuned .main__history-refuned span.amount {
+  color: #FC0412;
+  font-weight: 600; }
+
+.container-admin .detail-refuned .history-refuned .main__history-refuned span.customer,
+.container-admin .detail-refuned .history-refuned .main__history-refuned span.amount,
+.container-admin .detail-refuned .history-refuned .header__history-refuned span.customer,
+.container-admin .detail-refuned .history-refuned .header__history-refuned span.amount {
+  text-align: center; }
+
+.container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; }
+
+.container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads span {
+  width: 25%;
+  font-weight: 600; }
+
+.container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads span.person,
+.container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads span.action {
+  text-align: center; }
 
 .container-salary {
   background-color: #f5f5f5;
