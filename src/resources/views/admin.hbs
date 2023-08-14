@@ -77,10 +77,10 @@
                 </div>
                 {{#each listJobRequestPrioritize}}
                     <div class="main__refuned-ads">
-                        <span>{{this.updatedAt}}</span>
-                        <span>{{this.createdAt}}</span>
+                        <span>{{moment this.revenueDetail.updatedAt format="DD/MM/YYYY" }}</span>
+                        <span>{{moment this.createdAt.updatedAt format="DD/MM/YYYY" }}</span>
                         <span class="person"><img src="/{{this.idcompany.avatar}}" alt="">{{this.idcompany.companyname}}</span>
-                        <span>{{this.money}}</span>
+                        <span style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
                         <span class="action">
                             <form class="refund-succes" action="">
                                 <button class="refund-success">Refund</button>
@@ -108,10 +108,10 @@
                 
                 {{#each listJobRequestPostJob}}
                     <div class="main__refuned-ads">
-                        <span>{{this.updatedAt}}</span>
-                        <span>{{this.createdAt}}</span>
+                        <span>{{moment this.revenueDetail.updatedAt format="DD/MM/YYYY" }}</span>
+                        <span>{{moment this.createdAt.updatedAt format="DD/MM/YYYY" }}</span>
                         <span class="person"><img src="/{{this.idcompany.avatar}}" alt="">{{this.idcompany.companyname}}</span>
-                        <span>{{this.money}}</span>
+                        <span style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
                         <span class="action">
                             <form class="refund-succes" action="">
                                 <button class="refund-success">Refund</button>
@@ -139,7 +139,7 @@
             {{#each listRefund}}
             <div class="main__history-refuned">
                 <span class="date">{{this.updatedAt}}</span>
-                <p class="customer"><img src="/{{this.idcompany.avatar}}" alt="">{{this.idcompany.companyname}}</p>
+                <span class="customer"><img src="/{{this.idcompany.avatar}}" alt="">{{this.idcompany.companyname}}</span>
                 <span class="amount">$ {{this.money}}</span>
                 <span class="refund-type" data-check-type="{{this.money}}"></span>
                 <span class="person">{{this.iduser.fullname}}</span>
@@ -158,7 +158,7 @@
         <div class="main__payment-history" data-ads-check="{{this.prioritize}}" data-salary-check="{{this.salary}}">
             <span>{{this.updatedAt}}</span>
             <span class="customer"><img src="/{{this.idcompany.avatar}}" alt="">{{this.idcompany.companyname}}</span>
-            <span class="amount">$ {{this.money}}</span>
+            <span class="amount" style="font-weight: 600;">$ {{this.money}}</span>
             <span class="type">{{this.type}}</span>
         </div>
         {{/each}}

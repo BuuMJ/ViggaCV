@@ -293,6 +293,7 @@
     border-radius: 5px;
     margin-top: 30px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.04);
+    align-self: flex-start;
 }
 .container-admin .user-chart h1{
     font-size: 24px;
@@ -685,14 +686,14 @@
 .container-admin .detail-refuned .history-refuned .main__history-refuned span{
     width: 20%;
 }
-.container-admin .detail-refuned .history-refuned .main__history-refuned p.customer img{
+.container-admin .detail-refuned .history-refuned .main__history-refuned span.customer img{
     width: 30px;
     height: 30px;
     border-radius: 50%;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
     margin-right: 4px;
 }
-.container-admin .detail-refuned .history-refuned .main__history-refuned p.customer{
+.container-admin .detail-refuned .history-refuned .main__history-refuned span.customer{
     margin-bottom: unset;
     width: 20%;
     text-align: center;
@@ -726,9 +727,7 @@
 .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span{
     font-weight: unset;
 }
-.container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads span.person,
 .container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads span.action,
-.container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.person,
 .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.action{
     text-align: center;
 }
