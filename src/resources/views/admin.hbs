@@ -82,14 +82,15 @@
                         <span class="person"><img style="margin-right: 6px;" src="/{{this.companyDetail.avatar}}" alt="">{{this.companyDetail.companyname}}</span>
                         <span style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
                         <span class="action">
-                            <form class="refund-succes" action="">
+                            <form class="refund-succes" action="/pay/refund/{{this._id}}" method="post">
+                                <input type="text" name="type" id="" value="prioritize" hidden>
                                 <button class="refund-success">Refund</button>
                             </form>
                             <div class="refund-fail" action="">
                                 <button type="button" class="denied">Denied</button>
                             </div>
                         </span>
-                        <form class="note-denied">
+                        <form class="note-denied" action="/admin/deny/{{this._id}}" method="post">
                             <h1>Why Do You Refuse Refund?</h1>
                             <textarea name="reason" id="note" placeholder="Enter the reason you refused to refund"></textarea>
                             <div class="accept">
@@ -121,7 +122,7 @@
                         <span class="person"><img style="margin-right: 6px;" src="/{{this.companyDetail.avatar}}" alt="">{{this.companyDetail.companyname}}</span>
                         <span style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
                         <span class="action">
-                            <form class="refund-succes" action="">
+                            <form class="refund-succes" action="/pay/refund/{{this._id}}" method="post">
                                 <input type="text" name="type" id="" value="post job" hidden>
                                 <button type="submit" class="refund-success">Refund</button>
                             </form>
@@ -129,7 +130,7 @@
                                 <button type="button" class="denied">Denied</button>
                             </form>
                         </span>
-                        <form class="note-denied">
+                        <form class="note-denied" action="/admin/deny/{{this._id}}" method="post">
                             <h1>Why Do You Refuse Refund?</h1>
                             <textarea name="reason" id="note" placeholder="Enter the reason you refused to refund"></textarea>
                             <div class="accept">

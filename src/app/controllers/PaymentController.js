@@ -373,11 +373,11 @@ class PaymentController {
 
   async refund(req, res, next) {
     const idjob = req.params.id;
-    const type = "post job";
+    const type = req.body.type;
     const email = req.user.email;
     if (type === "post job") {
       const check = await JobModel.findOne({
-        idjob: idjob,
+        _id: idjob,
         type: "all",
       });
       if (check) {
@@ -415,14 +415,19 @@ class PaymentController {
             await RevenueModel.findByIdAndUpdate(revenue._id, {
               type: "refund",
               refundUpdateAt: Date.now(),
+              admin: req.user.fullname,
             });
             console.log("Đã xoá job sau khi hoàn tiền");
           }
           if (type === "prioritize") {
-            await JobModel.findByIdAndUpdate(idjob, { prioritize: false });
+            await JobModel.findByIdAndUpdate(idjob, {
+              prioritize: false,
+              request: "non",
+            });
             await RevenueModel.findByIdAndUpdate(revenue._id, {
               type: "refund",
               refundUpdateAt: Date.now(),
+              admin: req.user.fullname,
             });
             console.log(
               "Đã xoá job khỏi danh sách job được ưu tiên sau khi hoàn tiền"

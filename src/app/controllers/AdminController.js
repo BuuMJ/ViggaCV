@@ -8,6 +8,7 @@ const JobModel = require("../models/Job");
 const QualifiedModel = require("../models/Qualified");
 const RevenueModel = require("../models/Revenua");
 const UnsatisfactoryModel = require("../models/Unsatisfactory");
+const nodemailer = require("nodemailer");
 const UserModel = require("../models/User");
 
 class AdminController {
@@ -307,7 +308,7 @@ class AdminController {
     const listJobRequestPrioritize = await JobModel.aggregate([
       {
         $match: {
-          request: { $in: ["prioritize"] },
+          request: { $in: ["prioritize", "all"] },
         },
       },
       {
@@ -349,7 +350,7 @@ class AdminController {
     const listJobRequestPostJob = await JobModel.aggregate([
       {
         $match: {
-          request: { $in: ["post job"] },
+          request: { $in: ["post job", "all"] },
         },
       },
       {
@@ -407,7 +408,7 @@ class AdminController {
       })
       .select("money type jobname updatedAt");
     const test = await JobModel.find();
-    console.log(test);
+    console.log("test");
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,
@@ -471,6 +472,14 @@ class AdminController {
   }
 
   async denyRefund(req, res, next) {
+    const idJob = req.params.id;
+    await JobModel.findByIdAndUpdate(idJob, {
+      active: true,
+      request: "non",
+    });
+    const job = await JobModel.findById(idJob);
+    const user = await UserModel.findById(job.iduser);
+    console.log(user.email);
     const reason = req.body.reason;
     var transporter = nodemailer.createTransport({
       service: "gmail",
@@ -480,7 +489,7 @@ class AdminController {
       },
     });
     const mailOptions = {
-      to: combinedEmails,
+      to: user.email,
       subject: "Refund Notification ",
       html: `
               <html>
@@ -492,7 +501,7 @@ class AdminController {
                       color: #333;
                     }
                     h1 {
-                      color: #0066cc;
+                      color: #fed200;
                     }
                     .message {
                       background-color: #f9f9f9;
@@ -515,7 +524,10 @@ class AdminController {
                 <body>
                   <h1>ViggaCareers</h1>
                   <div class="message">
-                    <p>Chúng tôi xin từ chối lí do refund bởi vì lí do sau: ${reason}.</p>
+                <p>Hello,</p>
+                     <p>We're sorry, your refund request was denied.</p>
+                     <p>We refuse to request a refund for the following reason: ${reason}.</p>
+                     <p>If you have any questions, please reply to this email.</p>
                   </div>
                 </body>
               </html>
@@ -526,6 +538,7 @@ class AdminController {
         console.log(err);
       } else {
         console.log("Đã gửi mail cho người post job");
+        res.redirect("back");
       }
     });
   }

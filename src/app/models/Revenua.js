@@ -28,6 +28,7 @@ const revenueSchema = new Schema(
       type: Date,
       default: Date.now,
     },
+    admin: String,
   },
   {
     timestamps: true,
