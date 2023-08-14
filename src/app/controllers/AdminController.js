@@ -300,7 +300,15 @@ class AdminController {
 
     const listJobRequestPrioritize = await JobModel.find({
       request: { $in: ["prioritize"] },
-    });
+    })
+      .populate({
+        path: "idjob",
+        model: "revenue",
+        match: { type: "prioritize" },
+        select: "money -_id",
+      })
+      .exec();
+
     const listJobRequestPostJob = await JobModel.find({
       request: { $in: ["post job"] },
     });
@@ -323,7 +331,7 @@ class AdminController {
         model: "company",
       })
       .select("money type jobname updatedAt");
-    console.log(listRevenue);
+    console.log(listJobRequestPrioritize);
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,

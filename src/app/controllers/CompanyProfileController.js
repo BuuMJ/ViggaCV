@@ -603,6 +603,9 @@ class CompanyProfileController {
   async request(req, res, next) {
     const idJob = req.params.id;
     const type = req.body.type;
+    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
+    console.log(idJob);
+    console.log(type);
     const check = await RevenueModel.findOne({ idjob: idJob, type: type });
     if (check) {
       const checkRequest = await JobModel.findOne({ _id: idJob });
