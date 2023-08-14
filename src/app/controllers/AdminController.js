@@ -297,17 +297,17 @@ class AdminController {
     const countPrioritize = await JobModel.countDocuments({
       prioritize: true,
     });
-
+    //người gửi yêu câu, số tiền, ngày gửi yêu cầu
     const listJobRequestPrioritize = await JobModel.find({
       request: { $in: ["prioritize"] },
-    })
-      .populate({
-        path: "idjob",
-        model: "revenue",
-        match: { type: "prioritize" },
-        select: "money -_id",
-      })
-      .exec();
+    });
+    // .populate({
+    //   path: "idjob",
+    //   model: "revenue",
+    //   match: { type: "prioritize" },
+    //   select: "money -_id",
+    // })
+    // .exec();
 
     const listJobRequestPostJob = await JobModel.find({
       request: { $in: ["post job"] },
