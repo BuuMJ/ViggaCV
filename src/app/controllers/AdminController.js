@@ -257,8 +257,7 @@ class AdminController {
       role: { $in: ["user", "company"] },
     });
     var page = req.query.page;
-    var pageListJob = req.query.pageJob;
-    var PAGE_SIZE = 10;
+    var PAGE_SIZE = 8;
     var total = Math.ceil(count / PAGE_SIZE);
     const pages = [];
     for (let i = 1; i <= total; i++) {
@@ -280,6 +279,13 @@ class AdminController {
       })
         .skip(skip)
         .limit(PAGE_SIZE);
+    }
+
+    var pageListJob = req.query.pageJob;
+    var totalPageJob = Math.ceil(jobCount / PAGE_SIZE);
+    const pageJob = [];
+    for (let i = 1; i <= totalPageJob; i++) {
+      pageJob.push(i);
     }
     if (pageListJob) {
       pageListJob = parseInt(pageListJob);
@@ -305,6 +311,11 @@ class AdminController {
         },
       },
       {
+        $addFields: {
+          idcompany: { $toObjectId: "$idcompany" },
+        },
+      },
+      {
         $lookup: {
           from: "revenues",
           localField: "_id",
@@ -320,7 +331,18 @@ class AdminController {
         },
       },
       {
+        $lookup: {
+          from: "company",
+          localField: "idcompany",
+          foreignField: "_id",
+          as: "companyDetail",
+        },
+      },
+      {
         $unwind: "$revenueDetail",
+      },
+      {
+        $unwind: "$companyDetail",
       },
     ]);
 
@@ -328,6 +350,11 @@ class AdminController {
       {
         $match: {
           request: { $in: ["post job"] },
+        },
+      },
+      {
+        $addFields: {
+          idcompany: { $toObjectId: "$idcompany" },
         },
       },
       {
@@ -346,7 +373,18 @@ class AdminController {
         },
       },
       {
+        $lookup: {
+          from: "company",
+          localField: "idcompany",
+          foreignField: "_id",
+          as: "companyDetail",
+        },
+      },
+      {
         $unwind: "$revenueDetail",
+      },
+      {
+        $unwind: "$companyDetail",
       },
     ]);
     const listRefund = await RevenueModel.find({ type: "refund" })
@@ -368,7 +406,8 @@ class AdminController {
         model: "company",
       })
       .select("money type jobname updatedAt");
-    console.log(listJobRequestPostJob);
+    const test = await JobModel.find();
+    console.log(test);
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,
@@ -399,6 +438,7 @@ class AdminController {
       listJobRequestPrioritize, //danh sách công việc yêu cầu refund quảng cáo job
       listRefund: mutipleJobToJSON(listRefund), // danh sách công việc đã refund thành công
       listRevenue: mutipleJobToJSON(listRevenue),
+      pageJob,
     });
   }
 
