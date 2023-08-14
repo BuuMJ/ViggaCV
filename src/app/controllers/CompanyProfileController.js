@@ -16,6 +16,7 @@ const UserModel = require("../models/User");
 const QualifiedModel = require("../models/Qualified");
 const UnsatisfactoryModel = require("../models/Unsatisfactory");
 const RevenueModel = require("../models/Revenua");
+const FavouriteModel = require("../models/Favourite");
 
 class CompanyProfileController {
   //[GET] Company profile
@@ -563,6 +564,10 @@ class CompanyProfileController {
 
   async deletejob(req, res, next) {
     const jobId = req.params.id;
+    await FavouriteModel.find({ jobid: jobId }).deleteMany();
+    await View.find({ jobid: jobId }).deleteMany();
+    await QualifiedModel.find({ jobid: jobId }).deleteMany();
+    await UnsatisfactoryModel.find({ jobid: jobId }).deleteMany();
     await JobModel.findByIdAndDelete(jobId);
     res.redirect("back");
   }
@@ -600,7 +605,61 @@ class CompanyProfileController {
     const type = req.body.type;
     const check = await RevenueModel.findOne({ idjob: idJob, type: type });
     if (check) {
-      await JobModel.findByIdAndUpdate(idJob, { request: type });
+      const checkRequest = await JobModel.findOne({ _id: idJob });
+      if (type === "post job") {
+        switch (checkRequest.request) {
+          case "post job":
+            return res.redirect(
+              "/companyprofile?message=Have you requested a refund for this job?"
+            );
+          case "prioritize":
+            await JobModel.findByIdAndUpdate(idJob, { request: "all" });
+            break;
+          case "non":
+            await JobModel.findByIdAndUpdate(idJob, { request: type });
+            break;
+          case "all":
+            return res.redirect(
+              "/companyprofile?message=Have you requested a refund for this job?"
+            );
+        }
+      }
+      if (type === " prioritize") {
+        switch (checkRequest.request) {
+          case "post job":
+            await JobModel.findByIdAndUpdate(idJob, { request: type });
+            break;
+          case "prioritize":
+            return res.redirect(
+              "/companyprofile?message=Have you requested a refund for this job?"
+            );
+          case "non":
+            await JobModel.findByIdAndUpdate(idJob, { request: type });
+            break;
+          case "all":
+            return res.redirect(
+              "/companyprofile?message=Have you requested a refund for this job?"
+            );
+        }
+      }
+      if (type === " all") {
+        switch (checkRequest.request) {
+          case "post job":
+            await JobModel.findByIdAndUpdate(idJob, { request: type });
+            break;
+          case "prioritize":
+            await JobModel.findByIdAndUpdate(idJob, { request: type });
+            break;
+          case "non":
+            await JobModel.findByIdAndUpdate(idJob, { request: type });
+            break;
+          case "all":
+            return res.redirect(
+              "/companyprofile?message=Have you requested a refund for this job?"
+            );
+        }
+      }
+      JobModel.findByIdAndUpdate(idJob, { active: false });
       res.redirect("/companyprofile?message=Request successful");
     } else {
       res.redirect("/companyprofile?message=Refund request is not accepted");

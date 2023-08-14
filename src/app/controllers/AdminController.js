@@ -285,20 +285,20 @@ class AdminController {
       var skip = (pageListJob - 1) * PAGE_SIZE;
       var listJob = await JobModel.find().skip(skip).limit(PAGE_SIZE);
     } else {
-      pageListJob = 1;
+      pageListJob = 2;
       var skip = (pageListJob - 1) * PAGE_SIZE;
       var listJob = await JobModel.find().skip(skip).limit(PAGE_SIZE);
     }
 
-    const countPostJob = await RevenueModel.countDocuments({
-      type: "post job",
+    const countPostJob = await JobModel.countDocuments({
+      salary: { $gte: 4000 },
     });
-    const countPrioritize = await RevenueModel.countDocuments({
-      type: "prioritize",
+    const countPrioritize = await JobModel.countDocuments({
+      prioritize: true,
     });
 
     const listJobRequestPrioritize = await JobModel.find({
-      request: { $in: ["post job"] },
+      request: { $in: ["prioritize"] },
     });
     const listJobRequestPostJob = await JobModel.find({
       request: { $in: ["post job"] },
@@ -311,6 +311,18 @@ class AdminController {
         model: "company",
       })
       .select("money type jobname updatedAt");
+
+    const listRevenue = await RevenueModel.find({
+      type: { $in: ["post job", "prioritize"] },
+    })
+      .populate({ path: "iduser", select: "fullname", model: "user" })
+      .populate({
+        path: "idcompany",
+        select: "companyname avatar",
+        model: "company",
+      })
+      .select("money type jobname updatedAt");
+    console.log(listRevenue);
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,
@@ -339,6 +351,7 @@ class AdminController {
       listJobRequestPostJob: mutipleJobToJSON(listJobRequestPostJob), // danh sách công việc yêu cầu refund post job
       listJobRequestPrioritize: mutipleJobToJSON(listJobRequestPrioritize), //danh sách công việc yêu cầu refund quảng cáo job
       listRefund: mutipleJobToJSON(listRefund), // danh sách công việc đã refund thành công
+      listRevenue: mutipleJobToJSON(listRevenue),
     });
   }
 
@@ -368,6 +381,10 @@ class AdminController {
     const idJob = req.params.id;
     await JobModel.findByIdAndDelete(idJob);
     res.redirect("/admin?message=Delete job successful");
+  }
+
+  async denyRefund(req, res, next) {
+    const reason = req.body.reason;
   }
 }
 module.exports = new AdminController();

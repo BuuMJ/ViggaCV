@@ -24,6 +24,10 @@ const revenueSchema = new Schema(
     },
     jobname: String,
     paymentId: String,
+    refundUpdateAt: {
+      type: Date,
+      default: Date.now,
+    },
   },
   {
     timestamps: true,
