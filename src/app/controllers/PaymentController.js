@@ -375,15 +375,25 @@ class PaymentController {
     const idjob = req.params.id;
     const type = req.body.type;
     const email = req.user.email;
+    const check = await JobModel.findOne({
+      _id: idjob,
+      request: "all",
+    });
+    console.log(
+      req.user.fullname +
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ"
+    );
+    console.log(
+      type +
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ"
+    );
     if (type === "post job") {
-      const check = await JobModel.findOne({
-        _id: idjob,
-        type: "all",
-      });
+      console.log(
+        check +
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ"
+      );
       if (check) {
-        return res.redirect(
-          "/companyprofile?message=Please refund post job first"
-        );
+        return res.redirect("/admin?message=Please refund post job first");
       }
     }
     var transporter = nodemailer.createTransport({
@@ -399,8 +409,6 @@ class PaymentController {
     })
       .sort({ createdAt: -1 })
       .limit(1);
-    console.log(idjob);
-    console.log(revenue);
     const amount = { total: revenue.money.toString(), currency: "USD" };
     paypal.sale.refund(
       revenue.paymentId,
@@ -420,10 +428,17 @@ class PaymentController {
             console.log("Đã xoá job sau khi hoàn tiền");
           }
           if (type === "prioritize") {
-            await JobModel.findByIdAndUpdate(idjob, {
-              prioritize: false,
-              request: "non",
-            });
+            if (check.request === "all") {
+              await JobModel.findByIdAndUpdate(idjob, {
+                prioritize: false,
+                request: "post job",
+              });
+            } else {
+              await JobModel.findByIdAndUpdate(idjob, {
+                prioritize: false,
+                request: "non",
+              });
+            }
             await RevenueModel.findByIdAndUpdate(revenue._id, {
               type: "refund",
               refundUpdateAt: Date.now(),

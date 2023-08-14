@@ -17,6 +17,7 @@ const QualifiedModel = require("../models/Qualified");
 const UnsatisfactoryModel = require("../models/Unsatisfactory");
 const RevenueModel = require("../models/Revenua");
 const FavouriteModel = require("../models/Favourite");
+const ViewedModel = require("../models/Viewed");
 
 class CompanyProfileController {
   //[GET] Company profile
@@ -565,7 +566,7 @@ class CompanyProfileController {
   async deletejob(req, res, next) {
     const jobId = req.params.id;
     await FavouriteModel.find({ jobid: jobId }).deleteMany();
-    await View.find({ jobid: jobId }).deleteMany();
+    await ViewedModel.find({ jobid: jobId }).deleteMany();
     await QualifiedModel.find({ jobid: jobId }).deleteMany();
     await UnsatisfactoryModel.find({ jobid: jobId }).deleteMany();
     await JobModel.findByIdAndDelete(jobId);

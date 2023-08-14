@@ -395,7 +395,7 @@ class AdminController {
         select: "companyname avatar",
         model: "company",
       })
-      .select("money type jobname updatedAt");
+      .select("money type jobname updatedAt admin");
 
     const listRevenue = await RevenueModel.find({
       type: { $in: ["post job", "prioritize"] },
@@ -406,9 +406,9 @@ class AdminController {
         select: "companyname avatar",
         model: "company",
       })
-      .select("money type jobname updatedAt");
+      .select("money type jobname updatedAt admin");
     const test = await JobModel.find();
-    console.log("test");
+    console.log(listRefund);
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,
