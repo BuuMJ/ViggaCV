@@ -472,6 +472,62 @@ class AdminController {
 
   async denyRefund(req, res, next) {
     const reason = req.body.reason;
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "duoc6694@gmail.com",
+        pass: "wdymtvgbhblstfbj",
+      },
+    });
+    const mailOptions = {
+      to: combinedEmails,
+      subject: "Refund Notification ",
+      html: `
+              <html>
+                <head>
+                  <style>
+                    body {
+                      font-family: Arial, sans-serif;
+                      line-height: 1.6;
+                      color: #333;
+                    }
+                    h1 {
+                      color: #0066cc;
+                    }
+                    .message {
+                      background-color: #f9f9f9;
+                      padding: 15px;
+                      border-radius: 5px;
+                    }
+                    .cta-button {
+                      display: inline-block;
+                      background-color: #0066cc;
+                      color: #fff;
+                      text-decoration: none;
+                      padding: 10px 15px;
+                      border-radius: 3px;
+                    }
+                    .cta-button:hover {
+                      background-color: #004c99;
+                    }
+                  </style>
+                </head>
+                <body>
+                  <h1>ViggaCareers</h1>
+                  <div class="message">
+                    <p>Chúng tôi xin từ chối lí do refund bởi vì lí do sau: ${reason}.</p>
+                  </div>
+                </body>
+              </html>
+            `,
+    };
+    transporter.sendMail(mailOptions, function (err, info) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("Đã gửi mail cho người post job");
+      }
+    });
   }
 }
 module.exports = new AdminController();

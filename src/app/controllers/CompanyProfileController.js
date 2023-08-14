@@ -509,7 +509,7 @@ class CompanyProfileController {
         </div>
       </body>
     </html>
-  `, // plain text body
+  `,
         };
         transporter.sendMail(mailOptions, function (err, info) {
           if (err) {
