@@ -238,10 +238,10 @@
                 <label for="position">Position</label>
                 <input type="text" name="position" id="position" placeholder="Manager">
             </div>
-            <div class="job-salary">
+            <div class="job-salary" style="position:relative">
                 <label for="salary-range">Salary</label>
-                <input type="text" name="salary" id="salary-range" placeholder="500$-1000$ | Negotiable"
-                    value="Negotiable">
+                <input type="text" name="salary" id="salary-range" placeholder="500$-1000$ | Negotiable">
+                <p class="alert-salary" style="display: none; color: red; margin-bottom: unset; position: absolute; bottom: -24px; left: 4px">You can only fill in numbers or Negotiable</p>
             </div>
             <div class="job-location">
                 <label for="joblocation">Job Locations</label>
@@ -686,5 +686,21 @@ Andrew leads the strategic direction of the business with a dedicated and divers
                 }
             })
         };
+    })
+    var textSalary = document.querySelector('#postjob .job-salary #salary-range');
+    textSalary.addEventListener('input',()=>{
+        const formPostJob = document.querySelector('#postjob .postjob-cancle .btn-postjob');
+        const alertSalary = document.querySelector('#postjob .job-salary .alert-salary');
+        if (textSalary.value !== "Negotiable" && isNaN(textSalary.value)) {
+                textSalary.style.border = '2px solid red';
+                formPostJob.type = 'button';
+                formPostJob.addEventListener('click',()=>{
+                    alertSalary.style.display = 'inline-block';
+                })
+            }
+        else{
+            textSalary.style.border = '1px solid black'
+            formPostJob.type = 'submit'
+        }
     })
 </script>

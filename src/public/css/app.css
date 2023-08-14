@@ -6938,7 +6938,7 @@ header.company-detail .background-company-detail {
   background-color: rgba(0, 114, 188, 0.4); }
 
 .container-admin .material-symbols-outlined {
-  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48; }
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48; }
 
 .container-admin .chart-job {
   width: 65%;
@@ -7043,19 +7043,65 @@ header.company-detail .background-company-detail {
 .container-admin .detail-refuned .history-refuned .header__history-refuned span.amount {
   text-align: center; }
 
-.container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads {
+.container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads,
+.container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%; }
+  width: 100%;
+  padding: 12px 0; }
 
-.container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads span {
+.container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads {
+  border-bottom: 1px solid #cacaca; }
+
+.container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads span,
+.container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span {
   width: 25%;
   font-weight: 600; }
 
+.container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span {
+  font-weight: unset; }
+
 .container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads span.person,
-.container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads span.action {
+.container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads span.action,
+.container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.person,
+.container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.action {
   text-align: center; }
+
+.container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.action {
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
+
+.container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.person img {
+  width: 30px;
+  height: 30px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+  border-radius: 50%; }
+
+.container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.action button {
+  outline: none;
+  background-color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: .5s; }
+
+.container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.action button.refund-success {
+  border: 1px solid #05CCFC;
+  color: #05CCFC; }
+
+.container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.action button.refund-success:hover {
+  color: white;
+  background-color: #05CCFC; }
+
+.container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.action button.denied {
+  border: 1px solid #FC0412;
+  color: #FC0412; }
+
+.container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.action button.denied:hover {
+  color: white;
+  background-color: #FC0412; }
 
 .container-salary {
   background-color: #f5f5f5;
