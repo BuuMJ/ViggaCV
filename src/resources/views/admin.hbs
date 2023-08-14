@@ -50,9 +50,10 @@
             <h1 class="title">revenue details</h1>
             <p class="detail-total">$ {{annualRevenue.0.totalRevenue}}</p>
             <p class="available">total available revenue</p>
-            <p class="total-ads">Total Job Ads Revenue: <b>$ {{revenueSummary.0.prioritizeRevenue}}</b></p>
-            <p class="total-postjob">Total Revenue Job High Salary : <b>$ {{revenueSummary.0.postJobRevenue}}</b></p>
-            <p class="total-refund">Total Refunded Amount: <b>-$ {{totalRefund}}</b></p>
+            <p class="total-revenue"></p>
+            <p class="total-ads" data-total-ads="{{revenueSummary.0.prioritizeRevenue}}">Total Job Ads Revenue: <b>$ {{revenueSummary.0.prioritizeRevenue}}</b></p>
+            <p class="total-postjob" data-total-postjob="{{revenueSummary.0.postJobRevenue}}">Total Revenue Job High Salary : <b>$ {{revenueSummary.0.postJobRevenue}}</b></p>
+            <p class="total-refund" data-total-refuned="{{totalRefund}}">Total Refunded Amount: <b>-$ {{totalRefund}}</b></p>
         </div>
         <div class="box__circle-chart">
             <h1>This Month's Revenue</h1>
@@ -185,14 +186,51 @@
             {{/each}}
         </div>
     </div>
+    <div id="job" class="main-job__circle-chart">
+        <div class="box__circle-chart box__cirle-chart-ads">
+            <h1>Advertised Jobs</h1>
+            <div class="circle-chart">
+                <div class="content"></div>
+            </div>
+        </div>
+        <div class="box__circle-chart box__cirle-chart-high">
+            <h1>High Paying Jobs</h1>
+            <div class="circle-chart">
+                <div class="content"></div>
+            </div>
+        </div>
+        <div class="box__circle-chart box__cirle-chart-normal">
+            <h1>Normal Jobs</h1>
+            <div class="circle-chart">
+                <div class="content"></div>
+            </div>
+        </div>
+        <div class="box__circle-chart box__cirle-chart-locked">
+            <h1>Locked Jobs</h1>
+            <div class="circle-chart">
+                <div class="content"></div>
+            </div>
+        </div>
+    </div>
     <div class="chart-job"
     data-job-count="{{jobCount}}"
     data-postjob-count="{{countPostJob}}"
     data-adsjob-count="{{countPrioritize}}"
     data-lockedjob-count="{{lockedJobCount}}">
+    <h1><i class="bi bi-bar-chart-fill"></i> Bar Chart Total Jobs</h1>
         <canvas id="jobChart" width="400" height="200"></canvas>
     </div>
-    <div id="job" class="list-job">
+    <div class="total-job__detail">
+        <h1>Detail Jobs</h1>
+        <p class="job-available"></p>
+        <p class="available">Total Available Jobs</p>
+        <p class="total-jobs">Total Jobs: <b>{{jobCount}} Jobs</b></p>
+        <p class="adsjob">Advertised Jobs: <b>{{countPrioritize}} Jobs</b></p>
+        <p class="highpayingjob">High Paying Jobs: <b>{{countPostJob}} Jobs</b></p>
+        <p class="normaljob"></p>
+        <p class="locked-jobs">Locked Jobs: <b>-{{lockedJobCount}} Jobs</b></p>
+    </div>
+    <div class="list-job">
         <h1><i class="bi bi-table"></i> Data Table Jobs</h1>
         <div class="header__list-job">
             <span class="namejob">Name Job</span>
@@ -276,6 +314,13 @@
             }
         });
     });
+    // total revenue
+    var dataTotalAds = parseFloat(document.querySelector('.total-ads').getAttribute('data-total-ads'));
+  var dataTotalPostJob = parseFloat(document.querySelector('.total-postjob').getAttribute('data-total-postjob'));
+  var dataTotalRefuned = parseFloat(document.querySelector('.total-refund').getAttribute('data-total-refuned'));
+  var textTotalRevenue = document.querySelector('.total-revenue');
+  var dataTotalRevenue = dataTotalAds + dataTotalPostJob + dataTotalRefuned;
+  textTotalRevenue.innerHTML = 'Total Revenue: ' + `<b>$ ${dataTotalRevenue}</b>`;
     // chart total revenue
   var ctx = document.querySelector('.revenue-chart #myChart').getContext('2d');
   var totalYears = parseFloat(document.querySelector('.revenue-chart').getAttribute('data-total'));
@@ -530,10 +575,10 @@ textDataCountUser.innerHTML = userPercentage.toFixed(2) + '%';
 textDataCountCompany.innerHTML = companyPercentage.toFixed(2) + '%';
 // chart circle current month
 var percentageCurrent = (totalCurrentMonth / totalYears) * 100;
-var el = document.querySelector('.main__revenue-detail .circle-chart');
-el.style.background = `conic-gradient(from 0deg, #D9AFD9 0%, #97D9E1 ${percentageCurrent}%, lightgray ${percentageCurrent}%, lightgray 100%)`;
-var content = document.querySelector('.main__revenue-detail .circle-chart .content');
-content.innerHTML = parseInt(percentageCurrent) + '%';
+var circleChartCurrent = document.querySelector('.main__revenue-detail .circle-chart');
+circleChartCurrent.style.background = `conic-gradient(from 0deg, #D9AFD9 0%, #97D9E1 ${percentageCurrent}%, lightgray ${percentageCurrent}%, lightgray 100%)`;
+var contentCurrent = document.querySelector('.main__revenue-detail .circle-chart .content');
+contentCurrent.innerHTML = parseFloat(percentageCurrent.toFixed(2)) + '%';
 // pagination list user
 var getPagination = document.querySelectorAll('.list-user .pagination a');
 var paginationContainer = document.querySelector('.list-user .pagination');
@@ -578,15 +623,15 @@ var ctx = document.getElementById('jobChart').getContext('2d');
 var chart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Advertised job', 'High Paying Jobs', 'locked job', 'Normal job'],
+        labels: ['Advertised Jobs', 'High Paying Jobs', 'Normal Jobs', 'Locked Jobs'],
         datasets: [
             {
                 label: 'Total Of All Jobs',
-                data: [advertisedJobs, paidJobs, blockedJob, otherJobs],
+                data: [advertisedJobs, paidJobs, otherJobs, blockedJob],
                 backgroundColor: [
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(255,99,132,1)',
-                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(255,99,132,0.5)',
+                    'rgba(75, 192, 192, 0.5)',
                     'rgba(0, 114, 188, 0.5)'
                 ]
             }
@@ -657,4 +702,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+// chart circle job ads
+var percentageAdsJobs = (advertisedJobs / totalJobs) * 100;
+var circleChartAdsJobs = document.querySelector('.main-job__circle-chart .box__cirle-chart-ads .circle-chart');
+circleChartAdsJobs.style.background = `conic-gradient(from 0deg, #D9AFD9 0%, #97D9E1 ${percentageAdsJobs}%, lightgray ${percentageAdsJobs}%, lightgray 100%)`;
+var contentAdsJobs = document.querySelector('.main-job__circle-chart .box__cirle-chart-ads .circle-chart .content');
+contentAdsJobs.innerHTML = parseFloat(percentageAdsJobs.toFixed(2)) + '%';
+
+var percentageHighJobs = (paidJobs / totalJobs) * 100;
+var circleChartHighJobs = document.querySelector('.main-job__circle-chart .box__cirle-chart-high .circle-chart');
+circleChartHighJobs.style.background = `conic-gradient(from 0deg, #8BC6EC 0%, #9599E2 ${percentageHighJobs}%, lightgray ${percentageHighJobs}%, lightgray 100%)`;
+var contentHighJobs = document.querySelector('.main-job__circle-chart .box__cirle-chart-high .circle-chart .content');
+contentHighJobs.innerHTML = parseFloat(percentageHighJobs.toFixed(2)) + '%';
+
+var percentageNormalJobs = (otherJobs / totalJobs) * 100;
+var cicleChartNormalJobs = document.querySelector('.main-job__circle-chart .box__cirle-chart-normal .circle-chart');
+cicleChartNormalJobs.style.background = `conic-gradient(from 0deg, #0093E9 0%, #80D0C7 ${percentageNormalJobs}%, lightgray ${percentageNormalJobs}%, lightgray 100%)`;
+var contentNormalJobs = document.querySelector('.main-job__circle-chart .box__cirle-chart-normal .circle-chart .content');
+contentNormalJobs.innerHTML = parseFloat(percentageNormalJobs.toFixed(2)) + '%';
+
+var percentageBlockedJobs = (blockedJob / totalJobs) * 100;
+var cicleChartBlockedJobs = document.querySelector('.main-job__circle-chart .box__cirle-chart-locked .circle-chart');
+cicleChartBlockedJobs.style.background = `conic-gradient(from 0deg, rgba(84,212,228,1) 0%, rgba(68,36,164,1) ${percentageBlockedJobs}%, lightgray ${percentageBlockedJobs}%, lightgray 100%)`;
+var contentBlockedJobs = document.querySelector('.main-job__circle-chart .box__cirle-chart-locked .circle-chart .content');
+contentBlockedJobs.innerHTML = parseFloat(percentageBlockedJobs.toFixed(2)) + '%';
+
+var textJobavailable = document.querySelector('.total-job__detail .job-available');
+textJobavailable.innerHTML = totalJobs - blockedJob + ' Jobs';
+var textNormalJob = document.querySelector('.total-job__detail .normaljob');
+textNormalJob.innerHTML = 'Normal Jobs: ' + `<b>${otherJobs} Jobs</b>`;
 </script>
