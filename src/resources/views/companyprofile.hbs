@@ -669,38 +669,39 @@ Andrew leads the strategic direction of the business with a dedicated and divers
             formBlockedJob.submit();
         })
     });
-    var submitPostJob = document.querySelector('.btn-postjob');
-    var salary = document.querySelector('#salary-range');
-    salary.addEventListener('input', () => {
-        var salaryContent = salary.value.replace(/\D/g, '');
-        salaryContent = parseInt(salaryContent, 10);
-        if (salaryContent >= 4000) {
-            submitPostJob.type = 'button'
-            submitPostJob.addEventListener('click', () => {
-                var isConfirmed = confirm('this job is over 4000$ you need to pay 30$ to be able to post this job.\nIf you agree, please click ok to go to the payment page.\nIf you want to edit the salary, please click cancel.');
-                if (isConfirmed) {
-                    document.getElementById('postjob').submit();
-                }
-                else {
-                    e.preventDefault();
-                }
-            })
-        };
-    })
-    var textSalary = document.querySelector('#postjob .job-salary #salary-range');
-    textSalary.addEventListener('input',()=>{
-        const formPostJob = document.querySelector('#postjob .postjob-cancle .btn-postjob');
-        const alertSalary = document.querySelector('#postjob .job-salary .alert-salary');
-        if (textSalary.value !== "Negotiable" && isNaN(textSalary.value)) {
-                textSalary.style.border = '2px solid red';
-                formPostJob.type = 'button';
-                formPostJob.addEventListener('click',()=>{
-                    alertSalary.style.display = 'inline-block';
-                })
-            }
-        else{
-            textSalary.style.border = '1px solid black'
-            formPostJob.type = 'submit'
+ var submitPostJob = document.querySelector('.btn-postjob');
+var textSalary = document.querySelector('#postjob .job-salary #salary-range');
+var formPostJob = document.querySelector('#postjob .postjob-cancle .btn-postjob');
+var alertSalary = document.querySelector('#postjob .job-salary .alert-salary');
+
+submitPostJob.addEventListener('click', (e) => {
+    var salaryValue = textSalary.value;
+    var salaryContent = parseInt(salaryValue, 10);
+    
+    if (salaryContent >= 4000) {
+        var isConfirmed = confirm('this job is over 4000$ you need to pay 30$ to be able to post this job.\nIf you agree, please click ok to go to the payment page.\nIf you want to edit the salary, please click cancel.');
+        if (!isConfirmed) {
+            e.preventDefault();
         }
-    })
+    }
+});
+
+textSalary.addEventListener('input', (e) => {
+    var salaryValue = textSalary.value;
+    var salaryContent = parseInt(salaryValue, 10);
+
+    if (salaryValue !== "Negotiable" && isNaN(salaryContent)) {
+        textSalary.style.border = '2px solid red';
+        formPostJob.type = 'button';
+        formPostJob.addEventListener('click', () => {
+            alertSalary.style.display = 'inline-block';
+        });
+    } else {
+        textSalary.style.border = '1px solid black';
+        formPostJob.type = 'submit';
+        alertSalary.style.display = 'none';
+    }
+});
+
+
 </script>

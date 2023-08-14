@@ -293,6 +293,7 @@
     border-radius: 5px;
     margin-top: 30px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.04);
+    align-self: flex-start;
 }
 .container-admin .user-chart h1{
     font-size: 24px;
@@ -615,7 +616,7 @@
 .container-admin .detail-refuned{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
     width: 95%;
@@ -640,17 +641,78 @@
     box-shadow: 0 5px 10px rgba(0,0,0,0.04);
     margin-bottom: 30px;
     padding: 20px;
+    position: relative;
+}
+form.note-denied{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 80%;
+    border-radius: 5px;
+    background-color: white;
+    z-index: 20;
+}
+form.note-denied h1{
+    width: 100%;
+    font-size: 24px;
+    font-weight: 600;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #cacaca;
+    margin-bottom: 20px;
+}
+form.note-denied textarea{
+    width: 90%;
+    height: 300px;
+    resize: none;
+    border: 1px solid #cacaca;
+    border-radius: 5px;
+    padding: 12px;
+}
+form.note-denied .accept{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 50px;
+    width: 90%;
+}
+form.note-denied .accept input{
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+}
+form.note-denied button{
+    width: 80%;
+    height: 50px;
+    border-radius: 5px;
+    margin: 20px 0;
+    border: 1px solid $secondarycolor;
+    color: $secondarycolor;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: white;
+    transition: .5s;
+}
+form.note-denied button:hover{
+    background-color: $secondarycolor;
+    color: white;
 }
 .container-admin .detail-refuned .history-refuned{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    width: 100%;
+    width: 48%;
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.04);
     padding: 20px;
+    align-self: start;
 }
 .container-admin .detail-refuned .history-refuned h1,
 .container-admin .detail-refuned .refuned-ads h1,
@@ -691,6 +753,11 @@
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
     margin-right: 4px;
 }
+.container-admin .detail-refuned .history-refuned .main__history-refuned span.customer{
+    margin-bottom: unset;
+    width: 20%;
+    text-align: center;
+}
 .container-admin .detail-refuned .history-refuned .main__history-refuned span.amount{
     color: #FC0412;
     font-weight: 600;
@@ -720,9 +787,7 @@
 .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span{
     font-weight: unset;
 }
-.container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads span.person,
 .container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads span.action,
-.container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.person,
 .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.action{
     text-align: center;
 }
@@ -760,4 +825,52 @@
 .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.action button.denied:hover{
     color: white;
     background-color: #FC0412;
+}
+.container-admin .success-payment__history{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 48%;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.04);
+    padding: 20px;
+    align-self: flex-start;
+}
+.container-admin .success-payment__history h1{
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    border-bottom: 1px solid #cacaca;
+    width: 100%;
+}
+.container-admin .success-payment__history .header__payment-history,
+.container-admin .success-payment__history .main__payment-history{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0;
+    font-weight: 600;
+}
+.container-admin .success-payment__history .main__payment-history{
+    border-bottom: 1px solid #cacaca;
+    font-weight: unset;
+}
+.container-admin .success-payment__history .header__payment-history span,
+.container-admin .success-payment__history .main__payment-history span{
+    width: 25%;
+}
+.container-admin .success-payment__history .main__payment-history span.customer img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+    margin-right: 6px;
+}
+.container-admin .success-payment__history .type,
+.container-admin .success-payment__history .amount{
+    text-align: center;
 }
