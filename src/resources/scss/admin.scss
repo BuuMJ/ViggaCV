@@ -641,6 +641,66 @@
     box-shadow: 0 5px 10px rgba(0,0,0,0.04);
     margin-bottom: 30px;
     padding: 20px;
+    position: relative;
+}
+form.note-denied{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 80%;
+    border-radius: 5px;
+    background-color: white;
+    z-index: 20;
+}
+form.note-denied h1{
+    width: 100%;
+    font-size: 24px;
+    font-weight: 600;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #cacaca;
+    margin-bottom: 20px;
+}
+form.note-denied textarea{
+    width: 90%;
+    height: 300px;
+    resize: none;
+    border: 1px solid #cacaca;
+    border-radius: 5px;
+    padding: 12px;
+}
+form.note-denied .accept{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 50px;
+    width: 90%;
+}
+form.note-denied .accept input{
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+}
+form.note-denied button{
+    width: 80%;
+    height: 50px;
+    border-radius: 5px;
+    margin: 20px 0;
+    border: 1px solid $secondarycolor;
+    color: $secondarycolor;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: white;
+    transition: .5s;
+}
+form.note-denied button:hover{
+    background-color: $secondarycolor;
+    color: white;
 }
 .container-admin .detail-refuned .history-refuned{
     display: flex;
