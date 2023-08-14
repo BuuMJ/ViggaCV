@@ -71,6 +71,7 @@
                 <div class="header__refuned-ads">
                     <span>Request Date</span>
                     <span>Job Posting Date</span>
+                    <span>Job Name</span>
                     <span class="person">Petitioner</span>
                     <span>Refund Amount</span>
                     <span class="action">Action</span>
@@ -78,7 +79,8 @@
                 {{#each listJobRequestPrioritize}}
                     <div class="main__refuned-ads">
                         <span>{{moment this.revenueDetail.updatedAt format="DD/MM/YYYY" }}</span>
-                        <span>{{moment this.createdAt.updatedAt format="DD/MM/YYYY" }}</span>
+                        <span>{{moment this.createdAt format="DD/MM/YYYY" }}</span>
+                        <span>{{this.jobname}}</span>
                         <span class="person"><img style="margin-right: 6px;" src="/{{this.companyDetail.avatar}}" alt="">{{this.companyDetail.companyname}}</span>
                         <span style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
                         <span class="action">
@@ -111,6 +113,7 @@
                 <div class="header__refuned-ads">
                     <span>Request Date</span>
                     <span>Job Posting Date</span>
+                    <span>Job Name</span>
                     <span class="person">Petitioner</span>
                     <span>Refund Amount</span>
                     <span class="action">Action</span>
@@ -118,7 +121,8 @@
                 {{#each listJobRequestPostJob}}
                     <div class="main__refuned-ads main__refuned-high">
                         <span>{{moment this.revenueDetail.updatedAt format="DD/MM/YYYY" }}</span>
-                        <span>{{moment this.createdAt.updatedAt format="DD/MM/YYYY" }}</span>
+                        <span>{{moment this.createdAt format="DD/MM/YYYY" }}</span>
+                        <span>{{this.jobname}}</span>
                         <span class="person"><img style="margin-right: 6px;" src="/{{this.companyDetail.avatar}}" alt="">{{this.companyDetail.companyname}}</span>
                         <span style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
                         <span class="action">
@@ -161,7 +165,7 @@
                 <span class="customer"><img src="/{{this.idcompany.avatar}}" alt="">{{this.idcompany.companyname}}</span>
                 <span class="amount">$ {{this.money}}</span>
                 <span class="refund-type" data-check-type="{{this.money}}"></span>
-                <span class="person">{{this.iduser.fullname}}</span>
+                <span class="person">{{this.admin}}</span>
             </div>
             {{/each}}
         </div>
@@ -492,7 +496,7 @@ var revenueChart = new Chart(ctx, {
         scales: {
             y: {
                 beginAtZero: true,
-                max: totalYears + 100
+                max: totalYears
             }
         },
         plugins: {
@@ -554,7 +558,7 @@ var revenueChart = new Chart(ctx, {
                         borderColor: 'rgba(255, 0, 0, 0.2)',
                         borderWidth: 2,
                         label: {
-                            content: 'Total Revenue: ' + totalYears,
+                            content: 'Total Revenue: $ ' + totalYears,
                             enabled: true,
                             position: 'right',
                             font: {
