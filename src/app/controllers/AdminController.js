@@ -286,32 +286,69 @@ class AdminController {
       var skip = (pageListJob - 1) * PAGE_SIZE;
       var listJob = await JobModel.find().skip(skip).limit(PAGE_SIZE);
     } else {
-      pageListJob = 2;
+      pageListJob = 1;
       var skip = (pageListJob - 1) * PAGE_SIZE;
       var listJob = await JobModel.find().skip(skip).limit(PAGE_SIZE);
     }
 
     const countPostJob = await JobModel.countDocuments({
-      salary: { $gte: 4000 },
+      $and: [{ salary: { $gte: 4000 } }, { salary: { $ne: "Negotiable" } }],
     });
     const countPrioritize = await JobModel.countDocuments({
       prioritize: true,
     });
     //người gửi yêu câu, số tiền, ngày gửi yêu cầu
-    const listJobRequestPrioritize = await JobModel.find({
-      request: { $in: ["prioritize"] },
-    });
-    // .populate({
-    //   path: "idjob",
-    //   model: "revenue",
-    //   match: { type: "prioritize" },
-    //   select: "money -_id",
-    // })
-    // .exec();
+    const listJobRequestPrioritize = await JobModel.aggregate([
+      {
+        $match: {
+          request: { $in: ["prioritize"] },
+        },
+      },
+      {
+        $lookup: {
+          from: "revenues",
+          localField: "_id",
+          foreignField: "idjob",
+          pipeline: [
+            {
+              $match: {
+                type: "prioritize",
+              },
+            },
+          ],
+          as: "revenueDetail",
+        },
+      },
+      {
+        $unwind: "$revenueDetail",
+      },
+    ]);
 
-    const listJobRequestPostJob = await JobModel.find({
-      request: { $in: ["post job"] },
-    });
+    const listJobRequestPostJob = await JobModel.aggregate([
+      {
+        $match: {
+          request: { $in: ["post job"] },
+        },
+      },
+      {
+        $lookup: {
+          from: "revenues",
+          localField: "_id",
+          foreignField: "idjob",
+          pipeline: [
+            {
+              $match: {
+                type: "post job",
+              },
+            },
+          ],
+          as: "revenueDetail",
+        },
+      },
+      {
+        $unwind: "$revenueDetail",
+      },
+    ]);
     const listRefund = await RevenueModel.find({ type: "refund" })
       .populate({ path: "iduser", select: "fullname", model: "user" })
       .populate({
@@ -331,7 +368,7 @@ class AdminController {
         model: "company",
       })
       .select("money type jobname updatedAt");
-    console.log(listJobRequestPrioritize);
+    console.log(listJobRequestPostJob);
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,
@@ -358,8 +395,8 @@ class AdminController {
       countPostJob, // số công việc lươn trên 4000$
       countPrioritize, // số công việc quảng cáo
       pageListJob, // phân trang list job
-      listJobRequestPostJob: mutipleJobToJSON(listJobRequestPostJob), // danh sách công việc yêu cầu refund post job
-      listJobRequestPrioritize: mutipleJobToJSON(listJobRequestPrioritize), //danh sách công việc yêu cầu refund quảng cáo job
+      listJobRequestPostJob, // danh sách công việc yêu cầu refund post job
+      listJobRequestPrioritize, //danh sách công việc yêu cầu refund quảng cáo job
       listRefund: mutipleJobToJSON(listRefund), // danh sách công việc đã refund thành công
       listRevenue: mutipleJobToJSON(listRevenue),
     });

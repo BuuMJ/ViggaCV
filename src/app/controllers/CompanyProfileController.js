@@ -603,31 +603,24 @@ class CompanyProfileController {
   async request(req, res, next) {
     const idJob = req.params.id;
     const type = req.body.type;
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
+
     console.log(idJob);
     console.log(type);
-    const check = await RevenueModel.findOne({ idjob: idJob, type: type });
-    if (check) {
-      const checkRequest = await JobModel.findOne({ _id: idJob });
+    if (type === "all") {
+      var check1 = await RevenueModel.findOne({
+        idjob: idJob,
+        type: "post job",
+      });
+      var check2 = await RevenueModel.findOne({
+        idjob: idJob,
+        type: "prioritize",
+      });
+    } else {
+      var check = await RevenueModel.findOne({ idjob: idJob, type: type });
+    }
+    const checkRequest = await JobModel.findOne({ _id: idJob });
+
+    if (check || (check1 && check2)) {
       if (type === "post job") {
         switch (checkRequest.request) {
           case "post job":
@@ -646,7 +639,7 @@ class CompanyProfileController {
             );
         }
       }
-      if (type === " prioritize") {
+      if (type === "prioritize") {
         switch (checkRequest.request) {
           case "post job":
             await JobModel.findByIdAndUpdate(idJob, { request: type });
@@ -664,7 +657,7 @@ class CompanyProfileController {
             );
         }
       }
-      if (type === " all") {
+      if (type === "all") {
         switch (checkRequest.request) {
           case "post job":
             await JobModel.findByIdAndUpdate(idJob, { request: type });
@@ -681,7 +674,8 @@ class CompanyProfileController {
             );
         }
       }
-      JobModel.findByIdAndUpdate(idJob, { active: false });
+      await JobModel.findByIdAndUpdate(idJob, { active: false });
+
       res.redirect("/companyprofile?message=Request successful");
     } else {
       res.redirect("/companyprofile?message=Refund request is not accepted");
