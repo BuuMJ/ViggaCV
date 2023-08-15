@@ -26,8 +26,7 @@
     margin-bottom: 50px;
 }
 .container-admin header .box-total{
-    background-color: #0093E9;
-    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    background-image: linear-gradient( 63.1deg,  rgba(5,23,111,1) 16.4%, rgba(24,95,240,1) 64.5% );
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,15 +37,13 @@
     box-shadow: 0 5px 10px rgba(0,0,0,0.04);
 }
 .container-admin header .box__total-user{
-    background-color: #8BC6EC;
-    background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+    background-image: linear-gradient( 109.6deg,  rgba(255,115,68,1) 11.2%, rgba(244,255,32,1) 100.6% );
 }
 .container-admin header .box__total-thismonth{
-    background-color: #D9AFD9;
-    background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+    background-image: linear-gradient( 132.6deg,  rgba(71,139,214,1) 23.3%, rgba(37,216,211,1) 84.7% );
 }
 .container-admin header .box__total-job{
-    background-image: linear-gradient( 270.3deg,  rgba(84,212,228,1) 0.2%, rgba(68,36,164,1) 100% );
+    background-image: radial-gradient( circle farthest-corner at 24.7% 28.8%,  rgba(247,183,29,1) 1.9%, rgba(253,239,150,1) 97.7% );
 }
 .container-admin header .box-total .title{
     margin-bottom: 6px;
@@ -69,8 +66,15 @@
 .container-admin header .box-total .view-detail__total:hover{
     text-decoration: underline;
 }
+.container-admin .container-revenue{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+}
 .revenue-chart{
-    width: 65%;
+    width: 70%;
     height: 720px;
     background-color: white;
     border-radius: 5px;
@@ -368,6 +372,9 @@
     margin-top: 30px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.04);
     align-self: flex-start;
+}
+.container-admin .list-job{
+    width: 95%;
 }
 .container-admin .list-user{
     position: relative;
@@ -874,4 +881,221 @@ form.note-denied button:hover{
 .container-admin .success-payment__history .amount{
     text-align: center;
     text-transform: capitalize;
+}
+@media screen and (max-width: 1024px) {
+    .container-admin header{
+        flex-wrap: wrap;
+    }
+    .container-admin header .box-total{
+        width: 45%;
+    }
+    .container-admin header .box-total:nth-child(3),
+    .container-admin header .box-total:nth-child(4){
+        margin-top: 20px;
+    }
+    .container-admin .container-revenue{
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+    }
+    .main__revenue-detail{
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    .main__revenue-detail .revenue-details,
+    .main__revenue-detail .box__circle-chart{
+        width: 45%;
+    }
+    .main__revenue-detail .box__circle-chart{
+        margin-top: unset;
+        height: 353px;
+    }
+    .revenue-chart{
+        width: 100%;
+        height: 600px;
+    }
+    .container-admin .detail-refuned .history-refuned,
+    .container-admin .success-payment__history{
+        width: 100%;
+    }
+    .container-admin .success-payment__history{
+        margin-top: 30px;
+    }
+    .container-admin .detail-revenue{
+        flex-wrap: wrap;
+    }
+    .container-admin .detail-revenue .content__total-quarterly{
+        width: 50%;
+    }
+    .container-admin .user-chart{
+        width: 95%;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .container-admin .user-chart h1{
+        margin-bottom: 30px;
+    }
+    .container-admin .user-chart #pieChart{
+        width: 45% !important;
+        height: 350px !important;
+    }
+    .container-admin .user-chart .percentage-bar{
+        width: 45%;
+        align-self: center;
+    }
+    .container-admin .list-user{
+        width: 95%;
+    }
+    .container-admin .main-job__circle-chart{
+        flex-wrap: wrap;
+    }
+    .container-admin .main-job__circle-chart .box__circle-chart{
+        width: 45%;
+    }
+    .container-admin .chart-job h1{
+        margin-bottom: 40px;
+    }
+    .container-admin .chart-job{
+        width: 55%;
+        height: 397px;
+    }
+    .total-job__detail{
+        width: 35%;
+        margin-top: 30px;
+    }
+    .container-admin .detail-refuned .box__request-refund .refuned-ads, 
+    .container-admin .detail-refuned .box__request-refund .refuned-high{
+        align-items: start;
+        overflow-x: scroll;
+    }
+    .container-admin .detail-refuned .refuned-ads h1, 
+    .container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads, 
+    .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads{
+        width: 1628px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .container-admin .list-user,
+    .container-admin .list-job{
+        overflow-x: scroll;
+        align-items: start;
+    }
+    .container-admin .list-user .header__list-user,
+    .container-admin .list-job .header__list-job,
+    .container-admin .list-user .body__list-user,
+    .container-admin .list-job .body__list-job,
+    .container-admin .list-user h1,
+    .container-admin .list-job h1{
+        width: 1300px;
+    }
+    .container-admin .chart-job {
+        width: 95%;
+        height: unset;
+    }
+    .total-job__detail{
+        width: 95%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .main__revenue-detail{
+        flex-wrap: wrap;
+    }
+    .main__revenue-detail .revenue-details, 
+    .main__revenue-detail .box__circle-chart{
+        width: 100%;
+    }
+    .main__revenue-detail .box__circle-chart{
+        margin-top: 30px;
+    }
+    .revenue-chart{
+        height: unset;
+    }
+    .container-admin .detail-revenue{
+        width: 85%;
+    }
+    .container-admin .detail-revenue .content__total-quarterly{
+        width: 100%;
+    }
+    .container-admin .detail-refuned .history-refuned, 
+    .container-admin .success-payment__history{
+        overflow-x: scroll;
+        align-items: start;
+    }
+    .container-admin .detail-refuned .history-refuned h1,
+    .container-admin .success-payment__history h1,
+    .container-admin .detail-refuned .history-refuned .header__history-refuned,
+    .container-admin .success-payment__history .header__payment-history,
+    .container-admin .detail-refuned .history-refuned .main__history-refuned,
+    .container-admin .success-payment__history .main__payment-history{
+        width: 750px;
+    }
+    .container-admin .user-chart #pieChart{
+        height: 300px !important;
+    }
+}
+@media screen and (max-width: 415px) {
+    .container-admin header .box-total{
+        width: 95%;
+    }
+    .container-admin header .box-total:nth-child(2){
+        margin-top: 20px;
+    }
+    .revenue-chart,
+    .container-admin .chart-job{
+        padding: 20px 10px;
+    }
+    .revenue-chart #myChart{
+        height: 300px !important;
+    }
+    .container-admin .main-job__circle-chart .box__circle-chart{
+        width: 95%;
+    }
+}
+@media screen and (max-width: 376px) {
+    .container-admin .user-chart #pieChart{
+        height: 250px !important;
+    }
+    .container-admin .user-chart .percentage-bar h2{
+        font-size: 22px;
+    }
+}
+@media screen and (max-width: 321px) {
+    .main__revenue-detail .box__circle-chart .circle-chart, 
+    .container-admin .main-job__circle-chart .box__circle-chart .circle-chart{
+        width: 160px;
+        height: 160px;
+    }
+    .main__revenue-detail .box__circle-chart .circle-chart::after, 
+    .container-admin .main-job__circle-chart .box__circle-chart .circle-chart::after{
+        width: 140px;
+        height: 140px;
+    }
+    .container-admin .detail-revenue{
+        width: 95%;
+    }
+    .container-admin .detail-revenue h1, 
+    .container-admin .chart-job h1{
+        font-size: 20px;
+    }
+    .container-admin .detail-revenue .content__total-quarterly ul span.title{
+        font-size: 18px;
+    }
+    .container-admin .detail-revenue .content__total-quarterly ul p.view-detail,
+    .container-admin .detail-revenue .content__total-quarterly li{
+        font-size: 14px;
+    }
+    .container-admin .user-chart h1{
+        font-size: 20px;
+    }
+    .container-admin .user-chart .percentage-bar h2{
+        font-size: 18px;
+    }
+    .container-admin .user-chart .percentage-bar .percent-user .data-count-user,
+    .container-admin .user-chart .percentage-bar .percent-company .data-count-company{
+        font-size: 10px;
+        font-weight: 700;
+    }
 }
