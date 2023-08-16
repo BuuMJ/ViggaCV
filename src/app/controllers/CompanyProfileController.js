@@ -585,6 +585,11 @@ class CompanyProfileController {
           { new: true }
         );
       } else {
+        if (job.request != "non") {
+          return res.redirect(
+            "/companyprofile?message=Your job is temporarily locked for refund"
+          );
+        }
         const updatedJob = await JobModel.findByIdAndUpdate(
           jobId,
           { active: true },
