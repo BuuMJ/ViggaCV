@@ -1,145 +1,150 @@
-<header class="jobdetail">
-    <img src="{{getAvatarcompany company}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
-    <div class="center-jobdetail">
-        <span class="primary-text">{{detail.jobname}}</span>
-        <span class="secondary-text">{{getCompanyname company}} {{getTOB company}}</span>
-        <span class="third-text">Jobs Locations: {{detail.joblocation}}</span>
-        <span class="forth-text">$ {{detail.salary}}</span>
+<div class="container__job-detail">
+    <header class="jobdetail">
+        <img src="{{getAvatarcompany company}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
+        <div class="center-jobdetail">
+            <span class="primary-text">{{detail.jobname}}</span>
+            <span class="secondary-text">{{getCompanyname company}} {{getTOB company}}</span>
+            <span class="third-text"><i class="bi bi-geo-alt"></i> {{detail.joblocation}}</span>
+            <span class="forth-text"><i class="bi bi-currency-dollar"></i> {{detail.salary}}</span>
+        </div>
+        <div class="jobdetail-action">
+            {{#if user}}
+            <button class="btn-apply" type="button" >Apply Now</button>
+            {{else}}
+            <a class="btn-apply__notuser" href="/login">Apply Now</a>
+            {{/if}}
+            <form class="function__check-save" action="/job/favourite?id={{detail._id}}" method="POST">
+                <button title="Save Job" class="check-save__job" type="submit" data-check-save="{{checkSave checksave}}"><i class="bi bi-heart"></i></button>
+            </form>
+            <a href="/cv/createcv">Create CV To Apply</a>
+        </div>
+    </header>
+    <div class="body-jobdetail">
+        <div class="main-jobdetail">
+            <span class="jobinfo">JOB INFO</span>
+            <span class="companyinfo">COMPANY INFO</span>
+            <span class="jobsfromthiscompany">JOBS FROM THIS COMPANY</span>
+        </div>
+            <div class="main-jobinfo">
+                <div class="desc-jobinfo">
+                    <p class="jobinfo-main-text">Job Description</p>
+                    <p>{{detail.jobdesc}}</p>
+                    <p class="jobinfo-main-salary"><b>Salary Offer:</b> $ {{detail.salary}}</p>
+                </div>
+                <div class="requirements-jobinfo">
+                    <p class="jobinfo-main-text">Job Requirements</p>
+                    <p>{{detail.jobrequi}}</p>
+                </div>
+                <div class="benefit-jobinfo">
+                    <p class="jobinfo-main-text">Benefit</p>
+                    {{#if detail.benefit}}
+                    <p>{{detail.benefit}}</p>
+                    {{else}}
+                    <p>Contact the company for more details</p>
+                    {{/if}}
+                </div>
+                <div class="location-jobinfo">
+                    <p class="jobinfo-main-text">Locations</p>
+                    <span><i class="bi bi-geo-alt-fill"></i> {{detail.joblocation}}</span>
+                </div>
+            </div>
+            <div class="main-companyinfo">
+                <div class="company-detail">
+                    <p class="jobinfo-main-text">Company Detail</p>
+                    <span><b>Company Name:</b> {{getCompanyname company}} {{getTOB company}}</span>
+                    <span><b>Industry:</b> {{getCompanyfield company}}</span>
+                    <span><b>Address:</b> {{getCompanyaddress company}}</span>
+                    <span>{{getCompanyyears company}} Years</span>
+                    <span><b>Hotline:</b> {{getCompanyphone company}}</span>
+                </div>
+                <div class="desc-jobinfo">
+                    <p class="jobinfo-main-text">Company Description</p>
+                    <p>{{getCompanydesc company}}</p>
+                </div>
+            </div>
+            <div class="main-jobsfromthiscompany">
+                <ul>
+                    {{#each job}}
+                    <li class="content-listjob">
+                        <a href="/job/{{this._id}}" class="jftc-namejobs">{{this.jobname}}</a>
+                        <div class="secondary-listjob">
+                            <span class="locationjobs"><span class="jftc-salary">{{this.salary}}</span> | {{this.joblocation}}</span>
+                        </div> 
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
     </div>
-    <div class="jobdetail-action">
-        {{#if user}}
-        <button class="btn-apply" type="button" >Apply Now</button>
-        {{else}}
-        <a class="btn-apply__notuser" href="/login">Apply Now</a>
-        {{/if}}
-        <form class="function__check-save" action="/job/favourite?id={{detail._id}}" method="POST">
-            <button title="Save Job" class="check-save__job" type="submit" data-check-save="{{checkSave checksave}}"><i class="bi bi-heart"></i></button>
+    {{#if user}}
+    <div class="overplay-jobdetail">
+    </div>
+    <form class="box-apply-job" action="/scan/apply?id={{detail._id}}" method="POST" enctype="multipart/form-data">
+            <header>
+                <span>You are applying for <b>{{detail.jobname}}</b></span>
+                <p>Employers prefer to receive your resume in  <b>English</b> language.</p>
+            </header>
+            <div class="nav-apply-job">
+                <img src="{{getAvatar user}}" alt="">
+                <div class="apply-job-info">
+                    <span>{{getFullname user}}</span>
+                    <input type="text" name="professional" id="professional" placeholder="Professional headline. Ex: Project manager" required>
+                </div>
+            </div>
+            <div class="body-apply-job">
+                <div class="main-apply-job">
+                    <label for="email-apply">Email</label>
+                    <input type="text" name="email" id="email-apply" value="{{getEmail user}}" readonly>
+                </div>
+                <div class="main-apply-job">
+                    <label for="phone">Phone number</label>
+                    <input type="text" name="phoneApply" value="{{getPhone user}}" id="phone" required>
+                </div>
+                <div class="main-apply-job file-cv">
+                    <label for="cv">Resume</label>
+                    <label for="cv" class="resume">
+                        <span>Upload new CV <i class="bi bi-cloud-plus"></i></span>
+                        <span class="show-file">.doc, .docx and .pdf files that are less than 5120KB in size</span>
+                    </label>
+                    <input type="file" name="cv" id="cv" >
+                </div>
+            </div>
+            <div class="apply-job-action">
+                <button class="cancle-apply" type="button">Cancel</button>
+                <button class="submit-apply" type="submit">Apply CV</button>
+            </div>
         </form>
-        <a href="/cv/createcv">create cv to apply</a>
-    </div>
-</header>
-<div class="body-jobdetail">
-    <div class="main-jobdetail">
-        <span class="jobinfo">JOB INFO</span>
-        <span class="companyinfo">COMPANY INFO</span>
-        <span class="jobsfromthiscompany">JOBS FROM THIS COMPANY</span>
-    </div>
-        <div class="main-jobinfo">
-            <div class="desc-jobinfo">
-                <p class="jobinfo-main-text">Job Description</p>
-                <p>{{detail.jobdesc}}</p>
-                <p>Offer Salary: {{detail.salary}}</p>
-            </div>
-            <div class="requirements-jobinfo">
-                <p class="jobinfo-main-text">Job Requirements</p>
-                <p>{{detail.jobrequi}}</p>
-            </div>
-            <div class="benefit-jobinfo">
-                <p class="jobinfo-main-text">Benefit</p>
-                <span>{{detail.benefit}}</span>
-            </div>
-            <div class="location-jobinfo">
-                <p class="jobinfo-main-text">Locations</p>
-                <span><i class="bi bi-geo-alt-fill"></i> {{detail.joblocation}}</span>
-            </div>
-        </div>
-        <div class="main-companyinfo">
-            <div class="company-detail">
-                <p class="jobinfo-main-text">Company Detail</p>
-                <span>Company Name: {{getCompanyname company}} {{getTOB company}}</span>
-                <span>Company Field{{getCompanyfield company}}</span>
-                <span>Address: {{getCompanyaddress company}}</span>
-                <span>{{getCompanyyears company}} Years</span>
-                <span>Hotline: {{getCompanyphone company}}</span>
-            </div>
-            <div class="desc-jobinfo">
-                <p class="jobinfo-main-text">Company Description</p>
-                <p>{{getCompanydesc company}}</p>
-            </div>
-        </div>
-        <div class="main-jobsfromthiscompany">
-            <ul>
-                {{#each job}}
-                <li class="content-listjob">
-                    <a href="/job/{{this._id}}" class="jftc-namejobs">{{this.jobname}}</a>
-                    <div class="secondary-listjob">
-                        <span class="locationjobs"><span class="jftc-salary">{{this.salary}}</span> | {{this.joblocation}}</span>
-                    </div> 
-                </li>
-                {{/each}}
-            </ul>
-        </div>
+        {{/if}}
 </div>
-{{#if user}}
-   <div class="overplay-jobdetail">
-</div>
-<form class="box-apply-job" action="/scan/apply?id={{detail._id}}" method="POST" enctype="multipart/form-data">
-        <header>
-            <span>You are applying for <b>{{detail.jobname}}</b></span>
-            <p>Employers prefer to receive your resume in  <b>English</b> language.</p>
-        </header>
-        <div class="nav-apply-job">
-            <img src="{{getAvatar user}}" alt="">
-            <div class="apply-job-info">
-                <span>{{getFullname user}}</span>
-                <input type="text" name="professional" id="professional" placeholder="Professional headline. Ex: Project manager" required>
-            </div>
-        </div>
-        <div class="body-apply-job">
-            <div class="main-apply-job">
-                <label for="email-apply">Email</label>
-                <input type="text" name="email" id="email-apply" value="{{getEmail user}}" readonly>
-            </div>
-            <div class="main-apply-job">
-                <label for="phone">Phone number</label>
-                <input type="text" name="phoneApply" value="{{getPhone user}}" id="phone" required>
-            </div>
-            <div class="main-apply-job file-cv">
-                <label for="cv">Resume</label>
-                <label for="cv" class="resume">
-                    <span>Upload new CV <i class="bi bi-cloud-plus"></i></span>
-                    <span class="show-file">.doc, .docx and .pdf files that are less than 5120KB in size</span>
-                </label>
-                <input type="file" name="cv" id="cv" >
-            </div>
-        </div>
-        <div class="apply-job-action">
-            <button class="cancle-apply" type="button">Cancel</button>
-            <button class="submit-apply" type="submit">Apply CV</button>
-        </div>
-    </form>
-    
-    {{/if}}
 <script>
     var clickShowJobInfo = document.querySelector('.jobinfo');
     var showJobInfo = document.querySelector('.main-jobinfo');
     clickShowJobInfo.addEventListener('click',()=>{
         showJobInfo.style.cssText = "display: flex;"
-        clickShowJobInfo.style.cssText = "font-size: 20px; font-weight:600; border-bottom: 3px solid #fedb00;"
+        clickShowJobInfo.style.cssText = "font-weight:600; border-bottom: 3px solid #fedb00;"
         showcompanyInfo.style.cssText = "display: none;"
-        clickShowcompanyInfo.style.cssText = "font-size: 16px; font-weight:400; border-bottom: unset;"
+        clickShowcompanyInfo.style.cssText = " font-weight:400; border-bottom: unset;"
         showjobsfromthiscompany.style.cssText = "display: none;"
-        clickShowjobsfromthiscompany.style.cssText = "font-size: 16px; font-weight:400; border-bottom: unset;"
+        clickShowjobsfromthiscompany.style.cssText = " font-weight:400; border-bottom: unset;"
     });
     var clickShowcompanyInfo = document.querySelector('.companyinfo');
     var showcompanyInfo = document.querySelector('.main-companyinfo');
     clickShowcompanyInfo.addEventListener('click',()=>{
         showcompanyInfo.style.cssText = "display: flex;"
-        clickShowcompanyInfo.style.cssText = "font-size: 20px; font-weight:600; border-bottom: 3px solid #fedb00;"
+        clickShowcompanyInfo.style.cssText = "font-weight:600; border-bottom: 3px solid #fedb00;"
         showJobInfo.style.cssText = "display: none;"
-        clickShowJobInfo.style.cssText = "font-size: 16px; font-weight:400; border-bottom: unset;"
+        clickShowJobInfo.style.cssText = " font-weight:400; border-bottom: unset;"
         showjobsfromthiscompany.style.cssText = "display: none;"
-        clickShowjobsfromthiscompany.style.cssText = "font-size: 16px; font-weight:400; border-bottom: unset;"
+        clickShowjobsfromthiscompany.style.cssText = " font-weight:400; border-bottom: unset;"
     });
     var clickShowjobsfromthiscompany = document.querySelector('.jobsfromthiscompany');
     var showjobsfromthiscompany = document.querySelector('.main-jobsfromthiscompany');
     clickShowjobsfromthiscompany.addEventListener('click',()=>{
         showjobsfromthiscompany.style.cssText = "display: flex;"
-        clickShowjobsfromthiscompany.style.cssText = "font-size: 20px; font-weight:600; border-bottom: 3px solid #fedb00;"
+        clickShowjobsfromthiscompany.style.cssText = "font-weight:600; border-bottom: 3px solid #fedb00;"
         showJobInfo.style.cssText = "display: none;"
-        clickShowJobInfo.style.cssText = "font-size: 16px; font-weight:400; border-bottom: unset;"
+        clickShowJobInfo.style.cssText = " font-weight:400; border-bottom: unset;"
         showcompanyInfo.style.cssText = "display: none;"
-        clickShowcompanyInfo.style.cssText = "font-size: 16px; font-weight:400; border-bottom: unset;"
+        clickShowcompanyInfo.style.cssText = " font-weight:400; border-bottom: unset;"
     });
     var clickShowApply = document.querySelector('.btn-apply');
     var showApply = document.querySelector('.overplay-jobdetail');
@@ -149,6 +154,12 @@
     clickShowApply.addEventListener('click',()=>{
         showApply.style.cssText = "display:flex;"
         boxApply.style.cssText = "transform: translateY(10%);"
+        if(window.innerWidth > 602 && window.innerWidth <= 1024){
+            boxApply.style.cssText = "transform: translateY(20%);"
+        }
+        if(window.innerWidth <= 601){
+            boxApply.style.cssText = "transform: translateY(22%);"
+        }
         body.classList.add('modal-open');
     });
     showApply.addEventListener('click',()=>{

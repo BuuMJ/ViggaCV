@@ -4,8 +4,8 @@
     <img src="{{getAvatarcompany company}}" alt="">
     <div class="navcompany-center">
         <span class="first-text">{{getCompanyname company}}</span>
-        <span class="second-text">{{getCompanyaddress company}} | {{getCompanyemail company}}</span>
-        <span class="third-text">{{getCompanyfield company}}</span>
+        <span class="second-text"><b class="adress"><i class="bi bi-geo-alt-fill"></i> {{getCompanyaddress company}}</b> <b class="separation">|</b> <b class="email"><i class="bi bi-envelope-at-fill"></i> {{getCompanyemail company}}</b></span>
+        <span class="third-text"><b>Industry:</b> {{getCompanyfield company}}</span>
     </div>
 </nav>
 <div class="body-companyinformation">
@@ -18,8 +18,8 @@
                 <li class="content-listjob job-companyinfo">
                     <span class="namejobs">{{this.jobname}}</span>
                     <div class="secondary-listjob">
-                        <span class="locationjobs"><i class="bi bi-geo"></i> Location: {{this.joblocation}}</span>
-                        <span class="timejobs"><i class="bi bi-calendar-date"></i> {{this.createdAt}}</span>
+                        <span class="locationjobs"><i class="bi bi-geo"></i> Location: {{this.joblocation}} <b>|</b> </span>
+                        <span class="timejobs"><i class="bi bi-calendar-date"></i> {{moment this.createdAt format="DD/MM/YYYY" }}</span>
                     </div> 
                 </li>
                 <li class="job-companyinfo-action">

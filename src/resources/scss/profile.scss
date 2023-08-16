@@ -646,8 +646,7 @@ li.content-listleadership{
     display: flex;
     flex-direction: column;
     width: 95%;
-    height: 90px;
-    padding: unset;
+    padding: 12px 0;
     border-bottom: 1px solid #f0f0f0;
     margin-bottom: 12px;
     cursor: pointer;
@@ -657,7 +656,6 @@ li.content-listleadership{
 }
 li.content-listjob{
     position: relative;
-    height: 102px;
 }
 li.content-listjob a.payment{
     position: absolute;
@@ -1457,9 +1455,6 @@ ul.listpageleadership {
         font-size: 14px;
         border-radius: 6px;
     }
-    li.content-listjob{
-        height: 90px;
-    }
 }
 @media screen and (max-width: 321px) {
     button.btn-setting {
@@ -1484,9 +1479,6 @@ ul.listpageleadership {
     }
     span.timejobs, span.locationjobs{
         font-size: 12px;
-    }
-    li.content-listjob{
-        height: 100px;
     }
     .namejobs{
         font-size: 12px !important;
