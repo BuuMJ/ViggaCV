@@ -8,7 +8,7 @@
                     <span>{{getCompanyname company}} {{getTOB company}}</span>
                 </div>
                 <form class="follow-company-detail" method="post" action="/company/{{company._id}}/follow">
-                    <button id="followButton" type="submit">{{checkfl.follow}}</button>
+                    <button id="followButton" type="submit">{{checkfl.follow}} ({{company.follow}})</button>
                 </form>
             </div>
             <div class="header__info-company-detail">

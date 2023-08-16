@@ -689,19 +689,14 @@ submitPostJob.addEventListener('click', (e) => {
 textSalary.addEventListener('input', (e) => {
     var salaryValue = textSalary.value;
     var salaryContent = parseInt(salaryValue, 10);
-
+    alertSalary.style.display = 'none';
+    textSalary.style.border = '2px solid #04FC04';
     if (salaryValue !== "Negotiable" && isNaN(salaryContent)) {
         textSalary.style.border = '2px solid red';
         formPostJob.type = 'button';
-        formPostJob.addEventListener('click', () => {
-            alertSalary.style.display = 'inline-block';
-        });
+        alertSalary.style.display = 'inline-block';
     } else {
-        textSalary.style.border = '1px solid black';
         formPostJob.type = 'submit';
-        alertSalary.style.display = 'none';
     }
 });
-
-
 </script>

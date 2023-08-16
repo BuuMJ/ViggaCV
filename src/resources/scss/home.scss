@@ -23,7 +23,7 @@
 
 .first-content img.parallax-img {
     position: absolute;
-    width: 100%;
+    width: 101%;
     height: 100%;
     object-fit: cover;
     z-index: -1;
@@ -1239,6 +1239,9 @@
     .container-home .first-content .toprecruiters{
         bottom: 38%;
     }
+    .container-home .first-content .toprecruiters .list-toprecruiters{
+        width: 95%;
+    }
     .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter{
         height: 164px;
     }
@@ -1253,7 +1256,10 @@
         overflow-y: unset;
     }
     .container-home .home-jobs .swiper .swiper-pagination{
-        bottom: -10px;
+        bottom: -28px;
+    }
+    .container-home .home-jobs .swiper-slide a.box-jobnew .top-jobnew img{
+        height: 50%;
     }
     .advantages{
         height: 1000px;
@@ -1345,6 +1351,9 @@
     .container-home .home-jobs .title-jobs{
         font-size: 28px;
     }
+    .container-home .home-jobs .swiper{
+        width: 90%;
+    }
     .container-home .home-jobs .swiper-slide a.box-jobnew .bottom-jobnew .jobnew__salary, 
     .container-home .home-jobs .swiper-slide a.box-jobnew .bottom-jobnew .jobnew__location{
         font-size: 10px;
@@ -1420,7 +1429,7 @@
         margin-top: unset;
     }
     .container-home .home-jobs .swiper{
-        width: 67%;
+        width: 95%;
     }
     .container-home .home-jobs .title-jobs {
         font-size: 22px;

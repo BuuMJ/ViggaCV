@@ -48,9 +48,6 @@
                 </div>
             </div>
         </form>
-        <form action="/pay/refund/64d9f54033e11b8f5a879a24" method="POST">
-            <button type="submit">submit cmm</button>
-        </form>
         <div class="toprecruiters">
             <span class="title-toprecruiters">Top 5 recruitment companies</span>
             <div class="list-toprecruiters">
@@ -423,19 +420,6 @@ var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
     on: {
         init: function () {},
         orientationchange: function(){},
-        beforeResize: function(){
-            let vw = window.innerWidth;
-            if(vw > 1000){
-                mySwiper.params.slidesPerView = 3;
-                mySwiper.params.slidesPerColumn = 3;
-                mySwiper.params.slidesPerGroup = 3;
-            } else {
-                mySwiper.params.slidesPerView = 4;
-                mySwiper.params.slidesPerColumn = 2;
-                mySwiper.params.slidesPerGroup = 4;
-            }
-            mySwiper.init();
-        },
     },
 });
 

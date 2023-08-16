@@ -20,7 +20,7 @@
 
 .first-content img.parallax-img {
   position: absolute;
-  width: 100%;
+  width: 101%;
   height: 100%;
   object-fit: cover;
   z-index: -1;
@@ -1070,6 +1070,8 @@
 @media screen and (max-width: 1024px) {
   .container-home .first-content .toprecruiters {
     bottom: 38%; }
+  .container-home .first-content .toprecruiters .list-toprecruiters {
+    width: 95%; }
   .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter {
     height: 164px; }
   .container-home .home-personal .title-personal,
@@ -1080,7 +1082,9 @@
   .container-home .home-jobs .swiper {
     overflow-y: unset; }
   .container-home .home-jobs .swiper .swiper-pagination {
-    bottom: -10px; }
+    bottom: -28px; }
+  .container-home .home-jobs .swiper-slide a.box-jobnew .top-jobnew img {
+    height: 50%; }
   .advantages {
     height: 1000px; }
   .advantages .title-advantages {
@@ -1147,6 +1151,8 @@
     transform: translateX(37%); }
   .container-home .home-jobs .title-jobs {
     font-size: 28px; }
+  .container-home .home-jobs .swiper {
+    width: 90%; }
   .container-home .home-jobs .swiper-slide a.box-jobnew .bottom-jobnew .jobnew__salary,
   .container-home .home-jobs .swiper-slide a.box-jobnew .bottom-jobnew .jobnew__location {
     font-size: 10px; }
@@ -1202,7 +1208,7 @@
     font-size: 18px;
     margin-top: unset; }
   .container-home .home-jobs .swiper {
-    width: 67%; }
+    width: 95%; }
   .container-home .home-jobs .title-jobs {
     font-size: 22px; }
   .container-home .home-personal .title-personal {
@@ -1428,16 +1434,22 @@
   .advantage span {
     font-size: 12px; } }
 
+.container__job-detail {
+  background-color: #f5f5f5; }
+
 header.jobdetail {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  padding: 20px 0;
+  background-color: white;
+  margin-bottom: 20px; }
 
 header.jobdetail img {
   width: 12%;
-  height: 90%; }
+  align-self: flex-start; }
 
 header.jobdetail .center-jobdetail {
   width: 50%;
@@ -1446,15 +1458,15 @@ header.jobdetail .center-jobdetail {
   justify-content: space-around; }
 
 .center-jobdetail .primary-text {
-  font-size: 27px;
+  font-size: 26px;
   font-weight: 500;
-  padding: 12px 50px 8px 20px; }
+  padding: 12px 50px 4px 20px; }
 
 .center-jobdetail .secondary-text {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 500;
   color: #FCCB0C;
-  padding: 4px 50px 4px 20px; }
+  padding: 0 50px 4px 20px; }
 
 .center-jobdetail .third-text {
   font-size: 14px;
@@ -1463,9 +1475,9 @@ header.jobdetail .center-jobdetail {
 
 .center-jobdetail .forth-text {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   color: #ff7d55;
-  padding: 4px 50px 12px 20px; }
+  padding: 4px 50px 0 20px; }
 
 .jobdetail-action {
   display: flex;
@@ -1537,7 +1549,8 @@ header.jobdetail .center-jobdetail {
 .jobdetail-action a {
   text-decoration: none;
   width: 100%;
-  text-align: end; }
+  text-align: end;
+  padding-top: 12px; }
 
 .jobdetail-action a {
   color: #FCCB0C; }
@@ -1549,7 +1562,6 @@ header.jobdetail .center-jobdetail {
 .body-jobdetail {
   width: 100%;
   min-height: 300px;
-  background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1593,7 +1605,8 @@ header.jobdetail .center-jobdetail {
   background-color: white;
   min-height: 300px;
   margin-bottom: 50px;
-  transform: translateY(-9px); }
+  transform: translateY(-9px);
+  padding: 20px; }
 
 .main-jobinfo {
   display: flex; }
@@ -1601,15 +1614,12 @@ header.jobdetail .center-jobdetail {
 .main-jobsfromthiscompany {
   min-height: 120px; }
 
-.main-jobinfo > *,
-.main-jobsfromthiscompany > * {
-  padding: 0 20px; }
-
 .main-jobsfromthiscompany ul {
-  padding-top: 20px; }
+  padding: unset;
+  margin: unset; }
 
 .main-jobsfromthiscompany ul .content-listjob {
-  height: 70px; }
+  height: 60px; }
 
 .main-jobsfromthiscompany ul .content-listjob .secondary-listjob {
   padding-left: unset; }
@@ -1620,8 +1630,7 @@ header.jobdetail .center-jobdetail {
   white-space: pre-wrap;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 12px 20px; }
+  justify-content: center; }
 
 .location-jobinfo {
   padding-bottom: 20px; }
@@ -1631,11 +1640,17 @@ header.jobdetail .center-jobdetail {
   font-weight: 700;
   margin-bottom: 12px; }
 
+.jobinfo-main-salary {
+  font-weight: 600;
+  color: #ff7d55; }
+
+.jobinfo-main-salary b {
+  color: black; }
+
 .main-companyinfo .company-detail {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 12px 20px; }
+  justify-content: space-between; }
 
 .company-detail span {
   padding-bottom: 8px; }
@@ -2896,7 +2911,14 @@ header.job-search .best-companyFL .background-image {
     width: 100%; }
   .container__job-saved .main__job-saved section .box__saved-job .card__job-saved {
     width: 45%;
-    margin: 20px 2% 0 2%; } }
+    margin: 20px 2% 0 2%; }
+  .main-jobinfo p {
+    text-align: justify; }
+  .desc-jobinfo p {
+    text-align: justify; }
+  .box-apply-job {
+    width: 80%;
+    height: 50vh; } }
 
 @media screen and (max-width: 768px) {
   .header-search .navbar-left {
@@ -2962,6 +2984,39 @@ header.job-search .best-companyFL .background-image {
   .jobs-ads .ads-NYcompany,
   .jobs-ads .ads-LRcompany,
   .jobs-ads .best-job {
+    width: 90%; }
+  header.jobdetail {
+    flex-direction: column; }
+  header.jobdetail img {
+    align-self: unset;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)); }
+  header.jobdetail .center-jobdetail {
+    width: 70%;
+    align-items: center;
+    justify-content: center; }
+  .center-jobdetail .primary-text {
+    padding: 12px 20px 4px 20px;
+    text-align: center;
+    width: 100%; }
+  .center-jobdetail .secondary-text {
+    padding: 0 20px 4px 20px;
+    text-align: center;
+    width: 100%; }
+  .center-jobdetail .third-text,
+  .center-jobdetail .forth-text {
+    padding: 4px 20px;
+    width: 100%;
+    text-align: center; }
+  .jobdetail-action {
+    width: 70%;
+    justify-content: space-between;
+    align-items: center; }
+  .jobdetail-action button.btn-apply,
+  .jobdetail-action a.btn-apply__notuser {
+    width: 90%; }
+  .jobdetail-action a {
+    text-align: center; }
+  .apply-job-info input {
     width: 90%; } }
 
 @media screen and (max-width: 600px) {
@@ -3009,7 +3064,23 @@ header.job-search .best-companyFL .background-image {
   .header-search .header-search__scancv label .icon-scancv {
     height: 50%;
     width: 60%;
-    padding: 12px 0; } }
+    padding: 12px 0; }
+  .jobdetail-action button.btn-apply,
+  .jobdetail-action a.btn-apply__notuse {
+    width: 85%; }
+  .main-jobdetail {
+    width: 95%; }
+  .main-jobinfo,
+  .main-companyinfo,
+  .main-jobsfromthiscompany {
+    width: 95%; }
+  .box-apply-job {
+    width: 90%;
+    height: 80vh; }
+  .box-apply-job header {
+    height: 16%; }
+  .main-apply-job label {
+    width: 25%; } }
 
 @media screen and (max-width: 414px) {
   header.job-search .best-companyFL .info-bestfl span {
@@ -3096,7 +3167,43 @@ header.job-search .best-companyFL .background-image {
   .card-suggest .footer-suggest a {
     border-bottom-right-radius: unset;
     border-top-left-radius: unset;
-    border-top-right-radius: 5px; } }
+    border-top-right-radius: 5px; }
+  header.jobdetail img {
+    width: 30%; }
+  header.jobdetail .center-jobdetail,
+  .jobdetail-action {
+    width: 85%; }
+  .jobdetail-action {
+    flex-direction: column; }
+  .jobdetail-action button.btn-apply,
+  .jobdetail-action a.btn-apply__notuse {
+    width: 100%; }
+  .main-jobdetail > * {
+    font-size: 12px;
+    padding: 6px 0;
+    margin-right: 8px; }
+  .main-jobsfromthiscompany ul .content-listjob {
+    height: unset;
+    padding: 8px 0; }
+  a.jftc-namejobs {
+    font-size: 16px !important; }
+  .nav-apply-job img {
+    margin: 0 12px 0 0; }
+  .box-apply-job header span {
+    font-size: 16px; }
+  .box-apply-job header span b {
+    font-size: 16px; }
+  .apply-job-info input {
+    font-size: 14px; }
+  .box-apply-job > * {
+    padding: 0 10px; }
+  .main-apply-job label {
+    font-size: 14px;
+    width: 34%; }
+  .main-apply-job input {
+    width: 63%;
+    margin-right: unset;
+    font-size: 14px; } }
 
 @media screen and (max-width: 321px) {
   .main-jobs .card-jobs .card-job .card-job__action .detail-job__action {
@@ -3120,7 +3227,13 @@ header.job-search .best-companyFL .background-image {
     width: 40px;
     height: 40px; }
   .card-job .avatar-company img {
-    height: 80px; } }
+    height: 80px; }
+  .box-apply-job {
+    height: 90vh; }
+  .main-jobdetail > * {
+    font-size: 10px;
+    padding: 6px 0;
+    margin-right: 8px; } }
 
 .main-profile {
   display: flex;
@@ -3758,8 +3871,7 @@ li.content-listleadership {
   display: flex;
   flex-direction: column;
   width: 95%;
-  height: 90px;
-  padding: unset;
+  padding: 12px 0;
   border-bottom: 1px solid #f0f0f0;
   margin-bottom: 12px;
   cursor: pointer;
@@ -3768,8 +3880,7 @@ li.content-listleadership {
   text-transform: capitalize; }
 
 li.content-listjob {
-  position: relative;
-  height: 102px; }
+  position: relative; }
 
 li.content-listjob a.payment {
   position: absolute;
@@ -4512,9 +4623,7 @@ ul.listpageleadership .active {
     transform: translateY(-2%); }
   label.changebackground-profile {
     font-size: 14px;
-    border-radius: 6px; }
-  li.content-listjob {
-    height: 90px; } }
+    border-radius: 6px; } }
 
 @media screen and (max-width: 321px) {
   button.btn-setting {
@@ -4533,8 +4642,6 @@ ul.listpageleadership .active {
     top: 9%; }
   span.timejobs, span.locationjobs {
     font-size: 12px; }
-  li.content-listjob {
-    height: 100px; }
   .namejobs {
     font-size: 12px !important; }
   .secondary-listjob {
@@ -4792,7 +4899,7 @@ header.companyinformation {
 
 nav.companyinformation {
   width: 100%;
-  height: 120px;
+  padding: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -4814,12 +4921,16 @@ nav.companyinformation img {
 
 .navcompany-center span {
   font-size: 14px;
-  font-weight: 400; }
+  font-weight: 400;
+  padding: 4px 0; }
 
 .navcompany-center .first-text {
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 30px;
+  font-weight: 600;
   color: black; }
+
+.navcompany-center .second-text b {
+  font-weight: 400; }
 
 .body-companyinformation {
   display: flex;
@@ -4839,15 +4950,15 @@ nav.companyinformation img {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 10px 20px;
+  padding: 20px;
   margin-bottom: 30px; }
 
 .companyinformation-showjob ul {
   margin-bottom: unset; }
 
 .companyinformation-showjob p {
-  font-size: 20px;
-  font-weight: 500; }
+  font-size: 24px;
+  font-weight: 600; }
 
 .companyinformation-showjob .jobs-companyinfo {
   display: flex;
@@ -4855,8 +4966,7 @@ nav.companyinformation img {
   justify-content: space-between;
   border-bottom: 1px solid #f0f0f0;
   width: 95%;
-  margin-bottom: 16px;
-  height: 46px; }
+  margin-bottom: 16px; }
 
 .job-companyinfo {
   padding: 10px 0;
@@ -4869,21 +4979,25 @@ nav.companyinformation img {
   width: 20%;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
   align-items: center; }
 
 .job-companyinfo-action a {
   text-decoration: none;
   color: black;
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 500;
   padding: 4px 34px;
   border: 1px solid #999999;
   transition: .3s; }
 
 .job-companyinfo-action a:hover {
   background-color: #fed200;
-  color: white; }
+  color: white;
+  border: 1px solid #fed200; }
+
+.job-companyinfo .secondary-listjob {
+  padding-left: unset; }
 
 .main-company-detail {
   background-color: #f9f9fa;
@@ -4897,7 +5011,6 @@ nav.companyinformation img {
 
 .main-company-detail header.company-detail {
   width: 80%;
-  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -4908,7 +5021,7 @@ nav.companyinformation img {
 
 header.company-detail .background-company-detail {
   width: 100%;
-  height: 60%; }
+  height: 350px; }
 
 .main__header-company-detail {
   display: flex;
@@ -4921,7 +5034,8 @@ header.company-detail .background-company-detail {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  height: 60%; }
+  height: 60%;
+  padding: 20px 0; }
 
 .logo-company-detail {
   display: flex;
@@ -4934,8 +5048,7 @@ header.company-detail .background-company-detail {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  box-shadow: 1px 1px 8px #999999;
-  transform: translateY(-15%); }
+  box-shadow: 1px 1px 8px #999999; }
 
 .header__primary-company-detail .logo-company-detail span {
   font-size: 30px;
@@ -4951,14 +5064,15 @@ header.company-detail .background-company-detail {
 
 .follow-company-detail button {
   outline: none;
-  width: 100px;
-  height: 40px;
+  width: 120px;
+  height: 50px;
   background-color: #fed200;
   color: black;
   border: 1px solid #fed200;
   border-radius: 10px;
   font-weight: 600;
-  transition: .5s; }
+  transition: .5s;
+  text-transform: capitalize; }
 
 .follow-company-detail button.following {
   width: 120px; }
@@ -4981,14 +5095,19 @@ header.company-detail .background-company-detail {
   font-size: 16px;
   font-weight: 400;
   padding-left: 40px;
-  height: 22%; }
+  height: 22%;
+  padding-top: 20px; }
 
 .header__info-company-detail span {
   padding: 0 10px;
   text-align: center;
   height: 100%;
   cursor: pointer;
-  margin: 0 4px; }
+  margin: 0 4px;
+  border-bottom: 3px solid transparent;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: capitalize; }
 
 .header__info-company-detail span:hover {
   color: #fed200;
@@ -5200,6 +5319,8 @@ header.company-detail .background-company-detail {
 @media screen and (max-width: 1024px) {
   h2.main-text {
     font-size: 40px; }
+  .main-companies {
+    width: 90%; }
   .header-companies span {
     width: 40%; }
   .search-companies {
@@ -5231,8 +5352,6 @@ header.company-detail .background-company-detail {
     text-align: justify; } }
 
 @media screen and (max-width: 768px) {
-  .main-companies {
-    width: 90%; }
   h2.main-text {
     font-size: 38px; }
   #categories-search {
@@ -5263,7 +5382,13 @@ header.company-detail .background-company-detail {
   .show__main-info-leadership i {
     position: absolute;
     top: 0;
-    right: 0; } }
+    right: 0; }
+  .companyinformation-showjob {
+    width: 90%; }
+  .companyinformation-showjob ul {
+    padding: unset; }
+  .companyinformation-showjob .jobs-companyinfo .content-listjob {
+    padding-right: 8px; } }
 
 @media screen and (max-width: 600px) {
   .main-company-detail header.company-detail,
@@ -5271,6 +5396,8 @@ header.company-detail .background-company-detail {
     width: 90%; }
   h2.main-text {
     font-size: 30px; }
+  .main-companies {
+    width: 98%; }
   .header-companies span {
     font-size: 17px; }
   #categories-search {
@@ -5281,12 +5408,13 @@ header.company-detail .background-company-detail {
     width: 100%; }
   .follow-company-detail {
     width: 100%;
-    justify-content: start;
-    padding-left: 40px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
     margin: unset; }
   .header__primary-company-detail .logo-company-detail span {
-    font-size: 24px;
-    padding-right: 20px; }
+    width: 100%;
+    text-align: center; }
   .company-leadership {
     flex-direction: column; }
   .company-leadership .company-leadership__text {
@@ -5313,7 +5441,17 @@ header.company-detail .background-company-detail {
   .show__main-info-leadership .introduce-leadership p {
     font-size: 12px;
     padding: 10px 0 0 0;
-    margin-bottom: unset; } }
+    margin-bottom: unset; }
+  .header__primary-company-detail .logo-company-detail img {
+    left: 50%;
+    top: -30%;
+    transform: translateX(-50%); }
+  .logo-company-detail {
+    margin-top: 50px;
+    padding: 0 20px;
+    justify-content: center; }
+  .company-desc span.desc__first-text {
+    font-size: 36px; } }
 
 @media screen and (max-width: 415px) {
   h2.main-text {
@@ -5356,13 +5494,67 @@ header.company-detail .background-company-detail {
     font-size: 10px; }
   .show__main-info-leadership .introduce-leadership p {
     font-size: 10px;
-    padding-top: 6px; } }
+    padding-top: 6px; }
+  .header__info-company-detail {
+    padding-left: unset;
+    justify-content: center;
+    align-items: center; }
+  .company-desc span.desc__first-text,
+  .company-leadership__text span.leadership__first-text {
+    font-size: 24px; }
+  .company-desc span.desc__second-text,
+  .company-leadership__text span.leadership__second-text {
+    text-align: justify; }
+  nav.companyinformation {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative; }
+  nav.companyinformation img {
+    margin: unset;
+    width: 32%;
+    height: unset;
+    position: absolute;
+    top: -25%;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)); }
+  .navcompany-center {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px; }
+  .companyinformation-showjob .jobs-companyinfo {
+    flex-direction: column;
+    padding: 6px 0; }
+  .companyinformation-showjob .jobs-companyinfo .content-listjob {
+    width: 100%;
+    padding-top: 0 !important; }
+  .companyinformation-showjob .jobs-companyinfo .content-listjob span.namejobs {
+    font-size: 16px !important;
+    padding-bottom: 4px !important; }
+  .job-companyinfo-action {
+    width: 100%;
+    align-items: start; }
+  .navcompany-center span.second-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+  .navcompany-center span.second-text .separation {
+    display: none; }
+  .navcompany-center span.second-text b {
+    padding: 4px 0; } }
 
 @media screen and (max-width: 376px) {
+  h2.main-text {
+    font-size: 19px; }
   .show__main-info-leadership img {
     height: 40%; }
   .show__main-info-leadership .introduce-leadership {
-    height: 60%; } }
+    height: 60%; }
+  nav.companyinformation img {
+    top: -18%; } }
 
 @media screen and (max-width: 321px) {
   h2.main-text {
@@ -5385,7 +5577,21 @@ header.company-detail .background-company-detail {
     padding: 18px 4px 18px 30px; }
   .show__main-info-leadership .introduce-leadership p {
     font-size: 7.5px;
-    padding-top: 2px; } }
+    padding-top: 2px; }
+  .header__info-company-detail span {
+    font-size: 18px; }
+  .company-desc span.desc__first-text,
+  .company-leadership__text span.leadership__first-text {
+    font-size: 18px; }
+  nav.companyinformation img {
+    top: -16%; }
+  .companyinformation-showjob {
+    padding: 20px 10px;
+    width: 98%; }
+  .jobs-companyinfo .content-listjob .secondary-listjob .locationjobs {
+    padding-bottom: 4px; }
+  .jobs-companyinfo .content-listjob .secondary-listjob .locationjobs b {
+    display: none; } }
 
 .container-cv {
   display: flex;
@@ -6373,8 +6579,7 @@ header.company-detail .background-company-detail {
   margin-bottom: 50px; }
 
 .container-admin header .box-total {
-  background-color: #0093E9;
-  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  background-image: linear-gradient(63.1deg, #05176f 16.4%, #185ff0 64.5%);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6385,15 +6590,13 @@ header.company-detail .background-company-detail {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04); }
 
 .container-admin header .box__total-user {
-  background-color: #8BC6EC;
-  background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%); }
+  background-image: linear-gradient(109.6deg, #ff7344 11.2%, #f4ff20 100.6%); }
 
 .container-admin header .box__total-thismonth {
-  background-color: #D9AFD9;
-  background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%); }
+  background-image: linear-gradient(132.6deg, #478bd6 23.3%, #25d8d3 84.7%); }
 
 .container-admin header .box__total-job {
-  background-image: linear-gradient(270.3deg, #54d4e4 0.2%, #4424a4 100%); }
+  background-image: radial-gradient(circle farthest-corner at 24.7% 28.8%, #f7b71d 1.9%, #fdef96 97.7%); }
 
 .container-admin header .box-total .title {
   margin-bottom: 6px;
@@ -6416,8 +6619,15 @@ header.company-detail .background-company-detail {
 .container-admin header .box-total .view-detail__total:hover {
   text-decoration: underline; }
 
+.container-admin .container-revenue {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%; }
+
 .revenue-chart {
-  width: 65%;
+  width: 70%;
   height: 720px;
   background-color: white;
   border-radius: 5px;
@@ -6714,6 +6924,9 @@ header.company-detail .background-company-detail {
   margin-top: 30px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04);
   align-self: flex-start; }
+
+.container-admin .list-job {
+  width: 95%; }
 
 .container-admin .list-user {
   position: relative; }
@@ -7216,6 +7429,170 @@ form.note-denied button:hover {
 .container-admin .success-payment__history .amount {
   text-align: center;
   text-transform: capitalize; }
+
+@media screen and (max-width: 1024px) {
+  .container-admin header {
+    flex-wrap: wrap; }
+  .container-admin header .box-total {
+    width: 45%; }
+  .container-admin header .box-total:nth-child(3),
+  .container-admin header .box-total:nth-child(4) {
+    margin-top: 20px; }
+  .container-admin .container-revenue {
+    flex-wrap: wrap;
+    flex-direction: column-reverse; }
+  .main__revenue-detail {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 30px; }
+  .main__revenue-detail .revenue-details,
+  .main__revenue-detail .box__circle-chart {
+    width: 45%; }
+  .main__revenue-detail .box__circle-chart {
+    margin-top: unset;
+    height: 353px; }
+  .revenue-chart {
+    width: 100%;
+    height: 600px; }
+  .container-admin .detail-refuned .history-refuned,
+  .container-admin .success-payment__history {
+    width: 100%; }
+  .container-admin .success-payment__history {
+    margin-top: 30px; }
+  .container-admin .detail-revenue {
+    flex-wrap: wrap; }
+  .container-admin .detail-revenue .content__total-quarterly {
+    width: 50%; }
+  .container-admin .user-chart {
+    width: 95%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between; }
+  .container-admin .user-chart h1 {
+    margin-bottom: 30px; }
+  .container-admin .user-chart #pieChart {
+    width: 45% !important;
+    height: 350px !important; }
+  .container-admin .user-chart .percentage-bar {
+    width: 45%;
+    align-self: center; }
+  .container-admin .list-user {
+    width: 95%; }
+  .container-admin .main-job__circle-chart {
+    flex-wrap: wrap; }
+  .container-admin .main-job__circle-chart .box__circle-chart {
+    width: 45%; }
+  .container-admin .chart-job h1 {
+    margin-bottom: 40px; }
+  .container-admin .chart-job {
+    width: 55%;
+    height: 397px; }
+  .total-job__detail {
+    width: 35%;
+    margin-top: 30px; }
+  .container-admin .detail-refuned .box__request-refund .refuned-ads,
+  .container-admin .detail-refuned .box__request-refund .refuned-high {
+    align-items: start;
+    overflow-x: scroll; }
+  .container-admin .detail-refuned .refuned-ads h1,
+  .container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads,
+  .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads {
+    width: 1628px; } }
+
+@media screen and (max-width: 768px) {
+  .container-admin .list-user,
+  .container-admin .list-job {
+    overflow-x: scroll;
+    align-items: start; }
+  .container-admin .list-user .header__list-user,
+  .container-admin .list-job .header__list-job,
+  .container-admin .list-user .body__list-user,
+  .container-admin .list-job .body__list-job,
+  .container-admin .list-user h1,
+  .container-admin .list-job h1 {
+    width: 1300px; }
+  .container-admin .chart-job {
+    width: 95%;
+    height: unset; }
+  .total-job__detail {
+    width: 95%; } }
+
+@media screen and (max-width: 600px) {
+  .main__revenue-detail {
+    flex-wrap: wrap; }
+  .main__revenue-detail .revenue-details,
+  .main__revenue-detail .box__circle-chart {
+    width: 100%; }
+  .main__revenue-detail .box__circle-chart {
+    margin-top: 30px; }
+  .revenue-chart {
+    height: unset; }
+  .container-admin .detail-revenue {
+    width: 85%; }
+  .container-admin .detail-revenue .content__total-quarterly {
+    width: 100%; }
+  .container-admin .detail-refuned .history-refuned,
+  .container-admin .success-payment__history {
+    overflow-x: scroll;
+    align-items: start; }
+  .container-admin .detail-refuned .history-refuned h1,
+  .container-admin .success-payment__history h1,
+  .container-admin .detail-refuned .history-refuned .header__history-refuned,
+  .container-admin .success-payment__history .header__payment-history,
+  .container-admin .detail-refuned .history-refuned .main__history-refuned,
+  .container-admin .success-payment__history .main__payment-history {
+    width: 750px; }
+  .container-admin .user-chart #pieChart {
+    height: 300px !important; } }
+
+@media screen and (max-width: 415px) {
+  .container-admin header .box-total {
+    width: 95%; }
+  .container-admin header .box-total:nth-child(2) {
+    margin-top: 20px; }
+  .revenue-chart,
+  .container-admin .chart-job {
+    padding: 20px 10px; }
+  .revenue-chart #myChart {
+    height: 300px !important; }
+  .container-admin .main-job__circle-chart .box__circle-chart {
+    width: 95%; } }
+
+@media screen and (max-width: 376px) {
+  .container-admin .user-chart #pieChart {
+    height: 250px !important; }
+  .container-admin .user-chart .percentage-bar h2 {
+    font-size: 22px; } }
+
+@media screen and (max-width: 321px) {
+  .main__revenue-detail .box__circle-chart .circle-chart,
+  .container-admin .main-job__circle-chart .box__circle-chart .circle-chart {
+    width: 160px;
+    height: 160px; }
+  .main__revenue-detail .box__circle-chart .circle-chart::after,
+  .container-admin .main-job__circle-chart .box__circle-chart .circle-chart::after {
+    width: 140px;
+    height: 140px; }
+  .container-admin .detail-revenue {
+    width: 95%; }
+  .container-admin .detail-revenue h1,
+  .container-admin .chart-job h1 {
+    font-size: 20px; }
+  .container-admin .detail-revenue .content__total-quarterly ul span.title {
+    font-size: 18px; }
+  .container-admin .detail-revenue .content__total-quarterly ul p.view-detail,
+  .container-admin .detail-revenue .content__total-quarterly li {
+    font-size: 14px; }
+  .container-admin .user-chart h1 {
+    font-size: 20px; }
+  .container-admin .user-chart .percentage-bar h2 {
+    font-size: 18px; }
+  .container-admin .user-chart .percentage-bar .percent-user .data-count-user,
+  .container-admin .user-chart .percentage-bar .percent-company .data-count-company {
+    font-size: 10px;
+    font-weight: 700; } }
 
 .container-salary {
   background-color: #f5f5f5;
