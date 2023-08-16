@@ -491,6 +491,8 @@ class AdminController {
       listRefund: mutipleJobToJSON(listRefund), // danh sách công việc đã refund thành công
       listRevenue: mutipleJobToJSON(listRevenue),
       pageJob,
+      pageRefund,
+      pageRevenue,
     });
   }
 
