@@ -616,7 +616,7 @@ class AdminController {
         console.log(err);
       } else {
         console.log("Đã gửi mail cho người post job");
-        res.redirect("back");
+        res.redirect("/admin?messenge=Refund successfully refused");
       }
     });
   }
