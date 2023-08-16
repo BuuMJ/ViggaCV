@@ -774,7 +774,11 @@ li.content-listleadership{
     height: 80px;
     align-items: center;
 }
-li.content-listjob:hover .namejobs{
+li.content-listjob .namejobs a{
+    text-decoration: none;
+    color: black;
+}
+li.content-listjob:hover .namejobs a{
     color: $primarycolor;
 }
 li.content-listleadership img{

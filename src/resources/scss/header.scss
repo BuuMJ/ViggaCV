@@ -41,7 +41,7 @@
     letter-spacing: 2.1px;
     position: absolute;
     bottom: 12px;
-    left: 18%;
+    left: 17.5%;
 }
 .litle-text p {
     margin: unset;
@@ -538,8 +538,26 @@
     .navbar-responsive .navbar-left .litle-text{
         left: 54%;
     }
+    .action-down__admin{
+        width: 160px !important;
+    }
 }
 @media screen and (max-width: 414px) {
+    .responsive__navbar-center header.navbar-center{
+        height: 150px;
+    }
+    .responsive__navbar-center header.navbar-center .user-right{
+        flex-direction: column;
+        margin-right: unset;
+        align-items: start;
+    }
+    .responsive__navbar-center header.navbar-center .user-right .right-info__user{
+        width: 100%;
+        padding-left: unset;
+    }
+    .responsive__navbar-center header.navbar-center .user-right .right-info__user a{
+        align-self: unset;
+    }
     .navbar-responsive .navbar-left .litle-text{
         left: 80%;
     }
@@ -554,6 +572,13 @@
     .show-menu input#menu:checked + .menu-lines .top-line,
     .show-menu input#menu:checked + .menu-lines .bottom-line{
         top: 22px;
+    }
+    .responsive__navbar-center header.navbar-center .user-left .drop-down__action{
+        padding: 0 0 20px 0;
+        height: unset;
+    }
+    .responsive__navbar-center header.navbar-center .user-left .drop-down__action .action-down{
+        bottom: -144%;
     }
 }
 @media screen and (max-width: 376px) {
@@ -573,5 +598,8 @@
     }
     .responsive__navbar-center header.navbar-center .user-left .drop-down__action span i{
         font-size: 22px;
+    }
+    .responsive__navbar-center header.navbar-center .user-left .drop-down__action .action-down{
+        bottom: -150%;
     }
 }

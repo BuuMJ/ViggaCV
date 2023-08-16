@@ -117,6 +117,8 @@
     outline: none;
     border: none;
     border-bottom: 1px solid $primarycolor;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 #selectrole * {
     background-color: rgba(0,0,0,0.8);

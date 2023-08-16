@@ -2434,6 +2434,9 @@ header.job-search .best-companyFL .background-image {
   text-decoration: none;
   color: black; }
 
+.best-job a.best-job__link {
+  width: 100%; }
+
 .jobs-ads .best-job span.primary-text {
   font-size: 18px;
   font-weight: 500;
@@ -2479,7 +2482,7 @@ header.job-search .best-companyFL .background-image {
 .ads-TPcompany img,
 .ads-NYcompany img,
 .ads-LRcompany img {
-  width: 403px;
+  width: 100%;
   height: 483px; }
 
 .suggest-company {
@@ -3999,7 +4002,11 @@ li.content-listleadership {
   height: 80px;
   align-items: center; }
 
-li.content-listjob:hover .namejobs {
+li.content-listjob .namejobs a {
+  text-decoration: none;
+  color: black; }
+
+li.content-listjob:hover .namejobs a {
   color: #fed200; }
 
 li.content-listleadership img {
@@ -7746,7 +7753,9 @@ form.note-denied button:hover {
   color: white;
   outline: none;
   border: none;
-  border-bottom: 1px solid #fed200; }
+  border-bottom: 1px solid #fed200;
+  -webkit-appearance: none;
+  -moz-appearance: none; }
 
 #selectrole * {
   background-color: rgba(0, 0, 0, 0.8); }
@@ -8003,7 +8012,7 @@ button#moveTopBtn {
   letter-spacing: 2.1px;
   position: absolute;
   bottom: 12px;
-  left: 18%; }
+  left: 17.5%; }
 
 .litle-text p {
   margin: unset; }
@@ -8443,9 +8452,22 @@ button#moveTopBtn {
   .responsive__navbar-center {
     top: 10%; }
   .navbar-responsive .navbar-left .litle-text {
-    left: 54%; } }
+    left: 54%; }
+  .action-down__admin {
+    width: 160px !important; } }
 
 @media screen and (max-width: 414px) {
+  .responsive__navbar-center header.navbar-center {
+    height: 150px; }
+  .responsive__navbar-center header.navbar-center .user-right {
+    flex-direction: column;
+    margin-right: unset;
+    align-items: start; }
+  .responsive__navbar-center header.navbar-center .user-right .right-info__user {
+    width: 100%;
+    padding-left: unset; }
+  .responsive__navbar-center header.navbar-center .user-right .right-info__user a {
+    align-self: unset; }
   .navbar-responsive .navbar-left .litle-text {
     left: 80%; }
   .responsive__navbar-center header.navbar-center .user-left .drop-down__action span i {
@@ -8456,7 +8478,12 @@ button#moveTopBtn {
     width: 50px; }
   .show-menu input#menu:checked + .menu-lines .top-line,
   .show-menu input#menu:checked + .menu-lines .bottom-line {
-    top: 22px; } }
+    top: 22px; }
+  .responsive__navbar-center header.navbar-center .user-left .drop-down__action {
+    padding: 0 0 20px 0;
+    height: unset; }
+  .responsive__navbar-center header.navbar-center .user-left .drop-down__action .action-down {
+    bottom: -144%; } }
 
 @media screen and (max-width: 376px) {
   .responsive__navbar-center {
@@ -8470,7 +8497,9 @@ button#moveTopBtn {
   .navbar-responsive .navbar-left .litle-text {
     left: 105%; }
   .responsive__navbar-center header.navbar-center .user-left .drop-down__action span i {
-    font-size: 22px; } }
+    font-size: 22px; }
+  .responsive__navbar-center header.navbar-center .user-left .drop-down__action .action-down {
+    bottom: -150%; } }
 
 @keyframes ShowImg {
   0% {

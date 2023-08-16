@@ -161,7 +161,7 @@
                     <ul>
                         {{#each listjob}}
                         <li class="content-listjob" data-blocked={{this.active}}>
-                            <span class="namejobs"><i class="bi bi-three-dots-vertical"></i> {{this.jobname}}</span>
+                            <span class="namejobs"><i class="bi bi-three-dots-vertical"></i> <a href="/job/{{this._id}}">{{this.jobname}}</a></span>
                             <div class="secondary-listjob">
                                 <span class="locationjobs"><i class="bi bi-geo"></i> Location:
                                     {{this.joblocation}}</span>
