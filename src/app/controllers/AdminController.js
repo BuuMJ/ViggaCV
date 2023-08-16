@@ -13,6 +13,7 @@ const UserModel = require("../models/User");
 
 class AdminController {
   async admin(req, res, next) {
+    const msg = req.query.message;
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth() + 1;
     const user = req.user;
@@ -493,6 +494,7 @@ class AdminController {
       pageJob,
       pageRefund,
       pageRevenue,
+      msg,
     });
   }
 
