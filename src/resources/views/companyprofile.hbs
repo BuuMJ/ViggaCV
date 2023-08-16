@@ -1,4 +1,12 @@
 <div class="main-profile">
+    {{#if msg}}
+        <div class="alert-message">
+            <p>{{msg}}</p>
+            <div class="hide-message">
+                <i class="bi bi-x-circle"></i>
+            </div>
+        </div>
+    {{/if}}
     <form class="form-company-profile" method="POST" action="/companyprofile/edit?_method=PUT"
         enctype="multipart/form-data">
         <div class="header-profile header-profile-company" id="header-profile"
@@ -698,5 +706,17 @@ textSalary.addEventListener('input', (e) => {
     } else {
         formPostJob.type = 'submit';
     }
+});
+// show message
+var alertMessage = document.querySelector('.alert-message');
+var hideMessage = document.querySelector('.hide-message');
+setTimeout(function(){
+    alertMessage.style.cssText = 'top: 12%';
+    if(window.innerWidth <= 321){
+        alertMessage.style.cssText = 'top: 15%';
+    }
+}, 100);
+hideMessage.addEventListener('click',()=>{
+    alertMessage.style.display = 'none';
 });
 </script>

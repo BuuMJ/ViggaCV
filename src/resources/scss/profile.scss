@@ -5,6 +5,50 @@
     width: 100%;
     min-height: 620px;
 }
+.alert-message{
+    padding: 20px 70px 20px 22px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #f6a7a3;
+    position: relative;
+    display: flex;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    position: fixed;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    transition: .5s;
+}
+.alert-message p{
+    margin-bottom: unset;
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.alert-message .hide-message{
+    position: absolute;
+    top: -2px;
+    right: 4px;
+    color: black;
+    font-size: 24px;
+    cursor: pointer;
+}
+.alert-message .hide-message:hover{
+    color: #FC0404;
+}
+.alert-message::before{
+    position: absolute;
+    content: '';
+    width: 6px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #FC0404;
+}
 .form-company-profile{
     width: 100%;
     display: flex;
@@ -1311,6 +1355,9 @@ ul.listpageleadership {
     .camera-user-company{
         top: 8.5%;
     }
+    .alert-message p{
+        font-size: 18px;
+    }
 }
 @media screen and (max-width: 768px) {
     .header-profile{
@@ -1339,6 +1386,15 @@ ul.listpageleadership {
     li.content-listjob .remove-blocked{
         padding: unset;
         left: -8%;
+    }
+    .alert-message{
+        padding-right: 50px;
+    }
+    .alert-message p{
+        font-size: 14px;
+    }
+    .alert-message .hide-message{
+        font-size: 20px;
     }
 }
 @media screen and (max-width: 600px) {
@@ -1446,6 +1502,9 @@ ul.listpageleadership {
     .leadership-action-view{
         width: 90%;
     }
+    .alert-message{
+        width: 80vw;
+    }
 }
 @media screen and (max-width: 376px) {
     button.btn-setting {
@@ -1503,5 +1562,11 @@ ul.listpageleadership {
     }
     label.changebackground-profile {
         font-size: 10px;
+    }
+    .alert-message{
+        padding-right: 40px;
+    }
+    .alert-message p{
+        font-size: 12px;
     }
 }
