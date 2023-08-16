@@ -147,7 +147,7 @@
                         <span class="action">
                             <form class="refund-succes" action="/pay/refund/{{this._id}}" method="post">
                                 <input type="text" name="type" value="prioritize" hidden>
-                                <button class="refund-success">Refund</button>
+                                <button type="button" class="refund-success">Refund</button>
                             </form>
                             <div class="refund-fail" action="">
                                 <button type="button" class="denied">Denied</button>
@@ -189,7 +189,7 @@
                         <span class="action">
                             <form class="refund-succes" action="/pay/refund/{{this._id}}" method="post">
                                 <input type="text" name="type" id="" value="post job" hidden>
-                                <button type="submit" class="refund-success">Refund</button>
+                                <button type="button" class="refund-success">Refund</button>
                             </form>
                             <form class="refund-fail" action="">
                                 <button type="button" class="denied">Denied</button>
@@ -901,6 +901,8 @@ boxHistoryRefuned.forEach(function(box){
     listRefunedAds.forEach(function(item){
     const clickShowNote = item.querySelector('.refund-fail .denied');
     const boxNote = item.querySelector('form.note-denied');
+    const clickAcceptRefund = item.querySelector('button.refund-success');
+    const formSuccess = item.querySelector('form.refund-succes');
     clickShowNote.addEventListener('click',()=>{
         boxNote.style.display = 'flex';
         overflowAdmin.style.display = 'block';
@@ -909,11 +911,22 @@ boxHistoryRefuned.forEach(function(box){
         overflowAdmin.style.display = 'none';
         boxNote.style.display = 'none';
     });
+    clickAcceptRefund.addEventListener('click',()=>{
+        let check = prompt("Please enter your email to accept this refund request")
+            if(check !== emailAdminCheck){
+                alert('Wrong Email')
+            }
+            else{
+                formSuccess.submit();
+            }
+    })
 });
     var listRefunedHigh = document.querySelectorAll('.refunedads .main__refuned-high');
     listRefunedHigh.forEach(function(item){
         const clickShowNote = item.querySelector('.refund-fail .denied');
         const boxNote = item.querySelector('form.note-denied');
+        const clickAcceptRefund = item.querySelector('button.refund-success');
+        const formSuccess = item.querySelector('form.refund-succes');
         clickShowNote.addEventListener('click',()=>{
             boxNote.style.display = 'flex';
             overflowAdmin.style.display = 'block';
@@ -922,5 +935,14 @@ boxHistoryRefuned.forEach(function(box){
             overflowAdmin.style.display = 'none';
             boxNote.style.display = 'none';
         });
+        clickAcceptRefund.addEventListener('click',()=>{
+        let check = prompt("Please enter your email to accept this refund request")
+            if(check !== emailAdminCheck){
+                alert('Wrong Email')
+            }
+            else{
+                formSuccess.submit();
+            }
+    })
     });
 </script>
