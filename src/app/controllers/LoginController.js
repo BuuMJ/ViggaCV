@@ -22,7 +22,7 @@ class LoginController {
         if (data) {
           if (!data.isVerified) {
             return res.render("verify", {
-              msg: "Email chưa được xác minh",
+              msg: "Email is not verified",
             });
           }
           var token = jwt.sign(

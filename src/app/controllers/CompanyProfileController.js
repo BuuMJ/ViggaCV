@@ -590,7 +590,7 @@ class CompanyProfileController {
       } else {
         if (job.request != "non") {
           return res.redirect(
-            "/companyprofile?message=Your job is temporarily locked for refund"
+            "/companyprofile?message=Your job is temporarily locked for a refund, you can't reopen it right now."
           );
         }
         const updatedJob = await JobModel.findByIdAndUpdate(
@@ -634,7 +634,7 @@ class CompanyProfileController {
         switch (checkRequest.request) {
           case "post job":
             return res.redirect(
-              "/companyprofile?message=Have you requested a refund for this job?"
+              "/companyprofile?message=You have requested a refund for this job"
             );
           case "prioritize":
             await JobModel.findByIdAndUpdate(idJob, { request: "all" });
@@ -644,7 +644,7 @@ class CompanyProfileController {
             break;
           case "all":
             return res.redirect(
-              "/companyprofile?message=Have you requested a refund for this job?"
+              "/companyprofile?message=You have requested a refund for this job"
             );
         }
       }
@@ -655,14 +655,14 @@ class CompanyProfileController {
             break;
           case "prioritize":
             return res.redirect(
-              "/companyprofile?message=Have you requested a refund for this job?"
+              "/companyprofile?message=You have requested a refund for this job"
             );
           case "non":
             await JobModel.findByIdAndUpdate(idJob, { request: type });
             break;
           case "all":
             return res.redirect(
-              "/companyprofile?message=Have you requested a refund for this job?"
+              "/companyprofile?message=You have requested a refund for this job"
             );
         }
       }
@@ -679,7 +679,7 @@ class CompanyProfileController {
             break;
           case "all":
             return res.redirect(
-              "/companyprofile?message=Have you requested a refund for this job?"
+              "/companyprofile?message=You have requested a refund for this job"
             );
         }
       }
