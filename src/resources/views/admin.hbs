@@ -1,4 +1,12 @@
 <div class="container-admin" data-admin="{{getEmail user}}">
+    {{#if msg}}
+        <div class="alert-message">
+            <p>{{msg}}</p>
+            <div class="hide-message">
+                <i class="bi bi-x-circle"></i>
+            </div>
+        </div>
+    {{/if}}
     <header>
         <div class="box-total">
             <p class="title">total revenue</p>
@@ -138,7 +146,7 @@
                         <span style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
                         <span class="action">
                             <form class="refund-succes" action="/pay/refund/{{this._id}}" method="post">
-                                <input type="text" name="type" id="" value="prioritize" hidden>
+                                <input type="text" name="type" value="prioritize" hidden>
                                 <button class="refund-success">Refund</button>
                             </form>
                             <div class="refund-fail" action="">
@@ -147,10 +155,10 @@
                         </span>
                         <form class="note-denied" action="/admin/deny/{{this._id}}" method="post">
                             <h1>Why Do You Refuse Refund?</h1>
-                            <textarea name="reason" id="note" placeholder="Enter the reason you refused to refund"></textarea>
+                            <textarea name="reason" id="note__{{this._id}}" placeholder="Enter the reason you refused to refund"></textarea>
                             <div class="accept">
-                                <input type="checkbox" name="" id="accept" required>
-                                <label for="accept">I accept to refuse refund</label>
+                                <input type="checkbox" name="" id="accept__{{this._id}}" required>
+                                <label for="accept__{{this._id}}">I accept to refuse refund</label>
                             </div>
                             <button>Submit</button>
                         </form>
@@ -281,24 +289,24 @@
         <form class="box__edit-user" action="/admin/updateUser/{{this._id}}?_method=PUT" method="POST">
             <h1>Edit For {{this.fullname}}</h1>
             <div class="main__edit-user">
-                <label for="fullname">Full Name</label>
-                <input type="text" name="fullname" id="fullname" value="{{this.fullname}}">
+                <label for="fullname__{{this._id}}">Full Name</label>
+                <input type="text" name="fullname" id="fullname__{{this._id}}" placeholder="{{this.fullname}}">
             </div>
             <div class="main__edit-user">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="**********">
+                <label for="password__{{this._id}}">Password</label>
+                <input type="password" name="password" id="password__{{this._id}}" placeholder="**********">
             </div>
             <div class="main__edit-user">
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email" value="{{this.email}}">
+                <label for="email__{{this._id}}">Email</label>
+                <input type="text" name="email" id="email__{{this._id}}" placeholder="{{this.email}}">
             </div>
             <div class="main__edit-user">
-                <label for="phone">Phone</label>
-                <input type="text" name="phone" id="phone" value="{{this.phone}}">
+                <label for="phone__{{this._id}}">Phone</label>
+                <input type="text" name="phone" id="phone__{{this._id}}" placeholder="{{this.phone}}">
             </div>
             <div class="main__edit-user main__checkbox">
-                <input id="checkbox" type="checkbox" required>
-                <label for="checkbox">Agree to the changes</label>
+                <input id="check-accept__{{this._id}}" type="checkbox" required>
+                <label for="check-accept__{{this._id}}">Agree to the changes</label>
             </div>
             <div class="submit__edit-user">
                 <button type="submit">Save Edit</button>
@@ -890,7 +898,7 @@ boxHistoryRefuned.forEach(function(box){
 })
 // box denied refund
     var listRefunedAds = document.querySelectorAll('.refuned-ads .main__refuned-ads');
-listRefunedAds.forEach(function(item){
+    listRefunedAds.forEach(function(item){
     const clickShowNote = item.querySelector('.refund-fail .denied');
     const boxNote = item.querySelector('form.note-denied');
     clickShowNote.addEventListener('click',()=>{
@@ -914,5 +922,5 @@ listRefunedAds.forEach(function(item){
             overflowAdmin.style.display = 'none';
             boxNote.style.display = 'none';
         });
-    })
+    });
 </script>

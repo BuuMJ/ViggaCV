@@ -23,13 +23,17 @@
     z-index: 50;
     transition: .5s;
 }
+.alert-success{
+    background-color: #a8f1c6;
+}
 .alert-message p{
     margin-bottom: unset;
     font-size: 22px;
     font-weight: 600;
     text-transform: capitalize;
 }
-.alert-message .hide-message{
+.alert-message .hide-message,
+.alert-success .hide-message{
     position: absolute;
     top: -2px;
     right: 4px;
@@ -40,7 +44,11 @@
 .alert-message .hide-message:hover{
     color: #FC0404;
 }
-.alert-message::before{
+.alert-success .hide-message:hover{
+    color: #04FC44;
+}
+.alert-message::before,
+.alert-success::before{
     position: absolute;
     content: '';
     width: 6px;
@@ -48,6 +56,9 @@
     left: 0;
     height: 100%;
     background-color: #FC0404;
+}
+.alert-success::before{
+    background-color: #04FC44;
 }
 .form-company-profile{
     width: 100%;

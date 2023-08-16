@@ -112,5 +112,23 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     });
 });
+// show message
+var alertMessage = document.querySelector('.alert-message');
+var hideMessage = document.querySelector('.hide-message');
+if(alertMessage){
+setTimeout(function(){
+    alertMessage.style.cssText = 'top: 12%';
+    if(window.innerWidth <= 321){
+        alertMessage.style.cssText = 'top: 15%';
+    }
+}, 100);
+hideMessage.addEventListener('click',()=>{
+    alertMessage.style.display = 'none';
+});
+var checkMessageSuccess = window.location.search;
+if(checkMessageSuccess === '?message=Update%20user%20successful'){
+    alertMessage.classList.add('alert-success');
+}
+}
 </script>
 </html>

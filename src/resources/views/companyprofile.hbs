@@ -707,16 +707,4 @@ textSalary.addEventListener('input', (e) => {
         formPostJob.type = 'submit';
     }
 });
-// show message
-var alertMessage = document.querySelector('.alert-message');
-var hideMessage = document.querySelector('.hide-message');
-setTimeout(function(){
-    alertMessage.style.cssText = 'top: 12%';
-    if(window.innerWidth <= 321){
-        alertMessage.style.cssText = 'top: 15%';
-    }
-}, 100);
-hideMessage.addEventListener('click',()=>{
-    alertMessage.style.display = 'none';
-});
 </script>
