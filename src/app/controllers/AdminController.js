@@ -10,6 +10,7 @@ const RevenueModel = require("../models/Revenua");
 const UnsatisfactoryModel = require("../models/Unsatisfactory");
 const nodemailer = require("nodemailer");
 const UserModel = require("../models/User");
+const bcrypt = require("bcrypt");
 
 class AdminController {
   async admin(req, res, next) {
@@ -506,15 +507,37 @@ class AdminController {
 
   async updateUser(req, res, next) {
     console.log("đã tới trang chỉnh sửa user");
-    console.log(req.body.email);
-    console.log(req.body.phone);
     const idUser = req.params.id;
-    const checkEmail = await UserModel.findOne({ email: req.body.email });
-    const checkPhone = await UserModel.findOne({ phone: req.body.phone });
+    const checkEmail = await UserModel.findOne({
+      email: req.body.email,
+      _id: { $ne: idUser },
+    });
+    const checkPhone = await UserModel.findOne({
+      phone: req.body.phone,
+      _id: { $ne: idUser },
+    });
     if (checkEmail || checkPhone) {
       return res.redirect(
         "/admin?message=phone number or email already in use"
       );
+    } else {
+      if (req.body.password) {
+        console.log("có password");
+        const password = req.body.password;
+        const hash = await bcrypt.hash(password, 10);
+        await UserModel.findByIdAndUpdate(idUser, {
+          fullname: req.body.fullname,
+          email: req.body.email,
+          phone: req.body.phone,
+          password: hash,
+        });
+      } else {
+        await UserModel.findByIdAndUpdate(idUser, {
+          fullname: req.body.fullname,
+          email: req.body.email,
+          phone: req.body.phone,
+        });
+      }
     }
     await UserModel.findByIdAndUpdate(idUser, req.body);
     res.redirect("/admin?message=Update user successful");
