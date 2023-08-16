@@ -18,10 +18,12 @@ const UnsatisfactoryModel = require("../models/Unsatisfactory");
 const RevenueModel = require("../models/Revenua");
 const FavouriteModel = require("../models/Favourite");
 const ViewedModel = require("../models/Viewed");
+const { Console } = require("console");
 
 class CompanyProfileController {
   //[GET] Company profile
   async companyprofile(req, res, next) {
+    const msg = req.query.message;
     const location = subVN.getProvinces();
     const address = location.map((location) => location.name);
     // console.log(req.user._id);
@@ -69,6 +71,7 @@ class CompanyProfileController {
           address,
           leader: leadership,
           leadership: staffMongoseToObject(leadership),
+          msg,
         });
       });
   }
