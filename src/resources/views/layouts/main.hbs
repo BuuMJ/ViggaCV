@@ -126,7 +126,7 @@ hideMessage.addEventListener('click',()=>{
     alertMessage.style.display = 'none';
 });
 var checkMessageSuccess = window.location.search;
-if(checkMessageSuccess === '?message=Update%20user%20successful'){
+if(checkMessageSuccess === '?message=Update%20user%20successful' || checkMessageSuccess === '?message=Request%20successful'){
     alertMessage.classList.add('alert-success');
 }
 }
