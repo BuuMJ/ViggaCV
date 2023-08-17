@@ -3020,7 +3020,14 @@ header.job-search .best-companyFL .background-image {
   .jobdetail-action a {
     text-align: center; }
   .apply-job-info input {
-    width: 90%; } }
+    width: 90%; }
+  .container__job-saved .main__job-saved {
+    width: 90%; }
+  .container__job-saved .main__job-saved section .box__saved-job {
+    padding: 30px 20px; }
+  .container__job-saved .main__job-saved section .box__saved-job .card__job-saved h1 {
+    font-size: 18px;
+    height: 40px; } }
 
 @media screen and (max-width: 600px) {
   .best-companyFL .info-bestfl .best-fl-name {
@@ -3083,7 +3090,19 @@ header.job-search .best-companyFL .background-image {
   .box-apply-job header {
     height: 16%; }
   .main-apply-job label {
-    width: 25%; } }
+    width: 25%; }
+  .container__job-saved .main__job-saved section .box__saved-job .card__job-saved {
+    width: 100%;
+    margin: 20px 0; }
+  .container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__salary {
+    margin: 4px; }
+  .container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__location {
+    margin-bottom: 4px; }
+  .container__job-saved .main__job-saved section .header-section {
+    font-size: 18px;
+    padding: 0 12px; }
+  .container__job-saved .main__job-saved {
+    width: 95%; } }
 
 @media screen and (max-width: 414px) {
   header.job-search .best-companyFL .info-bestfl span {
@@ -3206,6 +3225,12 @@ header.job-search .best-companyFL .background-image {
   .main-apply-job input {
     width: 63%;
     margin-right: unset;
+    font-size: 14px; }
+  .container__job-saved .main__job-saved section .header-section {
+    font-size: 12px; }
+  .container__job-saved .main__job-saved section .header-section span {
+    margin-right: 20px; }
+  .container__job-saved .main__job-saved header p {
     font-size: 14px; } }
 
 @media screen and (max-width: 321px) {
@@ -3237,7 +3262,13 @@ header.job-search .best-companyFL .background-image {
   .main-jobdetail > * {
     font-size: 10px;
     padding: 6px 0;
-    margin-right: 8px; } }
+    margin-right: 8px; }
+  .container__job-saved .main__job-saved {
+    width: 98%; }
+  .container__job-saved .main__job-saved section .header-section {
+    font-size: 8px; }
+  .container__job-saved .main__job-saved header p {
+    font-size: 8px; } }
 
 .main-profile {
   display: flex;
@@ -4021,7 +4052,7 @@ li.content-listjob .cv-applied {
   color: #0072bc;
   border-radius: 5px;
   text-decoration: none;
-  width: 160px;
+  width: 200px;
   height: 30px;
   margin-top: 6px;
   margin-left: 24px;
@@ -4763,7 +4794,9 @@ ul.listpageleadership .active {
   .container__cancel-payment .main__cancel-payment .body__cancel-payment label {
     font-size: 12px; }
   .container__cancel-payment .main__cancel-payment .body__cancel-payment .action__cancel-payment a {
-    font-size: 14px; } }
+    font-size: 14px; }
+  .secondary-listjob {
+    flex-direction: column; } }
 
 @media screen and (max-width: 321px) {
   button.btn-setting {
@@ -4784,11 +4817,9 @@ ul.listpageleadership .active {
     font-size: 12px; }
   .namejobs {
     font-size: 12px !important; }
-  .secondary-listjob {
-    flex-direction: column; }
   li.content-listjob .cv-applied {
     font-size: 12px;
-    width: 140px; }
+    width: 180px; }
   .listjobs-action button,
   .listleadership-action button {
     width: 50%; }
@@ -6603,7 +6634,9 @@ header.company-detail .background-company-detail {
 .main__manager-cv section .box__failed-cv h2 {
   font-size: 20px;
   font-weight: 600;
-  width: 100%; }
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 20px; }
 
 .main__manager-cv section .box__passed-cv .card__passed-cv,
 .main__manager-cv section .box__failed-cv .card__failed-cv {
@@ -6623,7 +6656,7 @@ header.company-detail .background-company-detail {
 
 .main__manager-cv section .box__passed-cv .card__passed-cv span,
 .main__manager-cv section .box__failed-cv .card__failed-cv span {
-  padding: 0 20px 8px 0;
+  padding: 0 0 12px 0;
   transition: .5s; }
 
 .main__manager-cv section .box__passed-cv .card__passed-cv:hover,
@@ -6642,7 +6675,9 @@ header.company-detail .background-company-detail {
 
 @media screen and (max-width: 1024px) {
   .main__create-cv header.action-create-cv {
-    top: 37%; } }
+    top: 37%; }
+  .main__manager-cv {
+    width: 90%; } }
 
 @media screen and (max-width: 768px) {
   .header-cv {
@@ -6677,7 +6712,13 @@ header.company-detail .background-company-detail {
     margin: 4px 0; }
   .free-design-left {
     width: 50%;
-    text-align: justify; } }
+    text-align: justify; }
+  .main__manager-cv section .box__passed-cv h2,
+  .main__manager-cv section .box__failed-cv h2 {
+    font-size: 18px; }
+  .main__manager-cv section .box__passed-cv .card__passed-cv,
+  .main__manager-cv section .box__failed-cv .card__failed-cv {
+    width: 100%; } }
 
 @media screen and (max-width: 600px) {
   .header-cv .intro-text {
@@ -6752,7 +6793,9 @@ header.company-detail .background-company-detail {
   .first-title {
     align-self: unset; }
   .body__create-cv header .info__user-cv .secondary__user-cv textarea {
-    width: 50%; } }
+    width: 50%; }
+  .main__manager-cv {
+    width: 98%; } }
 
 @media screen and (max-width: 376px) {
   .main__create-cv header.action-create-cv {
@@ -6782,7 +6825,12 @@ header.company-detail .background-company-detail {
     margin: 0 4px; }
   .main__create-cv header.action-create-cv .download-create-cv button {
     width: 90px;
-    height: 24px; } }
+    height: 24px; }
+  .main__manager-cv section .box__passed-cv h2,
+  .main__manager-cv section .box__failed-cv h2 {
+    text-align: center; }
+  .main__manager-cv section .header-section {
+    font-size: 18px; } }
 
 .container-admin {
   display: flex;

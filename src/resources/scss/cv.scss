@@ -843,6 +843,8 @@
   font-size: 20px;
   font-weight: 600;
   width: 100%;
+  margin-top: 8px;
+  margin-bottom: 20px;
 }
 .main__manager-cv section .box__passed-cv .card__passed-cv,
 .main__manager-cv section .box__failed-cv .card__failed-cv{
@@ -862,7 +864,7 @@
 }
 .main__manager-cv section .box__passed-cv .card__passed-cv span,
 .main__manager-cv section .box__failed-cv .card__failed-cv span{
-  padding: 0 20px 8px 0 ;
+  padding: 0 0 12px 0 ;
   transition: .5s;
 }
 .main__manager-cv section .box__passed-cv .card__passed-cv:hover,
@@ -883,6 +885,9 @@
 @media screen and (max-width: 1024px) {
   .main__create-cv header.action-create-cv{
     top: 37%;
+  }
+  .main__manager-cv{
+    width: 90%;
   }
 }
 @media screen and (max-width: 768px) {
@@ -929,6 +934,14 @@
   .free-design-left{
     width: 50%;
     text-align: justify;
+  }
+  .main__manager-cv section .box__passed-cv h2, 
+  .main__manager-cv section .box__failed-cv h2{
+    font-size: 18px;
+  }
+  .main__manager-cv section .box__passed-cv .card__passed-cv, 
+  .main__manager-cv section .box__failed-cv .card__failed-cv{
+    width: 100%;
   }
 }
 @media screen and (max-width: 600px) {
@@ -1024,6 +1037,9 @@
   .body__create-cv header .info__user-cv .secondary__user-cv textarea{
     width: 50%;
   }
+  .main__manager-cv{
+    width: 98%;
+  }
 }
 @media screen and (max-width: 376px) {
   .main__create-cv header.action-create-cv{
@@ -1063,5 +1079,12 @@
   .main__create-cv header.action-create-cv .download-create-cv button{
     width: 90px;
     height: 24px;
+  }
+  .main__manager-cv section .box__passed-cv h2, 
+  .main__manager-cv section .box__failed-cv h2{
+    text-align: center;
+  }
+  .main__manager-cv section .header-section{
+    font-size: 18px;
   }
 }

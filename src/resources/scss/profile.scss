@@ -792,7 +792,7 @@ li.content-listjob .cv-applied{
     color: $secondarycolor;
     border-radius: 5px;
     text-decoration: none;
-    width: 160px;
+    width: 200px;
     height: 30px;
     margin-top: 6px;
     margin-left: 24px;
@@ -1621,6 +1621,9 @@ ul.listpageleadership {
     .container__cancel-payment .main__cancel-payment .body__cancel-payment .action__cancel-payment a{
         font-size: 14px;
     }
+    .secondary-listjob {
+        flex-direction: column;
+    }
 }
 @media screen and (max-width: 321px) {
     button.btn-setting {
@@ -1649,12 +1652,9 @@ ul.listpageleadership {
     .namejobs{
         font-size: 12px !important;
     }
-    .secondary-listjob {
-        flex-direction: column;
-    }
     li.content-listjob .cv-applied {
         font-size: 12px;
-        width: 140px;
+        width: 180px;
     }
     .listjobs-action button, 
     .listleadership-action button{
