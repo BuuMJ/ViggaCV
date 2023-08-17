@@ -6,8 +6,10 @@ const jwt = require("jsonwebtoken");
 class LoginController {
   //[GET] login
   login(req, res, next) {
+    const msg = req.query.messenge;
     res.render("login", {
       title: "Login",
+      msg,
     });
   }
 
