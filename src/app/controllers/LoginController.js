@@ -6,8 +6,10 @@ const jwt = require("jsonwebtoken");
 class LoginController {
   //[GET] login
   login(req, res, next) {
+    const msg = req.query.messenge;
     res.render("login", {
       title: "Login",
+      msg,
     });
   }
 
@@ -31,6 +33,8 @@ class LoginController {
             },
             "PW"
           );
+          console.log(password);
+          console.log(data.password);
           bcrypt.compare(password, data.password, function (err, result) {
             if (err) {
               return res.render("login", {

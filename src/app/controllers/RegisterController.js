@@ -8,6 +8,7 @@ class RegisterController {
   verify(req, res, next) {
     // Giải mã token để kiểm tra địa chỉ email
     const token = req.query.token;
+
     jwt.verify(token, "PW", function (err, decoded) {
       if (err) {
         // Token không hợp lệ hoặc đã hết hạn
@@ -79,9 +80,7 @@ class RegisterController {
     })
       .then((data) => {
         if (data) {
-          const message = "Account already exists!";
-          const url =
-            "/resigter?" + querystring.stringify({ message: message });
+          const url = "/login?messenge=Account already exists!";
           res.redirect(url);
         } else {
           UserModel.findOne({
@@ -89,9 +88,7 @@ class RegisterController {
           })
             .then((data) => {
               if (data) {
-                const message = "Email already exists!";
-                const url =
-                  "/resigter?" + querystring.stringify({ message: message });
+                const url = "/login?messenge=Email already exists!";
                 res.redirect(url);
               } else {
                 UserModel.findOne({
@@ -99,10 +96,8 @@ class RegisterController {
                 })
                   .then((data) => {
                     if (data) {
-                      const message = "Number phone already exists!";
                       const url =
-                        "/resigter?" +
-                        querystring.stringify({ message: message });
+                        "/login?messenge=Number phone already exists!";
                       res.redirect(url);
                     } else {
                       bcrypt.hash(password, 10, function (err, hash) {
@@ -172,7 +167,9 @@ class RegisterController {
       } else {
         bcrypt.hash(email, 10, function (err, hash) {});
         console.log("Đã gửi mail");
-        return res.redirect("/login");
+        return res.redirect(
+          "/login?messenge=Please check your email to verify your email address"
+        );
       }
     });
   }
