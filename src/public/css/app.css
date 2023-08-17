@@ -3275,7 +3275,8 @@ header.job-search .best-companyFL .background-image {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-height: 620px; }
+  min-height: 620px;
+  position: relative; }
 
 .alert-message {
   padding: 20px 70px 20px 22px;
