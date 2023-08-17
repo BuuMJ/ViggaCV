@@ -3215,7 +3215,8 @@ header.job-search .best-companyFL .background-image {
     font-size: 16px; }
   .header-search .header-search__scancv label .text-scancv {
     font-size: 14px; }
-  .header-search .input-search .categories-select, .header-search .input-search .categories-select__position {
+  .header-search .input-search .categories-select, .header-search .input-search .categories-select__position,
+  .header-search .input-search .categories-select #categories-search {
     font-size: 10px; }
   .header-search {
     height: 120px; }
@@ -4278,15 +4279,15 @@ ul.listpageleadership .active {
 .container-checkpayment .box__dates-payment .primary-text {
   font-size: 30px;
   font-weight: 600;
-  margin: 12px 0 12px 20px;
+  padding: 12px 12px 12px 20px;
   width: 100%; }
 
 .container-checkpayment .box__dates-payment .title-payment {
   font-size: 18px;
   font-weight: 400;
-  margin-left: 20px;
-  margin-bottom: 12px;
-  padding-right: 70px;
+  padding-left: 20px;
+  padding-bottom: 12px;
+  padding-right: 20px;
   width: 100%; }
 
 .container-checkpayment .box__dates-payment .card-payment {
@@ -4466,7 +4467,7 @@ ul.listpageleadership .active {
   background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   width: 100%;
   min-height: 100vh; }
@@ -4479,7 +4480,8 @@ ul.listpageleadership .active {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40%; }
+  width: 40%;
+  margin-top: 30px; }
 
 .container__cancel-payment .main__cancel-payment .navbar-left {
   margin: 12px 0 12px 30px;
@@ -4581,7 +4583,16 @@ ul.listpageleadership .active {
   .camera-user-company {
     top: 8.5%; }
   .alert-message p {
-    font-size: 18px; } }
+    font-size: 18px; }
+  .container-checkpayment .box__dates-payment {
+    width: 50%; }
+  .container__success-payment .main__success-payment,
+  .container__cancel-payment .main__cancel-payment {
+    width: 60%; }
+  .container__success-payment .main__success-payment .navbar-left .litle-text {
+    left: 53%; }
+  .container__cancel-payment .main__cancel-payment .navbar-left .litle-text {
+    left: 10.5%; } }
 
 @media screen and (max-width: 768px) {
   .header-profile {
@@ -4608,7 +4619,16 @@ ul.listpageleadership .active {
   .alert-message p {
     font-size: 14px; }
   .alert-message .hide-message {
-    font-size: 20px; } }
+    font-size: 20px; }
+  .container-checkpayment .box__dates-payment {
+    width: 60%; }
+  .container__success-payment .main__success-payment,
+  .container__cancel-payment .main__cancel-payment {
+    width: 70%; }
+  .container__success-payment .main__success-payment .navbar-left .litle-text {
+    left: 61%; }
+  .container__cancel-payment .main__cancel-payment .navbar-left .litle-text {
+    left: 12.2%; } }
 
 @media screen and (max-width: 600px) {
   button.btn-setting {
@@ -4625,7 +4645,15 @@ ul.listpageleadership .active {
     top: 9.5%; }
   .listjobs-action button,
   .listleadership-action button {
-    width: 26%; } }
+    width: 26%; }
+  .container-checkpayment .box__dates-payment,
+  .container__success-payment .main__success-payment,
+  .container__cancel-payment .main__cancel-payment {
+    width: 80%; }
+  .container__success-payment .main__success-payment .navbar-left .litle-text {
+    left: 69%; }
+  .container__cancel-payment .main__cancel-payment .navbar-left .litle-text {
+    left: 14%; } }
 
 @media screen and (max-width: 415px) {
   .header-main-text {
@@ -4685,7 +4713,30 @@ ul.listpageleadership .active {
   .leadership-action-view {
     width: 90%; }
   .alert-message {
-    width: 80vw; } }
+    width: 80vw; }
+  .container-checkpayment .box__dates-payment,
+  .container__success-payment .main__success-payment,
+  .container__cancel-payment .main__cancel-payment {
+    width: 90%; }
+  .container__success-payment .main__success-payment .navbar-left .litle-text {
+    left: 90%; }
+  header.logo-success p {
+    font-size: 14px; }
+  .container__success-payment .main__success-payment .body__success-payment header.logo-success h1,
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment h1 {
+    font-size: 24px; }
+  .container__success-payment .main__success-payment .body__success-payment section p,
+  .container__success-payment .main__success-payment .body__success-payment .bottom p,
+  .container__success-payment .main__success-payment .confirm-payment label,
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment p,
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment label {
+    font-size: 14px; }
+  .container__cancel-payment .main__cancel-payment .navbar-left .litle-text {
+    left: 18%; }
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment img {
+    width: 66%; }
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment .action__cancel-payment a {
+    font-size: 16px; } }
 
 @media screen and (max-width: 376px) {
   button.btn-setting {
@@ -4695,7 +4746,24 @@ ul.listpageleadership .active {
     transform: translateY(-2%); }
   label.changebackground-profile {
     font-size: 14px;
-    border-radius: 6px; } }
+    border-radius: 6px; }
+  .container-checkpayment .box__dates-payment .primary-text {
+    font-size: 24px; }
+  .container-checkpayment .box__dates-payment .title-payment {
+    font-size: 16px; }
+  .container-checkpayment .box__dates-payment .card-payment label,
+  .container-checkpayment .box__dates-payment .accept-payment label {
+    font-size: 16px; }
+  .container__success-payment .main__success-payment .navbar-left .litle-text {
+    left: 100%; }
+  .container__success-payment .main__success-payment .body__success-payment section p,
+  .container__success-payment .main__success-payment .body__success-payment .bottom p,
+  .container__success-payment .main__success-payment .confirm-payment label,
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment p,
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment label {
+    font-size: 12px; }
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment .action__cancel-payment a {
+    font-size: 14px; } }
 
 @media screen and (max-width: 321px) {
   button.btn-setting {
@@ -4731,6 +4799,31 @@ ul.listpageleadership .active {
   .alert-message {
     padding-right: 40px; }
   .alert-message p {
+    font-size: 12px; }
+  .container-checkpayment .box__dates-payment .accept-payment {
+    font-size: 22px; }
+  .container-checkpayment .box__dates-payment .card-payment label,
+  .container-checkpayment .box__dates-payment .accept-payment label {
+    font-size: 12px; }
+  .container-checkpayment .box__dates-payment .accept-payment {
+    margin: unset; }
+  .container__success-payment .main__success-payment .navbar-left .litle-text {
+    left: 118%; }
+  .container__cancel-payment .main__cancel-payment .navbar-left .litle-text {
+    left: 23.5%; }
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment img {
+    width: 80%;
+    height: 180px; }
+  .container__success-payment .main__success-payment .body__success-payment section p,
+  .container__success-payment .main__success-payment .body__success-payment .bottom p,
+  .container__success-payment .main__success-payment .confirm-payment label,
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment p,
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment label {
+    font-size: 10px; }
+  .container__success-payment .main__success-payment,
+  .container__cancel-payment .main__cancel-payment {
+    margin-bottom: 30px; }
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment .action__cancel-payment a {
     font-size: 12px; } }
 
 .container-companies {
