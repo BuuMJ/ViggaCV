@@ -31,6 +31,8 @@ class LoginController {
             },
             "PW"
           );
+          console.log(password);
+          console.log(data.password);
           bcrypt.compare(password, data.password, function (err, result) {
             if (err) {
               return res.render("login", {

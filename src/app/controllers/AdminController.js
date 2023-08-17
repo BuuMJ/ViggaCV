@@ -524,7 +524,9 @@ class AdminController {
       if (req.body.password) {
         console.log("có password");
         const password = req.body.password;
+        console.log(password);
         const hash = await bcrypt.hash(password, 10);
+        console.log(hash);
         await UserModel.findByIdAndUpdate(idUser, {
           fullname: req.body.fullname,
           email: req.body.email,
@@ -539,7 +541,8 @@ class AdminController {
         });
       }
     }
-    await UserModel.findByIdAndUpdate(idUser, req.body);
+    const check = await UserModel.findById(idUser);
+    console.log(check);
     res.redirect("/admin?message=Update user successful");
   }
 
