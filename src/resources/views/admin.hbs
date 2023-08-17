@@ -155,7 +155,7 @@
                         </span>
                         <form class="note-denied" action="/admin/deny/{{this._id}}" method="post">
                             <h1>Why Do You Refuse Refund?</h1>
-                            <textarea name="reason" id="note__{{this._id}}" placeholder="Enter the reason you refused to refund"></textarea>
+                            <textarea name="reason" id="note__{{this._id}}" placeholder="Enter the reason you refused to refund" required></textarea>
                             <div class="accept">
                                 <input type="checkbox" name="" id="accept__{{this._id}}" required>
                                 <label for="accept__{{this._id}}">I accept to refuse refund</label>
@@ -197,7 +197,7 @@
                         </span>
                         <form class="note-denied" action="/admin/deny/{{this._id}}" method="post">
                             <h1>Why Do You Refuse Refund?</h1>
-                            <textarea name="reason" id="note" placeholder="Enter the reason you refused to refund"></textarea>
+                            <textarea name="reason" id="note" placeholder="Enter the reason you refused to refund" required></textarea>
                             <div class="accept">
                                 <input type="checkbox" name="" id="accept" required>
                                 <label for="accept">I accept to refuse refund</label>

@@ -214,14 +214,14 @@
         <h2>New Job</h2>
         <div class="info-job">
             <label for="jobname">Job Name</label>
-            <input id="jobname" name="jobname" placeholder="Developer Engineer" type="text">
+            <input id="jobname" name="jobname" placeholder="Developer Engineer" type="text" required>
         </div>
         <div class="info-job jobdesc">
             <label for="jobdesc">Job Description</label>
             <textarea id="jobdesc" name="jobdesc" placeholder="Customer Engineering Connector Technology for JOEM
 - Customer Engineering for PS-CC products for JOEM (Connectors, Fuel cell air valves, Charging solutions, Fuel pump modules, General purpose actuators, Accelerator pedal modules, etc.). The main responsibility is Connector Technology.
 - JOEM向けPS-CC製品（コネクター、燃料電池用エアバルブ、チャージングソリューション、燃料ポンプモジュール、ターボ用電制アクチュエーター、アクセルペダルモジュール等）の技術窓口。主にコネクターを担当。"
-                type="text"></textarea>
+                type="text" required></textarea>
         </div>
         <div class="info-job jobdesc">
             <label for="jobdesc">Job Requirements</label>
@@ -235,25 +235,25 @@
 - 技術的な仕事の経験がある、工学部の学位またはそれと同等の学力
 - 顧客（JOEM）及び海外拠点とのコミュニケーションに必要なネイティブレベルの日本語力とビジネスレベルの英語力
 - 自動車業界、特にコネクターやワイヤーハーネス関連の製品知識や業務経験(あれば望ましい)
-- プレゼンテーション力と交渉力 (あれば望ましい)" type="text"></textarea>
+- プレゼンテーション力と交渉力 (あれば望ましい)" type="text" required></textarea>
         </div>
         <div class="info-job">
             <label for="namecompanyjob">Benefit</label>
-            <textarea id="namecompanyjob" name="benefit" type="text"></textarea>
+            <textarea id="namecompanyjob" name="benefit" type="text" required></textarea>
         </div>
         <div class="info-job info-job-salary">
             <div class="job-position">
                 <label for="position">Position</label>
-                <input type="text" name="position" id="position" placeholder="Manager">
+                <input type="text" name="position" id="position" placeholder="Manager" required>
             </div>
             <div class="job-salary" style="position:relative">
                 <label for="salary-range">Salary</label>
-                <input type="text" name="salary" id="salary-range" placeholder="500$-1000$ | Negotiable">
+                <input type="text" name="salary" id="salary-range" placeholder="500$-1000$ | Negotiable" required>
                 <p class="alert-salary" style="display: none; color: red; margin-bottom: unset; position: absolute; bottom: -24px; left: 4px">You can only fill in numbers or Negotiable</p>
             </div>
             <div class="job-location">
                 <label for="joblocation">Job Locations</label>
-                <select id="joblocation" name="joblocation">
+                <select id="joblocation" name="joblocation" required>
                     <option value="" selected>Select Your Location</option>
                 </select>
             </div>
@@ -276,11 +276,11 @@
         </div>
         <div class="info-job">
             <label for="jobname">Name</label>
-            <input id="jobname" name="nameleadership" placeholder="BuuMJ" type="text">
+            <input id="jobname" name="nameleadership" placeholder="BuuMJ" type="text" required>
         </div>
         <div class="info-job">
             <label for="jobname">Postion</label>
-            <input id="jobname" name="position" placeholder="CEO" type="text">
+            <input id="jobname" name="position" placeholder="CEO" type="text" required>
         </div>
         <div class="info-job jobdesc">
             <label for="jobdesc">Introduce</label>
@@ -288,7 +288,7 @@
                 placeholder="IT executive with over 30 years of experience, including management of mid to large size organizations, corporate development, business operations, and strategy. Current CEO and Managing Director at Hansen Technologies Limited.
 Andrew joined Hansen Technologies in 1990, and quickly began to transform the business and then ASX listed the company in 2000. Andrew’s IT expertise combined with his strong business acumen has built a diversified global company delivering market leading billing and customer care solutions in over 80 countries.
 Andrew leads the strategic direction of the business with a dedicated and diverse team of over 1500 industry experts delivering solutions to some of the globe’s leading companies. Hansen’s Create-Deliver-Engage product suite is now used by over 500 substantial companies worldwide."
-                type="text"></textarea>
+                type="text" required></textarea>
         </div>
         <div class="info-job postleader-cancle">
             <button type="submit" class="btn-postjob btn-postleader">Add Leadership</button>
@@ -339,16 +339,17 @@ Andrew leads the strategic direction of the business with a dedicated and divers
         }
     })
     //function show categories 63 provinces
+document.addEventListener("DOMContentLoaded", function() {
     var provinces = ["An Giang", "Bà Rịa-Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên-Huế", "Tiền Giang", "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"];
-
     var select = document.getElementById("joblocation");
-
     for (var i = 0; i < provinces.length; i++) {
         var option = document.createElement("option");
         option.text = provinces[i];
         option.value = provinces[i];
         select.appendChild(option);
     }
+});
+
     // function get file from input tag
     document.querySelector('#header-profile-file-input').addEventListener('change', function () {
         var fileBackground = this.files[0];
