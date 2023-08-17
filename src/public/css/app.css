@@ -8069,6 +8069,30 @@ form.note-denied button:hover {
   text-align: center;
   padding-top: 4px; }
 
+@media screen and (max-width: 414px) {
+  .login-username label,
+  .login-password label,
+  .login-email label,
+  .login-phone label,
+  .login-fullname label {
+    left: 55px; } }
+
+@media screen and (max-width: 376px) {
+  .login-username label,
+  .login-password label,
+  .login-email label,
+  .login-phone label,
+  .login-fullname label {
+    left: 50px; } }
+
+@media screen and (max-width: 321px) {
+  .login-username label,
+  .login-password label,
+  .login-email label,
+  .login-phone label,
+  .login-fullname label {
+    left: 44px; } }
+
 .footer {
   display: flex;
   flex-direction: column;
