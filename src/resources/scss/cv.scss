@@ -294,10 +294,12 @@
   border-radius: 100px;
   background-color: $primarycolor;
   color: white;
-  width: 156px;
-}
-.main__create-cv header.action-create-cv .download-create-cv button > *{
-  margin: 0 8px;
+  width: 150px;
+  height: 34px;
+  padding: 4px 12px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .main__create-cv header.action-create-cv .download-create-cv button:hover{
   background-color: #e2c021;
@@ -529,6 +531,7 @@
   font-size: 16px;
   font-weight: 700;
   width: 25%;
+  padding: 4px 0 4px 8px;
 }
 .body__create-cv header .info__user-cv .secondary__user-cv textarea {
   font-size: 14px;
@@ -652,7 +655,8 @@
   width: 20%;
 }
 .overview__user-cv .work-exp .action__add-remove,
-.overview__user-cv .education-user .action__add-remove-education{
+.overview__user-cv .education-user .action__add-remove-education,
+.body__user-cv .project__user-cv .action__add-remove-project{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -666,7 +670,8 @@
   opacity: 0;
 }
 .overview__user-cv .work-exp .date__work-exp .action__add-remove span:hover,
-.overview__user-cv .education-user .action__add-remove-education span:hover{
+.overview__user-cv .education-user .action__add-remove-education span:hover,
+.body__user-cv .project__user-cv .action__add-remove-project span:hover{
   color: $primarycolor;
 }
 .overview__user-cv .work-exp .date__work-exp textarea,
@@ -725,6 +730,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-bottom: 30px;
 }
 .body__user-cv .project__user-cv .box-project{
   display: flex;
@@ -732,6 +738,19 @@
   justify-content: center;
   width: 100%;
   margin-bottom: 12px;
+}
+.body__user-cv .project__user-cv .main__info-project{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  color: black;
+  font-weight: 500;
+  position: relative;
+}
+.body__user-cv .project__user-cv .main__info-project textarea:first-child{
+  font-weight: 600;
+  text-transform: uppercase;
 }
 .body__user-cv .project__user-cv .box-project .content-project{
   width: 80%;
@@ -824,6 +843,8 @@
   font-size: 20px;
   font-weight: 600;
   width: 100%;
+  margin-top: 8px;
+  margin-bottom: 20px;
 }
 .main__manager-cv section .box__passed-cv .card__passed-cv,
 .main__manager-cv section .box__failed-cv .card__failed-cv{
@@ -843,7 +864,7 @@
 }
 .main__manager-cv section .box__passed-cv .card__passed-cv span,
 .main__manager-cv section .box__failed-cv .card__failed-cv span{
-  padding: 0 20px 8px 0 ;
+  padding: 0 0 12px 0 ;
   transition: .5s;
 }
 .main__manager-cv section .box__passed-cv .card__passed-cv:hover,
@@ -861,9 +882,26 @@
     top: 70%;
   }
 }
+@media screen and (max-width: 1024px) {
+  .main__create-cv header.action-create-cv{
+    top: 37%;
+  }
+  .main__manager-cv{
+    width: 90%;
+  }
+}
 @media screen and (max-width: 768px) {
   .header-cv{
     transform: translateY(50%);
+  }
+  .main__create-cv header.action-create-cv{
+    top: 49.5%;
+  }
+  .main__create-cv header.action-create-cv span{
+    margin: 0 30px;
+  }
+  .a4{
+    width: 95% !important;
   }
   .free-design, 
   .easy-operation,
@@ -897,10 +935,25 @@
     width: 50%;
     text-align: justify;
   }
+  .main__manager-cv section .box__passed-cv h2, 
+  .main__manager-cv section .box__failed-cv h2{
+    font-size: 18px;
+  }
+  .main__manager-cv section .box__passed-cv .card__passed-cv, 
+  .main__manager-cv section .box__failed-cv .card__failed-cv{
+    width: 100%;
+  }
 }
 @media screen and (max-width: 600px) {
   .header-cv .intro-text{
     height: 50px;
+  }
+  .main__create-cv header.action-create-cv{
+    top: 62.5%;
+  }
+  .main__create-cv header.action-create-cv span{
+    font-size: 18px;
+    margin: 0 20px;
   }
   .free-design-title, 
   .easy-tilte, 
@@ -923,6 +976,16 @@
   .header-cv .intro-title,
   .header-cv .intro-surprise {
     font-size: 24px;
+  }
+  .main__create-cv header.action-create-cv{
+    top: 68%;
+  }
+  .main__create-cv header.action-create-cv span{
+    font-size: 12px;
+    margin: 0 12px;
+  }
+  .main__create-cv header.action-create-cv .download-create-cv button{
+    width: 110px;
   }
   .header-cv .intro-surprise{
     margin-bottom: unset;
@@ -971,6 +1034,29 @@
   .first-title{
     align-self: unset;
   }
+  .body__create-cv header .info__user-cv .secondary__user-cv textarea{
+    width: 50%;
+  }
+  .main__manager-cv{
+    width: 98%;
+  }
+}
+@media screen and (max-width: 376px) {
+  .main__create-cv header.action-create-cv{
+    top: 61.5%;
+  }
+  .main__create-cv header.action-create-cv span{
+    font-size: 12px;
+    margin: 0 8px;
+  }
+  .main__create-cv header.action-create-cv .download-create-cv button{
+    width: 100px;
+  }
+}
+@media screen and (max-height: 668px) {
+  .main__create-cv header.action-create-cv{
+    top: 75%;
+  }
 }
 @media screen and (max-width: 321px) {
   .header-cv{
@@ -982,5 +1068,23 @@
   }
   .header-cv .intro-text {
     padding: 0 10%;
+  }
+  .main__create-cv header.action-create-cv{
+    top: 88%;
+  }
+  .main__create-cv header.action-create-cv span{
+    font-size: 10px;
+    margin: 0 4px;
+  }
+  .main__create-cv header.action-create-cv .download-create-cv button{
+    width: 90px;
+    height: 24px;
+  }
+  .main__manager-cv section .box__passed-cv h2, 
+  .main__manager-cv section .box__failed-cv h2{
+    text-align: center;
+  }
+  .main__manager-cv section .header-section{
+    font-size: 18px;
   }
 }

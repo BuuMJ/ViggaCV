@@ -1667,6 +1667,16 @@ header.job-search .best-companyFL {
     .apply-job-info input{
         width: 90%;
     }
+    .container__job-saved .main__job-saved{
+        width: 90%;
+    }
+    .container__job-saved .main__job-saved section .box__saved-job{
+        padding: 30px 20px;
+    }
+    .container__job-saved .main__job-saved section .box__saved-job .card__job-saved h1{
+        font-size: 18px;
+        height: 40px;
+    }
 }
 @media screen and (max-width: 600px) {
     .best-companyFL .info-bestfl .best-fl-name{
@@ -1748,6 +1758,23 @@ header.job-search .best-companyFL {
     }
     .main-apply-job label{
         width: 25%;
+    }
+    .container__job-saved .main__job-saved section .box__saved-job .card__job-saved{
+        width: 100%;
+        margin: 20px 0;
+    }
+    .container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__salary{
+        margin: 4px;
+    }
+    .container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__location{
+        margin-bottom: 4px;
+    }
+    .container__job-saved .main__job-saved section .header-section{
+        font-size: 18px;
+        padding: 0 12px;
+    }
+    .container__job-saved .main__job-saved{
+        width: 95%;
     }
 }
 @media screen and (max-width: 414px) {
@@ -1913,6 +1940,15 @@ header.job-search .best-companyFL {
         margin-right: unset;
         font-size: 14px;
     }
+    .container__job-saved .main__job-saved section .header-section{
+        font-size: 12px;
+    }
+    .container__job-saved .main__job-saved section .header-section span{
+        margin-right: 20px;
+    }
+    .container__job-saved .main__job-saved header p{
+        font-size: 14px;
+    }
 }
 @media screen and (max-width: 321px) {
     .main-jobs .card-jobs .card-job .card-job__action .detail-job__action {
@@ -1924,7 +1960,8 @@ header.job-search .best-companyFL {
     .header-search .header-search__scancv label .text-scancv {
         font-size: 14px;
     }
-    .header-search .input-search .categories-select, .header-search .input-search .categories-select__position {
+    .header-search .input-search .categories-select, .header-search .input-search .categories-select__position,
+    .header-search .input-search .categories-select #categories-search {
         font-size: 10px;
     }
     .header-search {
@@ -1953,5 +1990,14 @@ header.job-search .best-companyFL {
         font-size: 10px;
         padding: 6px 0;
         margin-right: 8px;
+    }
+    .container__job-saved .main__job-saved{
+        width: 98%;
+    }
+    .container__job-saved .main__job-saved section .header-section{
+        font-size: 8px;
+    }
+    .container__job-saved .main__job-saved header p{
+        font-size: 8px;
     }
 }

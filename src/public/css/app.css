@@ -3020,7 +3020,14 @@ header.job-search .best-companyFL .background-image {
   .jobdetail-action a {
     text-align: center; }
   .apply-job-info input {
-    width: 90%; } }
+    width: 90%; }
+  .container__job-saved .main__job-saved {
+    width: 90%; }
+  .container__job-saved .main__job-saved section .box__saved-job {
+    padding: 30px 20px; }
+  .container__job-saved .main__job-saved section .box__saved-job .card__job-saved h1 {
+    font-size: 18px;
+    height: 40px; } }
 
 @media screen and (max-width: 600px) {
   .best-companyFL .info-bestfl .best-fl-name {
@@ -3083,7 +3090,19 @@ header.job-search .best-companyFL .background-image {
   .box-apply-job header {
     height: 16%; }
   .main-apply-job label {
-    width: 25%; } }
+    width: 25%; }
+  .container__job-saved .main__job-saved section .box__saved-job .card__job-saved {
+    width: 100%;
+    margin: 20px 0; }
+  .container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__salary {
+    margin: 4px; }
+  .container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__location {
+    margin-bottom: 4px; }
+  .container__job-saved .main__job-saved section .header-section {
+    font-size: 18px;
+    padding: 0 12px; }
+  .container__job-saved .main__job-saved {
+    width: 95%; } }
 
 @media screen and (max-width: 414px) {
   header.job-search .best-companyFL .info-bestfl span {
@@ -3206,6 +3225,12 @@ header.job-search .best-companyFL .background-image {
   .main-apply-job input {
     width: 63%;
     margin-right: unset;
+    font-size: 14px; }
+  .container__job-saved .main__job-saved section .header-section {
+    font-size: 12px; }
+  .container__job-saved .main__job-saved section .header-section span {
+    margin-right: 20px; }
+  .container__job-saved .main__job-saved header p {
     font-size: 14px; } }
 
 @media screen and (max-width: 321px) {
@@ -3215,7 +3240,8 @@ header.job-search .best-companyFL .background-image {
     font-size: 16px; }
   .header-search .header-search__scancv label .text-scancv {
     font-size: 14px; }
-  .header-search .input-search .categories-select, .header-search .input-search .categories-select__position {
+  .header-search .input-search .categories-select, .header-search .input-search .categories-select__position,
+  .header-search .input-search .categories-select #categories-search {
     font-size: 10px; }
   .header-search {
     height: 120px; }
@@ -3236,14 +3262,21 @@ header.job-search .best-companyFL .background-image {
   .main-jobdetail > * {
     font-size: 10px;
     padding: 6px 0;
-    margin-right: 8px; } }
+    margin-right: 8px; }
+  .container__job-saved .main__job-saved {
+    width: 98%; }
+  .container__job-saved .main__job-saved section .header-section {
+    font-size: 8px; }
+  .container__job-saved .main__job-saved header p {
+    font-size: 8px; } }
 
 .main-profile {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-height: 620px; }
+  min-height: 620px;
+  position: relative; }
 
 .alert-message {
   padding: 20px 70px 20px 22px;
@@ -4020,7 +4053,7 @@ li.content-listjob .cv-applied {
   color: #0072bc;
   border-radius: 5px;
   text-decoration: none;
-  width: 160px;
+  width: 200px;
   height: 30px;
   margin-top: 6px;
   margin-left: 24px;
@@ -4278,15 +4311,15 @@ ul.listpageleadership .active {
 .container-checkpayment .box__dates-payment .primary-text {
   font-size: 30px;
   font-weight: 600;
-  margin: 12px 0 12px 20px;
+  padding: 12px 12px 12px 20px;
   width: 100%; }
 
 .container-checkpayment .box__dates-payment .title-payment {
   font-size: 18px;
   font-weight: 400;
-  margin-left: 20px;
-  margin-bottom: 12px;
-  padding-right: 70px;
+  padding-left: 20px;
+  padding-bottom: 12px;
+  padding-right: 20px;
   width: 100%; }
 
 .container-checkpayment .box__dates-payment .card-payment {
@@ -4466,7 +4499,7 @@ ul.listpageleadership .active {
   background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   width: 100%;
   min-height: 100vh; }
@@ -4479,7 +4512,8 @@ ul.listpageleadership .active {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40%; }
+  width: 40%;
+  margin-top: 30px; }
 
 .container__cancel-payment .main__cancel-payment .navbar-left {
   margin: 12px 0 12px 30px;
@@ -4581,7 +4615,16 @@ ul.listpageleadership .active {
   .camera-user-company {
     top: 8.5%; }
   .alert-message p {
-    font-size: 18px; } }
+    font-size: 18px; }
+  .container-checkpayment .box__dates-payment {
+    width: 50%; }
+  .container__success-payment .main__success-payment,
+  .container__cancel-payment .main__cancel-payment {
+    width: 60%; }
+  .container__success-payment .main__success-payment .navbar-left .litle-text {
+    left: 53%; }
+  .container__cancel-payment .main__cancel-payment .navbar-left .litle-text {
+    left: 10.5%; } }
 
 @media screen and (max-width: 768px) {
   .header-profile {
@@ -4608,7 +4651,16 @@ ul.listpageleadership .active {
   .alert-message p {
     font-size: 14px; }
   .alert-message .hide-message {
-    font-size: 20px; } }
+    font-size: 20px; }
+  .container-checkpayment .box__dates-payment {
+    width: 60%; }
+  .container__success-payment .main__success-payment,
+  .container__cancel-payment .main__cancel-payment {
+    width: 70%; }
+  .container__success-payment .main__success-payment .navbar-left .litle-text {
+    left: 61%; }
+  .container__cancel-payment .main__cancel-payment .navbar-left .litle-text {
+    left: 12.2%; } }
 
 @media screen and (max-width: 600px) {
   button.btn-setting {
@@ -4625,7 +4677,15 @@ ul.listpageleadership .active {
     top: 9.5%; }
   .listjobs-action button,
   .listleadership-action button {
-    width: 26%; } }
+    width: 26%; }
+  .container-checkpayment .box__dates-payment,
+  .container__success-payment .main__success-payment,
+  .container__cancel-payment .main__cancel-payment {
+    width: 80%; }
+  .container__success-payment .main__success-payment .navbar-left .litle-text {
+    left: 69%; }
+  .container__cancel-payment .main__cancel-payment .navbar-left .litle-text {
+    left: 14%; } }
 
 @media screen and (max-width: 415px) {
   .header-main-text {
@@ -4685,7 +4745,30 @@ ul.listpageleadership .active {
   .leadership-action-view {
     width: 90%; }
   .alert-message {
-    width: 80vw; } }
+    width: 80vw; }
+  .container-checkpayment .box__dates-payment,
+  .container__success-payment .main__success-payment,
+  .container__cancel-payment .main__cancel-payment {
+    width: 90%; }
+  .container__success-payment .main__success-payment .navbar-left .litle-text {
+    left: 90%; }
+  header.logo-success p {
+    font-size: 14px; }
+  .container__success-payment .main__success-payment .body__success-payment header.logo-success h1,
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment h1 {
+    font-size: 24px; }
+  .container__success-payment .main__success-payment .body__success-payment section p,
+  .container__success-payment .main__success-payment .body__success-payment .bottom p,
+  .container__success-payment .main__success-payment .confirm-payment label,
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment p,
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment label {
+    font-size: 14px; }
+  .container__cancel-payment .main__cancel-payment .navbar-left .litle-text {
+    left: 18%; }
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment img {
+    width: 66%; }
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment .action__cancel-payment a {
+    font-size: 16px; } }
 
 @media screen and (max-width: 376px) {
   button.btn-setting {
@@ -4695,7 +4778,26 @@ ul.listpageleadership .active {
     transform: translateY(-2%); }
   label.changebackground-profile {
     font-size: 14px;
-    border-radius: 6px; } }
+    border-radius: 6px; }
+  .container-checkpayment .box__dates-payment .primary-text {
+    font-size: 24px; }
+  .container-checkpayment .box__dates-payment .title-payment {
+    font-size: 16px; }
+  .container-checkpayment .box__dates-payment .card-payment label,
+  .container-checkpayment .box__dates-payment .accept-payment label {
+    font-size: 16px; }
+  .container__success-payment .main__success-payment .navbar-left .litle-text {
+    left: 100%; }
+  .container__success-payment .main__success-payment .body__success-payment section p,
+  .container__success-payment .main__success-payment .body__success-payment .bottom p,
+  .container__success-payment .main__success-payment .confirm-payment label,
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment p,
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment label {
+    font-size: 12px; }
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment .action__cancel-payment a {
+    font-size: 14px; }
+  .secondary-listjob {
+    flex-direction: column; } }
 
 @media screen and (max-width: 321px) {
   button.btn-setting {
@@ -4716,11 +4818,9 @@ ul.listpageleadership .active {
     font-size: 12px; }
   .namejobs {
     font-size: 12px !important; }
-  .secondary-listjob {
-    flex-direction: column; }
   li.content-listjob .cv-applied {
     font-size: 12px;
-    width: 140px; }
+    width: 180px; }
   .listjobs-action button,
   .listleadership-action button {
     width: 50%; }
@@ -4731,6 +4831,31 @@ ul.listpageleadership .active {
   .alert-message {
     padding-right: 40px; }
   .alert-message p {
+    font-size: 12px; }
+  .container-checkpayment .box__dates-payment .accept-payment {
+    font-size: 22px; }
+  .container-checkpayment .box__dates-payment .card-payment label,
+  .container-checkpayment .box__dates-payment .accept-payment label {
+    font-size: 12px; }
+  .container-checkpayment .box__dates-payment .accept-payment {
+    margin: unset; }
+  .container__success-payment .main__success-payment .navbar-left .litle-text {
+    left: 118%; }
+  .container__cancel-payment .main__cancel-payment .navbar-left .litle-text {
+    left: 23.5%; }
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment img {
+    width: 80%;
+    height: 180px; }
+  .container__success-payment .main__success-payment .body__success-payment section p,
+  .container__success-payment .main__success-payment .body__success-payment .bottom p,
+  .container__success-payment .main__success-payment .confirm-payment label,
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment p,
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment label {
+    font-size: 10px; }
+  .container__success-payment .main__success-payment,
+  .container__cancel-payment .main__cancel-payment {
+    margin-bottom: 30px; }
+  .container__cancel-payment .main__cancel-payment .body__cancel-payment .action__cancel-payment a {
     font-size: 12px; } }
 
 .container-companies {
@@ -5964,10 +6089,12 @@ header.company-detail .background-company-detail {
   border-radius: 100px;
   background-color: #fed200;
   color: white;
-  width: 156px; }
-
-.main__create-cv header.action-create-cv .download-create-cv button > * {
-  margin: 0 8px; }
+  width: 150px;
+  height: 34px;
+  padding: 4px 12px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; }
 
 .main__create-cv header.action-create-cv .download-create-cv button:hover {
   background-color: #e2c021; }
@@ -6198,7 +6325,8 @@ header.company-detail .background-company-detail {
 .body__create-cv header .info__user-cv .secondary__user-cv label {
   font-size: 16px;
   font-weight: 700;
-  width: 25%; }
+  width: 25%;
+  padding: 4px 0 4px 8px; }
 
 .body__create-cv header .info__user-cv .secondary__user-cv textarea {
   font-size: 14px;
@@ -6322,7 +6450,8 @@ header.company-detail .background-company-detail {
   width: 20%; }
 
 .overview__user-cv .work-exp .action__add-remove,
-.overview__user-cv .education-user .action__add-remove-education {
+.overview__user-cv .education-user .action__add-remove-education,
+.body__user-cv .project__user-cv .action__add-remove-project {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -6336,7 +6465,8 @@ header.company-detail .background-company-detail {
   opacity: 0; }
 
 .overview__user-cv .work-exp .date__work-exp .action__add-remove span:hover,
-.overview__user-cv .education-user .action__add-remove-education span:hover {
+.overview__user-cv .education-user .action__add-remove-education span:hover,
+.body__user-cv .project__user-cv .action__add-remove-project span:hover {
   color: #fed200; }
 
 .overview__user-cv .work-exp .date__work-exp textarea,
@@ -6393,7 +6523,8 @@ header.company-detail .background-company-detail {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%; }
+  width: 100%;
+  margin-bottom: 30px; }
 
 .body__user-cv .project__user-cv .box-project {
   display: flex;
@@ -6401,6 +6532,19 @@ header.company-detail .background-company-detail {
   justify-content: center;
   width: 100%;
   margin-bottom: 12px; }
+
+.body__user-cv .project__user-cv .main__info-project {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  color: black;
+  font-weight: 500;
+  position: relative; }
+
+.body__user-cv .project__user-cv .main__info-project textarea:first-child {
+  font-weight: 600;
+  text-transform: uppercase; }
 
 .body__user-cv .project__user-cv .box-project .content-project {
   width: 80%; }
@@ -6491,7 +6635,9 @@ header.company-detail .background-company-detail {
 .main__manager-cv section .box__failed-cv h2 {
   font-size: 20px;
   font-weight: 600;
-  width: 100%; }
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 20px; }
 
 .main__manager-cv section .box__passed-cv .card__passed-cv,
 .main__manager-cv section .box__failed-cv .card__failed-cv {
@@ -6511,7 +6657,7 @@ header.company-detail .background-company-detail {
 
 .main__manager-cv section .box__passed-cv .card__passed-cv span,
 .main__manager-cv section .box__failed-cv .card__failed-cv span {
-  padding: 0 20px 8px 0;
+  padding: 0 0 12px 0;
   transition: .5s; }
 
 .main__manager-cv section .box__passed-cv .card__passed-cv:hover,
@@ -6528,9 +6674,21 @@ header.company-detail .background-company-detail {
   .main__create-cv header.action-create-cv {
     top: 70%; } }
 
+@media screen and (max-width: 1024px) {
+  .main__create-cv header.action-create-cv {
+    top: 37%; }
+  .main__manager-cv {
+    width: 90%; } }
+
 @media screen and (max-width: 768px) {
   .header-cv {
     transform: translateY(50%); }
+  .main__create-cv header.action-create-cv {
+    top: 49.5%; }
+  .main__create-cv header.action-create-cv span {
+    margin: 0 30px; }
+  .a4 {
+    width: 95% !important; }
   .free-design,
   .easy-operation,
   .interview-cv,
@@ -6555,11 +6713,22 @@ header.company-detail .background-company-detail {
     margin: 4px 0; }
   .free-design-left {
     width: 50%;
-    text-align: justify; } }
+    text-align: justify; }
+  .main__manager-cv section .box__passed-cv h2,
+  .main__manager-cv section .box__failed-cv h2 {
+    font-size: 18px; }
+  .main__manager-cv section .box__passed-cv .card__passed-cv,
+  .main__manager-cv section .box__failed-cv .card__failed-cv {
+    width: 100%; } }
 
 @media screen and (max-width: 600px) {
   .header-cv .intro-text {
     height: 50px; }
+  .main__create-cv header.action-create-cv {
+    top: 62.5%; }
+  .main__create-cv header.action-create-cv span {
+    font-size: 18px;
+    margin: 0 20px; }
   .free-design-title,
   .easy-tilte,
   .download-title,
@@ -6578,6 +6747,13 @@ header.company-detail .background-company-detail {
   .header-cv .intro-title,
   .header-cv .intro-surprise {
     font-size: 24px; }
+  .main__create-cv header.action-create-cv {
+    top: 68%; }
+  .main__create-cv header.action-create-cv span {
+    font-size: 12px;
+    margin: 0 12px; }
+  .main__create-cv header.action-create-cv .download-create-cv button {
+    width: 110px; }
   .header-cv .intro-surprise {
     margin-bottom: unset; }
   .header-cv .intro-text {
@@ -6616,7 +6792,24 @@ header.company-detail .background-company-detail {
   .stepbystep-header {
     font-size: 28px; }
   .first-title {
-    align-self: unset; } }
+    align-self: unset; }
+  .body__create-cv header .info__user-cv .secondary__user-cv textarea {
+    width: 50%; }
+  .main__manager-cv {
+    width: 98%; } }
+
+@media screen and (max-width: 376px) {
+  .main__create-cv header.action-create-cv {
+    top: 61.5%; }
+  .main__create-cv header.action-create-cv span {
+    font-size: 12px;
+    margin: 0 8px; }
+  .main__create-cv header.action-create-cv .download-create-cv button {
+    width: 100px; } }
+
+@media screen and (max-height: 668px) {
+  .main__create-cv header.action-create-cv {
+    top: 75%; } }
 
 @media screen and (max-width: 321px) {
   .header-cv {
@@ -6625,7 +6818,20 @@ header.company-detail .background-company-detail {
   .header-cv .intro-surprise {
     font-size: 20px; }
   .header-cv .intro-text {
-    padding: 0 10%; } }
+    padding: 0 10%; }
+  .main__create-cv header.action-create-cv {
+    top: 88%; }
+  .main__create-cv header.action-create-cv span {
+    font-size: 10px;
+    margin: 0 4px; }
+  .main__create-cv header.action-create-cv .download-create-cv button {
+    width: 90px;
+    height: 24px; }
+  .main__manager-cv section .box__passed-cv h2,
+  .main__manager-cv section .box__failed-cv h2 {
+    text-align: center; }
+  .main__manager-cv section .header-section {
+    font-size: 18px; } }
 
 .container-admin {
   display: flex;
@@ -7863,6 +8069,30 @@ form.note-denied button:hover {
   font-weight: 700;
   text-align: center;
   padding-top: 4px; }
+
+@media screen and (max-width: 414px) {
+  .login-username label,
+  .login-password label,
+  .login-email label,
+  .login-phone label,
+  .login-fullname label {
+    left: 55px; } }
+
+@media screen and (max-width: 376px) {
+  .login-username label,
+  .login-password label,
+  .login-email label,
+  .login-phone label,
+  .login-fullname label {
+    left: 50px; } }
+
+@media screen and (max-width: 321px) {
+  .login-username label,
+  .login-password label,
+  .login-email label,
+  .login-phone label,
+  .login-fullname label {
+    left: 44px; } }
 
 .footer {
   display: flex;
