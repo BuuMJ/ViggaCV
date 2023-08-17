@@ -131,7 +131,7 @@
                 {{#if listJobRequestPrioritize}}
                 <div class="header__refuned-ads">
                     <span>Request Date</span>
-                    <span>Job Posting Date</span>
+                    <span>Payment Date</span>
                     <span>Job Name</span>
                     <span class="person">Petitioner</span>
                     <span>Refund Amount</span>
@@ -140,7 +140,7 @@
                 {{#each listJobRequestPrioritize}}
                     <div class="main__refuned-ads">
                         <span>{{moment this.revenueDetail.updatedAt format="DD/MM/YYYY" }}</span>
-                        <span>{{moment this.createdAt format="DD/MM/YYYY" }}</span>
+                        <span>{{moment this.revenueDetail.createdAt format="DD/MM/YYYY" }}</span>
                         <span>{{this.jobname}}</span>
                         <span class="person"><img style="margin-right: 6px;" src="/{{this.companyDetail.avatar}}" alt="">{{this.companyDetail.companyname}}</span>
                         <span style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
@@ -173,7 +173,7 @@
                 {{#if listJobRequestPostJob}}
                 <div class="header__refuned-ads">
                     <span>Request Date</span>
-                    <span>Job Posting Date</span>
+                    <span>Payment Date</span>
                     <span>Job Name</span>
                     <span class="person">Petitioner</span>
                     <span>Refund Amount</span>
@@ -182,7 +182,7 @@
                 {{#each listJobRequestPostJob}}
                     <div class="main__refuned-ads main__refuned-high">
                         <span>{{moment this.revenueDetail.updatedAt format="DD/MM/YYYY" }}</span>
-                        <span>{{moment this.createdAt format="DD/MM/YYYY" }}</span>
+                        <span>{{moment this.revenueDetail.createdAt format="DD/MM/YYYY" }}</span>
                         <span>{{this.jobname}}</span>
                         <span class="person"><img style="margin-right: 6px;" src="/{{this.companyDetail.avatar}}" alt="">{{this.companyDetail.companyname}}</span>
                         <span style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
@@ -233,7 +233,7 @@
          <div class="success-payment__history">
         <h1>Transaction History</h1>
         <div class="header__payment-history">
-            <span class="time">Transaction Time</span>
+            <span class="time">Transaction Date</span>
             <span class="customer">Customer</span>
             <span class="amount">Amount</span>
             <span class="type">Transaction Type</span>
