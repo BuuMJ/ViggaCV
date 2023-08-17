@@ -1,4 +1,12 @@
 <div class="main-login">
+    {{#if msg}}
+        <div class="alert-message">
+            <p>{{msg}}</p>
+            <div class="hide-message">
+                <i class="bi bi-x-circle"></i>
+            </div>
+        </div>
+    {{/if}}
 <form class="box-verify" method="POST" action="/register/sendMailVerify">
         <div class="text-login">
             <span class="text-sign-in">Verify Email</span>
