@@ -1443,7 +1443,9 @@
     font-size: 11px;
     -webkit-line-clamp: 1; }
   .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job span.hot__job__company-name {
-    font-size: 8px; } }
+    font-size: 8px; }
+  .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job span.hot__location {
+    font-size: 6px; } }
 
 .container__job-detail {
   background-color: #f5f5f5; }
@@ -2939,9 +2941,10 @@ header.job-search .best-companyFL .background-image {
     display: none; }
   .header-search .input-search {
     width: 80%; }
-  .header-search .header-search__login,
   .header-search .header-search__scancv {
     width: 20%; }
+  .header-search .header-search__login .search-login {
+    width: 99%; }
   .header-search .header-search__scancv label .text-scancv {
     font-size: 15px; }
   .best-companyFL .info-bestfl {
@@ -3113,7 +3116,15 @@ header.job-search .best-companyFL .background-image {
     font-size: 18px;
     padding: 0 12px; }
   .container__job-saved .main__job-saved {
-    width: 95%; } }
+    width: 95%; }
+  .header-search .header-search__login {
+    height: 80%; }
+  .header-search .header-search__login .search-login {
+    flex-direction: column;
+    height: 100%; }
+  .header-search__login .search-login .icon-user,
+  .header-search__login .search-login .sign-in {
+    width: 100%; } }
 
 @media screen and (max-width: 414px) {
   header.job-search .best-companyFL .info-bestfl span {
@@ -3242,7 +3253,9 @@ header.job-search .best-companyFL .background-image {
   .container__job-saved .main__job-saved section .header-section span {
     margin-right: 20px; }
   .container__job-saved .main__job-saved header p {
-    font-size: 14px; } }
+    font-size: 14px; }
+  .header-search .input-search label.label-search {
+    top: 29px; } }
 
 @media screen and (max-width: 321px) {
   .main-jobs .card-jobs .card-job .card-job__action .detail-job__action {
@@ -3279,7 +3292,11 @@ header.job-search .best-companyFL .background-image {
   .container__job-saved .main__job-saved section .header-section {
     font-size: 8px; }
   .container__job-saved .main__job-saved header p {
-    font-size: 8px; } }
+    font-size: 8px; }
+  .header-search .input-search label.label-search {
+    top: 20px; }
+  .header-search__login .search-login .sign-in {
+    font-size: 14px; } }
 
 .main-profile {
   display: flex;
@@ -8351,7 +8368,7 @@ button#moveTopBtn {
 
 .navbar-responsive {
   display: none;
-  z-index: 20; }
+  z-index: 21; }
 
 .responsive__navbar-center {
   display: none; }
@@ -8670,7 +8687,7 @@ button#moveTopBtn {
     top: 7%;
     transform: translateY(-200%);
     transition: .5s;
-    z-index: 19; }
+    z-index: 21; }
   .responsive__navbar-center a {
     font-size: 30px;
     text-decoration: none;

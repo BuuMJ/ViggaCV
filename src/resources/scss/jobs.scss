@@ -1535,9 +1535,11 @@ header.job-search .best-companyFL {
     .header-search .input-search {
         width: 80%;
     }
-    .header-search .header-search__login,
     .header-search .header-search__scancv{
         width: 20%;
+    }
+    .header-search .header-search__login .search-login{
+        width: 99%;
     }
     .header-search .header-search__scancv label .text-scancv{
         font-size: 15px;
@@ -1776,6 +1778,17 @@ header.job-search .best-companyFL {
     .container__job-saved .main__job-saved{
         width: 95%;
     }
+    .header-search .header-search__login{
+        height: 80%;
+    }
+    .header-search .header-search__login .search-login{
+        flex-direction: column;
+        height: 100%;
+    }
+    .header-search__login .search-login .icon-user,
+    .header-search__login .search-login .sign-in{
+        width: 100%;
+    }
 }
 @media screen and (max-width: 414px) {
     header.job-search .best-companyFL .info-bestfl span{
@@ -1949,6 +1962,9 @@ header.job-search .best-companyFL {
     .container__job-saved .main__job-saved header p{
         font-size: 14px;
     }
+    .header-search .input-search label.label-search{
+        top: 29px;
+    }
 }
 @media screen and (max-width: 321px) {
     .main-jobs .card-jobs .card-job .card-job__action .detail-job__action {
@@ -1999,5 +2015,11 @@ header.job-search .best-companyFL {
     }
     .container__job-saved .main__job-saved header p{
         font-size: 8px;
+    }
+    .header-search .input-search label.label-search{
+        top: 20px;
+    }
+    .header-search__login .search-login .sign-in{
+        font-size: 14px;
     }
 }

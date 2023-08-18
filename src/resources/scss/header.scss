@@ -14,7 +14,7 @@
 }
 .navbar-responsive{
     display: none;
-    z-index: 20;
+    z-index: 21;
 }
 .responsive__navbar-center{
     display: none;
@@ -357,7 +357,7 @@
         top: 7%;
         transform: translateY(-200%);
         transition: .5s;
-        z-index: 19;
+        z-index: 21;
     }
     .responsive__navbar-center a{
         font-size: 30px;
