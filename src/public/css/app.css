@@ -1895,11 +1895,11 @@ header.job-search {
 .header-search .navbar-left .navbar-left__primary a.navbar-left-name {
   color: #0E0E23; }
 
-.header-search .navbar-left a.litle-text {
+.job-search .header-search .navbar-left a.litle-text {
   color: #fed200;
   font-weight: 600;
   position: absolute;
-  left: 25%;
+  left: 17.5%;
   bottom: 12px;
   letter-spacing: 1.6px; }
 
@@ -2876,7 +2876,9 @@ header.job-search .best-companyFL .background-image {
   .header-search .input-search .categories-select__position #categories-search__position,
   .header-search .input-search .categories-select #categories-search:focus,
   .header-search .input-search .categories-select__position #categories-search__position:focus {
-    padding-left: 8px; } }
+    padding-left: 8px; }
+  .job-search .header-search .navbar-left a.litle-text {
+    left: 23%; } }
 
 @media screen and (max-width: 1024px) {
   .header-search .input-search {
@@ -2902,7 +2904,7 @@ header.job-search .best-companyFL .background-image {
     right: 4%; }
   .header-search .navbar-left .navbar-left__primary a.navbar-left-name {
     font-size: 22px; }
-  .header-search .navbar-left a.litle-text {
+  .job-search .header-search .navbar-left a.litle-text {
     left: 31%;
     bottom: 20px;
     font-size: 11px; }
@@ -7872,13 +7874,22 @@ form.note-denied button:hover {
   .container-admin .list-job {
     overflow-x: scroll;
     align-items: start; }
+  .revenue-chart {
+    height: 500px; }
   .container-admin .list-user .header__list-user,
   .container-admin .list-job .header__list-job,
   .container-admin .list-user .body__list-user,
   .container-admin .list-job .body__list-job,
+  .container-admin .list-user .pagination,
+  .container-admin .list-job .pagination,
   .container-admin .list-user h1,
   .container-admin .list-job h1 {
-    width: 1300px; }
+    width: 1300px !important; }
+  .container-admin .list-user .pagination,
+  .container-admin .list-job .pagination {
+    align-self: unset;
+    justify-content: start;
+    padding-left: 6px; }
   .container-admin .chart-job {
     width: 95%;
     height: unset; }

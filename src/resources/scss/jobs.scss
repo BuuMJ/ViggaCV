@@ -454,11 +454,11 @@ header.job-search{
 .header-search .navbar-left .navbar-left__primary a.navbar-left-name{
     color: #0E0E23;
 }
-.header-search .navbar-left a.litle-text {
+.job-search .header-search .navbar-left a.litle-text {
     color: $primarycolor;
     font-weight: 600;
     position: absolute;
-    left: 25%;
+    left: 17.5%;
     bottom: 12px;
     letter-spacing: 1.6px;
 }
@@ -1447,6 +1447,9 @@ header.job-search .best-companyFL {
     .header-search .input-search .categories-select__position #categories-search__position:focus{
         padding-left: 8px;
     }
+    .job-search .header-search .navbar-left a.litle-text{
+        left: 23%;
+    }
 }
 @media screen and (max-width: 1024px) {
     .header-search .input-search{
@@ -1482,7 +1485,7 @@ header.job-search .best-companyFL {
     .header-search .navbar-left .navbar-left__primary a.navbar-left-name{
         font-size: 22px;
     }
-    .header-search .navbar-left a.litle-text{
+    .job-search .header-search .navbar-left a.litle-text{
         left: 31%;
         bottom: 20px;
         font-size: 11px;

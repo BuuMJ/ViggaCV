@@ -983,13 +983,24 @@ form.note-denied button:hover{
         overflow-x: scroll;
         align-items: start;
     }
+    .revenue-chart{
+        height: 500px;
+    }
     .container-admin .list-user .header__list-user,
     .container-admin .list-job .header__list-job,
     .container-admin .list-user .body__list-user,
     .container-admin .list-job .body__list-job,
+    .container-admin .list-user .pagination,
+    .container-admin .list-job .pagination,
     .container-admin .list-user h1,
     .container-admin .list-job h1{
-        width: 1300px;
+        width: 1300px !important;
+    }
+    .container-admin .list-user .pagination,
+    .container-admin .list-job .pagination{
+        align-self: unset;
+        justify-content: start;
+        padding-left: 6px;
     }
     .container-admin .chart-job {
         width: 95%;
