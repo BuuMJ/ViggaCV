@@ -205,12 +205,12 @@ class CvController {
       await page.setCookie({
         name: "token",
         value: token,
-        url: "http://localhost:3000",
+        url: "https://viggacareers.onrender.com/",
       });
 
       // Navigate to the page you want and create PDF
       await page.goto(
-        `http://localhost:3000/cv/exportcv?color=${color}&fontfamily=${fontfamily}&fontsize=${fontsize}`,
+        `https://viggacareers.onrender.com/cv/exportcv?color=${color}&fontfamily=${fontfamily}&fontsize=${fontsize}`,
         {
           waitUntil: "networkidle0",
         }

@@ -470,7 +470,7 @@ class CompanyProfileController {
             pass: "wdymtvgbhblstfbj",
           },
         });
-        const linkJob = `http://localhost:3000/job/${job._id}`;
+        const linkJob = `https://viggacareers.onrender.com/job/${job._id}`;
         const mailOptions = {
           to: combinedEmails, // list of receivers
           subject: "ViggaCareers ", // Subject line<a href="${linkJob}">here</a>

@@ -152,7 +152,7 @@ class ApplyCVController {
               pass: "wdymtvgbhblstfbj",
             },
           });
-          const linkJob = `http://localhost:3000/job`;
+          const linkJob = `https://viggacareers.onrender.com//job`;
           const mailOptions = {
             to: req.user.email, // list of receivers
             subject: "ViggaCareers ", // Subject line<a href="${linkJob}">here</a>
