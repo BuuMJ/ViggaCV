@@ -1120,11 +1120,18 @@
   .company-feature .box-hotcompany {
     margin-bottom: unset;
     height: 450px; }
+  .company-feature .box-hotjob {
+    width: 99%; }
   .company-feature .box-hotjob .swiper .swiper-slide .box__info-job {
     flex-direction: column; }
+  .company-feature .box-hotjob .swiper .swiper-slide .box__info-job img {
+    height: 45%;
+    margin: 6px 0;
+    width: 80%; }
   .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job {
     width: 100%;
-    padding: 20px 10px; }
+    padding: 4px 10px;
+    height: 53%; }
   .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job span.hot__job-name {
     font-size: 14px; }
   .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job span.hot__job__company-name {
@@ -1358,7 +1365,14 @@
   .advantages {
     height: 1200px; }
   .advantages .title-advantages {
-    padding-top: 50px; } }
+    padding-top: 50px; }
+  .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job span.hot__job-name {
+    font-size: 11px;
+    -webkit-line-clamp: 2; }
+  .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job span.hot__job__company-name,
+  .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job span.hot__job-salary,
+  .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job span.hot__location {
+    font-size: 8px; } }
 
 @media screen and (max-width: 376px) {
   .container-home .first-content .search-home {
@@ -1369,14 +1383,6 @@
   .company-feature .header__company-feature span.hotcompany,
   .company-feature .header__company-feature span {
     font-size: 15px; }
-  .company-feature .box-hotjob {
-    width: 98%; }
-  .company-feature .box-hotjob .swiper .swiper-slide .box__info-job img {
-    margin-left: unset;
-    transform: translateY(-25%);
-    width: 55%; }
-  .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job {
-    padding: 0 10px 20px 10px; }
   .templates-text span {
     padding: 12px 12px 0 12px; }
   .templates-text__action {
@@ -1407,7 +1413,7 @@
   .container-home .first-content .toprecruiters {
     bottom: -43%; }
   .container-home .first-content .toprecruiters span.title-toprecruiters {
-    font-size: 22px; }
+    font-size: 20px; }
   .company-feature .header__company-feature span {
     margin: 0 10px; }
   .company-feature .header__company-feature span.hotcompany, .company-feature .header__company-feature span {
@@ -1432,7 +1438,12 @@
   .container-home .home-personal .list-personal .card-profile {
     height: 264px; }
   .advantage span {
-    font-size: 12px; } }
+    font-size: 12px; }
+  .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job span.hot__job-name {
+    font-size: 11px;
+    -webkit-line-clamp: 1; }
+  .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job span.hot__job__company-name {
+    font-size: 8px; } }
 
 .container__job-detail {
   background-color: #f5f5f5; }
@@ -3505,8 +3516,8 @@ button.btn-setting:active {
 .camera-edit {
   position: absolute;
   font-size: 30px;
-  right: 43%;
-  top: 2.5%;
+  right: 43.5%;
+  top: 1.8%;
   color: black;
   padding: 0 8px;
   border-radius: 50%;
@@ -4591,8 +4602,7 @@ ul.listpageleadership .active {
 
 @media screen and (max-width: 1440px) {
   .camera-edit {
-    right: 40.5%;
-    top: 2%; }
+    right: 41.5%; }
   .camera-user-edit {
     right: 41.5%; }
   .camera-user-company {
@@ -4607,8 +4617,8 @@ ul.listpageleadership .active {
   .header-profile {
     min-height: 1000px; }
   .camera-edit {
-    right: 39%;
-    top: 2.5%; }
+    right: 40%;
+    top: 2%; }
   .camera-user-edit {
     right: 39%;
     top: 3.5%; }
@@ -4624,7 +4634,9 @@ ul.listpageleadership .active {
   .container__success-payment .main__success-payment .navbar-left .litle-text {
     left: 53%; }
   .container__cancel-payment .main__cancel-payment .navbar-left .litle-text {
-    left: 10.5%; } }
+    left: 10.5%; }
+  #postjob, #postleadership {
+    width: 90%; } }
 
 @media screen and (max-width: 768px) {
   .header-profile {
@@ -4685,7 +4697,13 @@ ul.listpageleadership .active {
   .container__success-payment .main__success-payment .navbar-left .litle-text {
     left: 69%; }
   .container__cancel-payment .main__cancel-payment .navbar-left .litle-text {
-    left: 14%; } }
+    left: 14%; }
+  .info-job label {
+    font-size: 16px; }
+  .info-job input,
+  .info-job textarea,
+  .job-location select {
+    font-size: 12px; } }
 
 @media screen and (max-width: 415px) {
   .header-main-text {
@@ -4721,7 +4739,7 @@ ul.listpageleadership .active {
     width: 38%; }
   .camera-edit {
     right: 30%;
-    top: 2%; }
+    top: 1.5%; }
   .camera-user-edit {
     top: 2.3%;
     right: 30%; }
@@ -4768,7 +4786,36 @@ ul.listpageleadership .active {
   .container__cancel-payment .main__cancel-payment .body__cancel-payment img {
     width: 66%; }
   .container__cancel-payment .main__cancel-payment .body__cancel-payment .action__cancel-payment a {
-    font-size: 16px; } }
+    font-size: 16px; }
+  #postjob,
+  #postleadership {
+    transform: translateY(0);
+    top: 10px; }
+  .jobdesc {
+    height: 150px; }
+  .info-job textarea {
+    height: 90px; }
+  .info-job-salary {
+    flex-wrap: wrap;
+    height: unset; }
+  .job-salary {
+    order: 1;
+    width: 100%;
+    justify-content: center;
+    height: unset; }
+  .info-job-salary .job-location,
+  .job-position {
+    width: 48%;
+    justify-content: center;
+    height: 70%;
+    height: unset; }
+  .job-position {
+    order: 2; }
+  .job-location {
+    order: 3; }
+  .label-benefit,
+  .info-job-salary label {
+    margin: 6px 0; } }
 
 @media screen and (max-width: 376px) {
   button.btn-setting {
@@ -4797,7 +4844,9 @@ ul.listpageleadership .active {
   .container__cancel-payment .main__cancel-payment .body__cancel-payment .action__cancel-payment a {
     font-size: 14px; }
   .secondary-listjob {
-    flex-direction: column; } }
+    flex-direction: column; }
+  #postjob {
+    top: 0; } }
 
 @media screen and (max-width: 321px) {
   button.btn-setting {
@@ -4807,8 +4856,8 @@ ul.listpageleadership .active {
   .btn-save {
     width: 50%; }
   .camera-edit {
-    right: 40.5%;
-    top: 2.7%; }
+    right: 38.5%;
+    top: 2%; }
   .camera-user-edit {
     top: 3.3%;
     right: 39%; }
@@ -4856,7 +4905,25 @@ ul.listpageleadership .active {
   .container__cancel-payment .main__cancel-payment {
     margin-bottom: 30px; }
   .container__cancel-payment .main__cancel-payment .body__cancel-payment .action__cancel-payment a {
-    font-size: 12px; } }
+    font-size: 12px; }
+  #postjob {
+    height: 100vh;
+    justify-content: unset; }
+  .info-job {
+    height: 70px; }
+  .info-job textarea {
+    height: 80px; }
+  .info-job input,
+  .info-job textarea,
+  .job-location select {
+    font-size: 10px; }
+  .info-job label {
+    margin: 6px 0; }
+  .info-job-salary {
+    height: 155px; }
+  #postleadership {
+    top: 0;
+    height: 100vh; } }
 
 .container-companies {
   display: flex;

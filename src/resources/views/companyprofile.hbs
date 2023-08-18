@@ -238,7 +238,7 @@
 - プレゼンテーション力と交渉力 (あれば望ましい)" type="text" required></textarea>
         </div>
         <div class="info-job">
-            <label for="namecompanyjob">Benefit</label>
+            <label class="label-benefit" for="namecompanyjob">Benefit</label>
             <textarea id="namecompanyjob" name="benefit" type="text" required></textarea>
         </div>
         <div class="info-job info-job-salary">
@@ -254,7 +254,7 @@
             <div class="job-location">
                 <label for="joblocation">Job Locations</label>
                 <select id="joblocation" name="joblocation" required>
-                    <option value="" selected>Select Your Location</option>
+                    <option selected>Select Your Location</option>
                 </select>
             </div>
         </div>
@@ -699,7 +699,7 @@ textSalary.addEventListener('input', (e) => {
     var salaryValue = textSalary.value;
     var salaryContent = parseInt(salaryValue, 10);
     alertSalary.style.display = 'none';
-    textSalary.style.border = '2px solid #04FC04';
+    textSalary.style.border = 'unset';
     if (salaryValue !== "Negotiable" && isNaN(salaryContent)) {
         textSalary.style.border = '2px solid red';
         formPostJob.type = 'button';
