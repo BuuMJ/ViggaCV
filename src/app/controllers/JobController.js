@@ -25,10 +25,32 @@ class JobController {
       pages.push(i);
     }
 
-    // Tìm random company
-    const randomIndex = Math.floor(Math.random() * company.length);
-    const randomCompany = company[randomIndex];
-    // Tìm job của random company
+    const companies = await CompanyModel.find({});
+
+    // Lọc ra các công ty có ít nhất 2 công việc
+    const companiesWithAtLeast2Jobs = [];
+    for (const company1 of companies) {
+      const jobCount = await JobModel.countDocuments({
+        iduser: company1.iduser,
+        active: true,
+      });
+      if (jobCount >= 2) {
+        companiesWithAtLeast2Jobs.push(company1);
+      }
+    }
+
+    // Nếu không tìm thấy công ty phù hợp, bạn có thể xử lý tình huống này ở đây
+    if (companiesWithAtLeast2Jobs.length === 0) {
+      // ...
+    }
+
+    // Chọn ngẫu nhiên một công ty từ danh sách công ty phù hợp
+    const randomIndex = Math.floor(
+      Math.random() * companiesWithAtLeast2Jobs.length
+    );
+    const randomCompany = companiesWithAtLeast2Jobs[randomIndex];
+
+    // Tìm công việc của công ty được chọn
     const jobs = await JobModel.find({
       iduser: randomCompany.iduser,
       active: true,

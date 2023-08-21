@@ -10,6 +10,7 @@ const RevenueModel = require("../models/Revenua");
 class HomeController {
   async home(req, res, next) {
     try {
+      const msg = req.query.messenge;
       const jobs = await JobModel.find({ active: true });
       // thêm chức năng 20 việc làm mới nhất + thêm tổng số count vào
       const companies = await CompanyModel.find({});
@@ -41,6 +42,7 @@ class HomeController {
       res.render("home", {
         title: "Vigga Home",
         user: req.user,
+        msg,
         jobs: mutipleMongooseToObject(jobs),
         companies: mutipleMongooseToObject(companies),
         prioritizeJobs: mutipleMongooseToObject(prioritizeJobs),

@@ -58,14 +58,15 @@ function checkUser(req, res, next) {
 
 //check company
 function checkAdmin(req, res, next) {
+  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
   var role = req.user.role;
-  if ((role = admin)) {
+  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ " + role);
+  if (role === "admin") {
+    console.log("bbbbbbbbbbbbbbbbbbb");
     next();
   } else {
-    return res.render("home", {
-      title: "authorized",
-      msg: "You are not authorized.",
-    });
+    console.log("ccccccccccccccccccc");
+    return res.redirect("/?messenge=You are not authorized.");
   }
 }
 

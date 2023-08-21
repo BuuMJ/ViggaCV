@@ -1,4 +1,12 @@
 <div class="container-home">
+    {{#if msg}}
+    <div class="alert-message">
+        <p>{{msg}}</p>
+        <div class="hide-message">
+            <i class="bi bi-x-circle"></i>
+        </div>
+    </div>
+    {{/if}}
     <div class="first-content">
         <img class="parallax-img" src="/img/bgcontent.jpg" alt="">
         <form class="search-home" action="/job/search">

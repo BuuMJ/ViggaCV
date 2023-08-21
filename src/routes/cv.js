@@ -8,6 +8,6 @@ const { sendDataUser } = require("../util/data");
 router.post("/export", checkLogin, cvController.export);
 router.get("/createcv", checkLogin, cvController.createCV);
 router.get("/exportcv", checkLogin, cvController.cvpdf);
-router.get("/", checkLogin, cvController.cv);
+router.get("/", cvController.cv);
 
 module.exports = router;
