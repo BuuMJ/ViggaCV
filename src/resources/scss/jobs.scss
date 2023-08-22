@@ -1448,7 +1448,7 @@ header.job-search .best-companyFL {
         padding-left: 8px;
     }
     .job-search .header-search .navbar-left a.litle-text{
-        left: 23%;
+        left: 25%;
     }
 }
 @media screen and (max-width: 1024px) {
@@ -1966,7 +1966,10 @@ header.job-search .best-companyFL {
         font-size: 14px;
     }
     .header-search .input-search label.label-search{
-        top: 29px;
+        top: 27px;
+    }
+    .header-search .input-search .categories-select #categories-search{
+        font-size: 12px;
     }
 }
 @media screen and (max-width: 321px) {
@@ -2018,6 +2021,9 @@ header.job-search .best-companyFL {
     }
     .container__job-saved .main__job-saved header p{
         font-size: 8px;
+    }
+    .header-search .input-search label{
+        top: 7px;
     }
     .header-search .input-search label.label-search{
         top: 20px;
