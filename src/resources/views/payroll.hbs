@@ -1,38 +1,72 @@
 <div class="container-salary">
-    <div class="salary-calculator">
+        <div class="salary-calculator">
+            <h3>Calculate From Gross To Net</h3>
             <label for="grossSalary">Gross Salary:</label>
             <input type="number" id="grossSalary" placeholder="Enter gross salary">
             <button onclick="calculateSalary()">Calculate Salary</button>
             <div class="result">
-                <p class="text-primary">Net Salary: <span id="netSalary"></span></p>
-                <p class="text-secondary">Total Tax: <span id="totalTax"></span></p>
-                <p class="text-secondary">National Insurance: <span id="insurance"></span></p>
-                <p class="text-primary">Total Take Home Pay: <span id="totalTakeHome"></span></p>
+                <p>Net Salary: <span id="netSalary"></span></p>
+                <p>Total Tax: <span id="totalTax"></span></p>
+                <p>National Insurance: <span id="insurance"></span></p>
+                <p>Total Take Home Pay: <span id="totalTakeHome"></span></p>
             </div>
+        </div>
+        <div class="salary-calculator">
+            <h3>Calculate From Net To Gross</h3>
+            <label for="netSalaryInput">Net Salary:</label>
+            <input type="number" id="netSalaryInput" placeholder="Enter net salary">
+            <button onclick="calculateGrossSalary()">Calculate Gross Salary</button>
+            <div class="result">
+                <p>Gross Salary: <span id="grossSalaryResult"></span></p>
+            </div>
+        </div>
     </div>
-</div>
 <script>
 function calculateSalary() {
     var grossSalary = document.getElementById("grossSalary").value;
     var totalTax = calculateTax(grossSalary);
     var insurance = calculateNationalInsurance(grossSalary);
     var netSalary = grossSalary - totalTax - insurance;
-    var totalTakeHome = netSalary;
-    document.getElementById("netSalary").textContent = "£" + netSalary.toFixed(2);
-    document.getElementById("totalTax").textContent = "£" + totalTax.toFixed(2);
-    document.getElementById("insurance").textContent = "£" + insurance.toFixed(2);
-    document.getElementById("totalTakeHome").textContent = "£" + totalTakeHome.toFixed(2);
+    document.getElementById("netSalary").textContent = "$ " + netSalary.toFixed(2);
+    document.getElementById("totalTax").textContent = "$ " + totalTax.toFixed(2);
+    document.getElementById("insurance").textContent = "$ " + insurance.toFixed(2);
+    document.getElementById("totalTakeHome").textContent = "$ " + netSalary.toFixed(2);
 }
+
 function calculateTax(salary) {
+    // You may adjust these tax calculations based on your country's regulations
     if (salary <= 12500) return 0;
     if (salary <= 50000) return (salary - 12500) * 0.2;
     if (salary <= 150000) return (salary - 50000) * 0.4 + 7500;
     return (salary - 150000) * 0.45 + 47500;
 }
+
 function calculateNationalInsurance(salary) {
+    // You may adjust these insurance calculations based on your country's regulations
     if (salary <= 9500) return 0;
     if (salary <= 50000) return (salary - 9500) * 0.12;
     return (salary - 50000) * 0.02 + 4860;
+}
+
+function calculateGrossSalary() {
+    var netSalaryInput = parseFloat(document.getElementById("netSalaryInput").value);
+    var grossEstimate = netSalaryInput;
+    var difference;
+
+    do {
+        var tax = calculateTax(grossEstimate);
+        var insurance = calculateNationalInsurance(grossEstimate);
+        var netEstimate = grossEstimate - tax - insurance;
+        difference = Math.abs(netEstimate - netSalaryInput);
+
+        if (netEstimate < netSalaryInput) {
+            grossEstimate += difference;
+        } else {
+            grossEstimate -= difference;
+        }
+    } while (difference > 0.01);
+
+    document.getElementById("grossSalaryResult").textContent = "$ " + grossEstimate.toFixed(2);
 }
 
 </script>

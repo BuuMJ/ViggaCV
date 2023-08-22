@@ -1227,7 +1227,7 @@
   .container-home .first-content .search-home {
     width: 366px; }
   .container-home .first-content .toprecruiters {
-    bottom: 0; }
+    bottom: -30%; }
   .container-home .first-content .toprecruiters span.title-toprecruiters {
     font-size: 24px; }
   .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter {
@@ -2878,7 +2878,7 @@ header.job-search .best-companyFL .background-image {
   .header-search .input-search .categories-select__position #categories-search__position:focus {
     padding-left: 8px; }
   .job-search .header-search .navbar-left a.litle-text {
-    left: 23%; } }
+    left: 25%; } }
 
 @media screen and (max-width: 1024px) {
   .header-search .input-search {
@@ -3257,7 +3257,9 @@ header.job-search .best-companyFL .background-image {
   .container__job-saved .main__job-saved header p {
     font-size: 14px; }
   .header-search .input-search label.label-search {
-    top: 29px; } }
+    top: 27px; }
+  .header-search .input-search .categories-select #categories-search {
+    font-size: 12px; } }
 
 @media screen and (max-width: 321px) {
   .main-jobs .card-jobs .card-job .card-job__action .detail-job__action {
@@ -3295,6 +3297,8 @@ header.job-search .best-companyFL .background-image {
     font-size: 8px; }
   .container__job-saved .main__job-saved header p {
     font-size: 8px; }
+  .header-search .input-search label {
+    top: 7px; }
   .header-search .input-search label.label-search {
     top: 20px; }
   .header-search__login .search-login .sign-in {
@@ -6153,7 +6157,7 @@ header.company-detail .background-company-detail {
   background-color: transparent;
   color: white;
   font-size: 20px;
-  z-index: 100;
+  z-index: 20;
   position: absolute;
   top: 53%;
   border-bottom: 1px solid #5e5d5d; }
@@ -7520,7 +7524,7 @@ header.company-detail .background-company-detail {
   background-color: rgba(0, 114, 188, 0.4); }
 
 .container-admin .material-symbols-outlined {
-  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48; }
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48; }
 
 .container-admin .chart-job {
   width: 65%;
@@ -7972,38 +7976,42 @@ form.note-denied button:hover {
     font-weight: 700; } }
 
 .container-salary {
-  background-color: #f5f5f5;
-  width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  min-height: 100vh; }
+  margin-top: 20px; }
 
 .salary-calculator {
-  width: 300px;
-  margin: 50px auto;
+  border: 1px solid #ccc;
   padding: 20px;
-  border: 1px solid #0072bc;
-  background-color: #ffffff; }
+  margin: 10px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+
+.salary-calculator h3 {
+  text-align: center;
+  color: #333; }
 
 .salary-calculator label,
-.salary-calculator input,
 .salary-calculator button {
   display: block;
+  width: 100%;
   margin-bottom: 10px; }
 
+.salary-calculator input {
+  width: 100%;
+  padding: 5px; }
+
 .salary-calculator button {
-  background-color: #0072bc;
+  padding: 10px;
+  background-color: #007bff;
   color: white;
   border: none;
-  padding: 10px;
-  cursor: pointer; }
+  cursor: pointer;
+  font-size: 1rem; }
 
-.text-primary {
-  color: #0072bc; }
-
-.text-secondary {
-  color: #fed200; }
+.salary-calculator button:hover {
+  background-color: #0056b3; }
 
 .main-login {
   display: flex;
@@ -8379,7 +8387,7 @@ button#moveTopBtn {
 
 .navbar-responsive {
   display: none;
-  z-index: 21; }
+  z-index: 22; }
 
 .responsive__navbar-center {
   display: none; }
