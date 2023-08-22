@@ -19,8 +19,9 @@ class CvController {
   //[GET] Create CV
   async createCV(req, res, next) {
     // const iduser = req.user.id;
-    const company = await CompanyModel.findOne({ iduser: req._id });
+    const company = await CompanyModel.findOne({ iduser: req.user._id });
     const data = await CVModel.findOne({ iduser: req.user._id });
+    console.log();
 
     if (data) {
       // console.log(data + " = Thông tin của user sau khi tra cứu");
