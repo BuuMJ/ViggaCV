@@ -33,39 +33,33 @@ function checkLogin(req, res, next) {
 //check company
 function checkCompany(req, res, next) {
   var role = req.user.role;
-  if (role != user) {
+  if (role != "user") {
     next();
   } else {
-    return res.render("home", {
-      title: "authorized",
-      msg: "You are not authorized.",
-    });
+    return res.redirect("/?messenge=You are not authorized.");
   }
 }
 
 //check User
 function checkUser(req, res, next) {
+  console.log("đã phân quyền cho User");
   var role = req.user.role;
-  if (role != company) {
+  console.log(role);
+  if (role != "company") {
+    console.log("đã phân quyền cho User1");
     next();
   } else {
-    return res.render("home", {
-      title: "authorized",
-      msg: "You are not authorized.",
-    });
+    console.log("đã phân quyền cho User2");
+    return res.redirect("/?messenge=You are not authorized.");
   }
 }
 
 //check company
 function checkAdmin(req, res, next) {
-  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ");
   var role = req.user.role;
-  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ " + role);
   if (role === "admin") {
-    console.log("bbbbbbbbbbbbbbbbbbb");
     next();
   } else {
-    console.log("ccccccccccccccccccc");
     return res.redirect("/?messenge=You are not authorized.");
   }
 }

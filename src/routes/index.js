@@ -3,7 +3,12 @@ const homeRouter = require("./home");
 const registerRouter = require("./register");
 const profileRouter = require("./profile");
 const { sendDataUser } = require("../util/data");
-const { checkLogin, checkAdmin } = require("../util/authorize");
+const {
+  checkLogin,
+  checkAdmin,
+  checkCompany,
+  checkUser,
+} = require("../util/authorize");
 const cvRouter = require("./cv");
 const companyRouter = require("./company");
 const companyprofileRouter = require("./companyprofile");
@@ -16,13 +21,13 @@ const adminRouter = require("./admin");
 const payrollRouter = require("./payroll");
 
 function route(app) {
-  app.use("/companyprofile", checkLogin, companyprofileRouter);
+  app.use("/companyprofile", checkLogin, checkCompany, companyprofileRouter);
 
-  app.use("/yourjobs", checkLogin, favouriteRouter);
+  app.use("/yourjobs", checkLogin, checkUser, favouriteRouter);
 
-  app.use("/scan", applyCVRouter);
+  app.use("/scan", sendDataUser, applyCVRouter);
 
-  app.use("/payroll", payrollRouter);
+  app.use("/payroll", sendDataUser, payrollRouter);
 
   app.use("/admin", checkLogin, checkAdmin, adminRouter);
 
