@@ -4,6 +4,7 @@ const path = require("path");
 const CVModel = require("../models/CV");
 const { staffMongoseToObject } = require("../../util/mongoose");
 const CompanyModel = require("../models/Company");
+require("dotenv").config();
 
 class CvController {
   //[GET] CV
@@ -202,7 +203,18 @@ class CvController {
 
       const token = req.cookies.token;
       // console.log(token);
-      const browser = await puppeteer.launch({ headless: false });
+      const browser = await puppeteer.launch({
+        args: [
+          "--disble-setuid-sandbox",
+          "--no-sandbox",
+          "--single-process",
+          "--no-zygote",
+        ],
+        executablePath:
+          process.env.NODE_ENV === "production"
+            ? process.env.PUPPETEER_EXECUTABLE_PATH
+            : puppeteer.executablePath(),
+      });
       const page = await browser.newPage();
 
       // Set cookie with the token
