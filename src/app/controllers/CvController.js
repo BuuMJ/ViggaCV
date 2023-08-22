@@ -18,27 +18,28 @@ class CvController {
 
   //[GET] Create CV
   async createCV(req, res, next) {
-    // const iduser = req.user.id;
-    const company = await CompanyModel.findOne({ iduser: req.user._id });
-    const data = await CVModel.findOne({ iduser: req.user._id });
-    console.log();
+    try {
+      const company = await CompanyModel.findOne({ iduser: req.user._id }); // Đảm bảo rằng đây là cách đúng để tìm công ty
+      const data = await CVModel.findOne({ iduser: req.user._id });
 
-    if (data) {
-      // console.log(data + " = Thông tin của user sau khi tra cứu");
-      res.render("createCV", {
-        title: "Create CV",
-        inforCV: staffMongoseToObject(data),
-        company,
-        user: req.user,
-      });
-      next();
-    } else {
-      res.render("createCV", {
-        title: "Create CV",
-        user: req.user,
-        company,
-        usercv: req.user,
-      });
+      if (data) {
+        res.render("createCV", {
+          title: "Create CV",
+          inforCV: staffMongoseToObject(data),
+          company,
+          user: req.user,
+        });
+      } else {
+        res.render("createCV", {
+          title: "Create CV",
+          user: req.user,
+          company,
+          usercv: req.user,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Bị lỗi rồi nha");
     }
   }
 
