@@ -123,7 +123,8 @@
         </div>
       </div>
       <div class="avatar__user-cv">
-        <input type="file" name="file" id="avataruser" value="{{getAvatar user}}" hidden>
+        <input type="file" name="file" id="avataruser" hidden>
+        <input id="riskFile" type="text" name="fileAvatar" value="{{user.avatar}}" hidden>
         <img class="img__user-cv" src="{{getAvatar user}}" alt="">
         <div class="change-avatar__user-cv">
           <div class="upload-avatar__user-cv">
@@ -669,12 +670,14 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   var file = document.querySelector('#avataruser');
   var img = document.querySelector('.img__user-cv');
+  var riskFile = document.querySelector('#riskFile');
   file.addEventListener('change', () => {
     const chooseFile = file.files[0];
     if (chooseFile) {
       const reader = new FileReader();
       reader.addEventListener('load', () => {
         img.setAttribute('src', reader.result);
+        riskFile.value = chooseFile.name;
       });
       reader.readAsDataURL(chooseFile);
     }
