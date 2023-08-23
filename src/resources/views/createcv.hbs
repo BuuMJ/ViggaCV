@@ -95,6 +95,7 @@
       <div class="info__user-cv">
         <div class="primary__user-cv">
           <input class="fullname__user-cv" type="text"  value="{{getFullname user}}">
+          <input type="text" name="avatar_test" value="{{user}}" hidden>
           <input class="specialized" type="text" name="specialized" placeholder="Front-end Developer" value="{{getSpecialized user}}">
         </div>
         <div class="secondary__user-cv">
@@ -123,7 +124,7 @@
         </div>
       </div>
       <div class="avatar__user-cv">
-        <input type="file" name="file" id="avataruser" value="111111111.png" hidden>
+        <input type="file" name="file" id="avataruser" value="{{user.0.fullname}}" hidden>
         <img class="img__user-cv" src="{{getAvatar user}}" alt="">
         <div class="change-avatar__user-cv">
           <div class="upload-avatar__user-cv">

@@ -130,13 +130,18 @@ class CvController {
         const cv = new CVModel(req.body);
         savedCv = await cv.save();
       }
-      if (req.body.color) {
+      if (req.body.avatar_test) {
         console.log("màu đã được gửi lên");
+        console.log(req.body.avatar_test);
+        const user = req.body.avatar_test;
+        const avatar1 = user.avatar;
+        console.log(avatar1);
       } else {
         console.log("màu không được gửi lên");
       }
       console.log(req.body.file);
       console.log(req.body.color);
+      console.log(req.body.avatar_test);
       console.log(avatar);
       console.log(color);
       console.log(fontfamily);
