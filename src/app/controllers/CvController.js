@@ -79,10 +79,11 @@ class CvController {
 
   async export(req, res, next) {
     try {
+      const user = req.user;
       if (req.file) {
         var avatar = req.file.filename;
       } else {
-        var avatar = req.body.file;
+        var avatar = user.avatar;
       }
       const iduser = req.user._id;
       req.body.iduser = req.user._id;
@@ -99,6 +100,7 @@ class CvController {
       let savedCv;
 
       if (data) {
+        console.log("Đã tới đây");
         const cv = await CVModel.findByIdAndUpdate(
           data._id,
           {
@@ -112,40 +114,238 @@ class CvController {
             name: req.body.birthday,
             birthday: req.body.address,
             address: req.body.address,
-            timeexperience: req.body.timeexperience,
-            nameexperience: req.body.nameexperience,
-            experience: req.body.experience,
-            timeeducation: req.body.timeeducation,
-            nameeducation: req.body.nameeducation,
-            education: req.body.education,
             maincontent: req.body.maincontent,
             othercontent: req.body.othercontent,
-            nameclient: req.body.nameclient,
+            experience: {
+              timeexperience: req.body.timeexperience,
+              nameexperience: req.body.nameexperience,
+              experience: req.body.experience,
+            },
+
+            experience1: {
+              timeexperience1: req.body.timeexperience1,
+              nameexperience1: req.body.nameexperience1,
+              experience1: req.body.experience1,
+            },
+
+            experience2: {
+              timeexperience2: req.body.timeexperience2,
+              nameexperience2: req.body.nameexperience2,
+              experience2: req.body.experience2,
+            },
+
+            experience3: {
+              timeexperience3: req.body.timeexperience3,
+              nameexperience3: req.body.nameexperience3,
+              experience3: req.body.experience3,
+            },
+
+            experience4: {
+              timeexperience4: req.body.timeexperience4,
+              nameexperience4: req.body.nameexperience4,
+              experience4: req.body.experience4,
+            },
+            education: {
+              nameeducation: req.body.nameeducation,
+              timeeducation: req.body.timeeducation,
+              education: req.body.education,
+            },
+            education1: {
+              nameeducation1: req.body.nameeducation1,
+              timeeducation1: req.body.timeeducation1,
+              education1: req.body.education1,
+            },
+            education2: {
+              nameeducation2: req.body.nameeducation2,
+              timeeducation2: req.body.timeeducation2,
+              education2: req.body.education2,
+            },
+            education3: {
+              nameeducation3: req.body.nameeducation3,
+              timeeducation3: req.body.timeeducation3,
+              education3: req.body.education3,
+            },
+            education4: {
+              nameeducation4: req.body.nameeducation4,
+              timeeducation4: req.body.timeeducation4,
+              education4: req.body.education4,
+            },
+            project: {
+              timeproject: req.body.timeproject,
+              nameproject: req.body.nameproject,
+              descript_content: req.body.descript_content,
+              clientcontent: req.body.clientcontent,
+              members_content: req.body.members_content,
+              position_content: req.body.position_content,
+              respon_content: req.body.respon_content,
+            },
+            project1: {
+              timeproject1: req.body.timeproject1,
+              nameproject1: req.body.nameproject1,
+              descript_content1: req.body.descript_content1,
+              clientcontent1: req.body.clientcontent1,
+              members_content1: req.body.members_content1,
+              position_content1: req.body.position_content1,
+              respon_content1: req.body.respon_content1,
+            },
+            project2: {
+              timeproject2: req.body.timeproject2,
+              nameproject2: req.body.nameproject2,
+              descript_content2: req.body.descript_content2,
+              clientcontent2: req.body.clientcontent2,
+              members_content2: req.body.members_content2,
+              position_content2: req.body.position_content2,
+              respon_content2: req.body.respon_content2,
+            },
+            project3: {
+              timeproject3: req.body.timeproject3,
+              nameproject3: req.body.nameproject3,
+              descript_content3: req.body.descript_content3,
+              clientcontent3: req.body.clientcontent3,
+              members_content3: req.body.members_content3,
+              position_content3: req.body.position_content3,
+              respon_content3: req.body.respon_content3,
+            },
+            project4: {
+              timeproject4: req.body.timeproject4,
+              nameproject4: req.body.nameproject4,
+              descript_content4: req.body.descript_content4,
+              clientcontent4: req.body.clientcontent4,
+              members_content4: req.body.members_content4,
+              position_content4: req.body.position_content4,
+              respon_content4: req.body.respon_content4,
+            },
           },
           {
             new: true,
           }
-        ).exec();
+        );
       } else {
-        const cv = new CVModel(req.body);
+        console.log("Đã tới đây1");
+        const cv = new CVModel({
+          iduser: req.body.iduser,
+          fullname: req.body.fullname,
+          specialized: req.body.specialized,
+          email: req.body.email,
+          avatar: avatar,
+          phone: req.body.phone,
+          overview: req.body.overview,
+          name: req.body.birthday,
+          birthday: req.body.address,
+          address: req.body.address,
+          maincontent: req.body.maincontent,
+          othercontent: req.body.othercontent,
+          experience: {
+            timeexperience: req.body.timeexperience,
+            nameexperience: req.body.nameexperience,
+            experience: req.body.experience,
+          },
+
+          experience1: {
+            timeexperience1: req.body.timeexperience1,
+            nameexperience1: req.body.nameexperience1,
+            experience1: req.body.experience1,
+          },
+
+          experience2: {
+            timeexperience2: req.body.timeexperience2,
+            nameexperience2: req.body.nameexperience2,
+            experience2: req.body.experience2,
+          },
+
+          experience3: {
+            timeexperience3: req.body.timeexperience3,
+            nameexperience3: req.body.nameexperience3,
+            experience3: req.body.experience3,
+          },
+
+          experience4: {
+            timeexperience4: req.body.timeexperience4,
+            nameexperience4: req.body.nameexperience4,
+            experience4: req.body.experience4,
+          },
+          education: {
+            nameeducation: req.body.nameeducation,
+            timeeducation: req.body.timeeducation,
+            education: req.body.education,
+          },
+          education1: {
+            nameeducation1: req.body.nameeducation1,
+            timeeducation1: req.body.timeeducation1,
+            education1: req.body.education1,
+          },
+          education2: {
+            nameeducation2: req.body.nameeducation2,
+            timeeducation2: req.body.timeeducation2,
+            education2: req.body.education2,
+          },
+          education3: {
+            nameeducation3: req.body.nameeducation3,
+            timeeducation3: req.body.timeeducation3,
+            education3: req.body.education3,
+          },
+          education4: {
+            nameeducation4: req.body.nameeducation4,
+            timeeducation4: req.body.timeeducation4,
+            education4: req.body.education4,
+          },
+          project: {
+            timeproject: req.body.timeproject,
+            nameproject: req.body.nameproject,
+            descript_content: req.body.descript_content,
+            clientcontent: req.body.clientcontent,
+            members_content: req.body.members_content,
+            position_content: req.body.position_content,
+            respon_content: req.body.respon_content,
+          },
+          project1: {
+            timeproject1: req.body.timeproject1,
+            nameproject1: req.body.nameproject1,
+            descript_content1: req.body.descript_content1,
+            clientcontent1: req.body.clientcontent1,
+            members_content1: req.body.members_content1,
+            position_content1: req.body.position_content1,
+            respon_content1: req.body.respon_content1,
+          },
+          project2: {
+            timeproject2: req.body.timeproject2,
+            nameproject2: req.body.nameproject2,
+            descript_content2: req.body.descript_content2,
+            clientcontent2: req.body.clientcontent2,
+            members_content2: req.body.members_content2,
+            position_content2: req.body.position_content2,
+            respon_content2: req.body.respon_content2,
+          },
+          project3: {
+            timeproject3: req.body.timeproject3,
+            nameproject3: req.body.nameproject3,
+            descript_content3: req.body.descript_content3,
+            clientcontent3: req.body.clientcontent3,
+            members_content3: req.body.members_content3,
+            position_content3: req.body.position_content3,
+            respon_content3: req.body.respon_content3,
+          },
+          project4: {
+            timeproject4: req.body.timeproject4,
+            nameproject4: req.body.nameproject4,
+            descript_content4: req.body.descript_content4,
+            clientcontent4: req.body.clientcontent4,
+            members_content4: req.body.members_content4,
+            position_content4: req.body.position_content4,
+            respon_content4: req.body.respon_content4,
+          },
+        });
         savedCv = await cv.save();
       }
-      if (req.body.avatar_test) {
-        console.log("màu đã được gửi lên");
-        console.log(req.body.avatar_test);
-        const user = req.body.avatar_test;
-        const avatar1 = user.avatar;
-        console.log(avatar1);
-      } else {
-        console.log("màu không được gửi lên");
-      }
-      console.log(req.body.file);
-      console.log(req.body.color);
-      console.log(req.body.avatar_test);
-      console.log(avatar);
-      console.log(color);
-      console.log(fontfamily);
-      console.log(fontsize);
+
+      console.log(req.body.timeproject1);
+      console.log(req.body.nameproject1);
+      console.log(req.body.descript_content1);
+      console.log(req.body.clientcontent1);
+      console.log(req.body.members_content1);
+      console.log(req.body.position_content1);
+      console.log(req.body.respon_content1);
+
       const token = req.cookies.token;
       // console.log(token);
       const browser = await puppeteer.launch({
@@ -166,12 +366,12 @@ class CvController {
       await page.setCookie({
         name: "token",
         value: token,
-        url: "http://localhost:3000/",
+        url: "https://vigga-careers.onrender.com//",
       });
 
       // Navigate to the page you want and create PDF
       await page.goto(
-        `http:/localhost:3000/cv/exportcv?color=${color}&fontfamily=${fontfamily}&fontsize=${fontsize}`,
+        `https://vigga-careers.onrender.com/cv/exportcv?color=${color}&fontfamily=${fontfamily}&fontsize=${fontsize}`,
         {
           waitUntil: "networkidle0",
         }

@@ -95,7 +95,6 @@
       <div class="info__user-cv">
         <div class="primary__user-cv">
           <input class="fullname__user-cv" type="text"  value="{{getFullname user}}">
-          <input type="text" name="avatar_test" value="{{user}}" hidden>
           <input class="specialized" type="text" name="specialized" placeholder="Front-end Developer" value="{{getSpecialized user}}">
         </div>
         <div class="secondary__user-cv">
@@ -124,7 +123,7 @@
         </div>
       </div>
       <div class="avatar__user-cv">
-        <input type="file" name="file" id="avataruser" value="{{user.0.fullname}}" hidden>
+        <input type="file" name="file" id="avataruser" hidden>
         <img class="img__user-cv" src="{{getAvatar user}}" alt="">
         <div class="change-avatar__user-cv">
           <div class="upload-avatar__user-cv">
@@ -205,7 +204,7 @@
         <div class="table-project">
           <div class="main__info-project">
               <textarea name="nameproject" class="name-project__title" placeholder="viggacareers.vn"></textarea>
-              <textarea name="timeprject" placeholder="(15/03/2023 - Present)"></textarea>
+              <textarea name="timeproject" placeholder="(15/03/2023 - Present)"></textarea>
               <div class="action__add-remove-project">
                 <span title="Add more project" class="add-project"><i class="bi bi-plus-circle"></i></span>
                 <span title="Remove this project" class="remove-project"><i class="bi bi-dash-circle"></i></span>
@@ -222,28 +221,28 @@
             <div class="title-project">
               <textarea name="descript" id="descript" rows="1" placeholder="Description"></textarea>
             </div>
-            <textarea name="descript-content" class="content-project" id="descript-content" rows="2"
+            <textarea name="descript_content" class="content-project" id="descript-content" rows="2"
               placeholder="For employers looking for talent&#10;Creating their own cv and looking for work"></textarea>
           </div>
           <div class="box-project members-project">
             <div class="title-project">
               <textarea name="members" id="members" rows="1" placeholder="Member count"></textarea>
             </div>
-            <textarea name="members-content" class="content-project" id="members-content" rows="1"
+            <textarea name="members_content" class="content-project" id="members-content" rows="1"
               placeholder="2 people"></textarea>
           </div>
           <div class="box-project position-project">
             <div class="title-project">
               <textarea name="position" id="position" rows="1" placeholder="Position"></textarea>
             </div>
-            <textarea name="position-content" class="content-project" id="position-content" rows="2"
+            <textarea name="position_content" class="content-project" id="position-content" rows="2"
               placeholder="Team Leader&#10;Front-end Developer"></textarea>
           </div>
           <div class="box-project respon-project">
             <div class="title-project">
               <textarea name="respon" id="respon" rows="1" placeholder="Responsibilities"></textarea>
             </div>
-            <textarea name="respon-content" class="content-project" id="respon-content" rows="2"
+            <textarea name="respon_content" class="content-project" id="respon-content" rows="2"
               placeholder="Developer&#10;Solution architect"></textarea>
           </div>
         </div>
@@ -490,7 +489,7 @@
   newProjectDiv.classList.add('table-project');
   newProjectDiv.innerHTML = `<div class="main__info-project">
               <textarea name="nameproject${countNameProject}" class="name-project__title" placeholder="viggacareers.vn"></textarea>
-              <textarea name="timeprject${countTimeProject}" placeholder="(15/03/2023 - Present)"></textarea>
+              <textarea name="timeproject${countTimeProject}" placeholder="(15/03/2023 - Present)"></textarea>
               <div class="action__add-remove-project">
                 <span title="Add more project" class="add-project"><i class="bi bi-plus-circle"></i></span>
                 <span title="Remove this project" class="remove-project"><i class="bi bi-dash-circle"></i></span>
@@ -511,28 +510,28 @@
             <div class="title-project">
               <textarea name="descript" id="descript" rows="1" placeholder="Description"></textarea>
             </div>
-            <textarea name="descript-content${countDesc}" class="content-project" id="descript-content" rows="2"
+            <textarea name="descript_content${countDesc}" class="content-project" id="descript-content" rows="2"
               placeholder="For employers looking for talent&#10;Creating their own cv and looking for work"></textarea>
           </div>
           <div class="box-project members-project">
             <div class="title-project">
               <textarea name="members" id="members" rows="1" placeholder="Member count"></textarea>
             </div>
-            <textarea name="members-content${countMember}" class="content-project" id="members-content" rows="1"
+            <textarea name="members_content${countMember}" class="content-project" id="members-content" rows="1"
               placeholder="2 people"></textarea>
           </div>
           <div class="box-project position-project">
             <div class="title-project">
               <textarea name="position" id="position" rows="1" placeholder="Position"></textarea>
             </div>
-            <textarea name="position-content${countPosition}" class="content-project" id="position-content" rows="2"
+            <textarea name="position_content${countPosition}" class="content-project" id="position-content" rows="2"
               placeholder="Team Leader&#10;Front-end Developer"></textarea>
           </div>
           <div class="box-project respon-project">
             <div class="title-project">
               <textarea name="respon" id="respon" rows="1" placeholder="Responsibilities"></textarea>
             </div>
-            <textarea name="respon-content${countRespon}" class="content-project" id="respon-content" rows="2"
+            <textarea name="respon_content${countRespon}" class="content-project" id="respon-content" rows="2"
               placeholder="Developer&#10;Solution architect"></textarea>
           </div>`;
   return newProjectDiv;

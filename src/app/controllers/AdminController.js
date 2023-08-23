@@ -293,11 +293,17 @@ class AdminController {
     if (pageListJob) {
       pageListJob = parseInt(pageListJob);
       var skip = (pageListJob - 1) * PAGE_SIZE;
-      var listJob = await JobModel.find().skip(skip).limit(PAGE_SIZE);
+      var listJob = await JobModel.find()
+        .skip(skip)
+        .limit(PAGE_SIZE)
+        .sort({ createdAt: -1 });
     } else {
       pageListJob = 1;
       var skip = (pageListJob - 1) * PAGE_SIZE;
-      var listJob = await JobModel.find().skip(skip).limit(PAGE_SIZE);
+      var listJob = await JobModel.find()
+        .skip(skip)
+        .limit(PAGE_SIZE)
+        .sort({ createdAt: -1 });
     }
 
     const countPostJob = await JobModel.countDocuments({

@@ -171,8 +171,8 @@ class PaymentController {
         payment_method: "paypal",
       },
       redirect_urls: {
-        return_url: "http://localhost:3000/pay/successjob",
-        cancel_url: "http://localhost:3000/pay/cancel",
+        return_url: "https://vigga-careers.onrender.com/pay/successjob",
+        cancel_url: "https://vigga-careers.onrender.com/pay/cancel",
       },
       transactions: [
         {
@@ -295,7 +295,7 @@ class PaymentController {
                       pass: "wdymtvgbhblstfbj",
                     },
                   });
-                  const linkJob = `http://localhost:3000/job/${job._id}`;
+                  const linkJob = `https://vigga-careers.onrender.com/job/${job._id}`;
                   const mailOptions = {
                     to: combinedEmails, // list of receivers
                     subject: "ViggaCareers ", // Subject line<a href="${linkJob}">here</a>
