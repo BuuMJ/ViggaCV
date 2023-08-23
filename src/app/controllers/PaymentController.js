@@ -30,8 +30,8 @@ class PaymentController {
         payment_method: "paypal",
       },
       redirect_urls: {
-        return_url: "https://viggacareers.onrender.com/pay/success",
-        cancel_url: "https://viggacareers.onrender.com/pay/cancel",
+        return_url: "https://vigga-careers.onrender.com/pay/success",
+        cancel_url: "https://vigga-careers.onrender.com/pay/cancel",
       },
       transactions: [
         {

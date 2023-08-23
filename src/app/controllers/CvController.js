@@ -77,83 +77,13 @@ class CvController {
     }
   }
 
-  // //[POST] Export CV to PDF
-  // async exportCV(req, res, next) {
-  //   try {
-  //     req.body.iduser = req.user._id;
-  //     const data = await CVModel.findOne({ iduser: req.body.iduser });
-  //     let savedCv;
-  //     if (data) {
-  //       const cv = await CVModel.findByIdAndUpdate(
-  //         data._id,
-  //         {
-  //           fullnamecv: req.body.fullnamecv,
-  //           emailcv: req.body.emailcv,
-  //           phonecv: req.body.phonecv,
-  //           overview: req.body.overview,
-  //           namecompany: req.body.namecompany,
-  //           addrcompany: req.body.addrcompany,
-  //           durationcompany: req.body.durationcompany,
-  //           nameprofession: req.body.nameprofession,
-  //           descprofession: req.body.descprofession,
-  //           nameschool: req.body.nameschool,
-  //           addrschool: req.body.addrschool,
-  //           durationschool: req.body.durationschool,
-  //           nameprofessionschool: req.body.nameprofessionschool,
-  //           descprofessionschool: req.body.descprofessionschool,
-  //           descproject: req.body.descproject,
-  //           nameproject: req.body.nameproject,
-  //           nameskill: req.body.nameskill,
-  //           skilllv1: req.body.skilllv1,
-  //           skilllv2: req.body.skilllv2,
-  //           skilllv3: req.body.skilllv3,
-  //           skilllv4: req.body.skilllv4,
-  //           skilllv5: req.body.skilllv5,
-  //           activities: req.body.activities,
-  //         },
-  //         {
-  //           new: true,
-  //         }
-  //       ).exec();
-  //       const iduser = req.user._id;
-  //       const browser = await puppeteer.launch();
-  //       const webPage = await browser.newPage();
-  //       console.log("ĐÂY LÀ ID CỦA USER NHÌN CHO RÕ VÀO: " + iduser);
-  //       const url = `http://localhost:3000/cv/exportcv/${iduser}`;
-
-  //       await webPage.goto(url, {
-  //         waitUntil: "networkidle0",
-  //       });
-
-  //       await webPage
-  //         .pdf({
-  //           printBackground: true,
-  //           displayHeaderFooter: false,
-  //           path: "CV of " + req.user.fullname + ".pdf",
-  //           clip: { x: 100, y: 100, width: 800, height: 600 },
-  //           format: "Tabloid",
-  //           landscape: false,
-  //         })
-  //         .then((_) => {
-  //           console.log("Tạo file pdf thành công");
-  //         })
-  //         .catch((e) => {
-  //           console.log(e);
-  //         });
-  //       await browser.close();
-  //       return res.download("CV of " + req.user.fullname + ".pdf");
-  //     } else {
-  //       const cv = new CVModel(req.body);
-  //       savedCv = await cv.save();
-  //     }
-  //   } catch (err) {
-  //     console.error(err);
-  //     res.status(500).send("Error saving CV");
-  //   }
-  // }
-
   async export(req, res, next) {
     try {
+      if (req.file) {
+        var avatar = req.file.filename;
+      } else {
+        var avatar = req.body.file;
+      }
       const iduser = req.user._id;
       req.body.iduser = req.user._id;
       const color = req.body.color
@@ -176,7 +106,7 @@ class CvController {
             fullname: req.body.fullname,
             specialized: req.body.specialized,
             email: req.body.email,
-            avatar: req.body.avatar,
+            avatar: avatar,
             phone: req.body.phone,
             overview: req.body.overview,
             name: req.body.birthday,
@@ -200,12 +130,16 @@ class CvController {
         const cv = new CVModel(req.body);
         savedCv = await cv.save();
       }
-
+      console.log(req.body.file);
+      console.log(avatar);
+      console.log(color);
+      console.log(fontfamily);
+      console.log(fontsize);
       const token = req.cookies.token;
       // console.log(token);
       const browser = await puppeteer.launch({
         args: [
-          "--disble-setuid-sandbox",
+          "--disable-setuid-sandbox",
           "--no-sandbox",
           "--single-process",
           "--no-zygote",
@@ -221,12 +155,12 @@ class CvController {
       await page.setCookie({
         name: "token",
         value: token,
-        url: "https://vigga-careers.onrender.com/",
+        url: "http://localhost:3000/",
       });
 
       // Navigate to the page you want and create PDF
       await page.goto(
-        `https://vigga-careers.onrender.com/cv/exportcv?color=${color}&fontfamily=${fontfamily}&fontsize=${fontsize}`,
+        `http:/localhost:3000/cv/exportcv?color=${color}&fontfamily=${fontfamily}&fontsize=${fontsize}`,
         {
           waitUntil: "networkidle0",
         }

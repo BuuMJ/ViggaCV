@@ -90,8 +90,8 @@
       </div>
     </div>
   </header>
-  <div class="body__create-cv a4">
-    <header>
+  <div class="body__create-cv a4">  
+    <header style="background-color: {{color}}">
       <div class="info__user-cv">
         <div class="primary__user-cv">
           <input class="fullname__user-cv" type="text" value="{{inforCV.fullname}}">
@@ -139,13 +139,13 @@
     <div class="body__user-cv">
       {{!-- overview --}}
       <div class="overview__user-cv">
-        <textarea class="overview-text" rows="1">Overview</textarea>
+        <textarea class="overview-text" rows="1" style="color: {{color}};">Overview</textarea>
         <textarea rows="15" name="overview"
           placeholder="- Over 2 years of experience in programming with good communication and quick learning skills&#10;- Strengths: Front-end technology and Back-end web application development&#10;- Proficiency in HTML, CSS, JavaScript&#10;- Strong proficiency in JavaScript, including DOM manipulation and the JavaScript object model&#10;- Thorough under standing of React.js and it score principles&#10;- Experience with popular React.js workflows (such as Flux or Redux)&#10;- Familiarity with newer specifications of EcmaScript&#10;- Experience with data structure libraries&#10;- Familiarity with RESTful APIs&#10;- Strong Experience in: PHP, JavaScript (ReactJS, React-native), MySQL, NoSQL, GraphQL, Redis, JSON, API, Docker, Kubernetes, Rancher, AWS services&#10;- Proficient use of source code management tools: SVN, GIT&#10;- Proficiency in operating systems: Linux (Ubuntu, OSX), Windows&#10;- Ability to learn and apply new technology quickly&#10;- Current working location: Ha Noi, Viet Nam&#10;"></textarea>
       </div>
       {{!-- work experience --}}
       <div class="overview__user-cv workexp__user-cv">
-        <textarea class="workexp-text" rows="1">Work experience</textarea>
+        <textarea class="workexp-text" rows="1" style="color: {{color}};">Work experience</textarea>
         <div class="work-exp">
           <div class="date__work-exp">
             <textarea rows="1" name="timeexperience" placeholder="07/2017 - Present"></textarea>
@@ -163,7 +163,7 @@
       </div>
       {{!-- education --}}
       <div class="overview__user-cv education__user-cv">
-        <textarea class=" education-text" rows="1">Education</textarea>
+        <textarea class=" education-text" rows="1" style="color: {{color}};">Education</textarea>
         <div class="education-user">
           <div class="date__education">
             <textarea rows="1" name="timeeducation" placeholder="07/2017 - Present"></textarea>
@@ -181,7 +181,7 @@
       </div>
       {{!-- skill --}}
       <div class="overview__user-cv skill__user-cv">
-        <textarea class="skill-text" rows="1">Skill</textarea>
+        <textarea class="skill-text" rows="1" style="color: {{color}};">Skill</textarea>
         <div class="main-skill">
           <div class="main-info">
             <textarea name="main" id="main" rows="1" class="main" placeholder="Main"></textarea>
@@ -200,7 +200,7 @@
       </div>
       {{!-- project --}}
       <div class="overview__user-cv project__user-cv">
-        <textarea class="project-text" rows="1">Project</textarea>
+        <textarea class="project-text" rows="1" style="color: {{color}};">Project</textarea>
         <div class="table-project">
           <div class="box-project client-project">
             <div class="title-project">

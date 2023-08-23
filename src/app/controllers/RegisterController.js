@@ -68,7 +68,7 @@ class RegisterController {
       },
     });
     const token = jwt.sign({ email: email }, "PW", { expiresIn: "1h" });
-    const verifyLink = `https://viggacareers.onrender.com/register/verify?token=${token}`;
+    const verifyLink = `https://vigga-careers.onrender.com/register/verify?token=${token}`;
     const mailOptions = {
       to: email, // list of receivers
       subject: "Sign Up Success", // Subject line
@@ -155,7 +155,7 @@ class RegisterController {
       },
     });
     const token = jwt.sign({ email: email }, "PW", { expiresIn: "1h" });
-    const verifyLink = `https://viggacareers.onrender.com/register/verify?token=${token}`;
+    const verifyLink = `https://vigga-careers.onrender.com/register/verify?token=${token}`;
     const mailOptions = {
       to: email, // list of receivers
       subject: "Sign Up Success", // Subject line
