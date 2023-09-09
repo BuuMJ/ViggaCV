@@ -428,7 +428,7 @@ class PaymentController {
             console.log("Đã xoá job sau khi hoàn tiền");
           }
           if (type === "prioritize") {
-            if (check.request === "all") {
+            if (check && check.request === "all") {
               await JobModel.findByIdAndUpdate(idjob, {
                 prioritize: false,
                 request: "post job",
