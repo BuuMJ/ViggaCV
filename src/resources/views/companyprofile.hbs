@@ -594,6 +594,11 @@ document.addEventListener("DOMContentLoaded", function() {
         if(checkBlocked == 'false'){
             job.classList.add('active__blocked-item')
             job.querySelector('.blocked').innerHTML = '<i class="bi bi-lock-fill"></i>';
+            checkButtonPayment.style.cssText = 'cursor: not-allowed;'
+            checkButtonPayment.addEventListener('click',()=>{
+                event.preventDefault();
+                alert('This job of yours is currently locked due to your request. Please contact admin if you want to know more information.')
+            })
         }
     })
     var jobList = document.querySelectorAll('.content-listjob');
