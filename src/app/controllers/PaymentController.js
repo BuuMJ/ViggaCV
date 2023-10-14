@@ -422,13 +422,13 @@ class PaymentController {
             await JobModel.findByIdAndDelete(idjob);
             await RevenueModel.findByIdAndUpdate(revenue._id, {
               type: "refund",
-              refundUpdateAt: Date.now(),
+              refundUpdateAt: new Date(),
               admin: req.user.fullname,
             });
             console.log("Đã xoá job sau khi hoàn tiền");
           }
           if (type === "prioritize") {
-            if (check.request === "all") {
+            if (check && check.request === "all") {
               await JobModel.findByIdAndUpdate(idjob, {
                 prioritize: false,
                 request: "post job",
@@ -441,7 +441,7 @@ class PaymentController {
             }
             await RevenueModel.findByIdAndUpdate(revenue._id, {
               type: "refund",
-              refundUpdateAt: Date.now(),
+              refundUpdateAt: new Date(),
               admin: req.user.fullname,
             });
             console.log(

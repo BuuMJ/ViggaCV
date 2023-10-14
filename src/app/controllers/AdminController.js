@@ -466,8 +466,8 @@ class AdminController {
         .select("money type jobname updatedAt admin")
         .limit(limit);
     }
-
-    console.log(pageRevenue);
+    const abc = listJobRequestPrioritize;
+    console.log(listJobRequestPrioritize[0]);
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,

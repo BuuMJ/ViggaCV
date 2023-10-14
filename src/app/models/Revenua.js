@@ -26,7 +26,7 @@ const revenueSchema = new Schema(
     paymentId: String,
     refundUpdateAt: {
       type: Date,
-      default: Date.now,
+      default: new Date(),
     },
     admin: String,
   },
@@ -37,12 +37,12 @@ const revenueSchema = new Schema(
         if (ret.createdAt) {
           ret.createdAt = moment(ret.createdAt)
             .tz("Asia/Ho_Chi_Minh")
-            .format("DD/MM/YYYY");
+            .format("DD/MM/YYYY HH:mm:ss");
         }
         if (ret.updatedAt) {
           ret.updatedAt = moment(ret.updatedAt)
             .tz("Asia/Ho_Chi_Minh")
-            .format("DD/MM/YYYY");
+            .format("DD/MM/YYYY HH:mm:ss");
         }
       },
     },

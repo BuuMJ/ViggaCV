@@ -139,8 +139,8 @@
                 </div>
                 {{#each listJobRequestPrioritize}}
                     <div class="main__refuned-ads">
-                        <span>{{moment this.revenueDetail.updatedAt format="DD/MM/YYYY" }}</span>
-                        <span>{{moment this.revenueDetail.createdAt format="DD/MM/YYYY" }}</span>
+                        <span>{{moment this.updatedAt format="DD/MM/YYYY HH:mm:ss" }}</span>
+                        <span>{{moment this.revenueDetail.createdAt format="DD/MM/YYYY HH:mm:ss" }}</span>
                         <span>{{this.jobname}}</span>
                         <span class="person"><img style="margin-right: 6px;" src="/{{this.companyDetail.avatar}}" alt="">{{this.companyDetail.companyname}}</span>
                         <span style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
@@ -181,8 +181,8 @@
                 </div>
                 {{#each listJobRequestPostJob}}
                     <div class="main__refuned-ads main__refuned-high">
-                        <span>{{moment this.revenueDetail.updatedAt format="DD/MM/YYYY" }}</span>
-                        <span>{{moment this.revenueDetail.createdAt format="DD/MM/YYYY" }}</span>
+                        <span>{{moment this.updatedAt format="DD/MM/YYYY HH:mm:ss" }}</span>
+                        <span>{{moment this.revenueDetail.createdAt format="DD/MM/YYYY HH:mm:ss" }}</span>
                         <span>{{this.jobname}}</span>
                         <span class="person"><img style="margin-right: 6px;" src="/{{this.companyDetail.avatar}}" alt="">{{this.companyDetail.companyname}}</span>
                         <span style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
