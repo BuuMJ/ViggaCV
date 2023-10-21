@@ -10,22 +10,26 @@
     <div class="first-content">
         <img class="parallax-img" src="/img/bgcontent.jpg" alt="">
         <form class="search-home" action="/job/search">
-            <span class="title">Savor success with</span>
+            <span class="title">Get career opportunities with</span>
             <span class="countjob">{{totalJobs}} career options</span>
             <div class="box-search__home">
                 <div class="search-namecompany">
-                    <label for="namecompany"><i class="bi bi-search"></i></label>
-                    <input type="search" id="namecompany" name="search" placeholder="Name Company, Name Job">
+                    <label for="namecompany">
+                        <span class="material-symbols-outlined">
+                            search
+                        </span>
+                    </label>
+                    <input type="search" id="namecompany" name="search" placeholder="Looking for jobs or companies" required>
                 </div>
                 <div class="search-pc">
                 <div class="search-categories">
                     <label for="categories">
                         <span class="material-symbols-outlined">
-                        menu
+                            location_on
                         </span>
                     </label>
                     <select name="categories" id="categories">
-                        <option  value="" selected>Categiries</option>
+                        <option  value="" selected>All the location</option>
                         {{#each companies}}
                         <option value="{{this.companyfield}}">{{this.companyfield}}</option>
                         {{/each}}
@@ -44,6 +48,10 @@
                         {{/each}}
                     </select>
                 </div>
+                </div>
+                <div class="filter-search">
+                    <p class="reset-search"><span class="material-symbols-outlined">restart_alt</span> Reset</p>
+                    <p class="advance-search"><span class="material-symbols-outlined">filter_alt</span> Filter</p>
                 </div>
             </div>
             <div class="action-search">
@@ -120,7 +128,7 @@
                                 <div class="left__info-job">
                                     <span class="hot__job-name">{{this.jobname}}</span>
                                     <span class="hot__job__company-name">{{this.companyname}}</span>
-                                    <span class="hot__job-salary"><i class="bi bi-currency-dollar"></i> {{this.salary}}</span>
+                                    <span class="hot__job-salary"><i class="bi bi-currency-dollar"></i>{{this.salary}}</span>
                                     <span class="hot__location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</span>
                                 </div>
                             </a>
@@ -162,8 +170,8 @@ Create a quick and free CV template, so that employers must
                             </div>
                         </div>
                         <div class="bottom-jobnew">
-                            <span class="jobnew__salary">{{this.salary}}</span>
-                            <span class="jobnew__location">{{this.joblocation}}</span>
+                            <span class="jobnew__salary"><i class="bi bi-currency-dollar"></i>{{this.salary}}</span>
+                            <span class="jobnew__location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</span>
                         </div>
                     </a>
                 </div>
@@ -288,7 +296,6 @@ Create a quick and free CV template, so that employers must
         </div>
     </div>
     {{> footer}}
-
 </div>
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 <script>
@@ -305,11 +312,9 @@ containerScroll.addEventListener('scroll', () => {
         topCompany.style.transform = `translatey(${rollHeight * -1.5}px)`;
     }
     else if (width <= 414) {
-        // Các hành động bạn muốn thực hiện tại chiều rộng 375px
         formSearch.style.transform = `translatey(${rollHeight * -0.5}px)`;
         topCompany.style.transform = `translatey(${rollHeight * -1}px)`;
     } else {
-        // Hành động ban đầu
         formSearch.style.transform = `translatey(${rollHeight * -0.2}px)`;
         topCompany.style.transform = `translatey(${rollHeight * 0.5}px)`;
     }
@@ -373,7 +378,7 @@ var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
     var clickJobHot = document.querySelector('.company-feature .header__company-feature span.hotjob');
     var boxJobHot = document.querySelector('.company-feature .box-hotjob');
     clickJobHot.addEventListener('click',()=>{
-        clickJobHot.style.cssText = 'border-bottom: 4px solid #ff0000;';
+        clickJobHot.style.cssText = 'border-bottom: 4px solid #0095ff;';
         clickCompanyHot.style.cssText = 'border-bottom: unset;';
         boxCompanyHot.style.display = 'none';
         loadingFeatureCompany.style.display = 'grid';
@@ -385,7 +390,7 @@ var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
         }, 1780);
     });
     clickCompanyHot.addEventListener('click',()=>{
-        clickCompanyHot.style.cssText = 'border-bottom: 4px solid #ff0000;';
+        clickCompanyHot.style.cssText = 'border-bottom: 4px solid #0095ff;';
         clickJobHot.style.cssText = 'border-bottom: unser;';
         boxJobHot.style.display = 'none';
         loadingFeatureCompany.style.display = 'grid';
@@ -454,4 +459,32 @@ var swiper = new Swiper(".container-home .home-jobs__responsive .mySwiper", {
     showFollowBox.innerHTML = ` ${countFollowBox} ` + 'Followers';
   }
 })
+var resetSearch = document.querySelector('.container-home .first-content .search-home .box-search__home .filter-search p.reset-search');
+var advanceSearch = document.querySelector('.container-home .first-content .search-home .box-search__home .filter-search p.advance-search');
+var showAdvanceSearch = document.querySelector('.container-home .first-content .search-home .box-search__home .search-pc');
+advanceSearch.addEventListener('click',()=>{   
+    if(advanceSearch.classList.contains('collapse')){
+        showAdvanceSearch.style.display = 'none';
+        advanceSearch.innerHTML = '<span class="material-symbols-outlined">filter_alt</span> Filter';
+        document.querySelector('.container-home .first-content .search-home .box-search__home .filter-search').style.cssText = "margin-top: 0";
+        advanceSearch.classList.remove('collapse');
+    } 
+    else{
+        showAdvanceSearch.style.display = 'flex';
+        document.querySelector('.container-home .first-content .search-home .box-search__home .filter-search').style.cssText = "margin-top: 12px";
+        advanceSearch.innerHTML = '<span class="material-symbols-outlined">expand_less</span> Collapse';
+        advanceSearch.classList.add('collapse');
+    }
+});
+resetSearch.addEventListener('click',()=>{
+    document.getElementById('namecompany').value = "";
+    document.getElementById('categories').selectedIndex = 0;
+    document.getElementById('position').selectedIndex = 0;
+});
+document.getElementById('namecompany').addEventListener('focus',()=>{
+    document.querySelector('.search-namecompany').style.border = '1px solid #0095ff';
+});
+document.getElementById('namecompany').addEventListener('focusout',()=>{
+    document.querySelector('.search-namecompany').style.border = '1px solid #dcdcdc';
+});
 </script>

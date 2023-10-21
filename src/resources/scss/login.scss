@@ -4,7 +4,8 @@
     align-items: center;
     width: 100%;
     height: 700px;
-    background: url("/img/bglogin.jpeg") center / cover no-repeat;
+    // background: url("/img/bglogin.jpg") center / cover no-repeat;
+    background-color: black;
 }
 .box-login,
 .box-signup,
@@ -13,12 +14,12 @@
 .box-resetpassword{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: start;
     align-items: center;
     width: 450px;
-    height: 420px;
-    background-color: transparent;
-    border: 4px solid $primarycolor;
+    background-color: #121212;
+    backdrop-filter: blur(10px);
+    border: 2px solid #282828;
     border-radius: 10px;
     color: white;
     font-size: 20px;
@@ -40,14 +41,26 @@
 .text-login{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     width: 100%;
+    border-bottom: 1px solid #282828;
+    height: 20%;
+    margin-bottom: 30px;
 }
-.text-login .text-create{
-    padding: 8px;
-    border: 1px solid $primarycolor;
+.text-login .text-create,
+.text-login .text-sign-in{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;
+    padding: 20px 0;
     cursor: pointer;
+}
+.text-login .text-sign-in{
+    border-bottom: 4px solid $btncolor;
+    color: $btncolor;
 }
 .login-username,
 .login-password,
@@ -57,6 +70,8 @@
     position: relative;
     width: 100%;
     text-align: center;
+    height: 50px;
+    margin: 12px 0;
 }
 .login-username label:hover,
 .login-password label:hover,
@@ -73,8 +88,9 @@
     border: none;
     outline: none;
     width: 75%;
-    background-color: unset;
-    border-bottom: 1px solid $primarycolor;
+    height: 100%;
+    background-color: #1c1c1c;
+    border-radius: 5px;
     color: white;
     padding: 0 8px;
 }
@@ -84,18 +100,19 @@
 .login-phone label,
 .login-fullname label {
     position: absolute;
-    top: 0;
+    top: 20%;
     left: 60px;
     transition: 0.5s;
     font-weight: 500;
-    color: white;
+    color: #454643;
+    font-size: 18px;
 }
 .login-username input:focus ~ label,
 .login-password input:focus ~ label,
 .login-email input:focus ~ label,
 .login-phone input:focus ~label,
 .login-fullname input:focus ~label {
-    top: -30px;
+    top: -15px;
     color: #9ca3af;
 }
 .login-username input:valid + label,
@@ -103,7 +120,7 @@
 .login-email input:valid + label,
 .login-phone input:valid + label,
 .login-fullname input:valid + label{
-    top: -30px;
+    top: -15px;
     color: #9ca3af;
 }
 .select-role{
@@ -116,7 +133,7 @@
     color: white;
     outline: none;
     border: none;
-    border-bottom: 1px solid $primarycolor;
+    border-bottom: 1px solid $btncolor;
     -webkit-appearance: none;
     -moz-appearance: none;
 }
@@ -125,22 +142,41 @@
 }
 .action-login{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
     width: 100%;
+    margin: 20px 0 30px 0;
 }
 .btn-login,
 .btn-signup,
 .btn-reset,
 .btn-verify{
-    border: 1px solid $primarycolor;
+    border: 1px solid $btncolor;
     outline: none;
     color: white;
     background-color: transparent;
     width: 90px;
     height: 40px;
     font-weight: 700;
+}
+.btn-login{
+    border-radius: 5px;
+    background-color: $btncolor;
+    color: white;
+    width: 75%;
+    margin-bottom: 12px;
+    transition: all .3s;
+}
+.btn-login:hover{
+    background-color: $secondarycolor;
+    border: 1px solid $secondarycolor;
+}
+.action-login span{
+    font-size: 16px;
+}
+.action-login span a{
+    text-decoration: none;
 }
 .btn-reset{
     width: 124px;

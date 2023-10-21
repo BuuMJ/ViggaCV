@@ -23,7 +23,7 @@
       <label for="search"><i class="bi bi-search"></i></label>
       <div class="categories-select">
           <select name="categories" id="categories-search">
-             <option  value="" selected>All Categories</option>
+             <option  value="" selected>Professions</option>
              {{#each listcompany}}
              <option value="{{this.companyfield}}">{{this.companyfield}}</option>
              {{/each}}
@@ -32,7 +32,7 @@
       </div>
       <div class="categories-select__position">
           <select name="position" id="categories-search__position">
-             <option  value="" selected>All Position</option>
+             <option  value="" selected>Position</option>
              {{#each jobs}}
              <option value="{{this.position}}">{{this.position}}</option>
              {{/each}}
@@ -100,7 +100,7 @@
         </div>
         </div>
         <div class="card-job__action">
-          <p class="salary-job__action">{{this.salary}}<i class="bi bi-currency-dollar"></i></p>
+          <p class="salary-job__action"><i class="bi bi-currency-dollar"></i>{{this.salary}}</p>
           <a class="detail-job__action" href="/job/{{this._id}}">View Detail <i class="bi bi-chevron-double-right"></i></a>
         </div>
         <span class="check-hot" data-check-hot="{{this.prioritize}}"></span>
@@ -113,7 +113,7 @@
       {{/each}}
     </div>
     <div class="suggest-company">
-      <div class="card-suggest" style="background:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%), url('{{getbackgroundCPRandom random}}') center/cover no-repeat;">
+      <div class="card-suggest" style="background:linear-gradient(to right, #100a098f, #100a0933), url('{{getbackgroundCPRandom random}}') center/cover no-repeat;">
         <header class="header-suggest">
           <img src="{{getAvatarCPRandom random}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
           <span class="name-suggest">{{random.companyname}} {{random.typeofbusiness}}</span>
@@ -125,8 +125,8 @@
             <li>
               <span class="suggest-jobname" title="{{this.jobname}}">{{this.jobname}}</span>
               <div class="suggestion-deal">
-                <span class="suggest-jobsalary" title="Salary: {{this.salary}}"><i class="bi bi-currency-dollar"></i> {{this.salary}}</span>
                 <span class="suggest-joblocation"title="{{this.joblocation}}"><i class="bi bi-geo-alt-fill"></i> {{this.joblocation}}</span>
+                <span class="suggest-jobsalary" title="Salary: {{this.salary}}"><i class="bi bi-currency-dollar"></i>{{this.salary}}</span>
               </div>
             </li>
           </a>
@@ -216,8 +216,8 @@ window.addEventListener('scroll', function() {
       document.querySelector('.header-search').style.cssText = 'position: fixed; top: 0; box-shadow: 1px 1px 10px rgba(0,0,0,0.5); background-color: white; border-bottom: 1px solid #ededed;';
       deleteMargin.style.cssText = 'margin-top: 80px';
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: #F7F7F7;';
-      document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #fedb00';
-      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #0072bc;';
+      document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #0072bc';
+      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: black;';
       document.getElementById('change-logo').src = '/img/LOGOVGA.png';
       document.querySelector('.header-search .header-search__login .search-login').style.display = 'flex';
     } else {
@@ -225,7 +225,7 @@ window.addEventListener('scroll', function() {
       deleteMargin.style.margin = '0';
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: white;';
       document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: black';
-      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #fedb00;';
+      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #0072bc;';
       document.getElementById('change-logo').src = '/img/LOGOVGAJOB.png';
       document.querySelector('.header-search .header-search__login .search-login').style.display = 'none';
     }
@@ -234,8 +234,8 @@ window.addEventListener('scroll', function() {
       document.querySelector('.header-search').style.cssText = 'position: fixed; top: 0; box-shadow: 1px 1px 10px rgba(0,0,0,0.5); background-color: white; border-bottom: 1px solid #ededed;';
       deleteMargin.style.cssText = 'margin-top: 85px';
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: #F7F7F7;';
-      document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #fedb00';
-      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #0072bc;';
+      document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #0072bc';
+      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: black;';
       document.getElementById('change-logo').src = '/img/LOGOVGA.png';
       document.querySelector('.header-search .header-search__login .search-login').style.display = 'flex';
     } else {
@@ -243,7 +243,7 @@ window.addEventListener('scroll', function() {
       deleteMargin.style.margin = '0';
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: white;';
       document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #0E0E23';
-      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #fedb00;';
+      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #0072bc;';
       document.getElementById('change-logo').src = '/img/LOGOVGAJOB.png';
       document.querySelector('.header-search .header-search__login .search-login').style.display = 'none';
     }

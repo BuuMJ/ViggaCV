@@ -5,7 +5,7 @@
   justify-content: start;
   width: 100%;
   min-height: 80vh;
-  background-color: #f4f4f7;
+  background-color: $backgroundcolor;
 }
 .main-companies{
   display: flex;
@@ -147,6 +147,7 @@ margin: 12px 10px 12px 0;
   border-radius: 10px;
   color: black;
   cursor: pointer;
+  transition: all .3s;
 }
 .header-card-company{
   width: 100%;
@@ -211,34 +212,36 @@ color: #777777;
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  color: black;
+  color: $btncolor;
   padding: 8px;
   border-radius: 10px;
-  background-color: $primarycolor;
+  background-color: white;
   width: 100px;
   height: 40px;
   text-align: center;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   font-size: 14px;
-  border: 2px solid $primarycolor;
+  border: 2px solid $btncolor;
   transition: .5s;
 }
 .view-detail__company:hover,
 .view-detail__job:hover{
-  border: 2px solid black;
+  color: white;
+  background-color: $btncolor;
 }
 .view-detail__company{
   width: 130px;
 }
 .card-company:hover{
-border: 1px solid $primarycolor;
+  border: 1px solid $secondarycolor;
+  box-shadow: 4px 4px 20px #0072bc69;
 }
 
-.card-company:hover  .list-detail{
-opacity: 1;
-cursor: pointer;
-transform: translateY(40%);
+.card-company:hover .list-detail{
+  opacity: 1;
+  cursor: pointer;
+  transform: translateY(40%);
 }
 header.companyinformation{
 width: 100%;
@@ -253,7 +256,7 @@ padding: 20px;
 display: flex;
 flex-direction: row;
 align-items: center;
-border-bottom: 1px solid $primarycolor; 
+border-bottom: 1px solid $btncolor; 
 }
 nav.companyinformation img {
 width: 10%;
@@ -288,7 +291,7 @@ flex-direction: column;
 align-items: center;
 width: 100%;
 min-height: 300px;
-background-color: #f4f4f7;
+background-color: $backgroundcolor;
 }
 .body-companyinformation h1{
 margin: 30px 0;
@@ -334,23 +337,41 @@ font-weight: 600;
 }
 .job-companyinfo-action a {
   text-decoration: none;
-  color: black;
+  color: $btncolor;
   font-size: 18px;
   font-weight: 500;
   padding: 4px 34px;
-  border: 1px solid #999999;
+  border: 1px solid $btncolor;
+  background-color: white;
   transition: .3s;
 }
 .job-companyinfo-action a:hover{
-  background-color: $primarycolor;
+  background-color: $btncolor;
   color: white;
-  border: 1px solid $primarycolor;
+}
+.companyinformation-showjob .jobs-companyinfo:hover .job-companyinfo-action a{
+  background-color: $btncolor;
+  color: white;
+}
+.companyinformation-showjob .jobs-companyinfo:hover .job-companyinfo span.namejobs{
+  color: $btncolor;
 }
 .job-companyinfo .secondary-listjob{
   padding-left: unset;
 }
+.job-companyinfo .secondary-listjob span.locationjobs,
+.job-companyinfo .secondary-listjob span.timejobs{
+  color: white;
+  background-color: $locationColor;
+  padding: 4px;
+  border-radius: 5px;
+}
+.job-companyinfo .secondary-listjob span.timejobs{
+  color: white;
+  background-color: $secondarycolor;
+}
 .main-company-detail{
-  background-color: #f9f9fa;
+  background-color: $backgroundcolor;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -417,9 +438,9 @@ header.company-detail .background-company-detail{
   outline: none;
   width: 120px;
   height: 50px;
-  background-color: $primarycolor;
-  color: black;
-  border: 1px solid $primarycolor;
+  background-color: $btncolor;
+  color: white;
+  border: 1px solid $btncolor;
   border-radius: 10px;
   font-weight: 600;
   transition: .5s;
@@ -430,8 +451,8 @@ header.company-detail .background-company-detail{
 }
 .follow-company-detail button:hover{
   background-color: white;
-  color: #1CACF4;
-  border: 1px solid #1CACF4;
+  color: $btncolor;
+  border: 1px solid $btncolor;
 }
 .follow-company-detail button.following:hover{
   background-color: white;
@@ -465,8 +486,8 @@ header.company-detail .background-company-detail{
   border-bottom: 3px solid $primarycolor;
 }
 .header__info-company-detail span.about-us{
-  color: $primarycolor;
-  border-bottom: 3px solid $primarycolor;
+  color: black;
+  border-bottom: 3px solid $btncolor;
 }
 .body-about-us{
   display: flex;
@@ -1039,8 +1060,5 @@ header.company-detail .background-company-detail{
   }
   .jobs-companyinfo .content-listjob .secondary-listjob .locationjobs{
     padding-bottom: 4px;
-  }
-  .jobs-companyinfo .content-listjob .secondary-listjob .locationjobs b {
-    display: none;
   }
 }

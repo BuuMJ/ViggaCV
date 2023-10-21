@@ -73,7 +73,7 @@
     justify-content: center;
     width: 100%;
     height: 620px;
-    background:linear-gradient(to right, rgba(0,0,0,0.3), rgba(255,255,255,0.2)), url('/img/headerprofile.jpeg') center/cover no-repeat;
+    background:linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('/img/headerprofile.jpeg') center/cover no-repeat;
     position: relative;
 }
 label.changebackground-profile{
@@ -89,7 +89,8 @@ label.changebackground-profile{
     transition: .3s;
 }
 label.changebackground-profile:hover{
-    background-color: $primarycolor;
+    background-color: $btncolor;
+    color: white;
 }
 .header-profile-company{
     height: 620px;
@@ -105,7 +106,6 @@ label.changebackground-profile:hover{
     // backdrop-filter: blur(5px);
     margin-bottom: 20px;
     color: white;
-    text-shadow: 3px 3px 2px rgba(255, 255, 255,0.5);
 }
 .header-profile-primary{
     font-size: 40px;
@@ -118,16 +118,15 @@ label.changebackground-profile:hover{
     font-weight: 500;
     padding: 12px;
     max-height: 65%;
-    text-shadow: 2px 2px 2px rgba(255, 255, 255,0.5);
 }
 button.btn-setting {
     appearance: button;
-    background-color: #d6c918;
+    background-color: $secondarycolor;
     border: solid transparent;
     border-radius: 10px;
     border-width: 0 0 4px;
     box-sizing: border-box;
-    color: black;
+    color: white;
     cursor: pointer;
     display: inline-block;
     font-size: 22px;
@@ -153,7 +152,7 @@ button.btn-setting {
    
    button.btn-setting:after {
     background-clip: padding-box;
-    background-color: $primarycolor;
+    background-color: $btncolor;
     border: solid transparent;
     border-radius: 10px;
     border-width: 0 0 4px;
@@ -432,14 +431,17 @@ input#postal::-webkit-inner-spin-button {
 .listleadership-action button{
     width: 18%;
     outline: none;
-    border: 1px solid $primarycolor;
-    border-radius: 10px;
+    border: 2px solid $btncolor;
+    color: $btncolor;
+    border-radius: 5px;
     background-color: transparent;
     height: 40px;
+    transition: all .3s;
 }
 .listjobs-action button:hover,
 .listleadership-action button:hover{
-    background-color: rgba(0,0,0,0.1);
+    background-color: $btncolor;
+    color: white;
 }
 .overplay-postjob,
 .overplay-postleadership,
@@ -816,6 +818,7 @@ li.content-listjob a.payment:hover{
     position: relative;
     cursor: not-allowed;
     border: 2px solid #a0a0a0 !important;
+    border-radius: 5px;
 }
 .active__blocked-item:before {
     content: "\1F512";
@@ -840,8 +843,9 @@ li.content-listjob:hover .namejobs a{
 li.content-listleadership img{
     width: 60px;
     height: 60px;
-    padding: 2px;
-    border: 2px solid $primarycolor;
+    border-radius: 5px;
+    outline: 2px solid black;
+    outline-offset: 2px;
 }
 .infoleadership{
     display: flex;
@@ -909,13 +913,21 @@ li.content-listjob:hover i.bi-three-dots-vertical{
     flex-direction: row;
     padding-left: 24px;
 }
+.secondary-listjob p{
+    margin: unset !important;
+}
 span.timejobs,
 span.locationjobs{
-    color: #b1b1b1;
     font-size: 12px;
     font-weight: 400;
-    padding: unset;
+    padding: 4px;
     margin-right: 8px;
+    color: white;
+    background-color: $secondarycolor;
+    border-radius: 5px;
+}
+span.locationjobs{
+    background-color: $locationColor;
 }
 ul.listpagejob,
 ul.listpageleadership {
@@ -948,15 +960,15 @@ ul.listpageleadership {
     align-items: center;
   }
   ul.listpagejob li:hover {
-    border: 1px solid #ddcf76;
-    background-color: $primarycolor;
+    border: 1px solid $secondarycolor;
+    background-color: $btncolor;
     color: white;
   }
   ul.listpagejob .active,
   ul.listpageleadership .active {
-    border: 1px solid #ddcf76;
+    border: 1px solid $secondarycolor;
     cursor: not-allowed;
-    background-color: $primarycolor;
+    background-color: $btncolor;
     color: white;
   }
   .avatar-leadership{
@@ -1004,34 +1016,29 @@ ul.listpageleadership {
     width: 120px;
     height: 40px;
     outline: none;
-    border-radius: 10px;
-    border: 4px solid #FCE604;
+    border-radius: 5px;
+    border: 2px solid $btncolor;
     background-color: transparent;
-    backdrop-filter: blur(10px);
     padding: 4px 8px;
     font-size: 18px;
     font-weight: 500;
     transition: .5s;
     text-align: center;
+    color: $btncolor;
 }
 .leadership-action-view #view-more-btn:hover{
-    background-color: #FCE604;
+    background-color: $btncolor;
     color: white;
-    border: 4px solid white;
-    box-shadow: 2px 2px 2px 6px #FCE604;
-    font-weight: 600;
 }
 .leadership-action-view #view-less-btn{
-    border: 4px solid #FC0404;
+    border: 2px solid #FC0404;
+    color: #FC0404;
     opacity: 0;
     cursor: default;
 }
 .leadership-action-view #view-less-btn:hover {
     background-color: #FC0404;
     color: white;
-    border:4px solid white ;
-    box-shadow: 2px 2px 1px 6px #FC0404;
-    font-weight: 600;
 }
 // check payment
 .container-checkpayment{

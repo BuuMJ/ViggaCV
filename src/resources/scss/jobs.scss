@@ -29,18 +29,19 @@ header.jobdetail .center-jobdetail{
 .center-jobdetail .secondary-text{
     font-size: 20px;
     font-weight: 500;
-    color: #FCCB0C;
+    color: $secondarycolor;
     padding: 0 50px 4px 20px;
 }
 .center-jobdetail .third-text{
     font-size: 14px;
     font-weight: 400;
     padding: 4px 50px 4px 20px;
+    color: $locationColor;
 }
 .center-jobdetail .forth-text{
     font-size: 14px;
     font-weight: 600;
-    color: #ff7d55;
+    color: $salaryColor;
     padding: 4px 50px 0 20px;
 }
 .jobdetail-action{
@@ -70,28 +71,28 @@ header.jobdetail .center-jobdetail{
 }
 .jobdetail-action form button.check-save__job:hover{
     text-shadow: unset;
-    border: 1px solid $secondarycolor;
-    background-color: $secondarycolor;
+    border: 1px solid $btncolor;
+    background-color: $btncolor;
 }
 .jobdetail-action form button.saved{
-    background-color: $secondarycolor;
+    background-color: $btncolor;
     color: #E63946;
-    border: 1px solid $secondarycolor;
+    border: 1px solid $btncolor;
     transition: .5s;
 }
 .jobdetail-action form button.saved:hover{
-    border: 1px solid $secondarycolor;
+    border: 1px solid $btncolor;
     color: #E63946;
     background-color: white;
 }
 .jobdetail-action button.btn-apply,
 .jobdetail-action a.btn-apply__notuser{
     outline: none;
-    border: 1px solid $secondarycolor;
+    border: 1px solid $btncolor;
     height: 50px;
     width: 160px;
     background-color: white;
-    color: $secondarycolor;
+    color: $btncolor;
     font-size: 20px;
     font-weight: 600;
     transition: .5s;
@@ -104,7 +105,7 @@ header.jobdetail .center-jobdetail{
 }
 .jobdetail-action button.btn-apply:hover,
 .jobdetail-action a.btn-apply__notuser:hover{
-    background-color: $secondarycolor;
+    background-color: $btncolor;
     color: white;
 }
 .jobdetail-action a.btn-apply__notuser:hover{
@@ -116,12 +117,17 @@ header.jobdetail .center-jobdetail{
     text-align: end;
     padding-top: 12px;
 }
-.jobdetail-action a{
-    color: #FCCB0C;
+.jobdetail-action a.create-cv__job{
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.jobdetail-action a.create-cv__job span{
+    margin-right: 2px;
 }
 .jobdetail-action a:hover{
-    color: $primarycolor;
-    text-decoration: underline;
+    color: $btncolor;
 }
 .body-jobdetail{
     width: 100%;
@@ -152,13 +158,13 @@ header.jobdetail .center-jobdetail{
 .jobinfo{
     font-size: 20px;
     font-weight: 600;
-    border-bottom: 3px solid $primarycolor;
+    border-bottom: 3px solid $btncolor
 
 }
 .main-jobdetail .jobinfo:hover,
 .main-jobdetail .companyinfo:hover,
 .main-jobdetail .jobsfromthiscompany:hover{
-    color: $primarycolor;
+    color: $btncolor;
 }
 .main-jobinfo,
 .main-companyinfo,
@@ -184,7 +190,7 @@ header.jobdetail .center-jobdetail{
     margin: unset;
 }
 .main-jobsfromthiscompany ul .content-listjob{
-    height: 60px;
+    height: unset;
 }
 .main-jobsfromthiscompany ul .content-listjob .secondary-listjob{
     padding-left: unset;
@@ -213,7 +219,7 @@ header.jobdetail .center-jobdetail{
 }
 .jobinfo-main-salary{
     font-weight: 600;
-    color: #ff7d55;
+    color: $salaryColor;
 }
 .jobinfo-main-salary b {
     color: black;
@@ -232,13 +238,21 @@ a.jftc-namejobs{
     color: rgb(85,85,85) ;
     text-decoration: none;
     z-index: 5;
+    padding: 6px 0;
 }
 a.jftc-namejobs:hover{
     color: #04B4F4;
 }
-.jftc-salary{
+.jftc-salary,
+.jftc-location{
     font-weight: 500;
-    color:#ff7d55;
+    color:white;
+    padding: 4px;
+    background-color: $salaryColor;
+    border-radius: 5px;
+}
+.jftc-location{
+    background-color: $locationColor;
 }
 .overplay-jobdetail{
     width: 100%;
@@ -271,6 +285,7 @@ a.jftc-namejobs:hover{
     margin-left: auto;
     z-index: 31;
     transition: .3s;
+    border-radius: 10px;
 }
 .box-apply-job > * {
     padding: 0 40px;
@@ -279,16 +294,54 @@ a.jftc-namejobs:hover{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 10%;
+    height: 20%;
 }
-.box-apply-job header span{
-    font-size: 18px;
-    word-spacing: 1.3px;
-    color: #666666;
+.box-apply-job header .apply-job__detail-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
-.box-apply-job header span b{
-    font-size: 20px;
+.box-apply-job header .apply-job__detail-info img{
+    width: 15%;
+    height: 60px;
+    border-radius: 10px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+.box-apply-job header .apply-job__detail-info .primary-info{
+    width: 84%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 20px 0 8px;
+}
+.box-apply-job header .apply-job__detail-info .primary-info span.jobname__apply-job{
+    font-size: 16px;
+    color: black;
+    font-weight: 500;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+}
+.box-apply-job header .apply-job__detail-info .primary-info span.salary__apply-job,
+.box-apply-job header .apply-job__detail-info .primary-info span.location__apply-job{
+    color: white;
+    padding: 4px;
+    background-color: $salaryColor;
+    border-radius: 5px;
+    font-size: 10px;
     font-weight: 600;
+}
+.box-apply-job header .apply-job__detail-info .primary-info span.space{
+    margin: 0 4px;
+}
+.box-apply-job header .apply-job__detail-info .primary-info span.location__apply-job{
+    background-color: $locationColor;
 }
 .box-apply-job header p{
     margin: unset;
@@ -305,16 +358,17 @@ a.jftc-namejobs:hover{
     align-items: center;
     height: 22%;
     width: 100%;
-    border-top: 1px solid $primarycolor;
-    border-bottom: 1px solid $primarycolor;
-    background-color: rgba(254, 219, 0,0.1);
+    border-top: 1px solid $secondarycolor;
+    border-bottom: 1px solid $secondarycolor;
+    background-color: #0072bc0d;
 }
 .nav-apply-job img{
     width: 80px;
     height: 80px;
     margin: 0 40px 0 30px;
     border-radius: 50%;
-    border: 2px solid $primarycolor;
+    outline-offset: 2px;
+    outline: 2px solid black;
 }
 .nav-apply-job .apply-job-info {
     display: flex;
@@ -327,17 +381,20 @@ a.jftc-namejobs:hover{
     font-weight: 400;
     color: #717172;
 }
+.not-allowed{
+    cursor: not-allowed;
+}
 .apply-job-info input{
     outline: none;
     border: none;
-    border-bottom: 1px dashed $primarycolor;
+    border-bottom: 1px dashed $btncolor;
     width: 60%;
     cursor: pointer;
     height: 40px;
     background-color: transparent;
 }
 .apply-job-info input:focus {
-    border: 1px solid black;
+    border: 1px solid $btncolor;
     outline: black;
     border-radius: 10px;
     height: 40px;
@@ -406,17 +463,21 @@ input#email-apply{
     transition: .5s;
 }
 .submit-apply{
-    border: 1px solid $primarycolor;
+    border: 1px solid $btncolor;
     width: 140px;
     height: 40px;
     font-size: 18px;
     font-weight: 500;
-    background-color: $primarycolor;
+    background-color: white;
+    color: $btncolor;
     border-radius: 10px;
 }
-.submit-apply:hover,
 .cancle-apply:hover{
     background-color: white;
+}
+.submit-apply:hover{
+    background-color: $btncolor;
+    color: wheat;
 }
 .cancle-apply{
     border: 1px solid #FC0404;
@@ -455,7 +516,7 @@ header.job-search{
     color: #0E0E23;
 }
 .job-search .header-search .navbar-left a.litle-text {
-    color: $primarycolor;
+    color: $secondarycolor;
     font-weight: 600;
     position: absolute;
     left: 17.5%;
@@ -529,11 +590,14 @@ header.job-search{
     height: 48px;
     width: 15%;
     font-size: 20px;
-    color: white;
-    background-color: rgba(254,219,0,0.8);
+    color: $btncolor;
+    border: 1px solid $btncolor;
+    background-color: white;
+    transition: .3s;
 }
 .header-search .input-search button:hover{
-    background-color: $primarycolor;
+    background-color: $btncolor;
+    color: white;
 }
 .header-search .header-search__login,
 .header-search .header-search__scancv{
@@ -569,7 +633,7 @@ header.job-search{
 }
 .header-search .header-search__scancv label .tick-scancv{
     position: absolute;
-    background-color: $primarycolor;
+    background-color: $btncolor;
     height: 110%;
     width: 2px;
     left: -4px;
@@ -583,10 +647,10 @@ header.job-search{
     animation-iteration-count: infinite;
 }
 .header-search .header-search__scancv label:hover .text-scancv{
-    color: white;
+    color: black;
 }
 .header-search .header-search__scancv label:hover{
-    background-color: #8C8C8C;
+    background-color: $backgroundcard;
 }
 .header-search .alert-scancv{
     position: absolute;
@@ -772,7 +836,7 @@ header.job-search .best-companyFL {
     margin: unset;
     text-align: center;
     padding: 25px 0;
-    color: $primarycolor;
+    color: black;
 }
 .container-jobs p {
     margin: unset;
@@ -797,12 +861,14 @@ header.job-search .best-companyFL {
     width: 100%;
     height: 220px;
     border: 1px solid #eeeded;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     margin: 20px 0;
     align-self: flex-end;
-    background-color: rgba(0,114,188,0.1);
-    border-radius: 5px;
+    background-color: white;
+    border-radius: 10px;
     overflow: hidden;
     position: relative;
+    transition: all .3s;
 }
 .main-jobs .card-jobs .card-job .check-hot,
 .card__job-saved .check-hot{
@@ -840,16 +906,16 @@ header.job-search .best-companyFL {
     font-size: 18px;
     margin: unset;
     width: 100%;
-    color: #F99C05;
+    color: #FF5733;
     // margin: 16px 0 48px 0;
 }
 .card-job__action a.detail-job__action{
     padding: 6px 8px;
     font-size: 16px;
     font-weight: 500;
-    border: 1px solid $secondarycolor;
+    border: 1px solid $btncolor;
     border-radius: 5px;
-    color: $secondarycolor;
+    color: $btncolor;
     text-decoration: none;
     transform: translateX(150%);
     transition: all .5s;
@@ -892,7 +958,7 @@ header.job-search .best-companyFL {
     margin-bottom: 4px;
 }
 .card-job .card-job__info p.job-desc{
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   display: -webkit-box;
@@ -910,13 +976,14 @@ header.job-search .best-companyFL {
 .card-job .card-job__info .location-time p.job-time{
     padding: 4px 8px;
     color: #ffffff;
-    background-color: #e06c4c;
+    background-color: #FFA500;
     border-radius: 5px;
     font-size: 12px;
+    font-weight: 500;
 }
 .card-job .card-job__info .location-time p.job-time{
     color: #ffffff;
-    background-color: #777777;
+    background-color: #0072bc;
     margin-right: 6px;
 }
 .card-job .card-job__info a.job__company-name:hover{
@@ -924,6 +991,7 @@ header.job-search .best-companyFL {
 }
 .main-jobs .card-jobs .card-job:hover{
     border: 1px solid $secondarycolor;
+    background-color: #0072bc0d;
 }
 .main-jobs .card-jobs .card-job:hover .card-job__info .job-name{
     color: $secondarycolor;
@@ -932,11 +1000,12 @@ header.job-search .best-companyFL {
     transform: translateX(0);
 }
 .card-job__action .detail-job__action:hover{
-    background-color: $secondarycolor;
+    background-color: $btncolor;
     color: white;
 }
 .main-jobs .card-jobs .active-hot:hover{
     border: 1px solid #FF4500;
+    background-color: #ff450005 !important;
 }
 .pagination{
     display: none;
@@ -967,14 +1036,14 @@ header.job-search .best-companyFL {
     border-radius: 5px;
 }
 .pagination a:hover{
-    border: 1px solid #ddcf76;
-    background-color: $primarycolor;
+    border: 1px solid $secondarycolor;
+    background-color: $btncolor;
     color: white;
 }
 .pagination a.active{
-    border: 1px solid #ddcf76;
+    border: 1px solid $secondarycolor;
     cursor: not-allowed;
-    background-color: $primarycolor;
+    background-color: $btncolor;
     color: white;
 }
 .jobs-ads{
@@ -1075,7 +1144,7 @@ header.job-search .best-companyFL {
     width: 100%;
     height: 300px;
     border-radius: 5px;
-    box-shadow: 4px 4px 20px $boxshadowPrimary;
+    box-shadow: 4px 4px 20px #0072bc69;
     align-self: flex-end;
     position: relative;
     overflow: hidden;
@@ -1096,7 +1165,6 @@ header.job-search .best-companyFL {
     color: white;
     font-size: 20px;
     font-weight: 600;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     text-transform: capitalize;
     text-align: center;
     border-radius: 5px;
@@ -1115,7 +1183,7 @@ header.job-search .best-companyFL {
     text-decoration: none;
 }
 .random-job li{
-    background-color: rgba(255,255,255,0.4);
+    background-color: rgba(0,0,0,0.4);
     backdrop-filter: blur(10px);
     width: 100%;
     height: 70px;
@@ -1128,17 +1196,16 @@ header.job-search .best-companyFL {
     padding: 0 12px;    
 }
 .random-job a:hover li {
-    background-color: rgba(0, 114, 188, 0.4);
+    background-color: #121212;
 }
 .random-job .suggest-text{
     font-size: 24px;
     font-weight: 600;
     color: white;
     text-transform: capitalize;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 .random-job li .suggest-jobname{
-    color: black;
+    color: white;
     font-size: 20px;
     font-weight: 600;
     white-space: nowrap;
@@ -1158,9 +1225,12 @@ header.job-search .best-companyFL {
 }
 .random-job li .suggestion-deal .suggest-joblocation,
 .random-job li .suggestion-deal .suggest-jobsalary{
-    color: #44444C;
+    color: $locationColor;
     font-size: 12px;
     font-weight: 600;
+}
+.random-job li .suggestion-deal .suggest-jobsalary{
+    color: $salaryColor;
 }
 .random-job li .suggestion-deal .suggest-joblocation{
     align-self: flex-end;
@@ -1345,6 +1415,7 @@ header.job-search .best-companyFL {
 }
 .container__job-saved .main__job-saved section .box__saved-job .active-hot:hover{
     border: 1px solid #FF4500;
+    background-color: #ff450005 !important;
 }
 .container__job-saved .main__job-saved section .box__saved-job .card__job-saved h1{
     font-size: 20px;
@@ -1588,7 +1659,7 @@ header.job-search .best-companyFL {
         font-size: 15px;
     }
     .card-job .card-job__info p.job-desc{
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 2;
     }
     .card-job__action a.detail-job__action{
         font-size: 13px;
@@ -1970,6 +2041,17 @@ header.job-search .best-companyFL {
     }
     .header-search .input-search .categories-select #categories-search{
         font-size: 12px;
+    }
+    .box-apply-job header .apply-job__detail-info img{
+        width: 20%;
+    }
+    .box-apply-job header .apply-job__detail-info .primary-info{
+        width: 79%;
+    }
+}
+@media screen and (max-width: 376px) {
+    .box-apply-job header{
+        height: 25%;
     }
 }
 @media screen and (max-width: 321px) {

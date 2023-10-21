@@ -46,7 +46,7 @@
 }
 
 .container-home .first-content .search-home span.title {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 500;
     width: 100%;
     margin-bottom: 0;
@@ -67,7 +67,8 @@
     align-items: center;
     flex-wrap: wrap;
     padding: 0 30px;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
+    width: 100%;
 }
 
 .container-home .first-content .search-home .box-search__home .search-namecompany {
@@ -81,13 +82,36 @@
 }
 
 .container-home .first-content .search-home .box-search__home .search-pc {
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.container-home .first-content .search-home .box-search__home .filter-search{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
 }
-
+.container-home .first-content .search-home .box-search__home .filter-search p{
+    margin: unset;
+    padding: unset;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+.container-home .first-content .search-home .box-search__home .filter-search p.reset-search{
+    color: #5d677a;
+}
+.container-home .first-content .search-home .box-search__home .filter-search p span{
+    margin-right: 2px;
+}
 .container-home .first-content .search-home .box-search__home .search-namecompany label,
 .container-home .first-content .search-home .box-search__home .search-position label,
 .container-home .first-content .search-home .box-search__home .search-categories label {
@@ -97,7 +121,11 @@
     align-items: center;
     height: 100%;
 }
-
+.container-home .first-content .search-home .box-search__home .search-namecompany label span,
+.container-home .first-content .search-home .box-search__home .search-position label span,
+.container-home .first-content .search-home .box-search__home .search-categories label span{
+    color: #cccccc;
+}
 .container-home .first-content .search-home .box-search__home .search-position label,
 .container-home .first-content .search-home .box-search__home .search-categories label {
     width: 20%;
@@ -110,7 +138,9 @@
     outline: none;
     background-color: transparent;
 }
-
+.container-home .first-content .search-home .box-search__home .search-namecompany input::placeholder{
+    color: #cccccc;
+}
 .container-home .first-content .search-home .box-search__home .search-position select,
 .container-home .first-content .search-home .box-search__home .search-categories select,
 .container-home .first-content .search-home .box-search__home .search-position select:focus,
@@ -152,7 +182,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     padding: 0 30px;
 }
 
@@ -182,13 +212,12 @@
     align-items: center;
     background-color: rgba(0,114,188,0.1);
     margin: unset;
-    padding: 12px 30px 20px 30px;
+    padding: 12px 30px 12px 30px;
 }
 
 .container-home .first-content .search-home .find-company span {
     font-size: 16px;
     font-weight: 600;
-    padding-bottom: 12px;
     align-self: start;
     color: #5f697c;
 }
@@ -330,7 +359,7 @@
 }
 
 .company-feature .header__company-feature span.hotcompany {
-    border-bottom: 4px solid #ff0000;
+    border-bottom: 4px solid $btncolor;
 }
 
 // loading 
@@ -408,7 +437,7 @@
     text-decoration: none;
 }
 .company-feature .box-hotcompany .swiper .swiper-wrapper .swiper-slide .box__info-company .info-company__follow{
-    background-color: $secondarycolor;
+    background-color: $btncolor;
     color: white;
     font-size: 12px;
     font-weight: 700;
@@ -608,13 +637,21 @@
 .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job span.hot__job-salary{
     font-size: 14px;
     font-weight: 600;
-    color: #ff7d55;
+    color: white;
+    background-color: $salaryColor;
+    padding: 4px;
+    border-radius: 5px;
+    margin-bottom: 2px;
 }
 
 .company-feature .box-hotjob .swiper .swiper-slide .box__info-job .left__info-job span.hot__location{
     font-size: 14px;
     font-weight: 600;
-    color: #8d8d8c;
+    color: white;
+    background-color: $locationColor;
+    padding: 4px;
+    border-radius: 5px;
+    margin-top: 2px;
 }
 
 .company-feature .box-hotjob .swiper .swiper-button-next,
@@ -632,7 +669,7 @@
     align-items: center;
     width: 100%;
     height: 300px;
-    background:linear-gradient(to right,#fed20033,#100a0933), url('/img/subcrise-email.jpg') center / cover no-repeat;
+    background:linear-gradient(to right,#100a0933,#100a0933), url('/img/subcrise-email.jpg') center / cover no-repeat;
 }
 .container-home .home-subscribe span.title-subscribe{
     font-size: 28px;
@@ -709,10 +746,10 @@
 .container-home .home-jobs__responsive .title-jobs{
     font-size: 40px;
     font-weight: 600;
-    color: $primarycolor;
+    color: $titlecolor;
 }
 .container-home .home-jobs .swiper {
-    width: 80%;
+    width: 90%;
     height: 80%;
     overflow-y: unset;
   }
@@ -798,15 +835,15 @@
   .container-home .home-jobs .swiper-slide a.box-jobnew .bottom-jobnew .jobnew__location{
     font-size: 12px;
     font-weight: 600;
-    background-color: rgba(255,125,85,0.2);
-    color: #ff7d55;
+    background-color: $salaryColor;
+    color: white;
     border-radius: 5px;
     text-align: center;
     padding: 4px 6px;
   }
   .container-home .home-jobs .swiper-slide a.box-jobnew .bottom-jobnew .jobnew__location{
-    color: #2666c0;
-    background-color: rgba(38,102,192,0.2);
+    color: white;
+    background-color: $locationColor;
     margin-left: 8px;
   }
   .container-home .home-jobs .swiper-pagination-bullet {
@@ -857,7 +894,7 @@
 .container-home .home-personal .title-personal{
     font-size: 40px;
     font-weight: 600;
-    color: $primarycolor;
+    color: $titlecolor;
     margin: 50px 0 30px 0;
 }
 .container-home .home-personal .list-personal{
@@ -913,7 +950,7 @@
     margin: 6px 0 20px 16px;
     padding: 6px 12px;
     font-size: 14px;
-    background-color: $secondarycolor;
+    background-color: $btncolor;
     color: white;
     border-radius: 5px;
     text-decoration: none;
@@ -936,7 +973,7 @@
     align-items: center;
     width: 100%;
     height: 500px;
-    background-color: $secondarycolor;
+    background-color: $btncolor;
 }
 
 .templates-img {
@@ -965,10 +1002,10 @@
     justify-content: center;
     align-items: center;
     width: 60%;
-    color: $primarycolor;
+    color: white;
     -webkit-clip-path: polygon(100% 0%, 100% 47%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
     clip-path: polygon(100% 0%, 100% 47%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
-    background-color: #100a09;
+    background-color: #121212;
     height: 100%;
 }
 
@@ -978,17 +1015,17 @@
     margin-bottom: 30px;
     padding: 0 30px 0 145px;
     text-align: center;
-    color: $primarycolor;
+    color: white;
 }
 
 .templates-text__action {
     text-decoration: none;
     font-size: 26px;
     font-weight: 700;
-    color: $primarycolor;
+    color: $btncolor;
     // background-color: $primarycolor;
     padding: 10px;
-    border: 2px solid  $primarycolor;
+    border: 2px solid  $btncolor;
     margin-top: 30px;
     // box-shadow: 2px 2px 30px $primarycolor;
     transition: .5s;
@@ -996,9 +1033,9 @@
 }
 
 .templates-text__action:hover {
-    background-color:  $primarycolor;
-    border: 2px solid  $primarycolor;
-    color: black;
+    background-color:  $btncolor;
+    border: 2px solid  $btncolor;
+    color: white;
 }
 
 .advantages {
@@ -1016,7 +1053,7 @@
     font-weight: 600;
 }
 .advantages .title-advantages b{
-    color: $primarycolor;
+    color: $secondarycolor;
     font-weight: 600;
 }
 .box-advantages{
@@ -1051,6 +1088,7 @@
     border: 1px solid $secondarycolor;
     box-shadow: 0 5px 10px $secondarycolor;
     padding: 10px 14px;
+    background-color: $backgroundcard;
 }
 .advantage .right-advantage{
     display: flex;

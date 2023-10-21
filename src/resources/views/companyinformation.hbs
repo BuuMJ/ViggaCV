@@ -14,12 +14,12 @@
         <p >We have {{company.jobcount}} jobs for you</p>
         <ul>
         {{#each listjob}}
-            <div class="jobs-companyinfo">
+            <div data-href-listjob="{{this._id}}" class="jobs-companyinfo">
                 <li class="content-listjob job-companyinfo">
                     <span class="namejobs">{{this.jobname}}</span>
                     <div class="secondary-listjob">
-                        <span class="locationjobs"><i class="bi bi-geo"></i> Location: {{this.joblocation}} <b>|</b> </span>
                         <span class="timejobs"><i class="bi bi-calendar-date"></i> {{moment this.createdAt format="DD/MM/YYYY" }}</span>
+                        <span class="locationjobs"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</span>
                     </div> 
                 </li>
                 <li class="job-companyinfo-action">
@@ -30,3 +30,12 @@
         </ul>
     </div>
 </div>
+<script>
+    var listJob = document.querySelectorAll('.jobs-companyinfo');
+    listJob.forEach(function(job){
+        const linkJob = job.getAttribute('data-href-listjob');
+        job.addEventListener('click',()=>{
+            window.location.href = `/job/${linkJob}`;
+        });
+    });
+</script>

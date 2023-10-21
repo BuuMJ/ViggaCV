@@ -37,7 +37,7 @@
 .navbar-left .litle-text{
     font-size: 12px;
     font-weight: 700;
-    color: $letercolor;
+    color: white;
     letter-spacing: 2.1px;
     position: absolute;
     bottom: 12px;
@@ -73,11 +73,12 @@
     width: 40%;
     font-size: 20px;
     font-weight: 700;
-    color: white;
+    color: #a6a6a6;
 }
 .navbar-center a {
-    color: white;
+    color: #a6a6a6;
     text-decoration: none;
+    padding: 25px 0;
 }
 .navbar-center ul {
     margin: unset;
@@ -101,9 +102,7 @@
     font-weight: 700;
     width: 130px;
     height: 100px;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-bottom: 2px solid $primarycolor;
-    text-align: center;
+    background-color: #121212;
     padding: unset;
     z-index: 100;
 }
@@ -123,7 +122,11 @@
 }
 .down__tools li,
 .down__company li{
-    padding: 8px 10px ;
+    padding: 8px 10px;
+    border-bottom: 1px solid #ffffff1a;
+}
+.down__tools{
+    height: unset;
 }
 .drop-down__tools:hover,
 .drop-down__company:hover,
@@ -134,11 +137,18 @@
 .drop-down__company:hover .down__company,
 .drop-down__job:hover .down__job {
     display: block;
+    transition: all .3s;
 }
-.down__tools a:hover,
-.down__company a:hover,
-.down__job a:hover{
-    text-decoration: underline;
+.down__tools li:hover,
+.down__company li:hover,
+.down__job li:hover{
+    background-color: #414042;
+    color: white;
+}
+.down__company li:hover a,
+.down__job li:hover a,
+.down__tools li:hover a{
+    color: white;
 }
 .navbar-right{
     display: flex;
@@ -178,42 +188,44 @@
     left: -40px;
     display: none;
     list-style-type: none;
-    color: white;
+    color: #a6a6a6;
     font-size: 20px;
     font-weight: 700;
     width: 220px;
-    height: 180px;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-bottom: 2px solid $primarycolor;
-    text-align: center;
+    height: unset;
+    background-color: #121212;
     padding-left: unset;
     z-index: 100;
 }
 .down__user{
     width: 150px;
-    height: 150px;
     top: 95px;
     left: -55px;
     z-index: 100;
 }
 .down__user-company{
     width: 230px;
-    height: 150px;
     left: -130px;
     z-index: 100;
 }
 .down__contact li,
 .down__user li {
     padding: 8px 10px;
+    border-bottom: 1px solid #ffffff1a;
 }
 .drop-down__contact:hover .down__contact{
     display: block;
 }
-.send-mail:hover{
-    text-decoration: underline;
+.contains__send-mail:hover{
+    background-color: #414042;
+}
+.send-mail{
+    color: #a6a6a6 !important;
+}
+.contains__send-mail:hover .send-mail{
+    color: white !important;
 }
 .drop-down__user{
-    color: $primarycolor;
     position: relative;
     padding: 30px 12px;
     margin: unset;
@@ -221,15 +233,21 @@
 .drop-down__user img {
     border-radius: 50%;
     outline-offset: 2px;
-    outline: 2px solid #fed200;
+    outline: 2px solid #121212;
     cursor: pointer;
     background-color: white;
 }
 .drop-down__user:hover .down__user{
     display: block;
 }
+.down__user li a{
+    color: #a6a6a6;
+}
 .down__user li:hover {
-    text-decoration: underline;
+    background-color: #414042;
+}
+.down__user li:hover a{
+    color: white;
 }
 @media screen and (max-width: 1440px){
     .navbar-left .litle-text{

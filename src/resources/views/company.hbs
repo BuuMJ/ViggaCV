@@ -31,7 +31,7 @@
             <div id="search-results" class="body-companies">
                 {{#each listcompany}}
                 <div class="card-companies">
-                    <div class="card-company">
+                    <div data-href-company="{{this._id}}" class="card-company">
                         <div class="header-card-company">
                             <img class="background-card-company" src="/{{this.background}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
                             <img class="avatar-card-company" src="/{{this.avatar}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
@@ -100,6 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
  list.forEach(function(item) {
   const showFollow = item.querySelector('.count-follow');
   const countFollow = showFollow.getAttribute('data-followers');
+  const getLinkCompany = item.querySelector('.card-company');
+  const linkCompany = getLinkCompany.getAttribute('data-href-company');
   console.log(countFollow)
   if (countFollow <= 1 ){
     showFollow.innerHTML = '<i class="bi bi-people-fill"></i> ' + `${countFollow} ` + 'Follower';
@@ -107,7 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
   else{
     showFollow.innerHTML = '<i class="bi bi-people-fill"></i>' + ` ${countFollow} ` + 'Followers';
   }
-})
+  getLinkCompany.addEventListener('click',()=>{
+    window.location.href = `/company/${linkCompany}`;
+  })
+});
 </script>
 {{!-- <script>
   var thisPage = 1;

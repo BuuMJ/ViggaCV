@@ -171,9 +171,8 @@
                         <li class="content-listjob" data-blocked={{this.active}}>
                             <span class="namejobs"><i class="bi bi-three-dots-vertical"></i> <a href="/job/{{this._id}}">{{this.jobname}}</a></span>
                             <div class="secondary-listjob">
-                                <span class="locationjobs"><i class="bi bi-geo"></i> Location:
-                                    {{this.joblocation}}</span>
-                                <span class="timejobs"><i class="bi bi-calendar-date"></i> {{this.createdAt}}</span>
+                                <p><span class="timejobs"><i class="bi bi-calendar-date"></i> {{this.createdAt}}</span></p>
+                                <p><span class="locationjobs"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</span></p>
                             </div>
                             <a class="cv-applied" href="/CVManager?id={{this._id}}"><i class="bi bi-briefcase-fill"></i>
                                 CV applied ({{this.appliedCount}} CV)</a>
