@@ -159,9 +159,9 @@
 .container-home .first-content .search-home .action-search button {
     width: 100%;
     height: 100%;
-    border: 2px solid $secondarycolor;
+    border: 2px solid $btncolor;
     background-color: transparent;
-    color: $secondarycolor;
+    color: $btncolor;
     font-weight: 600;
     border-radius: 5px;
     transition: .5s;
@@ -171,7 +171,7 @@
 
 .container-home .first-content .search-home .action-search button:hover {
     color: white;
-    background-color: $secondarycolor;
+    background-color: $btncolor;
 }
 
 .container-home .first-content .search-home .find-company {
@@ -205,9 +205,9 @@
 .container-home .first-content .search-home .find-company a {
     width: 100%;
     height: 100%;
-    border: 2px solid $secondarycolor;
+    border: 2px solid $btncolor;
     background-color: transparent;
-    color: $secondarycolor;
+    color: $btncolor;
     font-size: 18px;
     font-weight: 600;
     text-transform: uppercase;
@@ -220,7 +220,7 @@
 }
 
 .container-home .first-content .search-home .find-company a:hover {
-    background-color: $secondarycolor;
+    background-color: $btncolor;
     color: white;
 }
 
@@ -238,7 +238,7 @@
     font-size: 40px;
     font-weight: 600;
     margin: 20px 0;
-    color: $primarycolor
+    color: $titlecolor
 }
 .container-home .first-content .toprecruiters .list-toprecruiters{
     display: flex;
@@ -256,12 +256,12 @@
     height: 210px;
     margin: 16px 0;
     border: 1px solid #d3d5d9;
-    background: white;
+    background: $backgroundcard;
     border-radius: 5px;
 }
 .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter:hover{
     border: 1px solid $secondarycolor;
-    box-shadow: 0 5px 10px $secondarycolor;
+    box-shadow: 4px 4px 10px rgba(0, 114, 188, 0.5);
 }
 .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .top__card-recruiter{
     height: 20%;
@@ -272,7 +272,7 @@
 .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .top__card-recruiter #content-top__recruiter{
     font-size: 18px;
     font-weight: 600;
-    background-color: $secondarycolor;
+    background-color: $btncolor;
     color: white;
     padding: 4px 8px;
     text-transform: uppercase;
@@ -282,6 +282,7 @@
 .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .top__recruiter-avatar{
     width: 95%;
     height: 60%;
+    mix-blend-mode:multiply;
 }
 .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .recruiter__jobcount{
     font-size: 18px;
@@ -325,11 +326,11 @@
     align-items: center;
     padding: 30px 0;
     cursor: pointer;
-    color: $primarycolor;
+    color: $titlecolor;
 }
 
 .company-feature .header__company-feature span.hotcompany {
-    border-bottom: 4px solid $secondarycolor;
+    border-bottom: 4px solid #ff0000;
 }
 
 // loading 
@@ -339,8 +340,8 @@
     display: none;
     border-radius: 50%;
     -webkit-mask: radial-gradient(farthest-side, #0000 40%, #000 41%);
-    background: linear-gradient(0deg, rgba(244, 228, 109, 0.502) 50%, rgb(242, 244, 109) 0) center/4px 100%,
-        linear-gradient(90deg, #f4e96d40 50%, #f4ed6dbf 0) center/100% 4px;
+    background: linear-gradient(0deg, rgba(0, 114, 188, 0.502) 50%, rgba(0, 114, 188, 0.502) 0) center/4px 100%,
+    linear-gradient(90deg, rgba(0, 114, 188, 0.502) 50%, rgba(0, 114, 188, 0.502) 0) center/100% 4px;
     background-repeat: no-repeat;
     animation: s3 1s infinite steps(12);
 }
@@ -488,7 +489,7 @@
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    color: $secondarycolor;
+    color: $btncolor
 }
 
 .company-feature .box-hotcompany .swiper .autoplay-progress svg {
@@ -500,7 +501,7 @@
     width: 100%;
     height: 100%;
     stroke-width: 4px;
-    stroke: $secondarycolor;
+    stroke: $btncolor;
     fill: none;
     stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
     stroke-dasharray: 125.6;
@@ -508,12 +509,12 @@
 }
 
 .company-feature .box-hotcompany .swiper .swiper-pagination .swiper-pagination-bullet {
-    background-color: $secondarycolor;
+    background-color: $btncolor;
 }
 
 .company-feature .box-hotcompany .swiper .swiper-button-next,
 .company-feature .box-hotcompany .swiper .swiper-button-prev {
-    color: $secondarycolor;
+    color: $btncolor;
 }
 
 // hot job
@@ -618,11 +619,11 @@
 
 .company-feature .box-hotjob .swiper .swiper-button-next,
 .company-feature .box-hotjob .swiper .swiper-button-prev {
-    color: $secondarycolor;
+    color: $btncolor;
 }
 
 .company-feature .box-hotjob .swiper .swiper-pagination .swiper-pagination-bullet {
-    background-color: $secondarycolor;
+    background-color: $btncolor;
 }
 .container-home .home-subscribe{
     display: flex;
@@ -677,8 +678,8 @@
     width: 170px;
     border: none;
     outline: none;
-    background-color: $secondarycolor;
-    border: 1px solid $secondarycolor;
+    background-color: $btncolor;
+    border: 1px solid $btncolor;
     color: white;
     font-size: 20px;
     font-weight: 700;
@@ -822,11 +823,11 @@
 
   .container-home .home-jobs .swiper-pagination-bullet-active {
     color: #fff;
-    background: $secondarycolor;
+    background: $btncolor;
   }
   .container-home .home-jobs .swiper-button-next,
   .container-home .home-jobs .swiper-button-prev{
-    color: $secondarycolor;
+    color: $btncolor;
   }
   .container-home .home-jobs .swiper-pagination{
     bottom: -30px;

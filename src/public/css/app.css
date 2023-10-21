@@ -141,9 +141,9 @@
 .container-home .first-content .search-home .action-search button {
   width: 100%;
   height: 100%;
-  border: 2px solid #0072bc;
+  border: 2px solid #0095ff;
   background-color: transparent;
-  color: #0072bc;
+  color: #0095ff;
   font-weight: 600;
   border-radius: 5px;
   transition: .5s;
@@ -152,7 +152,7 @@
 
 .container-home .first-content .search-home .action-search button:hover {
   color: white;
-  background-color: #0072bc; }
+  background-color: #0095ff; }
 
 .container-home .first-content .search-home .find-company {
   width: 100%;
@@ -182,9 +182,9 @@
 .container-home .first-content .search-home .find-company a {
   width: 100%;
   height: 100%;
-  border: 2px solid #0072bc;
+  border: 2px solid #0095ff;
   background-color: transparent;
-  color: #0072bc;
+  color: #0095ff;
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
@@ -196,7 +196,7 @@
   transition: .5s; }
 
 .container-home .first-content .search-home .find-company a:hover {
-  background-color: #0072bc;
+  background-color: #0095ff;
   color: white; }
 
 .container-home .first-content .toprecruiters {
@@ -213,7 +213,7 @@
   font-size: 40px;
   font-weight: 600;
   margin: 20px 0;
-  color: #fed200; }
+  color: #0072bc; }
 
 .container-home .first-content .toprecruiters .list-toprecruiters {
   display: flex;
@@ -231,12 +231,12 @@
   height: 210px;
   margin: 16px 0;
   border: 1px solid #d3d5d9;
-  background: white;
+  background: #eaeaea;
   border-radius: 5px; }
 
 .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter:hover {
   border: 1px solid #0072bc;
-  box-shadow: 0 5px 10px #0072bc; }
+  box-shadow: 4px 4px 10px rgba(0, 114, 188, 0.5); }
 
 .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .top__card-recruiter {
   height: 20%;
@@ -247,7 +247,7 @@
 .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .top__card-recruiter #content-top__recruiter {
   font-size: 18px;
   font-weight: 600;
-  background-color: #0072bc;
+  background-color: #0095ff;
   color: white;
   padding: 4px 8px;
   text-transform: uppercase;
@@ -256,7 +256,8 @@
 
 .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .top__recruiter-avatar {
   width: 95%;
-  height: 60%; }
+  height: 60%;
+  mix-blend-mode: multiply; }
 
 .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .recruiter__jobcount {
   font-size: 18px;
@@ -298,10 +299,10 @@
   align-items: center;
   padding: 30px 0;
   cursor: pointer;
-  color: #fed200; }
+  color: #0072bc; }
 
 .company-feature .header__company-feature span.hotcompany {
-  border-bottom: 4px solid #0072bc; }
+  border-bottom: 4px solid #ff0000; }
 
 .custom-loader {
   width: 50px;
@@ -309,7 +310,7 @@
   display: none;
   border-radius: 50%;
   -webkit-mask: radial-gradient(farthest-side, #0000 40%, #000 41%);
-  background: linear-gradient(0deg, rgba(244, 228, 109, 0.502) 50%, #f2f46d 0) center/4px 100%, linear-gradient(90deg, #f4e96d40 50%, #f4ed6dbf 0) center/100% 4px;
+  background: linear-gradient(0deg, rgba(0, 114, 188, 0.502) 50%, rgba(0, 114, 188, 0.502) 0) center/4px 100%, linear-gradient(90deg, rgba(0, 114, 188, 0.502) 50%, rgba(0, 114, 188, 0.502) 0) center/100% 4px;
   background-repeat: no-repeat;
   animation: s3 1s infinite steps(12); }
 
@@ -441,7 +442,7 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  color: #0072bc; }
+  color: #0095ff; }
 
 .company-feature .box-hotcompany .swiper .autoplay-progress svg {
   --progress: 0;
@@ -452,18 +453,18 @@
   width: 100%;
   height: 100%;
   stroke-width: 4px;
-  stroke: #0072bc;
+  stroke: #0095ff;
   fill: none;
   stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
   stroke-dasharray: 125.6;
   transform: rotate(-90deg); }
 
 .company-feature .box-hotcompany .swiper .swiper-pagination .swiper-pagination-bullet {
-  background-color: #0072bc; }
+  background-color: #0095ff; }
 
 .company-feature .box-hotcompany .swiper .swiper-button-next,
 .company-feature .box-hotcompany .swiper .swiper-button-prev {
-  color: #0072bc; }
+  color: #0095ff; }
 
 .company-feature .box-hotjob {
   width: 80%;
@@ -502,7 +503,7 @@
   border-radius: 10px;
   margin: 0 12px;
   text-decoration: none;
-  background-color: #f5f5f5;
+  background-color: #f9f9f9;
   border: 1px solid #c6c5c5;
   transition: .5s; }
 
@@ -556,10 +557,10 @@
 
 .company-feature .box-hotjob .swiper .swiper-button-next,
 .company-feature .box-hotjob .swiper .swiper-button-prev {
-  color: #0072bc; }
+  color: #0095ff; }
 
 .company-feature .box-hotjob .swiper .swiper-pagination .swiper-pagination-bullet {
-  background-color: #0072bc; }
+  background-color: #0095ff; }
 
 .container-home .home-subscribe {
   display: flex;
@@ -614,8 +615,8 @@
   width: 170px;
   border: none;
   outline: none;
-  background-color: #0072bc;
-  border: 1px solid #0072bc;
+  background-color: #0095ff;
+  border: 1px solid #0095ff;
   color: white;
   font-size: 20px;
   font-weight: 700;
@@ -634,7 +635,7 @@
   align-items: center;
   width: 100%;
   height: 900px;
-  background-color: #f5f5f5;
+  background-color: #f9f9f9;
   position: relative; }
 
 .container-home .home-jobs__responsive {
@@ -757,11 +758,11 @@
 
 .container-home .home-jobs .swiper-pagination-bullet-active {
   color: #fff;
-  background: #0072bc; }
+  background: #0095ff; }
 
 .container-home .home-jobs .swiper-button-next,
 .container-home .home-jobs .swiper-button-prev {
-  color: #0072bc; }
+  color: #0095ff; }
 
 .container-home .home-jobs .swiper-pagination {
   bottom: -30px; }
@@ -808,11 +809,11 @@
   height: 270px;
   background: linear-gradient(90deg, #c0c4c7 23.92%, #0072bc33);
   border-radius: 5px;
-  border: 1px solid #f5f5f5;
+  border: 1px solid #f9f9f9;
   transition: .5s; }
 
 .container-home .home-personal .list-personal .card-profile:hover {
-  background: linear-gradient(90deg, #f5f5f5 23.92%, #0072bc33);
+  background: linear-gradient(90deg, #f9f9f9 23.92%, #0072bc33);
   border: 1px solid #0072bc;
   box-shadow: 0 6px 18px #0072bc; }
 
@@ -930,7 +931,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: #f5f5f5;
+  background-color: #f9f9f9;
   height: 500px;
   color: black; }
 
@@ -1286,12 +1287,12 @@
     align-items: center;
     width: 100%;
     height: 400px;
-    background-color: #f5f5f5;
+    background-color: #f9f9f9;
     position: relative; }
   .container-home .home-jobs__responsive .swiper {
     margin-bottom: 30px; }
   .container-home .home-jobs__responsive .swiper .swiper-wrapper .swiper-slide {
-    background-color: #f5f5f5; }
+    background-color: #f9f9f9; }
   .container-home .home-jobs__responsive .swiper .swiper-wrapper .swiper-slide .box-jobnew {
     width: 90%;
     height: 180px;
@@ -1448,7 +1449,7 @@
     font-size: 6px; } }
 
 .container__job-detail {
-  background-color: #f5f5f5; }
+  background-color: #f9f9f9; }
 
 header.jobdetail {
   width: 100%;
@@ -2204,7 +2205,7 @@ header.job-search .best-companyFL .background-image {
   background-color: rgba(166, 172, 178, 0.6); }
 
 .container-jobs {
-  background-color: #f5f5f5; }
+  background-color: #f9f9f9; }
 
 .container-jobs h1.jobs-matched {
   font-size: 50px;
@@ -2681,7 +2682,7 @@ header.job-search .best-companyFL .background-image {
   justify-content: start;
   align-items: center;
   width: 100%;
-  background-color: #f5f5f5;
+  background-color: #f9f9f9;
   min-height: 100vh; }
 
 .container__job-saved .main__job-saved {
@@ -4421,7 +4422,7 @@ ul.listpageleadership .active {
   align-items: start;
   min-height: 100vh;
   width: 100%;
-  background-color: #f5f5f5; }
+  background-color: #f9f9f9; }
 
 .container__success-payment .main__success-payment {
   display: flex;
@@ -4530,7 +4531,7 @@ ul.listpageleadership .active {
   color: white; }
 
 .container__cancel-payment {
-  background-color: #f5f5f5;
+  background-color: #f9f9f9;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -6646,7 +6647,7 @@ header.company-detail .background-company-detail {
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  background-color: #f5f5f5; }
+  background-color: #f9f9f9; }
 
 .main__manager-cv {
   display: flex;
@@ -6928,7 +6929,7 @@ header.company-detail .background-company-detail {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  background-color: #f5f5f5;
+  background-color: #f9f9f9;
   flex-wrap: wrap;
   padding: 30px 0; }
 
@@ -8410,7 +8411,7 @@ button#moveTopBtn {
 .navbar-left .litle-text {
   font-size: 12px;
   font-weight: 700;
-  color: #0072bc;
+  color: #ff0000;
   letter-spacing: 2.1px;
   position: absolute;
   bottom: 12px;
@@ -8435,7 +8436,7 @@ button#moveTopBtn {
 .navbar-left .navbar-left__primary a {
   font-size: 28px;
   font-weight: 700;
-  color: #fed200;
+  color: #0072bc;
   align-self: start; }
 
 .navbar-center {

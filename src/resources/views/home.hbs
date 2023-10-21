@@ -373,7 +373,7 @@ var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
     var clickJobHot = document.querySelector('.company-feature .header__company-feature span.hotjob');
     var boxJobHot = document.querySelector('.company-feature .box-hotjob');
     clickJobHot.addEventListener('click',()=>{
-        clickJobHot.style.cssText = 'border-bottom: 4px solid #0072bc;';
+        clickJobHot.style.cssText = 'border-bottom: 4px solid #ff0000;';
         clickCompanyHot.style.cssText = 'border-bottom: unset;';
         boxCompanyHot.style.display = 'none';
         loadingFeatureCompany.style.display = 'grid';
@@ -385,7 +385,7 @@ var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
         }, 1780);
     });
     clickCompanyHot.addEventListener('click',()=>{
-        clickCompanyHot.style.cssText = 'border-bottom: 4px solid #0072bc;';
+        clickCompanyHot.style.cssText = 'border-bottom: 4px solid #ff0000;';
         clickJobHot.style.cssText = 'border-bottom: unser;';
         boxJobHot.style.display = 'none';
         loadingFeatureCompany.style.display = 'grid';
