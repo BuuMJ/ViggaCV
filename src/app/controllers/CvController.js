@@ -89,7 +89,7 @@ class CvController {
       req.body.iduser = req.user._id;
       const color = req.body.color
         ? encodeURIComponent(req.body.color)
-        : encodeURIComponent("#fed200");
+        : encodeURIComponent("#0072bc");
       const fontfamily = req.body.fontfamily
         ? encodeURIComponent(req.body.fontfamily)
         : encodeURIComponent("'Arimo', sans-serif");
