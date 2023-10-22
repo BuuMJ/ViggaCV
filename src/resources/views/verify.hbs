@@ -9,13 +9,16 @@
     {{/if}}
 <form class="box-verify" method="POST" action="/register/sendMailVerify">
         <div class="text-login">
-            <span class="text-sign-in">Verify Email</span>
+            <span class="text-sign-in" style="color: #0095ff;">
+                Verify Email
+                <span class="click-actived__verify"></span>
+            </span>
         </div>
         <div class="login-email">
             <input type="text" name="email" id="email-forgot" required>
             <label class="label-email" for="password">Email</label>
         </div>
-        <div class="action-login">
+        <div class="action-login reset-password__action">
             <a href="/login" class="btn-signup back-reset" type="button">Back</a>
             <button class="btn-verify" type="submit">Verify</button>
         </div>

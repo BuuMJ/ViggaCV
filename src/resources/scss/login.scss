@@ -26,17 +26,12 @@
     font-weight: 700;
     backdrop-filter: blur(10px);
 }
-.box-verify{
-    height: 200px;
-}
 .box-forgot{
     display: none;
-    height: 200px;
 }
 .box-signup {
     display: none;
     width: 450px;
-    height: 600px;
 }
 .text-login{
     display: flex;
@@ -51,16 +46,31 @@
 .text-login .text-create,
 .text-login .text-sign-in{
     height: 100%;
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 20px;
-    padding: 20px 0;
     cursor: pointer;
+    padding: 20px 0;
+    position: relative;
 }
-.text-login .text-sign-in{
-    border-bottom: 4px solid $btncolor;
-    color: $btncolor;
+.click-actived,
+.click-actived__reset,
+.click-actived__verify{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 4px;
+    width: 50%;
+    background-color: $btncolor;
+    border-radius: 5px;
+}
+.click-actived__reset{
+    width: 90%;
+}
+.click-actived__verify{
+    width: 60%;
 }
 .login-username,
 .login-password,
@@ -126,20 +136,26 @@
 .select-role{
     width: 100%;
     text-align: center;
+    height: 50px;
+    margin: 12px 0;
 }
 #selectrole{
     width: 75%;
-    background-color: transparent;
+    height: 100%;
+    background-color: #1c1c1c;
+    border-radius: 5px;
     color: white;
+    padding: 0 8px;
     outline: none;
     border: none;
-    border-bottom: 1px solid $btncolor;
-    -webkit-appearance: none;
-    -moz-appearance: none;
 }
-#selectrole * {
-    background-color: rgba(0,0,0,0.8);
+#selectrole:invalid,
+#selectrole option[value=""] {
+    color: #454643;
 }
+// #selectrole * {
+//     background-color: rgba(0,0,0,0.8);
+// }
 .action-login{
     display: flex;
     flex-direction: column;
@@ -148,6 +164,9 @@
     width: 100%;
     margin: 20px 0 30px 0;
 }
+.reset-password__action{
+    flex-direction: row;
+}
 .btn-login,
 .btn-signup,
 .btn-reset,
@@ -155,12 +174,14 @@
     border: 1px solid $btncolor;
     outline: none;
     color: white;
-    background-color: transparent;
+    background-color: $btncolor;
     width: 90px;
     height: 40px;
     font-weight: 700;
+    border-radius: 5px;
 }
-.btn-login{
+.btn-login,
+.btn-signup{
     border-radius: 5px;
     background-color: $btncolor;
     color: white;
@@ -168,7 +189,10 @@
     margin-bottom: 12px;
     transition: all .3s;
 }
-.btn-login:hover{
+.btn-login:hover,
+.btn-signup:hover,
+.btn-reset:hover,
+.btn-verify:hover{
     background-color: $secondarycolor;
     border: 1px solid $secondarycolor;
 }
@@ -188,11 +212,21 @@
     cursor: pointer;
 }
 .back-reset{
-    text-decoration: none;
     font-size: 20px;
     font-weight: 700;
-    text-align: center;
-    padding-top: 4px;
+    background-color: transparent;
+    width: 90px;
+    border: 1px solid $btncolor;
+    margin: unset;
+    color: $btncolor;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.back-reset:hover{
+    color: white;
+    background-color: $btncolor;
 }
 @media screen and (max-width: 414px) {
     .login-username label, 

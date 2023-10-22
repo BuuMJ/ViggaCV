@@ -24,7 +24,7 @@
 .header-cv .intro-surprise{
     font-size: 40px;
     font-weight: 700;
-    color: $primarycolor;
+    color: $secondarycolor;
     height: 48px;
     margin-bottom: 30px;
 }
@@ -37,20 +37,22 @@
     margin-bottom: 50px;
 }
 .header-cv .intro-text b {
-    color: $primarycolor;
+    color: $secondarycolor;
 }
 .header-cv .btn-cv{
     font-size: 26px;
     font-weight: 500;
     text-decoration: none;
-    color: $primarycolor;
-    border: 1px solid $primarycolor;
+    color: white;
+    border: 1px solid $btncolor;
     width: 150px;
     text-align: center;
     transition: 0.5s;
+    background-color: transparent;
+    padding: 4px;
 }
 .header-cv .btn-cv:hover{
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: $btncolor;
 }
 .header-cv .animation-roll{
   margin-top: 30px;
@@ -183,15 +185,16 @@
 .interview-action{
     text-align: center;
     text-decoration: none;
-    color: $primarycolor;
-    border: 1px solid $primarycolor;
+    color: white;
+    border: 1px solid $btncolor;
     width: 34%;
     height: 40px;
     padding: 8px 0 !important;
+    background-color: transparent;
     margin-left: 30px;
 }
 .interview-action:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: $btncolor;
 }
 .stepbystep-cv{
     display: flex;
@@ -253,7 +256,7 @@
   align-items: end;
   width: 100%;
   height: 420px;
-  background: linear-gradient(to top,#31313133, #fed20033), url('/img/header-createcv.jpg') center / cover no-repeat;
+  background: linear-gradient(to top,#31313133, #0072bc33), url('/img/header-createcv.jpg') center / cover no-repeat;
 }
 .main__create-cv .header-background span {
   font-size: 40px;
@@ -292,7 +295,7 @@
   outline: none;
   border: none;
   border-radius: 100px;
-  background-color: $primarycolor;
+  background-color: $btncolor;
   color: white;
   width: 150px;
   height: 34px;
@@ -302,10 +305,10 @@
   align-items: center;
 }
 .main__create-cv header.action-create-cv .download-create-cv button:hover{
-  background-color: #e2c021;
+  background-color: $secondarycolor;
 }
 .main__create-cv header.action-create-cv span:hover {
-  color: $primarycolor;
+  color: $btncolor;
 }
 .body__create-cv{
   width: 60%;
@@ -340,6 +343,9 @@
   justify-content: center;
   align-items: start;
   border-top: 1px solid #d5d6d6;
+}
+.main__create-cv header.action-create-cv .library-font .option-font:hover label{
+  color: $secondarycolor;
 }
 .main__create-cv header.action-create-cv .library-font .option-font-size p.font-size__title,
 .main__create-cv header.action-create-cv .library-font p.font-title {
@@ -400,8 +406,6 @@
 }
 .library-color .option-color label.fed200{
   background-color: #fed200;
-  outline-offset: 4px;
-  outline: 2px solid #fed200;
 }
 .library-color .option-color label.f04c40{
   background-color: #f04c40;
@@ -414,6 +418,8 @@
 }
 .library-color .option-color label.a0072bc{
   background-color: #0072bc;
+  outline-offset: 4px;
+  outline: 2px solid #0072bc;
 }
 .library-color .option-color label.a6f429a{
   background-color: #6f429a;
@@ -452,7 +458,7 @@
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  background-color: $primarycolor;
+  background-color: $secondarycolor;
   color: white;
   padding: 16px 20px;
 }
@@ -573,7 +579,7 @@
   color: black;
 }
 .change-avatar__user-cv .upload-avatar__user-cv label i:hover{
-  color: $primarycolor;
+  color: $btncolor;
   cursor: pointer;
 }
 .change-avatar__user-cv .none-avatar{
@@ -588,7 +594,7 @@
 }
 .change-avatar__user-cv .none-avatar i:hover{
   cursor: pointer;
-  color: $primarycolor;
+  color: $btncolor;
 }
 .body__user-cv{
   display: flex;
@@ -628,7 +634,7 @@
 .body__user-cv textarea.education-text:focus,
 .body__user-cv textarea.skill-text:focus,
 .body__user-cv textarea.project-text:focus{
-  color: $primarycolor;
+  color: $secondarycolor;
   box-shadow: 0px 0px 0px 40px rgba(255, 255, 255, 0.8);
 }
 .body__user-cv textarea.overview-text,
@@ -636,7 +642,7 @@
 .body__user-cv textarea.education-text,
 .body__user-cv textarea.skill-text,
 .body__user-cv textarea.project-text{
-  color: $primarycolor;
+  color: $secondarycolor;
   font-weight: 700;
   font-size: 16px;
   border-bottom: 1px solid #d5d6d6;
@@ -672,7 +678,7 @@
 .overview__user-cv .work-exp .date__work-exp .action__add-remove span:hover,
 .overview__user-cv .education-user .action__add-remove-education span:hover,
 .body__user-cv .project__user-cv .action__add-remove-project span:hover{
-  color: $primarycolor;
+  color: $btncolor;
 }
 .overview__user-cv .work-exp .date__work-exp textarea,
 .overview__user-cv .education-user .date__education textarea,
@@ -785,7 +791,12 @@
   padding: 8px 20px;
   background: linear-gradient(269.85deg, #0072bc 0%, #121212 54.89%);
   height: 220px;
-  color: $primarycolor;
+  color: white;
+}
+.main__manager-cv header p b{
+  color: $btncolor;
+  font-size: 18px;
+  font-weight: 600;
 }
 .main__manager-cv section{
   display: flex;
@@ -813,7 +824,8 @@
 }
 .main__manager-cv section .header-section span.cv-passed{
   border-bottom: 3px solid $secondarycolor;
-  color: $primarycolor;
+  color: $secondarycolor;
+  cursor: default;
 }
 .main__manager-cv section .loading-manager{
   display: none;

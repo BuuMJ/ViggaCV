@@ -2,7 +2,7 @@
     <div class="main__manager-cv">
         <header>
             <h1>Manage CV of {{job.jobname}} job</h1>
-            <p>This job has a total of {{count}} CVs applying</p>
+            <p>This job has a total of <b>{{count}}</b> CVs applying</p>
         </header>
         <section>
             <div class="header-section">
@@ -54,17 +54,13 @@
     var passedClicked = false;
     var failedClicked = false;
     document.addEventListener("DOMContentLoaded", function() {
-    containerPassed.style.display = 'none';
-    clickPassed.click();
-    setTimeout(function(){
-            containerPassed.style.display = 'flex';
-            },1780);
     passedClicked = false;
+    failedClicked = true;
     });
     clickPassed.addEventListener('click',()=>{
-        if(!passedClicked){
-            passedClicked = true;
-            clickPassed.style.cssText = 'border-bottom: 3px solid #0072bc; color: #fed200; cursor: default;';
+        if(passedClicked){
+            passedClicked = false;
+            clickPassed.style.cssText = 'border-bottom: 3px solid #0072bc; color: #0072bc; cursor: default;';
             clickFailed.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
             containerFailed.style.display = 'none';
             loadingManagerCV.style.display = 'flex';
@@ -73,13 +69,15 @@
             },1750);
             setTimeout(function(){
             containerPassed.style.display = 'flex';
+            failedClicked = true;
             },1780)
         }
+        console.log(failedClicked);
     });
     clickFailed.addEventListener('click',()=>{
-        if(!failedClicked){
-            failedClicked = true;
-            clickFailed.style.cssText = 'border-bottom: 3px solid #0072bc; color: #fed200; cursor: default';
+        if(failedClicked){
+            failedClicked = false;
+            clickFailed.style.cssText = 'border-bottom: 3px solid #0072bc; color: #0072bc; cursor: default';
             clickPassed.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
             containerPassed.style.display = 'none';
             loadingManagerCV.style.display = 'flex';
@@ -88,7 +86,9 @@
             },1750);
             setTimeout(function(){
             containerFailed.style.display = 'flex';
+            passedClicked = true;
             },1780)
         }
+        console.log(passedClicked)
     });
 </script>

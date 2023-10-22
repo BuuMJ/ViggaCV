@@ -10,19 +10,19 @@
     <div class="library-font">
       <p class="font-title">Font</p>
       <div class="option-font">
-        <input id="arimo" name="fontfamily" type="radio" value="'Arimo', sans-serif" hidden>
+        <input id="arimo" name="fontfamily" type="radio" value="arimo" hidden>
         <label class="arimo" for="arimo">Arimo</label>
       </div>
       <div class="option-font">
-        <input id="roboto" name="fontfamily" type="radio" value="'Roboto', sans-serif" hidden>
+        <input id="roboto" name="fontfamily" type="radio" value="roboto" hidden>
         <label class="roboto" for="roboto">Roboto</label>
       </div>
       <div class="option-font">
-        <input id="sourcesans3" name="fontfamily" type="radio" value="'Source Sans 3', sans-serif" hidden>
+        <input id="sourcesans3" name="fontfamily" type="radio" value="sourcesans3" hidden>
         <label class="sourcesans3" for="sourcesans3">Source Sans 3</label>
       </div>
       <div class="option-font">
-        <input id="notosans" name="fontfamily" type="radio" value="'Noto Sans', sans-serif" hidden>
+        <input id="notosans" name="fontfamily" type="radio" value="notosans" hidden>
         <label class="notosans" for="notosans">Noto Sans</label>
       </div>
       
@@ -701,7 +701,7 @@ document.addEventListener('DOMContentLoaded', function () {
     containerCV.classList.remove('arimo', 'roboto', 'sourcesans3', 'notosans');
     if (arimoFont.checked) {
       containerCV.classList.add('arimo');
-      document.querySelector('label.arimo').style.color = '#fed200';
+      document.querySelector('label.arimo').style.color = '#0072bc';
       document.querySelector('label.roboto').style.color = 'white';
       document.querySelector('label.sourcesans3').style.color = 'white';
       document.querySelector('label.notosans').style.color = 'white';
@@ -710,7 +710,7 @@ document.addEventListener('DOMContentLoaded', function () {
     else if (robotoFont.checked) {
       containerCV.classList.add('roboto');
       document.querySelector('label.arimo').style.color = 'white';
-      document.querySelector('label.roboto').style.color = '#fed200';
+      document.querySelector('label.roboto').style.color = '#0072bc';
       document.querySelector('label.sourcesans3').style.color = 'white';
       document.querySelector('label.notosans').style.color = 'white';
     }
@@ -718,7 +718,7 @@ document.addEventListener('DOMContentLoaded', function () {
       containerCV.classList.add('sourcesans3');
       document.querySelector('label.arimo').style.color = 'white';
       document.querySelector('label.roboto').style.color = 'white';
-      document.querySelector('label.sourcesans3').style.color = '#fed200';
+      document.querySelector('label.sourcesans3').style.color = '#0072bc';
       document.querySelector('label.notosans').style.color = 'white';
     }
     else if (notosansFont.checked) {
@@ -726,7 +726,7 @@ document.addEventListener('DOMContentLoaded', function () {
       document.querySelector('label.arimo').style.color = 'white';
       document.querySelector('label.roboto').style.color = 'white';
       document.querySelector('label.sourcesans3').style.color = 'white';
-      document.querySelector('label.notosans').style.color = '#fed200';
+      document.querySelector('label.notosans').style.color = '#0072bc';
     }
   }
   arimoFont.addEventListener('change', changeFontCV);
@@ -743,9 +743,9 @@ document.addEventListener('DOMContentLoaded', function () {
     let fontSize = '16px';
     if (fontSmall.checked) {
       fontSize = '16px';
-    } else if (fontMedium.checked) {
+    } else if (fontMedium.checked){
       fontSize = '16.5px';
-    } else if (fontBig.checked) {
+    } else if (fontBig.checked){
       fontSize = '17px';
     }
     childrenElements.forEach(element => {

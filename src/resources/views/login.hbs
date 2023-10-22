@@ -7,10 +7,14 @@
             </div>
         </div>
     {{/if}}
+    {{!-- login --}}
     <form class="box-login" method="POST" action="/login/apilogin" >
         <div class="text-login">
-            <span class="text-sign-in">Sign In</span>
-            <span class="text-create">Create Account</span>
+            <span class="text-sign-in" style="color: #0095ff;">
+                Login 
+                <span class="click-actived"></span>
+            </span>
+            <span class="text-create" style="color: #81827b;">Register</span>
         </div>
         <div class="login-username">
             <input type="text" name="username" id="username" required>
@@ -25,10 +29,14 @@
             <span>Forgot your password? <a class="forgot-password" >Click here!</a></span>
         </div>
     </form>
+    {{!-- register --}}
     <form class="box-signup" method="POST" action="/register/apiregister">
         <div class="text-login">
-            <span class="text-sign-in">Sign Up</span>
-            <span class="text-create">Create Account</span>
+            <span class="text-sign-in text-sign-in__sign-up" style="color: #81827b;">Login</span>
+            <span class="text-create text-created__sign-up" style="color: #0095ff;">
+                Register
+                <span class="click-actived"></span>    
+            </span>
         </div>
          <div class="login-fullname">
             <input type="text" name="fullname" id="fullname" required>
@@ -58,19 +66,22 @@
             </select>
         </div>
         <div class="action-login">
-            <button class="btn-signup back-signin" type="button">Back</button>
-            <button class="btn-signup" type="submit">Sign Up</button>
+            <button class="btn-signup" type="submit">Register</button>
         </div>
     </form>
+    {{!-- forgot --}}
     <form class="box-forgot" method="POST" action="/login/mailresetpassword">
         <div class="text-login">
-            <span class="text-sign-in">Reset Password</span>
+            <span class="text-sign-in" style="color:#0095ff;">
+                Reset Password
+                <span class="click-actived__reset"></span>
+            </span>
         </div>
         <div class="login-email">
             <input type="text" name="email" id="email-forgot" required>
             <label class="label-email" for="password">Email</label>
         </div>
-        <div class="action-login">
+        <div class="action-login reset-password__action">
             <button class="btn-signup back-reset" type="button">Back</button>
             <button class="btn-reset" type="submit">Send Mail</button>
         </div>
@@ -78,14 +89,14 @@
 </div>
 <script>
     var clickCreate = document.querySelector('.text-create')
+    var clickSignIn = document.querySelector('.text-sign-in__sign-up');
     var boxLogin = document.querySelector('.box-login');
     var boxSignUp = document.querySelector('.box-signup');
     clickCreate.addEventListener('click', ()=>{
         boxLogin.style.cssText = "display: none;"
         boxSignUp.style.cssText = "display: flex;"
     })
-    var clickBack = document.querySelector('.back-signin');
-    clickBack.addEventListener('click', ()=>{
+    clickSignIn.addEventListener('click', ()=>{
         boxSignUp.style.cssText = "display: none;"
         boxLogin.style.cssText = "display:flex;"
     })

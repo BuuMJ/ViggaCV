@@ -6057,7 +6057,7 @@ header.company-detail .background-company-detail {
 .header-cv .intro-surprise {
   font-size: 40px;
   font-weight: 700;
-  color: #fed200;
+  color: #0072bc;
   height: 48px;
   margin-bottom: 30px; }
 
@@ -6070,20 +6070,22 @@ header.company-detail .background-company-detail {
   margin-bottom: 50px; }
 
 .header-cv .intro-text b {
-  color: #fed200; }
+  color: #0072bc; }
 
 .header-cv .btn-cv {
   font-size: 26px;
   font-weight: 500;
   text-decoration: none;
-  color: #fed200;
-  border: 1px solid #fed200;
+  color: white;
+  border: 1px solid #0095ff;
   width: 150px;
   text-align: center;
-  transition: 0.5s; }
+  transition: 0.5s;
+  background-color: transparent;
+  padding: 4px; }
 
 .header-cv .btn-cv:hover {
-  background-color: rgba(255, 255, 255, 0.1); }
+  background-color: #0095ff; }
 
 .header-cv .animation-roll {
   margin-top: 30px;
@@ -6216,15 +6218,16 @@ header.company-detail .background-company-detail {
 .interview-action {
   text-align: center;
   text-decoration: none;
-  color: #fed200;
-  border: 1px solid #fed200;
+  color: white;
+  border: 1px solid #0095ff;
   width: 34%;
   height: 40px;
   padding: 8px 0 !important;
+  background-color: transparent;
   margin-left: 30px; }
 
 .interview-action:hover {
-  background-color: rgba(255, 255, 255, 0.1); }
+  background-color: #0095ff; }
 
 .stepbystep-cv {
   display: flex;
@@ -6285,7 +6288,7 @@ header.company-detail .background-company-detail {
   align-items: end;
   width: 100%;
   height: 420px;
-  background: linear-gradient(to top, #31313133, #fed20033), url("/img/header-createcv.jpg") center/cover no-repeat; }
+  background: linear-gradient(to top, #31313133, #0072bc33), url("/img/header-createcv.jpg") center/cover no-repeat; }
 
 .main__create-cv .header-background span {
   font-size: 40px;
@@ -6324,7 +6327,7 @@ header.company-detail .background-company-detail {
   outline: none;
   border: none;
   border-radius: 100px;
-  background-color: #fed200;
+  background-color: #0095ff;
   color: white;
   width: 150px;
   height: 34px;
@@ -6334,10 +6337,10 @@ header.company-detail .background-company-detail {
   align-items: center; }
 
 .main__create-cv header.action-create-cv .download-create-cv button:hover {
-  background-color: #e2c021; }
+  background-color: #0072bc; }
 
 .main__create-cv header.action-create-cv span:hover {
-  color: #fed200; }
+  color: #0095ff; }
 
 .body__create-cv {
   width: 60%; }
@@ -6372,6 +6375,9 @@ header.company-detail .background-company-detail {
   justify-content: center;
   align-items: start;
   border-top: 1px solid #d5d6d6; }
+
+.main__create-cv header.action-create-cv .library-font .option-font:hover label {
+  color: #0072bc; }
 
 .main__create-cv header.action-create-cv .library-font .option-font-size p.font-size__title,
 .main__create-cv header.action-create-cv .library-font p.font-title {
@@ -6431,9 +6437,7 @@ header.company-detail .background-company-detail {
   cursor: pointer; }
 
 .library-color .option-color label.fed200 {
-  background-color: #fed200;
-  outline-offset: 4px;
-  outline: 2px solid #fed200; }
+  background-color: #fed200; }
 
 .library-color .option-color label.f04c40 {
   background-color: #f04c40; }
@@ -6445,7 +6449,9 @@ header.company-detail .background-company-detail {
   background-color: #3f59a8; }
 
 .library-color .option-color label.a0072bc {
-  background-color: #0072bc; }
+  background-color: #0072bc;
+  outline-offset: 4px;
+  outline: 2px solid #0072bc; }
 
 .library-color .option-color label.a6f429a {
   background-color: #6f429a; }
@@ -6484,7 +6490,7 @@ header.company-detail .background-company-detail {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  background-color: #fed200;
+  background-color: #0072bc;
   color: white;
   padding: 16px 20px; }
 
@@ -6605,7 +6611,7 @@ header.company-detail .background-company-detail {
   color: black; }
 
 .change-avatar__user-cv .upload-avatar__user-cv label i:hover {
-  color: #fed200;
+  color: #0095ff;
   cursor: pointer; }
 
 .change-avatar__user-cv .none-avatar {
@@ -6620,7 +6626,7 @@ header.company-detail .background-company-detail {
 
 .change-avatar__user-cv .none-avatar i:hover {
   cursor: pointer;
-  color: #fed200; }
+  color: #0095ff; }
 
 .body__user-cv {
   display: flex;
@@ -6660,7 +6666,7 @@ header.company-detail .background-company-detail {
 .body__user-cv textarea.education-text:focus,
 .body__user-cv textarea.skill-text:focus,
 .body__user-cv textarea.project-text:focus {
-  color: #fed200;
+  color: #0072bc;
   box-shadow: 0px 0px 0px 40px rgba(255, 255, 255, 0.8); }
 
 .body__user-cv textarea.overview-text,
@@ -6668,7 +6674,7 @@ header.company-detail .background-company-detail {
 .body__user-cv textarea.education-text,
 .body__user-cv textarea.skill-text,
 .body__user-cv textarea.project-text {
-  color: #fed200;
+  color: #0072bc;
   font-weight: 700;
   font-size: 16px;
   border-bottom: 1px solid #d5d6d6;
@@ -6704,7 +6710,7 @@ header.company-detail .background-company-detail {
 .overview__user-cv .work-exp .date__work-exp .action__add-remove span:hover,
 .overview__user-cv .education-user .action__add-remove-education span:hover,
 .body__user-cv .project__user-cv .action__add-remove-project span:hover {
-  color: #fed200; }
+  color: #0095ff; }
 
 .overview__user-cv .work-exp .date__work-exp textarea,
 .overview__user-cv .education-user .date__education textarea,
@@ -6815,7 +6821,12 @@ header.company-detail .background-company-detail {
   padding: 8px 20px;
   background: linear-gradient(269.85deg, #0072bc 0%, #121212 54.89%);
   height: 220px;
-  color: #fed200; }
+  color: white; }
+
+.main__manager-cv header p b {
+  color: #0095ff;
+  font-size: 18px;
+  font-weight: 600; }
 
 .main__manager-cv section {
   display: flex;
@@ -6843,7 +6854,8 @@ header.company-detail .background-company-detail {
 
 .main__manager-cv section .header-section span.cv-passed {
   border-bottom: 3px solid #0072bc;
-  color: #fed200; }
+  color: #0072bc;
+  cursor: default; }
 
 .main__manager-cv section .loading-manager {
   display: none;
@@ -8187,17 +8199,12 @@ form.note-denied button:hover {
   font-weight: 700;
   backdrop-filter: blur(10px); }
 
-.box-verify {
-  height: 200px; }
-
 .box-forgot {
-  display: none;
-  height: 200px; }
+  display: none; }
 
 .box-signup {
   display: none;
-  width: 450px;
-  height: 600px; }
+  width: 450px; }
 
 .text-login {
   display: flex;
@@ -8212,16 +8219,31 @@ form.note-denied button:hover {
 .text-login .text-create,
 .text-login .text-sign-in {
   height: 100%;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 20px;
+  cursor: pointer;
   padding: 20px 0;
-  cursor: pointer; }
+  position: relative; }
 
-.text-login .text-sign-in {
-  border-bottom: 4px solid #0095ff;
-  color: #0095ff; }
+.click-actived,
+.click-actived__reset,
+.click-actived__verify {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 4px;
+  width: 50%;
+  background-color: #0095ff;
+  border-radius: 5px; }
+
+.click-actived__reset {
+  width: 90%; }
+
+.click-actived__verify {
+  width: 60%; }
 
 .login-username,
 .login-password,
@@ -8286,20 +8308,23 @@ form.note-denied button:hover {
 
 .select-role {
   width: 100%;
-  text-align: center; }
+  text-align: center;
+  height: 50px;
+  margin: 12px 0; }
 
 #selectrole {
   width: 75%;
-  background-color: transparent;
+  height: 100%;
+  background-color: #1c1c1c;
+  border-radius: 5px;
   color: white;
+  padding: 0 8px;
   outline: none;
-  border: none;
-  border-bottom: 1px solid #0095ff;
-  -webkit-appearance: none;
-  -moz-appearance: none; }
+  border: none; }
 
-#selectrole * {
-  background-color: rgba(0, 0, 0, 0.8); }
+#selectrole:invalid,
+#selectrole option[value=""] {
+  color: #454643; }
 
 .action-login {
   display: flex;
@@ -8309,6 +8334,9 @@ form.note-denied button:hover {
   width: 100%;
   margin: 20px 0 30px 0; }
 
+.reset-password__action {
+  flex-direction: row; }
+
 .btn-login,
 .btn-signup,
 .btn-reset,
@@ -8316,12 +8344,14 @@ form.note-denied button:hover {
   border: 1px solid #0095ff;
   outline: none;
   color: white;
-  background-color: transparent;
+  background-color: #0095ff;
   width: 90px;
   height: 40px;
-  font-weight: 700; }
+  font-weight: 700;
+  border-radius: 5px; }
 
-.btn-login {
+.btn-login,
+.btn-signup {
   border-radius: 5px;
   background-color: #0095ff;
   color: white;
@@ -8329,7 +8359,10 @@ form.note-denied button:hover {
   margin-bottom: 12px;
   transition: all .3s; }
 
-.btn-login:hover {
+.btn-login:hover,
+.btn-signup:hover,
+.btn-reset:hover,
+.btn-verify:hover {
   background-color: #0072bc;
   border: 1px solid #0072bc; }
 
@@ -8349,11 +8382,21 @@ form.note-denied button:hover {
   cursor: pointer; }
 
 .back-reset {
-  text-decoration: none;
   font-size: 20px;
   font-weight: 700;
-  text-align: center;
-  padding-top: 4px; }
+  background-color: transparent;
+  width: 90px;
+  border: 1px solid #0095ff;
+  margin: unset;
+  color: #0095ff;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.back-reset:hover {
+  color: white;
+  background-color: #0095ff; }
 
 @media screen and (max-width: 414px) {
   .login-username label,
