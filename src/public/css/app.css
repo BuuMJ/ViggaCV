@@ -7103,14 +7103,14 @@ header.company-detail .background-company-detail {
   cursor: pointer; }
 
 .container-admin header {
-  width: 100%;
+  width: 95%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin-bottom: 50px; }
 
 .container-admin header .box-total {
-  background-image: linear-gradient(63.1deg, #05176f 16.4%, #185ff0 64.5%);
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7118,47 +7118,39 @@ header.company-detail .background-company-detail {
   padding: 12px 20px;
   border-radius: 5px;
   width: 23%;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04); }
-
-.container-admin header .box__total-user {
-  background-image: linear-gradient(109.6deg, #ff7344 11.2%, #f4ff20 100.6%); }
-
-.container-admin header .box__total-thismonth {
-  background-image: linear-gradient(132.6deg, #478bd6 23.3%, #25d8d3 84.7%); }
-
-.container-admin header .box__total-job {
-  background-image: radial-gradient(circle farthest-corner at 24.7% 28.8%, #f7b71d 1.9%, #fdef96 97.7%); }
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04);
+  color: black; }
 
 .container-admin header .box-total .title {
   margin-bottom: 6px;
   font-size: 18px;
-  font-weight: 550;
-  color: white;
+  font-weight: 500;
+  color: #aeaeae;
   text-transform: capitalize; }
 
 .container-admin header .box-total .total-content {
   font-size: 24px;
   font-weight: 600;
-  color: white;
+  color: #0095ff;
   margin-bottom: 6px; }
 
 .container-admin header .box-total .view-detail__total {
-  color: white;
   text-decoration: none;
-  font-size: 16px; }
+  font-size: 16px;
+  color: #aeaeae; }
 
 .container-admin header .box-total .view-detail__total:hover {
-  text-decoration: underline; }
+  color: #0095ff; }
 
 .container-admin .container-revenue {
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
   width: 95%; }
 
 .revenue-chart {
-  width: 70%;
+  width: 100%;
   height: 720px;
   background-color: white;
   border-radius: 5px;
@@ -7173,6 +7165,7 @@ header.company-detail .background-company-detail {
   width: 100%;
   font-size: 24px;
   font-weight: 600;
+  color: #004270;
   padding-bottom: 6px;
   border-bottom: 1px solid #CACACA; }
 
@@ -7180,11 +7173,12 @@ header.company-detail .background-company-detail {
   font-size: 16px; }
 
 .main__revenue-detail {
-  width: 25%;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; }
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 30px; }
 
 .main__revenue-detail .revenue-details,
 .total-job__detail {
@@ -7192,14 +7186,16 @@ header.company-detail .background-company-detail {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: white;
+  background-color: #004270;
   border-radius: 5px;
   width: 100%;
   padding: 20px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04); }
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04);
+  color: white; }
 
 .total-job__detail {
-  width: 25%; }
+  width: 30%;
+  height: 461px; }
 
 .main__revenue-detail .box__circle-chart,
 .container-admin .main-job__circle-chart .box__circle-chart {
@@ -7214,6 +7210,15 @@ header.company-detail .background-company-detail {
   padding: 20px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04); }
 
+.main__revenue-detail .box__circle-chart {
+  color: #aeaeae; }
+
+.main__revenue-detail .revenue-details,
+.main__revenue-detail .box__circle-chart {
+  width: 40%;
+  height: 354px;
+  margin: unset; }
+
 .container-admin .main-job__circle-chart .box__circle-chart {
   width: 21%; }
 
@@ -7224,7 +7229,11 @@ header.company-detail .background-company-detail {
   width: 100%;
   margin-bottom: 20px;
   border-bottom: 1px solid #CACACA;
-  padding-bottom: 6px; }
+  padding-bottom: 6px;
+  text-transform: capitalize; }
+
+.main__revenue-detail .box__circle-chart h1 {
+  color: #0095ff; }
 
 .container-admin .main-job__circle-chart .box__circle-chart h1 {
   font-size: 22px; }
@@ -7243,16 +7252,17 @@ header.company-detail .background-company-detail {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
-  z-index: 2; }
+  z-index: 2;
+  color: #5f5f5f; }
 
 .main__revenue-detail .box__circle-chart .circle-chart::after,
 .container-admin .main-job__circle-chart .box__circle-chart .circle-chart::after {
   position: absolute;
   content: '';
-  width: 170px;
-  height: 170px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   top: 50%;
   left: 50%;
@@ -7265,6 +7275,9 @@ header.company-detail .background-company-detail {
   margin-bottom: unset;
   margin-top: 16px;
   width: 100%; }
+
+.main__revenue-detail .box__circle-chart p b {
+  color: #0095ff; }
 
 .revenue-details .title,
 .total-job__detail h1 {
@@ -7302,6 +7315,12 @@ header.company-detail .background-company-detail {
   padding: 12px 0 8px 0;
   border-bottom: 1px solid #CACACA; }
 
+.total-job__detail p.adsjob,
+.total-job__detail p.highpayingjob,
+.total-job__detail p.normaljob,
+.total-job__detail p.total-jobs {
+  margin-bottom: 6px; }
+
 .revenue-details p.total-refund,
 .total-job__detail p.locked-jobs {
   border-bottom: unset; }
@@ -7311,7 +7330,7 @@ header.company-detail .background-company-detail {
   color: #FC0412; }
 
 .container-admin .detail-revenue {
-  display: flex;
+  display: none;
   flex-direction: row;
   justify-content: space-around;
   align-items: start;
@@ -7332,6 +7351,9 @@ header.company-detail .background-company-detail {
   margin-bottom: 20px;
   padding-bottom: 6px;
   border-bottom: 1px solid #cacaca; }
+
+.container-admin .chart-job h1 {
+  color: #004270; }
 
 .container-admin .detail-revenue .content__total-quarterly {
   display: flex;
@@ -7370,18 +7392,28 @@ header.company-detail .background-company-detail {
 .container-admin .detail-revenue .content__total-quarterly .down__fourthquarterly {
   display: none; }
 
+.container-admin .box__dasboard-user {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  width: 95%;
+  flex-wrap: wrap;
+  margin-top: 50px; }
+
 .container-admin .user-chart {
-  width: 25%;
+  width: 28%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
   padding: 20px;
-  background-color: white;
+  height: 621px;
+  background-color: #004270;
   border-radius: 5px;
-  margin-top: 30px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04);
-  align-self: flex-start; }
+  align-self: flex-start;
+  color: white; }
 
 .container-admin .user-chart h1 {
   font-size: 24px;
@@ -7392,7 +7424,8 @@ header.company-detail .background-company-detail {
   margin-bottom: 20px;
   display: flex;
   justify-content: start;
-  align-items: center; }
+  align-items: center;
+  color: white; }
 
 .container-admin .user-chart h1 span {
   margin-right: 4px; }
@@ -7413,34 +7446,28 @@ header.company-detail .background-company-detail {
   width: 100%;
   height: 20px;
   border-radius: 10px;
-  border: 1px solid #CACACA;
+  border: 1px solid #121212;
   margin: 16px 0; }
 
 .container-admin .user-chart .percentage-bar .percent-user {
-  background-color: rgba(254, 210, 0, 0.5);
+  background-color: #0095ff;
   height: 100%;
   border-radius: 10px;
   position: relative; }
 
-.container-admin .user-chart .percentage-bar .percent-user .data-count-user {
+.container-admin .user-chart .percentage-bar .percent-user .data-count-user,
+.container-admin .user-chart .percentage-bar .percent-company .data-count-company {
   position: absolute;
-  top: -96%;
+  top: -110%;
   right: 0;
   font-size: 14px;
   font-weight: 600; }
 
 .container-admin .user-chart .percentage-bar .percent-company {
-  background-color: rgba(0, 114, 188, 0.5);
+  background-color: white;
   height: 100%;
   border-radius: 10px;
   position: relative; }
-
-.container-admin .user-chart .percentage-bar .percent-company .data-count-company {
-  position: absolute;
-  top: -96%;
-  right: 0;
-  font-size: 14px;
-  font-weight: 600; }
 
 .container-admin .list-user,
 .container-admin .list-job {
@@ -7460,7 +7487,9 @@ header.company-detail .background-company-detail {
   width: 95%; }
 
 .container-admin .list-user {
-  position: relative; }
+  position: relative;
+  width: 68%;
+  margin-top: unset; }
 
 .container-admin .list-user h1,
 .container-admin .list-job h1 {
@@ -7469,7 +7498,8 @@ header.company-detail .background-company-detail {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: unset;
-  background-color: rgba(0, 114, 188, 0.4); }
+  color: white;
+  background-color: #004270; }
 
 .container-admin .list-user .header__list-user,
 .container-admin .list-user .body__list-user,
@@ -7481,6 +7511,9 @@ header.company-detail .background-company-detail {
   justify-content: start;
   align-items: center;
   padding: 0 12px; }
+
+.container-admin .list-user .body__list-user {
+  border-bottom: 1px solid #CACACA; }
 
 .container-admin .list-user .body__list-user .box__edit-user {
   position: absolute;
@@ -7608,7 +7641,8 @@ header.company-detail .background-company-detail {
 
 .container-admin .list-user .header__list-user span,
 .container-admin .list-user .body__list-user span {
-  width: 32%; }
+  width: 32%;
+  padding: 0 6px 0 0; }
 
 .container-admin .list-user .header__list-user span,
 .container-admin .list-job .header__list-job span {
@@ -7623,7 +7657,8 @@ header.company-detail .background-company-detail {
   width: 12%; }
 
 .container-admin .list-user .body__list-user span {
-  padding: 12px 0; }
+  padding: 12px 6px 12px 0;
+  word-wrap: break-word; }
 
 .container-admin .list-job .body__list-job span {
   padding: 0; }
@@ -7680,21 +7715,29 @@ header.company-detail .background-company-detail {
   left: 0;
   width: 12px;
   height: 100%;
-  background-color: rgba(0, 114, 188, 0.4); }
+  background-color: #004270; }
 
 .container-admin .material-symbols-outlined {
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48; }
+
+.container-admin .box__dasboard-job {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  flex-wrap: wrap;
+  width: 95%;
+  margin-top: 50px; }
 
 .container-admin .chart-job {
   width: 65%;
   padding: 20px 30px;
   border-radius: 5px;
   background-color: white;
-  margin-top: 30px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04); }
 
 .container-admin .main-job__circle-chart {
-  display: flex;
+  display: none;
   justify-content: space-around;
   align-items: center;
   width: 100%; }
@@ -7717,7 +7760,7 @@ header.company-detail .background-company-detail {
 
 .container-admin .detail-refuned .box__request-refund .refuned-ads,
 .container-admin .detail-refuned .box__request-refund .refuned-high {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7868,7 +7911,8 @@ form.note-denied button:hover {
 .container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads span,
 .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span {
   width: 16%;
-  font-weight: 600; }
+  font-weight: 600;
+  padding: 0 6px; }
 
 .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span {
   font-weight: unset; }
@@ -7897,12 +7941,12 @@ form.note-denied button:hover {
   transition: .5s; }
 
 .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.action button.refund-success {
-  border: 1px solid #05CCFC;
-  color: #05CCFC; }
+  border: 1px solid #0095ff;
+  color: #0095ff; }
 
 .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.action button.refund-success:hover {
   color: white;
-  background-color: #05CCFC; }
+  background-color: #0095ff; }
 
 .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.action button.denied {
   border: 1px solid #FC0412;
@@ -7975,12 +8019,12 @@ form.note-denied button:hover {
   .main__revenue-detail {
     width: 100%;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 30px; }
   .main__revenue-detail .revenue-details,
   .main__revenue-detail .box__circle-chart {
-    width: 45%; }
+    width: 48%; }
   .main__revenue-detail .box__circle-chart {
     margin-top: unset;
     height: 353px; }
@@ -7997,9 +8041,11 @@ form.note-denied button:hover {
   .container-admin .detail-revenue .content__total-quarterly {
     width: 50%; }
   .container-admin .user-chart {
-    width: 95%;
+    width: 100%;
     flex-wrap: wrap;
     flex-direction: row;
+    height: unset;
+    margin-bottom: 30px;
     justify-content: space-between; }
   .container-admin .user-chart h1 {
     margin-bottom: 30px; }
@@ -8010,19 +8056,18 @@ form.note-denied button:hover {
     width: 45%;
     align-self: center; }
   .container-admin .list-user {
-    width: 95%; }
+    width: 100%; }
   .container-admin .main-job__circle-chart {
     flex-wrap: wrap; }
   .container-admin .main-job__circle-chart .box__circle-chart {
     width: 45%; }
   .container-admin .chart-job h1 {
     margin-bottom: 40px; }
-  .container-admin .chart-job {
-    width: 55%;
-    height: 397px; }
+  .container-admin .chart-job,
   .total-job__detail {
-    width: 35%;
-    margin-top: 30px; }
+    height: 397px; }
+  .total-job__detail p.adsjob, .total-job__detail p.highpayingjob, .total-job__detail p.normaljob, .total-job__detail p.total-jobs {
+    margin: unset; }
   .container-admin .detail-refuned .box__request-refund .refuned-ads,
   .container-admin .detail-refuned .box__request-refund .refuned-high {
     align-items: start;
@@ -8033,6 +8078,13 @@ form.note-denied button:hover {
     width: 1628px; } }
 
 @media screen and (max-width: 768px) {
+  .main__revenue-detail {
+    flex-direction: column-reverse; }
+  .main__revenue-detail .revenue-details,
+  .main__revenue-detail .box__circle-chart {
+    width: 100%; }
+  .main__revenue-detail .box__circle-chart {
+    margin-bottom: 30px; }
   .container-admin .list-user,
   .container-admin .list-job {
     overflow-x: scroll;
@@ -8053,11 +8105,14 @@ form.note-denied button:hover {
     align-self: unset;
     justify-content: start;
     padding-left: 6px; }
+  .container-admin .box__dasboard-job {
+    flex-direction: column-reverse; }
   .container-admin .chart-job {
     width: 95%;
     height: unset; }
   .total-job__detail {
-    width: 95%; } }
+    width: 95%;
+    margin-bottom: 30px; } }
 
 @media screen and (max-width: 600px) {
   .main__revenue-detail {
@@ -8085,7 +8140,9 @@ form.note-denied button:hover {
   .container-admin .success-payment__history .main__payment-history {
     width: 750px; }
   .container-admin .user-chart #pieChart {
-    height: 300px !important; } }
+    height: 300px !important; }
+  .container-admin .chart-job, .total-job__detail {
+    width: 100%; } }
 
 @media screen and (max-width: 415px) {
   .container-admin header .box-total {
@@ -8098,7 +8155,17 @@ form.note-denied button:hover {
   .revenue-chart #myChart {
     height: 300px !important; }
   .container-admin .main-job__circle-chart .box__circle-chart {
-    width: 95%; } }
+    width: 95%; }
+  .main__revenue-detail .box__circle-chart .circle-chart {
+    width: 180px;
+    height: 180px; }
+  .main__revenue-detail .box__circle-chart .circle-chart::after {
+    width: 120px;
+    height: 120px; }
+  .main__revenue-detail .box__circle-chart h1 {
+    font-size: 20px; }
+  .container-admin .user-chart #pieChart {
+    height: 260px !important; } }
 
 @media screen and (max-width: 376px) {
   .container-admin .user-chart #pieChart {
@@ -8113,8 +8180,8 @@ form.note-denied button:hover {
     height: 160px; }
   .main__revenue-detail .box__circle-chart .circle-chart::after,
   .container-admin .main-job__circle-chart .box__circle-chart .circle-chart::after {
-    width: 140px;
-    height: 140px; }
+    width: 100px;
+    height: 100px; }
   .container-admin .detail-revenue {
     width: 95%; }
   .container-admin .detail-revenue h1,
@@ -8729,6 +8796,11 @@ button#moveTopBtn {
   padding: 8px 10px;
   border-bottom: 1px solid #ffffff1a; }
 
+.down__tools li a {
+  width: 100%;
+  display: block;
+  padding: unset; }
+
 .down__tools {
   height: unset; }
 
@@ -8844,7 +8916,10 @@ button#moveTopBtn {
   display: block; }
 
 .down__user li a {
-  color: #a6a6a6; }
+  color: #a6a6a6;
+  padding: unset;
+  display: block;
+  width: 100%; }
 
 .down__user li:hover {
   background-color: #414042; }

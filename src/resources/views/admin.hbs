@@ -65,7 +65,7 @@
                 <p class="total-refund" data-total-refuned="{{totalRefund}}">Total Refunded Amount: <b>-$ {{totalRefund}}</b></p>
             </div>
             <div class="box__circle-chart">
-                <h1>This Month's Revenue</h1>
+                <h1>This month's revenue for the year</h1>
                 <div class="circle-chart">
                     <div class="content"></div>
                 </div>
@@ -248,76 +248,78 @@
         {{/each}}
     </div>
     </div>
-    <div id="user-chart" class="user-chart" data-count-company="{{countCompany}}" data-count-user="{{countUser}}">
-        <h1><span class="material-symbols-outlined">donut_small</span> Doughnut Chart user</h1>
-        <canvas id="pieChart"></canvas>
-        <div class="percentage-bar">
-            <h2>Summary</h2>
-            <div class="frame-percent">
-                <div class="percent-user">
-                    <span class="data-count-user"></span>
+    <div class="box__dasboard-user">
+        <div id="user-chart" class="user-chart" data-count-company="{{countCompany}}" data-count-user="{{countUser}}">
+            <h1><span class="material-symbols-outlined">donut_small</span> Doughnut Chart user</h1>
+            <canvas id="pieChart"></canvas>
+            <div class="percentage-bar">
+                <h2>Summary</h2>
+                <div class="frame-percent">
+                    <div class="percent-user">
+                        <span class="data-count-user"></span>
+                    </div>
+                </div>
+                <div class="frame-percent">
+                    <div class="percent-company">
+                        <span class="data-count-company"></span>
+                    </div>
                 </div>
             </div>
-            <div class="frame-percent">
-                <div class="percent-company">
-                    <span class="data-count-company"></span>
+        </div>
+        <div id="data-table-user" class="list-user">
+            <h1><i class="bi bi-table"></i> Data Table User</h1>
+            <div class="header__list-user">
+                <span>Full Name</span>
+                <span class="role">Type User</span>
+                <span>Email</span>
+                <span class="phone">Phone</span>
+                <span class="action">Action</span>
+            </div>
+            {{#each listUser}}
+            <div class="body__list-user">
+                <span><img src="{{getAvatar this}}" alt="">{{this.fullname}}</span>
+                <span class="role">{{this.role}}</span>
+                <span>{{this.email}}</span>
+                <span class="phone">{{this.phone}}</span>
+                <div class="action">
+                    <span class="edit-user"><i class="bi bi-gear"></i></span>
+                    <form action="/admin/deleteUser/{{this._id}}?_method=DELETE" method="POST">
+                        <button class="remove-user" type="button"><i class="bi bi-trash3"></i></button>
+                    </form>
                 </div>
+            <form class="box__edit-user" action="/admin/updateUser/{{this._id}}?_method=PUT" method="POST">
+                <h1>Edit For {{this.fullname}}</h1>
+                <div class="main__edit-user">
+                    <label for="fullname__{{this._id}}">Full Name</label>
+                    <input type="text" name="fullname" id="fullname__{{this._id}}" value="{{this.fullname}}" placeholder="{{this.fullname}}">
+                </div>
+                <div class="main__edit-user">
+                    <label for="password__{{this._id}}">Password</label>
+                    <input type="password" name="password" id="password__{{this._id}}" placeholder="**********">
+                </div>
+                <div class="main__edit-user">
+                    <label for="email__{{this._id}}">Email</label>
+                    <input type="text" name="email" id="email__{{this._id}}"  value="{{this.email}}" placeholder="{{this.email}}">
+                </div>
+                <div class="main__edit-user">
+                    <label for="phone__{{this._id}}">Phone</label>
+                    <input type="text" name="phone" id="phone__{{this._id}}"  value="{{this.phone}}" placeholder="{{this.phone}}">
+                </div>
+                <div class="main__edit-user main__checkbox">
+                    <input id="check-accept__{{this._id}}" type="checkbox" required>
+                    <label for="check-accept__{{this._id}}">Agree to the changes</label>
+                </div>
+                <div class="submit__edit-user">
+                    <button type="submit">Save Edit</button>
+                </div>
+            </form>
             </div>
-        </div>
-    </div>
-    <div id="data-table-user" class="list-user">
-        <h1><i class="bi bi-table"></i> Data Table User</h1>
-        <div class="header__list-user">
-            <span>Full Name</span>
-            <span class="role">Type User</span>
-            <span>Email</span>
-            <span class="phone">Phone</span>
-            <span class="action">Action</span>
-        </div>
-        {{#each listUser}}
-        <div class="body__list-user">
-            <span><img src="{{getAvatar this}}" alt="">{{this.fullname}}</span>
-            <span class="role">{{this.role}}</span>
-            <span>{{this.email}}</span>
-            <span class="phone">{{this.phone}}</span>
-            <div class="action">
-                <span class="edit-user"><i class="bi bi-gear"></i></span>
-                <form action="/admin/deleteUser/{{this._id}}?_method=DELETE" method="POST">
-                    <button class="remove-user" type="button"><i class="bi bi-trash3"></i></button>
-                </form>
-            </div>
-        <form class="box__edit-user" action="/admin/updateUser/{{this._id}}?_method=PUT" method="POST">
-            <h1>Edit For {{this.fullname}}</h1>
-            <div class="main__edit-user">
-                <label for="fullname__{{this._id}}">Full Name</label>
-                <input type="text" name="fullname" id="fullname__{{this._id}}" value="{{this.fullname}}" placeholder="{{this.fullname}}">
-            </div>
-            <div class="main__edit-user">
-                <label for="password__{{this._id}}">Password</label>
-                <input type="password" name="password" id="password__{{this._id}}" placeholder="**********">
-            </div>
-            <div class="main__edit-user">
-                <label for="email__{{this._id}}">Email</label>
-                <input type="text" name="email" id="email__{{this._id}}"  value="{{this.email}}" placeholder="{{this.email}}">
-            </div>
-            <div class="main__edit-user">
-                <label for="phone__{{this._id}}">Phone</label>
-                <input type="text" name="phone" id="phone__{{this._id}}"  value="{{this.phone}}" placeholder="{{this.phone}}">
-            </div>
-            <div class="main__edit-user main__checkbox">
-                <input id="check-accept__{{this._id}}" type="checkbox" required>
-                <label for="check-accept__{{this._id}}">Agree to the changes</label>
-            </div>
-            <div class="submit__edit-user">
-                <button type="submit">Save Edit</button>
-            </div>
-        </form>
-        </div>
-        {{/each}}
-        <div class="pagination" style="padding-top: 20px; width: 100%; border-top: 1px solid #CACACA">
-            {{#each pages}}
-            <a href="/admin?page={{this}}#data-table-user" data-page-user="{{this}}">{{this}}</a>
             {{/each}}
+            <div class="pagination" style="padding-top: 20px; width: 100%; border-top: 1px solid #CACACA">
+                {{#each pages}}
+                <a href="/admin?page={{this}}#data-table-user" data-page-user="{{this}}">{{this}}</a>
+                {{/each}}
+            </div>
         </div>
     </div>
     <div id="job" class="main-job__circle-chart">
@@ -346,24 +348,26 @@
             </div>
         </div>
     </div>
-    <div class="chart-job"
-    data-job-count="{{jobCount}}"
-    data-postjob-count="{{countPostJob}}"
-    data-adsjob-count="{{countPrioritize}}"
-    data-lockedjob-count="{{lockedJobCount}}">
-    <h1><i class="bi bi-bar-chart-fill"></i> Bar Chart Total Jobs</h1>
-        <canvas id="jobChart" width="400" height="200"></canvas>
-    </div>
-    <div class="total-job__detail">
-        <h1>Detail Jobs</h1>
-        <p class="job-available"></p>
-        <p class="available">Total Available Jobs</p>
-        <p class="total-jobs">Total Jobs: <b>{{jobCount}} Jobs</b></p>
-        <p class="adsjob">Advertised Jobs: <b>{{countPrioritize}} Jobs</b></p>
-        <p class="highpayingjob">High Paying Jobs: <b>{{countPostJob}} Jobs</b></p>
-        <p class="normaljob"></p>
-        <p class="locked-jobs">Locked Jobs: <b>-{{lockedJobCount}} Jobs</b></p>
-    </div>
+   <div class="box__dasboard-job">
+        <div class="chart-job"
+            data-job-count="{{jobCount}}"
+            data-postjob-count="{{countPostJob}}"
+            data-adsjob-count="{{countPrioritize}}"
+            data-lockedjob-count="{{lockedJobCount}}">
+            <h1><i class="bi bi-bar-chart-fill"></i> Bar Chart Total Jobs</h1>
+                <canvas id="jobChart" width="400" height="200"></canvas>
+        </div>
+        <div class="total-job__detail">
+            <h1>Detail Jobs</h1>
+            <p class="job-available"></p>
+            <p class="available">Total Available Jobs</p>
+            <p class="total-jobs">Total Jobs: <b>{{jobCount}} Jobs</b></p>
+            <p class="adsjob">Advertised Jobs: <b>{{countPrioritize}} Jobs</b></p>
+            <p class="highpayingjob">High Paying Jobs: <b>{{countPostJob}} Jobs</b></p>
+            <p class="normaljob"></p>
+            <p class="locked-jobs">Locked Jobs: <b>-{{lockedJobCount}} Jobs</b></p>
+        </div>
+   </div>
     <div id="data-table-jobs" class="list-job">
         <h1><i class="bi bi-table"></i> Data Table Jobs</h1>
         <div class="header__list-job">
@@ -498,8 +502,8 @@ var revenueData = {
         datasets: [{
             label: 'Revenue',
             data: monthlyRevenues,
-            backgroundColor: 'rgba(0,114,188,0.7)',
-            borderColor: 'rgba(0,114,188,0.7)',
+            backgroundColor: '#0095ff',
+            borderColor: '#0095ff',
             borderWidth: 1
         }]
     };
@@ -699,10 +703,10 @@ var dataCountCompany = parseInt(document.querySelector('.user-chart').getAttribu
 console.log(dataCountUser , dataCountCompany)
 var ctx = document.getElementById('pieChart').getContext('2d');
 var data = {
-    labels: ['User', 'Company'],
+    labels: ['User (Normal)', 'User (Company)'],
     datasets: [{
         data: [dataCountUser, dataCountCompany],
-        backgroundColor: ['rgba(254,210,0,0.5)', 'rgba(0,114,188,0.5)']
+        backgroundColor: ['#0095ff', '#ffffff']
     }]
 };
 var pieChart = new Chart(ctx, {
@@ -721,7 +725,7 @@ textDataCountCompany.innerHTML = companyPercentage.toFixed(2) + '%';
 // chart circle current month
 var percentageCurrent = (totalCurrentMonth / totalYears) * 100;
 var circleChartCurrent = document.querySelector('.main__revenue-detail .circle-chart');
-circleChartCurrent.style.background = `conic-gradient(from 0deg, rgba(71,139,214,0.8) 0%, rgba(37,216,211,0.8) ${percentageCurrent}%, lightgray ${percentageCurrent}%, lightgray 100%)`;
+circleChartCurrent.style.background = `conic-gradient(from 0deg, #0095ff 0%, #0095ff ${percentageCurrent}%, #004270 ${percentageCurrent}%, #004270 100%)`;
 var contentCurrent = document.querySelector('.main__revenue-detail .circle-chart .content');
 contentCurrent.innerHTML = parseFloat(percentageCurrent.toFixed(2)) + '%';
 // pagination list user
@@ -775,10 +779,10 @@ var chart = new Chart(ctx, {
                 label: 'Total Of All Jobs',
                 data: [advertisedJobs, paidJobs, otherJobs, blockedJob],
                 backgroundColor: [
-                    'rgba(255, 206, 86, 0.5)',
-                    'rgba(255,99,132,0.5)',
-                    'rgba(75, 192, 192, 0.5)',
-                    'rgba(0, 114, 188, 0.5)'
+                    '#0095ff',
+                    '#0095ff',
+                    '#0095ff',
+                    '#0095ff'
                 ]
             }
         ]
@@ -805,7 +809,7 @@ var chart = new Chart(ctx, {
                         mode: 'horizontal',
                         scaleID: 'y',
                         value: totalJobs,
-                        borderColor: 'rgba(255, 0, 0, 0.2)',
+                        borderColor: '#004270',
                         borderWidth: 2,
                         label: {
                             content: 'Total of all jobs: ' + totalJobs + ' Jobs',

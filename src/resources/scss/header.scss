@@ -125,6 +125,11 @@
     padding: 8px 10px;
     border-bottom: 1px solid #ffffff1a;
 }
+.down__tools li a{
+    width: 100%;
+    display: block;
+    padding: unset;
+}
 .down__tools{
     height: unset;
 }
@@ -242,6 +247,9 @@
 }
 .down__user li a{
     color: #a6a6a6;
+    padding: unset;
+    display: block;
+    width: 100%;
 }
 .down__user li:hover {
     background-color: #414042;

@@ -260,7 +260,7 @@ class AdminController {
       role: { $in: ["user", "company"] },
     });
     var page = req.query.page;
-    var PAGE_SIZE = 8;
+    var PAGE_SIZE = 6;
     var total = Math.ceil(count / PAGE_SIZE);
     const pages = [];
     for (let i = 1; i <= total; i++) {

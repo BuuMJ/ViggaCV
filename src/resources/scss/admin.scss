@@ -19,14 +19,14 @@
     cursor: pointer;
 }
 .container-admin header{
-    width: 100%;
+    width: 95%;
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-bottom: 50px;
 }
 .container-admin header .box-total{
-    background-image: linear-gradient( 63.1deg,  rgba(5,23,111,1) 16.4%, rgba(24,95,240,1) 64.5% );
+    background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,46 +35,47 @@
     border-radius: 5px;
     width: 23%;
     box-shadow: 0 5px 10px rgba(0,0,0,0.04);
+    color: black;
 }
-.container-admin header .box__total-user{
-    background-image: linear-gradient( 109.6deg,  rgba(255,115,68,1) 11.2%, rgba(244,255,32,1) 100.6% );
-}
-.container-admin header .box__total-thismonth{
-    background-image: linear-gradient( 132.6deg,  rgba(71,139,214,1) 23.3%, rgba(37,216,211,1) 84.7% );
-}
-.container-admin header .box__total-job{
-    background-image: radial-gradient( circle farthest-corner at 24.7% 28.8%,  rgba(247,183,29,1) 1.9%, rgba(253,239,150,1) 97.7% );
-}
+// .container-admin header .box__total-user{
+//     background-image: linear-gradient( 109.6deg,  rgba(255,115,68,1) 11.2%, rgba(244,255,32,1) 100.6% );
+// }
+// .container-admin header .box__total-thismonth{
+//     background-image: linear-gradient( 132.6deg,  rgba(71,139,214,1) 23.3%, rgba(37,216,211,1) 84.7% );
+// }
+// .container-admin header .box__total-job{
+//     background-image: radial-gradient( circle farthest-corner at 24.7% 28.8%,  rgba(247,183,29,1) 1.9%, rgba(253,239,150,1) 97.7% );
+// }
 .container-admin header .box-total .title{
     margin-bottom: 6px;
     font-size: 18px;
-    font-weight: 550;
-    color: white;
+    font-weight: 500;
+    color: $textadmincolor;
     text-transform: capitalize;
 }
 .container-admin header .box-total .total-content{
     font-size: 24px;
     font-weight: 600;
-    color: white;
+    color: $btncolor;
     margin-bottom: 6px;
 }
 .container-admin header .box-total .view-detail__total{
-    color: white;
     text-decoration: none;
     font-size: 16px;
+    color: $textadmincolor;
 }
 .container-admin header .box-total .view-detail__total:hover{
-    text-decoration: underline;
+    color: $btncolor
 }
 .container-admin .container-revenue{
     display: flex;
-    flex-direction: row;
+    flex-direction: column-reverse;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
     width: 95%;
 }
 .revenue-chart{
-    width: 70%;
+    width: 100%;
     height: 720px;
     background-color: white;
     border-radius: 5px;
@@ -89,6 +90,7 @@
     width: 100%;
     font-size: 24px;
     font-weight: 600;
+    color: $thirdcolor;
     padding-bottom: 6px;
     border-bottom: 1px solid #CACACA;
 }
@@ -96,11 +98,12 @@
     font-size: 16px;
 }
 .main__revenue-detail{
-    width: 25%;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
+    margin-bottom: 30px;
 }
 .main__revenue-detail .revenue-details,
 .total-job__detail{
@@ -108,14 +111,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: $thirdcolor;
     border-radius: 5px;
     width: 100%;
     padding: 20px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.04);
+    color: white;
 }
 .total-job__detail{
-    width: 25%;
+    width: 30%;
+    height: 461px;
 }
 .main__revenue-detail .box__circle-chart,
 .container-admin .main-job__circle-chart .box__circle-chart{
@@ -130,6 +135,15 @@
     padding: 20px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.04);
 }
+.main__revenue-detail .box__circle-chart{
+    color: $textadmincolor;
+}
+.main__revenue-detail .revenue-details,
+.main__revenue-detail .box__circle-chart{
+    width: 40%;
+    height: 354px;
+    margin: unset;
+}
 .container-admin .main-job__circle-chart .box__circle-chart{
     width: 21%;
 }
@@ -141,6 +155,10 @@
     margin-bottom: 20px;
     border-bottom: 1px solid #CACACA;
     padding-bottom: 6px;
+    text-transform: capitalize;
+}
+.main__revenue-detail .box__circle-chart h1{
+    color: $btncolor;
 }
 .container-admin .main-job__circle-chart .box__circle-chart h1{
     font-size: 22px;
@@ -159,16 +177,17 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
     z-index: 2;
+    color: #5f5f5f;
   }
   .main__revenue-detail .box__circle-chart .circle-chart::after,
   .container-admin .main-job__circle-chart .box__circle-chart .circle-chart::after{
     position: absolute;
     content: '';
-    width: 170px;
-    height: 170px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     top: 50%;
     left: 50%;
@@ -181,6 +200,9 @@
     margin-bottom: unset;
     margin-top: 16px;
     width: 100%;
+  }
+  .main__revenue-detail .box__circle-chart p b{
+    color: $btncolor;
   }
 .revenue-details .title,
 .total-job__detail h1{
@@ -218,6 +240,12 @@
     padding: 12px 0 8px 0;
     border-bottom: 1px solid #CACACA;
 }
+.total-job__detail p.adsjob,
+.total-job__detail p.highpayingjob,
+.total-job__detail p.normaljob,
+.total-job__detail p.total-jobs{
+    margin-bottom: 6px;
+}
 .revenue-details p.total-refund,
 .total-job__detail p.locked-jobs{
     border-bottom: unset;
@@ -227,7 +255,7 @@
     color: #FC0412;
 }
 .container-admin .detail-revenue{
-    display: flex;
+    display: none;
     flex-direction: row;
     justify-content: space-around;
     align-items: start;
@@ -248,6 +276,9 @@
     margin-bottom: 20px;
     padding-bottom: 6px;
     border-bottom: 1px solid #cacaca;
+}
+.container-admin .chart-job h1{
+    color: $thirdcolor;
 }
 .container-admin .detail-revenue .content__total-quarterly{
     display: flex;
@@ -286,18 +317,28 @@
 .container-admin .detail-revenue .content__total-quarterly .down__fourthquarterly{
     display: none;
 }
+.container-admin .box__dasboard-user{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    width: 95%;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
 .container-admin .user-chart{
-    width: 25%;
+    width: 28%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
     padding: 20px;
-    background-color: white;
+    height: 621px;
+    background-color: $thirdcolor;
     border-radius: 5px;
-    margin-top: 30px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.04);
     align-self: flex-start;
+    color: white;
 }
 .container-admin .user-chart h1{
     font-size: 24px;
@@ -309,6 +350,7 @@
     display: flex;
     justify-content: start;
     align-items: center;
+    color: white;
 }
 .container-admin .user-chart h1 span{
     margin-right: 4px;
@@ -329,35 +371,29 @@
     width: 100%;
     height: 20px;
     border-radius: 10px;
-    border: 1px solid #CACACA;
+    border: 1px solid $titlecolor;
     margin: 16px 0;
 }
 .container-admin .user-chart .percentage-bar .percent-user {
-    background-color: rgba(254,210,0,0.5);
+    background-color: $btncolor;
     height: 100%;
     border-radius: 10px;
     position: relative;
 }
-.container-admin .user-chart .percentage-bar .percent-user .data-count-user{
+.container-admin .user-chart .percentage-bar .percent-user .data-count-user,
+.container-admin .user-chart .percentage-bar .percent-company .data-count-company{
     position: absolute;
-    top: -96%;
+    top: -110%;
     right: 0;
     font-size: 14px;
     font-weight: 600;
 }
 
 .container-admin .user-chart .percentage-bar .percent-company {
-    background-color: rgba(0,114,188,0.5);
+    background-color: white;
     height: 100%;
     border-radius: 10px;
     position: relative;
-}
-.container-admin .user-chart .percentage-bar .percent-company .data-count-company{
-    position: absolute;
-    top: -96%;
-    right: 0;
-    font-size: 14px;
-    font-weight: 600;
 }
 .container-admin .list-user,
 .container-admin .list-job{
@@ -378,6 +414,8 @@
 }
 .container-admin .list-user{
     position: relative;
+    width: 68%;
+    margin-top: unset;
 }
 .container-admin .list-user h1,
 .container-admin .list-job h1{
@@ -386,7 +424,8 @@
     font-size: 24px;
     font-weight: 600;
     margin-bottom: unset;
-    background-color: rgba(0,114,188,0.4);
+    color: white;
+    background-color: $thirdcolor;
 }
 .container-admin .list-user .header__list-user,
 .container-admin .list-user .body__list-user,
@@ -398,6 +437,9 @@
     justify-content: start;
     align-items: center;
     padding: 0 12px;
+}
+.container-admin .list-user .body__list-user{
+    border-bottom: 1px solid #CACACA;
 }
 .container-admin .list-user .body__list-user .box__edit-user{
     position: absolute;
@@ -526,6 +568,7 @@
 .container-admin .list-user .header__list-user span,
 .container-admin .list-user .body__list-user span{
     width: 32%;
+    padding: 0 6px 0 0;
 }
 .container-admin .list-user .header__list-user span,
 .container-admin .list-job .header__list-job span{
@@ -540,7 +583,8 @@
     width: 12%;
 }
 .container-admin .list-user .body__list-user span{
-    padding: 12px 0;
+    padding: 12px 6px 12px 0;
+    word-wrap: break-word;
 }
 .container-admin .list-job .body__list-job span{
     padding: 0;
@@ -597,7 +641,7 @@
     left: 0;
     width: 12px;
     height: 100%;
-    background-color: rgba(0, 114, 188, 0.4);
+    background-color: $thirdcolor;
 }
 .container-admin .material-symbols-outlined {
     font-variation-settings:
@@ -606,16 +650,24 @@
     'GRAD' 0,
     'opsz' 48
 }
+.container-admin .box__dasboard-job{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    width: 95%;
+    margin-top: 50px;
+}
 .container-admin .chart-job{
     width: 65%;
     padding: 20px 30px;
     border-radius: 5px;
     background-color: white;
-    margin-top: 30px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.04);
 }
 .container-admin .main-job__circle-chart{
-    display: flex;
+    display: none;
     justify-content: space-around;
     align-items: center;
     width: 100%;
@@ -638,7 +690,7 @@
 }
 .container-admin .detail-refuned .box__request-refund .refuned-ads,
 .container-admin .detail-refuned .box__request-refund .refuned-high{
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -790,6 +842,7 @@ form.note-denied button:hover{
 .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span{
     width: 16%;
     font-weight: 600;
+    padding: 0 6px;
 }
 .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span{
     font-weight: unset;
@@ -818,12 +871,12 @@ form.note-denied button:hover{
     transition: .5s;
 }
 .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.action button.refund-success{
-    border: 1px solid #05CCFC;
-    color: #05CCFC;
+    border: 1px solid $btncolor;
+    color: $btncolor;
 }
 .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.action button.refund-success:hover{
     color: white;
-    background-color: #05CCFC;
+    background-color: $btncolor;
 }
 .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads span.action button.denied{
     border: 1px solid #FC0412;
@@ -900,13 +953,13 @@ form.note-denied button:hover{
     .main__revenue-detail{
         width: 100%;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         margin-bottom: 30px;
     }
     .main__revenue-detail .revenue-details,
     .main__revenue-detail .box__circle-chart{
-        width: 45%;
+        width: 48%;
     }
     .main__revenue-detail .box__circle-chart{
         margin-top: unset;
@@ -930,9 +983,11 @@ form.note-denied button:hover{
         width: 50%;
     }
     .container-admin .user-chart{
-        width: 95%;
+        width: 100%;
         flex-wrap: wrap;
         flex-direction: row;
+        height: unset;
+        margin-bottom: 30px;
         justify-content: space-between;
     }
     .container-admin .user-chart h1{
@@ -947,7 +1002,7 @@ form.note-denied button:hover{
         align-self: center;
     }
     .container-admin .list-user{
-        width: 95%;
+        width: 100%;
     }
     .container-admin .main-job__circle-chart{
         flex-wrap: wrap;
@@ -958,13 +1013,20 @@ form.note-denied button:hover{
     .container-admin .chart-job h1{
         margin-bottom: 40px;
     }
-    .container-admin .chart-job{
-        width: 55%;
+    // .container-admin .chart-job{
+    //     width: 55%;
+    //     height: 397px;
+    // }
+    // .total-job__detail{
+    //     width: 35%;
+    //     margin-top: 30px;
+    // }
+    .container-admin .chart-job,
+    .total-job__detail{
         height: 397px;
     }
-    .total-job__detail{
-        width: 35%;
-        margin-top: 30px;
+    .total-job__detail p.adsjob, .total-job__detail p.highpayingjob, .total-job__detail p.normaljob, .total-job__detail p.total-jobs{
+        margin: unset;
     }
     .container-admin .detail-refuned .box__request-refund .refuned-ads, 
     .container-admin .detail-refuned .box__request-refund .refuned-high{
@@ -978,6 +1040,16 @@ form.note-denied button:hover{
     }
 }
 @media screen and (max-width: 768px) {
+    .main__revenue-detail{
+        flex-direction: column-reverse;
+    }
+    .main__revenue-detail .revenue-details,
+    .main__revenue-detail .box__circle-chart{
+        width: 100%;
+    }
+    .main__revenue-detail .box__circle-chart{
+        margin-bottom: 30px;
+    }
     .container-admin .list-user,
     .container-admin .list-job{
         overflow-x: scroll;
@@ -1002,12 +1074,16 @@ form.note-denied button:hover{
         justify-content: start;
         padding-left: 6px;
     }
+    .container-admin .box__dasboard-job{
+        flex-direction: column-reverse;
+    }
     .container-admin .chart-job {
         width: 95%;
         height: unset;
     }
     .total-job__detail{
         width: 95%;
+        margin-bottom: 30px;
     }
 }
 @media screen and (max-width: 600px) {
@@ -1046,6 +1122,9 @@ form.note-denied button:hover{
     .container-admin .user-chart #pieChart{
         height: 300px !important;
     }
+    .container-admin .chart-job, .total-job__detail{
+        width: 100%;
+    }
 }
 @media screen and (max-width: 415px) {
     .container-admin header .box-total{
@@ -1064,6 +1143,20 @@ form.note-denied button:hover{
     .container-admin .main-job__circle-chart .box__circle-chart{
         width: 95%;
     }
+    .main__revenue-detail .box__circle-chart .circle-chart{
+        width: 180px;
+        height: 180px;
+    }
+    .main__revenue-detail .box__circle-chart .circle-chart::after{
+        width: 120px;
+        height: 120px;
+    }
+    .main__revenue-detail .box__circle-chart h1{
+        font-size: 20px;
+    }
+    .container-admin .user-chart #pieChart{
+        height: 260px !important;
+    }
 }
 @media screen and (max-width: 376px) {
     .container-admin .user-chart #pieChart{
@@ -1081,8 +1174,8 @@ form.note-denied button:hover{
     }
     .main__revenue-detail .box__circle-chart .circle-chart::after, 
     .container-admin .main-job__circle-chart .box__circle-chart .circle-chart::after{
-        width: 140px;
-        height: 140px;
+        width: 100px;
+        height: 100px;
     }
     .container-admin .detail-revenue{
         width: 95%;
