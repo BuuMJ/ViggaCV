@@ -86,7 +86,7 @@
   <div class="main-jobs">
     <div class="card-jobs">
       {{#each job}}
-      <div class="card-job">
+      <div class="card-job" data-href-cardjob="{{this._id}}">
         <div class="avatar-company">
           <img src="{{getAvatarJoba this}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
         </div>
@@ -312,6 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 var containerJobs = document.querySelectorAll('.card-job');
 containerJobs.forEach(function(cardJob){
+  cardJob.style.cursor = 'pointer';
   var textTimeJob = cardJob.querySelector('.job-time');
   var time = textTimeJob.getAttribute('data-time');
   var checkTime = new Date(time);
@@ -343,6 +344,10 @@ containerJobs.forEach(function(cardJob){
   else{
     textHotJob.style.display = 'none';
   }
+  const getLinkCardjob = cardJob.getAttribute('data-href-cardjob');
+  cardJob.addEventListener('click',()=>{
+    window.location.href = `/job/${getLinkCardjob}`;
+  })
 });
 </script>
 

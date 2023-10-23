@@ -14,7 +14,7 @@
             <div class="box__saved-job">
                 <span class="list__job-saved">List: {{count}} Jobs Saved</span>
                 {{#each listjob}}
-                    <div class="card__job-saved">
+                    <div class="card__job-saved" data-href-saved="{{this._id}}">
                         <h1>{{this.jobname}}</h1>
                         <div class="job-saved__company">
                             <img src="/{{this.avatar}}" alt="">
@@ -36,7 +36,7 @@
             <div class="box__saved-job box__viewed-job">
                 <span class="list__job-saved">List: {{countViewed}} jobs you just viewed</span>
                 {{#each listViewed}}
-                    <div class="card__job-saved">
+                    <div class="card__job-saved card__job-viewed" data-href-viewed="{{this._id}}">
                         <h1>{{this.jobname}}</h1>
                         <div class="job-saved__company">
                             <img src="/{{this.avatar}}" alt="">
@@ -61,7 +61,7 @@
             <div class="box__saved-job box__applied-job">
                 <span class="list__job-saved">List: {{countApply}} jobs you just applied</span>
                 {{#each listApply}}
-                    <div class="card__job-saved">
+                    <div class="card__job-saved card__job-apply" data-href-apply="{{this._id}}">
                         <h1>{{this.jobname}}</h1>
                         <div class="job-saved__company">
                             <img src="/{{this.avatar}}" alt="">
@@ -90,8 +90,12 @@
     document.addEventListener('DOMContentLoaded', function() {
         var containerJobsSaved = document.querySelectorAll('.card__job-saved');
         containerJobsSaved.forEach(function(cardJobSaved){
-            var textJobSaved = cardJobSaved.querySelector('.check-hot');
-            var checkHotSaved = textJobSaved.getAttribute('data-hot-saved');
+            const textJobSaved = cardJobSaved.querySelector('.check-hot');
+            const checkHotSaved = textJobSaved.getAttribute('data-hot-saved');
+            const getLinkSaved = cardJobSaved.getAttribute('data-href-saved');
+            cardJobSaved.addEventListener('click',()=>{
+                window.location.href = `/job/${getLinkSaved}`;
+            });
             if(checkHotSaved === 'true'){
                 textJobSaved.innerHTML = '<i class="bi bi-fire"></i> Hot';
                 textJobSaved.style.display = 'block';
@@ -101,6 +105,22 @@
                 textJobSaved.style.display = 'none';
             }
         });
+        var containerJobsViewed = document.querySelectorAll('.card__job-saved.card__job-viewed');
+            console.log(containerJobsViewed)
+            containerJobsViewed.forEach(function(cardJobViewed){
+               const getLinkViewed = cardJobViewed.getAttribute('data-href-viewed');
+                console.log(getLinkViewed)
+                cardJobViewed.addEventListener('click',()=>{
+                    window.location.href = `/job/${getLinkViewed}`;
+                });
+            });
+        var containerJobsApply = document.querySelectorAll('.card__job-saved.card__job-apply');
+        containerJobsApply.forEach(function(cardJobApply){
+                const getLinkApply = cardJobApply.getAttribute('data-href-apply');
+                cardJobApply.addEventListener('click',()=>{
+                    window.location.href = `/job/${getLinkApply}`; 
+            });
+            });
         var clickSavedJob = document.querySelector('.saved-job');
         var clickViewedJob = document.querySelector('.viewed-job');
         var clickApplyJob = document.querySelector('.applied-job');
@@ -113,7 +133,7 @@
         var applyClicked = false;
         window.addEventListener('DOMContentLoaded', (event) => {
             savedClicked = true;
-            clickSavedJob.style.cssText = 'border-bottom: 3px solid #0072bc; color: #fed200; cursor: default;';
+            clickSavedJob.style.cssText = 'border-bottom: 3px solid #0095ff; color: #0095ff; cursor: default;';
             containerViewedJob.style.display = 'none';
             containerApllyJob.style.display = 'none';
             containerSavedJob.style.display = 'flex';
@@ -125,7 +145,7 @@
                 applyClicked = false;
                 containerViewedJob.style.display = 'none';
                 containerApllyJob.style.display = 'none';
-                clickSavedJob.style.cssText = 'border-bottom: 3px solid #0072bc; color: #fed200; cursor: default;';
+                clickSavedJob.style.cssText = 'border-bottom: 3px solid #0095ff; color: #0095ff; cursor: default;';
                 clickApplyJob.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
                 clickViewedJob.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
                 loadingYourJob.style.display = 'grid';
@@ -145,7 +165,7 @@
                 containerSavedJob.style.display = 'none';
                 containerApllyJob.style.display = 'none';
                 clickSavedJob.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
-                clickViewedJob.style.cssText = 'border-bottom: 3px solid #0072bc; color: #fed200; cursor: default;';
+                clickViewedJob.style.cssText = 'border-bottom: 3px solid #0095ff; color: #0095ff; cursor: default;';
                 clickApplyJob.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
                 loadingYourJob.style.display = 'grid';
                 setTimeout(function(){
@@ -165,7 +185,7 @@
                 containerViewedJob.style.display = 'none';
                 clickSavedJob.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
                 clickViewedJob.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
-                clickApplyJob.style.cssText = 'border-bottom: 3px solid #0072bc; color: #fed200; cursor: default;';
+                clickApplyJob.style.cssText = 'border-bottom: 3px solid #0095ff; color: #0095ff; cursor: default;';
                 loadingYourJob.style.display = 'grid';
                 setTimeout(function(){
                     loadingYourJob.style.display = 'none';

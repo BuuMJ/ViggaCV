@@ -742,7 +742,7 @@ header.job-search{
     display: flex;
     justify-content: center;
     align-items: center;
-    color: $primarycolor;
+    color: $btncolor;
     font-size: 18px;
 }
 header.job-search .best-companyFL {
@@ -1337,7 +1337,7 @@ header.job-search .best-companyFL {
     // background: url('/img/bgjobsave.jpeg') center / cover no-repeat;
     background: linear-gradient(269.85deg, #0072bc 0%, #121212 54.89%);
     padding: 0 30px;
-    color: $primarycolor;
+    color: white;
 }
 .container__job-saved .main__job-saved section{
     display: flex;
@@ -1367,8 +1367,8 @@ header.job-search .best-companyFL {
     text-align: center;
 }
 .container__job-saved .main__job-saved section .header-section span.saved-job{
-    border-bottom: 3px solid $secondarycolor;
-    color: $primarycolor;
+    border-bottom: 3px solid $btncolor;
+    color: $btncolor;
 }
 .container__job-saved .main__job-saved section .box__saved-job{
     display: flex;

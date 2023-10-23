@@ -80,6 +80,9 @@
     text-decoration: none;
     padding: 25px 0;
 }
+.navbar-center a:hover{
+    color: white;
+}
 .navbar-center ul {
     margin: unset;
 }
@@ -137,6 +140,7 @@
 .drop-down__company:hover,
 .drop-down__job:hover{
     cursor: pointer;
+    color: white;
 }
 .drop-down__tools:hover .down__tools,
 .drop-down__company:hover .down__company,

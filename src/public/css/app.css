@@ -2225,7 +2225,7 @@ header.job-search {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fed200;
+  color: #0095ff;
   font-size: 18px; }
 
 header.job-search .best-companyFL {
@@ -2816,7 +2816,7 @@ header.job-search .best-companyFL .background-image {
   height: 220px;
   background: linear-gradient(269.85deg, #0072bc 0%, #121212 54.89%);
   padding: 0 30px;
-  color: #fed200; }
+  color: white; }
 
 .container__job-saved .main__job-saved section {
   display: flex;
@@ -2846,8 +2846,8 @@ header.job-search .best-companyFL .background-image {
   text-align: center; }
 
 .container__job-saved .main__job-saved section .header-section span.saved-job {
-  border-bottom: 3px solid #0072bc;
-  color: #fed200; }
+  border-bottom: 3px solid #0095ff;
+  color: #0095ff; }
 
 .container__job-saved .main__job-saved section .box__saved-job {
   display: flex;
@@ -8751,6 +8751,9 @@ button#moveTopBtn {
   text-decoration: none;
   padding: 25px 0; }
 
+.navbar-center a:hover {
+  color: white; }
+
 .navbar-center ul {
   margin: unset; }
 
@@ -8807,7 +8810,8 @@ button#moveTopBtn {
 .drop-down__tools:hover,
 .drop-down__company:hover,
 .drop-down__job:hover {
-  cursor: pointer; }
+  cursor: pointer;
+  color: white; }
 
 .drop-down__tools:hover .down__tools,
 .drop-down__company:hover .down__company,
