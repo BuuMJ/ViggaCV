@@ -702,6 +702,9 @@
     padding: 20px;
     position: relative;
 }
+.container-admin .detail-refuned .box__request-refund .refuned-high{
+    margin-bottom: unset;
+}
 form.note-denied{
     position: absolute;
     top: 50%;
@@ -766,12 +769,14 @@ form.note-denied button:hover{
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    width: 48%;
+    width: 100%;
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.04);
     padding: 20px;
     align-self: start;
+    margin-top: 50px;
+    margin-bottom: 30px;
 }
 .container-admin .detail-refuned .history-refuned h1,
 .container-admin .detail-refuned .refuned-ads h1,
@@ -891,7 +896,7 @@ form.note-denied button:hover{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 48%;
+    width: 100%;
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.04);
@@ -972,9 +977,6 @@ form.note-denied button:hover{
     .container-admin .detail-refuned .history-refuned,
     .container-admin .success-payment__history{
         width: 100%;
-    }
-    .container-admin .success-payment__history{
-        margin-top: 30px;
     }
     .container-admin .detail-revenue{
         flex-wrap: wrap;

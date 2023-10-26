@@ -334,7 +334,8 @@
   color: #121212; }
 
 .company-feature .header__company-feature span.hotcompany {
-  border-bottom: 4px solid #0095ff; }
+  border-bottom: 4px solid #0095ff;
+  color: #0095ff; }
 
 .custom-loader {
   width: 50px;
@@ -655,18 +656,21 @@
   width: 170px;
   border: none;
   outline: none;
-  background-color: #0095ff;
-  border: 1px solid #0095ff;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
   color: white;
   font-size: 20px;
   font-weight: 700;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  transition: .5s; }
+  transition: .5s;
+  border-left: unset; }
 
 .container-home .home-subscribe .box-subscribe label button:hover {
-  background-color: #048de6;
-  border: 1px solid #048de6; }
+  background-color: #0095ff;
+  color: #ff0000;
+  border: 1px solid #0095ff;
+  border-left: unset; }
 
 .container-home .home-jobs {
   display: flex;
@@ -3819,10 +3823,14 @@ button.btn-setting:active {
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   font-size: 20px;
-  font-weight: 700; }
+  font-weight: 700;
+  color: #0095ff;
+  transition: all .3s; }
 
 .btn-save:hover {
-  box-shadow: 1px 1px 50px rgba(0, 0, 0, 0.4); }
+  background-color: #0095ff;
+  color: white;
+  box-shadow: 1px 1px 50px #0095ff33; }
 
 #email-profile,
 #username-profile {
@@ -4074,12 +4082,12 @@ input#postal::-webkit-inner-spin-button {
 .btn-postleader-cancle,
 .btn-updateleader-cancle {
   outline: none;
-  border: 1px solid #fed200;
+  border: 1px solid #0095ff;
   height: 50%;
   width: 120px;
   font-size: 20px;
   font-weight: 600;
-  color: white;
+  color: #0095ff;
   background-color: transparent;
   border-radius: 10px; }
 
@@ -4102,7 +4110,8 @@ input#postal::-webkit-inner-spin-button {
 
 .btn-postjob:hover,
 .btn-update-leadership:hover {
-  background-color: rgba(255, 255, 255, 0.5); }
+  background-color: #0095ff;
+  color: white; }
 
 .listjobs ul,
 .listleadership ul {
@@ -4390,7 +4399,8 @@ ul.listpageleadership .active {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  position: relative; }
 
 .avatar-leadership img {
   border: 2px solid white;
@@ -4402,7 +4412,27 @@ ul.listpageleadership .active {
   position: relative;
   width: 120px;
   height: 120px;
-  cursor: pointer; }
+  cursor: pointer;
+  overflow: hidden; }
+
+.leadership-avatar::after {
+  position: absolute;
+  content: "Change Avatar";
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px;
+  width: 120px;
+  height: 60px;
+  bottom: 0;
+  left: 50%;
+  font-size: 14px;
+  transform: translateX(-50%); }
+
+.leadership-avatar:hover:after {
+  display: flex; }
 
 .avatar-leadership input {
   display: none; }
@@ -7772,6 +7802,9 @@ header.company-detail .background-company-detail {
   padding: 20px;
   position: relative; }
 
+.container-admin .detail-refuned .box__request-refund .refuned-high {
+  margin-bottom: unset; }
+
 form.note-denied {
   position: absolute;
   top: 50%;
@@ -7836,12 +7869,14 @@ form.note-denied button:hover {
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  width: 48%;
+  width: 100%;
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04);
   padding: 20px;
-  align-self: start; }
+  align-self: start;
+  margin-top: 50px;
+  margin-bottom: 30px; }
 
 .container-admin .detail-refuned .history-refuned h1,
 .container-admin .detail-refuned .refuned-ads h1,
@@ -7961,7 +7996,7 @@ form.note-denied button:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 48%;
+  width: 100%;
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.04);
@@ -8034,8 +8069,6 @@ form.note-denied button:hover {
   .container-admin .detail-refuned .history-refuned,
   .container-admin .success-payment__history {
     width: 100%; }
-  .container-admin .success-payment__history {
-    margin-top: 30px; }
   .container-admin .detail-revenue {
     flex-wrap: wrap; }
   .container-admin .detail-revenue .content__total-quarterly {

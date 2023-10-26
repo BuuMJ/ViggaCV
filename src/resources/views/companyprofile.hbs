@@ -253,7 +253,7 @@
             <div class="job-location">
                 <label for="joblocation">Job Locations</label>
                 <select id="joblocation" name="joblocation" required>
-                    <option selected>Select Your Location</option>
+                    <option value="" selected>Select Your Location</option>
                 </select>
             </div>
         </div>
@@ -271,7 +271,7 @@
             <label class="leadership-avatar" for="avatar-leadership"><img class="leadership-img"
                     src="{{getAvatarleadership leadership}}" alt=""></label>
             <input name="avatarleadership" type="file" id="avatar-leadership">
-            <label class="eidt__avatar-leadership" for="avatar-leadership">Change Avatar</label>
+            {{!-- <label class="eidt__avatar-leadership" for="avatar-leadership">Change Avatar</label> --}}
         </div>
         <div class="info-job">
             <label for="jobname">Name</label>
@@ -337,18 +337,6 @@ Andrew leads the strategic direction of the business with a dedicated and divers
             deleteForm.submit();
         }
     })
-    //function show categories 63 provinces
-document.addEventListener("DOMContentLoaded", function() {
-    var provinces = ["An Giang", "Bà Rịa-Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên-Huế", "Tiền Giang", "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"];
-    var select = document.getElementById("joblocation");
-    for (var i = 0; i < provinces.length; i++) {
-        var option = document.createElement("option");
-        option.text = provinces[i];
-        option.value = provinces[i];
-        select.appendChild(option);
-    }
-});
-
     // function get file from input tag
     document.querySelector('#header-profile-file-input').addEventListener('change', function () {
         var fileBackground = this.files[0];
@@ -682,23 +670,31 @@ document.addEventListener("DOMContentLoaded", function() {
             formBlockedJob.submit();
         })
     });
- var submitPostJob = document.querySelector('.btn-postjob');
-var textSalary = document.querySelector('#postjob .job-salary #salary-range');
-var formPostJob = document.querySelector('#postjob .postjob-cancle .btn-postjob');
-var alertSalary = document.querySelector('#postjob .job-salary .alert-salary');
-
-submitPostJob.addEventListener('click', (e) => {
-    var salaryValue = textSalary.value;
-    var salaryContent = parseInt(salaryValue, 10);
-    
-    if (salaryContent >= 4000) {
-        var isConfirmed = confirm('this job is over 4000$ you need to pay 30$ to be able to post this job.\nIf you agree, please click ok to go to the payment page.\nIf you want to edit the salary, please click cancel.');
-        if (!isConfirmed) {
-            e.preventDefault();
-        }
+        //function show categories 63 provinces
+document.addEventListener("DOMContentLoaded", function() {
+    var provinces = ["An Giang", "Bà Rịa-Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên-Huế", "Tiền Giang", "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"];
+    var select = document.getElementById("joblocation");
+    for (var i = 0; i < provinces.length; i++) {
+        var option = document.createElement("option");
+        option.text = provinces[i];
+        option.value = provinces[i];
+        select.appendChild(option);
     }
 });
-
+    var submitPostJob = document.querySelector('.btn-postjob');
+    var textSalary = document.querySelector('#postjob .job-salary #salary-range');
+    var formPostJob = document.querySelector('#postjob .postjob-cancle .btn-postjob');
+    var alertSalary = document.querySelector('#postjob .job-salary .alert-salary');
+submitPostJob.addEventListener('click', (e) => {
+        var salaryValue = textSalary.value;
+        var salaryContent = parseInt(salaryValue, 10);
+        if (salaryContent >= 4000) {
+            var isConfirmed = confirm('This job is over $4000. You need to pay $30 to be able to post this job.\nIf you agree, please click OK to go to the payment page.\nIf you want to edit the salary, please click Cancel.');
+            if (!isConfirmed) {
+                e.preventDefault();
+            }
+        }
+});
 textSalary.addEventListener('input', (e) => {
     var salaryValue = textSalary.value;
     var salaryContent = parseInt(salaryValue, 10);

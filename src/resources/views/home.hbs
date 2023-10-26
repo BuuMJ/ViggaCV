@@ -68,7 +68,7 @@
             <span class="title-toprecruiters">Top 5 recruitment companies</span>
             <div class="list-toprecruiters">
                 {{#each mostJobs}}
-                    <div class="card-toprecruiter">
+                    <div class="card-toprecruiter" data-href-five="{{this._id}}">
                         <div class="top__card-recruiter">
                             <span id="content-top__recruiter"><i class="bi bi-gem"></i> Top</span>
                         </div>
@@ -372,14 +372,21 @@ var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
         prevEl: ".box-hotjob .swiper-button-prev"
       }
     });
+     var topFiveCompany = document.querySelectorAll('.card-toprecruiter');
+    topFiveCompany.forEach(function (company){
+        const linkCompany = company.getAttribute('data-href-five');
+        company.addEventListener('click',()=>{
+            window.location.href = `/company/${linkCompany}`;
+        });
+    });
     var clickCompanyHot = document.querySelector('.company-feature .header__company-feature span.hotcompany');
     var boxCompanyHot = document.querySelector('.company-feature .box-hotcompany');
     var loadingFeatureCompany = document.querySelector('.company-feature .custom-loader');
     var clickJobHot = document.querySelector('.company-feature .header__company-feature span.hotjob');
     var boxJobHot = document.querySelector('.company-feature .box-hotjob');
     clickJobHot.addEventListener('click',()=>{
-        clickJobHot.style.cssText = 'border-bottom: 4px solid #0095ff;';
-        clickCompanyHot.style.cssText = 'border-bottom: unset;';
+        clickJobHot.style.cssText = 'border-bottom: 4px solid #0095ff; color: #0095ff;';
+        clickCompanyHot.style.cssText = 'border-bottom: unset; color: black;';
         boxCompanyHot.style.display = 'none';
         loadingFeatureCompany.style.display = 'grid';
         setTimeout(function(){
@@ -390,8 +397,8 @@ var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
         }, 1780);
     });
     clickCompanyHot.addEventListener('click',()=>{
-        clickCompanyHot.style.cssText = 'border-bottom: 4px solid #0095ff;';
-        clickJobHot.style.cssText = 'border-bottom: unser;';
+        clickCompanyHot.style.cssText = 'border-bottom: 4px solid #0095ff, color: #0095ff;';
+        clickJobHot.style.cssText = 'border-bottom: unset; color: black;';
         boxJobHot.style.display = 'none';
         loadingFeatureCompany.style.display = 'grid';
         setTimeout(function(){

@@ -359,6 +359,7 @@
 
 .company-feature .header__company-feature span.hotcompany {
     border-bottom: 4px solid $btncolor;
+    color: $btncolor;
 }
 
 // loading 
@@ -714,18 +715,21 @@
     width: 170px;
     border: none;
     outline: none;
-    background-color: $btncolor;
-    border: 1px solid $btncolor;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
     color: white;
     font-size: 20px;
     font-weight: 700;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     transition: .5s;
+    border-left: unset;
 }
 .container-home .home-subscribe .box-subscribe label button:hover{
-    background-color: #048de6;
-    border: 1px solid #048de6;
+    background-color: $btncolor;
+    color: #ff0000;
+    border: 1px solid $btncolor;
+    border-left: unset;
 }
 // full jobs
 .container-home .home-jobs{
