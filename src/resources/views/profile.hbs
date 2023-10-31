@@ -1,11 +1,11 @@
 {{#ifeq user 'user'}}
 <div class="main-profile">
     <div class="header-profile">
-        <div class="header-main-text">
+        {{!-- <div class="header-main-text">
             <span class="header-profile-primary">Hello {{getFullname user}}</span>
             <span class="header-profile-secondary">This page is your profile. Clicking the settings button allows you to edit the information</span>
         </div>
-        <button class="btn-setting">Setting <i class="bi bi-gear"></i></button>
+        <button class="btn-setting">Setting <i class="bi bi-gear"></i></button> --}}
     </div>
     <form class="content-profile" method="POST" action="/profile/edit?_method=PUT" enctype="multipart/form-data">
         <div class="profile-img">
@@ -94,7 +94,7 @@
                 </div>
             </div>
             <div class="profile-action">
-                <button class="btn-save" type="submit">Save Profile</button>
+                <button class="btn-save" type="submit">Update</button>
             </div>
         </div>
     </form>
@@ -102,13 +102,13 @@
 {{else ifeq user 'company'}}
 <div class="main-profile">
     <div class="header-profile">
-        <div class="header-main-text">
+        {{!-- <div class="header-main-text">
             <span class="header-profile-primary">Hello {{getFullname user}}</span>
             <span class="header-profile-secondary">This page is your profile. Clicking the settings button allows you to edit the information</span>
         </div>
-        <button class="btn-setting">Setting <i class="bi bi-gear"></i></button>
+        <button class="btn-setting">Setting <i class="bi bi-gear"></i></button> --}}
     </div>
-    <form class="content-profile" method="POST" action="/profile/edit?_method=PUT" enctype="multipart/form-data">
+    <form class="content-profile content-profile__admin" method="POST" action="/profile/edit?_method=PUT" enctype="multipart/form-data">
         <div class="profile-img">
             <label for="file-user"><img class="user-avatar" src="{{getAvatar user}}" alt=""></label>
             <input id="file-user" name="avatar" type="file" accept="image/*">
@@ -139,7 +139,7 @@
                 </div>
             </div>
             <div class="profile-action">
-                <button class="btn-save" type="submit">Save Profile</button>
+                <button class="btn-save" type="submit">Update</button>
             </div>
         </div>
     </form>
@@ -147,13 +147,13 @@
 {{else}}
 <div class="main-profile">
     <div class="header-profile">
-        <div class="header-main-text">
+        {{!-- <div class="header-main-text">
             <span class="header-profile-primary">Hello {{getFullname user}}</span>
             <span class="header-profile-secondary">This page is your profile. Clicking the settings button allows you to edit the information</span>
         </div>
-        <button class="btn-setting">Setting <i class="bi bi-gear"></i></button>
+        <button class="btn-setting">Setting <i class="bi bi-gear"></i></button> --}}
     </div>
-    <form class="content-profile" method="POST" action="/profile/edit?_method=PUT" enctype="multipart/form-data">
+    <form class="content-profile content-profile__admin" method="POST" action="/profile/edit?_method=PUT" enctype="multipart/form-data">
         <div class="profile-img">
             <label for="file-user"><img class="user-avatar" src="{{getAvatar user}}" alt=""></label>
             <input id="file-user" name="avatar" type="file" accept="image/*">
@@ -184,7 +184,7 @@
                 </div>
             </div>
             <div class="profile-action">
-                <button class="btn-save" type="submit">Save Profile</button>
+                <button class="btn-save" type="submit">Update</button>
             </div>
         </div>
     </form>

@@ -72,18 +72,18 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    height: 620px;
-    background:linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url('/img/headerprofile.jpeg') center/cover no-repeat;
+    height: 450px;
+    background:linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('/img/headerprofile.jpeg') center/cover no-repeat;
     position: relative;
 }
 label.changebackground-profile{
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    top: 20px;
+    left: 10px;
     font-size: 20px;
     font-weight: 500;
     padding: 4px 8px;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     background-color: white;
     transition: .3s;
@@ -93,7 +93,7 @@ label.changebackground-profile:hover{
     color: white;
 }
 .header-profile-company{
-    height: 620px;
+    height: 450px;
 }
 .header-main-text{
     display: flex;
@@ -186,17 +186,20 @@ button.btn-setting {
    }
 .content-profile,
 .company-profile{
-    width: 70%;
+    width: 85%;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 2px 2px 50px rgba(0,0,0,0.5);
-    transform: translateY(-6%);
+    transform: translateY(-12%);
     z-index: 10;
-    display: none;
+    display: block;
     transition: 1s;
 }
 .company-profile{
-    transform: translateY(-5%);
+    transform: translateY(-6%);
+}
+.content-profile__admin{
+    transform: translateY(-30%) !important;
 }
 .content-profile-main > * {
     margin: 14px 0;
@@ -344,7 +347,7 @@ button.btn-setting {
     height: 45%;
     border: none;
     outline: none;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
     padding: 0 8px;
     resize: none;
@@ -396,20 +399,20 @@ button.btn-setting {
     margin-bottom: 20px;
 }
 .btn-save{
-    width: 15%;
+    width: 10%;
     height: 50px;
     border: none;
     outline: none;
-    background-color: unset;
+    background-color: $btncolor;
     box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
-    border-radius: 10px;
+    border-radius: 5px;
     font-size: 20px;
     font-weight: 700;
-    color: $btncolor;
+    color: white;
     transition: all .3s;
 }
 .btn-save:hover{
-    background-color: $btncolor;
+    background-color: $secondarycolor;
     color: white;
     box-shadow: 1px 1px 50px #0095ff33;
 }
@@ -490,112 +493,83 @@ input#postal::-webkit-inner-spin-button {
     align-items: center;
     position: fixed;
     z-index: 30;
-    width: 600px;
-    height: 700px;
+    width: 30%;
+    height: 100vh;
     top: 49%;
     right: 0;
     left: 0;
     margin: 0 auto;
 }
-.book {
-    position: relative;
-    border-radius: 10px;
-    width: 600px;
-    height: 700px;
-    background-color: whitesmoke;
-    -webkit-box-shadow: 1px 1px 12px #000;
-    box-shadow: 1px 1px 12px #000;
-    -webkit-transform: preserve-3d;
-    -ms-transform: preserve-3d;
-    transform: preserve-3d;
-    -webkit-perspective: 2000px;
-    perspective: 2000px;
-    display: -webkit-box;
-    display: -ms-flexbox;
+.card {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
+    justify-content: start;
     align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    color: #000;
+    background-color: $backgroundcard;
+    z-index: 50;
     overflow: hidden;
   }
- .book .close-book{
-    position: absolute;
-    top: -4px;
-    right: 2px;
-    padding: unset !important;
-    font-size: 28px;
+  
+  .img-avatar{
+    width: 100%;
+    height: 150px;
+    background-color: $btncolor;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    position: relative;
   }
-  .book .close-book:hover{
+  .img-avatar img#avatar-leader{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    outline: 3px solid $btncolor;
+    border: 3px solid white;
+    outline-offset: 0px;
+    transform: translateY(40%);
+  }
+  .img-avatar span.close__card-leadership{
+    position: absolute;
+    top: -8px;
+    right: 0;
+    color: black;
+    font-size: 30px;
+    padding: unset;
+    transition: .3s;
+  }
+  .img-avatar span.close__card-leadership:hover i{
     color: #FC0404;
   }
-  .book p {
-    font-size: 20px;
-    font-weight: 500;
-    letter-spacing: 1.2px;
-    padding: 16px 24px 16px 48px;
-    margin: unset !important;
-  }
-  .cover {
-    top: 0;
-    position: absolute;
-    background-color: lightgray;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    cursor: pointer;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-    -webkit-transform-origin: 0;
-    -ms-transform-origin: 0;
-    transform-origin: 0;
-    -webkit-box-shadow: 1px 1px 12px #000;
-    box-shadow: 1px 1px 12px #000;
-    display: -webkit-box;
-    display: -ms-flexbox;
+  .text {
     display: flex;
     flex-direction: column;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    overflow: hidden;
+    padding: 70px 20px 20px 20px;
   }
-  .cover img{
-    width: 100% !important;
-    height: 80% !important;
-    border: unset !important;
-    padding: unset !important;
+  .text .h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
   }
-  .cover h1 {
-    margin: unset;
-    height: 13%;
-    text-align: center;
-    padding: 24px 0;
-    width: 100%;
+  .text .p {
+    color: #999999;
+    font-size: 13px;
+    padding: 12px 20px;
+    text-align: justify;
   }
-  .cover span{
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 1.4px;
-    height: 7%;
-    padding: unset !important;
-    width: 100%;
-    text-align: center;
+  .text .span{
     text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 600;
+    color: $primarycolor;
   }
-  .book:hover .cover {
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-    -webkit-transform: rotatey(-80deg);
-    -ms-transform: rotatey(-80deg);
-    transform: rotatey(-80deg);
+  .text p{
+    margin-bottom: unset !important;
+  }
+  .card:hover {
+    cursor: pointer;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
   }
 .info-job{
     display: flex;
@@ -753,8 +727,8 @@ li.content-listjob a.payment:hover::after{
 }
 li.content-listjob .remove-blocked{
     position: absolute;
-    top: -10%;
-    left: -14%;
+    top: 12%;
+    left: -9%;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -843,7 +817,7 @@ li.content-listjob .namejobs a{
     color: black;
 }
 li.content-listjob:hover .namejobs a{
-    color: $primarycolor;
+    color: $btncolor;
 }
 li.content-listleadership img{
     width: 60px;
@@ -1383,10 +1357,7 @@ ul.listpageleadership {
     }
     .content-profile, 
     .company-profile{
-        width: 80%;
-    }
-    .header-profile{
-        min-height: 1000px;
+        width: 85%;
     }
     .camera-edit {
         right: 40%;
@@ -1418,11 +1389,11 @@ ul.listpageleadership {
     #postjob, #postleadership{
         width: 90%;
     }
+    #updateleadership{
+        width: 60%;
+    }
 }
 @media screen and (max-width: 768px) {
-    .header-profile{
-        min-height: 65vh;
-    }
     button.btn-setting {
         width: 22%;
     }
@@ -1469,6 +1440,9 @@ ul.listpageleadership {
     .container__cancel-payment .main__cancel-payment .navbar-left .litle-text{
         left: 12.2%;
     }
+    #updateleadership{
+        width: 65%;
+    }
 }
 @media screen and (max-width: 600px) {
     button.btn-setting {
@@ -1476,9 +1450,6 @@ ul.listpageleadership {
     }
     .btn-save {
         width: 26%;
-    }
-    .company-profile{
-        transform: translateY(-2%);
     }
     .camera-edit{
         right: 34.5%;
@@ -1512,6 +1483,9 @@ ul.listpageleadership {
     .job-location select{
         font-size: 12px;
     }
+    #updateleadership{
+        width: 80%;
+    }
 }
 @media screen and (max-width: 415px) {
     .header-main-text{
@@ -1523,21 +1497,15 @@ ul.listpageleadership {
     .header-profile-primary{
         font-size: 30px;
     }
+    .company-profile{
+        transform: translateY(-4%);
+    }
     button.btn-setting {
         width: 40%;
     }
     .profile-img .user-avatar {
         width: 160px;
         height: 160px;
-    }
-    .content-profile{
-        transform: translateY(-4%);
-    }
-    .company-profile{
-        transform: translateY(-1%);
-    }
-    label.changebackground-profile {
-        font-size: 18px;
     }
     .content-profile-header span {
         font-size: 26px;
@@ -1666,18 +1634,20 @@ ul.listpageleadership {
     .info-job-salary label{
         margin: 6px 0;
     }
+    .text{
+        padding: 56px 10px 10px 10px;
+    }
+    .img-avatar img#avatar-leader{
+        width: 120px;
+        height: 120px;
+    }
+    .text .p{
+        padding: 12px 0;
+    }
 }
 @media screen and (max-width: 376px) {
     button.btn-setting {
         width: 44%;
-    }
-    .content-profile, 
-    .company-profile {
-        transform: translateY(-2%);
-    }
-    label.changebackground-profile{
-        font-size: 14px;
-        border-radius: 6px;
     }
     .container-checkpayment .box__dates-payment .primary-text{
         font-size: 24px;
@@ -1707,6 +1677,9 @@ ul.listpageleadership {
     }
     #postjob{
         top: 0;
+    }
+    #updateleadership{
+        width: 95%;
     }
 }
 @media screen and (max-width: 321px) {
@@ -1743,12 +1716,6 @@ ul.listpageleadership {
     .listjobs-action button, 
     .listleadership-action button{
         width: 50%;
-    }
-    .company-profile {
-        transform: translateY(-1%);
-    }
-    label.changebackground-profile {
-        font-size: 10px;
     }
     .alert-message{
         padding-right: 40px;
@@ -1814,5 +1781,21 @@ ul.listpageleadership {
     #postleadership{
         top: 0;
         height: 100vh;
+    }
+    .text .h3{
+        font-size: 18px;
+    }
+    .text{
+        padding: 46px 6px 10px 6px;
+    }
+    .img-avatar img#avatar-leader{
+        width: 100px;
+        height: 100px;
+    }
+    .text .span{
+        font-size: 14px;
+    }
+    .text .p{
+        padding: unset;
     }
 }

@@ -914,13 +914,13 @@
     align-items: start;
     width: 48%;
     height: 270px;
-    background: linear-gradient(90deg,#c0c4c7 23.92%,#0072bc33);
+    background: linear-gradient(90deg,#c0c4c7 23.92%,#0095ff33);
     border-radius: 5px;
     border: 1px solid $backgroundcolor;
     transition: .5s;
 }
 .container-home .home-personal .list-personal .card-profile:hover{
-    background: linear-gradient(90deg,$backgroundcolor 23.92%,#0072bc33);
+    background: linear-gradient(90deg,$backgroundcard 23.92%,#0095ff33);
     border: 1px solid $secondarycolor;
     box-shadow: 0 6px 18px $secondarycolor;
 }

@@ -60,6 +60,13 @@ module.exports = {
       return "/img/profileimg.png";
     }
   },
+  getIDcompany: function (company) {
+    if (company && company._id) {
+      return company._id;
+    } else {
+      return "";
+    }
+  },
   getAvatarcompany: function (company) {
     if (company && company.avatar) {
       return `/${company.avatar}`;

@@ -24,7 +24,7 @@
 .header-cv .intro-surprise{
     font-size: 40px;
     font-weight: 700;
-    color: $secondarycolor;
+    color: $btncolor;
     height: 48px;
     margin-bottom: 30px;
 }
@@ -37,7 +37,7 @@
     margin-bottom: 50px;
 }
 .header-cv .intro-text b {
-    color: $secondarycolor;
+    color: $btncolor;
 }
 .header-cv .btn-cv{
     font-size: 26px;
@@ -235,6 +235,7 @@
 .stepbystep-right img {
     width: 100%;
     height: 100%;
+    background-color: white;
 }
 .first-title{
     font-size: 20px;

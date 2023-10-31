@@ -422,10 +422,28 @@ header.company-detail .background-company-detail{
   border-radius: 50%;
   box-shadow: 1px 1px 8px #999999;
 }
-.header__primary-company-detail .logo-company-detail span{
+.header__primary-company-detail .logo-company-detail span.sumary-jobs{
   font-size: 30px;
   font-weight: 500;
   margin-left: 16px;
+  padding: unset;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  height: 100%;
+}
+.header__primary-company-detail .logo-company-detail span.sumary-jobs b{
+  font-weight: 500;
+}
+.header__primary-company-detail .logo-company-detail span.sumary-jobs a{
+  color: $btncolor;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.header__primary-company-detail .logo-company-detail span.sumary-jobs a:hover{
+  color: $secondarycolor;
 }
 .follow-company-detail{
   display: flex;
@@ -441,7 +459,7 @@ header.company-detail .background-company-detail{
   background-color: $btncolor;
   color: white;
   border: 1px solid $btncolor;
-  border-radius: 10px;
+  border-radius: 5px;
   font-weight: 600;
   transition: .5s;
   text-transform: capitalize;
@@ -535,63 +553,53 @@ header.company-detail .background-company-detail{
   width: 40%;
 }
 
-.company-leadership__info-total,
-.carousel {
+.company-leadership__info-total{
   width: 55%;
+  height: 650px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
 }
-.carousel {
+.company-leadership__info-total .swiper {
   width: 100%;
-  overflow: hidden;
+  height: 100%;
 }
-.company-leadership__info-total button#left{
-  position: absolute;
-  font-size: 48px;
-  left: -36px;
-  z-index: 20;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  display: none;
+
+.company-leadership__info-total .swiper .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.company-leadership__info-total button#right{
-  position: absolute;
-  font-size: 48px;
-  right: -36px;
-  z-index: 20;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  background-color: transparent;
+.company-leadership__info-total .swiper .swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  color: #000;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.2);
 }
-.company-leadership__info-total button#left:hover,
-.company-leadership__info-total button#right:hover{
-  color: $primarycolor;
+
+.company-leadership__info-total .swiper .swiper-pagination-bullet-active {
+  color: #fff;
+  background: #007aff;
 }
-.company-leadership__info-total .company-leadership__info {
+.company-leadership__info-total .swiper .swiper-wrapper .swiper-slide .company-leadership__info{
   display: flex;
   flex-direction: row;
   width: 100%;
-  position: relative;
   justify-content: center;
   align-items: center;
   margin-left: 28px;
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
-}
-.company-leadership__info-total .company-leadership__info:first-child{
-  margin-left: 0;
 }
 .total-leadership {
-  width: 360px;
-  height: 579px;
+  width: 80%;
+  height: 580px;
   cursor: pointer;
   transition: .3s;
 }
@@ -617,6 +625,9 @@ header.company-detail .background-company-detail{
   font-weight: 700;
   height: 80%;
 }
+.company-leadership__info-text span.first{
+  color: white;
+}
 .company-leadership__info-text span.second,
 .show__main-info-leadership .introduce-leadership span.second{
   font-size: 14px;
@@ -625,7 +636,7 @@ header.company-detail .background-company-detail{
   height: 20%;
 }
 .company-leadership__info-text span.second{
-  color: #b9c2c4;
+  color: $primarycolor;
   letter-spacing: 4px;
 }
 .show__main-info-leadership{
@@ -635,12 +646,13 @@ header.company-detail .background-company-detail{
   justify-content: space-between;
   width: 90%;
   height: 600px;
-  background-color: white;
-  top: 7%;
+  background-color: $backgroundcard;
+  top: 50%;
+  transform: translateY(-50%);
   right: 0;
   left: 0;
   margin: 0 auto;
-  z-index: 100;
+  z-index: 500;
 }
 .show__main-info-leadership img{
   height: 100%;
@@ -689,6 +701,7 @@ header.company-detail .background-company-detail{
   cursor: pointer;
   top: 0;
   right: 0;
+  z-index: 20;
 }
 @media screen and (max-width: 1024px) {
   h2.main-text{
@@ -762,7 +775,8 @@ header.company-detail .background-company-detail{
     position: absolute;
     top: -60%;
   }
-  .header__primary-company-detail .logo-company-detail span {
+  .header__primary-company-detail .logo-company-detail span.sumary-jobs {
+    margin-bottom: 12px;
     margin-left: unset;
   }
   .show__main-info-leadership {
@@ -822,9 +836,9 @@ header.company-detail .background-company-detail{
     padding: 0 20px;
     margin: unset;
   }
-  .header__primary-company-detail .logo-company-detail span{
+  .header__primary-company-detail .logo-company-detail span.sumary-jobs{
     width: 100%;
-    text-align: center;
+    align-items: center;
   }
   .company-leadership {
     flex-direction: column;
@@ -833,7 +847,7 @@ header.company-detail .background-company-detail{
     width: 100%;
     margin-bottom: 20px;
   }
-  .company-leadership__info-total, .carousel{
+  .company-leadership__info-total{
     width: 100%;
   }
   .total-leadership{

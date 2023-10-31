@@ -5,7 +5,12 @@
             <div class="header__primary-company-detail">
                 <div class="logo-company-detail">
                     <img src="{{getAvatarcompany company}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
-                    <span>{{getCompanyname company}} {{getTOB company}}</span>
+                    <span class="sumary-jobs">
+                          <b>
+                            {{getCompanyname company}} {{getTOB company}}
+                          </b>
+                          <a class="sumary-jobs" href="/company/job/{{getIDcompany company}}">({{getCompanyname company}} company's jobs)</a>
+                    </span>
                 </div>
                 <form class="follow-company-detail" method="post" action="/company/{{company._id}}/follow">
                     <button id="followButton" type="submit">{{checkfl.follow}} ({{company.follow}})</button>
@@ -46,30 +51,24 @@
                     <span class="leadership__second-text">The {{getCompanyname company}} company was founded on {{getEstablisheddate company}}, and has {{getCompanyyears company}} years of experience in the industry. A summary of our company's Leadership</span>
                 </div>
                 <div class="company-leadership__info-total">
-                    <button id="left"><i class="bi bi-caret-left"></i></button>
-                    <button id="right"><i class="bi bi-caret-right"></i></button>
-                    <div class="carousel">
-                    {{#each leadership}}
-                    <div class="company-leadership__info">
-                    <div class="total-leadership" style="background:linear-gradient(-180deg, transparent, rgba(254, 219, 0,0.3)), url('{{getAvatarleadership this}}') center/cover no-repeat; ;" ></div>
-                    <div class="company-leadership__info-text">
-                        <span class="first">{{this.name}}</span>
-                        <span class="second">{{this.position}}</span>
+                  <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        {{#each leadership}}
+                        <div class="swiper-slide">
+                        <div class="company-leadership__info">
+                          <div class="total-leadership" style="background:linear-gradient(-180deg, transparent, rgba(0, 149, 255,0.5)), url('{{getAvatarleadership this}}') center/cover no-repeat; ;" ></div>
+                          <div class="company-leadership__info-text">
+                              <span class="first">{{this.name}}</span>
+                              <span class="second">{{this.position}}</span>
+                          </div>
+                        </div>
+
+                        </div>
+                        {{/each}}
                     </div>
-                    </div>
-                    
-                    <div class="show__main-info-leadership">
-                    <img src="{{getAvatarleadership this}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
-                    <div class="introduce-leadership">
-                        <span class="first">{{this.name}}</span>
-                        <span class="second">{{this.position}}</span>
-                        <p>{{this.introduce}}</p>
-                    </div>
-                    <i class="bi bi-x-lg"></i>
-                    </div>
-                    {{/each}}
-                    </div>
-                </div>
+                    <div class="swiper-pagination"></div>
+                  </div>
+              </div>
             </div>
             {{else}}
             <div class="company-desc">
@@ -80,8 +79,84 @@
         </div>
 </div>
 <div class="overplay"></div>
+{{#each leadership}}
+<div class="show__main-info-leadership">
+  <img src="{{getAvatarleadership this}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
+  <div class="introduce-leadership">
+    <span class="first">{{this.name}}</span>
+    <span class="second">{{this.position}}</span>
+    <p>{{this.introduce}}</p>
+  </div>
+  <i class="bi bi-x-lg"></i>
+</div>
+{{/each}}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-   const carousel = document.querySelector('.carousel');
+  var swiper = new Swiper(".company-leadership__info-total .mySwiper", {
+      pagination: {
+        el: ".company-leadership__info-total .mySwiper .swiper-pagination",
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + (index + 1) + "</span>";
+        },
+      },
+    });
+document.addEventListener('DOMContentLoaded', () => {
+  const overplay = document.querySelector('.overplay');
+  const body = document.querySelector('body');
+  const leadershipSlides = document.querySelectorAll('.swiper-slide .company-leadership__info');
+  const leadershipInfos = document.querySelectorAll('.show__main-info-leadership');
+  const closeButtons = document.querySelectorAll('.show__main-info-leadership .bi-x-lg');
+
+  leadershipSlides.forEach((slide, index) => {
+    slide.addEventListener('click', (event) => {
+      event.stopPropagation();
+      leadershipInfos[index].style.display = 'flex';
+      body.classList.add('modal-open');
+      overplay.style.display = 'block';
+    });
+  });
+  closeButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      leadershipInfos[index].style.display = 'none';
+      body.classList.remove('modal-open');
+      overplay.style.display = 'none';
+    });
+  });
+  overplay.addEventListener('click', () => {
+    leadershipInfos.forEach((info) => {
+      info.style.display = 'none';
+    });
+    body.classList.remove('modal-open');
+    overplay.style.display = 'none';
+  });
+});
+
+var followButton = document.getElementById("followButton");
+if(followButton.textContent === "Following"){
+    followButton.classList.add('following')
+}
+else{
+    followButton.classList.remove('following')
+}
+followButton.addEventListener("mouseover", function() {
+  if (followButton.textContent.trim() === "Follow") {
+    followButton.textContent = "Following";
+  }
+  else if (followButton.textContent.trim() === "Following") {
+    followButton.textContent = "Unfollowing";
+  }
+});
+followButton.addEventListener("mouseout", function() {
+  if (followButton.textContent.trim() === "Following") {
+    followButton.textContent = "Follow";
+  }
+  else if (followButton.textContent.trim() === "Unfollowing") {
+    followButton.textContent = "Following";
+  }
+});
+</script>
+{{!-- const carousel = document.querySelector('.carousel');
    firstItem = carousel.querySelectorAll('.company-leadership__info')[0];
    arrowButtons = document.querySelectorAll('.company-leadership__info-total button')
    let isDragStart = false , prevPageX, prevScrollLeft;
@@ -118,55 +193,4 @@
    }
    carousel.addEventListener('mousedown', draggStart);
    carousel.addEventListener('mousemove', dragging);
-   carousel.addEventListener('mouseup', draggStop);
-  const overplay = document.querySelector('.overplay');
-const body = document.querySelector('body');
-const showLeadership = document.querySelectorAll('.company-leadership__info');
-const tableLeadership = document.querySelectorAll('.show__main-info-leadership');
-
-for (let i = 0; i < showLeadership.length; i++) {
-  showLeadership[i].addEventListener('click', () => {
-    tableLeadership[i].style.display = 'flex';
-    body.classList.add('modal-open');
-    overplay.style.display = 'block';
-  });
-}
-
-const closeLeadership = document.querySelectorAll('.bi-x-lg');
-for (let i = 0; i < closeLeadership.length; i++) {
-  closeLeadership[i].addEventListener('click', () => {
-    tableLeadership[i].style.display = 'none';
-    body.classList.remove('modal-open');
-    overplay.style.display = 'none';
-  });
-  
-  overplay.addEventListener('click', () => {
-    tableLeadership[i].style.display = 'none';
-    body.classList.remove('modal-open');
-    overplay.style.display = 'none';
-  });
-}
-var followButton = document.getElementById("followButton");
-if(followButton.textContent === "Following"){
-    followButton.classList.add('following')
-}
-else{
-    followButton.classList.remove('following')
-}
-followButton.addEventListener("mouseover", function() {
-  if (followButton.textContent.trim() === "Follow") {
-    followButton.textContent = "Following";
-  }
-  else if (followButton.textContent.trim() === "Following") {
-    followButton.textContent = "Unfollowing";
-  }
-});
-followButton.addEventListener("mouseout", function() {
-  if (followButton.textContent.trim() === "Following") {
-    followButton.textContent = "Follow";
-  }
-  else if (followButton.textContent.trim() === "Unfollowing") {
-    followButton.textContent = "Following";
-  }
-});
-</script>
+   carousel.addEventListener('mouseup', draggStop); --}}

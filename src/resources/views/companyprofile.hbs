@@ -1,11 +1,11 @@
 <div class="main-profile">
     {{#if msg}}
-        <div class="alert-message">
-            <p>{{msg}}</p>
-            <div class="hide-message">
-                <i class="bi bi-x-circle"></i>
-            </div>
+    <div class="alert-message">
+        <p>{{msg}}</p>
+        <div class="hide-message">
+            <i class="bi bi-x-circle"></i>
         </div>
+    </div>
     {{/if}}
     <form class="form-company-profile" method="POST" action="/companyprofile/edit?_method=PUT"
         enctype="multipart/form-data">
@@ -14,13 +14,13 @@
             <label class="changebackground-profile" for="header-profile-file-input"><i class="bi bi-camera-fill"></i>
                 Change Background</label>
             <input type="file" name="background" id="header-profile-file-input" style="display: none;">
-            <div class="header-main-text">
+            {{!-- <div class="header-main-text">
                 <span class="header-profile-primary">Hello {{getCompanyname company}} Company</span>
                 <span class="header-profile-secondary">This page is your Company profile. Clicking on the settings
                     button
                     allows you to edit your company information</span>
             </div>
-            <button class="btn-setting" type="button">Setting <i class="bi bi-gear"></i></button>
+            <button class="btn-setting" type="button">Setting <i class="bi bi-gear"></i></button> --}}
         </div>
         <div class="content-profile company-profile">
             <div class="profile-img">
@@ -107,7 +107,8 @@
                     </div>
                     <div class="about-user about-user-desc-company">
                         <label for="experience">History</label>
-                        <textarea id="experience" type="text" name="history" placeholder="Founded in 1971, Hansen is a global provider of software and services, serving the most demanding energy and communications brands around the world.
+                        <textarea id="experience" type="text" name="history"
+                            placeholder="Founded in 1971, Hansen is a global provider of software and services, serving the most demanding energy and communications brands around the world.
                             Our early origins in the management of customer and organisational data has served our customers well over the years. As a pioneer in providing some of the first web-based self-service and browser- based customer care solutions to the market we have continued to hone our software to enable energy and communications service providers to create new products and services, deliver them flawlessly, and engage customers with excellence – powered by the Hansen Create-Deliver-EngageTM suite of software applications.
                             In the last decade we have grown exponentially through several progressive and strategic acquisitions that have expanded our geographic scope and enhanced the business of our valued customers.
                             Today we are on the cusp of a new journey with our customers, to help them Power the NextTM age of communications and energy related experiences beyond the essentials of providing basic core energy and connectivity.">
@@ -140,15 +141,17 @@
                                     </a>
                                 </div>
                             </div>
+
                             <div id="updateleadership">
-                                <div class="book">
-                                    <p>{{this.introduce}}</p>
-                                    <span class="close-book"><i class="bi bi-x-lg"></i></span>
-                                    <div class="cover">
-                                        <img src="{{getAvatarleadership this}}"
-                                            onerror="this.src='/img/notfoundavatar.jpeg'">
-                                        <h1>{{this.name}}</h1>
-                                        <span>{{this.position}}</span>
+                                <div class="card">
+                                    <div class="img-avatar">
+                                        <img id="avatar-leader" src="{{getAvatarleadership this}}" alt="">
+                                        <span class="close__card-leadership"><i class="bi bi-x"></i></span>
+                                    </div>
+                                    <div class="text">
+                                        <p class="h3">{{this.name}}</p>
+                                        <p class="span">{{this.position}}</p>
+                                        <p class="p"> {{this.introduce}} </p>
                                     </div>
                                 </div>
                             </div>
@@ -169,10 +172,13 @@
                     <ul>
                         {{#each listjob}}
                         <li class="content-listjob" data-blocked={{this.active}}>
-                            <span class="namejobs"><i class="bi bi-three-dots-vertical"></i> <a href="/job/{{this._id}}">{{this.jobname}}</a></span>
+                            <span class="namejobs"><i class="bi bi-three-dots-vertical"></i> <a
+                                    href="/job/{{this._id}}">{{this.jobname}}</a></span>
                             <div class="secondary-listjob">
-                                <p><span class="timejobs"><i class="bi bi-calendar-date"></i> {{this.createdAt}}</span></p>
-                                <p><span class="locationjobs"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</span></p>
+                                <p><span class="timejobs"><i class="bi bi-calendar-date"></i> {{this.createdAt}}</span>
+                                </p>
+                                <p><span class="locationjobs"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</span>
+                                </p>
                             </div>
                             <a class="cv-applied" href="/CVManager?id={{this._id}}"><i class="bi bi-briefcase-fill"></i>
                                 CV applied ({{this.appliedCount}} CV)</a>
@@ -182,15 +188,18 @@
                             <div class="remove-blocked" data-remove-block="{{this._id}}">
                                 <span class="remove"><i class="bi bi-trash3-fill"></i></span>
                                 <span class="blocked"><i class="bi bi-unlock-fill"></i></span>
-                                <span class="request" title="Request Refund"><i class="bi bi-info-circle-fill"></i></span>
+                                <span class="request" title="Request Refund"><i
+                                        class="bi bi-info-circle-fill"></i></span>
                                 <div class="request-sending">
                                     <div class="request-ads">
                                         <label for="ads">Advertising Refund</label>
-                                        <input name="request" type="checkbox" class="adsvalue" id="ads" value="prioritize">
+                                        <input name="request" type="checkbox" class="adsvalue" id="ads"
+                                            value="prioritize">
                                     </div>
                                     <div class="request-ads">
                                         <label for="high">High Paying Refund</label>
-                                        <input name="request" type="checkbox" class="highvalue" id="high" value="post job">
+                                        <input name="request" type="checkbox" class="highvalue" id="high"
+                                            value="post job">
                                     </div>
                                     <button type="button" class="submit-request">Send Request</button>
                                 </div>
@@ -202,7 +211,7 @@
                     </ul>
                 </div>
                 <div class="profile-action">
-                    <button class="btn-save" type="submit">Save Profile</button>
+                    <button class="btn-save" type="submit">Update</button>
                 </div>
             </div>
         </div>
@@ -219,8 +228,8 @@
             <label for="jobdesc">Job Description</label>
             <textarea id="jobdesc" name="jobdesc" placeholder="Customer Engineering Connector Technology for JOEM
 - Customer Engineering for PS-CC products for JOEM (Connectors, Fuel cell air valves, Charging solutions, Fuel pump modules, General purpose actuators, Accelerator pedal modules, etc.). The main responsibility is Connector Technology.
-- JOEM向けPS-CC製品（コネクター、燃料電池用エアバルブ、チャージングソリューション、燃料ポンプモジュール、ターボ用電制アクチュエーター、アクセルペダルモジュール等）の技術窓口。主にコネクターを担当。"
-                type="text" required></textarea>
+- JOEM向けPS-CC製品（コネクター、燃料電池用エアバルブ、チャージングソリューション、燃料ポンプモジュール、ターボ用電制アクチュエーター、アクセルペダルモジュール等）の技術窓口。主にコネクターを担当。" type="text"
+                required></textarea>
         </div>
         <div class="info-job jobdesc">
             <label for="jobdesc">Job Requirements</label>
@@ -248,7 +257,9 @@
             <div class="job-salary" style="position:relative">
                 <label for="salary-range">Salary</label>
                 <input type="text" name="salary" id="salary-range" placeholder="500$-1000$ | Negotiable" required>
-                <p class="alert-salary" style="display: none; color: red; margin-bottom: unset; position: absolute; bottom: -24px; left: 4px">You can only fill in numbers or Negotiable</p>
+                <p class="alert-salary"
+                    style="display: none; color: red; margin-bottom: unset; position: absolute; bottom: -24px; left: 4px">
+                    You can only fill in numbers or Negotiable</p>
             </div>
             <div class="job-location">
                 <label for="joblocation">Job Locations</label>
@@ -321,7 +332,7 @@ Andrew leads the strategic direction of the business with a dedicated and divers
 {{!-- blocked job form --}}
 <form method="POST" class="form__blocked-job"></form>
 {{!-- request refund form --}}
-<form class="form__request" method="POST" >
+<form class="form__request" method="POST">
     <input type="text" name="type" id="allformrequestsending" value="123" hidden>
 </form>
 <script>
@@ -442,33 +453,13 @@ Andrew leads the strategic direction of the business with a dedicated and divers
     });
 </script>
 <script>
-    var changeBackground = document.querySelector('.changebackground-profile')
-    var btnSetting = document.querySelector('.btn-setting');
-    var settingProfile = document.querySelector('.content-profile');
-    btnSetting.addEventListener('click', () => {
-        var computedStyle = getComputedStyle(settingProfile);
-        if (computedStyle.display === "none") {
-            settingProfile.style.display = "block";
-            settingProfile.style.opacity = "0";
-            changeBackground.style.bottom = "160px"
-            setTimeout(() => {
-                settingProfile.style.opacity = "1";
-            }, 50);
-        }
-        else {
-            changeBackground.style.bottom = "10px"
-            settingProfile.style.opacity = "0";
-            setTimeout(() => {
-                settingProfile.style.display = "none";
-            }, 300);
-        }
-    })
+
     var hover = document.querySelector('.user-avatar')
     var edit = document.querySelector('.edit-logo')
     hover.addEventListener('mouseover', () => {
         edit.style.cssText = "display: flex;"
     })
-     edit.addEventListener('mouseover', () => {
+    edit.addEventListener('mouseover', () => {
         edit.style.cssText = "display: flex;"
     })
     edit.addEventListener('mouseout', () => {
@@ -550,24 +541,28 @@ Andrew leads the strategic direction of the business with a dedicated and divers
             showActionLeader[i].style.display = 'none'
         })
     }
-    var updateLeader = document.querySelectorAll('.update-leader');
-    var showUpdateLeader = document.querySelectorAll('#updateleadership');
-    var cancleUpdate = document.querySelectorAll('.close-book');
-    var overplayReview = document.querySelector('.overplay-review')
-    for (let i = 0; i < updateLeader.length; i++) {
-        updateLeader[i].addEventListener('click', () => {
-            showUpdateLeader[i].style.display = 'flex';
+
+    //update leadership
+    var containerLeadership = document.querySelectorAll('.content-listleadership');
+    containerLeadership.forEach(function(item){
+        const clickLeadership = item.querySelector('.update-leader');
+        const showLeadership = item.querySelector('#updateleadership');
+        const closeCardLeadership = item.querySelector('.img-avatar span.close__card-leadership')
+        const overplayReview = document.querySelector('.overplay-review')
+        clickLeadership.addEventListener('click',()=>{
+            showLeadership.style.display = 'flex';
             overplayReview.style.display = 'block'
-        })
-        cancleUpdate[i].addEventListener('click', () => {
-            showUpdateLeader[i].style.display = 'none';
+        });
+        overplayReview.addEventListener('click',()=>{
+            showLeadership.style.display = 'none';
             overplayReview.style.display = 'none';
-        })
-        overplayReview.addEventListener('click', () => {
-            showUpdateLeader[i].style.display = 'none';
+        });
+        closeCardLeadership.addEventListener('click',()=>{
+            showLeadership.style.display = 'none';
             overplayReview.style.display = 'none';
-        })
-    }
+        });
+    })
+
     var listJobPayment = document.querySelectorAll('.content-listjob');
     listJobPayment.forEach(function (job) {
         var checkButtonPayment = job.querySelector('.payment');
@@ -578,11 +573,11 @@ Andrew leads the strategic direction of the business with a dedicated and divers
             checkButtonPayment.innerHTML = '<i class="bi bi-star-fill"></i>'
             checkButtonPayment.style.cssText = 'color: #fed200;'
         }
-        if(checkBlocked == 'false'){
+        if (checkBlocked == 'false') {
             job.classList.add('active__blocked-item')
             job.querySelector('.blocked').innerHTML = '<i class="bi bi-lock-fill"></i>';
             checkButtonPayment.style.cssText = 'cursor: not-allowed;'
-            checkButtonPayment.addEventListener('click',()=>{
+            checkButtonPayment.addEventListener('click', () => {
                 event.preventDefault();
                 alert('This job of yours is currently locked due to your request. Please contact admin if you want to know more information.')
             })
@@ -607,35 +602,35 @@ Andrew leads the strategic direction of the business with a dedicated and divers
         var sendAll = requestBox.querySelector('.allvalue')
         var submitRequest = requestBox.querySelector('.submit-request');
         submitRequest.addEventListener('click', (e) => {
-    function updateValue() {
-        if (sendADS.checked && sendHigh.checked) {
-            valueAllSending.value = 'all';
-        } else if (sendADS.checked) {
-            valueAllSending.value = sendADS.value;
-        } else if (sendHigh.checked) {
-            valueAllSending.value = sendHigh.value;
-        } else {
-            valueAllSending.value = '';
-        }
-    }
+            function updateValue() {
+                if (sendADS.checked && sendHigh.checked) {
+                    valueAllSending.value = 'all';
+                } else if (sendADS.checked) {
+                    valueAllSending.value = sendADS.value;
+                } else if (sendHigh.checked) {
+                    valueAllSending.value = sendHigh.value;
+                } else {
+                    valueAllSending.value = '';
+                }
+            }
 
-    updateValue();
+            updateValue();
 
-    sendADS.addEventListener('change', updateValue);
-    sendHigh.addEventListener('change', updateValue);
+            sendADS.addEventListener('change', updateValue);
+            sendHigh.addEventListener('change', updateValue);
 
-    if (valueAllSending.value === '' || valueAllSending.value === null) {
-        e.preventDefault();
-        alert('Please choose the option you want to send the request.');
-        return;
-    }
-    else{
-        formRequest.action = `/companyprofile/request/${getIDJob}`;
-        formRequest.submit();
-    }
-});
+            if (valueAllSending.value === '' || valueAllSending.value === null) {
+                e.preventDefault();
+                alert('Please choose the option you want to send the request.');
+                return;
+            }
+            else {
+                formRequest.action = `/companyprofile/request/${getIDJob}`;
+                formRequest.submit();
+            }
+        });
         //request sending 
-        clickRequest.addEventListener('click',(event)=>{
+        clickRequest.addEventListener('click', (event) => {
             requestBox.style.display = 'flex';
             event.stopPropagation
         })
@@ -670,22 +665,22 @@ Andrew leads the strategic direction of the business with a dedicated and divers
             formBlockedJob.submit();
         })
     });
-        //function show categories 63 provinces
-document.addEventListener("DOMContentLoaded", function() {
-    var provinces = ["An Giang", "Bà Rịa-Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên-Huế", "Tiền Giang", "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"];
-    var select = document.getElementById("joblocation");
-    for (var i = 0; i < provinces.length; i++) {
-        var option = document.createElement("option");
-        option.text = provinces[i];
-        option.value = provinces[i];
-        select.appendChild(option);
-    }
-});
+    //function show categories 63 provinces
+    document.addEventListener("DOMContentLoaded", function () {
+        var provinces = ["An Giang", "Bà Rịa-Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định", "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên-Huế", "Tiền Giang", "TP Hồ Chí Minh", "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"];
+        var select = document.getElementById("joblocation");
+        for (var i = 0; i < provinces.length; i++) {
+            var option = document.createElement("option");
+            option.text = provinces[i];
+            option.value = provinces[i];
+            select.appendChild(option);
+        }
+    });
     var submitPostJob = document.querySelector('.btn-postjob');
     var textSalary = document.querySelector('#postjob .job-salary #salary-range');
     var formPostJob = document.querySelector('#postjob .postjob-cancle .btn-postjob');
     var alertSalary = document.querySelector('#postjob .job-salary .alert-salary');
-submitPostJob.addEventListener('click', (e) => {
+    submitPostJob.addEventListener('click', (e) => {
         var salaryValue = textSalary.value;
         var salaryContent = parseInt(salaryValue, 10);
         if (salaryContent >= 4000) {
@@ -694,18 +689,18 @@ submitPostJob.addEventListener('click', (e) => {
                 e.preventDefault();
             }
         }
-});
-textSalary.addEventListener('input', (e) => {
-    var salaryValue = textSalary.value;
-    var salaryContent = parseInt(salaryValue, 10);
-    alertSalary.style.display = 'none';
-    textSalary.style.border = 'unset';
-    if (salaryValue !== "Negotiable" && isNaN(salaryContent)) {
-        textSalary.style.border = '2px solid red';
-        formPostJob.type = 'button';
-        alertSalary.style.display = 'inline-block';
-    } else {
-        formPostJob.type = 'submit';
-    }
-});
+    });
+    textSalary.addEventListener('input', (e) => {
+        var salaryValue = textSalary.value;
+        var salaryContent = parseInt(salaryValue, 10);
+        alertSalary.style.display = 'none';
+        textSalary.style.border = 'unset';
+        if (salaryValue !== "Negotiable" && isNaN(salaryContent)) {
+            textSalary.style.border = '2px solid red';
+            formPostJob.type = 'button';
+            alertSalary.style.display = 'inline-block';
+        } else {
+            formPostJob.type = 'submit';
+        }
+    });
 </script>

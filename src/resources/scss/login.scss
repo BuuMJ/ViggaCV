@@ -80,7 +80,7 @@
     position: relative;
     width: 100%;
     text-align: center;
-    height: 50px;
+    height: 55px;
     margin: 12px 0;
 }
 .login-username label:hover,
@@ -103,6 +103,31 @@
     border-radius: 5px;
     color: white;
     padding: 0 8px;
+    transition: all .3s;
+    font-size: 18px;
+}
+.box-login input:hover,
+.box-signup input:hover,
+.box-forgot input:hover,
+.box-verify input:hover,
+.box-resetpassword input:hover,
+#selectrole:hover{
+    box-shadow: 0 0 6px 4px #0072bc69;
+}
+.box-login input:valid,
+.box-signup input:valid,
+.box-forgot input:valid,
+.box-verify input:valid,
+.box-resetpassword input:valid,
+.box-login input:focus,
+.box-signup input:focus,
+.box-forgot input:focus,
+.box-verify input:focus,
+.box-resetpassword input:focus,
+#selectrole:valid,
+#selectrole:focus{
+    box-shadow: 0 0 6px 4px #0072bc69;
+    border: 1px solid $btncolor;
 }
 .login-username label,
 .login-password label,
@@ -110,7 +135,7 @@
 .login-phone label,
 .login-fullname label {
     position: absolute;
-    top: 20%;
+    top: 24%;
     left: 60px;
     transition: 0.5s;
     font-weight: 500;
@@ -121,17 +146,17 @@
 .login-password input:focus ~ label,
 .login-email input:focus ~ label,
 .login-phone input:focus ~label,
-.login-fullname input:focus ~label {
-    top: -15px;
-    color: #9ca3af;
-}
+.login-fullname input:focus ~label,
 .login-username input:valid + label,
 .login-password input:valid + label,
 .login-email input:valid + label,
 .login-phone input:valid + label,
-.login-fullname input:valid + label{
-    top: -15px;
-    color: #9ca3af;
+.login-fullname input:valid + label {
+    top: 2px;
+    left: 14.5%;
+    color: $btncolor;
+    font-size: 10px;
+    font-weight: 600;
 }
 .select-role{
     width: 100%;
@@ -229,12 +254,28 @@
     background-color: $btncolor;
 }
 @media screen and (max-width: 414px) {
+    .box-login,
+    .box-signup,
+    .box-forgot,
+    .box-verify,
+    .box-resetpassword{
+        width: 90%;
+    }   
     .login-username label, 
     .login-password label, 
     .login-email label, 
     .login-phone label, 
     .login-fullname label{
         left: 55px;
+    }
+    .click-actived__register{
+        width: 60% !important;
+    }
+    .box-login .action-login span{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
 @media screen and (max-width: 376px) {
@@ -245,6 +286,9 @@
     .login-fullname label{
         left: 50px;
     }
+    .click-actived__reset {
+        width: 100%;
+    }
 }
 @media screen and (max-width: 321px) {
     .login-username label, 
@@ -253,5 +297,11 @@
     .login-phone label, 
     .login-fullname label{
         left: 44px;
+    }
+    .text-reset-password{
+        width: 60% !important;
+    }
+    .click-actived__register{
+        width: 70% !important;
     }
 }

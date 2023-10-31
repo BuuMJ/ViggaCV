@@ -507,7 +507,7 @@ header.job-search{
     align-items: center;
     width: 100%;
     height: 80px;
-    background-color: #F7F7F7;
+    background-color: $backgroundcolor;
     z-index: 19;
     position: relative;
 }
@@ -1000,6 +1000,7 @@ header.job-search .best-companyFL {
 .main-jobs .card-jobs .card-job:hover{
     border: 1px solid $secondarycolor;
     background-color: #0072bc0d;
+    box-shadow: 4px 4px 20px #0072bc69;
 }
 .main-jobs .card-jobs .card-job:hover .card-job__info .job-name{
     color: $secondarycolor;
@@ -1014,6 +1015,7 @@ header.job-search .best-companyFL {
 .main-jobs .card-jobs .active-hot:hover{
     border: 1px solid #FF4500;
     background-color: #ff450005 !important;
+    box-shadow: 0px 4px 8px rgba(255, 68, 0, 0.6);
 }
 .pagination{
     display: none;
