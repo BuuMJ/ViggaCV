@@ -196,13 +196,16 @@
                 <li><a href="/company">List Company</a></li>
             </ul> --}}
         </ul>
+        {{#ifeq user 'user'}}
         <ul class="drop-down__tools-responsive">
             <span>Tools <i class="bi bi-caret-down-fill"></i></span>
         </ul>
         <ul class="down__tools-responsive">
                 <li><a href="/cv">NiceCV</a></li>
-                <li><a href="">Payroll</a></li>
+                {{!-- <li><a href="">Payroll</a></li> --}}
         </ul>
+        {{else}}
+        {{/ifeq}}
     </div>
     {{else}}
     <div class="responsive__navbar-center" style="justify-content: flex-start;">
@@ -218,7 +221,7 @@
             <span>Tools <i class="bi bi-caret-down-fill"></i></span>
             <ul class="down__tools-responsive">
                 <li><a href="/cv">NiceCV</a></li>
-                <li><a href="">Payroll</a></li>
+                {{!-- <li><a href="">Payroll</a></li> --}}
             </ul>
         </ul>
         <a href="/login">Sign In</a>
@@ -261,8 +264,10 @@ var showTools = document.querySelector('.responsive__navbar-center .down__tools-
 clickShowTools.addEventListener('click', function() {
     if (showTools.style.display === 'none' || showTools.style.display === '') {
         showTools.style.display = 'block';
+        clickShowTools.innerHTML = 'Tools <i class="bi bi-caret-up-fill"></i>';
     } else {
         showTools.style.display = 'none';
+        clickShowTools.innerHTML = 'Tools <i class="bi bi-caret-down-fill"></i>';
     }
 });
 document.addEventListener('click', function(event) {
