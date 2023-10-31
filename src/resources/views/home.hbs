@@ -445,16 +445,19 @@ var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
 
 // carousel home job responsive 
 var swiper = new Swiper(".container-home .home-jobs__responsive .mySwiper", {
-      spaceBetween: 30,
-      pagination: {
+    slidesPerView: 1,
+        grid: {
+          rows: 6,
+        },
+    pagination: {
         el: ".container-home .home-jobs__responsive .mySwiper .swiper-pagination",
         clickable: true,
-      },
-      autoplay: {
+    },
+    autoplay: {
         delay: 3500,
         disableOnInteraction: false
-        },
-    });
+    },
+});
  var listBox = document.querySelectorAll('.box__info-company')
  listBox.forEach(function(item) {
   const showFollowBox = item.querySelector('.info-company__follow');

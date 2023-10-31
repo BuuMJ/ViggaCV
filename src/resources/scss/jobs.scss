@@ -195,6 +195,9 @@ header.jobdetail .center-jobdetail{
 .main-jobsfromthiscompany ul .content-listjob .secondary-listjob{
     padding-left: unset;
 }
+.main-jobsfromthiscompany ul .content-listjob .secondary-listjob .locationjobs{
+    background-color: unset !important;
+}
 .desc-jobinfo,
 .requirements-jobinfo,
 .benefit-jobinfo{
@@ -950,6 +953,11 @@ header.job-search .best-companyFL {
     font-size: 20px;
     color:#454646 ;
     font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .card-job .card-job__info a.job__company-name{
     color: #696b6d;
