@@ -88,6 +88,7 @@
         <div class="box-hotcompany">
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
+                    {{!-- company with the most followers --}}
                 {{#each topCompanies}}
                 <div class="swiper-slide">
                     <div class="background-company" style="background: url('{{getBackground this}}') center / cover no-repeat;"></div>
@@ -120,7 +121,7 @@
         <div class="box-hotjob">
             <div class="swiper">
                 <div class="swiper-wrapper">
-                    {{!-- thay thế bằng job có nhiều tim nhất  --}}
+                    {{!-- job with the most favorite  --}}
                     {{#each jobs}}
                         <div class="swiper-slide">
                             <a href="/job/{{this._id}}" class="box__info-job">
