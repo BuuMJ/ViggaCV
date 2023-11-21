@@ -22,7 +22,7 @@
                         </div>
                         <p class="job-saved__salary"><i class="bi bi-currency-dollar"></i> {{this.salary}}</p>
                         <p class="job-saved__location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</p>
-                        <p><i class="bi bi-calendar2-check"></i> {{moment this.createdAt format="DD/MM/YYYY" }}</p>
+                        <p class="job-saved__date"><i class="bi bi-calendar2-check"></i> {{moment this.createdAt format="DD/MM/YYYY" }}</p>
                         <div class="action__job-saved">
                             <a href="/job/{{this._id}}">Apply Now</a>
                             <form class="function__check-save" action="/job/favourite?id={{this._id}}" method="POST">
@@ -137,6 +137,40 @@
             containerViewedJob.style.display = 'none';
             containerApllyJob.style.display = 'none';
             containerSavedJob.style.display = 'flex';
+            var showSaved = localStorage.getItem('boxSaved');
+            var showViewed = localStorage.getItem('boxViewed');
+            var showApply = localStorage.getItem('boxApply');
+            if(showSaved === 'show'){
+                savedClicked = true;
+                viewedClicked = false;
+                applyClicked = false;
+                clickSavedJob.style.cssText = 'border-bottom: 3px solid #0095ff; color: #0095ff; cursor: default;';
+                clickApplyJob.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
+                clickViewedJob.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
+                containerViewedJob.style.display = 'none';
+                containerApllyJob.style.display = 'none';
+                containerSavedJob.style.display = 'flex';
+            } else if(showViewed === 'show'){
+                viewedClicked = true;
+                savedClicked = false;
+                applyClicked = false;
+                containerSavedJob.style.display = 'none';
+                containerApllyJob.style.display = 'none';
+                clickSavedJob.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
+                clickViewedJob.style.cssText = 'border-bottom: 3px solid #0095ff; color: #0095ff; cursor: default;';
+                clickApplyJob.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
+                containerViewedJob.style.display = 'flex';
+            } else if(showApply === "show"){
+                applyClicked = true;
+                viewedClicked = false;
+                savedClicked = false;
+                containerSavedJob.style.display = 'none';
+                containerViewedJob.style.display = 'none';
+                clickSavedJob.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
+                clickViewedJob.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
+                clickApplyJob.style.cssText = 'border-bottom: 3px solid #0095ff; color: #0095ff; cursor: default;';
+                containerApllyJob.style.display = 'flex';
+            }
         });
         clickSavedJob.addEventListener('click',()=>{
             if(!savedClicked){
@@ -155,6 +189,9 @@
                 setTimeout(function(){
                     containerSavedJob.style.display = 'flex';
                 }, 1780);
+                localStorage.setItem('boxSaved',"show");
+                localStorage.setItem('boxApply',"hide");
+                localStorage.setItem('boxViewed',"hide");
             }
         });
         clickViewedJob.addEventListener('click',()=>{
@@ -174,6 +211,9 @@
                 setTimeout(function(){
                     containerViewedJob.style.display = 'flex';
                 }, 1780);
+                localStorage.setItem('boxViewed',"show");
+                localStorage.setItem('boxSaved',"hide");
+                localStorage.setItem('boxApply',"hide");
             }
         });
         clickApplyJob.addEventListener('click',()=>{
@@ -193,6 +233,9 @@
                 setTimeout(function(){
                     containerApllyJob.style.display = 'flex';
                 }, 1780);
+                localStorage.setItem('boxApply',"show");
+                localStorage.setItem('boxViewed',"hide");
+                localStorage.setItem('boxSaved',"hide");
             }
         });
     });

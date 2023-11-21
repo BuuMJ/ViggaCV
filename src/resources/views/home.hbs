@@ -384,30 +384,64 @@ var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
     var loadingFeatureCompany = document.querySelector('.company-feature .custom-loader');
     var clickJobHot = document.querySelector('.company-feature .header__company-feature span.hotjob');
     var boxJobHot = document.querySelector('.company-feature .box-hotjob');
+    var hotJobClicked = false;
+    var hotCompanyClicked = false;
     clickJobHot.addEventListener('click',()=>{
-        clickJobHot.style.cssText = 'border-bottom: 4px solid #0095ff; color: #0095ff;';
-        clickCompanyHot.style.cssText = 'border-bottom: unset; color: black;';
-        boxCompanyHot.style.display = 'none';
-        loadingFeatureCompany.style.display = 'grid';
-        setTimeout(function(){
-            loadingFeatureCompany.style.display = 'none';
-        }, 1750);
-        setTimeout(function(){
-            boxJobHot.style.display = 'flex';
-        }, 1780);
+        if(!hotJobClicked){
+            hotJobClicked = true;
+            hotCompanyClicked = false;
+            clickJobHot.style.cssText = 'border-bottom: 4px solid #0095ff; color: #0095ff;';
+            clickCompanyHot.style.cssText = 'border-bottom: unset; color: black;';
+            boxCompanyHot.style.display = 'none';
+            loadingFeatureCompany.style.display = 'grid';
+            setTimeout(function(){
+                loadingFeatureCompany.style.display = 'none';
+            }, 1750);
+            setTimeout(function(){
+                boxJobHot.style.display = 'flex';
+            }, 1780);
+            localStorage.setItem('boxHotJob', 'show');
+            localStorage.setItem('boxHotCompany', 'hide');
+            }
     });
     clickCompanyHot.addEventListener('click',()=>{
-        clickCompanyHot.style.cssText = 'border-bottom: 4px solid #0095ff, color: #0095ff;';
-        clickJobHot.style.cssText = 'border-bottom: unset; color: black;';
-        boxJobHot.style.display = 'none';
-        loadingFeatureCompany.style.display = 'grid';
-        setTimeout(function(){
-            loadingFeatureCompany.style.display = 'none';
-        }, 1750);
-        setTimeout(function(){
-            boxCompanyHot.style.display = 'flex';
-        }, 1780);
+        if(!hotCompanyClicked){
+            hotJobClicked = false;
+            hotCompanyClicked = true;
+            clickCompanyHot.style.cssText = 'border-bottom: 4px solid #0095ff, color: #0095ff;';
+            clickJobHot.style.cssText = 'border-bottom: unset; color: black;';
+            boxJobHot.style.display = 'none';
+            loadingFeatureCompany.style.display = 'grid';
+            setTimeout(function(){
+                loadingFeatureCompany.style.display = 'none';
+            }, 1750);
+            setTimeout(function(){
+                boxCompanyHot.style.display = 'flex';
+            }, 1780);
+            localStorage.setItem('boxHotCompany', 'show');
+            localStorage.setItem('boxHotJob', 'hide');
+        }
+        
     });
+    document.addEventListener('DOMContentLoaded',()=>{
+        var showBoxHotJob = localStorage.getItem('boxHotJob');
+        var showBoxHotCompany = localStorage.getItem('boxHotCompany');
+        if(showBoxHotJob === 'show'){
+            hotJobClicked = true;
+            hotCompanyClicked = false;
+            clickJobHot.style.cssText = 'border-bottom: 4px solid #0095ff; color: #0095ff;';
+            clickCompanyHot.style.cssText = 'border-bottom: unset; color: black;';
+            boxCompanyHot.style.display = 'none';
+            boxJobHot.style.display = 'flex';
+        } else if(showBoxHotCompany === 'show'){
+            hotJobClicked = false;
+            hotCompanyClicked = true;
+            clickCompanyHot.style.cssText = 'border-bottom: 4px solid #0095ff, color: #0095ff;';
+            clickJobHot.style.cssText = 'border-bottom: unset; color: black;';
+            boxJobHot.style.display = 'none';
+            boxCompanyHot.style.display = 'flex';
+    }
+    })
     // carousel jobs
     var swiper = new Swiper(".container-home .home-jobs .mySwiper", {
     slidesPerView: 3,

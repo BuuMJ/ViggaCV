@@ -135,6 +135,9 @@
         clickShowcompanyInfo.style.cssText = " font-weight:400; border-bottom: unset;"
         showjobsfromthiscompany.style.cssText = "display: none;"
         clickShowjobsfromthiscompany.style.cssText = " font-weight:400; border-bottom: unset;"
+        localStorage.setItem('boxJobInfo', 'show');
+        localStorage.setItem('boxCompanyInfo', 'hide');
+        localStorage.setItem('boxJFTC', 'hide');
     });
     var clickShowcompanyInfo = document.querySelector('.companyinfo');
     var showcompanyInfo = document.querySelector('.main-companyinfo');
@@ -145,6 +148,9 @@
         clickShowJobInfo.style.cssText = " font-weight:400; border-bottom: unset;"
         showjobsfromthiscompany.style.cssText = "display: none;"
         clickShowjobsfromthiscompany.style.cssText = " font-weight:400; border-bottom: unset;"
+        localStorage.setItem('boxCompanyInfo', 'show');
+        localStorage.setItem('boxJFTC', 'hide');
+        localStorage.setItem('boxJobInfo', 'hide');
     });
     var clickShowjobsfromthiscompany = document.querySelector('.jobsfromthiscompany');
     var showjobsfromthiscompany = document.querySelector('.main-jobsfromthiscompany');
@@ -155,6 +161,9 @@
         clickShowJobInfo.style.cssText = " font-weight:400; border-bottom: unset;"
         showcompanyInfo.style.cssText = "display: none;"
         clickShowcompanyInfo.style.cssText = " font-weight:400; border-bottom: unset;"
+        localStorage.setItem('boxJFTC', 'show');
+        localStorage.setItem('boxJobInfo', 'hide');
+        localStorage.setItem('boxCompanyInfo', 'hide');
     });
     var clickShowApply = document.querySelector('.btn-apply');
     var showApply = document.querySelector('.overplay-jobdetail');
@@ -206,5 +215,30 @@
                 showFileSpan.innerHTML = ".doc, .docx and .pdf files that are less than 5120KB in size";
             }
         });
+        var showBoxJobInfo = localStorage.getItem('boxJobInfo');
+        var showBoxCompanyInfo = localStorage.getItem('boxCompanyInfo');
+        var showBoxJFTC = localStorage.getItem('boxJFTC');
+        if(showBoxJobInfo === 'show'){
+            showJobInfo.style.cssText = "display: flex;"
+            clickShowJobInfo.style.cssText = "font-weight:600; border-bottom: 3px solid #0095ff;"
+            showcompanyInfo.style.cssText = "display: none;"
+            clickShowcompanyInfo.style.cssText = " font-weight:400; border-bottom: unset;"
+            showjobsfromthiscompany.style.cssText = "display: none;"
+            clickShowjobsfromthiscompany.style.cssText = " font-weight:400; border-bottom: unset;"
+        }else if(showBoxCompanyInfo === 'show'){
+            showcompanyInfo.style.cssText = "display: flex;"
+            clickShowcompanyInfo.style.cssText = "font-weight:600; border-bottom: 3px solid #0095ff;"
+            showJobInfo.style.cssText = "display: none;"
+            clickShowJobInfo.style.cssText = " font-weight:400; border-bottom: unset;"
+            showjobsfromthiscompany.style.cssText = "display: none;"
+            clickShowjobsfromthiscompany.style.cssText = " font-weight:400; border-bottom: unset;"
+        }else if(showBoxJFTC === 'show'){
+            showjobsfromthiscompany.style.cssText = "display: flex;"
+            clickShowjobsfromthiscompany.style.cssText = "font-weight:600; border-bottom: 3px solid #0095ff;"
+            showJobInfo.style.cssText = "display: none;"
+            clickShowJobInfo.style.cssText = " font-weight:400; border-bottom: unset;"
+            showcompanyInfo.style.cssText = "display: none;"
+            clickShowcompanyInfo.style.cssText = " font-weight:400; border-bottom: unset;"
+        }
     });
 </script>

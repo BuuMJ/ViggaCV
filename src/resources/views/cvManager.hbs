@@ -56,10 +56,29 @@
     document.addEventListener("DOMContentLoaded", function() {
     passedClicked = false;
     failedClicked = true;
+    var showPassCV = localStorage.getItem('boxPassCV');
+    var showFailCV = localStorage.getItem('boxFailCV');
+    if(showPassCV === "show"){
+        containerPassed.style.display = 'flex';
+        containerFailed.style.display = 'none';
+        passedClicked = false;
+        failedClicked = true;
+        clickPassed.style.cssText = 'border-bottom: 3px solid #0072bc; color: #0072bc; cursor: default;';
+        clickFailed.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
+    } else if(showFailCV === "show"){
+        containerFailed.style.display = 'flex';
+        containerPassed.style.display = 'none';
+        failedClicked = false;
+        passedClicked = true;
+        clickFailed.style.cssText = 'border-bottom: 3px solid #0072bc; color: #0072bc; cursor: default';
+            clickPassed.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
+    }
     });
     clickPassed.addEventListener('click',()=>{
         if(passedClicked){
             passedClicked = false;
+            localStorage.setItem('boxPassCV', 'show')
+            localStorage.setItem('boxFailCV', 'hide')
             clickPassed.style.cssText = 'border-bottom: 3px solid #0072bc; color: #0072bc; cursor: default;';
             clickFailed.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
             containerFailed.style.display = 'none';
@@ -72,11 +91,12 @@
             failedClicked = true;
             },1780)
         }
-        console.log(failedClicked);
     });
     clickFailed.addEventListener('click',()=>{
         if(failedClicked){
             failedClicked = false;
+            localStorage.setItem('boxFailCV', 'show')
+            localStorage.setItem('boxPassCV', 'hide')
             clickFailed.style.cssText = 'border-bottom: 3px solid #0072bc; color: #0072bc; cursor: default';
             clickPassed.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
             containerPassed.style.display = 'none';
@@ -89,6 +109,5 @@
             passedClicked = true;
             },1780)
         }
-        console.log(passedClicked)
     });
 </script>

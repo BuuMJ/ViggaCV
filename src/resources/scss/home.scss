@@ -753,13 +753,13 @@
 }
 .container-home .home-jobs .swiper {
     width: 90%;
-    height: 80%;
-    overflow-y: unset;
+    height: 90%;
   }
 .container-home .home-jobs .swiper .swiper-wrapper{
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 95%;
 }
   .container-home .home-jobs .swiper-slide {
     text-align: center;
@@ -869,9 +869,9 @@
   .container-home .home-jobs .swiper-button-prev{
     color: $btncolor;
   }
-  .container-home .home-jobs .swiper-pagination{
-    bottom: -30px;
-  }
+//   .container-home .home-jobs .swiper-pagination{
+//     bottom: -30px;
+//   }
   // home jobs responsive
   .container-home .home-jobs__responsive .swiper {
       width: 100%;
@@ -1294,12 +1294,6 @@
     .container-home .home-subscribe span.title-subscribe{
         font-size: 25px;
     }
-    .container-home .home-jobs .swiper{
-        overflow-y: unset;
-    }
-    .container-home .home-jobs .swiper .swiper-pagination{
-        bottom: -28px;
-    }
     .container-home .home-jobs .swiper-slide a.box-jobnew .top-jobnew img{
         height: 50%;
     }
@@ -1421,9 +1415,6 @@
     .container-home .home-jobs .swiper-slide a.box-jobnew .bottom-jobnew .jobnew__location{
         margin: 4px 0;
     }
-    .container-home .home-jobs .swiper .swiper-pagination{
-        bottom: -26px;
-    }
     .container-home .home-subscribe span.title-subscribe{
         font-size: 24px;
         padding: 0 40px;
@@ -1479,87 +1470,11 @@
         font-size: 18px;
         margin-top: unset;
     }
-    .container-home .home-jobs .swiper{
-        width: 95%;
-    }
-    .container-home .home-jobs .title-jobs {
-        font-size: 22px;
-    }
     .container-home .home-personal .title-personal {
         font-size: 22px;
     }
     .advantage-center {
         height: 35%;
-    }
-}
-@media screen and (max-width: 414px) {
-    .container-home .first-content .search-home {
-        width: 366px;
-    }
-    .container-home .first-content .toprecruiters {
-        bottom: -30%;
-    }
-    .container-home .first-content .toprecruiters span.title-toprecruiters{
-        font-size: 24px;
-    }
-    .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter{
-        width: 30%;
-        height: 90px;
-        margin: 6px 0;
-    }
-    .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .top__card-recruiter{
-        height: 24%;
-    }
-    .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .top__recruiter-avatar {
-        height: 56%;
-    }
-    .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .top__card-recruiter #content-top__recruiter {
-        font-size: 10px;
-    }
-    .company-feature {
-        min-height: 380px;
-    }
-    .company-feature .box-hotcompany {
-        height: 300px;
-        margin-bottom: 20px;
-        width: 98%;
-    }
-    .company-feature .header__company-feature span.hotcompany,
-    .company-feature .header__company-feature span{
-        font-size: 17px;
-    }
-    .company-feature .box-hotcompany .swiper .swiper-wrapper .swiper-slide .box__info-company .left-info {
-        padding: 20px 20px;
-    }
-    .company-feature .box-hotcompany .swiper .swiper-wrapper .swiper-slide .box__info-company .company-name {
-        font-size: 14px;
-    }
-    .company-feature .box-hotcompany .swiper .swiper-wrapper .swiper-slide .box__info-company img {
-        height: 120px;
-    }
-    .templates-cv{
-        height: 550px;
-        flex-direction: column-reverse;
-    }
-    .templates-img{
-        height: calc(100% - 35px);
-        width: 60%;
-    }
-    .templates-text{
-        clip-path: polygon(135% 0%, 100% 100%, 106% 50%, 50% 99%, 0% 50%, 0% 0%);
-        width: 100%;
-    }
-    .templates-text span{
-        padding: 12px;
-        margin-bottom: unset;
-    }
-    .templates-text__action{
-        margin-bottom: 62px;
-        transform: unset;
-        margin-top: 20px;
-    }
-    .container-home .home-personal .title-personal{
-        text-align: center;
     }
     .container-home .home-jobs{
         display: none;
@@ -1657,6 +1572,76 @@
     .container-home .home-jobs__responsive  .swiper .swiper-wrapper .swiper-slide .box-jobnew .left-info__jobnew .jobnew__location{
         background-color: $secondarycolor;
         color: white;
+    }
+}
+@media screen and (max-width: 414px) {
+    .container-home .first-content .search-home {
+        width: 366px;
+    }
+    .container-home .first-content .toprecruiters {
+        bottom: -30%;
+    }
+    .container-home .first-content .toprecruiters span.title-toprecruiters{
+        font-size: 24px;
+    }
+    .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter{
+        width: 30%;
+        height: 90px;
+        margin: 6px 0;
+    }
+    .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .top__card-recruiter{
+        height: 24%;
+    }
+    .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .top__recruiter-avatar {
+        height: 56%;
+    }
+    .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .top__card-recruiter #content-top__recruiter {
+        font-size: 10px;
+    }
+    .company-feature {
+        min-height: 380px;
+    }
+    .company-feature .box-hotcompany {
+        height: 300px;
+        margin-bottom: 20px;
+        width: 98%;
+    }
+    .company-feature .header__company-feature span.hotcompany,
+    .company-feature .header__company-feature span{
+        font-size: 17px;
+    }
+    .company-feature .box-hotcompany .swiper .swiper-wrapper .swiper-slide .box__info-company .left-info {
+        padding: 20px 20px;
+    }
+    .company-feature .box-hotcompany .swiper .swiper-wrapper .swiper-slide .box__info-company .company-name {
+        font-size: 14px;
+    }
+    .company-feature .box-hotcompany .swiper .swiper-wrapper .swiper-slide .box__info-company img {
+        height: 120px;
+    }
+    .templates-cv{
+        height: 550px;
+        flex-direction: column-reverse;
+    }
+    .templates-img{
+        height: calc(100% - 35px);
+        width: 60%;
+    }
+    .templates-text{
+        clip-path: polygon(135% 0%, 100% 100%, 106% 50%, 50% 99%, 0% 50%, 0% 0%);
+        width: 100%;
+    }
+    .templates-text span{
+        padding: 12px;
+        margin-bottom: unset;
+    }
+    .templates-text__action{
+        margin-bottom: 62px;
+        transform: unset;
+        margin-top: 20px;
+    }
+    .container-home .home-personal .title-personal{
+        text-align: center;
     }
     .container-home .home-subscribe .box-subscribe label.label-title{
         font-size: 14px;

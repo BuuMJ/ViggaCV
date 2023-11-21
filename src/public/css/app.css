@@ -693,13 +693,13 @@
 
 .container-home .home-jobs .swiper {
   width: 90%;
-  height: 80%;
-  overflow-y: unset; }
+  height: 90%; }
 
 .container-home .home-jobs .swiper .swiper-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  height: 95%; }
 
 .container-home .home-jobs .swiper-slide {
   text-align: center;
@@ -807,9 +807,6 @@
 .container-home .home-jobs .swiper-button-next,
 .container-home .home-jobs .swiper-button-prev {
   color: #0095ff; }
-
-.container-home .home-jobs .swiper-pagination {
-  bottom: -30px; }
 
 .container-home .home-jobs__responsive .swiper {
   width: 100%;
@@ -1125,10 +1122,6 @@
     font-size: 35px; }
   .container-home .home-subscribe span.title-subscribe {
     font-size: 25px; }
-  .container-home .home-jobs .swiper {
-    overflow-y: unset; }
-  .container-home .home-jobs .swiper .swiper-pagination {
-    bottom: -28px; }
   .container-home .home-jobs .swiper-slide a.box-jobnew .top-jobnew img {
     height: 50%; }
   .advantages {
@@ -1218,8 +1211,6 @@
     padding: 2px 6px; }
   .container-home .home-jobs .swiper-slide a.box-jobnew .bottom-jobnew .jobnew__location {
     margin: 4px 0; }
-  .container-home .home-jobs .swiper .swiper-pagination {
-    bottom: -26px; }
   .container-home .home-subscribe span.title-subscribe {
     font-size: 24px;
     padding: 0 40px;
@@ -1260,65 +1251,10 @@
     transform: translateX(26%);
     font-size: 18px;
     margin-top: unset; }
-  .container-home .home-jobs .swiper {
-    width: 95%; }
-  .container-home .home-jobs .title-jobs {
-    font-size: 22px; }
   .container-home .home-personal .title-personal {
     font-size: 22px; }
   .advantage-center {
-    height: 35%; } }
-
-@media screen and (max-width: 414px) {
-  .container-home .first-content .search-home {
-    width: 366px; }
-  .container-home .first-content .toprecruiters {
-    bottom: -30%; }
-  .container-home .first-content .toprecruiters span.title-toprecruiters {
-    font-size: 24px; }
-  .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter {
-    width: 30%;
-    height: 90px;
-    margin: 6px 0; }
-  .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .top__card-recruiter {
-    height: 24%; }
-  .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .top__recruiter-avatar {
-    height: 56%; }
-  .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .top__card-recruiter #content-top__recruiter {
-    font-size: 10px; }
-  .company-feature {
-    min-height: 380px; }
-  .company-feature .box-hotcompany {
-    height: 300px;
-    margin-bottom: 20px;
-    width: 98%; }
-  .company-feature .header__company-feature span.hotcompany,
-  .company-feature .header__company-feature span {
-    font-size: 17px; }
-  .company-feature .box-hotcompany .swiper .swiper-wrapper .swiper-slide .box__info-company .left-info {
-    padding: 20px 20px; }
-  .company-feature .box-hotcompany .swiper .swiper-wrapper .swiper-slide .box__info-company .company-name {
-    font-size: 14px; }
-  .company-feature .box-hotcompany .swiper .swiper-wrapper .swiper-slide .box__info-company img {
-    height: 120px; }
-  .templates-cv {
-    height: 550px;
-    flex-direction: column-reverse; }
-  .templates-img {
-    height: calc(100% - 35px);
-    width: 60%; }
-  .templates-text {
-    clip-path: polygon(135% 0%, 100% 100%, 106% 50%, 50% 99%, 0% 50%, 0% 0%);
-    width: 100%; }
-  .templates-text span {
-    padding: 12px;
-    margin-bottom: unset; }
-  .templates-text__action {
-    margin-bottom: 62px;
-    transform: unset;
-    margin-top: 20px; }
-  .container-home .home-personal .title-personal {
-    text-align: center; }
+    height: 35%; }
   .container-home .home-jobs {
     display: none; }
   .container-home .home-jobs__responsive .title-jobs {
@@ -1399,7 +1335,58 @@
     font-size: 12px; }
   .container-home .home-jobs__responsive .swiper .swiper-wrapper .swiper-slide .box-jobnew .left-info__jobnew .jobnew__location {
     background-color: #0072bc;
-    color: white; }
+    color: white; } }
+
+@media screen and (max-width: 414px) {
+  .container-home .first-content .search-home {
+    width: 366px; }
+  .container-home .first-content .toprecruiters {
+    bottom: -30%; }
+  .container-home .first-content .toprecruiters span.title-toprecruiters {
+    font-size: 24px; }
+  .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter {
+    width: 30%;
+    height: 90px;
+    margin: 6px 0; }
+  .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .top__card-recruiter {
+    height: 24%; }
+  .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .top__recruiter-avatar {
+    height: 56%; }
+  .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter .top__card-recruiter #content-top__recruiter {
+    font-size: 10px; }
+  .company-feature {
+    min-height: 380px; }
+  .company-feature .box-hotcompany {
+    height: 300px;
+    margin-bottom: 20px;
+    width: 98%; }
+  .company-feature .header__company-feature span.hotcompany,
+  .company-feature .header__company-feature span {
+    font-size: 17px; }
+  .company-feature .box-hotcompany .swiper .swiper-wrapper .swiper-slide .box__info-company .left-info {
+    padding: 20px 20px; }
+  .company-feature .box-hotcompany .swiper .swiper-wrapper .swiper-slide .box__info-company .company-name {
+    font-size: 14px; }
+  .company-feature .box-hotcompany .swiper .swiper-wrapper .swiper-slide .box__info-company img {
+    height: 120px; }
+  .templates-cv {
+    height: 550px;
+    flex-direction: column-reverse; }
+  .templates-img {
+    height: calc(100% - 35px);
+    width: 60%; }
+  .templates-text {
+    clip-path: polygon(135% 0%, 100% 100%, 106% 50%, 50% 99%, 0% 50%, 0% 0%);
+    width: 100%; }
+  .templates-text span {
+    padding: 12px;
+    margin-bottom: unset; }
+  .templates-text__action {
+    margin-bottom: 62px;
+    transform: unset;
+    margin-top: 20px; }
+  .container-home .home-personal .title-personal {
+    text-align: center; }
   .container-home .home-subscribe .box-subscribe label.label-title {
     font-size: 14px; }
   .container-home .home-subscribe .box-subscribe input {
@@ -1996,7 +1983,7 @@ header.job-search {
 .header-search {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   height: 80px;
@@ -2045,7 +2032,7 @@ header.job-search {
 .header-search .input-search .categories-select,
 .header-search .input-search .categories-select__position {
   position: absolute;
-  right: 38%;
+  right: 30%;
   top: 50%;
   transform: translateY(-50%); }
 
@@ -2053,10 +2040,11 @@ header.job-search {
 .header-search .input-search .categories-select__position i {
   position: absolute;
   right: 4%;
-  top: 28%; }
+  top: 28%;
+  z-index: 0; }
 
 .header-search .input-search .categories-select__position {
-  right: 20%; }
+  right: 17.5%; }
 
 .header-search .input-search .categories-select__position i {
   right: 12%; }
@@ -2076,8 +2064,10 @@ header.job-search {
   background-color: transparent;
   padding-left: 14px; }
 
-.header-search .input-search .categories-select__position #categories-search__position {
-  width: 130px; }
+.header-search .input-search .categories-select__position #categories-search__position:focus-visible {
+  border: unset;
+  outline: unset;
+  border-left: 1px solid #dcdcdc; }
 
 .header-search .input-search button {
   outline: none;
@@ -2587,7 +2577,7 @@ header.job-search .best-companyFL .background-image {
   padding: 12px 0; }
 
 .jobs-ads .best-job .best-job__background {
-  width: 403px;
+  width: 100%;
   height: 200px; }
 
 .jobs-ads .best-job .best-job__avatar {
@@ -2941,18 +2931,25 @@ header.job-search .best-companyFL .background-image {
   width: 100%;
   font-size: 16px; }
 
-.container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__salary {
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__salary,
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__location,
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__date {
   font-size: 14px;
-  font-weight: 600;
-  color: #F99C05;
+  font-weight: 600; }
+
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__salary {
+  color: #FF5733;
   margin: 12px 0; }
 
 .container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__location {
-  font-size: 14px;
-  font-weight: 500; }
+  color: #FFA500; }
+
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__date {
+  color: #0072bc; }
 
 .container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__location i,
-.container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__salary i {
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__salary i,
+.container__job-saved .main__job-saved section .box__saved-job .card__job-saved .job-saved__date i {
   font-weight: 700;
   font-size: 16px; }
 
@@ -8285,7 +8282,7 @@ form.note-denied button:hover {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 700px;
+  min-height: 700px;
   background-color: black; }
 
 .box-login,
@@ -8312,7 +8309,8 @@ form.note-denied button:hover {
 
 .box-signup {
   display: none;
-  width: 450px; }
+  width: 450px;
+  margin: 50px 0; }
 
 .text-login {
   display: flex;
@@ -8408,13 +8406,15 @@ form.note-denied button:hover {
 #selectrole:valid,
 #selectrole:focus {
   box-shadow: 0 0 6px 4px #0072bc69;
-  border: 1px solid #0095ff; }
+  border: 1px solid #0095ff;
+  padding-top: 10px; }
 
 .login-username label,
 .login-password label,
 .login-email label,
 .login-phone label,
-.login-fullname label {
+.login-fullname label,
+.select-role label {
   position: absolute;
   top: 24%;
   left: 60px;
@@ -8432,7 +8432,9 @@ form.note-denied button:hover {
 .login-password input:valid + label,
 .login-email input:valid + label,
 .login-phone input:valid + label,
-.login-fullname input:valid + label {
+.login-fullname input:valid + label,
+#selectrole:valid + label,
+#selectrole:focus + label {
   top: 2px;
   left: 14.5%;
   color: #0095ff;
@@ -8443,7 +8445,8 @@ form.note-denied button:hover {
   width: 100%;
   text-align: center;
   height: 50px;
-  margin: 12px 0; }
+  margin: 12px 0;
+  position: relative; }
 
 #selectrole {
   width: 75%;
@@ -8479,7 +8482,7 @@ form.note-denied button:hover {
   color: white;
   background-color: #0095ff;
   width: 90px;
-  height: 40px;
+  height: 50px;
   font-weight: 700;
   border-radius: 5px; }
 

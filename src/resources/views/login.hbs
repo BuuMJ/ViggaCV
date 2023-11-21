@@ -60,10 +60,11 @@
         </div>
         <div class="select-role">
             <select name="role" id="selectrole" required>
-                <option class="role-selected" value="" >Select Role</option>
+                <option class="role-selected" value="" ></option>
                 <option value="company">Company</option>
                 <option value="user">User</option>
             </select>
+            <label for="selectrole">Select Role</label>
         </div>
         <div class="action-login">
             <button class="btn-signup" type="submit">Register</button>
@@ -95,20 +96,50 @@
     clickCreate.addEventListener('click', ()=>{
         boxLogin.style.cssText = "display: none;"
         boxSignUp.style.cssText = "display: flex;"
+        localStorage.setItem('showSignUp', 'show');
+        localStorage.setItem('showSignIn', 'hide');
+        localStorage.setItem('showForgot', 'hide');
     })
     clickSignIn.addEventListener('click', ()=>{
         boxSignUp.style.cssText = "display: none;"
         boxLogin.style.cssText = "display:flex;"
+        localStorage.setItem('showSignIn', 'show');
+        localStorage.setItem('showSignUp', 'hide');
+        localStorage.setItem('showForgot', 'hide');
     })
     var boxReset = document.querySelector('.box-forgot');
     var clickReset = document.querySelector('.forgot-password');
     clickReset.addEventListener('click',()=>{
         boxReset.style.cssText = "display: flex;"
         boxLogin.style.cssText = "display: none;"
+        localStorage.setItem('showForgot', 'show');
+        localStorage.setItem('showSignUp', 'hide');
+        localStorage.setItem('showSignIn', 'hide');
     })
      var clickBackReset = document.querySelector('.back-reset');
      clickBackReset.addEventListener('click', ()=>{
         boxReset.style.cssText = "display: none;"
         boxLogin.style.cssText = "display: flex;"
+        localStorage.setItem('showSignIn', 'show');
+        localStorage.setItem('showSignUp', 'hide');
+        localStorage.setItem('showForgot', 'hide');
      })
+     document.addEventListener('DOMContentLoaded', ()=> {
+        var showSignIn = localStorage.getItem('showSignIn');
+        var showSignUp = localStorage.getItem('showSignUp');
+        var showForgot = localStorage.getItem('showForgot');
+        if (showSignIn === 'show') {
+        boxLogin.style.display = 'flex';
+        boxSignUp.style.display = 'none';
+        boxReset.style.display = 'none';
+        } else if (showSignUp === 'show') {
+            boxLogin.style.display = 'none';
+            boxSignUp.style.display = 'flex';
+            boxReset.style.display = 'none';
+        } else if (showForgot === 'show') {
+            boxLogin.style.display = 'none';
+            boxSignUp.style.display = 'none';
+            boxReset.style.display = 'flex';
+        }
+    });
 </script>
