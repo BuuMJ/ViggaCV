@@ -241,4 +241,12 @@
             clickShowcompanyInfo.style.cssText = " font-weight:400; border-bottom: unset;"
         }
     });
+    var changeJobDetail = document.querySelectorAll('.main-jobsfromthiscompany .content-listjob')
+    changeJobDetail.forEach(function(change){
+        change.addEventListener('click',()=>{
+            localStorage.setItem('boxJobInfo', 'show');
+            localStorage.setItem('boxCompanyInfo', 'hide');
+            localStorage.setItem('boxJFTC', 'hide');
+        })
+    });
 </script>
