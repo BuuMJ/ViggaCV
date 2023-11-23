@@ -69,9 +69,9 @@
                             value="{{getEstablisheddate company}}">
                     </div>
                     <div class="about-user ">
-                        <label for="companyyearsinbusiness">No. OfYears In Business</label>
-                        <input id="companyyearsinbusiness" type="text" name="companyYears" placeholder="70 Years"
-                            value="{{getCompanyyears company}}">
+                        <label for="companyyearsinbusiness">No. Of Years In Business</label>
+                        <input id="companyyearsinbusiness" type="number" name="companyYears" placeholder="70"
+                            value="{{getCompanyyearsProfile company}}">
                     </div>
                     <div class="about-user ">
                         <label for="TOB">Type of business</label>
@@ -87,8 +87,8 @@
                     </div>
                     <div class="about-user ">
                         <label for="companyyears">No. Of Employee</label>
-                        <input id="companyyears" type="text" name="noofemployee" placeholder="70 Years"
-                            value="{{getNoofemployee company}}">
+                        <input id="companyyears" type="number" name="noofemployee" placeholder="70"
+                            value="{{getNoofemployeeProfile company}}">
                     </div>
                     <div class="about-user about-user-desc-company">
                         <label for="experience">Company Description</label>
@@ -416,7 +416,6 @@ Andrew leads the strategic direction of the business with a dedicated and divers
     for (var i = numToShow; i < leadershipList.length; i++) {
         leadershipList[i].style.display = "none";
     }
-
     viewMoreBtn.addEventListener("click", function () {
         numToShow += numToShowIncrement;
         for (var i = 0; i < leadershipList.length; i++) {
@@ -426,15 +425,14 @@ Andrew leads the strategic direction of the business with a dedicated and divers
                 leadershipList[i].style.display = "none";
             }
         }
-        if (numToShow >= leadershipList.length) {
+        if (numToShow > numToShowIncrement && numToShow >= leadershipList.length) {
             viewMoreBtn.style.cssText = "opacity: 0; cursor: default;";
             viewLessBtn.style.cssText = "opacity: 1; cursor: pointer; ";
         }
+        console.log(numToShow)
         viewLessBtn.style.cssText = "opacity: 1; cursor: pointer; ";
-
-        // Add event listener for viewLessBtn
-        if (viewLessBtn !== null) {
-            viewLessBtn.addEventListener("click", function () {
+    });
+    viewLessBtn.addEventListener("click", function () {
                 numToShow -= numToShowIncrement;
                 for (var i = 0; i < leadershipList.length; i++) {
                     if (i < numToShow) {
@@ -448,9 +446,8 @@ Andrew leads the strategic direction of the business with a dedicated and divers
                     viewMoreBtn.style.cssText = "opacity: 1; cursor: pointer; ";
                 }
                 viewMoreBtn.style.cssText = "opacity: 1; cursor: pointer; ";
+                console.log(numToShow + " " + numToShowIncrement)
             });
-        }
-    });
 </script>
 <script>
 

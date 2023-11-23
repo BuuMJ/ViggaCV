@@ -115,7 +115,7 @@
                         <span>Upload new CV <i class="bi bi-cloud-plus"></i></span>
                         <span class="show-file">.doc, .docx and .pdf files that are less than 5120KB in size</span>
                     </label>
-                    <input type="file" name="cv" id="cv">
+                    <input type="file" name="cv" id="cv" accept=".doc, .docx, .pdf" required>
                 </div>
             </div>
             <div class="apply-job-action">
@@ -211,10 +211,31 @@
             if (this.files && this.files.length > 0) {
                 showFileSpan.innerHTML = this.files[0].name;
                 showFileSpan.style.cssText = 'color: #D3D3D3';
+                var allowedExtensions = /(\.doc|\.docx|\.pdf)$/i;
+                   var selectedFile = this.files[0];
+                   if (!allowedExtensions.test(selectedFile.name)) {
+                        showFileSpan.innerHTML = '<span class="material-symbols-outlined">error</span>' + selectedFile.name;
+                        showFileSpan.style.cssText = 'color: #FC0404; display: flex; align-item: center';
+                    }
             } else {
                 showFileSpan.innerHTML = ".doc, .docx and .pdf files that are less than 5120KB in size";
             }
         });
+        var submitApplyCV = document.querySelector('.submit-apply');
+        submitApplyCV.addEventListener('click',(e)=>{
+            if (inputFile.files && inputFile.files.length > 0) {
+                   var allowedExtensions = /(\.doc|\.docx|\.pdf)$/i;
+                   var selectedFile = inputFile.files[0];
+                   if (!allowedExtensions.test(selectedFile.name)) {
+                        e.preventDefault();
+                        alert('Please upload only doc, docx, or pdf files.');
+                    }
+                }
+            else{
+                 e.preventDefault();
+                alert('Please upload your CV to apply for this position')
+            }
+        })
         var showBoxJobInfo = localStorage.getItem('boxJobInfo');
         var showBoxCompanyInfo = localStorage.getItem('boxCompanyInfo');
         var showBoxJFTC = localStorage.getItem('boxJFTC');

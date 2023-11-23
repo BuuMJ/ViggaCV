@@ -175,6 +175,13 @@ module.exports = {
   },
   getCompanyyears: function (company) {
     if (company && company.companyyears) {
+      return company.companyyears + " years";
+    } else {
+      return "Not updated yet";
+    }
+  },
+  getCompanyyearsProfile: function (company) {
+    if (company && company.companyyears) {
       return company.companyyears;
     } else {
       return "Not updated yet";
@@ -211,6 +218,13 @@ module.exports = {
   getNoofemployee: function (company) {
     if (company && company.noofemployee) {
       return company.noofemployee + " staff";
+    } else {
+      return "Not updated yet";
+    }
+  },
+  getNoofemployeeProfile: function (company) {
+    if (company && company.noofemployee) {
+      return company.noofemployee;
     } else {
       return "Not updated yet";
     }
