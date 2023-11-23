@@ -26,6 +26,7 @@ class CompanyController {
     for (let i = 1; i <= total; i++) {
       pages.push(i);
     }
+    const listCategories = await CompanyModel.find({});
 
     const randomIndex = Math.floor(Math.random() * Listcompany.length);
     const randomCompany = Listcompany[randomIndex];
@@ -46,6 +47,7 @@ class CompanyController {
               jobcount: listcompany,
               company: company,
               listcompany: mutipleMongooseToObject(data),
+              listCategories: mutipleMongooseToObject(listCategories),
               listjob,
               randomCompany: randomCompany,
               count: count,
@@ -65,6 +67,7 @@ class CompanyController {
               jobcount: listcompany,
               company: company,
               listcompany: mutipleMongooseToObject(data),
+              listCategories: mutipleMongooseToObject(listCategories),
               listjob,
               randomCompany: randomCompany,
               count: count,
@@ -119,6 +122,7 @@ class CompanyController {
               jobcount: listcompany,
               company: company,
               listcompany: mutipleMongooseToObject(data),
+              listCategories: Listcompany,
               listjob,
               randomCompany: randomCompany,
               count: count,
@@ -140,6 +144,7 @@ class CompanyController {
               jobcount: listcompany,
               company: company,
               listcompany: mutipleMongooseToObject(data),
+              listCategories: Listcompany,
               listjob,
               randomCompany: randomCompany,
               count: count,
@@ -164,6 +169,7 @@ class CompanyController {
     const Listcompany = listcompany.map((listcompany) =>
       listcompany.toObject()
     );
+    const listCategories = await CompanyModel.find({});
 
     var page = req.query.page;
     var PAGE_SIZE = 6;
@@ -178,7 +184,7 @@ class CompanyController {
     const randomCompany = Listcompany[randomIndex];
     JobModel.find({ iduser: user_id, active: true }).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
-      console.log(pages);
+      console.log(listCategories);
       if (page) {
         page = parseInt(page);
         const skip = (page - 1) * PAGE_SIZE;
@@ -195,6 +201,7 @@ class CompanyController {
               jobcount: listcompany,
               company: avatarCompany,
               listcompany: mutipleMongooseToObject(data),
+              listCategories: mutipleMongooseToObject(listCategories),
               listjob,
               randomCompany: randomCompany,
               count: count,
@@ -216,6 +223,7 @@ class CompanyController {
               jobcount: listcompany,
               company: avatarCompany,
               listcompany: mutipleMongooseToObject(data),
+              listCategories: mutipleMongooseToObject(listCategories),
               listjob,
               randomCompany: randomCompany,
               count: count,

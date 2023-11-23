@@ -21,14 +21,14 @@
                     <div class="categories-select">
                         <select name="categories" id="categories-search">
                             <option  value="" selected>All Company Field</option>
-                            {{#each listcompany}}
+                            {{#each listCategories}}
                             <option value="{{this.companyfield}}">{{this.companyfield}}</option>
                             {{/each}}
                         </select>
                     </div>
                 </form>
             </div>
-            <div id="search-results" class="body-companies">
+            <div id="search-results" class="body-companies">  
                 {{#each listcompany}}
                 <div class="card-companies">
                     <div data-href-company="{{this._id}}" class="card-company">

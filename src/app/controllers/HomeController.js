@@ -2,6 +2,7 @@ const nodemailer = require("nodemailer");
 const JobModel = require("../models/Job");
 const CompanyModel = require("../models/Company");
 const SubscribeModel = require("../models/Subscribe");
+const FavouriteModel = require("../models/Favourite");
 const {
   mutipleMongooseToObject,
   staffMongoseToObject,
@@ -11,7 +12,27 @@ class HomeController {
   async home(req, res, next) {
     try {
       const msg = req.query.messenge;
-      const jobs = await JobModel.find({ active: true });
+      // const jobs = await JobModel.find({ active: true });
+      const jobs = await FavouriteModel.aggregate([
+        {
+          $group: {
+            _id: "$jobid",
+            count: { $sum: 1 },
+          },
+        },
+        {
+          $lookup: {
+            from: "jobs",
+            localField: "_id",
+            foreignField: "_id",
+            as: "jobDetail",
+          },
+        },
+        {
+          $unwind: "$jobDetail",
+        },
+      ]);
+      console.log(jobs);
       // thêm chức năng 20 việc làm mới nhất + thêm tổng số count vào
       const companies = await CompanyModel.find({});
       // thêm chức năng công ty có nhiều công việc nhất
@@ -43,7 +64,7 @@ class HomeController {
         title: "Vigga Home",
         user: req.user,
         msg,
-        jobs: mutipleMongooseToObject(jobs),
+        jobs: jobs,
         companies: mutipleMongooseToObject(companies),
         prioritizeJobs: mutipleMongooseToObject(prioritizeJobs),
         topCompanies: mutipleMongooseToObject(topCompanies),

@@ -125,12 +125,12 @@
                     {{#each jobs}}
                         <div class="swiper-slide">
                             <a href="/job/{{this._id}}" class="box__info-job">
-                                <img src="{{getAvatarJoba this}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
+                                <img src="{{this.jobDetail.avatar}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
                                 <div class="left__info-job">
-                                    <span class="hot__job-name">{{this.jobname}}</span>
-                                    <span class="hot__job__company-name">{{this.companyname}}</span>
-                                    <span class="hot__job-salary"><i class="bi bi-currency-dollar"></i>{{this.salary}}</span>
-                                    <span class="hot__location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</span>
+                                    <span class="hot__job-name">{{this.jobDetail.jobname}}</span>
+                                    <span class="hot__job__company-name">{{this.jobDetail.companyname}}</span>
+                                    <span class="hot__job-salary"><i class="bi bi-currency-dollar"></i>{{this.jobDetail.salary}}</span>
+                                    <span class="hot__location"><i class="bi bi-geo-alt"></i> {{this.jobDetail.joblocation}}</span>
                                 </div>
                             </a>
                         </div>
