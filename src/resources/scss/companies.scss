@@ -21,7 +21,7 @@
   flex-direction: column;
   justify-content: space-around;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid #f0f0f0;
   background-color: white;
   margin-bottom: 50px;
@@ -94,7 +94,7 @@ font-weight: 700;
   height: 40px;
   width: 40px;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 5px;
   z-index: -1;
   fill: black;
   border: 1px solid black;
@@ -118,8 +118,9 @@ margin-top: 20px;
 width: 20%;
 height: 30px;
 outline: none;
-border-radius: 10px;
+border-radius: 5px;
 padding: 0 4px;
+border: 1px solid black;
 }
 .body-companies{
   display: flex;
@@ -144,7 +145,7 @@ margin: 12px 10px 12px 0;
   width: 100%;
   height: 100%;
   border: 1px solid #f0f0f0;
-  border-radius: 10px;
+  border-radius: 5px;
   color: black;
   cursor: pointer;
   transition: all .3s;
@@ -158,12 +159,12 @@ margin: 12px 10px 12px 0;
 .header-card-company .background-card-company{
   width: 100%;
   height: 80%;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 .header-card-company .avatar-card-company{
   width: 35%;
   height: 50%;
-  border-radius: 10px;
+  border-radius: 5px;
   transform: translate(20%, -50%);
   box-shadow: 1px 1px 10px rgb(131, 128, 128);
   background-color: white;
@@ -214,7 +215,7 @@ color: #777777;
   text-decoration: none;
   color: $btncolor;
   padding: 8px;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: white;
   width: 100px;
   height: 40px;
@@ -305,6 +306,7 @@ flex-direction: column;
 justify-content: space-around;
 padding: 20px;
 margin-bottom: 30px;
+border-radius: 5px;
 }
 .companyinformation-showjob ul{
   margin-bottom: unset;
@@ -344,6 +346,7 @@ font-weight: 600;
   border: 1px solid $btncolor;
   background-color: white;
   transition: .3s;
+  border-radius: 5px;
 }
 .job-companyinfo-action a:hover{
   background-color: $btncolor;
@@ -352,6 +355,9 @@ font-weight: 600;
 .companyinformation-showjob .jobs-companyinfo:hover .job-companyinfo-action a{
   background-color: $btncolor;
   color: white;
+}
+.companyinformation-showjob .jobs-companyinfo .job-companyinfo span.namejobs{
+  padding: 6px 0 !important;
 }
 .companyinformation-showjob .jobs-companyinfo:hover .job-companyinfo span.namejobs{
   color: $btncolor;
@@ -407,7 +413,7 @@ header.company-detail .background-company-detail{
   justify-content: space-around;
   align-items: center;
   height: 60%;
-  padding: 20px 0;
+  padding: 30px 0;
 }
 .logo-company-detail{
   display: flex;
@@ -417,9 +423,9 @@ header.company-detail .background-company-detail{
   padding-left: 40px;
 }
 .header__primary-company-detail .logo-company-detail img{
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
+  width: 150px;
+  height: 100px;
+  border-radius: 5px;
   box-shadow: 1px 1px 8px #999999;
 }
 .header__primary-company-detail .logo-company-detail span.sumary-jobs{
@@ -539,6 +545,7 @@ header.company-detail .background-company-detail{
   font-weight: 400;
   padding: 4px 0 ;
   letter-spacing: 1.3px;
+  text-align: justify;
 }
 .company-leadership {
   width: 90%;
@@ -766,6 +773,7 @@ header.company-detail .background-company-detail{
   }
   .header__primary-company-detail{
     position: relative;
+    padding: 20px 0;
   }
   .logo-company-detail,
   .follow-company-detail{
@@ -773,7 +781,7 @@ header.company-detail .background-company-detail{
   }
   .header__primary-company-detail .logo-company-detail img{
     position: absolute;
-    top: -60%;
+    top: -40%;
   }
   .header__primary-company-detail .logo-company-detail span.sumary-jobs {
     margin-bottom: 12px;
@@ -879,7 +887,7 @@ header.company-detail .background-company-detail{
   }
   .header__primary-company-detail .logo-company-detail img{
     left: 50%;
-    top: -30%;
+    top: -25%;
     transform: translateX(-50%);
   }
   .logo-company-detail{
@@ -889,6 +897,9 @@ header.company-detail .background-company-detail{
   }
   .company-desc span.desc__first-text{
     font-size: 36px;
+  }
+  .header__primary-company-detail .logo-company-detail span.sumary-jobs b{
+    text-align: center;
   }
 }
 @media screen and (max-width: 415px) {
@@ -958,10 +969,6 @@ header.company-detail .background-company-detail{
   .company-leadership__text span.leadership__first-text{
     font-size: 24px;
   }
-  .company-desc span.desc__second-text,
-  .company-leadership__text span.leadership__second-text{
-    text-align: justify;
-  }
   nav.companyinformation{
     flex-direction: column;
     align-items: center;
@@ -996,6 +1003,9 @@ header.company-detail .background-company-detail{
     font-size: 16px !important;
     padding-bottom: 4px !important;
   }
+  .jobs-companyinfo .content-listjob .secondary-listjob{
+    flex-direction: row !important;
+  }
   .job-companyinfo-action{
     width: 100%;
     align-items: start;
@@ -1025,6 +1035,9 @@ header.company-detail .background-company-detail{
   }
   nav.companyinformation img{
     top: -18%;
+  }
+  .header__primary-company-detail .logo-company-detail img{
+    top: -20%;
   }
 }
 @media screen and (max-width: 321px) {

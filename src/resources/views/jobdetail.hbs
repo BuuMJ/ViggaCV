@@ -44,18 +44,19 @@
                     {{/if}}
                 </div>
                 <div class="location-jobinfo">
-                    <p class="jobinfo-main-text">Locations</p>
+                    <p class="jobinfo-main-text">Location</p>
                     <span><i class="bi bi-geo-alt-fill"></i> {{detail.joblocation}}</span>
                 </div>
             </div>
             <div class="main-companyinfo">
                 <div class="company-detail">
+                    <p><a href="/company/{{getCompanyID company}}">View Full Company Profile <span class="material-symbols-outlined">bubble</span></a></p>
                     <p class="jobinfo-main-text">Company Detail</p>
                     <span><b>Company Name:</b> {{getCompanyname company}} {{getTOB company}}</span>
                     <span><b>Industry:</b> {{getCompanyfield company}}</span>
                     <span><b>Address:</b> {{getCompanyaddress company}}</span>
-                    <span><b>Operating Time:</b> {{getCompanyyears company}} Years</span>
                     <span><b>Hotline:</b> {{getCompanyphone company}}</span>
+                    <span><b>Established Date:</b> {{getEstablisheddate company}} - {{getCompanyyears company}} </span>
                 </div>
                 <div class="desc-jobinfo">
                     <p class="jobinfo-main-text">Company Description</p>

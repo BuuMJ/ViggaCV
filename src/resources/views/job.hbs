@@ -42,7 +42,7 @@
       <button type="submit">Search</button>
       </form>
       <form action="/scan" method="POST" class="header-search__scancv" enctype="multipart/form-data">
-        <input type="file" name="scancv" id="scancv" hidden>
+        <input type="file" name="scancv" id="scancv" accept=".doc, .docx, .pdf" hidden>
         <label for="scancv">
           <span class="text-scancv">Search By CV</span> 
           <img class="icon-scancv" src="/img/scancv.png" alt="">
@@ -267,6 +267,9 @@ getPagination.forEach(function(pageLink) {
   });
 });
 document.addEventListener('DOMContentLoaded', () => {
+        localStorage.setItem('boxJobInfo', 'show');
+        localStorage.setItem('boxCompanyInfo', 'hide');
+        localStorage.setItem('boxJFTC', 'hide');
   const urlParams = new URLSearchParams(window.location.search);
   const pageFromURL = urlParams.get('page');
   const currentPage = pageFromURL || localStorage.getItem('currentPageJob');

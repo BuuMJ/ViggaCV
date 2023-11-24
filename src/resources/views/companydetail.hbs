@@ -16,19 +16,17 @@
                     <button id="followButton" type="submit">{{checkfl.follow}} ({{company.follow}})</button>
                 </form>
             </div>
-            <div class="header__info-company-detail">
-                <span class="about-us">About Us</span>
-            </div>
         </div>
     </header>
         <div class="body-about-us">
             <div class="company-desc">
                 <span class="desc__first-text">About {{getCompanyname company}}</span>
                 <div class="contact-company company-desc">
+                    <span class="desc__second-text"><b>Industry:</b> {{getCompanyfield company}}</span>
                     <span class="desc__second-text"><b>Email:</b> {{getCompanyemail company}}</span>
                     <span class="desc__second-text"><b>Address</b>: {{getCompanyaddress company}}</span>
                     <span class="desc__second-text"><b>HotLine:</b> {{getCompanyphone company}}</span>
-                    <span class="desc__second-text"><b>Established Date:</b> {{ moment (getEstablisheddate company) format="DD/MM/YYYY" }}</span>
+                    <span class="desc__second-text"><b>Established Date:</b> {{getEstablisheddate company}} - {{getCompanyyears company}}</span>
                     <span class="desc__second-text"><b>Size:</b> {{getNoofemployee company}}</span>
                 </div>
                 <span class="desc__second-text"><b>Description: </b>{{getCompanydesc company}}</span>
@@ -49,7 +47,7 @@
             <div class="company-leadership">
                 <div class="company-leadership__text">
                     <span class="leadership__first-text">Our Leadership</span>
-                    <span class="leadership__second-text">The {{getCompanyname company}} company was founded on {{ moment (getEstablisheddate company) format="DD/MM/YYYY" }}, and has {{getCompanyyears company}} of experience in the industry. A summary of our company's Leadership</span>
+                    <span class="leadership__second-text">The {{getCompanyname company}} company was founded on {{getEstablisheddate company}}, and has {{getCompanyyears company}} of experience in the industry. A summary of our company's Leadership</span>
                 </div>
                 <div class="company-leadership__info-total">
                   <div class="swiper mySwiper">

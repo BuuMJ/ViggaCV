@@ -13,10 +13,9 @@
                 <div class="custom-loader"></div>
             </div>
                 <div class="box__passed-cv">
-                    <h2>In total, this job has {{countPassed}} CVs that have passed your company's requirements</h2>
+                    <h2>In total, this job has <b>{{countPassed}}</b> CVs that have passed your company's requirements</h2>
                 {{#each cvPassed}}
                     <a href="/applyCV/{{job.companyname}}/{{job.jobname}}/qualified/{{this.nameCV}}" class="card__passed-cv" download>
-                        <span class="name-file"><b>Name CV:</b> <span>{{this.nameCV}}</span></span>
                         <span class="person-applied"><b>Applicant's Name:</b> {{this.name}}</span>
                         {{#if this.professional}}
                         <span class="headline"><b>Applicant's Professional Headline:</b> {{this.professional}}</span>
@@ -24,14 +23,14 @@
                         {{/if}}
                         <span class="email-applied"><b>Applicant's Email:</b> {{this.email}}</span>
                         <span class="phone-applied"><b>Applicant's Phone:</b> {{this.phone}}</span>
+                        <span class="name-file"><b>Link CV:</b> <span>{{this.nameCV}}</span></span>
                     </a>
                 {{/each}}
                 </div>
                 <div class="box__failed-cv">
-                    <h2>In total, this job has {{countFailed}} CVs that have failed your company's requirements</h2>
+                    <h2>In total, this job has <b>{{countFailed}}</b> CVs that have failed your company's requirements</h2>
                 {{#each cvFailed}}
                     <a href="/applyCV/{{job.companyname}}/{{job.jobname}}/unsatisfactory/{{this.nameCV}}" class="card__failed-cv" download>
-                       <span class="name-file"><b>Name CV:</b> <span>{{this.nameCV}}</span></span>
                         <span class="person-applied"><b>Applicant's Name:</b> {{this.name}}</span>
                         {{#if this.professional}}
                         <span class="headline"><b>Applicant's Professional Headline:</b> {{this.professional}}</span>
@@ -39,6 +38,7 @@
                         {{/if}}
                         <span class="email-applied"><b>Applicant's Email:</b> {{this.email}}</span>
                         <span class="phone-applied"><b>Applicant's Phone:</b> {{this.phone}}</span>
+                       <span class="name-file"><b>Link CV:</b> <span>{{this.nameCV}}</span></span>
                     </a>
                 {{/each}}
                 </div>
@@ -63,14 +63,14 @@
         containerFailed.style.display = 'none';
         passedClicked = false;
         failedClicked = true;
-        clickPassed.style.cssText = 'border-bottom: 3px solid #0072bc; color: #0072bc; cursor: default;';
+        clickPassed.style.cssText = 'border-bottom: 3px solid #0095ff; color: #0095ff; cursor: default;';
         clickFailed.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
     } else if(showFailCV === "show"){
         containerFailed.style.display = 'flex';
         containerPassed.style.display = 'none';
         failedClicked = false;
         passedClicked = true;
-        clickFailed.style.cssText = 'border-bottom: 3px solid #0072bc; color: #0072bc; cursor: default';
+        clickFailed.style.cssText = 'border-bottom: 3px solid #0095ff; color: #0095ff; cursor: default';
             clickPassed.style.cssText = 'border-bottom: unset; color: black; cursor: pointer;';
     }
     });

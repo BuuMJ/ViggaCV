@@ -44,7 +44,7 @@
                             value="{{getCompanyaddress company}}">
                     </div>
                     <div class="about-user">
-                        <label for="certifications">Company Field</label>
+                        <label for="certifications">Business Field</label>
                         <input id="certifications" type="text" name="companyField" placeholder="IT-Sofware"
                             value="{{getCompanyfield company}}">
                     </div>
@@ -66,7 +66,7 @@
                     <div class="about-user ">
                         <label for="companyyearsestablished">Established Date</label>
                         <input id="companyyearsestablished" type="date" name="establisheddate" placeholder="70 Years"
-                            value="{{getEstablisheddate company}}">
+                            value="{{getEstablisheddateProfile company}}">
                     </div>
                     <div class="about-user ">
                         <label for="companyyearsinbusiness">No. Of Years In Business</label>
@@ -76,7 +76,7 @@
                     <div class="about-user ">
                         <label for="TOB">Type of business</label>
                         <select id="TOB" name="typeOfBusiness">
-                            <option value="" selected>{{getTOB company}}</option>
+                            <option value="{{getTOB company}}" selected>{{getTOB company}}</option>
                             <option value="Sole Proprietorships">Sole Proprietorships.</option>
                             <option value="Partnerships">Partnerships.</option>
                             <option value="JSC">Corporations. (JSC)</option>
@@ -192,13 +192,13 @@
                                         class="bi bi-info-circle-fill"></i></span>
                                 <div class="request-sending">
                                     <div class="request-ads">
-                                        <label for="ads">Advertising Refund</label>
-                                        <input name="request" type="checkbox" class="adsvalue" id="ads"
+                                        <label for="ads__{{this._id}}">Advertising Refund</label>
+                                        <input name="request" type="checkbox" class="adsvalue" id="ads__{{this._id}}"
                                             value="prioritize">
                                     </div>
                                     <div class="request-ads">
-                                        <label for="high">High Paying Refund</label>
-                                        <input name="request" type="checkbox" class="highvalue" id="high"
+                                        <label for="high__{{this._id}}">High Paying Refund</label>
+                                        <input name="request" type="checkbox" class="highvalue" id="high__{{this._id}}"
                                             value="post job">
                                     </div>
                                     <button type="button" class="submit-request">Send Request</button>
@@ -700,4 +700,13 @@ Andrew leads the strategic direction of the business with a dedicated and divers
             formPostJob.type = 'submit';
         }
     });
+    var btnUpdateCompanyProfile = document.querySelector('.btn-save');
+    var TOB = document.querySelector('#TOB')
+    btnUpdateCompanyProfile.addEventListener('click',(e)=>{
+        if(TOB.value === 'Choose Your Type Of Business' || TOB.value === ''){
+            e.preventDefault();
+            alert('Please choose your type of business')
+            TOB.focus();
+        }
+    })
 </script>

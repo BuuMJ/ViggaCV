@@ -728,7 +728,7 @@ li.content-listjob a.payment:hover::after{
 li.content-listjob .remove-blocked{
     position: absolute;
     top: 12%;
-    left: -9%;
+    left: -7%;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -764,6 +764,15 @@ li.content-listjob .remove-blocked{
     margin-right: 6px;
     font-size: 16px;
     cursor: pointer;
+}
+.remove-blocked .request-sending .submit-request{
+    background-color: $btncolor;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid $btncolor;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 8px;
 }
 li.content-listjob .cv-applied{
     font-size: 14px;
@@ -1391,6 +1400,12 @@ ul.listpageleadership {
     }
     #updateleadership{
         width: 60%;
+    }
+    li.content-listjob .remove-blocked{
+        left: -10%;
+    }
+    .remove-blocked .request-sending{
+        left: 0;
     }
 }
 @media screen and (max-width: 768px) {

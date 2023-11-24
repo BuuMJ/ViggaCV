@@ -1,3 +1,4 @@
+const moment = require('moment');
 module.exports = {
   getName: function (user) {
     return user.username;
@@ -51,7 +52,11 @@ module.exports = {
     return user.specialized;
   },
   getBirthday: function (user) {
-    return user.birthday;
+    if(user && user.birthday){
+      return user.birthday;
+    }else{
+      return " ";
+    }
   },
   getAvatar: function (user) {
     if (user && user.avatar) {
@@ -129,6 +134,13 @@ module.exports = {
       return `/${company.background}`;
     } else {
       return "/img/headerprofile.jpeg";
+    }
+  },
+  getCompanyID: function (company) {
+    if (company && company._id) {
+      return company._id;
+    } else {
+      return "";
     }
   },
   getCompanyname: function (company) {
@@ -210,9 +222,16 @@ module.exports = {
   },
   getEstablisheddate: function (company) {
     if (company && company.establisheddate) {
-      return company.establisheddate;
+      return moment(company.establisheddate).format("DD/MM/YYYY");
     } else {
-      return "Not updated yet";
+      return "(Not updated yet)";
+    }
+  },
+  getEstablisheddateProfile: function (company) {
+    if (company && company.establisheddate) {
+      return company.establisheddate
+    } else {
+      return "(Not updated yet)";
     }
   },
   getNoofemployee: function (company) {

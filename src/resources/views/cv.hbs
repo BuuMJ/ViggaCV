@@ -65,6 +65,12 @@
             <img src="/img/stepbystep.png" alt="">
         </div>
     </div>
+    <div class="overlay-notification"></div>
+    <div class="show-notification">
+        <h1>Notification</h1>
+        <p>This function is not accessible on the screen size of your mobile device; for access, please utilize a device boasting a larger display.<br> We apologize for any inconvenience caused.</p>
+        <span class="close-notification">Close</span>
+    </div>
 </div>
 <script>
 var animationElement = document.querySelector('.animation-roll');
@@ -78,5 +84,25 @@ function runAnimation() {
 runAnimation();
 animationElement.querySelector('i').addEventListener('click',()=>{
  window.scrollTo(0, 100);
+})
+document.addEventListener('DOMContentLoaded',()=>{
+    const showNotification = document.querySelector('.show-notification');
+    const overlayNotification = document.querySelector('.overlay-notification');
+    const closeNotification = document.querySelector('.close-notification');
+    const btnChangePageCV = document.querySelector('.btn-cv');
+    const body = document.querySelector('body');
+    if(window.innerWidth < 590){
+        btnChangePageCV.addEventListener('click',(e)=>{
+            e.preventDefault();
+            showNotification.style.display = 'flex';
+            overlayNotification.style.display = 'block';
+            body.classList.add('modal-open');
+        })
+        closeNotification.addEventListener('click',()=>{
+            showNotification.style.display = 'none';
+            overlayNotification.style.display = 'none';
+            body.classList.remove('modal-open');
+        })
+    }
 })
 </script>

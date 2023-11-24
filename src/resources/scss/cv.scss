@@ -503,10 +503,11 @@
   border-radius: 2px;
 }
 .body__create-cv header .info__user-cv .primary__user-cv input.fullname__user-cv{
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 700;
   width: 80%;
   text-transform: capitalize;
+  padding: 0 6px 0 0 !important;
 }
 .body__create-cv header .info__user-cv .primary__user-cv input.fullname__user-cv::placeholder{
   color: white;
@@ -515,6 +516,7 @@
   font-weight: 600;
   width: 80%;
   text-transform: capitalize;
+  padding: 0 6px 0 0 !important;
 }
 .body__create-cv header .info__user-cv .primary__user-cv input.specialized::placeholder{
   color: white;
@@ -528,7 +530,7 @@
   width: 100%;
 }
 .body__create-cv header .info__user-cv .secondary__user-cv .box__user-cv{
-  width: 48%;
+  width: 95%;
   min-height: 26px;
   display: flex;
   flex-direction: row;
@@ -536,9 +538,9 @@
 }
 .body__create-cv header .info__user-cv .secondary__user-cv label{
   font-size: 16px;
-  font-weight: 700;
-  width: 25%;
-  padding: 4px 0 4px 8px;
+  font-weight: 600;
+  width: 20%;
+  padding: 4px 8px 4px 0;
 }
 .body__create-cv header .info__user-cv .secondary__user-cv textarea {
   font-size: 14px;
@@ -824,8 +826,8 @@
   text-align: center;
 }
 .main__manager-cv section .header-section span.cv-passed{
-  border-bottom: 3px solid $secondarycolor;
-  color: $secondarycolor;
+  border-bottom: 3px solid $btncolor;
+  color: $btncolor;
   cursor: default;
 }
 .main__manager-cv section .loading-manager{
@@ -859,6 +861,11 @@
   margin-top: 8px;
   margin-bottom: 20px;
 }
+.main__manager-cv section .box__passed-cv h2 b,
+.main__manager-cv section .box__failed-cv h2 b{
+  color: $btncolor;
+  font-weight: 600;
+}
 .main__manager-cv section .box__passed-cv .card__passed-cv,
 .main__manager-cv section .box__failed-cv .card__failed-cv{
   display: flex;
@@ -889,6 +896,48 @@
 .main__manager-cv section .box__failed-cv .card__failed-cv:hover .name-file span{
   color: #0072bc;
   text-decoration: underline;
+}
+.show-notification{
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  background-color: white;
+  padding: 8px 16px;
+}
+.show-notification h1{
+  color: black;
+  padding: 12px 0;
+  margin: unset;
+  font-weight: 600;
+}
+.show-notification p{
+  margin: unset;
+  padding: 20px 0;
+  color: #949494;
+  border-bottom: 1px solid #949494;
+  text-align: justify;
+}
+.show-notification .close-notification{
+  color: #E40404;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 0;
+}
+.overlay-notification{
+  display: none;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
 }
 @media screen and (max-width: 1440px) {
   .main__create-cv header.action-create-cv{
@@ -983,6 +1032,10 @@
   }
   .interview-action {
     width: 55%;
+  }
+  .body__create-cv header .info__user-cv .primary__user-cv input.fullname__user-cv,
+  .body__create-cv header .info__user-cv .primary__user-cv input.specialized{
+    width: 95%;
   }
 }
 @media screen and (max-width: 415px) {
