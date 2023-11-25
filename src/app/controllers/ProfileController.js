@@ -43,6 +43,7 @@ class ProfileController {
       const companyyears = req.body.companyYears;
       const companydesc = req.body.companyDesc;
       const TOB = req.body.typeOfBusiness;
+      const birthday = req.body.birthday;
       const specialized = req.body.specialized;
       const company = await CompanyModel.findOne({ iduser: req.user._id });
 
@@ -95,6 +96,7 @@ class ProfileController {
                 companyyears: companyyears,
                 companydesc: companydesc,
                 TOB: TOB,
+                birthday: birthday,
               },
               { new: true }
             );
@@ -129,6 +131,7 @@ class ProfileController {
                 companydesc: companydesc,
                 TOB: TOB,
                 specialized: specialized,
+                birthday: birthday,
               },
               { new: true }
             );
@@ -168,6 +171,7 @@ class ProfileController {
               companydesc: companydesc,
               TOB: TOB,
               specialized: specialized,
+              birthday: birthday,
             },
             { new: true }
           );
@@ -202,6 +206,7 @@ class ProfileController {
               companydesc: companydesc,
               TOB: TOB,
               specialized: specialized,
+              birthday: birthday,
             },
             { new: true }
           );
