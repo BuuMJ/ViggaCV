@@ -417,6 +417,7 @@ Andrew leads the strategic direction of the business with a dedicated and divers
         leadershipList[i].style.display = "none";
     }
     viewMoreBtn.addEventListener("click", function () {
+        viewLessBtn.style.cssText = "visibility: visible; opacity: 1; cursor: pointer; ";
         numToShow += numToShowIncrement;
         for (var i = 0; i < leadershipList.length; i++) {
             if (i < numToShow) {
@@ -426,13 +427,13 @@ Andrew leads the strategic direction of the business with a dedicated and divers
             }
         }
         if (numToShow > numToShowIncrement && numToShow >= leadershipList.length) {
-            viewMoreBtn.style.cssText = "opacity: 0; cursor: default;";
-            viewLessBtn.style.cssText = "opacity: 1; cursor: pointer; ";
+            viewMoreBtn.style.cssText = "visibility: hidden; opacity: 0; cursor: default;";
+            
         }
         console.log(numToShow)
-        viewLessBtn.style.cssText = "opacity: 1; cursor: pointer; ";
     });
     viewLessBtn.addEventListener("click", function () {
+                viewMoreBtn.style.cssText = "visibility: visible; opacity: 1; cursor: pointer; ";
                 numToShow -= numToShowIncrement;
                 for (var i = 0; i < leadershipList.length; i++) {
                     if (i < numToShow) {
@@ -442,10 +443,9 @@ Andrew leads the strategic direction of the business with a dedicated and divers
                     }
                 }
                 if (numToShow <= numToShowIncrement) {
-                    viewLessBtn.style.cssText = "opacity: 0; cursor: default;";
-                    viewMoreBtn.style.cssText = "opacity: 1; cursor: pointer; ";
+                    viewLessBtn.style.cssText = "visibility: hidden; opacity: 0; cursor: default;";
+                    
                 }
-                viewMoreBtn.style.cssText = "opacity: 1; cursor: pointer; ";
                 console.log(numToShow + " " + numToShowIncrement)
             });
 </script>

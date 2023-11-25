@@ -1041,7 +1041,7 @@ ul.listpageleadership {
 .leadership-action-view #view-less-btn{
     border: 2px solid #FC0404;
     color: #FC0404;
-    opacity: 0;
+    visibility: hidden;
     cursor: default;
 }
 .leadership-action-view #view-less-btn:hover {
