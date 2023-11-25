@@ -33,6 +33,13 @@ class CompanyProfileController {
     } else {
       var leadership = null;
     }
+    const transactionHistory = await RevenueModel.aggregate([
+      {
+        $match: {
+          idcompany: company._id,
+        },
+      },
+    ]);
     // console.log(
     //   company.leadership +
     //     "ĐÂY LÀ GIÁ TRỊ CỦA COMPANY PROFILEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
@@ -45,7 +52,10 @@ class CompanyProfileController {
     );
     // console.log(listcompany + "DAY LA DANH SACH COMPANY SAU KHI TIM");
     JobModel.find({ iduser: req.user._id })
-      .sort({ createdAt: -1 })
+      .sort({
+        prioritize: -1,
+        createdAt: -1,
+      })
       .then(async (listjob) => {
         listjob = await Promise.all(
           listjob.map(async (job) => {
@@ -72,6 +82,7 @@ class CompanyProfileController {
           leader: leadership,
           leadership: staffMongoseToObject(leadership),
           msg,
+          transactionHistory,
         });
       });
   }
