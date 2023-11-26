@@ -196,7 +196,7 @@ class AdminController {
       {
         $group: {
           _id: {
-            month: { $month: "$createdAt" },
+            // month: { $month: "$createdAt" },
             year: { $year: "$createdAt" },
           },
           postJobRevenue: {
@@ -397,77 +397,28 @@ class AdminController {
       },
     ]);
     const refundCount = await RevenueModel.countDocuments({ type: "refund" });
-    var pageListRefund = req.query.pageRefund;
-    var totalPageRefund = Math.ceil(refundCount / PAGE_SIZE);
-    const pageRefund = [];
-    for (let i = 1; i <= totalPageRefund; i++) {
-      pageRefund.push(i);
-    }
-    if (pageListRefund) {
-      pageListRefund = parseInt(pageListRefund);
-      var limit = pageListRefund * PAGE_SIZE;
-      var listRefund = await RevenueModel.find({ type: "refund" })
-        .populate({ path: "iduser", select: "fullname", model: "user" })
-        .populate({
-          path: "idcompany",
-          select: "companyname avatar",
-          model: "company",
-        })
-        .select("money type jobname updatedAt admin")
-        .limit(limit);
-    } else {
-      pageListRefund = 1;
-      var limit = pageListRefund * PAGE_SIZE;
-      var listRefund = await RevenueModel.find({ type: "refund" })
-        .populate({ path: "iduser", select: "fullname", model: "user" })
-        .populate({
-          path: "idcompany",
-          select: "companyname avatar",
-          model: "company",
-        })
-        .select("money type jobname updatedAt admin")
-        .limit(limit);
-    }
-    const revenueCount = await await RevenueModel.countDocuments({
+    var listRefund = await RevenueModel.find({ type: "refund" })
+      .populate({ path: "iduser", select: "fullname", model: "user" })
+      .populate({
+        path: "idcompany",
+        select: "companyname avatar",
+        model: "company",
+      })
+      .select("money type jobname updatedAt admin");
+
+    var listRevenue = await RevenueModel.find({
       type: { $in: ["post job", "prioritize"] },
-    });
-    var pageListRevenue = req.query.pageRevenue;
-    var totalPageRevenue = Math.ceil(revenueCount / PAGE_SIZE);
-    const pageRevenue = [];
-    for (let i = 1; i <= totalPageRevenue; i++) {
-      pageRevenue.push(i);
-    }
-    if (pageListRevenue) {
-      pageListRevenue = parseInt(pageListRevenue);
-      var limit = pageListRevenue * PAGE_SIZE;
-      var listRevenue = await RevenueModel.find({
-        type: { $in: ["post job", "prioritize"] },
+    })
+      .populate({ path: "iduser", select: "fullname", model: "user" })
+      .populate({
+        path: "idcompany",
+        select: "companyname avatar",
+        model: "company",
       })
-        .populate({ path: "iduser", select: "fullname", model: "user" })
-        .populate({
-          path: "idcompany",
-          select: "companyname avatar",
-          model: "company",
-        })
-        .select("money type jobname updatedAt admin")
-        .limit(limit);
-    } else {
-      pageListRevenue = 1;
-      var limit = pageListRevenue * PAGE_SIZE;
-      var listRevenue = await RevenueModel.find({
-        type: { $in: ["post job", "prioritize"] },
-      })
-        .populate({ path: "iduser", select: "fullname", model: "user" })
-        .populate({
-          path: "idcompany",
-          select: "companyname avatar",
-          model: "company",
-        })
-        .select("money type jobname updatedAt admin")
-        .limit(limit);
-    }
+      .select("money type jobname updatedAt admin");
     const abc = listJobRequestPrioritize;
-    console.log(listJobRequestPrioritize[0]);
+    // console.log(annualRevenue);
+    console.log(listRevenue);
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,
@@ -499,8 +450,6 @@ class AdminController {
       listRefund: mutipleJobToJSON(listRefund), // danh sách công việc đã refund thành công
       listRevenue: mutipleJobToJSON(listRevenue),
       pageJob,
-      pageRefund,
-      pageRevenue,
       msg,
     });
   }
