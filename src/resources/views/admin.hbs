@@ -128,22 +128,31 @@
         <div class="box__request-refund">
             <div class="refuned-ads">
                 <h1>Request Jobs Ads Refund</h1>
+                <div class="box-suggest__request">
+                    <span class="should">Should Refund</span> 
+                    <span class="maybe">Consider Refund</span> 
+                    <span class="dont">Shouldn't Refund</span>
+                </div>
                 {{#if listJobRequestPrioritize}}
                 <div class="header__refuned-ads">
+                    <span class="person">Name/Business</span>
+                    <span class="refund__jobname-ads">Job Name</span>
                     <span>Request Date</span>
                     <span>Payment Date</span>
-                    <span>Job Name</span>
-                    <span class="person">Petitioner</span>
-                    <span>Refund Amount</span>
+                    <span class="refund__amount-ads">Refund Amount</span>
                     <span class="action">Action</span>
                 </div>
                 {{#each listJobRequestPrioritize}}
-                    <div class="main__refuned-ads">
-                        <span>{{moment this.updatedAt format="DD/MM/YYYY HH:mm:ss" }}</span>
-                        <span>{{moment this.revenueDetail.createdAt format="DD/MM/YYYY HH:mm:ss" }}</span>
-                        <span>{{this.jobname}}</span>
-                        <span class="person"><img style="margin-right: 6px;" src="/{{this.companyDetail.avatar}}" alt="">{{this.companyDetail.companyname}}</span>
-                        <span style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
+                    <div class="main__refuned-ads" data-date-paymentADS="{{this.revenueDetail.createdAt}}" data-date-requestADS="{{this.updatedAt}}">
+                        <span class="person"><img src="/{{this.companyDetail.avatar}}" alt="">{{this.companyDetail.companyname}}</span>
+                        <span class="refund__jobname-ads">{{this.jobname}}</span>
+                        <span class="date__request-ads">{{moment this.updatedAt format="DD/MM/YYYY"}}
+                              <p>At {{moment this.updatedAt format="HH:mm:ss"}}</p>
+                        </span>
+                        <span class="date__request-ads">{{moment this.revenueDetail.createdAt format="DD/MM/YYYY"}}
+                              <p>At {{moment this.revenueDetail.createdAt format="HH:mm:ss"}}</p>
+                        </span>
+                        <span class="refund__amount-ads" style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
                         <span class="action">
                             <form class="refund-succes" action="/pay/refund/{{this._id}}" method="post">
                                 <input type="text" name="type" value="prioritize" hidden>
@@ -170,22 +179,31 @@
             </div>
             <div class="refuned-ads refuned-high">
                 <h1>Request Jobs High Paying Refund</h1>
+                <div class="box-suggest__request">
+                    <span class="should">Should Refund</span> 
+                    <span class="maybe">Consider Refund</span> 
+                    <span class="dont">Shouldn't Refund</span>
+                </div>
                 {{#if listJobRequestPostJob}}
                 <div class="header__refuned-ads">
+                    <span class="person">Name/Business</span>
+                    <span class="refund__jobname-high">Job Name</span>
                     <span>Request Date</span>
                     <span>Payment Date</span>
-                    <span>Job Name</span>
-                    <span class="person">Petitioner</span>
-                    <span>Refund Amount</span>
+                    <span class="refund__amount-high">Refund Amount</span>
                     <span class="action">Action</span>
                 </div>
                 {{#each listJobRequestPostJob}}
-                    <div class="main__refuned-ads main__refuned-high">
-                        <span>{{moment this.updatedAt format="DD/MM/YYYY HH:mm:ss" }}</span>
-                        <span>{{moment this.revenueDetail.createdAt format="DD/MM/YYYY HH:mm:ss" }}</span>
-                        <span>{{this.jobname}}</span>
+                    <div class="main__refuned-ads main__refuned-high" data-date-paymentHigh="{{this.revenueDetail.createdAt}}" data-date-requestHigh="{{this.updatedAt}}">
                         <span class="person"><img style="margin-right: 6px;" src="/{{this.companyDetail.avatar}}" alt="">{{this.companyDetail.companyname}}</span>
-                        <span style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
+                        <span class="refund__jobname-high">{{this.jobname}}</span>
+                        <span class="date__request-high">{{moment this.updatedAt format="DD/MM/YYYY"}}
+                              <p>At {{moment this.updatedAt format="HH:mm:ss"}}</p>
+                        </span>
+                        <span class="date__request-high">{{moment this.revenueDetail.createdAt format="DD/MM/YYYY"}}
+                              <p>At {{moment this.revenueDetail.createdAt format="HH:mm:ss"}}</p>
+                        </span>
+                        <span class="refund__amount-high" style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
                         <span class="action">
                             <form class="refund-succes" action="/pay/refund/{{this._id}}" method="post">
                                 <input type="text" name="type" id="" value="post job" hidden>
@@ -214,36 +232,40 @@
         <div class="history-refuned">
             <h1>Refund History</h1>
             <div class="header__history-refuned">
-                <span class="date">Refund Date</span>
                 <span class="customer">Customer</span>
-                <span class="amount">Amount</span>
+                <span class="refund-history__job">Job Name</span>
                 <span class="type">Refund Type</span>
-                <span class="person">Refunder</span>
+                <span class="amount">Amount</span>
+                <span class="person">Handler</span>
+                <span class="date">Refund Date</span>
             </div>
             {{#each listRefund}}
             <div class="main__history-refuned">
-                <span class="date">{{this.updatedAt}}</span>
                 <span class="customer"><img src="/{{this.idcompany.avatar}}" alt="">{{this.idcompany.companyname}}</span>
-                <span class="amount">$ {{this.money}}</span>
+                <span class="refund-history__job">{{this.jobname}}</span>
                 <span class="refund-type" data-check-type="{{this.money}}"></span>
+                <span class="amount">$ {{this.money}}</span>
                 <span class="person">{{this.admin}}</span>
+                <span class="date">{{this.updatedAt}}</span>
             </div>
             {{/each}}
         </div>
          <div class="success-payment__history">
         <h1>Transaction History</h1>
         <div class="header__payment-history">
-            <span class="time">Transaction Date</span>
-            <span class="customer">Customer</span>
-            <span class="amount">Amount</span>
+            <span class="customer">Name/Business</span>
+            <span class="jobname__payment-history">Job Name</span>
+            <span class="time">Date</span>
             <span class="type">Transaction Type</span>
+            <span class="amount">Amount</span>
         </div>
         {{#each listRevenue}}
         <div class="main__payment-history" data-ads-check="{{this.prioritize}}" data-salary-check="{{this.salary}}">
-            <span>{{this.updatedAt}}</span>
             <span class="customer"><img src="/{{this.idcompany.avatar}}" alt="">{{this.idcompany.companyname}}</span>
+            <span class="jobname__payment-history">{{this.jobname}}</span>
+            <span class="time">{{this.updatedAt}}</span>
+            <span class="type {{this.type}}" data-type-transaction="{{this.type}}"></span>
             <span class="amount" style="font-weight: 600;">$ {{this.money}}</span>
-            <span class="type">{{this.type}}</span>
         </div>
         {{/each}}
     </div>
@@ -278,7 +300,7 @@
             {{#each listUser}}
             <div class="body__list-user">
                 <span><img src="{{getAvatar this}}" alt="">{{this.fullname}}</span>
-                <span class="role">{{this.role}}</span>
+                <span class="role {{this.role}}">{{this.role}}</span>
                 <span>{{this.email}}</span>
                 <span class="phone">{{this.phone}}</span>
                 <div class="action">
@@ -371,7 +393,7 @@
     <div id="data-table-jobs" class="list-job">
         <h1><i class="bi bi-table"></i> Data Table Jobs</h1>
         <div class="header__list-job">
-            <span class="namejob">Name Job</span>
+            <span class="namejob">Job Name</span>
             <span class="ownerjob">Owner</span>
             <span class="statusjob">Status</span>
             <span class="datejob">Date Posting</span>
@@ -434,11 +456,11 @@
         var valueStatus = textStatus.getAttribute('data-status');
         if(valueStatus == 'false'){
             textStatus.innerHTML = 'Locked'
-            textStatus.style.cssText = 'background-color: rgba(252,4,4, 0.6);'
+            textStatus.style.cssText = 'color: rgb(252,4,4);'
         }
         else{
             textStatus.innerHTML = 'Ongoing'
-            textStatus.style.cssText = 'background-color: rgba(4,252,68,0.6);'
+            textStatus.style.cssText = 'color: #42a801;'
         };
         var clickDeleteJob = job.querySelector('.container-admin .list-job .body__list-job .action .remove-job');
         var formDeleteJob = job.querySelector('.container-admin .list-job .body__list-job .action');
@@ -691,7 +713,7 @@ var data = {
     labels: ['User (Normal)', 'User (Company)'],
     datasets: [{
         data: [dataCountUser, dataCountCompany],
-        backgroundColor: ['#0095ff', '#ffffff']
+        backgroundColor: ['#16267D', '#F4B504']
     }]
 };
 var pieChart = new Chart(ctx, {
@@ -880,6 +902,20 @@ boxHistoryRefuned.forEach(function(box){
     var checkRefunedType = textRefunedType.getAttribute('data-check-type');
     if(checkRefunedType == '30'){
         textRefunedType.innerHTML = 'High Paying';
+        textRefunedType.style.color = '#FF5733'
+    }    
+    else{
+        textRefunedType.innerHTML = 'Advertisement';
+        textRefunedType.style.color = '#033D98'
+    }
+})
+var boxTransactionHistory = document.querySelectorAll('.main__payment-history');
+boxTransactionHistory.forEach(function(box){
+    var textRefunedType = box.querySelector('.type');
+    var checkRefunedType = textRefunedType.getAttribute('data-type-transaction');
+    console.log(checkRefunedType);
+    if(checkRefunedType == 'post job'){
+        textRefunedType.innerHTML = 'High Paying';
     }    
     else{
         textRefunedType.innerHTML = 'Advertisement';
@@ -892,6 +928,19 @@ boxHistoryRefuned.forEach(function(box){
     const boxNote = item.querySelector('form.note-denied');
     const clickAcceptRefund = item.querySelector('button.refund-success');
     const formSuccess = item.querySelector('form.refund-succes');
+    const dateRequestADS = new Date(item.getAttribute('data-date-requestADS'));
+    const datePaymentADS = new Date(item.getAttribute('data-date-paymentADS'));
+    const checkRequestRefund = (dateRequestADS - datePaymentADS) / (24 * 60 * 60 * 1000);
+    console.log("test:" + checkRequestRefund)
+    if(checkRequestRefund >= 3){
+        item.style.cssText = "background-color: rgba(169, 4, 4, 0.1); border-bottom: 1px solid rgba(169, 4, 4, 0.1);";
+    }
+    else if(2 < checkRequestRefund && checkRequestRefund < 3){
+        item.style.cssText = "background-color: rgba(249, 156, 5, 0.1); border-bottom: 1px solid rgba(249, 156, 5, 0.1);";
+    }else if(checkRequestRefund < 2){
+        item.style.cssText = "background-color: white; border-bottom: 1px solid #cacaca;";
+    }
+
     clickShowNote.addEventListener('click',()=>{
         boxNote.style.display = 'flex';
         overflowAdmin.style.display = 'block';
@@ -910,20 +959,32 @@ boxHistoryRefuned.forEach(function(box){
             }
     })
 });
-    var listRefunedHigh = document.querySelectorAll('.refunedads .main__refuned-high');
+    var listRefunedHigh = document.querySelectorAll('.refuned-ads .main__refuned-high');
     listRefunedHigh.forEach(function(item){
         const clickShowNote = item.querySelector('.refund-fail .denied');
         const boxNote = item.querySelector('form.note-denied');
         const clickAcceptRefund = item.querySelector('button.refund-success');
         const formSuccess = item.querySelector('form.refund-succes');
-        clickShowNote.addEventListener('click',()=>{
-            boxNote.style.display = 'flex';
-            overflowAdmin.style.display = 'block';
-        });
-        overflowAdmin.addEventListener('click',()=>{
-            overflowAdmin.style.display = 'none';
-            boxNote.style.display = 'none';
-        });
+        const dateRequestHigh = new Date(item.getAttribute('data-date-requestHigh'));
+        const datePaymentHigh = new Date(item.getAttribute('data-date-paymentHigh'));
+        const checkRequestRefund = (dateRequestHigh - datePaymentHigh) / (24 * 60 * 60 * 1000);
+        console.log("testaaaa:" + checkRequestRefund)
+        if(checkRequestRefund >= 3){
+            item.style.cssText = "background-color: rgba(169, 4, 4, 0.1); border-bottom: 1px solid rgba(169, 4, 4, 0.1);";
+        }
+        else if(2 < checkRequestRefund && checkRequestRefund < 3){
+            item.style.cssText = "background-color: rgba(249, 156, 5, 0.1); border-bottom: 1px solid rgba(249, 156, 5, 0.1);";
+        }else if(checkRequestRefund < 2){
+            item.style.cssText = "background-color: white; border-bottom: 1px solid #cacaca;";
+        }
+            clickShowNote.addEventListener('click',()=>{
+                boxNote.style.display = 'flex';
+                overflowAdmin.style.display = 'block';
+            });
+            overflowAdmin.addEventListener('click',()=>{
+                overflowAdmin.style.display = 'none';
+                boxNote.style.display = 'none';
+            });
         clickAcceptRefund.addEventListener('click',()=>{
         let check = prompt("Please enter your email to accept this refund request")
             if(check !== emailAdminCheck){
