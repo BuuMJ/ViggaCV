@@ -196,7 +196,7 @@ class AdminController {
       {
         $group: {
           _id: {
-            month: { $month: "$createdAt" },
+            // month: { $month: "$createdAt" },
             year: { $year: "$createdAt" },
           },
           postJobRevenue: {
@@ -467,7 +467,8 @@ class AdminController {
         .limit(limit);
     }
     const abc = listJobRequestPrioritize;
-    console.log(listJobRequestPrioritize[0]);
+    console.log(annualRevenue);
+    console.log(revenueSummary);
     res.render("admin", {
       user: req.user,
       mostJobFavourite: mostFavourite,
