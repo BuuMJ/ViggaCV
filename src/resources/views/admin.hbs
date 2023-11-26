@@ -142,37 +142,39 @@
                     <span class="refund__amount-ads">Refund Amount</span>
                     <span class="action">Action</span>
                 </div>
-                {{#each listJobRequestPrioritize}}
-                    <div class="main__refuned-ads" data-date-paymentADS="{{this.revenueDetail.createdAt}}" data-date-requestADS="{{this.updatedAt}}">
-                        <span class="person"><img src="/{{this.companyDetail.avatar}}" alt="">{{this.companyDetail.companyname}}</span>
-                        <span class="refund__jobname-ads">{{this.jobname}}</span>
-                        <span class="date__request-ads">{{moment this.updatedAt format="DD/MM/YYYY"}}
-                              <p>At {{moment this.updatedAt format="HH:mm:ss"}}</p>
-                        </span>
-                        <span class="date__request-ads">{{moment this.revenueDetail.createdAt format="DD/MM/YYYY"}}
-                              <p>At {{moment this.revenueDetail.createdAt format="HH:mm:ss"}}</p>
-                        </span>
-                        <span class="refund__amount-ads" style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
-                        <span class="action">
-                            <form class="refund-succes" action="/pay/refund/{{this._id}}" method="post">
-                                <input type="text" name="type" value="prioritize" hidden>
-                                <button type="button" class="refund-success">Refund</button>
+                <div class="scroll">
+                    {{#each listJobRequestPrioritize}}
+                        <div class="main__refuned-ads" data-date-paymentADS="{{this.revenueDetail.createdAt}}" data-date-requestADS="{{this.updatedAt}}">
+                            <span class="person"><img src="/{{this.companyDetail.avatar}}" alt="">{{this.companyDetail.companyname}}</span>
+                            <span class="refund__jobname-ads">{{this.jobname}}</span>
+                            <span class="date__request-ads">{{moment this.updatedAt format="DD/MM/YYYY"}}
+                                <p>At {{moment this.updatedAt format="HH:mm:ss"}}</p>
+                            </span>
+                            <span class="date__request-ads">{{moment this.revenueDetail.createdAt format="DD/MM/YYYY"}}
+                                <p>At {{moment this.revenueDetail.createdAt format="HH:mm:ss"}}</p>
+                            </span>
+                            <span class="refund__amount-ads" style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
+                            <span class="action">
+                                <form class="refund-succes" action="/pay/refund/{{this._id}}" method="post">
+                                    <input type="text" name="type" value="prioritize" hidden>
+                                    <button type="button" class="refund-success">Refund</button>
+                                </form>
+                                <div class="refund-fail" action="">
+                                    <button type="button" class="denied">Denied</button>
+                                </div>
+                            </span>
+                            <form class="note-denied" action="/admin/deny/{{this._id}}" method="post">
+                                <h1>Why Do You Refuse Refund?</h1>
+                                <textarea name="reason" id="note__{{this._id}}" placeholder="Enter the reason you refused to refund" required></textarea>
+                                <div class="accept">
+                                    <input type="checkbox" name="" id="accept__{{this._id}}" required>
+                                    <label for="accept__{{this._id}}">I accept to refuse refund</label>
+                                </div>
+                                <button>Submit</button>
                             </form>
-                            <div class="refund-fail" action="">
-                                <button type="button" class="denied">Denied</button>
-                            </div>
-                        </span>
-                        <form class="note-denied" action="/admin/deny/{{this._id}}" method="post">
-                            <h1>Why Do You Refuse Refund?</h1>
-                            <textarea name="reason" id="note__{{this._id}}" placeholder="Enter the reason you refused to refund" required></textarea>
-                            <div class="accept">
-                                <input type="checkbox" name="" id="accept__{{this._id}}" required>
-                                <label for="accept__{{this._id}}">I accept to refuse refund</label>
-                            </div>
-                            <button>Submit</button>
-                        </form>
-                    </div>
-                {{/each}}
+                        </div>
+                    {{/each}}
+                </div>
                 {{else}}
                 <p>No requests have been sent</p>
                 {{/if}}
@@ -193,37 +195,39 @@
                     <span class="refund__amount-high">Refund Amount</span>
                     <span class="action">Action</span>
                 </div>
-                {{#each listJobRequestPostJob}}
-                    <div class="main__refuned-ads main__refuned-high" data-date-paymentHigh="{{this.revenueDetail.createdAt}}" data-date-requestHigh="{{this.updatedAt}}">
-                        <span class="person"><img style="margin-right: 6px;" src="/{{this.companyDetail.avatar}}" alt="">{{this.companyDetail.companyname}}</span>
-                        <span class="refund__jobname-high">{{this.jobname}}</span>
-                        <span class="date__request-high">{{moment this.updatedAt format="DD/MM/YYYY"}}
-                              <p>At {{moment this.updatedAt format="HH:mm:ss"}}</p>
-                        </span>
-                        <span class="date__request-high">{{moment this.revenueDetail.createdAt format="DD/MM/YYYY"}}
-                              <p>At {{moment this.revenueDetail.createdAt format="HH:mm:ss"}}</p>
-                        </span>
-                        <span class="refund__amount-high" style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
-                        <span class="action">
-                            <form class="refund-succes" action="/pay/refund/{{this._id}}" method="post">
-                                <input type="text" name="type" id="" value="post job" hidden>
-                                <button type="button" class="refund-success">Refund</button>
+                <div class="scroll">
+                    {{#each listJobRequestPostJob}}
+                        <div class="main__refuned-ads main__refuned-high" data-date-paymentHigh="{{this.revenueDetail.createdAt}}" data-date-requestHigh="{{this.updatedAt}}">
+                            <span class="person"><img style="margin-right: 6px;" src="/{{this.companyDetail.avatar}}" alt="">{{this.companyDetail.companyname}}</span>
+                            <span class="refund__jobname-high">{{this.jobname}}</span>
+                            <span class="date__request-high">{{moment this.updatedAt format="DD/MM/YYYY"}}
+                                <p>At {{moment this.updatedAt format="HH:mm:ss"}}</p>
+                            </span>
+                            <span class="date__request-high">{{moment this.revenueDetail.createdAt format="DD/MM/YYYY"}}
+                                <p>At {{moment this.revenueDetail.createdAt format="HH:mm:ss"}}</p>
+                            </span>
+                            <span class="refund__amount-high" style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
+                            <span class="action">
+                                <form class="refund-succes" action="/pay/refund/{{this._id}}" method="post">
+                                    <input type="text" name="type" id="" value="post job" hidden>
+                                    <button type="button" class="refund-success">Refund</button>
+                                </form>
+                                <form class="refund-fail" action="">
+                                    <button type="button" class="denied">Denied</button>
+                                </form>
+                            </span>
+                            <form class="note-denied" action="/admin/deny/{{this._id}}" method="post">
+                                <h1>Why Do You Refuse Refund?</h1>
+                                <textarea name="reason" id="note" placeholder="Enter the reason you refused to refund" required></textarea>
+                                <div class="accept">
+                                    <input type="checkbox" name="" id="accept" required>
+                                    <label for="accept">I accept to refuse refund</label>
+                                </div>
+                                <button>Submit</button>
                             </form>
-                            <form class="refund-fail" action="">
-                                <button type="button" class="denied">Denied</button>
-                            </form>
-                        </span>
-                        <form class="note-denied" action="/admin/deny/{{this._id}}" method="post">
-                            <h1>Why Do You Refuse Refund?</h1>
-                            <textarea name="reason" id="note" placeholder="Enter the reason you refused to refund" required></textarea>
-                            <div class="accept">
-                                <input type="checkbox" name="" id="accept" required>
-                                <label for="accept">I accept to refuse refund</label>
-                            </div>
-                            <button>Submit</button>
-                        </form>
-                    </div>
-                {{/each}}
+                        </div>
+                    {{/each}}
+                </div>
                 {{else}}
                 <p>No requests have been sent</p>
                 {{/if}}
@@ -239,16 +243,18 @@
                 <span class="person">Handler</span>
                 <span class="date">Refund Date</span>
             </div>
-            {{#each listRefund}}
-            <div class="main__history-refuned">
-                <span class="customer"><img src="/{{this.idcompany.avatar}}" alt="">{{this.idcompany.companyname}}</span>
-                <span class="refund-history__job">{{this.jobname}}</span>
-                <span class="refund-type" data-check-type="{{this.money}}"></span>
-                <span class="amount">$ {{this.money}}</span>
-                <span class="person">{{this.admin}}</span>
-                <span class="date">{{this.updatedAt}}</span>
+            <div class="scroll">
+                {{#each listRefund}}
+                    <div class="main__history-refuned">
+                        <span class="customer"><img src="/{{this.idcompany.avatar}}" alt="">{{this.idcompany.companyname}}</span>
+                        <span class="refund-history__job">{{this.jobname}}</span>
+                        <span class="refund-type" data-check-type="{{this.money}}"></span>
+                        <span class="amount">$ {{this.money}}</span>
+                        <span class="person">{{this.admin}}</span>
+                        <span class="date">{{this.updatedAt}}</span>
+                    </div>
+                {{/each}}
             </div>
-            {{/each}}
         </div>
          <div class="success-payment__history">
         <h1>Transaction History</h1>
@@ -259,15 +265,17 @@
             <span class="type">Transaction Type</span>
             <span class="amount">Amount</span>
         </div>
-        {{#each listRevenue}}
-        <div class="main__payment-history" data-ads-check="{{this.prioritize}}" data-salary-check="{{this.salary}}">
-            <span class="customer"><img src="/{{this.idcompany.avatar}}" alt="">{{this.idcompany.companyname}}</span>
-            <span class="jobname__payment-history">{{this.jobname}}</span>
-            <span class="time">{{this.updatedAt}}</span>
-            <span class="type {{this.type}}" data-type-transaction="{{this.type}}"></span>
-            <span class="amount" style="font-weight: 600;">$ {{this.money}}</span>
+        <div class="scroll">
+            {{#each listRevenue}}
+            <div class="main__payment-history" data-ads-check="{{this.prioritize}}" data-salary-check="{{this.salary}}">
+                <span class="customer"><img src="/{{this.idcompany.avatar}}" alt="">{{this.idcompany.companyname}}</span>
+                <span class="jobname__payment-history">{{this.jobname}}</span>
+                <span class="time">{{this.updatedAt}}</span>
+                <span class="type {{this.type}}" data-type-transaction="{{this.type}}"></span>
+                <span class="amount" style="font-weight: 600;">$ {{this.money}}</span>
+            </div>
+            {{/each}}
         </div>
-        {{/each}}
     </div>
     </div>
     <div class="box__dasboard-user">

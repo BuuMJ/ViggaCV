@@ -105,7 +105,7 @@
             {{/ifeq}}
         </ul>
         {{else}}
-        <a class="navbar-right__login" href="/login"><i class="bi bi-door-open-fill"></i> Sign In</a>
+        <a class="navbar-right__login removeLocalstorage" href="/login"><i class="bi bi-door-open-fill"></i> Sign In</a>
         {{/if}}
     </div>
 </div>
@@ -224,13 +224,16 @@
                 {{!-- <li><a href="">Payroll</a></li> --}}
             </ul>
         </ul>
-        <a href="/login">Sign In</a>
+        <a class="removeLocalstorage" href="/login">Sign In</a>
     </div>
 {{/if}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
       function logout() {
     document.cookie = 'token =; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        localStorage.setItem('showSignIn', 'show');
+        localStorage.setItem('showSignUp', 'hide');
+        localStorage.setItem('showForgot', 'hide');
     window.location.href = "/login"
   }
   document.addEventListener("DOMContentLoaded", function() {
@@ -276,4 +279,10 @@ document.addEventListener('click', function(event) {
     }
     showTools.style.display = 'none';
 });
+var removeLocalStorageLogin = document.querySelector('.removeLocalstorage');
+removeLocalStorageLogin.addEventListener('click',()=>{
+        localStorage.setItem('showSignIn', 'show');
+        localStorage.setItem('showSignUp', 'hide');
+        localStorage.setItem('showForgot', 'hide');
+})
 </script>

@@ -1082,6 +1082,16 @@ form.note-denied button:hover{
 .container-admin .user-chart #pieChart{
     height: 300px !important;
 }
+.scroll{
+    overflow-y: scroll;
+    overflow-x: unset;
+    min-height: 120px;
+    max-height: 630px;
+    min-width: 100%;
+}
+.scroll::-webkit-scrollbar {
+    display: none;
+  }
 @media screen and (max-width: 1024px) {
     .container-admin header{
         flex-wrap: wrap;
@@ -1173,14 +1183,38 @@ form.note-denied button:hover{
         margin: unset;
     }
     .container-admin .detail-refuned .box__request-refund .refuned-ads, 
-    .container-admin .detail-refuned .box__request-refund .refuned-high{
+    .container-admin .detail-refuned .box__request-refund .refuned-high,
+    .container-admin .detail-refuned .history-refuned, 
+    .container-admin .success-payment__history,
+    .container-admin .list-user,
+    .container-admin .list-job{
         align-items: start;
         overflow-x: scroll;
     }
     .container-admin .detail-refuned .refuned-ads h1, 
     .container-admin .detail-refuned .box__request-refund .refuned-ads .header__refuned-ads, 
-    .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads{
-        width: 1628px;
+    .container-admin .detail-refuned .box__request-refund .refuned-ads .main__refuned-ads,
+    .container-admin .detail-refuned .history-refuned h1,
+    .container-admin .success-payment__history h1,
+    .container-admin .detail-refuned .history-refuned .header__history-refuned,
+    .container-admin .success-payment__history .header__payment-history,
+    .container-admin .detail-refuned .history-refuned .main__history-refuned,
+    .container-admin .success-payment__history .main__payment-history,
+    .container-admin .list-user .header__list-user,
+    .container-admin .list-job .header__list-job,
+    .container-admin .list-user .body__list-user,
+    .container-admin .list-job .body__list-job,
+    .container-admin .list-user .pagination,
+    .container-admin .list-job .pagination,
+    .container-admin .list-user h1,
+    .container-admin .list-job h1{
+        width: 1839px !important;
+    }
+    .container-admin .list-user .pagination,
+    .container-admin .list-job .pagination{
+        align-self: unset;
+        justify-content: start;
+        padding-left: 6px;
     }
 }
 @media screen and (max-width: 768px) {
@@ -1194,29 +1228,8 @@ form.note-denied button:hover{
     .main__revenue-detail .box__circle-chart{
         margin-bottom: 30px;
     }
-    .container-admin .list-user,
-    .container-admin .list-job{
-        overflow-x: scroll;
-        align-items: start;
-    }
     .revenue-chart{
         height: 500px;
-    }
-    .container-admin .list-user .header__list-user,
-    .container-admin .list-job .header__list-job,
-    .container-admin .list-user .body__list-user,
-    .container-admin .list-job .body__list-job,
-    .container-admin .list-user .pagination,
-    .container-admin .list-job .pagination,
-    .container-admin .list-user h1,
-    .container-admin .list-job h1{
-        width: 1300px !important;
-    }
-    .container-admin .list-user .pagination,
-    .container-admin .list-job .pagination{
-        align-self: unset;
-        justify-content: start;
-        padding-left: 6px;
     }
     .container-admin .box__dasboard-job{
         flex-direction: column-reverse;
@@ -1249,19 +1262,6 @@ form.note-denied button:hover{
     }
     .container-admin .detail-revenue .content__total-quarterly{
         width: 100%;
-    }
-    .container-admin .detail-refuned .history-refuned, 
-    .container-admin .success-payment__history{
-        overflow-x: scroll;
-        align-items: start;
-    }
-    .container-admin .detail-refuned .history-refuned h1,
-    .container-admin .success-payment__history h1,
-    .container-admin .detail-refuned .history-refuned .header__history-refuned,
-    .container-admin .success-payment__history .header__payment-history,
-    .container-admin .detail-refuned .history-refuned .main__history-refuned,
-    .container-admin .success-payment__history .main__payment-history{
-        width: 750px;
     }
     .container-admin .user-chart #pieChart{
         height: 300px !important;

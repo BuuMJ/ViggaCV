@@ -7,6 +7,42 @@
         </div>
     </div>
     {{/if}}
+     <div class="payment-fixed">
+        <img class="history-icon" src="/img/history.svg" alt="">
+        <span>Payment History</span>
+    </div>
+    <div class="payment-history">
+        <div class="close-payment__history"><span class="material-symbols-outlined">close</span></div>
+        <div class="box-history">
+            <h1>HISTORY OF PAYMENT</h1>
+            {{#if transactionHistory}}
+            <header>
+                    <span class="jobname__history">JOB NAME</span>
+                    <span>INVOICE NO.</span>
+                    <span class="time">DATE & TIME</span>
+                    <span class="type">TYPE</span>
+                    <span class="amount">AMOUNT</span>
+            </header>
+            <div class="main__info-history">
+                {{#each transactionHistory}}
+                    <div class="container__info-history">
+                        <div class="body-history">
+                            <span class="jobname__history">{{this.jobname}}</span>
+                            <span>{{this.paymentId}}</span>
+                            <span class="time">{{moment this.updatedAt format="DD/MM/YYYY"}}
+                                        <p>At {{moment this.updatedAt format="HH:mm:ss"}}</p>
+                            </span>
+                            <span class="type {{this.type}}">{{this.type}}</span>
+                            <span class="amount">${{this.money}}</span>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+            {{else}}
+
+            {{/if}}
+        </div>
+    </div>
     <form class="form-company-profile" method="POST" action="/companyprofile/edit?_method=PUT"
         enctype="multipart/form-data">
         <div class="header-profile header-profile-company" id="header-profile"
@@ -708,5 +744,24 @@ Andrew leads the strategic direction of the business with a dedicated and divers
             alert('Please choose your type of business')
             TOB.focus();
         }
+    })
+    var paymentFixed = document.querySelector('.payment-fixed');
+    var paymentHistory = document.querySelector('.payment-history');
+    var closePaymentHistory = document.querySelector('.close-payment__history span');
+    var containerHistory = document.querySelector('.box-history');
+    paymentFixed.addEventListener('click',()=>{
+        paymentHistory.style.right = '0';
+        body.classList.add('modal-open')
+    })
+    paymentHistory.addEventListener('click',(e)=>{
+        paymentHistory.style.right = '-200%';
+        body.classList.remove('modal-open')
+    })
+    closePaymentHistory.addEventListener('click',()=>{
+        paymentHistory.style.right = '-200%';
+        body.classList.remove('modal-open')
+    })
+    containerHistory.addEventListener('click',(e)=>{
+        e.stopPropagation();
     })
 </script>
