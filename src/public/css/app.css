@@ -3508,7 +3508,7 @@ header.job-search .best-companyFL .background-image {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 95%;
+  height: 92%;
   background-color: white;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
@@ -3517,8 +3517,8 @@ header.job-search .best-companyFL .background-image {
 
 .payment-history .close-payment__history {
   position: absolute;
-  top: 4px;
-  right: 10px;
+  top: 0;
+  right: 20px;
   color: #bc2627;
   cursor: pointer; }
 
@@ -3531,7 +3531,8 @@ header.job-search .best-companyFL .background-image {
 .payment-history .box-history h1 {
   font-size: 40px;
   font-weight: 600;
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  width: 100%; }
 
 .payment-history .box-history .main__info-history {
   overflow-y: scroll;
@@ -4975,7 +4976,14 @@ ul.listpageleadership .active {
   li.content-listjob .remove-blocked {
     left: -10%; }
   .remove-blocked .request-sending {
-    left: 0; } }
+    left: 0; }
+  .payment-history .box-history {
+    overflow: scroll;
+    align-items: start; }
+  .payment-history .box-history header,
+  .payment-history .box-history .main__info-history,
+  .payment-history .box-history .container__info-history .body-history {
+    width: 1943px; } }
 
 @media screen and (max-width: 768px) {
   button.btn-setting {
@@ -5157,7 +5165,9 @@ ul.listpageleadership .active {
     width: 120px;
     height: 120px; }
   .text .p {
-    padding: 12px 0; } }
+    padding: 12px 0; }
+  .payment-history .box-history h1 {
+    font-size: 30px; } }
 
 @media screen and (max-width: 376px) {
   button.btn-setting {
@@ -5184,7 +5194,9 @@ ul.listpageleadership .active {
   #postjob {
     top: 0; }
   #updateleadership {
-    width: 95%; } }
+    width: 95%; }
+  .payment-history .box-history h1 {
+    font-size: 28px; } }
 
 @media screen and (max-width: 321px) {
   button.btn-setting {
@@ -5268,7 +5280,9 @@ ul.listpageleadership .active {
   .text .span {
     font-size: 14px; }
   .text .p {
-    padding: unset; } }
+    padding: unset; }
+  .payment-history .box-history h1 {
+    font-size: 24px; } }
 
 .container-companies {
   display: flex;
