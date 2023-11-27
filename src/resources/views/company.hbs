@@ -20,7 +20,8 @@
                 <form action="/company/categories"  class="categories-companies">
                     <div class="categories-select">
                         <select name="categories" id="categories-search">
-                            <option  value="" selected>All Business Field</option>
+                            <option  value="" selected>Select Business Fields</option>
+                            <option  value="All Business Field" >All Business Field</option>
                             {{#each listCategories}}
                             <option value="{{this.companyfield}}">{{this.companyfield}}</option>
                             {{/each}}
@@ -61,7 +62,7 @@
 <script>
   var formCategories = document.querySelector('.categories-companies');
   var categoriesSubmit = document.querySelector('#categories-search');
-  categoriesSubmit.addEventListener('change',()=>{
+  categoriesSubmit.addEventListener('input',()=>{
     formCategories.submit();
   })
 var getPaginationCompany = document.querySelectorAll('.pagination a');

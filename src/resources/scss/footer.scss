@@ -22,7 +22,15 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    width: 60%;
+    width: 40%;
+    height: 100%;
+}
+.footer-content-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    width: 40%;
     height: 100%;
 }
 .footer-content ul{
@@ -32,6 +40,7 @@
     align-items: flex-start;
     height: 100%;
     margin: unset;
+    padding: unset;
 }
 .footer-content span.contact-footer{
     font-size: 20px;
@@ -145,59 +154,70 @@
     cursor: pointer;
   }
   @media screen and (max-width: 1024px) {
-    .footer-content-left{
-        width: 54%;
+    .footer-content {
+        height: 70%;
     }
-  }
-  @media screen and (max-width: 768px) {
+    .footer-bottom{
+        height: 30%;
+    }
     .underline{
         width: 90%;
-    } 
-    .footer-send-feed-back input {
-        width: 55%;
     }
-    .footer-send-feed-back .icon-sendmail {
-        left: 47%;
+    .footer-content-left,
+    .footer-content-right{
+        width: 45%;
+        height: 50%;
+    }
+    .footer-content-right{
+        align-items: start;
+    }
+    .footer-send-feed-back input{
+        width: 80%;
+    }
+    .footer-send-feed-back .icon-sendmail{
+        left: 72%;
+    }
+    .footer-content li{
+        font-size: 14px;
+    }
+    .footer-send-feed-back label{
+        top: 70px;
+    }
+    .footer-send-feed-back .icon-sendmail{
+        left: 74%;
+        top: 56px;
+    }
+    .footer-send-feed-back input:focus ~ label, 
+    .footer-send-feed-back input:valid + label{
+        top: 46px;
     }
   }
   @media screen and (max-width: 600px) {
-    .footer-send-feed-back input {
-        width: 72%;
+    .footer-content{
+        flex-direction: column;
     }
-    .footer-send-feed-back .icon-sendmail {
-        left: 62%;
+    .footer-content-left,
+    .footer-content-right{
+        width: 90%;
     }
   }
-  @media screen and (max-width: 414px) {
+  @media screen and (max-width: 415px) {
     .footer{
         height: 500px;
     }
-    .footer-content{
-        flex-direction: column;
-        height: 60%;
-    }
-    .footer-content-left{
-        width: 80%;
-    }
-    .footer-content ul{
-        padding: unset;
-        width: 80%;
-    }
     .footer-send-feed-back label {
-        top: 86px;
+        top: 122px;
     }
     .footer-send-feed-back input:focus ~ label,
     .footer-send-feed-back input:valid + label {
-        top: 66px
+        top: 102px
     }
     .footer-send-feed-back .icon-sendmail {
-        top: 68px;
-    }
-    .footer-bottom {
-        height: 39%;
+        top: 106px;
+        left: 72%;
     }
   }
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 321px) {
     .footer-send-feed-back span {
         font-size: 19px;
     }
