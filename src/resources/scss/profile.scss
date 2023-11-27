@@ -6,6 +6,180 @@
     min-height: 620px;
     position: relative;
 }
+.payment-fixed{
+    position: fixed;
+    right: -160px;
+    top: 50%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    width: 220px;
+    height: 60px;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    z-index: 30;
+    font-size: 18px;
+    font-weight: 600;
+    color: $btncolor;
+    padding: 6px 12px 6px 20px;
+    box-shadow: 0 0 6px 4px #0072bc69;
+    cursor: pointer;
+    transition: all .5s;
+    transform: translateY(-50%);
+}
+.payment-fixed .history-icon{
+    width: 30px;
+    height: 30px;
+    margin-right: 12px;
+}
+.payment-fixed:hover{
+    right: 0;
+}
+.payment-fixed:hover .history-icon{
+    animation: rotate-center 3s ease-in-out infinite backwards;
+}
+.payment-history{
+    position: fixed;
+    bottom: 0;
+    right: -200%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 30;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    transition: all .2s;
+    cursor: pointer;
+}
+.payment-history .box-history{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: 92%;
+    background-color: white;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    cursor: default;
+    padding: 30px 20px;
+}
+.payment-history .box-history img.not-history{
+    width: 100%;
+    height: 40%;
+    margin-top: 20px;
+}
+.payment-history .box-history h1.not-history{
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+}
+.payment-history .box-history p.not-history{
+    width: 100%;
+    color: #8f8e8e;
+    text-align: center;
+    font-weight: 600;
+}
+.payment-history .close-payment__history{
+    position: absolute;
+    top: 0;
+    right: 20px;
+    color: #bc2627;
+    cursor: pointer;
+}
+.payment-history .close-payment__history:hover{
+    color: #FC0404;
+}
+.payment-history .close-payment__history span{
+    font-size: 40px;
+}
+.payment-history .box-history h1{
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    width: 100%;
+    text-align: center;
+}
+.payment-history .box-history .main__info-history{
+    overflow-y: scroll;
+    width: 100%;
+}
+.payment-history .box-history .main__info-history::-webkit-scrollbar {
+    display: none;
+  }
+.payment-history .box-history .container__info-history{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.payment-history .box-history header,
+.payment-history .box-history .container__info-history .body-history{
+    background-color: $backgroundcard;
+    color: $tablecolor;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 24px 12px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.payment-history .box-history .container__info-history .body-history{
+    background-color: white;
+    padding: 20px 12px;
+    border-bottom: 1px solid $backgroundcard;
+}
+.payment-history .box-history header span,
+.payment-history .box-history .container__info-history .body-history span{
+    width: 28%;
+    font-weight: 600;
+    color: $thirdcolor;
+    padding: 0 12px 0 6px;
+}
+.payment-history .box-history .container__info-history .body-history span p{
+    margin: unset;
+    color: #aeb1bc;
+    font-weight: 400;
+}
+.payment-history .box-history header span.jobname__history,
+.payment-history .box-history .container__info-history .body-history span.jobname__history{
+    width: 42%;
+}
+.payment-history .box-history .container__info-history .body-history span.jobname__history{
+    text-transform: capitalize;
+}
+.payment-history .box-history header span.type,
+.payment-history .box-history header span.amount,
+.payment-history .box-history header span.time,
+.payment-history .box-history .container__info-history .body-history span.type,
+.payment-history .box-history .container__info-history .body-history span.amount,
+.payment-history .box-history .container__info-history .body-history span.time{
+    width: 10%;
+    text-align: center;
+}
+.payment-history .box-history .container__info-history .body-history span.amount{
+    color: $btncolor;
+}
+.payment-history .box-history .container__info-history .body-history span.type.post{
+    color: $salaryColor;
+    text-transform: capitalize;
+}
+.payment-history .box-history .container__info-history .body-history span.type.refund{
+    color: #FCAC34;
+    text-transform: capitalize;
+}
+.payment-history .box-history .container__info-history .body-history span.type.prioritize{
+    color: #033D98;
+    text-transform: capitalize;
+}
 .alert-message{
     padding: 20px 70px 20px 22px;
     border-top-right-radius: 5px;
@@ -456,7 +630,7 @@ input#postal::-webkit-inner-spin-button {
     position: fixed;
     width: 100%;
     height: 120%;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.95);
     display: none;
     z-index: 19;
     transform: translatey(-12%);
@@ -1407,6 +1581,15 @@ ul.listpageleadership {
     .remove-blocked .request-sending{
         left: 0;
     }
+    .payment-history .box-history{
+        overflow: scroll;
+        align-items: start;
+    }
+    .payment-history .box-history header,
+    .payment-history .box-history .main__info-history,
+    .payment-history .box-history .container__info-history .body-history{
+        width: 1943px;
+    }
 }
 @media screen and (max-width: 768px) {
     button.btn-setting {
@@ -1659,6 +1842,9 @@ ul.listpageleadership {
     .text .p{
         padding: 12px 0;
     }
+    .payment-history .box-history h1{
+        font-size: 30px;
+    }
 }
 @media screen and (max-width: 376px) {
     button.btn-setting {
@@ -1695,6 +1881,9 @@ ul.listpageleadership {
     }
     #updateleadership{
         width: 95%;
+    }
+    .payment-history .box-history h1{
+        font-size: 28px;
     }
 }
 @media screen and (max-width: 321px) {
@@ -1812,5 +2001,8 @@ ul.listpageleadership {
     }
     .text .p{
         padding: unset;
+    }
+    .payment-history .box-history h1{
+        font-size: 24px;
     }
 }

@@ -67,7 +67,7 @@
             <label for="selectrole">Select Role</label>
         </div>
         <div class="action-login">
-            <button class="btn-signup" type="submit">Register</button>
+            <button id="btn-signup" class="btn-signup" type="submit">Register</button>
         </div>
     </form>
     {{!-- forgot --}}
@@ -84,7 +84,7 @@
         </div>
         <div class="action-login reset-password__action">
             <button class="btn-signup back-reset" type="button">Back</button>
-            <button class="btn-reset" type="submit">Send Mail</button>
+            <button id="sendMail" class="btn-reset" type="submit">Send Mail</button>
         </div>
     </form>
 </div>
@@ -142,4 +142,37 @@
             boxReset.style.display = 'flex';
         }
     });
+    var checkEmailForgot = document.querySelector('#email-forgot');
+    var checkEmail = document.querySelector('#email');
+    var allowedEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var btnSignUp = document.querySelector('#btn-signup');
+    var btnForgot = document.querySelector('#sendMail');
+    btnSignUp.addEventListener('click',(e)=>{
+        if(!allowedEmail.test(checkEmail.value)){
+            e.preventDefault();
+            checkEmail.style.cssText = 'border: 1px solid #FC0412; box-shadow: 0 0 6px 4px #FC041269;';
+            alert('Email address is not valid (E.g. acb@gmail.com)');
+        }
+    })
+    btnForgot.addEventListener('click',(e)=>{
+        if(!allowedEmail.test(checkEmailForgot.value)){
+            e.preventDefault();
+            checkEmailForgot.style.cssText = 'border: 1px solid #FC0412; box-shadow: 0 0 6px 4px #FC041269;';
+            alert('Email address is not valid (E.g. acb@gmail.com)');
+        }
+    })
+    checkEmail.addEventListener('input',()=>{
+        if(!allowedEmail.test(checkEmail.value)){
+            checkEmail.style.cssText = 'border: 1px solid #FC0412; box-shadow: 0 0 6px 4px #FC041269;';
+        }else{
+            checkEmail.style.cssText = 'border: 1px solid #0095ff; box-shadow: 0 0 6px 4px #0072bc69';
+        }
+    })
+    checkEmailForgot.addEventListener('input',()=>{
+        if(!allowedEmail.test(checkEmailForgot.value)){
+            checkEmailForgot.style.cssText = 'border: 1px solid #FC0412; box-shadow: 0 0 6px 4px #FC041269;';
+        }else{
+            checkEmailForgot.style.cssText = 'border: 1px solid #0095ff; box-shadow: 0 0 6px 4px #0072bc69';
+        }
+    })
 </script>
