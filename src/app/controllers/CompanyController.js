@@ -328,6 +328,7 @@ class CompanyController {
             company: staffMongoseToObject(company), //cần sửa company để thấy được avatar
             listjob: listjob,
             pages: pages,
+            idcompany,
           });
         });
     } else {
@@ -344,6 +345,7 @@ class CompanyController {
             company: staffMongoseToObject(company), //cần sửa company để thấy được avatar
             listjob: listjob,
             pages: pages,
+            idcompany,
           });
         });
     }
