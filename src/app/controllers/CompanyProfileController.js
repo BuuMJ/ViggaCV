@@ -605,8 +605,7 @@ class CompanyProfileController {
         .skip(skip)
         .limit(PAGE_SIZE);
     }
-    console.log(pagesPassed);
-    console.log(pageFailed);
+
     res.render("cvManager", {
       cvPassed: mutipleMongooseToObject(cvPassed),
       cvFailed: mutipleMongooseToObject(cvFailed),
