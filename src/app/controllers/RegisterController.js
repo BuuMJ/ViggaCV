@@ -100,17 +100,6 @@ class RegisterController {
                         "/login?messenge=Number phone already exists!";
                       res.redirect(url);
                     } else {
-                      bcrypt.hash(password, 10, function (err, hash) {
-                        UserModel.create({
-                          username: username,
-                          password: hash,
-                          fullname: fullname,
-                          email: email,
-                          phone: phone,
-                          role: role,
-                          skills: skills,
-                        });
-                      });
                       transporter.sendMail(mailOptions, function (err, info) {
                         if (err) {
                           console.log(err);
@@ -118,6 +107,17 @@ class RegisterController {
                           res.json("Không thể gửi mail");
                         } else {
                           if (info) {
+                            bcrypt.hash(password, 10, function (err, hash) {
+                              UserModel.create({
+                                username: username,
+                                password: hash,
+                                fullname: fullname,
+                                email: email,
+                                phone: phone,
+                                role: role,
+                                skills: skills,
+                              });
+                            });
                             console.log(info);
                             console.log("Đã gửi mail");
                             return res.redirect("/login");
