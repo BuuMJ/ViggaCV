@@ -642,13 +642,37 @@ class JobController {
       }
       const detail = await JobModel.findOne({ _id: idjob, active: true });
       const company = await CompanyModel.findOne({ iduser: detail.iduser });
-      const job = await JobModel.find({ iduser: detail.iduser, active: true });
+      const count = await JobModel.countDocuments({
+        iduser: detail.iduser,
+        active: true,
+      });
+      var page = req.query.page;
+      var PAGE_SIZE = 6;
+      var total = Math.ceil(count / PAGE_SIZE);
+      const pages = [];
+      for (let i = 1; i <= total; i++) {
+        pages.push(i);
+      }
+      if (page) {
+        page = parseInt(page);
+        var skip = (page - 1) * PAGE_SIZE;
+        var job = await JobModel.find({ iduser: detail.iduser, active: true })
+          .skip(skip)
+          .limit(PAGE_SIZE);
+      } else {
+        page = 1;
+        var skip = (page - 1) * PAGE_SIZE;
+        var job = await JobModel.find({ iduser: detail.iduser, active: true })
+          .skip(skip)
+          .limit(PAGE_SIZE);
+      }
       res.render("jobdetail", {
         title: "Job Detail",
         detail: staffMongoseToObject(detail),
         user: req.user,
         checksave,
-        company: staffMongoseToObject(company), //cần sửa company chỗ này
+        pages,
+        company: staffMongoseToObject(company),
         job: mutipleMongooseToObject(job),
       });
     } catch (err) {

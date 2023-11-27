@@ -556,15 +556,56 @@ class CompanyProfileController {
     const user = req.user;
     const idjob = req.query.id;
     const job = await JobModel.findById(idjob);
-    const cvPassed = await QualifiedModel.find({ jobid: idjob });
-    const cvFailed = await UnsatisfactoryModel.find({ jobid: idjob });
+
     const company = await CompanyModel.findOne({ iduser: req.user._id });
     const countPassed = await QualifiedModel.countDocuments({ jobid: idjob });
     const countFailed = await UnsatisfactoryModel.countDocuments({
       jobid: idjob,
     });
     const count = countPassed + countFailed;
-    console.log(count);
+
+    var pagePassed = req.query.pagePassed;
+    var PAGE_SIZE = 8;
+    var total = Math.ceil(countPassed / PAGE_SIZE);
+    const pagesPassed = [];
+    for (let i = 1; i <= total; i++) {
+      pagesPassed.push(i);
+    }
+    if (pagePassed) {
+      pagePassed = parseInt(pagePassed);
+      var skip = (pagePassed - 1) * PAGE_SIZE;
+      var cvPassed = await QualifiedModel.find({ jobid: idjob })
+        .skip(skip)
+        .limit(PAGE_SIZE);
+    } else {
+      pagePassed = 1;
+      var skip = (pagePassed - 1) * PAGE_SIZE;
+      var cvPassed = await QualifiedModel.find({ jobid: idjob })
+        .skip(skip)
+        .limit(PAGE_SIZE);
+    }
+
+    var pageFailed = req.query.pageFailed;
+    var PAGE_SIZE = 8;
+    var total1 = Math.ceil(countFailed / PAGE_SIZE);
+    const pagesFailed = [];
+    for (let i = 1; i <= total1; i++) {
+      pagesFailed.push(i);
+    }
+    if (pageFailed) {
+      pageFailed = parseInt(pageFailed);
+      var skip = (pageFailed - 1) * PAGE_SIZE;
+      var cvFailed = await UnsatisfactoryModel.find({ jobid: idjob })
+        .skip(skip)
+        .limit(PAGE_SIZE);
+    } else {
+      pageFailed = 1;
+      var skip = (pageFailed - 1) * PAGE_SIZE;
+      var cvFailed = await UnsatisfactoryModel.find({ jobid: idjob })
+        .skip(skip)
+        .limit(PAGE_SIZE);
+    }
+
     res.render("cvManager", {
       cvPassed: mutipleMongooseToObject(cvPassed),
       cvFailed: mutipleMongooseToObject(cvFailed),
@@ -574,6 +615,8 @@ class CompanyProfileController {
       count,
       countPassed,
       countFailed,
+      pagesPassed,
+      pagesFailed,
     });
   }
 
