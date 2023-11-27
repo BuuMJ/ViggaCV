@@ -28,6 +28,11 @@
             </div>
             {{/each}}
         </ul>
+        <div class="pagination">
+            {{#each pages}}
+            <a href="/company/job/64267fc42970da873c7766d2?page={{this}}" data-page="{{this}}">{{this}}</a>
+            {{/each}}
+        </div>
     </div>
 </div>
 <script>
@@ -37,5 +42,38 @@
         job.addEventListener('click',()=>{
             window.location.href = `/job/${linkJob}`;
         });
+    });
+
+    var getPagination = document.querySelectorAll('.pagination a');
+    var paginationContainer = document.querySelector('.pagination');
+    if (getPagination.length > 1) {
+    paginationContainer.style.display = 'flex';
+    } else {
+    paginationContainer.style.display = 'none';
+    }
+    getPagination.forEach(function(pageLink) {
+    pageLink.addEventListener('click', function(event) {
+        if (pageLink.classList.contains('active')) {
+        event.preventDefault();
+        } else {
+        var page = pageLink.getAttribute('data-page');
+        localStorage.setItem('currentPageCompanyInfoJob', page);
+        }
+    });
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const pageFromURL = urlParams.get('page');
+    const currentPage = pageFromURL || localStorage.getItem('currentPageCompanyInfoJob');
+    if (currentPage !== null) {
+        getPagination.forEach(function(pageLink) {
+        var page = pageLink.getAttribute('data-page');
+        if (page == currentPage) {
+            pageLink.classList.add('active');
+        } else {
+            pageLink.classList.remove('active');
+        }
+        });
+    }
     });
 </script>

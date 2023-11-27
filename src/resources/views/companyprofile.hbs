@@ -146,12 +146,7 @@
                     <div class="about-user about-user-desc-company">
                         <label for="experience">History</label>
                         <textarea id="experience" type="text" name="history"
-                            placeholder="Founded in 1971, Hansen is a global provider of software and services, serving the most demanding energy and communications brands around the world.
-                            Our early origins in the management of customer and organisational data has served our customers well over the years. As a pioneer in providing some of the first web-based self-service and browser- based customer care solutions to the market we have continued to hone our software to enable energy and communications service providers to create new products and services, deliver them flawlessly, and engage customers with excellence – powered by the Hansen Create-Deliver-EngageTM suite of software applications.
-                            In the last decade we have grown exponentially through several progressive and strategic acquisitions that have expanded our geographic scope and enhanced the business of our valued customers.
-                            Today we are on the cusp of a new journey with our customers, to help them Power the NextTM age of communications and energy related experiences beyond the essentials of providing basic core energy and connectivity.">
-                            {{getHistory company}}
-                        </textarea>
+                            placeholder="Founded in 1971, Hansen is a global provider of software and services, serving the most demanding energy and communications brands around the world. Our early origins in the management of customer and organisational data has served our customers well over the years. As a pioneer in providing some of the first web-based self-service and browser- based customer care solutions to the market we have continued to hone our software to enable energy and communications service providers to create new products and services, deliver them flawlessly, and engage customers with excellence – powered by the Hansen Create-Deliver-EngageTM suite of software applications. In the last decade we have grown exponentially through several progressive and strategic acquisitions that have expanded our geographic scope and enhanced the business of our valued customers. Today we are on the cusp of a new journey with our customers, to help them Power the NextTM age of communications and energy related experiences beyond the essentials of providing basic core energy and connectivity.">{{getHistory company}}</textarea>
                     </div>
                 </div>
                 <span>TEAM LEADERSHIP</span>
@@ -426,7 +421,11 @@ Andrew leads the strategic direction of the business with a dedicated and divers
     function listPage() {
         var count = Math.ceil(list.length / limit);
         document.querySelector('.listpagejob').innerHTML = '';
-        for (i = 1; i <= count; i++) {
+        if(list.length <= 5){
+            document.querySelector('.listpagejob').style.visibility = 'hidden';
+        }else{
+            document.querySelector('.listpagejob').style.visibility = 'visible';
+            for (i = 1; i <= count; i++) {
             var newPage = document.createElement('li');
             newPage.innerHTML = i;
             document.querySelector('.listpagejob').appendChild(newPage);
@@ -434,6 +433,7 @@ Andrew leads the strategic direction of the business with a dedicated and divers
             if (i === thisPage) {
                 newPage.classList.add('active');
             }
+        }
         }
     }
     function changePage(i) {
@@ -454,7 +454,11 @@ Andrew leads the strategic direction of the business with a dedicated and divers
     for (var i = numToShow; i < leadershipList.length; i++) {
         leadershipList[i].style.display = "none";
     }
-    viewMoreBtn.addEventListener("click", function () {
+    if(leadershipList.length >= 0 && leadershipList.length < 3){
+        viewMoreBtn.style.visibility = 'hidden';
+    }else{
+        viewMoreBtn.style.visibility = 'visible';
+         viewMoreBtn.addEventListener("click", function () {
         viewLessBtn.style.cssText = "visibility: visible; opacity: 1; cursor: pointer; ";
         numToShow += numToShowIncrement;
         for (var i = 0; i < leadershipList.length; i++) {
@@ -486,6 +490,7 @@ Andrew leads the strategic direction of the business with a dedicated and divers
                 }
                 console.log(numToShow + " " + numToShowIncrement)
             });
+    }
 </script>
 <script>
 

@@ -1774,6 +1774,14 @@ header.job-search .best-companyFL {
         font-size: 18px;
         height: 40px;
     }
+    .main-jobdetail{
+        width: 90%;
+    }
+    .main-jobinfo, 
+    .main-companyinfo, 
+    .main-jobsfromthiscompany{
+        width: 90%;
+    }
 }
 @media screen and (max-width: 600px) {
     .best-companyFL .info-bestfl .best-fl-name{

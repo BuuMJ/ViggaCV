@@ -323,6 +323,10 @@ font-weight: 600;
   width: 95%;
   margin-bottom: 16px;
 }
+.companyinformation-showjob .pagination{
+  width: 100%;
+  margin-top: 20px;
+}
 .job-companyinfo{
   padding: 10px 0;
   width: 80%;
@@ -347,6 +351,7 @@ font-weight: 600;
   background-color: white;
   transition: .3s;
   border-radius: 5px;
+  text-align: center;
 }
 .job-companyinfo-action a:hover{
   background-color: $btncolor;
@@ -710,6 +715,13 @@ header.company-detail .background-company-detail{
   right: 0;
   z-index: 20;
 }
+.companyinformation-showjob .jobs-companyinfo .content-listjob span.namejobs{
+  display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 @media screen and (max-width: 1024px) {
   h2.main-text{
     font-size: 40px;
@@ -1008,7 +1020,10 @@ header.company-detail .background-company-detail{
   }
   .job-companyinfo-action{
     width: 100%;
-    align-items: start;
+  }
+  .job-companyinfo-action a{
+    width: 100%;
+    font-size: 14px;
   }
   .navcompany-center span.second-text{
     display: flex;

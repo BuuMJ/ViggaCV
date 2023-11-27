@@ -43,6 +43,11 @@
     list-style-type: none;
     color: #a6a6a6;
 }
+.footer-content li a{
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+}
 .footer-send-feed-back{
     display: flex;
     flex-direction: column;

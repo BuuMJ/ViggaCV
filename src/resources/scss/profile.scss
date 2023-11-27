@@ -148,6 +148,7 @@
     margin: unset;
     color: #aeb1bc;
     font-weight: 400;
+    font-size: 14px;
 }
 .payment-history .box-history header span.jobname__history,
 .payment-history .box-history .container__info-history .body-history span.jobname__history{
@@ -892,12 +893,16 @@ li.content-listjob a.payment::after{
     width: 160px;
     height: 30px;
     display: none;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    bottom: 15%;
-    left: 42px;
+    bottom: -80%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
 }
 li.content-listjob a.payment:hover::after{
-    display: block;
+    display: flex;
 }
 li.content-listjob .remove-blocked{
     position: absolute;
@@ -951,18 +956,24 @@ li.content-listjob .remove-blocked{
 li.content-listjob .cv-applied{
     font-size: 14px;
     font-weight: 600;
-    padding: 4px 8px;
     border: 1px solid $secondarycolor;
     background-color: white;
     color: $secondarycolor;
     border-radius: 5px;
     text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 200px;
     height: 30px;
     margin-top: 6px;
     margin-left: 24px;
     text-align: center;
     transition: .5s;
+    padding: 6px;
+}
+li.content-listjob .cv-applied i {
+    margin: 0 6px;
 }
 li.content-listjob .cv-applied:hover{
     background-color: $secondarycolor;
@@ -992,12 +1003,20 @@ li.content-listjob a.payment:hover{
   }
 li.content-listleadership{
     flex-direction: row;
-    height: 80px;
     align-items: center;
+}
+.company-profile li.content-listjob .namejobs{
+    display: flex;
 }
 li.content-listjob .namejobs a{
     text-decoration: none;
     color: black;
+    padding-right: 80px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 li.content-listjob:hover .namejobs a{
     color: $btncolor;
@@ -1018,15 +1037,15 @@ li.content-listleadership img{
 .infoleadership .nameleadership{
     font-size: 20px;
     font-weight: 700;
-    height: 22px;
+    padding: 0 12px;
 }
 .infoleadership .position{
     color: #b9c2c4;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 800;
-    height: 18px;
     letter-spacing: 1.2px;
     text-transform: uppercase;
+    padding: 0 12px;
 }
 .action-leader{
     position: relative;
@@ -1081,7 +1100,7 @@ li.content-listjob:hover i.bi-three-dots-vertical{
 span.timejobs,
 span.locationjobs{
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 600;
     padding: 4px;
     margin-right: 8px;
     color: white;
@@ -1746,7 +1765,7 @@ ul.listpageleadership {
         width: 40%;
     }
     span.timejobs, span.locationjobs{
-        font-size: 12px;
+        font-size: 8px;
     }
     .namejobs{
         font-size: 14px !important;
@@ -1756,9 +1775,29 @@ ul.listpageleadership {
     }
     li.content-listjob .cv-applied{
         margin-left: 19px;
+        width: 146px;
+        height: 24px;
+        font-size: 12px;
     }
     .leadership-action-view{
         width: 90%;
+    }
+    li.content-listleadership img{
+        width: 50px;
+        height: 50px;
+    }
+    .infoleadership .nameleadership{
+        font-size: 16px;
+    }
+    .infoleadership .position{
+        font-size: 8px;
+    }
+    li.content-listjob a.payment{
+        font-size: 24px;
+    }
+    li.content-listjob a.payment::after{
+        font-size: 12px;
+        width: 120px;
     }
     .alert-message{
         width: 80vw;
@@ -1845,6 +1884,9 @@ ul.listpageleadership {
     .payment-history .box-history h1{
         font-size: 30px;
     }
+    li.content-listjob .namejobs a{
+        padding-right: 50px;
+    }
 }
 @media screen and (max-width: 376px) {
     button.btn-setting {
@@ -1874,7 +1916,10 @@ ul.listpageleadership {
         font-size: 14px;
     }
     .secondary-listjob {
-        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    li.content-listjob .namejobs a{
+        padding-right: 60px;
     }
     #postjob{
         top: 0;
@@ -1907,19 +1952,26 @@ ul.listpageleadership {
     .camera-user-company{
         top: 9%;
     }
-    span.timejobs, span.locationjobs{
-        font-size: 12px;
-    }
     .namejobs{
         font-size: 12px !important;
     }
     li.content-listjob .cv-applied {
-        font-size: 12px;
-        width: 180px;
+        font-size: 10px;
+        width: 124px;
     }
     .listjobs-action button, 
     .listleadership-action button{
         width: 50%;
+    }
+    li.content-listleadership img{
+        width: 40px;
+        height: 40px;
+    }
+    .infoleadership .nameleadership{
+        font-size: 12px;
+    }
+    .infoleadership .position{
+        font-size: 6px;
     }
     .alert-message{
         padding-right: 40px;
@@ -2004,5 +2056,15 @@ ul.listpageleadership {
     }
     .payment-history .box-history h1{
         font-size: 24px;
+    }
+    li.content-listjob .namejobs a{
+        padding-right: 50px;
+    }
+    span.timejobs, span.locationjobs{
+        font-size: 8px;
+    }
+    li.content-listjob a.payment::after{
+        font-size: 10px;
+        width: 100px;
     }
 }

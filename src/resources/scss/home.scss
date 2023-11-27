@@ -286,6 +286,8 @@
     border: 1px solid #d3d5d9;
     background: $backgroundcard;
     border-radius: 5px;
+    cursor: pointer;
+    transition: .5s;
 }
 .container-home .first-content .toprecruiters .list-toprecruiters .card-toprecruiter:hover{
     border: 1px solid $secondarycolor;
