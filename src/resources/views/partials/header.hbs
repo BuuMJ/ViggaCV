@@ -135,24 +135,15 @@
     {{#if user}}
     <div class="responsive__navbar-center">
         <header class="navbar-center">
-                {{#ifeq user 'user'}}
+                {{!-- {{#ifeq user 'user'}} --}}
                     <div class="user-right">
                         <img src="{{getAvatar user}}" alt="">
                         <div class="right-info__user">
                             <p class="navbar__name-user">{{getFullname user}}</p>
-                            <a href="/profile">View your profile</a>
+                            <p><a href="/profile">View and Edit Profile</a></p>
                         </div>
                     </div>
-                    <div class="user-left">
-                        <ul class="drop-down__action">
-                            <span><i class="bi bi-three-dots"></i></span>
-                            <ul class="action-down action-down__user">
-                                <li><a href="/yourjobs">Your Jobs</a></li>
-                                <li><a onclick="logout()" href="/login">Sign Out</a></li>
-                            </ul>
-                        </ul>
-                    </div>
-                {{else ifeq user 'company'}}
+                {{!-- {{else ifeq user 'company'}}
                     <div class="user-right">
                         <img src="{{getAvatar user}}" alt="">
                         <div class="right-info__user">
@@ -186,45 +177,69 @@
                             </ul>
                         </ul>
                     </div>
-                {{/ifeq}}
+                {{/ifeq}} --}}
         </header>
-        <a href="/"><span>Home</span></a>
-        <a class="reset-localstorage" href="/job">Jobs</a>
-        <ul class="drop-down__company">
-            <a href="/company" class="reset-localstorage__company"><span>Companies</span></a>
-            {{!-- <ul class="down__company">
-                <li><a href="/company">List Company</a></li>
-            </ul> --}}
-        </ul>
         {{#ifeq user 'user'}}
+        <a href="/yourjobs"><span class="material-symbols-outlined">favorite</span> Favorite Jobs</a>
+        <a href="/"><span class="material-symbols-outlined">home</span> Home</a>
+        <a class="reset-localstorage" href="/job"><span class="material-symbols-outlined">work</span> Jobs</a>
+        <ul class="drop-down__company">
+            <a href="/company" class="reset-localstorage__company"><span><span class="material-symbols-outlined">apartment</span> Companies</span></a>
+        </ul>
         <ul class="drop-down__tools-responsive">
-            <span>Tools <i class="bi bi-caret-down-fill"></i></span>
+            <span><span class="material-symbols-outlined">handyman</span> Tools <i class="bi bi-caret-down-fill"></i></span>
         </ul>
         <ul class="down__tools-responsive">
                 <li><a href="/cv">NiceCV</a></li>
-                {{!-- <li><a href="">Payroll</a></li> --}}
+        </ul>
+        {{else ifeq user 'company'}}
+        <a href="/yourjobs"><span class="material-symbols-outlined">folder_managed</span> Your Company Profile</a>
+        <a href="/"><span class="material-symbols-outlined">home</span> Home</a>
+        <a class="reset-localstorage" href="/job"><span class="material-symbols-outlined">work</span> Jobs</a>
+        <ul class="drop-down__company">
+            <a href="/company" class="reset-localstorage__company"><span><span class="material-symbols-outlined">apartment</span> Companies</span></a>
         </ul>
         {{else}}
-        {{/ifeq}}
-    </div>
-    {{else}}
-    <div class="responsive__navbar-center" style="justify-content: flex-start;">
-        <a href="/"><span>Home</span></a>
-        <a class="reset-localstorage" href="/job">Jobs</a>
+        <a class="reset-localstorage__admin" href="/admin"><span class="material-symbols-outlined">bar_chart_4_bars</span> Admin</a>
+        <a href="/yourjobs"><span class="material-symbols-outlined">favorite</span> Favorite Jobs</a>
+        <a href="/"><span class="material-symbols-outlined">home</span> Home</a>
+        <a class="reset-localstorage" href="/job"><span class="material-symbols-outlined">work</span> Jobs</a>
         <ul class="drop-down__company">
-            <a href="/company" class="reset-localstorage__company"><span>Companies</span></a>
-            {{!-- <ul class="down__company">
-                <li><a href="/company/listcompany">List Company</a></li>
-            </ul> --}}
+            <a href="/company" class="reset-localstorage__company"><span><span class="material-symbols-outlined">apartment</span> Companies</span></a>
         </ul>
         <ul class="drop-down__tools-responsive">
-            <span>Tools <i class="bi bi-caret-down-fill"></i></span>
-            <ul class="down__tools-responsive">
-                <li><a href="/cv">NiceCV</a></li>
-                {{!-- <li><a href="">Payroll</a></li> --}}
-            </ul>
+            <span><span class="material-symbols-outlined">handyman</span> Tools <i class="bi bi-caret-down-fill"></i></span>
         </ul>
-        <a class="removeLocalstorage" href="/login">Sign In</a>
+        <ul class="down__tools-responsive">
+                <li><a href="/cv">NiceCV</a></li>
+        </ul>
+        {{/ifeq}}
+        <a onclick="logout()" href="/login"><span class="material-symbols-outlined">exit_to_app</span> Sign Out</a>
+    </div>
+    {{!-- not user --}}
+    {{else}}
+    <div class="responsive__navbar-center">
+         <header class="navbar-center">
+                    <div class="user-right__notuser">
+                        <img src="/img/LOGOVGA.png" alt="">
+                        <div class="right-info__user">
+                            <p class="navbar__name-user">Vigga Careers</p>
+                            <span>Sign in to gain access to beneficial features</span>
+                        </div>
+                    </div>
+        </header>
+         <a href="/"><span class="material-symbols-outlined">home</span> Home</a>
+        <a class="reset-localstorage" href="/job"><span class="material-symbols-outlined">work</span> Jobs</a>
+        <ul class="drop-down__company">
+            <a href="/company" class="reset-localstorage__company"><span><span class="material-symbols-outlined">apartment</span> Companies</span></a>
+        </ul>
+        <ul class="drop-down__tools-responsive">
+            <span><span class="material-symbols-outlined">handyman</span> Tools <i class="bi bi-caret-down-fill"></i></span>
+        </ul>
+        <ul class="down__tools-responsive">
+                <li><a href="/cv">NiceCV</a></li>
+        </ul>
+        <a class="removeLocalstorage" href="/login"><i class="bi bi-door-open-fill"></i> Sign In</a>
     </div>
 {{/if}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -240,16 +255,14 @@
     var checkShowMenu = document.querySelector('.show-menu input#menu');
   function updateMenu(){
     if (checkShowMenu.checked) {
-    document.querySelector('.responsive__navbar-center').style.transform = 'translateY(0)';
-        if(window.innerHeight === 667 && window.innerWidth === 375){
-            document.querySelector('.responsive__navbar-center').style.transform = 'translateY(10px)';
-        }
+    document.querySelector('.responsive__navbar-center').style.transform = 'translateX(0)';
+       
     setTimeout(function(){
         document.querySelector('.overflow-header').style.display = 'block';
     },200);
     }
     else{
-    document.querySelector('.responsive__navbar-center').style.transform = 'translateY(-200%)';
+    document.querySelector('.responsive__navbar-center').style.transform = 'translateX(200%)';
     document.querySelector('.overflow-header').style.display = 'none';
     }
     };
@@ -259,25 +272,22 @@
     document.querySelector('.overflow-header').addEventListener('click',()=>{
         checkShowMenu.checked = false;
         document.querySelector('.overflow-header').style.display = 'none';
-        document.querySelector('.responsive__navbar-center').style.transform = 'translateY(-200%)';
+        document.querySelector('.responsive__navbar-center').style.transform = 'translateX(200%)';
     })
-});
-var clickShowTools = document.querySelector('.drop-down__tools-responsive span');
-var showTools = document.querySelector('.responsive__navbar-center .down__tools-responsive');
-clickShowTools.addEventListener('click', function() {
-    if (showTools.style.display === 'none' || showTools.style.display === '') {
-        showTools.style.display = 'block';
-        clickShowTools.innerHTML = 'Tools <i class="bi bi-caret-up-fill"></i>';
-    } else {
-        showTools.style.display = 'none';
-        clickShowTools.innerHTML = 'Tools <i class="bi bi-caret-down-fill"></i>';
-    }
-});
-document.addEventListener('click', function(event) {
-    if (showTools.contains(event.target) || clickShowTools.contains(event.target)) {
-        return;
-    }
-    showTools.style.display = 'none';
+    var clickedShowTools = false;
+    var clickShowTools = document.querySelector('.drop-down__tools-responsive span');
+    var showTools = document.querySelector('.responsive__navbar-center .down__tools-responsive');
+    clickShowTools.addEventListener('click', function() {
+        if (!clickedShowTools) {
+            clickedShowTools = true;
+            showTools.style.display = 'block';
+            clickShowTools.innerHTML = '<i class="bi bi-wrench-adjustable-circle-fill"></i> Tools <i class="bi bi-caret-up-fill"></i>';
+        } else {
+            clickedShowTools = false;
+            showTools.style.display = 'none';
+            clickShowTools.innerHTML = '<i class="bi bi-wrench-adjustable-circle-fill"></i> Tools <i class="bi bi-caret-down-fill"></i>';
+        }
+    });
 });
 var removeLocalStorageLogin = document.querySelector('.removeLocalstorage');
 removeLocalStorageLogin.addEventListener('click',()=>{
