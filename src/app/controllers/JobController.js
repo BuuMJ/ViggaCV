@@ -671,6 +671,7 @@ class JobController {
         detail: staffMongoseToObject(detail),
         user: req.user,
         checksave,
+        idjob,
         pages,
         company: staffMongoseToObject(company),
         job: mutipleMongooseToObject(job),
