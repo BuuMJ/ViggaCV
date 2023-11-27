@@ -26,6 +26,11 @@
                         <span class="name-file"><b>Link CV:</b> <span>{{this.nameCV}}</span></span>
                     </a>
                 {{/each}}
+                <div class="pagination pagination-pass" data-id-pagination-pass="{{job._id}}">
+                    {{#each pagesPassed}}
+                    <a data-page="{{this}}">{{this}}</a>
+                    {{/each}}
+                </div>
                 </div>
                 <div class="box__failed-cv">
                     <h2>In total, this job has <b>{{countFailed}}</b> CVs that have failed your company's requirements</h2>
@@ -41,6 +46,11 @@
                        <span class="name-file"><b>Link CV:</b> <span>{{this.nameCV}}</span></span>
                     </a>
                 {{/each}}
+                <div class="pagination pagination-fail" data-id-pagination-fail="{{job._id}}">
+                    {{#each pagesFailed}}
+                    <a data-page="{{this}}">{{this}}</a>
+                    {{/each}}
+                </div>
                 </div>
         </section>
     </div>
@@ -109,5 +119,73 @@
             passedClicked = true;
             },1780)
         }
+    });
+    var getPaginationPass = document.querySelectorAll('.pagination-pass a');
+    var paginationContainerPass = document.querySelector('.pagination-pass');
+    var getIDPaginationPass = paginationContainerPass.getAttribute('data-id-pagination-pass');
+    if (getPaginationPass.length > 1) {
+    paginationContainerPass.style.display = 'flex';
+    } else {
+    paginationContainerPass.style.display = 'none';
+    }
+    getPaginationPass.forEach(function(pageLink) {
+    var page = pageLink.getAttribute('data-page');
+    pageLink.href = `/CVManager?id=${getIDPaginationPass}&pagePassed=${page}`;
+    pageLink.addEventListener('click', function(event) {
+        if (pageLink.classList.contains('active')) {
+        event.preventDefault();
+        } else {
+        localStorage.setItem('currentPagePassCV', page);
+        }
+    });
+    });
+
+    var getPaginationFail = document.querySelectorAll('.pagination-fail a');
+    var paginationContainerFail = document.querySelector('.pagination-fail');
+    var getIDPaginationFail = paginationContainerFail.getAttribute('data-id-pagination-fail');
+    if (getPaginationFail.length > 1) {
+    paginationContainerFail.style.display = 'flex';
+    } else {
+    paginationContainerFail.style.display = 'none';
+    }
+    getPaginationFail.forEach(function(pageLink) {
+    var page = pageLink.getAttribute('data-page');
+    pageLink.href = `/CVManager?id=${getIDPaginationFail}&pageFailed=${page}`;
+    pageLink.addEventListener('click', function(event) {
+        if (pageLink.classList.contains('active')) {
+        event.preventDefault();
+        } else {
+        localStorage.setItem('currentPageFailCV', page);
+        }
+    });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const pageFromURL = urlParams.get('page');
+    const currentPage = pageFromURL || localStorage.getItem('currentPagePassCV');
+    if (currentPage !== null) {
+        getPaginationPass.forEach(function(pageLink) {
+        var page = pageLink.getAttribute('data-page');
+        if (page == currentPage) {
+            pageLink.classList.add('active');
+        } else {
+            pageLink.classList.remove('active');
+        }
+        });
+    }
+    const urlParamsFail = new URLSearchParams(window.location.search);
+    const pageFromURLFail = urlParamsFail.get('page');
+    const currentPageFail = pageFromURLFail || localStorage.getItem('currentPageFailCV');
+    if (currentPageFail !== null) {
+        getPaginationFail.forEach(function(pageLink) {
+        var page = pageLink.getAttribute('data-page');
+        if (page == currentPageFail) {
+            pageLink.classList.add('active');
+        } else {
+            pageLink.classList.remove('active');
+        }
+        });
+    }
     });
 </script>

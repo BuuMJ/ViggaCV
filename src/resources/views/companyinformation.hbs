@@ -28,9 +28,9 @@
             </div>
             {{/each}}
         </ul>
-        <div class="pagination">
+        <div class="pagination" data-id-pagination="{{getCompanyID company}}">
             {{#each pages}}
-            <a href="/company/job/{{idcompany}}?page={{this}}" data-page="{{this}}">{{this}}</a>
+            <a data-page="{{this}}">{{this}}</a>
             {{/each}}
         </div>
     </div>
@@ -43,20 +43,21 @@
             window.location.href = `/job/${linkJob}`;
         });
     });
-
     var getPagination = document.querySelectorAll('.pagination a');
     var paginationContainer = document.querySelector('.pagination');
+    var getIDPagination = paginationContainer.getAttribute('data-id-pagination');
     if (getPagination.length > 1) {
     paginationContainer.style.display = 'flex';
     } else {
     paginationContainer.style.display = 'none';
     }
     getPagination.forEach(function(pageLink) {
+    var page = pageLink.getAttribute('data-page');
+    pageLink.href = `/company/job/${getIDPagination}?page=${page}`;
     pageLink.addEventListener('click', function(event) {
         if (pageLink.classList.contains('active')) {
         event.preventDefault();
         } else {
-        var page = pageLink.getAttribute('data-page');
         localStorage.setItem('currentPageCompanyInfoJob', page);
         }
     });

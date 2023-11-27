@@ -1590,7 +1590,8 @@ header.jobdetail .center-jobdetail {
   text-decoration: none;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  padding-top: unset !important; }
 
 .jobdetail-action button.btn-apply:hover,
 .jobdetail-action a.btn-apply__notuser:hover {
@@ -1672,6 +1673,10 @@ header.jobdetail .center-jobdetail {
 
 .main-jobsfromthiscompany {
   min-height: 120px; }
+
+.main-jobsfromthiscompany .pagination {
+  width: 100%;
+  margin-top: 20px; }
 
 .main-jobsfromthiscompany ul {
   padding: unset;
@@ -7245,6 +7250,10 @@ header.company-detail .background-company-detail {
 .main__manager-cv section .box__failed-cv .card__failed-cv:hover .name-file span {
   color: #0072bc;
   text-decoration: underline; }
+
+.main__manager-cv section .pagination {
+  width: 100%;
+  margin-top: 20px; }
 
 .show-notification {
   display: none;

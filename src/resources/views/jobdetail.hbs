@@ -9,14 +9,17 @@
         </div>
         <div class="jobdetail-action">
             {{#if user}}
-            <button class="btn-apply" type="button" >Apply Now</button>
+            {{#ifeq user 'company'}}
             {{else}}
-            <a class="btn-apply__notuser" href="/login">Apply Now</a>
-            {{/if}}
+            <button class="btn-apply" type="button" >Apply Now</button>
             <form class="function__check-save" action="/job/favourite?id={{detail._id}}" method="POST">
                 <button title="Save Job" class="check-save__job" type="submit" data-check-save="{{checkSave checksave}}"><i class="bi bi-heart"></i></button>
             </form>
             <a class="create-cv__job" href="/cv/createcv"><span class="material-symbols-outlined">clinical_notes</span> Create CV To Apply</a>
+            {{/ifeq}}
+            {{else}}
+            <a class="btn-apply__notuser" href="/login">Apply Now</a>
+            {{/if}}
         </div>
     </header>
     <div class="body-jobdetail">
@@ -76,9 +79,9 @@
                     </li>
                     {{/each}}
                 </ul>
-                <div class="pagination">
+                <div class="pagination" data-id-pagination="{{idjob}}">
                     {{#each pages}}
-                    <a href="/job/{{idjob}}?page={{this}}" data-page="{{this}}">{{this}}</a>
+                    <a data-page="{{this}}">{{this}}</a>
                     {{/each}}
                 </div>
             </div>
@@ -171,44 +174,7 @@
         localStorage.setItem('boxJobInfo', 'hide');
         localStorage.setItem('boxCompanyInfo', 'hide');
     });
-    var clickShowApply = document.querySelector('.btn-apply');
-    var showApply = document.querySelector('.overplay-jobdetail');
-    var cancleApply = document.querySelector('.cancle-apply');
-    var boxApply = document.querySelector('.box-apply-job');
-    var body = document.querySelector('body');
-    clickShowApply.addEventListener('click',()=>{
-        showApply.style.cssText = "display:flex;"
-        boxApply.style.cssText = "transform: translateY(10%);"
-        if(window.innerWidth > 602 && window.innerWidth <= 1024){
-            boxApply.style.cssText = "transform: translateY(20%);"
-        }
-        if(window.innerWidth <= 601){
-            boxApply.style.cssText = "transform: translateY(22%);"
-        }
-        body.classList.add('modal-open');
-    });
-    showApply.addEventListener('click',()=>{
-        showApply.style.cssText = "display:none;"
-        boxApply.style.cssText = "transform: translateY(-200%);"
-        body.classList.remove('modal-open');
-    });
-    cancleApply.addEventListener('click',()=>{
-        showApply.style.cssText = "display:none;"
-        boxApply.style.cssText = "transform: translateY(-200%);"
-        body.classList.remove('modal-open');
-    });
-    var buttonSave = document.querySelector('.check-save__job');
-    var checkSave = buttonSave.getAttribute('data-check-save');
-    if(checkSave == 'true'){
-        buttonSave.innerHTML = '<i class="bi bi-heart-fill"></i>';
-        buttonSave.classList.add('saved');
-        buttonSave.title = 'Unsave';
-    }
-    else{
-        buttonSave.innerHTML = '<i class="bi bi-heart"></i>';
-        buttonSave.classList.remove('saved');
-        buttonSave.title = 'Save Job';
-    };
+    
     document.addEventListener('DOMContentLoaded', function() {
         var inputFile = document.getElementById('cv');
         var showFileSpan = document.querySelector('.show-file');
@@ -267,6 +233,57 @@
             showcompanyInfo.style.cssText = "display: none;"
             clickShowcompanyInfo.style.cssText = " font-weight:400; border-bottom: unset;"
         }
+        const urlParams = new URLSearchParams(window.location.search);
+    const pageFromURL = urlParams.get('page');
+    const currentPage = pageFromURL || localStorage.getItem('currentPageJobDetail');
+    if (currentPage !== null) {
+        getPagination.forEach(function(pageLink) {
+        var page = pageLink.getAttribute('data-page');
+        if (page == currentPage) {
+            pageLink.classList.add('active');
+        } else {
+            pageLink.classList.remove('active');
+        }
+        });
+    }
+    var clickShowApply = document.querySelector('.btn-apply');
+    var showApply = document.querySelector('.overplay-jobdetail');
+    var cancleApply = document.querySelector('.cancle-apply');
+    var boxApply = document.querySelector('.box-apply-job');
+    var body = document.querySelector('body');
+    clickShowApply.addEventListener('click',()=>{
+        showApply.style.cssText = "display:flex;"
+        boxApply.style.cssText = "transform: translateY(10%);"
+        if(window.innerWidth > 602 && window.innerWidth <= 1024){
+            boxApply.style.cssText = "transform: translateY(20%);"
+        }
+        if(window.innerWidth <= 601){
+            boxApply.style.cssText = "transform: translateY(22%);"
+        }
+        body.classList.add('modal-open');
+    });
+    showApply.addEventListener('click',()=>{
+        showApply.style.cssText = "display:none;"
+        boxApply.style.cssText = "transform: translateY(-200%);"
+        body.classList.remove('modal-open');
+    });
+    cancleApply.addEventListener('click',()=>{
+        showApply.style.cssText = "display:none;"
+        boxApply.style.cssText = "transform: translateY(-200%);"
+        body.classList.remove('modal-open');
+    });
+    var buttonSave = document.querySelector('.check-save__job');
+    var checkSave = buttonSave.getAttribute('data-check-save');
+    if(checkSave == 'true'){
+        buttonSave.innerHTML = '<i class="bi bi-heart-fill"></i>';
+        buttonSave.classList.add('saved');
+        buttonSave.title = 'Unsave';
+    }
+    else{
+        buttonSave.innerHTML = '<i class="bi bi-heart"></i>';
+        buttonSave.classList.remove('saved');
+        buttonSave.title = 'Save Job';
+    };
     });
     var changeJobDetail = document.querySelectorAll('.main-jobsfromthiscompany .content-listjob')
     changeJobDetail.forEach(function(change){
@@ -275,5 +292,24 @@
             localStorage.setItem('boxCompanyInfo', 'hide');
             localStorage.setItem('boxJFTC', 'hide');
         })
+    });
+    var getPagination = document.querySelectorAll('.pagination a');
+    var paginationContainer = document.querySelector('.pagination');
+    var getIDPagination = paginationContainer.getAttribute('data-id-pagination');
+    if (getPagination.length > 1) {
+    paginationContainer.style.display = 'flex';
+    } else {
+    paginationContainer.style.display = 'none';
+    }
+    getPagination.forEach(function(pageLink) {
+    var page = pageLink.getAttribute('data-page');
+    pageLink.href = `/job/${getIDPagination}?page=${page}`;
+    pageLink.addEventListener('click', function(event) {
+        if (pageLink.classList.contains('active')) {
+        event.preventDefault();
+        } else {
+        localStorage.setItem('currentPageJobDetail', page);
+        }
+    });
     });
 </script>
