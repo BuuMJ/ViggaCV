@@ -76,6 +76,11 @@
                     </li>
                     {{/each}}
                 </ul>
+                <div class="pagination">
+                    {{#each pages}}
+                    <a href="/job/{{idjob}}?page={{this}}" data-page="{{this}}">{{this}}</a>
+                    {{/each}}
+                </div>
             </div>
     </div>
     {{#if user}}
