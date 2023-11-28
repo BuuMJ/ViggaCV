@@ -6681,6 +6681,8 @@ header.company-detail .background-company-detail {
   color: white;
   font-size: 20px;
   z-index: 20;
+  position: absolute;
+  top: 50%;
   border-bottom: 1px solid #5e5d5d; }
 
 .main__create-cv header.action-create-cv span {
@@ -7315,6 +7317,10 @@ header.company-detail .background-company-detail {
   background-color: white;
   padding: 8px 16px; }
 
+.main__create-cv .show-notification {
+  width: 30%;
+  height: 300px; }
+
 .show-notification h1 {
   color: black;
   padding: 12px 0;
@@ -7351,7 +7357,10 @@ header.company-detail .background-company-detail {
   .main__create-cv header.action-create-cv {
     top: 37%; }
   .main__manager-cv {
-    width: 90%; } }
+    width: 90%; }
+  .main__create-cv .show-notification {
+    width: 80%;
+    height: 300px; } }
 
 @media screen and (max-width: 768px) {
   .header-cv {

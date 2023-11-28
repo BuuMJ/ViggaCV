@@ -103,6 +103,11 @@ document.addEventListener('DOMContentLoaded',()=>{
             overlayNotification.style.display = 'none';
             body.classList.remove('modal-open');
         })
+        overlayNotification.addEventListener('click',()=>{
+            showNotification.style.display = 'none';
+            overlayNotification.style.display = 'none';
+            body.classList.remove('modal-open');
+        })
     }
 })
 </script>

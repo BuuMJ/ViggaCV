@@ -249,6 +249,12 @@
       </div>
     </div>
   </div>
+  <div style="z-index: 21;" class="overlay-notification"></div>
+    <div style="z-index: 21;" class="show-notification">
+        <h1>Notification</h1>
+        <p>Development and updates are being made to existing feature. Kindly retry once a subsequent update becomes available.<br> We apologize for any inconvenience caused.</p>
+        <span class="close-notification">Close</span>
+    </div>
 </form>
 <script>
   // check A4 page 
@@ -582,6 +588,27 @@ document.addEventListener('DOMContentLoaded', function () {
   containerProject = document.querySelector('.project__user-cv');
   listProject.forEach(addEventsToProject);
   UpdateLengthProject()
+  var clickShowTemplates = document.querySelector('.templates-action-cv');
+  var boxNotification = document.querySelector('.show-notification');
+  var overlay = document.querySelector('.overlay-notification');
+  const closeNotification = document.querySelector('.close-notification');
+  const body = document.querySelector('body');
+        clickShowTemplates.addEventListener('click',(e)=>{
+            e.preventDefault();
+            boxNotification.style.display = 'flex';
+            overlay.style.display = 'block';
+            body.classList.add('modal-open');
+        })
+        closeNotification.addEventListener('click',()=>{
+            boxNotification.style.display = 'none';
+            overlay.style.display = 'none';
+            body.classList.remove('modal-open');
+        })
+        overlay.addEventListener('click',()=>{
+            boxNotification.style.display = 'none';
+            overlay.style.display = 'none';
+            body.classList.remove('modal-open');
+        })
 });
   // textarea skill 
   document.addEventListener('DOMContentLoaded', function () {
