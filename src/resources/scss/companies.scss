@@ -264,6 +264,7 @@ width: 10%;
 height: 80%;
 margin-left: 10%;
 margin-right: 30px;
+border-radius: 5px;
 }
 .navcompany-center {
 width: 70%;
@@ -307,6 +308,24 @@ justify-content: space-around;
 padding: 20px;
 margin-bottom: 30px;
 border-radius: 5px;
+}
+.body-companyinformation .empty-jobs{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  min-height: 50vh;
+  width: 100%;
+  padding: 30px;
+}
+.body-companyinformation .empty-jobs img{
+  width: 50%;
+  height: 300px;
+} 
+.body-companyinformation .empty-jobs h1{
+  font-size: 24px;
+  width: 100%;
+  text-align: center;
 }
 .companyinformation-showjob ul{
   margin-bottom: unset;
@@ -769,6 +788,10 @@ header.company-detail .background-company-detail{
     padding-right: 0px;
     text-align: justify;
   }
+  nav.companyinformation img{
+    width: 20%;
+    margin-left: unset;
+  }
 }
 @media screen and (max-width: 768px) {
   h2.main-text {
@@ -989,10 +1012,10 @@ header.company-detail .background-company-detail{
   }
   nav.companyinformation img{
     margin: unset;
-    width: 32%;
+    width: 50%;
     height: unset;
     position: absolute;
-    top: -25%;
+    top: -40%;
     left: 50%;
     transform: translateX(-50%);
     filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
@@ -1037,6 +1060,13 @@ header.company-detail .background-company-detail{
   .navcompany-center span.second-text b{
     padding: 4px 0;
   }
+  .body-companyinformation .empty-jobs img{
+    width: 80%;
+    height: 200px;
+  }
+  .body-companyinformation .empty-jobs h1{
+    font-size: 20px;
+  }
 }
 @media screen and (max-width: 376px) {
   h2.main-text {
@@ -1047,9 +1077,6 @@ header.company-detail .background-company-detail{
   }
   .show__main-info-leadership .introduce-leadership{
     height: 60%;
-  }
-  nav.companyinformation img{
-    top: -18%;
   }
   .header__primary-company-detail .logo-company-detail img{
     top: -20%;
@@ -1094,7 +1121,7 @@ header.company-detail .background-company-detail{
     font-size: 18px;
   }
   nav.companyinformation img{
-    top: -16%;
+    top: -30%;
   }
   .companyinformation-showjob{
     padding: 20px 10px;
@@ -1102,5 +1129,8 @@ header.company-detail .background-company-detail{
   }
   .jobs-companyinfo .content-listjob .secondary-listjob .locationjobs{
     padding-bottom: 4px;
+  }
+  .body-companyinformation .empty-jobs h1{
+    font-size: 16px;
   }
 }

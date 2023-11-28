@@ -1,6 +1,6 @@
 <header class="job-search">
      <a data-href="{{bestFL._id}}" class="best-companyFL">
-    <div class="background-image" style="background: url('{{getbackgroundJobBest bestFL}}') center/cover no-repeat;"></div>
+    <div class="background-image" style="background: linear-gradient(to right, #100a0933, #100a0933), url('{{getbackgroundJobBest bestFL}}') center/cover no-repeat;"></div>
     <div class="info-bestfl">
     <span>&#62;&#62;&#62;</span>
     <span class="best-fl-name"> {{bestFL.companyname}} {{bestFL.typeofbusiness}} is the company with the most followers on the website</span>
@@ -18,7 +18,7 @@
         </div>
         <a class="litle-text" href="#toTop"><p >Unlock Your Potential</p></a>
     </div>
-      <form class="input-search input-search__user" action="/job/search">
+      <form class="input-search" action="/job/search">
       <input name="search" id="search" type="search" placeholder="Looking for jobs or companies">
       <label for="search"><i class="bi bi-search"></i></label>
       <div class="categories-select">
@@ -67,7 +67,7 @@
         </div>
         <a class="litle-text litle-text__not-user" href="#toTop"><p >Unlock Your Potential</p></a>
     </div>
-      <form class="input-search" action="/job/search">
+      <form class="input-search input-search__user" action="/job/search">
       <input name="search" id="search" type="search" placeholder="Looking for jobs or companies">
       <label class="label-search" for="search"><i class="bi bi-search"></i></label>
       <button type="submit">Search</button>
@@ -207,48 +207,7 @@
       boxBestCompanyFl.style.display = 'none';
     },200)
   });
-window.addEventListener('scroll', function() {
-  var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-  var boxDisplay = getComputedStyle(boxBestCompanyFl).getPropertyValue('display');
 
-  if (boxDisplay === 'none') {
-    if (scrollPosition >= 85) {
-      document.querySelector('.header-search').style.cssText = 'position: fixed; top: 0; box-shadow: 1px 1px 10px rgba(0,0,0,0.5); background-color: white; border-bottom: 1px solid #ededed;';
-      deleteMargin.style.cssText = 'margin-top: 80px';
-      document.querySelector('.header-search .input-search input').style.cssText = 'background-color: #F7F7F7;';
-      document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #0072bc';
-      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: black;';
-      document.getElementById('change-logo').src = '/img/LOGOVGA.png';
-      document.querySelector('.header-search .header-search__login .search-login').style.display = 'flex';
-    } else {
-      document.querySelector('.header-search').style.cssText = 'position: unset; box-shadow: unset;';
-      deleteMargin.style.margin = '0';
-      document.querySelector('.header-search .input-search input').style.cssText = 'background-color: white;';
-      document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: black';
-      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #0072bc;';
-      document.getElementById('change-logo').src = '/img/LOGOVGAJOB.png';
-      document.querySelector('.header-search .header-search__login .search-login').style.display = 'none';
-    }
-  } else if (boxDisplay === 'flex') {
-    if (scrollPosition >= 192) {
-      document.querySelector('.header-search').style.cssText = 'position: fixed; top: 0; box-shadow: 1px 1px 10px rgba(0,0,0,0.5); background-color: white; border-bottom: 1px solid #ededed;';
-      deleteMargin.style.cssText = 'margin-top: 85px';
-      document.querySelector('.header-search .input-search input').style.cssText = 'background-color: #F7F7F7;';
-      document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #0072bc';
-      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: black;';
-      document.getElementById('change-logo').src = '/img/LOGOVGA.png';
-      document.querySelector('.header-search .header-search__login .search-login').style.display = 'flex';
-    } else {
-      document.querySelector('.header-search').style.cssText = 'position: unset; box-shadow: unset;';
-      deleteMargin.style.margin = '0';
-      document.querySelector('.header-search .input-search input').style.cssText = 'background-color: white;';
-      document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #0E0E23';
-      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #0072bc;';
-      document.getElementById('change-logo').src = '/img/LOGOVGAJOB.png';
-      document.querySelector('.header-search .header-search__login .search-login').style.display = 'none';
-    }
-  }
-});
 var getPagination = document.querySelectorAll('.pagination a');
 var paginationContainer = document.querySelector('.pagination');
 if (getPagination.length > 1) {
@@ -267,6 +226,65 @@ getPagination.forEach(function(pageLink) {
   });
 });
 document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('scroll', function() {
+  var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+  var boxDisplay = getComputedStyle(boxBestCompanyFl).getPropertyValue('display');
+
+  if (boxDisplay === 'none') {
+    if (scrollPosition >= 85) {
+      document.querySelector('.header-search').style.cssText = 'position: fixed; top: 0; box-shadow: 1px 1px 10px rgba(0,0,0,0.5); background-color: white; border-bottom: 1px solid #ededed;';
+      deleteMargin.style.cssText = 'margin-top: 80px';
+      document.querySelector('.header-search .input-search input').style.cssText = 'background-color: #F7F7F7;';
+      if(document.querySelector('.header-search .input-search .categories-select') && document.querySelector('.header-search .input-search .categories-select__position')){
+        document.querySelector('.header-search .input-search .categories-select').style.cssText = 'background-color: #F7F7F7;';
+        document.querySelector('.header-search .input-search .categories-select__position').style.cssText = 'background-color: #F7F7F7;';
+      }
+      document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #0072bc';
+      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: black;';
+      document.getElementById('change-logo').src = '/img/LOGOVGA.png';
+      document.querySelector('.header-search .header-search__login .search-login').style.display = 'flex';
+    } else {
+      document.querySelector('.header-search').style.cssText = 'position: unset; box-shadow: unset;';
+      deleteMargin.style.margin = '0';
+      document.querySelector('.header-search .input-search input').style.cssText = 'background-color: white;';
+      if(document.querySelector('.header-search .input-search .categories-select') && document.querySelector('.header-search .input-search .categories-select__position')){
+      document.querySelector('.header-search .input-search .categories-select').style.cssText = 'background-color: white;';
+      document.querySelector('.header-search .input-search .categories-select__position').style.cssText = 'background-color: white;';
+      }
+      document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: black';
+      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #0072bc;';
+      document.getElementById('change-logo').src = '/img/LOGOVGAJOB.png';
+      document.querySelector('.header-search .header-search__login .search-login').style.display = 'none';
+    }
+  } else if (boxDisplay === 'flex') {
+    if (scrollPosition >= 192) {
+      document.querySelector('.header-search').style.cssText = 'position: fixed; top: 0; box-shadow: 1px 1px 10px rgba(0,0,0,0.5); background-color: white; border-bottom: 1px solid #ededed;';
+      deleteMargin.style.cssText = 'margin-top: 85px';
+      document.querySelector('.header-search .input-search input').style.cssText = 'background-color: #F7F7F7;';
+      if(document.querySelector('.header-search .input-search .categories-select') && document.querySelector('.header-search .input-search .categories-select__position')){
+        document.querySelector('.header-search .input-search .categories-select').style.cssText = 'background-color: #F7F7F7;';
+        document.querySelector('.header-search .input-search .categories-select__position').style.cssText = 'background-color: #F7F7F7;';
+      }
+      document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #0072bc';
+      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: black;';
+      document.getElementById('change-logo').src = '/img/LOGOVGA.png';
+      document.querySelector('.header-search .header-search__login .search-login').style.display = 'flex';
+    } else {
+      document.querySelector('.header-search').style.cssText = 'position: unset; box-shadow: unset;';
+      deleteMargin.style.margin = '0';
+      document.querySelector('.header-search .input-search input').style.cssText = 'background-color: white;';
+      if(document.querySelector('.header-search .input-search .categories-select') && document.querySelector('.header-search .input-search .categories-select__position')){
+        document.querySelector('.header-search .input-search .categories-select').style.cssText = 'background-color: white;';
+        document.querySelector('.header-search .input-search .categories-select__position').style.cssText = 'background-color: white;';
+      }
+      document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #0E0E23';
+      document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #0072bc;';
+      document.getElementById('change-logo').src = '/img/LOGOVGAJOB.png';
+      document.querySelector('.header-search .header-search__login .search-login').style.display = 'none';
+    }
+  }
+});
+
         localStorage.setItem('boxJobInfo', 'show');
         localStorage.setItem('boxCompanyInfo', 'hide');
         localStorage.setItem('boxJFTC', 'hide');

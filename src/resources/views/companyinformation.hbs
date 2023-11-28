@@ -9,6 +9,7 @@
     </div>
 </nav>
 <div class="body-companyinformation">
+    {{#if company.jobcount}}
     <h1>{{company.jobcount}} Jobs Are Opening.</h1>
     <div class="companyinformation-showjob">
         <p >We have {{company.jobcount}} jobs for you</p>
@@ -34,6 +35,12 @@
             {{/each}}
         </div>
     </div>
+    {{else}}
+    <div class="empty-jobs">
+        <img src="/img/emptylist.svg" alt="">
+        <h1>No employment opportunities have yet been posted by this company.</h1>
+    </div>
+    {{/if}}
 </div>
 <script>
     var listJob = document.querySelectorAll('.jobs-companyinfo');
