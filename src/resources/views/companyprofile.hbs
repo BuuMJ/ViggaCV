@@ -33,7 +33,7 @@
                                         <p>At {{moment this.updatedAt format="HH:mm:ss"}}</p>
                             </span>
                             <span class="type {{this.type}}">{{this.type}}</span>
-                            <span class="amount">${{this.money}}</span>
+                            <span class="amount" data-check-type="{{this.type}}" data-get-money="{{this.money}}"></span>
                         </div>
                     </div>
                 {{/each}}
@@ -715,6 +715,18 @@ Andrew leads the strategic direction of the business with a dedicated and divers
             option.value = provinces[i];
             select.appendChild(option);
         }
+        var listHistory = document.querySelectorAll('.container__info-history');
+        listHistory.forEach(function(history){
+            const textAmount = history.querySelector('.amount');
+            const checkType = textAmount.getAttribute('data-check-type');
+            const getMoney = textAmount.getAttribute('data-get-money');
+            if(checkType === "refund"){
+                textAmount.innerHTML = `+$${getMoney}`;
+            }else{
+                textAmount.innerHTML = `-$${getMoney}`;
+                textAmount.style.color = '#B40404';
+            }
+        })
     });
     var submitPostJob = document.querySelector('.btn-postjob');
     var textSalary = document.querySelector('#postjob .job-salary #salary-range');
