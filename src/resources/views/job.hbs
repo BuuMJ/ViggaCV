@@ -116,7 +116,7 @@
       <div class="card-suggest" style="background:linear-gradient(to right, #100a098f, #100a0933), url('{{getbackgroundCPRandom random}}') center/cover no-repeat;">
         <header class="header-suggest">
           <img src="{{getAvatarCPRandom random}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
-          <span class="name-suggest">{{random.companyname}} {{random.typeofbusiness}}</span>
+          <span class="name-suggest">{{random.companyname}} <b>{{random.typeofbusiness}}</b></span>
         </header>
         <ul class="random-job">
           <span class="suggest-text">suggested jobs</span>
@@ -372,33 +372,5 @@ containerJobs.forEach(function(cardJob){
 });
 </script>
 
-{{!-- <script>
-var paginationForm = document.getElementById('paginationForm');
-var getPagination = paginationForm.getAttribute('data-id');
-var currentPage = localStorage.getItem('currentPage') || 1; 
-
-for (let i = 1; i <= (getPagination.length * getPagination); i++) {
-  var newPage = document.createElement('input');
-  newPage.setAttribute("type", "button");
-  newPage.name = 'pagination';
-  newPage.value = i;
-  newPage.setAttribute("readonly", "readonly");
-  if (i === parseInt(currentPage)) {
-    newPage.classList.add('active'); 
-  }
-  document.querySelector('.number-pagination').appendChild(newPage);
-}
-
-var newPages = document.querySelectorAll('input[name="pagination"]');
-newPages.forEach(function(newPage) {
-  newPage.addEventListener('click', function() {
-    if (!newPage.classList.contains('active')) {
-      currentPage = parseInt(newPage.value);
-      localStorage.setItem('currentPage', currentPage);
-      paginationForm.submit();
-    }
-  });
-});
-</script> --}}
 
 

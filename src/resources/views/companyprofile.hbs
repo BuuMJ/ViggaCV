@@ -289,7 +289,7 @@
             </div>
             <div class="job-salary" style="position:relative">
                 <label for="salary-range">Salary</label>
-                <input type="text" name="salary" id="salary-range" placeholder="500$-1000$ | Negotiable" required>
+                <input type="text" name="salary" id="salary-range" placeholder="500-1000 (Determined in dollars $) | Negotiable" required>
                 <p class="alert-salary"
                     style="display: none; color: red; margin-bottom: unset; position: absolute; bottom: -24px; left: 4px">
                     You can only fill in numbers or Negotiable</p>
@@ -722,7 +722,7 @@ Andrew leads the strategic direction of the business with a dedicated and divers
     var alertSalary = document.querySelector('#postjob .job-salary .alert-salary');
     submitPostJob.addEventListener('click', (e) => {
         var salaryValue = textSalary.value;
-        var salaryContent = parseInt(salaryValue, 10);
+        var salaryContent = parseFloat(salaryValue);
         if (salaryContent >= 4000) {
             var isConfirmed = confirm('This job is over $4000. You need to pay $30 to be able to post this job.\nIf you agree, please click OK to go to the payment page.\nIf you want to edit the salary, please click Cancel.');
             if (!isConfirmed) {
@@ -732,10 +732,10 @@ Andrew leads the strategic direction of the business with a dedicated and divers
     });
     textSalary.addEventListener('input', (e) => {
         var salaryValue = textSalary.value;
-        var salaryContent = parseInt(salaryValue, 10);
+        var salaryContent = /^\d+(\,\d+)?$/.test(salaryValue);
         alertSalary.style.display = 'none';
         textSalary.style.border = 'unset';
-        if (salaryValue !== "Negotiable" && isNaN(salaryContent)) {
+        if (salaryValue !== "Negotiable" && salaryValue !== "negotiable" && !salaryContent) {
             textSalary.style.border = '2px solid red';
             formPostJob.type = 'button';
             alertSalary.style.display = 'inline-block';
