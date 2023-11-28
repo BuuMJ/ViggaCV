@@ -24,10 +24,10 @@
     font-weight: 600;
     color: $btncolor;
     padding: 6px 12px 6px 20px;
-    box-shadow: 0 0 6px 4px #0072bc69;
     cursor: pointer;
     transition: all .5s;
     transform: translateY(-50%);
+	animation: shadow-drop-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite forwards;
 }
 .payment-fixed .history-icon{
     width: 30px;
@@ -537,7 +537,7 @@ button.btn-setting {
 .contact-profile{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
 }
 .contact-user-address{
@@ -554,7 +554,7 @@ button.btn-setting {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 28%;
+    width: calc(95% / 4);
     height: 100px;
 }
 .contact-user input{

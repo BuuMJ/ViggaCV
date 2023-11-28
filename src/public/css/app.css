@@ -3505,10 +3505,10 @@ header.job-search .best-companyFL .background-image {
   font-weight: 600;
   color: #0095ff;
   padding: 6px 12px 6px 20px;
-  box-shadow: 0 0 6px 4px #0072bc69;
   cursor: pointer;
   transition: all .5s;
-  transform: translateY(-50%); }
+  transform: translateY(-50%);
+  animation: shadow-drop-center 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite forwards; }
 
 .payment-fixed .history-icon {
   width: 30px;
@@ -4005,7 +4005,7 @@ button.btn-setting:active {
 .contact-profile {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap; }
 
 .contact-user-address {
@@ -4022,7 +4022,7 @@ button.btn-setting:active {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 28%;
+  width: calc(95% / 4);
   height: 100px; }
 
 .contact-user input {
@@ -8389,7 +8389,15 @@ form.note-denied button:hover {
   margin-right: 12px; }
 
 .container-admin .detail-refuned .history-refuned .main__history-refuned span.refund-history__job {
-  width: 32.5%; }
+  width: 32.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.container-admin .detail-refuned .history-refuned .main__history-refuned span.refund-history__job .invoice {
+  width: 100%;
+  padding: unset;
+  color: #aeb1bc; }
 
 .container-admin .detail-refuned .history-refuned .main__history-refuned span.customer {
   margin-bottom: unset;
@@ -8565,7 +8573,15 @@ form.note-denied button:hover {
   width: 15%; }
 
 .container-admin .success-payment__history span.jobname__payment-history {
-  width: 40%; }
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.container-admin .success-payment__history span.jobname__payment-history .invoice {
+  color: #aeb1bc;
+  width: 100%;
+  padding: unset; }
 
 .container-admin .success-payment__history span.type.post {
   color: #FF5733; }
@@ -9929,10 +9945,29 @@ button#moveTopBtn {
   50% {
     transform: rotate(-360deg); } }
 
+@keyframes shadow-drop-center {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
+  100% {
+    box-shadow: 0 0 6px 12px #0072bc69; } }
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box; }
+
+::-webkit-scrollbar {
+  width: 10px; }
+
+::-webkit-scrollbar-track {
+  background: #eaeaea; }
+
+::-webkit-scrollbar-thumb {
+  background: #0072bc;
+  border-radius: 10px; }
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0095ff; }
 
 body {
   font-family: Helvetica Neue, HelveticaNeueLTPro, Helvetica, Arial, sans-serif;

@@ -47,6 +47,10 @@
                     <input id="address" type="text" name="address" placeholder="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" value="{{getAddress user}}">
                 </div>
                 <div class="contact-user">
+                    <label for="phone">Phone</label>
+                    <input id="phone" type="tel" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" value="{{getPhone user}}">
+                </div>
+                <div class="contact-user">
                     <label for="city">City</label>
                     <input id="city" type="text" name="city" placeholder="New York" value="{{getCity user}}">
                 </div>

@@ -247,7 +247,9 @@
                 {{#each listRefund}}
                     <div class="main__history-refuned">
                         <span class="customer"><img src="/{{this.idcompany.avatar}}" alt="">{{this.idcompany.companyname}}</span>
-                        <span class="refund-history__job">{{this.jobname}}</span>
+                        <span class="refund-history__job">{{this.jobname}}
+                            <span class="invoice">Invoice: {{this.paymentId}}</span>
+                        </span>
                         <span class="refund-type" data-check-type="{{this.money}}"></span>
                         <span class="amount">$ {{this.money}}</span>
                         <span class="person">{{this.admin}}</span>
@@ -269,7 +271,8 @@
             {{#each listRevenue}}
             <div class="main__payment-history" data-ads-check="{{this.prioritize}}" data-salary-check="{{this.salary}}">
                 <span class="customer"><img src="/{{this.idcompany.avatar}}" alt="">{{this.idcompany.companyname}}</span>
-                <span class="jobname__payment-history">{{this.jobname}}</span>
+                <span class="jobname__payment-history">{{this.jobname}} 
+                    <span class="invoice">Invoice: {{this.paymentId}}</span></span>
                 <span class="time">{{this.updatedAt}}</span>
                 <span class="type {{this.type}}" data-type-transaction="{{this.type}}"></span>
                 <span class="amount" style="font-weight: 600;">$ {{this.money}}</span>
