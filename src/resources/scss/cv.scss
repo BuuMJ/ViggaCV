@@ -632,14 +632,14 @@
   box-shadow: 0px 0px 0px 60px rgba(255, 255, 255, 0.8);
   border-radius: 2px;
 }
-.body__user-cv textarea.overview-text:focus,
-.body__user-cv textarea.workexp-text:focus,
-.body__user-cv textarea.education-text:focus,
-.body__user-cv textarea.skill-text:focus,
-.body__user-cv textarea.project-text:focus{
-  color: $secondarycolor;
-  box-shadow: 0px 0px 0px 40px rgba(255, 255, 255, 0.8);
-}
+// .body__user-cv textarea.overview-text:focus,
+// .body__user-cv textarea.workexp-text:focus,
+// .body__user-cv textarea.education-text:focus,
+// .body__user-cv textarea.skill-text:focus,
+// .body__user-cv textarea.project-text:focus{
+//   color: $secondarycolor;
+//   box-shadow: 0px 0px 0px 40px rgba(255, 255, 255, 0.8);
+// }
 .body__user-cv textarea.overview-text,
 .body__user-cv textarea.workexp-text,
 .body__user-cv textarea.education-text,
@@ -650,6 +650,7 @@
   font-size: 16px;
   border-bottom: 1px solid #d5d6d6;
   margin-bottom: 18px;
+  pointer-events: none;
 }
 .overview__user-cv .work-exp,
 .overview__user-cv .education-user{
@@ -689,6 +690,10 @@
 .skill__user-cv .other-skill .other-info textarea#other,
 .project__user-cv .box-project .title-project textarea{
   font-weight: 700;
+}
+.skill__user-cv .main-skill .main-info textarea#main,
+.project__user-cv .box-project .title-project textarea{
+  pointer-events: none;
 }
 .overview__user-cv .work-exp .info__work-exp,
 .overview__user-cv .education-user .info__education{
