@@ -143,42 +143,206 @@
         <textarea rows="15" name="overview"
           placeholder="- Over 2 years of experience in programming with good communication and quick learning skills&#10;- Strengths: Front-end technology and Back-end web application development&#10;- Proficiency in HTML, CSS, JavaScript&#10;- Strong proficiency in JavaScript, including DOM manipulation and the JavaScript object model&#10;- Thorough under standing of React.js and it score principles&#10;- Experience with popular React.js workflows (such as Flux or Redux)&#10;- Familiarity with newer specifications of EcmaScript&#10;- Experience with data structure libraries&#10;- Familiarity with RESTful APIs&#10;- Strong Experience in: PHP, JavaScript (ReactJS, React-native), MySQL, NoSQL, GraphQL, Redis, JSON, API, Docker, Kubernetes, Rancher, AWS services&#10;- Proficient use of source code management tools: SVN, GIT&#10;- Proficiency in operating systems: Linux (Ubuntu, OSX), Windows&#10;- Ability to learn and apply new technology quickly&#10;- Current working location: Ha Noi, Viet Nam&#10;"></textarea>
       </div>
-      {{!-- work experience --}}
+      {{!-- work experience 1 --}}
+      {{#if inforCV.experience}}
       <div class="overview__user-cv workexp__user-cv">
         <textarea class="workexp-text" rows="1" style="color: {{color}};">Work experience</textarea>
         <div class="work-exp">
           <div class="date__work-exp">
-            <textarea rows="1" name="timeexperience" placeholder="07/2017 - Present"></textarea>
+            <textarea rows="1" name="timeexperience" placeholder="07/2017 - Present">{{inforCV.experience.timeexperience}}</textarea>
             <div class="action__add-remove">
               <span title="Add more work experience" class="add-work-exp"><i class="bi bi-plus-circle"></i></span>
               <span title="Remove this work experience" class="remove-work-exp"><i class="bi bi-dash-circle"></i></span>
             </div>
           </div>
           <div class="info__work-exp">
-            <textarea id="name-company" name="nameexperience" rows="1" placeholder="Vigga Company"></textarea>
+            <textarea id="name-company" name="nameexperience" rows="1" placeholder="Vigga Company">{{inforCV.experience.nameexperience}}</textarea>
             <textarea class="job__work-exp" name="experience" rows="3"
-              placeholder="FullStack Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10"></textarea>
+              placeholder="FullStack Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10">{{inforCV.experience.experience}}</textarea>
           </div>
         </div>
       </div>
-      {{!-- education --}}
+      {{/if}}
+      {{!-- work experience 2 --}}
+      {{#if inforCV.experience1}}
+      <div class="overview__user-cv workexp__user-cv">
+        <textarea class="workexp-text" rows="1" style="color: {{color}};">Work experience</textarea>
+        <div class="work-exp">
+          <div class="date__work-exp">
+            <textarea rows="1" name="timeexperience" placeholder="07/2017 - Present">{{inforCV.experience1.timeexperience1}}</textarea>
+            <div class="action__add-remove">
+              <span title="Add more work experience" class="add-work-exp"><i class="bi bi-plus-circle"></i></span>
+              <span title="Remove this work experience" class="remove-work-exp"><i class="bi bi-dash-circle"></i></span>
+            </div>
+          </div>
+          <div class="info__work-exp">
+            <textarea id="name-company" name="nameexperience" rows="1" placeholder="Vigga Company">{{inforCV.experience1.nameexperience1}}</textarea>
+            <textarea class="job__work-exp" name="experience" rows="3"
+              placeholder="FullStack Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10">{{inforCV.experience1.experience1}}</textarea>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{!-- work experience 3 --}}
+      {{#if inforCV.experience2}}
+      <div class="overview__user-cv workexp__user-cv">
+        <textarea class="workexp-text" rows="1" style="color: {{color}};">Work experience</textarea>
+        <div class="work-exp">
+          <div class="date__work-exp">
+            <textarea rows="1" name="timeexperience" placeholder="07/2017 - Present">{{inforCV.experience2.timeexperience2}}</textarea>
+            <div class="action__add-remove">
+              <span title="Add more work experience" class="add-work-exp"><i class="bi bi-plus-circle"></i></span>
+              <span title="Remove this work experience" class="remove-work-exp"><i class="bi bi-dash-circle"></i></span>
+            </div>
+          </div>
+          <div class="info__work-exp">
+            <textarea id="name-company" name="nameexperience" rows="1" placeholder="Vigga Company">{{inforCV.experience2.nameexperience2}}</textarea>
+            <textarea class="job__work-exp" name="experience" rows="3"
+              placeholder="FullStack Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10">{{inforCV.experience2.experience2}}</textarea>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{!-- work experience 4 --}}
+      {{#if inforCV.experience3}}
+      <div class="overview__user-cv workexp__user-cv">
+        <textarea class="workexp-text" rows="1" style="color: {{color}};">Work experience</textarea>
+        <div class="work-exp">
+          <div class="date__work-exp">
+            <textarea rows="1" name="timeexperience" placeholder="07/2017 - Present">{{inforCV.experience3.timeexperience3}}</textarea>
+            <div class="action__add-remove">
+              <span title="Add more work experience" class="add-work-exp"><i class="bi bi-plus-circle"></i></span>
+              <span title="Remove this work experience" class="remove-work-exp"><i class="bi bi-dash-circle"></i></span>
+            </div>
+          </div>
+          <div class="info__work-exp">
+            <textarea id="name-company" name="nameexperience" rows="1" placeholder="Vigga Company">{{inforCV.experience3.nameexperience3}}</textarea>
+            <textarea class="job__work-exp" name="experience" rows="3"
+              placeholder="FullStack Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10">{{inforCV.experience3.experience3}}</textarea>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{!-- work experience 5 --}}
+      {{#if inforCV.experience4}}
+      <div class="overview__user-cv workexp__user-cv">
+        <textarea class="workexp-text" rows="1" style="color: {{color}};">Work experience</textarea>
+        <div class="work-exp">
+          <div class="date__work-exp">
+            <textarea rows="1" name="timeexperience" placeholder="07/2017 - Present">{{inforCV.experience4.timeexperience4}}</textarea>
+            <div class="action__add-remove">
+              <span title="Add more work experience" class="add-work-exp"><i class="bi bi-plus-circle"></i></span>
+              <span title="Remove this work experience" class="remove-work-exp"><i class="bi bi-dash-circle"></i></span>
+            </div>
+          </div>
+          <div class="info__work-exp">
+            <textarea id="name-company" name="nameexperience" rows="1" placeholder="Vigga Company">{{inforCV.experience4.nameexperience4}}</textarea>
+            <textarea class="job__work-exp" name="experience" rows="3"
+              placeholder="FullStack Web Developer&#10;Programme outsourcing projects&#10;Create coding frames and design database based on project descriptions&#10">{{inforCV.experience4.experience4}}</textarea>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{!-- education 1 --}}
+      {{#if inforCV.education}}
       <div class="overview__user-cv education__user-cv">
         <textarea class=" education-text" rows="1" style="color: {{color}};">Education</textarea>
         <div class="education-user">
           <div class="date__education">
-            <textarea rows="1" name="timeeducation" placeholder="07/2017 - Present"></textarea>
+            <textarea rows="1" name="timeeducation" placeholder="07/2017 - Present">{{inforCV.education.timeeducation}}</textarea>
             <div class="action__add-remove-education">
               <span title="Add more education" class="add-education"><i class="bi bi-plus-circle"></i></span>
               <span title="Remove this education" class="remove-education"><i class="bi bi-dash-circle"></i></span>
             </div>
           </div>
           <div class="info__education">
-            <textarea id="name-education" name="nameeducation" rows="1" placeholder="FPT GreenWich"></textarea>
+            <textarea id="name-education" name="nameeducation" rows="1" placeholder="FPT GreenWich">{{inforCV.education.nameeducation}}</textarea>
             <textarea class="major__education" name="education" rows="2"
-              placeholder="Major - Website, Mobile&#10;Level - Good"></textarea>
+              placeholder="Major - Website, Mobile&#10;Level - Good">{{inforCV.education.education}}</textarea>
           </div>
         </div>
       </div>
+      {{/if}}
+      {{!-- education 2 --}}
+      {{#if inforCV.education1}}
+      <div class="overview__user-cv education__user-cv">
+        <textarea class=" education-text" rows="1" style="color: {{color}};">Education</textarea>
+        <div class="education-user">
+          <div class="date__education">
+            <textarea rows="1" name="timeeducation" placeholder="07/2017 - Present">{{inforCV.education1.timeeducation1}}</textarea>
+            <div class="action__add-remove-education">
+              <span title="Add more education" class="add-education"><i class="bi bi-plus-circle"></i></span>
+              <span title="Remove this education" class="remove-education"><i class="bi bi-dash-circle"></i></span>
+            </div>
+          </div>
+          <div class="info__education">
+            <textarea id="name-education" name="nameeducation" rows="1" placeholder="FPT GreenWich">{{inforCV.education1.nameeducation1}}</textarea>
+            <textarea class="major__education" name="education" rows="2"
+              placeholder="Major - Website, Mobile&#10;Level - Good">{{inforCV.education1.education1}}</textarea>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{!-- education 3 --}}
+      {{#if inforCV.education2}}
+      <div class="overview__user-cv education__user-cv">
+        <textarea class=" education-text" rows="1" style="color: {{color}};">Education</textarea>
+        <div class="education-user">
+          <div class="date__education">
+            <textarea rows="1" name="timeeducation" placeholder="07/2017 - Present">{{inforCV.education2.timeeducation2}}</textarea>
+            <div class="action__add-remove-education">
+              <span title="Add more education" class="add-education"><i class="bi bi-plus-circle"></i></span>
+              <span title="Remove this education" class="remove-education"><i class="bi bi-dash-circle"></i></span>
+            </div>
+          </div>
+          <div class="info__education">
+            <textarea id="name-education" name="nameeducation" rows="1" placeholder="FPT GreenWich">{{inforCV.education2.nameeducation2}}</textarea>
+            <textarea class="major__education" name="education" rows="2"
+              placeholder="Major - Website, Mobile&#10;Level - Good">{{inforCV.education2.education2}}</textarea>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{!-- education 4 --}}
+      {{#if inforCV.education3}}
+      <div class="overview__user-cv education__user-cv">
+        <textarea class=" education-text" rows="1" style="color: {{color}};">Education</textarea>
+        <div class="education-user">
+          <div class="date__education">
+            <textarea rows="1" name="timeeducation" placeholder="07/2017 - Present">{{inforCV.education3.timeeducation3}}</textarea>
+            <div class="action__add-remove-education">
+              <span title="Add more education" class="add-education"><i class="bi bi-plus-circle"></i></span>
+              <span title="Remove this education" class="remove-education"><i class="bi bi-dash-circle"></i></span>
+            </div>
+          </div>
+          <div class="info__education">
+            <textarea id="name-education" name="nameeducation" rows="1" placeholder="FPT GreenWich">{{inforCV.education3.nameeducation3}}</textarea>
+            <textarea class="major__education" name="education" rows="2"
+              placeholder="Major - Website, Mobile&#10;Level - Good">{{inforCV.education3.education3}}</textarea>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{!-- education 5 --}}
+      {{#if inforCV.education4}}
+      <div class="overview__user-cv education__user-cv">
+        <textarea class=" education-text" rows="1" style="color: {{color}};">Education</textarea>
+        <div class="education-user">
+          <div class="date__education">
+            <textarea rows="1" name="timeeducation" placeholder="07/2017 - Present">{{inforCV.education4.timeeducation4}}</textarea>
+            <div class="action__add-remove-education">
+              <span title="Add more education" class="add-education"><i class="bi bi-plus-circle"></i></span>
+              <span title="Remove this education" class="remove-education"><i class="bi bi-dash-circle"></i></span>
+            </div>
+          </div>
+          <div class="info__education">
+            <textarea id="name-education" name="nameeducation" rows="1" placeholder="FPT GreenWich">{{inforCV.education4.nameeducation4}}</textarea>
+            <textarea class="major__education" name="education" rows="2"
+              placeholder="Major - Website, Mobile&#10;Level - Good">{{inforCV.education4.education4}}</textarea>
+          </div>
+        </div>
+      </div>
+      {{/if}}
       {{!-- skill --}}
       <div class="overview__user-cv skill__user-cv">
         <textarea class="skill-text" rows="1" style="color: {{color}};">Skill</textarea>
@@ -198,47 +362,261 @@
           <span class="remove__other-skill"><i class="bi bi-trash"></i></span>
         </div>
       </div>
-      {{!-- project --}}
+      {{!-- project 1 --}}
+      {{#if inforCV.project}}
       <div class="overview__user-cv project__user-cv">
-        <textarea class="project-text" rows="1" style="color: {{color}};">Project</textarea>
+        <textarea class="project-text" rows="1">Project</textarea>
         <div class="table-project">
+          <div class="main__info-project">
+              <textarea name="nameproject" class="name-project__title" placeholder="viggacareers.vn">{{inforCV.project.nameproject}}</textarea>
+              <textarea name="timeproject" placeholder="(15/03/2023 - Present)">{{inforCV.project.timeproject}}</textarea>
+              <div class="action__add-remove-project">
+                <span title="Add more project" class="add-project"><i class="bi bi-plus-circle"></i></span>
+                <span title="Remove this project" class="remove-project"><i class="bi bi-dash-circle"></i></span>
+              </div>
+            </div>
           <div class="box-project client-project">
             <div class="title-project">
-              <textarea name="nameclient" id="client" rows="1" placeholder="Client"></textarea>
+              <textarea name="nameclient" class="client-project__title" id="client" rows="1" placeholder="Client"></textarea>
             </div>
             <textarea name="clientcontent" class="content-project" id="client-content" rows="1"
-              placeholder="ViggaCareers"></textarea>
+              placeholder="ViggaCareers">{{inforCV.project.clientcontent}}</textarea>
           </div>
           <div class="box-project descript-project">
             <div class="title-project">
               <textarea name="descript" id="descript" rows="1" placeholder="Description"></textarea>
             </div>
             <textarea name="descript_content" class="content-project" id="descript-content" rows="2"
-              placeholder="For employers looking for talent&#10;Creating their own cv and looking for work"></textarea>
+              placeholder="For employers looking for talent&#10;Creating their own cv and looking for work">{{inforCV.project.descript_content}}</textarea>
           </div>
           <div class="box-project members-project">
             <div class="title-project">
               <textarea name="members" id="members" rows="1" placeholder="Member count"></textarea>
             </div>
             <textarea name="members_content" class="content-project" id="members-content" rows="1"
-              placeholder="2 people"></textarea>
+              placeholder="2 people">{{inforCV.project.members_content}}</textarea>
           </div>
           <div class="box-project position-project">
             <div class="title-project">
               <textarea name="position" id="position" rows="1" placeholder="Position"></textarea>
             </div>
             <textarea name="position_content" class="content-project" id="position-content" rows="2"
-              placeholder="Team Leader&#10;Front-end Developer"></textarea>
+              placeholder="Team Leader&#10;Front-end Developer">{{inforCV.project.position_content}}</textarea>
           </div>
           <div class="box-project respon-project">
             <div class="title-project">
               <textarea name="respon" id="respon" rows="1" placeholder="Responsibilities"></textarea>
             </div>
             <textarea name="respon_content" class="content-project" id="respon-content" rows="2"
-              placeholder="Developer&#10;Solution architect"></textarea>
+              placeholder="Developer&#10;Solution architect">{{inforCV.project.respon_content}}</textarea>
           </div>
         </div>
       </div>
+      {{/if}}
+      {{!-- project 2 --}}
+      {{#if inforCV.project1}}
+      <div class="overview__user-cv project__user-cv">
+        <textarea class="project-text" rows="1">Project</textarea>
+        <div class="table-project">
+          <div class="main__info-project">
+              <textarea name="nameproject" class="name-project__title" placeholder="viggacareers.vn">{{inforCV.project1.nameproject1}}</textarea>
+              <textarea name="timeproject" placeholder="(15/03/2023 - Present)">{{inforCV.project1.timeproject1}}</textarea>
+              <div class="action__add-remove-project">
+                <span title="Add more project" class="add-project"><i class="bi bi-plus-circle"></i></span>
+                <span title="Remove this project" class="remove-project"><i class="bi bi-dash-circle"></i></span>
+              </div>
+            </div>
+          <div class="box-project client-project">
+            <div class="title-project">
+              <textarea name="nameclient" class="client-project__title" id="client" rows="1" placeholder="Client"></textarea>
+            </div>
+            <textarea name="clientcontent" class="content-project" id="client-content" rows="1"
+              placeholder="ViggaCareers">{{inforCV.project1.clientcontent1}}</textarea>
+          </div>
+          <div class="box-project descript-project">
+            <div class="title-project">
+              <textarea name="descript" id="descript" rows="1" placeholder="Description"></textarea>
+            </div>
+            <textarea name="descript_content" class="content-project" id="descript-content" rows="2"
+              placeholder="For employers looking for talent&#10;Creating their own cv and looking for work">{{inforCV.project1.descript_content1}}</textarea>
+          </div>
+          <div class="box-project members-project">
+            <div class="title-project">
+              <textarea name="members" id="members" rows="1" placeholder="Member count"></textarea>
+            </div>
+            <textarea name="members_content" class="content-project" id="members-content" rows="1"
+              placeholder="2 people">{{inforCV.project1.members_content1}}</textarea>
+          </div>
+          <div class="box-project position-project">
+            <div class="title-project">
+              <textarea name="position" id="position" rows="1" placeholder="Position"></textarea>
+            </div>
+            <textarea name="position_content" class="content-project" id="position-content" rows="2"
+              placeholder="Team Leader&#10;Front-end Developer">{{inforCV.project1.position_content1}}</textarea>
+          </div>
+          <div class="box-project respon-project">
+            <div class="title-project">
+              <textarea name="respon" id="respon" rows="1" placeholder="Responsibilities"></textarea>
+            </div>
+            <textarea name="respon_content" class="content-project" id="respon-content" rows="2"
+              placeholder="Developer&#10;Solution architect">{{inforCV.project1.respon_content1}}</textarea>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{!-- project 3 --}}
+      {{#if inforCV.project2}}
+      <div class="overview__user-cv project__user-cv">
+        <textarea class="project-text" rows="1">Project</textarea>
+        <div class="table-project">
+          <div class="main__info-project">
+              <textarea name="nameproject" class="name-project__title" placeholder="viggacareers.vn">{{inforCV.project2.nameproject2}}</textarea>
+              <textarea name="timeproject" placeholder="(15/03/2023 - Present)">{{inforCV.project2.timeproject2}}</textarea>
+              <div class="action__add-remove-project">
+                <span title="Add more project" class="add-project"><i class="bi bi-plus-circle"></i></span>
+                <span title="Remove this project" class="remove-project"><i class="bi bi-dash-circle"></i></span>
+              </div>
+            </div>
+          <div class="box-project client-project">
+            <div class="title-project">
+              <textarea name="nameclient" class="client-project__title" id="client" rows="1" placeholder="Client"></textarea>
+            </div>
+            <textarea name="clientcontent" class="content-project" id="client-content" rows="1"
+              placeholder="ViggaCareers">{{inforCV.project2.clientcontent2}}</textarea>
+          </div>
+          <div class="box-project descript-project">
+            <div class="title-project">
+              <textarea name="descript" id="descript" rows="1" placeholder="Description"></textarea>
+            </div>
+            <textarea name="descript_content" class="content-project" id="descript-content" rows="2"
+              placeholder="For employers looking for talent&#10;Creating their own cv and looking for work">{{inforCV.project2.descript_content2}}</textarea>
+          </div>
+          <div class="box-project members-project">
+            <div class="title-project">
+              <textarea name="members" id="members" rows="1" placeholder="Member count"></textarea>
+            </div>
+            <textarea name="members_content" class="content-project" id="members-content" rows="1"
+              placeholder="2 people">{{inforCV.project2.members_content2}}</textarea>
+          </div>
+          <div class="box-project position-project">
+            <div class="title-project">
+              <textarea name="position" id="position" rows="1" placeholder="Position"></textarea>
+            </div>
+            <textarea name="position_content" class="content-project" id="position-content" rows="2"
+              placeholder="Team Leader&#10;Front-end Developer">{{inforCV.project2.position_content2}}</textarea>
+          </div>
+          <div class="box-project respon-project">
+            <div class="title-project">
+              <textarea name="respon" id="respon" rows="1" placeholder="Responsibilities"></textarea>
+            </div>
+            <textarea name="respon_content" class="content-project" id="respon-content" rows="2"
+              placeholder="Developer&#10;Solution architect">{{inforCV.project2.respon_content2}}</textarea>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{!-- project 4 --}}
+      {{#if inforCV.project3}}
+      <div class="overview__user-cv project__user-cv">
+        <textarea class="project-text" rows="1">Project</textarea>
+        <div class="table-project">
+          <div class="main__info-project">
+              <textarea name="nameproject" class="name-project__title" placeholder="viggacareers.vn">{{inforCV.project3.nameproject3}}</textarea>
+              <textarea name="timeproject" placeholder="(15/03/2023 - Present)">{{inforCV.project3.timeproject3}}</textarea>
+              <div class="action__add-remove-project">
+                <span title="Add more project" class="add-project"><i class="bi bi-plus-circle"></i></span>
+                <span title="Remove this project" class="remove-project"><i class="bi bi-dash-circle"></i></span>
+              </div>
+            </div>
+          <div class="box-project client-project">
+            <div class="title-project">
+              <textarea name="nameclient" class="client-project__title" id="client" rows="1" placeholder="Client"></textarea>
+            </div>
+            <textarea name="clientcontent" class="content-project" id="client-content" rows="1"
+              placeholder="ViggaCareers">{{inforCV.project3.clientcontent3}}</textarea>
+          </div>
+          <div class="box-project descript-project">
+            <div class="title-project">
+              <textarea name="descript" id="descript" rows="1" placeholder="Description"></textarea>
+            </div>
+            <textarea name="descript_content" class="content-project" id="descript-content" rows="2"
+              placeholder="For employers looking for talent&#10;Creating their own cv and looking for work">{{inforCV.project3.descript_content3}}</textarea>
+          </div>
+          <div class="box-project members-project">
+            <div class="title-project">
+              <textarea name="members" id="members" rows="1" placeholder="Member count"></textarea>
+            </div>
+            <textarea name="members_content" class="content-project" id="members-content" rows="1"
+              placeholder="2 people">{{inforCV.project3.members_content3}}</textarea>
+          </div>
+          <div class="box-project position-project">
+            <div class="title-project">
+              <textarea name="position" id="position" rows="1" placeholder="Position"></textarea>
+            </div>
+            <textarea name="position_content" class="content-project" id="position-content" rows="2"
+              placeholder="Team Leader&#10;Front-end Developer">{{inforCV.project3.position_content3}}</textarea>
+          </div>
+          <div class="box-project respon-project">
+            <div class="title-project">
+              <textarea name="respon" id="respon" rows="1" placeholder="Responsibilities"></textarea>
+            </div>
+            <textarea name="respon_content" class="content-project" id="respon-content" rows="2"
+              placeholder="Developer&#10;Solution architect">{{inforCV.project3.respon_content3}}</textarea>
+          </div>
+        </div>
+      </div>
+      {{/if}}
+      {{!-- project 5 --}}
+      {{#if inforCV.project4}}
+      <div class="overview__user-cv project__user-cv">
+        <textarea class="project-text" rows="1">Project</textarea>
+        <div class="table-project">
+          <div class="main__info-project">
+              <textarea name="nameproject" class="name-project__title" placeholder="viggacareers.vn">{{inforCV.project4.nameproject4}}</textarea>
+              <textarea name="timeproject" placeholder="(15/03/2023 - Present)">{{inforCV.project4.timeproject4}}</textarea>
+              <div class="action__add-remove-project">
+                <span title="Add more project" class="add-project"><i class="bi bi-plus-circle"></i></span>
+                <span title="Remove this project" class="remove-project"><i class="bi bi-dash-circle"></i></span>
+              </div>
+            </div>
+          <div class="box-project client-project">
+            <div class="title-project">
+              <textarea name="nameclient" class="client-project__title" id="client" rows="1" placeholder="Client"></textarea>
+            </div>
+            <textarea name="clientcontent" class="content-project" id="client-content" rows="1"
+              placeholder="ViggaCareers">{{inforCV.project4.clientcontent4}}</textarea>
+          </div>
+          <div class="box-project descript-project">
+            <div class="title-project">
+              <textarea name="descript" id="descript" rows="1" placeholder="Description"></textarea>
+            </div>
+            <textarea name="descript_content" class="content-project" id="descript-content" rows="2"
+              placeholder="For employers looking for talent&#10;Creating their own cv and looking for work">{{inforCV.project4.descript_content4}}</textarea>
+          </div>
+          <div class="box-project members-project">
+            <div class="title-project">
+              <textarea name="members" id="members" rows="1" placeholder="Member count"></textarea>
+            </div>
+            <textarea name="members_content" class="content-project" id="members-content" rows="1"
+              placeholder="2 people">{{inforCV.project4.members_content4}}</textarea>
+          </div>
+          <div class="box-project position-project">
+            <div class="title-project">
+              <textarea name="position" id="position" rows="1" placeholder="Position"></textarea>
+            </div>
+            <textarea name="position_content" class="content-project" id="position-content" rows="2"
+              placeholder="Team Leader&#10;Front-end Developer">{{inforCV.project4.position_content4}}</textarea>
+          </div>
+          <div class="box-project respon-project">
+            <div class="title-project">
+              <textarea name="respon" id="respon" rows="1" placeholder="Responsibilities"></textarea>
+            </div>
+            <textarea name="respon_content" class="content-project" id="respon-content" rows="2"
+              placeholder="Developer&#10;Solution architect">{{inforCV.project4.respon_content4}}</textarea>
+          </div>
+        </div>
+      </div>
+      {{/if}}
     </div>
   </div>
   <div style="z-index: 21;" class="overlay-notification"></div>
