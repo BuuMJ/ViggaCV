@@ -689,10 +689,8 @@ class JobController {
       userid: iduser,
       jobid: idjob,
     });
-    console.log("da toi trang yeu thich job");
     if (checkFR) {
       await FavouriteModel.findByIdAndRemove(checkFR._id);
-      console.log("Đã xoá khỏi công việc yêu thích ");
       res.redirect("back");
     } else {
       const action = new FavouriteModel({
@@ -700,8 +698,6 @@ class JobController {
         jobid: idjob,
       });
       await action.save();
-      console.log("Đã lưu công việc yêu thích ");
-
       res.redirect("back");
     }
   }
