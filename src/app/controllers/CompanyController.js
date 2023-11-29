@@ -282,7 +282,6 @@ class CompanyController {
         company.follow--;
         await company.save();
         res.redirect("/company/" + idCompany);
-        console.log("ĐÃ XOÁ FOLLOW");
       } else {
         const action = new ActionModel({
           companyid: idCompany,
@@ -293,7 +292,6 @@ class CompanyController {
         company.follow++;
         await company.save();
         res.redirect("/company/" + idCompany);
-        console.log("ĐÃ THÊM FOLLOW" + checkfl);
       }
     } else {
       res.redirect("/login");
