@@ -129,7 +129,7 @@
                                 <div class="left__info-job">
                                     <span class="hot__job-name">{{this.jobDetail.jobname}}</span>
                                     <span class="hot__job__company-name">{{this.jobDetail.companyname}}</span>
-                                    <span class="hot__job-salary"><i class="bi bi-currency-dollar"></i>{{this.jobDetail.salary}}</span>
+                                    <span class="hot__job-salary"><i class="bi bi-currency-dollar"></i> {{this.jobDetail.salary}}</span>
                                     <span class="hot__location"><i class="bi bi-geo-alt"></i> {{this.jobDetail.joblocation}}</span>
                                 </div>
                             </a>
@@ -198,8 +198,8 @@ Create a quick and free CV template, so that employers must
                             <div class="left-info__jobnew">
                                 <span class="jobnew__name">{{this.jobname}}</span>
                                 <span class="jobnew__company">{{this.companyname}}</span>
-                                <span class="jobnew__salary">{{this.salary}}</span>
-                                <span class="jobnew__location">{{this.joblocation}}</span>
+                                <span class="jobnew__salary"><i class="bi bi-currency-dollar"></i> {{this.salary}}</span>
+                                <span class="jobnew__location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</span>
                             </div>
                     </a>
                 </div>
@@ -358,12 +358,30 @@ containerScroll.addEventListener('scroll', () => {
       }
     });
 // carousel hot job
-var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
-      slidesPerView: 3,
-      grid: {
-        rows: 2,
+document.addEventListener('DOMContentLoaded',()=>{
+    var spaceBetweenRP;
+    var slidesPerviewRP;
+    var rowsRP;
+        if(window.innerWidth > 769){
+            spaceBetweenRP = 30;
+            slidesPerviewRP = 3;
+            rowsRP = 2;
+        }
+        else if(window.innerWidth > 599 && window.innerWidth < 769){
+            spaceBetweenRP = 10;
+            slidesPerviewRP = 2;
+            rowsRP = 4;
+        } else{
+            spaceBetweenRP = 10;
+            slidesPerviewRP = 1;
+            rowsRP = 5;
+        }
+        var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
+        slidesPerView: slidesPerviewRP,
+        grid: {
+            rows: rowsRP,
       },
-      spaceBetween: 30,
+      spaceBetween: spaceBetweenRP,
       pagination: {
         el: ".box-hotjob  .swiper-pagination",
         clickable: true
@@ -371,8 +389,13 @@ var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
       navigation: {
         nextEl: ".box-hotjob .swiper-button-next",
         prevEl: ".box-hotjob .swiper-button-prev"
-      }
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false
+    },
     });
+})
      var topFiveCompany = document.querySelectorAll('.card-toprecruiter');
     topFiveCompany.forEach(function (company){
         const linkCompany = company.getAttribute('data-href-five');
@@ -450,7 +473,7 @@ var swiperHotJob = new Swiper(".box-hotjob  .swiper", {
     slidesPerGroup: 12,
     spaceBetween: 30,
     autoplay: {
-        delay: 3500,
+        delay: 5000,
         disableOnInteraction: false
     },
     breakpoints: {
@@ -489,7 +512,7 @@ var swiper = new Swiper(".container-home .home-jobs__responsive .mySwiper", {
         clickable: true,
     },
     autoplay: {
-        delay: 3500,
+        delay: 5000,
         disableOnInteraction: false
     },
 });

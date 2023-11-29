@@ -594,19 +594,17 @@
         padding-left: 50px;
         margin: unset;
         display: none;
-        width: 30%;
         align-self: start;
     }
     .responsive__navbar-center .down__tools-responsive li{
         list-style-type: none;
         padding: 12px 0;
+        width: 100%;
     }
     .responsive__navbar-center .down__tools-responsive li a{
         padding: unset;
-    }
-    .responsive__navbar-center .down__tools-responsive li a:hover{
-        color: $secondarycolor;
-        text-decoration: underline;
+        width: 100%;
+        padding: 12px 20px;
     }
     .overflow-header{
         display: none;

@@ -191,7 +191,7 @@
             <span><span class="material-symbols-outlined">handyman</span> Tools <i class="bi bi-caret-down-fill"></i></span>
         </ul>
         <ul class="down__tools-responsive">
-                <li><a href="/cv">NiceCV</a></li>
+                <li><a href="/cv"><span class="material-symbols-outlined">demography</span> NiceCV</a></li>
         </ul>
         {{else ifeq user 'company'}}
         <a href="/yourjobs"><span class="material-symbols-outlined">folder_managed</span> Your Company Profile</a>
@@ -212,7 +212,7 @@
             <span><span class="material-symbols-outlined">handyman</span> Tools <i class="bi bi-caret-down-fill"></i></span>
         </ul>
         <ul class="down__tools-responsive">
-                <li><a href="/cv">NiceCV</a></li>
+                <li><a href="/cv"><span class="material-symbols-outlined">demography</span> NiceCV</a></li>
         </ul>
         {{/ifeq}}
         <a onclick="logout()" href="/login"><span class="material-symbols-outlined">exit_to_app</span> Sign Out</a>
@@ -238,7 +238,7 @@
             <span><span class="material-symbols-outlined">handyman</span> Tools <i class="bi bi-caret-down-fill"></i></span>
         </ul>
         <ul class="down__tools-responsive">
-                <li><a href="/cv">NiceCV</a></li>
+                <li><a href="/cv"><span class="material-symbols-outlined">demography</span> NiceCV</a></li>
         </ul>
         <a class="removeLocalstorage" href="/login"><i class="bi bi-door-open-fill"></i> Sign In</a>
     </div>
@@ -276,17 +276,18 @@
         document.querySelector('.responsive__navbar-center').style.transform = 'translateX(200%)';
     })
     var clickedShowTools = false;
-    var clickShowTools = document.querySelector('.drop-down__tools-responsive span');
+    var clickShowTools = document.querySelector('.drop-down__tools-responsive');
+    var textShowTools = document.querySelector('.drop-down__tools-responsive span');
     var showTools = document.querySelector('.responsive__navbar-center .down__tools-responsive');
     clickShowTools.addEventListener('click', function() {
         if (!clickedShowTools) {
             clickedShowTools = true;
             showTools.style.display = 'block';
-            clickShowTools.innerHTML = '<span class="material-symbols-outlined">handyman</span> Tools <i class="bi bi-caret-up-fill"></i>';
+            textShowTools.innerHTML = '<span class="material-symbols-outlined">handyman</span> Tools <i class="bi bi-caret-up-fill"></i>';
         } else {
             clickedShowTools = false;
             showTools.style.display = 'none';
-            clickShowTools.innerHTML = '<span class="material-symbols-outlined">handyman</span> Tools <i class="bi bi-caret-down-fill"></i>';
+            textShowTools.innerHTML = '<span class="material-symbols-outlined">handyman</span> Tools <i class="bi bi-caret-down-fill"></i>';
         }
     });
 });
