@@ -1,12 +1,10 @@
 <script>
   document.addEventListener('DOMContentLoaded',()=>{
     var getSkills = document.querySelector('.main-skill .main-content').getAttribute('data-skills-download');
-    var skillsArray = getSkills.split(', ');
+    var skillsArray = getSkills.split('• ');
     var maxRowSkills = skillsArray.length;
-    var formattedSkills = skillsArray.map(skill => `• ${skill}`).join('\n');
     var textSkills = document.querySelector('.main-skill .main-content');
     textSkills.setAttribute("rows", `${maxRowSkills}`);
-    textSkills.value = formattedSkills;
   })
 </script>
 <form class="main__create-cv" method="post" action="/cv/export">
