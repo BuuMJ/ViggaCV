@@ -53,7 +53,7 @@ module.exports = {
   },
   getBirthday: function (user) {
     if(user && user.birthday){
-      return user.birthday;
+      return moment(user.birthday).format("DD/MM/YYYY");
     }else{
       return " ";
     }

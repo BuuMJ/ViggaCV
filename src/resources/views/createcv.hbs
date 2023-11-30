@@ -187,7 +187,7 @@
             <textarea name="main" id="main" rows="1" class="main" placeholder="Main"></textarea>
           </div>
           <textarea name="maincontent" id="main-content" rows="3" class="main-content"
-            placeholder="• HTML&#10;• Javascrip&#10;• ReactJS"></textarea>
+            placeholder="• HTML&#10;• Javascrip&#10;• ReactJS" data-skills="{{getSkills user}}"></textarea>
         </div>
         <div class="other-skill">
           <div class="other-info">
@@ -818,4 +818,11 @@ document.addEventListener('DOMContentLoaded', function () {
       projectText.style.cssText = `color: ${color}`;
     })
   })
+  var getSkills = document.querySelector('.main-skill .main-content').getAttribute('data-skills');
+  var skillsArray = getSkills.split(', ');
+  var maxRowSkills = skillsArray.length;
+  var formattedSkills = skillsArray.map(skill => `• ${skill}`).join('\n');
+  var textSkills = document.querySelector('.main-skill .main-content');
+  textSkills.setAttribute("rows", `${maxRowSkills}`);
+  textSkills.value = formattedSkills;
 </script>
