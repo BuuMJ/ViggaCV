@@ -62,18 +62,14 @@ class ApplyCVController {
 
   apply(req, res, next) {
     textract.fromFileWithPath(req.file.path, async function (error, text) {
-      // console.log("đây là văn bản sau khi scan cv: " + text);
       if (error) {
         console.log(error);
         return res.status(500);
-        // .send({ message: "Lỗi khi trích xuất văn bản từ tệp tài liệu." });
       } else {
         try {
           const jobID = req.query.id;
           const job = await JobModel.findById({ _id: jobID, active: true });
-          // console.log(job);
           const company = await CompanyModel.findById(job.idcompany);
-          // console.log(company);
           const jobDescription = job.jobrequi;
           const cvText = text;
           const doc = nlp(jobDescription);
@@ -92,7 +88,6 @@ class ApplyCVController {
               score++;
             }
           });
-          // console.log(`Score: ${score}/${keywords.length}`);
           let destinationFolder;
           if (score / keywords.length > 0.5) {
             destinationFolder = `/applyCV/${company.companyname}/${job.jobname}/Qualified`;
@@ -108,10 +103,7 @@ class ApplyCVController {
             destinationFolder
           );
           const newPath = `${absoluteDestination}/${req.file.filename}.pdf`;
-          // newPath.toString();
-          // Tạo thư mục nếu chưa tồn tại
           fs.mkdirSync(absoluteDestination, { recursive: true });
-          // console.log(newPath);
           if (score / keywords.length > 0.5) {
             await QualifiedModel.create({
               nameCV: req.file.originalname,

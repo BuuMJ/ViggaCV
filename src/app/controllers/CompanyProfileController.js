@@ -115,7 +115,7 @@ class CompanyProfileController {
       // console.log(companyfield + " đây là những gì bạn nhập vào!!!!!!!");
       // console.log(taxcode + " đây là những gì bạn nhập vào!!!!!!!");
       // console.log(companyemail + " đây là những gì bạn nhập vào!!!!!!!");
-      // console.log(companyphone + " đây là những gì bạn nhập vào!!!!!!!");
+      console.log(companyphone + " đây là những gì bạn nhập vào!!!!!!!");
       // console.log(companyyears + " đây là những gì bạn nhập vào!!!!!!!");
       // console.log(typeofbusiness + " đây là những gì bạn nhập vào!!!!!!!");
       // console.log(companydesc + " đây là những gì bạn nhập vào!!!!!!!");

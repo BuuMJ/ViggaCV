@@ -39,7 +39,7 @@ class ProfileController {
       const faxcode = req.body.faxCode;
       const taxcode = req.body.taxCode;
       const companyemail = req.body.companyEmail;
-      const companyphone = req.body.companyPhone;
+      const phone = req.body.phone;
       const companyyears = req.body.companyYears;
       const companydesc = req.body.companyDesc;
       const TOB = req.body.typeOfBusiness;
@@ -92,7 +92,7 @@ class ProfileController {
                 faxcode: faxcode,
                 taxcode: taxcode,
                 companyemail: companyemail,
-                companyphone: companyphone,
+                phone: phone,
                 companyyears: companyyears,
                 companydesc: companydesc,
                 TOB: TOB,
@@ -126,7 +126,7 @@ class ProfileController {
                 faxcode: faxcode,
                 taxcode: taxcode,
                 companyemail: companyemail,
-                companyphone: companyphone,
+                phone: phone,
                 companyyears: companyyears,
                 companydesc: companydesc,
                 TOB: TOB,
@@ -166,6 +166,7 @@ class ProfileController {
               faxcode: faxcode,
               taxcode: taxcode,
               companyemail: companyemail,
+              phone: phone,
               companyphone: companyphone,
               companyyears: companyyears,
               companydesc: companydesc,
@@ -201,6 +202,7 @@ class ProfileController {
               faxcode: faxcode,
               taxcode: taxcode,
               companyemail: companyemail,
+              phone: phone,
               companyphone: companyphone,
               companyyears: companyyears,
               companydesc: companydesc,
