@@ -361,6 +361,7 @@
     function applyTextareaBlurStyles(textarea) {
       textarea.style.cssText = 'background-color: transparent; outline: none; border: none; box-shadow: unset;';
     }
+    // show & hide action add and remove
     function setupDateWorkExpTextareaEvents(textarea) {
       textarea.addEventListener('focus', function () {
         var actionAddRemove = this.parentNode.querySelector('.action__add-remove');
@@ -373,6 +374,7 @@
         applyTextareaBlurStyles(this);
       });
     }
+    //
     function setupWorkExpEventListeners(workExpDiv) {
       var textarea = workExpDiv.querySelector('.date__work-exp textarea');
       setupDateWorkExpTextareaEvents(textarea);
@@ -429,6 +431,7 @@
 
   });
   // add or remove education 
+  //render UI
   document.addEventListener('DOMContentLoaded', function () {
     let timeEducationCount = 0;
     let nameEducationCount = 0;
@@ -455,6 +458,7 @@
       educationContainer.appendChild(newEducationDiv);
       addEducationEventListeners(newEducationDiv);
     }
+    //function add
     function addEducationEventListeners(educationDiv) {
       var addEducationButton = educationDiv.querySelector('.add-education');
       addEducationButton.addEventListener('click', addEducationEntry);

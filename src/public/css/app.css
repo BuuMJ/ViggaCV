@@ -6007,9 +6007,8 @@ header.company-detail .background-company-detail {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 50px;
   color: black;
-  width: 347px;
+  width: 75%;
   text-transform: uppercase; }
 
 .company-leadership__info-text span.first,
@@ -6019,7 +6018,8 @@ header.company-detail .background-company-detail {
   height: 80%; }
 
 .company-leadership__info-text span.first {
-  color: white; }
+  color: white;
+  height: unset; }
 
 .company-leadership__info-text span.second,
 .show__main-info-leadership .introduce-leadership span.second {
@@ -6030,7 +6030,8 @@ header.company-detail .background-company-detail {
 
 .company-leadership__info-text span.second {
   color: #fed200;
-  letter-spacing: 4px; }
+  letter-spacing: 4px;
+  height: unset; }
 
 .show__main-info-leadership {
   position: fixed;
