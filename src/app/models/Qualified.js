@@ -19,6 +19,7 @@ const Qualified = new Schema({
     required: true,
   },
   professional: String,
+  score: String,
 });
 
 const QualifiedModel = mongoose.model("qualified", Qualified);

@@ -14,6 +14,7 @@ const Unsatisfactory = new Schema({
     required: true,
   },
   professional: String,
+  score: String,
   userid: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
