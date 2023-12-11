@@ -471,6 +471,7 @@ class CompanyProfileController {
       position: position,
       joblocation: joblocation,
       avatar: companyname.avatar,
+      backGround: companyname.background,
       idcompany: companyname._id,
     });
     if (job) {
