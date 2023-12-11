@@ -7,10 +7,19 @@ const Qualified = new Schema({
   email: String,
   phone: String,
   path: String,
-  jobid: String,
-  companyid: String,
-  userid: String,
+  jobid: { type: mongoose.Schema.Types.ObjectId, ref: "Job", required: true },
+  companyid: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Company",
+    required: true,
+  },
+  userid: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
   professional: String,
+  score: String,
 });
 
 const QualifiedModel = mongoose.model("qualified", Qualified);

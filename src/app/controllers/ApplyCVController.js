@@ -104,6 +104,7 @@ class ApplyCVController {
           );
           const newPath = `${absoluteDestination}/${req.file.filename}.pdf`;
           fs.mkdirSync(absoluteDestination, { recursive: true });
+          const finalScore = score / keywords.length;
           if (score / keywords.length > 0.5) {
             await QualifiedModel.create({
               nameCV: req.file.originalname,
@@ -115,6 +116,7 @@ class ApplyCVController {
               email: req.user.email,
               phone: req.user.phone,
               professional: req.body.professional,
+              score: finalScore,
             });
           } else {
             await UnsatisfactoryModel.create({
@@ -127,6 +129,7 @@ class ApplyCVController {
               email: req.user.email,
               professional: req.body.professional,
               phone: req.user.phone,
+              score: finalScore,
             });
           }
           fs.rename(req.file.path, newPath, (err) => {

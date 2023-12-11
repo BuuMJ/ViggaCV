@@ -17,6 +17,7 @@ const Job = new Schema(
     benefit: String,
     position: String,
     categories: String,
+    backGround: String,
     active: {
       type: Boolean,
       default: true,
