@@ -19,6 +19,7 @@ const RevenueModel = require("../models/Revenua");
 const FavouriteModel = require("../models/Favourite");
 const ViewedModel = require("../models/Viewed");
 const { Console } = require("console");
+const mongoose = require("mongoose");
 
 class CompanyProfileController {
   //[GET] Company profile
@@ -574,15 +575,39 @@ class CompanyProfileController {
     if (pagePassed) {
       pagePassed = parseInt(pagePassed);
       var skip = (pagePassed - 1) * PAGE_SIZE;
-      var cvPassed = await QualifiedModel.find({ jobid: idjob })
-        .skip(skip)
-        .limit(PAGE_SIZE);
+      var cvPassed = await QualifiedModel.aggregate([
+        {
+          $match: { jobid: new mongoose.Types.ObjectId(idjob) },
+        },
+        { $skip: skip },
+        { $limit: PAGE_SIZE },
+        {
+          $lookup: {
+            from: "user",
+            localField: "userid",
+            foreignField: "_id",
+            as: "userDetail",
+          },
+        },
+      ]);
     } else {
       pagePassed = 1;
       var skip = (pagePassed - 1) * PAGE_SIZE;
-      var cvPassed = await QualifiedModel.find({ jobid: idjob })
-        .skip(skip)
-        .limit(PAGE_SIZE);
+      var cvPassed = await QualifiedModel.aggregate([
+        {
+          $match: { jobid: new mongoose.Types.ObjectId(idjob) },
+        },
+        { $skip: skip },
+        { $limit: PAGE_SIZE },
+        {
+          $lookup: {
+            from: "user",
+            localField: "userid",
+            foreignField: "_id",
+            as: "userDetail",
+          },
+        },
+      ]);
     }
 
     var pageFailed = req.query.pageFailed;
@@ -594,21 +619,30 @@ class CompanyProfileController {
     }
     if (pageFailed) {
       pageFailed = parseInt(pageFailed);
-      var skip = (pageFailed - 1) * PAGE_SIZE;
-      var cvFailed = await UnsatisfactoryModel.find({ jobid: idjob })
-        .skip(skip)
-        .limit(PAGE_SIZE);
     } else {
       pageFailed = 1;
-      var skip = (pageFailed - 1) * PAGE_SIZE;
-      var cvFailed = await UnsatisfactoryModel.find({ jobid: idjob })
-        .skip(skip)
-        .limit(PAGE_SIZE);
     }
 
+    var skip = (pageFailed - 1) * PAGE_SIZE;
+
+    var cvFailed = await UnsatisfactoryModel.aggregate([
+      {
+        $match: { jobid: new mongoose.Types.ObjectId(idjob) },
+      },
+      { $skip: skip },
+      { $limit: PAGE_SIZE },
+      {
+        $lookup: {
+          from: "user",
+          localField: "userid",
+          foreignField: "_id",
+          as: "userDetail",
+        },
+      },
+    ]);
     res.render("cvManager", {
-      cvPassed: mutipleMongooseToObject(cvPassed),
-      cvFailed: mutipleMongooseToObject(cvFailed),
+      cvPassed: cvPassed,
+      cvFailed: cvFailed,
       job: staffMongoseToObject(job),
       company,
       user,

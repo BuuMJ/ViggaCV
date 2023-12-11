@@ -7,10 +7,18 @@ const Unsatisfactory = new Schema({
   email: String,
   phone: String,
   path: String,
-  jobid: String,
-  companyid: String,
+  jobid: { type: mongoose.Schema.Types.ObjectId, ref: "Job", required: true },
+  companyid: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Company",
+    required: true,
+  },
   professional: String,
-  userid: String,
+  userid: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 const UnsatisfactoryModel = mongoose.model("unsatisfactory", Unsatisfactory);
