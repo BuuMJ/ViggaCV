@@ -39,11 +39,6 @@ class JobController {
       }
     }
 
-    // Nếu không tìm thấy công ty phù hợp, bạn có thể xử lý tình huống này ở đây
-    if (companiesWithAtLeast2Jobs.length === 0) {
-      // ...
-    }
-
     // Chọn ngẫu nhiên một công ty từ danh sách công ty phù hợp
     const randomIndex = Math.floor(
       Math.random() * companiesWithAtLeast2Jobs.length
@@ -58,14 +53,6 @@ class JobController {
 
     // Lấy ngẫu nhiên 3 công việc
     const randomJobs = jobs.sort(() => 0.5 - Math.random()).slice(0, 3);
-
-    // In ra kết quả
-    // console.log(
-    //   "3 công việc ngẫu nhiên của công ty",
-    //   randomCompany.companyname,
-    //   "là:",
-    //   randomJobs
-    // );
 
     //tìm số job cao nhất
     const highest = await JobModel.aggregate([
@@ -125,6 +112,7 @@ class JobController {
         $limit: 1, // Giới hạn kết quả trả về là 1
       },
     ]);
+
     if (mostFL) {
       var bestFL = await CompanyModel.findOne({
         iduser: mostFL[0].companies[0].iduser,
@@ -132,6 +120,9 @@ class JobController {
     } else {
       var bestFL = null;
     }
+
+    //danh sách công việc được quảng cáo
+    const listJobAd = await JobModel.find({ active: true, prioritize: true });
 
     // console.log(
     //   "đây là công ty có nhiều job nhất trước khi search: " + bestCP.avatar
@@ -166,6 +157,7 @@ class JobController {
             random: staffMongoseToObject(randomCompany),
             randomJobs: mutipleMongooseToObject(randomJobs),
             listcompany: mutipleMongooseToObject(company),
+            listJobAd: mutipleMongooseToObject(listJobAd),
           });
         });
     } else {
@@ -193,6 +185,7 @@ class JobController {
             randomJobs: mutipleMongooseToObject(randomJobs),
             listcompany: mutipleMongooseToObject(company),
             company1: company,
+            listJobAd: mutipleMongooseToObject(listJobAd),
           });
         });
     }
@@ -310,6 +303,10 @@ class JobController {
       active: true,
     });
     const randomJobs = jobs.sort(() => 0.5 - Math.random()).slice(0, 3);
+
+    //danh sách công việc được quảng cáo
+    const listJobAd = await JobModel.find({ active: true, prioritize: true });
+
     if (page) {
       //Get page
       page = parseInt(page);
@@ -335,6 +332,7 @@ class JobController {
             randomJobs: mutipleMongooseToObject(randomJobs),
             company1: company,
             listcompany: mutipleMongooseToObject(company),
+            listJobAd: mutipleMongooseToObject(listJobAd),
           });
         });
     } else {
@@ -362,6 +360,7 @@ class JobController {
             randomJobs: mutipleMongooseToObject(randomJobs),
             listcompany: mutipleMongooseToObject(company),
             company1: company,
+            listJobAd: mutipleMongooseToObject(listJobAd),
           });
         });
     }
@@ -486,6 +485,9 @@ class JobController {
     });
     const randomJobs = jobs.sort(() => 0.5 - Math.random()).slice(0, 3);
 
+    //danh sách công việc được quảng cáo
+    const listJobAd = await JobModel.find({ active: true, prioritize: true });
+
     if (page) {
       //Get page
       page = parseInt(page);
@@ -516,6 +518,7 @@ class JobController {
               randomJobs: mutipleMongooseToObject(randomJobs),
               listcompany: mutipleMongooseToObject(company),
               company1: company,
+              listJobAd: mutipleMongooseToObject(listJobAd),
             });
           });
       }
@@ -541,6 +544,7 @@ class JobController {
               randomJobs: mutipleMongooseToObject(randomJobs),
               listcompany: mutipleMongooseToObject(company),
               company1: company,
+              listJobAd: mutipleMongooseToObject(listJobAd),
             });
           });
       }
@@ -574,6 +578,7 @@ class JobController {
               randomJobs: mutipleMongooseToObject(randomJobs),
               listcompany: mutipleMongooseToObject(company),
               company1: company,
+              listJobAd: mutipleMongooseToObject(listJobAd),
             });
           });
       }
@@ -599,6 +604,7 @@ class JobController {
               randomJobs: mutipleMongooseToObject(randomJobs),
               listcompany: mutipleMongooseToObject(company),
               company1: company,
+              listJobAd: mutipleMongooseToObject(listJobAd),
             });
           });
       }
