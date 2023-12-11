@@ -110,4 +110,43 @@ document.addEventListener('DOMContentLoaded',()=>{
         })
     }
 })
+
+document.body.onscroll = function() {scrollContentCV()};
+function scrollContentCV() {
+if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60) {
+document.querySelector('.header-cv').style.cssText = "transform: translatey(0);";
+document.querySelector('.free-design').style.cssText = "transform: translatex(0);";
+document.querySelector('.animation-roll').style.display = 'none';
+} else {
+document.querySelector('.header-cv').style.cssText = "transform: translatey(70%);";
+if (window.innerWidth >= 322 && window.innerWidth <= 768) {
+    document.querySelector('.header-cv').style.cssText = "transform: translatey(50%);";
+  }
+if(window.innerWidth <= 321){
+   document.querySelector('.header-cv').style.cssText = "transform: translatey(30%);";
+}
+document.querySelector('.free-design').style.cssText = "transform: translatex(400%);";
+document.querySelector('.animation-roll').style.display = 'flex';
+}
+if (document.body.scrollTop > 450 || document.documentElement.scrollTop > 450) {
+document.querySelector('.easy-operation').style.cssText = "transform: translateX(0);";
+} else {
+document.querySelector('.easy-operation').style.cssText = "transform: translateX(-200%);";
+}
+if (document.body.scrollTop > 930 || document.documentElement.scrollTop > 930) {
+document.querySelector('.download-cv').style.cssText = "transform: translateX(0);";
+} else {
+document.querySelector('.download-cv').style.cssText = "transform: translateX(400%);";
+}
+if (document.body.scrollTop > 1350 || document.documentElement.scrollTop > 1350) {
+document.querySelector('.interview-cv').style.cssText = "transform: translateX(0);";
+} else {
+document.querySelector('.interview-cv').style.cssText = "transform: translateX(-200%);";
+}
+if (document.body.scrollTop > 1900 || document.documentElement.scrollTop > 1900) {
+document.querySelector('.stepbystep-cv').style.cssText = "transform: translateX(0);";
+} else {
+document.querySelector('.stepbystep-cv').style.cssText = "transform: translateX(400%);";
+}
+}
 </script>

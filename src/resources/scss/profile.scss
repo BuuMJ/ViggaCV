@@ -236,6 +236,35 @@
 .alert-success::before{
     background-color: #04FC44;
 }
+.guide-ads__companyprofile{
+    position: fixed;
+    top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255,90,0,0.4);
+    z-index: 20;
+    transform: translateY(-500%);
+    transition: transform .5s;
+    background: linear-gradient(87deg, rgba(255,90,0,0.4) 44%, rgba(255,0,0,0.4));
+}
+.guide-ads__companyprofile::after{
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 8px;
+    height: 100%;
+    background: rgb(255,90,0);
+    background: linear-gradient(-180deg, rgba(255,90,0,1) 44%, rgba(255,0,0,1) 100%);
+}
+.guide-ads__companyprofile h4{
+    color: white;
+    font-weight: 700;
+    padding: 12px 12px 12px 30px;
+    text-transform: capitalize;
+    margin: unset;
+}
 .form-company-profile{
     width: 100%;
     display: flex;
