@@ -1,48 +1,52 @@
 <header class="job-search">
-<swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" space-between="30"
-    centered-slides="true" autoplay-delay="2500" autoplay-disable-on-interaction="false">
-  {{#ifeq user 'company'}}
-    {{#each listJobAd}}
-      <swiper-slide>
-        <div class="job-ads">
-          <div class="background-company__job-ads">
-              <img src="" alt="">
-              <img src="" alt="">
-          </div>
-          <div class="primary-content__job-ads">
-              <h3>{{this.jobname}}</h3>
-              <p>{{this.jobdesc}}</p>
-              <div class="secondary-content">
-                <p>{{this.location}}</p>
-                <p>{{this.createdAt}}</p>
-              </div>
-          </div>
-          <div class="salary-content__job-ads">
-            <p>{{this.salary}}</p>
+<div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+    {{#ifeq user 'company'}}
+      {{#each listJobAd}}
+        <div class="swiper-slide">
+          <div class="job-ads">
+            <div class="background-company__job-ads">
+                <img class="background-company" src="/{{this.backGround}}" alt="">
+                <img class="avatar-company" src="{{this.avatar}}" alt="">
+            </div>
+            <div class="primary-content__job-ads">
+                <h3>{{this.jobname}}</h3>
+                <p>{{this.jobdesc}}</p>
+                <div class="secondary-content">
+                  <p>{{this.joblocation}}</p>
+                  <p>{{moment this.createdAt format="DD/MM/YYYY"}}</p>
+                </div>
+            </div>
+            <div class="salary-content__job-ads">
+              <p>{{this.salary}}</p>
+            </div>
           </div>
         </div>
-      </swiper-slide>
-    {{/each}}
-    <swiper-slide>
-      <div class="hot-job__ads">
-        <h3><i class="bi bi-fire"></i> Connect with top talent today <i class="bi bi-fire"></i></h3>
-        <h5>We provide a specialized platform for employers to advertise job opportunities and attract high-quality candidates. Key features include:</h5>
-        <ul>
-          <li><img src="/img/benefit.svg" alt="">Priority Placement</li>
-          <li><img src="/img/benefit.svg" alt="">Diverse Candidate Network</li>
-          <li><img src="/img/benefit.svg" alt="">Flexible Advertising</li>
-        </ul>
-        <a class="ads-now" href="/companyprofile"><i class="bi bi-fire"></i> Advertise Now <i class="bi bi-fire"></i></a>
+      {{/each}}
+      <div class="swiper-slide">
+        <div class="hot-job__ads">
+          <h3><i class="bi bi-fire"></i> Connect with top talent today <i class="bi bi-fire"></i></h3>
+          <h5>We provide a specialized platform for employers to advertise job opportunities and attract high-quality candidates. Key features include:</h5>
+          <ul>
+            <li><img src="/img/benefit.svg" alt="">Priority Placement</li>
+            <li><img src="/img/benefit.svg" alt="">Diverse Candidate Network</li>
+            <li><img src="/img/benefit.svg" alt="">Flexible Advertising</li>
+          </ul>
+          <a class="ads-now" href="/companyprofile"><i class="bi bi-fire"></i> Advertise Now <i class="bi bi-fire"></i></a>
+        </div>
       </div>
-    </swiper-slide>
-  {{/ifeq}}
-    <div class="autoplay-progress" slot="container-end">
+    {{/ifeq}}
+  </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+    <div class="autoplay-progress">
       <svg viewBox="0 0 48 48">
         <circle cx="24" cy="24" r="20"></circle>
       </svg>
       <span></span>
     </div>
-  </swiper-container>
+  </div>
   {{#if user}}
     <div class="header-search">
       <div class="navbar-left">
@@ -202,16 +206,31 @@
     </div>
   </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-  const progressCircle = document.querySelector(".autoplay-progress svg");
-    const progressContent = document.querySelector(".autoplay-progress span");
-
-    const swiperEl = document.querySelector("swiper-container");
-    swiperEl.addEventListener("autoplaytimeleft", (e) => {
-      const [swiper, time, progress] = e.detail;
-      progressCircle.style.setProperty("--progress", 1 - progress);
-      progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+  const progressCircle = document.querySelector("header.job-search .swiper .autoplay-progress svg");
+    const progressContent = document.querySelector("header.job-search .swiper .autoplay-progress span");
+    var swiper = new Swiper("header.job-search .swiper", {
+      spaceBetween: 30,
+      centeredSlides: true,
+      /*autoplay: {
+        delay: 8000,
+        disableOnInteraction: false
+      },*/
+      pagination: {
+        el: "header.job-search .swiper .swiper-pagination",
+        clickable: true
+      },
+      navigation: {
+        nextEl: "header.job-search .swiper .swiper-button-next",
+        prevEl: "header.job-search .swiper .swiper-button-prev"
+      },
+      on: {
+        autoplayTimeLeft(s, time, progress) {
+          progressCircle.style.setProperty("--progress", 1 - progress);
+          progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+        }
+      }
     });
   var showCloseBox = document.getElementById('close-suggest');
   var boxClose = document.querySelector('.box-contain-close');
@@ -277,7 +296,7 @@ window.addEventListener('scroll', function() {
       document.querySelector('.header-search .header-search__login .search-login').style.display = 'none';
     }
   } else if (checkLengthSlide > 0) {
-    if (scrollPosition >= 332) {
+    if (scrollPosition >= 362) {
       document.querySelector('.header-search').style.cssText = 'position: fixed; top: 0; box-shadow: 1px 1px 10px rgba(0,0,0,0.5); background-color: white; border-bottom: 1px solid #ededed;';
       deleteMargin.style.cssText = 'margin-top: 85px';
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: #F7F7F7;';
