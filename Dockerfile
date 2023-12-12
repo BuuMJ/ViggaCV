@@ -10,6 +10,7 @@ RUN npm ci
 COPY . .
 
 # Add the following line to set the permissions
+USER root
 RUN chmod -R 777 /usr/src/app 
 
 # Add debug information
