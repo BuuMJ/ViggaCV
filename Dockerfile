@@ -8,4 +8,12 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm ci
 COPY . .
+
+# Add debug information
+RUN ls -al
+RUN echo "LS: $(ls -al)" 
+RUN echo "Node Version: $(node -v)"
+RUN echo "NPM Version: $(npm -v)"
+
+
 CMD ["npm", "start"]
