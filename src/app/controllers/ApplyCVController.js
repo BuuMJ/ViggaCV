@@ -10,8 +10,6 @@ const UnsatisfactoryModel = require("../models/Unsatisfactory");
 
 class ApplyCVController {
   async scan(req, res, next) {
-    delete req.session.jobs;
-    delete req.session.companyfield;
     textract.fromFileWithPath(req.file.path, async function (error, text) {
       console.log("đây là văn bản sau khi scan cv: " + text);
       if (error) {
@@ -21,6 +19,8 @@ class ApplyCVController {
         });
       } else {
         try {
+          delete req.session.jobs;
+          delete req.session.companyfield;
           const skillsSection = text.match(/Skills\s*(.*?)\s*Other/);
           const skills = skillsSection ? skillsSection[1] : "";
           if (skills == "") {

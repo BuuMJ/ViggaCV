@@ -470,7 +470,7 @@ containerJobs.forEach(function(cardJob){
   }
   const getLinkCardjob = cardJob.getAttribute('data-href-cardjob');
   cardJob.addEventListener('click',()=>{
-    window.location.href = `/job/${getLinkCardjob}`;
+    window.location.href = `/job/detail/${getLinkCardjob}`;
   })
 });
 </script>
