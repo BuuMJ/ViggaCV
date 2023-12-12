@@ -224,7 +224,7 @@
         const linkCompanyName = item.getAttribute('data-company-name');
         const linkJobName = item.getAttribute('data-job-name');
         const pathCV = item.querySelector('.primary-content__management').getAttribute('data-pathCV')
-        item.href = `/applyCV/${linkCompanyName}/${linkJobName}/unsatisfactory/${pathCV}`
+        item.href = `/applyCV/${linkCompanyName}/${linkJobName}/unsatisfactory/${pathCV}.pdf`
     })
     const containerCVPassed = document.querySelectorAll('.card__passed-cv');
     containerCVPassed.forEach(item=>{
@@ -238,6 +238,6 @@
         const linkCompanyName = item.getAttribute('data-company-name');
         const linkJobName = item.getAttribute('data-job-name');
         const pathCV = item.querySelector('.primary-content__management').getAttribute('data-pathCV')
-        item.href = `/applyCV/${linkCompanyName}/${linkJobName}/Qualified/${pathCV}`
+        item.href = `/applyCV/${linkCompanyName}/${linkJobName}/Qualified/${pathCV}.pdf`
     })
 </script>
