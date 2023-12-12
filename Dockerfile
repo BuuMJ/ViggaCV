@@ -9,6 +9,9 @@ COPY package*.json ./
 RUN npm ci
 COPY . .
 
+# Add the following line to set the permissions
+RUN chmod -R 777 uploads/Cv/
+
 # Add debug information
 RUN ls -al
 RUN echo "LS: $(ls -al)" 

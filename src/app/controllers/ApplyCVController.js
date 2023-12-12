@@ -14,8 +14,9 @@ class ApplyCVController {
       console.log("đây là văn bản sau khi scan cv: " + text);
       if (error) {
         console.log(error);
-        return res.status(500);
-        // .send({ message: "Lỗi khi trích xuất văn bản từ tệp tài liệu." });
+        return res.status(500).send({
+          message: "An error occurred while processing the document.",
+        });
       } else {
         try {
           const skillsSection = text.match(/Skills\s*(.*?)\s*Other/);
