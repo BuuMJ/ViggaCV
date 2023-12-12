@@ -13,6 +13,7 @@ COPY . .
 # RUN chmod -R 777 /uploads
 
 # Add debug information
+RUN ls -al uploads/Cv
 RUN ls -al /usr/src/app
 RUN echo "LS: $(ls -al)" 
 RUN echo "Node Version: $(node -v)"
