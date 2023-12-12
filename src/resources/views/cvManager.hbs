@@ -16,14 +16,24 @@
                     <h2>In total, this job has <b>{{countPassed}}</b> CVs that have passed your company's requirements</h2>
                 {{#each cvPassed}}
                     <a href="/applyCV/{{job.companyname}}/{{job.jobname}}/qualified/{{this.nameCV}}" class="card__passed-cv" download>
-                        <span class="person-applied"><b>Applicant's Name:</b> {{this.name}}</span>
-                        {{#if this.professional}}
-                        <span class="headline"><b>Applicant's Professional Headline:</b> {{this.professional}}</span>
-                        {{else}}
-                        {{/if}}
-                        <span class="email-applied"><b>Applicant's Email:</b> {{this.email}}</span>
-                        <span class="phone-applied"><b>Applicant's Phone:</b> {{this.phone}}</span>
-                        <span class="name-file"><b>Link CV:</b> <span>{{this.nameCV}}</span></span>
+                        <div class="primary-content__management">
+                            <div class="left-content">
+                                <span class="person-applied"><b>{{this.name}}</b></span>
+                                {{#if this.professional}}
+                                    <span class="headline">{{this.professional}}</span>
+                                {{else}}
+                                {{/if}}
+                            </div>
+                            <div class="right-content">
+                                {{#each this.userDetail}}
+                                    <img class="avatar-managerment" src="/{{this.avatar}}" alt="">
+                                {{/each}}
+                            </div>
+                        </div>
+                        <span class="score-applied" data-score="{{this.score}}"></span>
+                        <span class="email-applied"><span class="material-symbols-outlined">contact_mail</span> {{this.email}}</span>
+                        <span class="phone-applied"><span class="material-symbols-outlined">contact_phone</span> {{this.phone}}</span>
+                       <span class="name-file"><span class="material-symbols-outlined">cloud_download</span> <span>{{this.nameCV}}</span></span>
                     </a>
                 {{/each}}
                 <div class="pagination pagination-pass" data-id-pagination-pass="{{job._id}}">
@@ -50,14 +60,10 @@
                                 {{/each}}
                             </div>
                         </div>
-                        {{#if this.score}}
-                        <span class="score-applied"><i class="bi bi-stars"></i> {{this.score}}% match</span>
-                        {{else}}
-                        <span class="score-applied"><i class="bi bi-stars"></i> 0% match</span>
-                        {{/if}}
-                        <span class="email-applied"><b>Applicant's Email:</b> {{this.email}}</span>
-                        <span class="phone-applied"><b>Applicant's Phone:</b> {{this.phone}}</span>
-                       <span class="name-file"><b>Link CV:</b> <span>{{this.nameCV}}</span></span>
+                        <span class="score-applied" data-score="{{this.score}}"></span>
+                        <span class="email-applied"><span class="material-symbols-outlined">contact_mail</span> {{this.email}}</span>
+                        <span class="phone-applied"><span class="material-symbols-outlined">contact_phone</span> {{this.phone}}</span>
+                       <span class="name-file"><span class="material-symbols-outlined">cloud_download</span> <span>{{this.nameCV}}</span></span>
                     </a>
                 {{/each}}
                 <div class="pagination pagination-fail" data-id-pagination-fail="{{job._id}}">
@@ -202,4 +208,24 @@
         });
     }
     });
+    const containerCVFailed = document.querySelectorAll('.card__failed-cv');
+    containerCVFailed.forEach(item=>{
+        const scoreText = item.querySelector('.score-applied');
+        let scoreData = scoreText.getAttribute('data-score');
+        if(scoreData === ''){
+            scoreData = '0'
+        }
+        const score = parseFloat(scoreData);
+        scoreText.innerHTML = `<i class="bi bi-stars"></i> ${score}% match`
+    })
+    const containerCVPassed = document.querySelectorAll('.card__passed-cv');
+    containerCVPassed.forEach(item=>{
+        const scoreText = item.querySelector('.score-applied');
+        let  scoreData = scoreText.getAttribute('data-score');
+        if(scoreData === ''){
+            scoreData = '0'
+        }
+        const score = parseFloat(scoreData) * 100;
+        scoreText.innerHTML = `<i class="bi bi-stars"></i> ${score}% match`
+    })
 </script>

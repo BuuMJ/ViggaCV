@@ -7677,8 +7677,16 @@ header.company-detail .background-company-detail {
 
 .main__manager-cv section .box__passed-cv .card__passed-cv:hover .name-file span,
 .main__manager-cv section .box__failed-cv .card__failed-cv:hover .name-file span {
-  color: #0072bc;
-  text-decoration: underline; }
+  color: #0072bc; }
+
+.main__manager-cv section .box__passed-cv .card__passed-cv .name-file,
+.main__manager-cv section .box__failed-cv .card__failed-cv .name-file {
+  display: flex;
+  align-items: center; }
+
+.main__manager-cv section .box__passed-cv .card__passed-cv .name-file span.material-symbols-outlined,
+.main__manager-cv section .box__failed-cv .card__failed-cv .name-file span.material-symbols-outlined {
+  margin-right: 8px; }
 
 .main__manager-cv section .box__passed-cv .card__passed-cv .score-applied,
 .main__manager-cv section .box__failed-cv .card__failed-cv .score-applied {
@@ -7691,6 +7699,21 @@ header.company-detail .background-company-detail {
 .main__manager-cv section .box__failed-cv .card__failed-cv .score-applied i {
   font-size: 24px;
   color: #5e5d5d; }
+
+.main__manager-cv section .box__passed-cv .card__passed-cv .email-applied span.material-symbols-outlined,
+.main__manager-cv section .box__passed-cv .card__passed-cv .phone-applied span.material-symbols-outlined,
+.main__manager-cv section .box__failed-cv .card__failed-cv .email-applied span.material-symbols-outlined,
+.main__manager-cv section .box__failed-cv .card__failed-cv .phone-applied span.material-symbols-outlined {
+  padding: unset !important;
+  margin-right: 8px; }
+
+.main__manager-cv section .box__passed-cv .card__passed-cv .email-applied,
+.main__manager-cv section .box__passed-cv .card__passed-cv .phone-applied,
+.main__manager-cv section .box__failed-cv .card__failed-cv .email-applied,
+.main__manager-cv section .box__failed-cv .card__failed-cv .phone-applied {
+  display: flex;
+  align-items: start;
+  word-break: break-all; }
 
 .main__manager-cv section .pagination {
   width: 100%;
