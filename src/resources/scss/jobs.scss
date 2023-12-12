@@ -775,87 +775,377 @@ header.job-search{
     color: $btncolor;
     font-size: 18px;
 }
-header.job-search .best-companyFL {
+
+header.job-search .swiper {
     width: 100%;
+    height: 280px;
+  }
+
+  header.job-search .swiper .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: rgb(23,27,36);
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    height: 110px;
-    text-decoration: none;
-    color: #04B4F4;
-    z-index: 12;
-    position: relative;
-    cursor: pointer;
-    transition: .5s;
   }
-  header.job-search .best-companyFL span{
-    z-index: 13;
-  }
-  header.job-search .best-companyFL .background-image {
+  header.job-search .swiper .autoplay-progress {
     position: absolute;
-    top: 0;
+      right: 16px;
+      bottom: 16px;
+      z-index: 10;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: $btncolor;
+  }
+
+  header.job-search .swiper .autoplay-progress svg {
+    --progress: 0;
+    position: absolute;
     left: 0;
+    top: 0px;
+    z-index: 10;
     width: 100%;
     height: 100%;
-    filter: blur(6px);
-    z-index: 10;
+    stroke-width: 4px;
+    stroke: $btncolor;
+    fill: none;
+    stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
+    stroke-dasharray: 125.6;
+    transform: rotate(-90deg);
   }
-  .best-companyFL .info-bestfl{
+  header.job-search .swiper .swiper-button-next, 
+  header.job-search .swiper .swiper-button-prev{
+    color: $btncolor;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-decoration: none;
+    background: rgb(23,27,36);
+    // background: linear-gradient(87deg, rgba(255,206,0,0.4) 0%, rgba(255,69,0,0.4) 76%);
+    color: white;
+    padding: 0 40px;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads h3{
+    background: rgb(255,90,0);
+    background: linear-gradient(87deg, rgba(255,90,0,1) 44%, rgba(255,0,0,1) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: unset;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads h3 i:nth-child(2){
+    color: #ff0000;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads h5{
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-bottom: unset;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: unset;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads ul li{
+    list-style-type: none;
+    margin: 0 20px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads ul li img{
+    width: 30px;
+    height: 100%;
+    margin-right: 6px;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads a.ads-now{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+    padding: 0 12px;
+    height: 50px;
+    position: relative;
+    background-color: rgb(23,27,36);
+    border-radius: 5px;
+    text-decoration: none;
+    z-index: 3;
+    border: 1px solid transparent;
+    transition: all .5s;
+    // transition-delay: .4s;
+    // transition-property: border;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads a.ads-now::after{
+    position: absolute;
+    content: "";
+    left: 50%;
+    right: 0;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255,90,0);
+    background: linear-gradient(87deg, rgba(255,90,0,1) 44%, rgba(255,0,0,1) 100%);
+    z-index: -1;
+    border-radius: 5px;
+    transition: width .5s;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads a.ads-now:hover{
+    color: rgba(255,90,0,1);
+    border: 1px solid rgba(255,0,0,1);
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads a.ads-now:hover::after{
+    width: 0;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads a.ads-now i {
+    margin: 0 6px;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-left: 50px;
+    width: 90%;
+    height: 90%;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(255, 68, 0, 0.6);
+    background-color: rgb(255, 244, 233);
+    border: 1px solid rgb(237, 27, 47);
+    position: relative;
   }
-  .best-companyFL .info-bestfl span{
-    font-size: 40px;
+  header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads::after{
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    margin: 8px 0;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: rgb(255,90,0);
+    background: linear-gradient(87deg, rgba(255,90,0,1) 44%, rgba(255,0,0,1) 100%);
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .background-company__job-ads{
+    position: relative;
+    width: 30%;
+    height: 100%;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .background-company__job-ads .background-company{
+    width: 100%;
+    height: 100%;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .background-company__job-ads .avatar-company{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -50%);
+    width: 120px;
+    height: 120px;
+    border-radius: 5px;
+    border: 1px solid #DEE2E6;
+    background-color: white;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .primary-content__job-ads{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 50%;
+    height: 100%;
+    padding: 60px 20px 20px 100px;
+    border-right: 1px dashed #DEE2E6;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .primary-content__job-ads a{
+    text-transform: capitalize;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-align: start;
+    background: rgb(255,90,0);
+    background: linear-gradient(87deg, rgba(255,90,0,1) 44%, rgba(255,0,0,1) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+    height: 42px;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .primary-content__job-ads h5{
+    font-weight: 600;
+    color: #696b6d;
+    text-transform: capitalize;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .primary-content__job-ads p.job-desc{
+    font-size: 16px;
+    line-height: 26px;
+    width: 100%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-align: start;
+    color: #BCBCBC;
+    height: 52px;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .primary-content__job-ads .secondary-content{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .primary-content__job-ads .secondary-content p{
+    border-radius: 5px;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+    background-color: $secondarycolor;
+    margin: unset;
+    width: unset;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .primary-content__job-ads .secondary-content p.location{
+    background-color: $locationColor;
+    margin-left: 8px;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .salary-content__job-ads{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .salary-content__job-ads p{
+    font-size: 18px;
+    color: $salaryColor;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .salary-content__job-ads a{
+    text-decoration: none;
+    color: #FF4500;
+    border: 1px solid #ed1b2f;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-weight: 600;
+    transition: .5s;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .salary-content__job-ads a:hover{
+    background-color: #FF4500;
+    border: 1px solid #FF4500;
+    color: white;
+  }
+  header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads span.superHot{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 12px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    color: #FF4500;
+    background: #ffc8aa;
+    text-transform: uppercase;
     font-weight: 700;
   }
-  .best-companyFL .info-bestfl .best-fl-name {
-    font-size: 26px;
-    font-weight: 600;
-    text-shadow:  2px 2px 14px white;
-    text-align: center;
-    width: 724px;
-    padding: 0 8px;
-    -webkit-text-stroke: 1.2px black;
-    -webkit-text-fill-color: #04B4F4;
-  }
-  .best-companyFL .apply-bestfl{
-    width: 160px;
-    height: 70px;
-    z-index: 15;
-    margin-left: 50px;
-    transition: .5s;
-    animation-name: pulse;
-    animation-duration: 1.5s;
-    animation-timing-function: cubic-bezier(0.9, 0.7, 0.5, 0.9);
-    animation-iteration-count: infinite;
-    animation-fill-mode: backwards;
-  }
-  .best-companyFL .close-best-fl{
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    font-size: 30px;
-    color: white;
-    cursor: pointer;
-    z-index: 20;
-  }
-  .best-companyFL .close-best-fl::before{
-    content: "";
-    position: absolute;
-    background-color: rgba(166,172,178,0.4);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    top: 2px;
-    right: -4.5px;
-  }
-  .best-companyFL .close-best-fl:hover::before{
-    background-color: rgba(166,172,178,0.6);
-  }
+  
+//   header.job-search swiper-container swiper-slide .best-companyFL {
+//     width: 100%;
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: start;
+//     align-items: center;
+//     height: 110px;
+//     text-decoration: none;
+//     color: #04B4F4;
+//     z-index: 12;
+//     position: relative;
+//     cursor: pointer;
+//     transition: .5s;
+//     padding: 0 20px;
+//   }
+//   header.job-search swiper-container swiper-slide .best-companyFL span{
+//     z-index: 13;
+//   }
+//   header.job-search swiper-container swiper-slide .best-companyFL .background-image {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     filter: blur(6px);
+//     z-index: 10;
+//   }
+//   header.job-search swiper-container swiper-slide .best-companyFL .info-bestfl{
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: center;
+//     align-items: center;
+//     margin-left: 50px;
+//   }
+//   header.job-search swiper-container swiper-slide .best-companyFL .info-bestfl span{
+//     font-size: 40px;
+//     font-weight: 700;
+//   }
+//   header.job-search swiper-container swiper-slide .best-companyFL .info-bestfl .best-fl-name {
+//     font-size: 26px;
+//     font-weight: 600;
+//     text-shadow:  2px 2px 14px white;
+//     text-align: center;
+//     width: 724px;
+//     padding: 0 8px;
+//     -webkit-text-stroke: 1.2px black;
+//     -webkit-text-fill-color: #04B4F4;
+//   }
+//   header.job-search swiper-container swiper-slide .best-companyFL .apply-bestfl{
+//     width: 160px;
+//     height: 70px;
+//     z-index: 15;
+//     margin-left: 50px;
+//     transition: .5s;
+//     animation-name: pulse;
+//     animation-duration: 1.5s;
+//     animation-timing-function: cubic-bezier(0.9, 0.7, 0.5, 0.9);
+//     animation-iteration-count: infinite;
+//     animation-fill-mode: backwards;
+//   }
+//   header.job-search swiper-container swiper-slide .best-companyFL .close-best-fl{
+//     position: absolute;
+//     top: 5px;
+//     right: 10px;
+//     font-size: 30px;
+//     color: white;
+//     cursor: pointer;
+//     z-index: 20;
+//   }
+//   header.job-search swiper-container swiper-slide .best-companyFL .close-best-fl::before{
+//     content: "";
+//     position: absolute;
+//     background-color: rgba(166,172,178,0.4);
+//     border-radius: 50%;
+//     width: 40px;
+//     height: 40px;
+//     top: 2px;
+//     right: -4.5px;
+//   }
+//   header.job-search swiper-container swiper-slide .best-companyFL .close-best-fl:hover::before{
+//     background-color: rgba(166,172,178,0.6);
+//   }
 
 .container-jobs{
     background-color: $backgroundcolor;
@@ -1132,6 +1422,7 @@ header.job-search .best-companyFL {
     transform: translateY(-60%);
     border-radius: 5px;
     box-shadow: 1px 1px 10px #838080;
+    background-color: white;
 }
 .best-job .main__best-job{
     display: flex;
@@ -1552,9 +1843,13 @@ header.job-search .best-companyFL {
         left: 25%;
     }
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1025px) {
     .header-search .header-search__scancv label{
         width: 150px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads span.superHot,
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .salary-content__job-ads a{
+        font-size: 14px;
     }
     .header-search .header-search__scancv label .text-scancv{
         font-size: 16px;
@@ -1626,6 +1921,29 @@ header.job-search .best-companyFL {
 @media screen and (max-width: 768px) {
     .header-search .navbar-left {
         display: none;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads span.superHot{
+        left: 30.5%;
+        transform: translateX(0);
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .salary-content__job-ads a{
+        padding: 8px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads h5{
+        font-size: 18px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads ul {
+        padding: unset;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads ul li{
+        font-size: 16px;
+        margin: 0 16px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads ul li img{
+        width: 22px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads a.ads-now {
+        font-size: 18px;
     }
     .header-search .input-search {
         width: 80%;
@@ -1791,6 +2109,46 @@ header.job-search .best-companyFL {
     .best-companyFL .info-bestfl .best-fl-name{
         font-size: 18px;
     }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads{
+        width: 85%;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads span.superHot{
+        left: 20%;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .background-company__job-ads .avatar-company{
+        height: 100px;
+        width: 100px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .primary-content__job-ads{
+        padding-left: 60px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .primary-content__job-ads a{
+        font-size: 22px;
+        margin: unset;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .primary-content__job-ads h5{
+        font-size: 18px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .primary-content__job-ads p.job-desc{
+        font-size: 14px;
+        margin: unset;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .primary-content__job-ads .secondary-content p,
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .salary-content__job-ads a{
+        font-size: 10px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads h5,
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads a.ads-now {
+        font-size: 16px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads ul li img{
+        margin-right: unset;
+        width: 26px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads ul li{
+        flex-direction: column;
+        height: 70px;
+    }
     .header-search {
         height: 180px;
     }
@@ -1911,25 +2269,114 @@ header.job-search .best-companyFL {
     }
 }
 @media screen and (max-width: 415px) {
-    header.job-search .best-companyFL .info-bestfl span{
-        color: white;
-        font-size: 28px;
+    // header.job-search .best-companyFL .info-bestfl span{
+    //     color: white;
+    //     font-size: 28px;
+    // }
+    // .best-companyFL .info-bestfl .best-fl-name{
+    //     font-size: 12px !important;
+    //     -webkit-text-stroke: unset;
+    //     -webkit-text-fill-color: white;
+    //     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    // }
+    // header.job-search .best-companyFL .background-image{
+    //     background-color: rgba(0,0,0,0.6);
+    // }
+    // .best-companyFL .info-bestfl{
+    //     width: 65%;
+    // }
+    // .best-companyFL .apply-bestfl {
+    //     width: 90px;
+    //     height: 50px;
+    // }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads{
+        width: 80%;
+        flex-direction: column;
     }
-    .best-companyFL .info-bestfl .best-fl-name{
-        font-size: 12px !important;
-        -webkit-text-stroke: unset;
-        -webkit-text-fill-color: white;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .background-company__job-ads{
+        width: 100%;
+        height: 40%;
     }
-    header.job-search .best-companyFL .background-image{
-        background-color: rgba(0,0,0,0.6);
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .background-company__job-ads .avatar-company{
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        height: 60px;
     }
-    .best-companyFL .info-bestfl{
-        width: 65%;
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .primary-content__job-ads{
+        height: 30%;
+        width: 100%;
+        padding: 12px;
+        align-items: center;
+        padding: 10px 0 0 0;
     }
-    .best-companyFL .apply-bestfl {
-        width: 90px;
-        height: 50px;
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .primary-content__job-ads .secondary-content{
+        justify-content: center;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .salary-content__job-ads{
+        width: 100%;
+        height: 30%;
+        justify-content: start;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads span.superHot{
+        font-size: 8px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads::after{
+        width: 95%;
+        height: 6px;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: unset;
+        bottom: unset;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        border-top-right-radius: 0;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .primary-content__job-ads a {
+        font-size: 18px;
+        height: 28px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .primary-content__job-ads h5{
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .primary-content__job-ads .secondary-content p,
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .salary-content__job-ads a{
+        font-size: 8px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .primary-content__job-ads p.job-desc{
+        display: none;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .salary-content__job-ads p{
+        font-size: 12px;
+        margin: 4px 0;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads span.superHot{
+        top: unset;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: unset;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+        padding: 2px 12px;
+        font-weight: 600;
+        width: 80%;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads{
+        padding: 0 20px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads h3{
+        font-size: 16px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads h5, 
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads a.ads-now,
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads ul li {
+        font-size: 14px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads ul li{
+        margin: 0 16px 0 10px;
     }
     .header-search .input-search {
         justify-content: space-around;
@@ -2095,6 +2542,12 @@ header.job-search .best-companyFL {
     .box-apply-job header{
         height: 25%;
     }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads{
+        padding: 0 12px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads ul li{
+        font-size: 12px;
+    }
 }
 @media screen and (max-width: 322px) {
     .container-jobs h1.jobs-matched {
@@ -2103,8 +2556,28 @@ header.job-search .best-companyFL {
     .main-jobs .card-jobs .card-job .card-job__action .detail-job__action {
         font-size: 8px;
     }
-    header.job-search .best-companyFL .info-bestfl span {
-        font-size: 16px;
+    // header.job-search .best-companyFL .info-bestfl span {
+    //     font-size: 16px;
+    // }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads span.superHot{
+        width: 90%;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads h3{
+        font-size: 14px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads h5, 
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads a.ads-now{
+        font-size: 12px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads ul{
+        padding: 0 20px;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads ul li{
+        font-size: 10px;
+        margin: unset;
+    }
+    header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads ul li img{
+        width: 22px;
     }
     .header-search .header-search__scancv label .text-scancv {
         font-size: 14px;

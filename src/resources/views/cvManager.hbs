@@ -35,11 +35,25 @@
                 <div class="box__failed-cv">
                     <h2>In total, this job has <b>{{countFailed}}</b> CVs that have failed your company's requirements</h2>
                 {{#each cvFailed}}
-                    <a href="/applyCV/{{job.companyname}}/{{job.jobname}}/unsatisfactory/{{this.nameCV}}" class="card__failed-cv" download>
-                        <span class="person-applied"><b>Applicant's Name:</b> {{this.name}}</span>
-                        {{#if this.professional}}
-                        <span class="headline"><b>Applicant's Professional Headline:</b> {{this.professional}}</span>
+                    <a href="/applyCV/{{job.companyname}}/{{job.jobname}}/unsatisfactory/{{item.nameCV}}" class="card__failed-cv" download>
+                        <div class="primary-content__management">
+                            <div class="left-content">
+                                <span class="person-applied"><b>{{this.name}}</b></span>
+                                {{#if this.professional}}
+                                    <span class="headline">{{this.professional}}</span>
+                                {{else}}
+                                {{/if}}
+                            </div>
+                            <div class="right-content">
+                                {{#each this.userDetail}}
+                                    <img class="avatar-managerment" src="/{{this.avatar}}" alt="">
+                                {{/each}}
+                            </div>
+                        </div>
+                        {{#if this.score}}
+                        <span class="score-applied"><i class="bi bi-stars"></i> {{this.score}}% match</span>
                         {{else}}
+                        <span class="score-applied"><i class="bi bi-stars"></i> 0% match</span>
                         {{/if}}
                         <span class="email-applied"><b>Applicant's Email:</b> {{this.email}}</span>
                         <span class="phone-applied"><b>Applicant's Phone:</b> {{this.phone}}</span>

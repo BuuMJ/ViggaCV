@@ -1,14 +1,82 @@
 <header class="job-search">
-     <a data-href="{{bestFL._id}}" class="best-companyFL">
-    <div class="background-image" style="background: linear-gradient(to right, #100a0933, #100a0933), url('{{getbackgroundJobBest bestFL}}') center/cover no-repeat;"></div>
-    <div class="info-bestfl">
-    <span>&#62;&#62;&#62;</span>
-    <span class="best-fl-name"> {{bestFL.companyname}} {{bestFL.typeofbusiness}} is the company with the most followers on the website</span>
-    <span>&#60;&#60;&#60;</span>
+<div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+    {{#ifeq user 'user'}}
+      {{#each listJobAd}}
+        <div class="swiper-slide">
+          <div class="job-ads">
+            <div class="background-company__job-ads">
+                <img class="background-company" src="/{{this.backGround}}" alt="">
+                <img class="avatar-company" src="{{this.avatar}}" alt="">
+            </div>
+            <div class="primary-content__job-ads">
+                <a href="/job/{{this._id}}">{{this.jobname}}</a>
+                <h5>{{this.companyname}}</h5>
+                <p class="job-desc">{{this.jobdesc}}</p>
+                <div class="secondary-content">
+                  <p><i class="bi bi-calendar-date"></i> {{moment this.createdAt format="DD/MM/YYYY"}}</p>
+                  <p class="location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</p>
+                </div>
+                <span class="superHot"><i class="bi bi-fire"></i> The most outstanding jobs today <i class="bi bi-fire"></i></span>
+            </div>
+            <div class="salary-content__job-ads">
+              <p><i class="bi bi-currency-dollar"></i> {{this.salary}}</p>
+              <a href="/job/{{this._id}}"><i class="bi bi-fire"></i> Apply Now <i class="bi bi-fire"></i></a>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    {{else}}
+      {{#each listJobAd}}
+        <div class="swiper-slide">
+          <div class="job-ads">
+            <div class="background-company__job-ads">
+                <img class="background-company" src="/{{this.backGround}}" alt="">
+                <img class="avatar-company" src="{{this.avatar}}" alt="">
+            </div>
+            <div class="primary-content__job-ads">
+                <a href="/job/{{this._id}}">{{this.jobname}}</a>
+                <h5>{{this.companyname}}</h5>
+                <p class="job-desc">{{this.jobdesc}}</p>
+                <div class="secondary-content">
+                  <p><i class="bi bi-calendar-date"></i> {{moment this.createdAt format="DD/MM/YYYY"}}</p>
+                  <p class="location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</p>
+                </div>
+                <span class="superHot"><i class="bi bi-fire"></i> The most outstanding jobs today <i class="bi bi-fire"></i></span>
+            </div>
+            <div class="salary-content__job-ads">
+              <p><i class="bi bi-currency-dollar"></i> {{this.salary}}</p>
+              <a href="/job/{{this._id}}"><i class="bi bi-fire"></i> Apply Now <i class="bi bi-fire"></i></a>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+      {{#if user}}
+      <div class="swiper-slide">
+        <div class="hot-job__ads">
+          <h3><i class="bi bi-fire"></i> Connect with top talent today <i class="bi bi-fire"></i></h3>
+          <h5>We provide a specialized platform for employers to advertise job opportunities and attract high-quality candidates. Key features include:</h5>
+          <ul>
+            <li><img src="/img/benefit.svg" alt="">Priority Placement</li>
+            <li><img src="/img/benefit.svg" alt="">Diverse Candidate Network</li>
+            <li><img src="/img/benefit.svg" alt="">Flexible Advertising</li>
+          </ul>
+          <a class="ads-now" href="/companyprofile"><i class="bi bi-fire"></i> Advertise Now <i class="bi bi-fire"></i></a>
+        </div>
+      </div>
+      {{/if}}
+    {{/ifeq}}
+  </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    {{!-- <div class="swiper-pagination"></div> --}}
+    <div class="autoplay-progress">
+      <svg viewBox="0 0 48 48">
+        <circle cx="24" cy="24" r="20"></circle>
+      </svg>
+      <span></span>
     </div>
-    <img src="/img/viewnow.png" class="apply-bestfl">
-    <span class="close-best-fl"><i class="bi bi-x-lg"></i></span>
-  </a>
+  </div>
   {{#if user}}
     <div class="header-search">
       <div class="navbar-left">
@@ -168,7 +236,32 @@
     </div>
   </div>
   </div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
+  const progressCircle = document.querySelector("header.job-search .swiper .autoplay-progress svg");
+    const progressContent = document.querySelector("header.job-search .swiper .autoplay-progress span");
+    var swiper = new Swiper("header.job-search .swiper", {
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+        delay: 8000,
+        disableOnInteraction: false
+      },
+      /*pagination: {
+        el: "header.job-search .swiper .swiper-pagination",
+        clickable: true
+      },*/
+      navigation: {
+        nextEl: "header.job-search .swiper .swiper-button-next",
+        prevEl: "header.job-search .swiper .swiper-button-prev"
+      },
+      on: {
+        autoplayTimeLeft(s, time, progress) {
+          progressCircle.style.setProperty("--progress", 1 - progress);
+          progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+        }
+      }
+    });
   var showCloseBox = document.getElementById('close-suggest');
   var boxClose = document.querySelector('.box-contain-close');
   var closeSuggest = document.querySelector('.card-suggest');
@@ -184,30 +277,6 @@
   boxClose.addEventListener('click',()=>{
     closeSuggest.style.display = 'none';
   });
-  var closeBestFL = document.querySelector('.close-best-fl ');
-  var boxBestCompanyFl = document.querySelector('.best-companyFL');
-  var deleteMargin = document.querySelector('.container-jobs');
-  var link = boxBestCompanyFl.getAttribute('data-href');
-  var clickBTN = document.querySelector('.background-image');
-  var applyBestFL = document.querySelector('.apply-bestfl');
-  var infoBestFL = document.querySelector('.info-bestfl');
-  infoBestFL.addEventListener('click',()=>{
-    boxBestCompanyFl.href = `/company/${link}`;
-  });
-  applyBestFL.addEventListener('click',()=>{
-    boxBestCompanyFl.href = `/company/${link}`;
-  });
-  clickBTN.addEventListener('click',()=>{
-    boxBestCompanyFl.href = `/company/${link}`;
-  });
-  closeBestFL.addEventListener('click',()=>{
-    boxBestCompanyFl.style.cssText = "opacity: 0";
-    deleteMargin.style.margin = '0';
-    setTimeout(function(){
-      boxBestCompanyFl.style.display = 'none';
-    },200)
-  });
-
 var getPagination = document.querySelectorAll('.pagination a');
 var paginationContainer = document.querySelector('.pagination');
 if (getPagination.length > 1) {
@@ -228,12 +297,11 @@ getPagination.forEach(function(pageLink) {
 document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('scroll', function() {
   var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-  var boxDisplay = getComputedStyle(boxBestCompanyFl).getPropertyValue('display');
-
-  if (boxDisplay === 'none') {
+  var checkLengthSlide = document.querySelectorAll('.swiper-slide').length;
+  console.log(checkLengthSlide)
+  if (checkLengthSlide === 0) {
     if (scrollPosition >= 85) {
       document.querySelector('.header-search').style.cssText = 'position: fixed; top: 0; box-shadow: 1px 1px 10px rgba(0,0,0,0.5); background-color: white; border-bottom: 1px solid #ededed;';
-      deleteMargin.style.cssText = 'margin-top: 80px';
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: #F7F7F7;';
       if(document.querySelector('.header-search .input-search .categories-select') && document.querySelector('.header-search .input-search .categories-select__position')){
         document.querySelector('.header-search .input-search .categories-select').style.cssText = 'background-color: #F7F7F7;';
@@ -245,7 +313,6 @@ window.addEventListener('scroll', function() {
       document.querySelector('.header-search .header-search__login .search-login').style.display = 'flex';
     } else {
       document.querySelector('.header-search').style.cssText = 'position: unset; box-shadow: unset;';
-      deleteMargin.style.margin = '0';
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: white;';
       if(document.querySelector('.header-search .input-search .categories-select') && document.querySelector('.header-search .input-search .categories-select__position')){
       document.querySelector('.header-search .input-search .categories-select').style.cssText = 'background-color: white;';
@@ -256,11 +323,17 @@ window.addEventListener('scroll', function() {
       document.getElementById('change-logo').src = '/img/LOGOVGAJOB.png';
       document.querySelector('.header-search .header-search__login .search-login').style.display = 'none';
     }
-  } else if (boxDisplay === 'flex') {
-    if (scrollPosition >= 192) {
+  } else if (checkLengthSlide > 0) {
+    if (scrollPosition >= 362) {
       document.querySelector('.header-search').style.cssText = 'position: fixed; top: 0; box-shadow: 1px 1px 10px rgba(0,0,0,0.5); background-color: white; border-bottom: 1px solid #ededed;';
-      deleteMargin.style.cssText = 'margin-top: 85px';
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: #F7F7F7;';
+      if(window.innerWidth > 603){
+        document.querySelector('.container-jobs').style.cssText = 'margin-top: 80px';
+      }else if(window.innerWidth > 374 && window.innerWidth < 602){
+        document.querySelector('.container-jobs').style.cssText = 'margin-top: 180px';
+      }else{
+        document.querySelector('.container-jobs').style.cssText = 'margin-top: 120px';
+      }
       if(document.querySelector('.header-search .input-search .categories-select') && document.querySelector('.header-search .input-search .categories-select__position')){
         document.querySelector('.header-search .input-search .categories-select').style.cssText = 'background-color: #F7F7F7;';
         document.querySelector('.header-search .input-search .categories-select__position').style.cssText = 'background-color: #F7F7F7;';
@@ -271,8 +344,8 @@ window.addEventListener('scroll', function() {
       document.querySelector('.header-search .header-search__login .search-login').style.display = 'flex';
     } else {
       document.querySelector('.header-search').style.cssText = 'position: unset; box-shadow: unset;';
-      deleteMargin.style.margin = '0';
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: white;';
+      document.querySelector('.container-jobs').style.cssText = 'margin-top: 0';
       if(document.querySelector('.header-search .input-search .categories-select') && document.querySelector('.header-search .input-search .categories-select__position')){
         document.querySelector('.header-search .input-search .categories-select').style.cssText = 'background-color: white;';
         document.querySelector('.header-search .input-search .categories-select__position').style.cssText = 'background-color: white;';
@@ -284,6 +357,36 @@ window.addEventListener('scroll', function() {
     }
   }
 });
+const jobToAds = document.querySelector('.hot-job__ads a.ads-now')
+console.log(jobToAds)
+  jobToAds.addEventListener('click',()=>{
+    localStorage.setItem("guideADS", "true")
+  })
+  /*
+  var closeBestFL = document.querySelector('.close-best-fl ');
+  var boxBestCompanyFl = document.querySelector('.best-companyFL');
+  var deleteMargin = document.querySelector('.container-jobs');
+  var link = boxBestCompanyFl.getAttribute('data-href');
+  var clickBTN = document.querySelector('.background-image');
+  var applyBestFL = document.querySelector('.apply-bestfl');
+  var infoBestFL = document.querySelector('.info-bestfl');
+  
+  infoBestFL.addEventListener('click',()=>{
+    boxBestCompanyFl.href = `/company/${link}`;
+  });
+  applyBestFL.addEventListener('click',()=>{
+    boxBestCompanyFl.href = `/company/${link}`;
+  });
+  clickBTN.addEventListener('click',()=>{
+    boxBestCompanyFl.href = `/company/${link}`;
+  });
+  closeBestFL.addEventListener('click',()=>{
+    boxBestCompanyFl.style.cssText = "opacity: 0";
+    deleteMargin.style.margin = '0';
+    setTimeout(function(){
+      boxBestCompanyFl.style.display = 'none';
+    },200)
+  });*/
 
         localStorage.setItem('boxJobInfo', 'show');
         localStorage.setItem('boxCompanyInfo', 'hide');
