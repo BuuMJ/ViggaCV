@@ -7628,6 +7628,48 @@ header.company-detail .background-company-detail {
   padding: 0 0 12px 0;
   transition: .5s; }
 
+.main__manager-cv section .box__passed-cv .card__passed-cv .primary-content__management,
+.main__manager-cv section .box__failed-cv .card__failed-cv .primary-content__management {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 12px 0; }
+
+.main__manager-cv section .box__passed-cv .card__passed-cv .primary-content__management .left-content,
+.main__manager-cv section .box__failed-cv .card__failed-cv .primary-content__management .left-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 70%; }
+
+.main__manager-cv section .box__passed-cv .card__passed-cv .primary-content__management .left-content .person-applied,
+.main__manager-cv section .box__failed-cv .card__failed-cv .primary-content__management .left-content .person-applied {
+  padding: unset;
+  text-transform: capitalize; }
+
+.main__manager-cv section .box__passed-cv .card__passed-cv .primary-content__management .left-content .headline,
+.main__manager-cv section .box__failed-cv .card__failed-cv .primary-content__management .left-content .headline {
+  padding: unset;
+  font-size: 14px;
+  font-weight: 700;
+  color: #949494; }
+
+.main__manager-cv section .box__passed-cv .card__passed-cv .primary-content__management .right-content,
+.main__manager-cv section .box__failed-cv .card__failed-cv .primary-content__management .right-content {
+  width: 20%;
+  display: flex;
+  justify-content: end;
+  align-items: center; }
+
+.main__manager-cv section .box__passed-cv .card__passed-cv .primary-content__management .right-content img,
+.main__manager-cv section .box__failed-cv .card__failed-cv .primary-content__management .right-content img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; }
+
 .main__manager-cv section .box__passed-cv .card__passed-cv:hover,
 .main__manager-cv section .box__failed-cv .card__failed-cv:hover {
   border: 1px solid #0072bc;
@@ -7637,6 +7679,18 @@ header.company-detail .background-company-detail {
 .main__manager-cv section .box__failed-cv .card__failed-cv:hover .name-file span {
   color: #0072bc;
   text-decoration: underline; }
+
+.main__manager-cv section .box__passed-cv .card__passed-cv .score-applied,
+.main__manager-cv section .box__failed-cv .card__failed-cv .score-applied {
+  padding: 12px 0 20px 0;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #5e5d5d; }
+
+.main__manager-cv section .box__passed-cv .card__passed-cv .score-applied i,
+.main__manager-cv section .box__failed-cv .card__failed-cv .score-applied i {
+  font-size: 24px;
+  color: #5e5d5d; }
 
 .main__manager-cv section .pagination {
   width: 100%;
