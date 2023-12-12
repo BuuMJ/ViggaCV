@@ -10,7 +10,7 @@ RUN npm ci
 COPY . .
 
 # Add the following line to set the permissions
-RUN chmod -R 777 uploads
+# RUN chmod -R 777 uploads
 
 # Add debug information
 RUN ls -al
