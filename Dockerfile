@@ -10,10 +10,10 @@ RUN npm ci
 COPY . .
 
 # Add the following line to set the permissions
-RUN chmod -R 777 /uploads
+# RUN chmod -R 777 /uploads
 
 # Add debug information
-RUN ls -al
+RUN ls -al /usr/src/app
 RUN echo "LS: $(ls -al)" 
 RUN echo "Node Version: $(node -v)"
 RUN echo "NPM Version: $(npm -v)"
