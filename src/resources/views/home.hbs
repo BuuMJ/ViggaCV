@@ -124,7 +124,7 @@
                     {{!-- job with the most favorite  --}}
                     {{#each jobs}}
                         <div class="swiper-slide">
-                            <a href="/job/{{this._id}}" class="box__info-job">
+                            <a href="/job/detail/{{this._id}}" class="box__info-job">
                                 <img src="{{this.jobDetail.avatar}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
                                 <div class="left__info-job">
                                     <span class="hot__job-name">{{this.jobDetail.jobname}}</span>
@@ -162,7 +162,7 @@ Create a quick and free CV template, so that employers must
             <div class="swiper-wrapper">
                 {{#each latestJobs}}
                 <div class="swiper-slide">
-                    <a href="/job/{{this._id}}" class="box-jobnew">
+                    <a href="/job/detail/{{this._id}}" class="box-jobnew">
                         <div class="top-jobnew">
                             <img src="/{{this.avatar}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
                             <div class="left-info__jobnew">
@@ -191,7 +191,7 @@ Create a quick and free CV template, so that employers must
             <div class="swiper-wrapper">
                 {{#each latestJobs}}
                 <div class="swiper-slide">
-                    <a href="/job/{{this._id}}" class="box-jobnew">
+                    <a href="/job/detail/{{this._id}}" class="box-jobnew">
                             <div class="top-jobnew">
                                 <img src="/{{this.avatar}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
                             </div>

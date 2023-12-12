@@ -10,7 +10,7 @@
                 <img class="avatar-company" src="{{this.avatar}}" alt="">
             </div>
             <div class="primary-content__job-ads">
-                <a href="/job/{{this._id}}">{{this.jobname}}</a>
+                <a href="/job/detail/{{this._id}}">{{this.jobname}}</a>
                 <h5>{{this.companyname}}</h5>
                 <p class="job-desc">{{this.jobdesc}}</p>
                 <div class="secondary-content">
@@ -21,7 +21,7 @@
             </div>
             <div class="salary-content__job-ads">
               <p><i class="bi bi-currency-dollar"></i> {{this.salary}}</p>
-              <a href="/job/{{this._id}}"><i class="bi bi-fire"></i> Apply Now <i class="bi bi-fire"></i></a>
+              <a href="/job/detail/{{this._id}}"><i class="bi bi-fire"></i> Apply Now <i class="bi bi-fire"></i></a>
             </div>
           </div>
         </div>
@@ -35,7 +35,7 @@
                 <img class="avatar-company" src="{{this.avatar}}" alt="">
             </div>
             <div class="primary-content__job-ads">
-                <a href="/job/{{this._id}}">{{this.jobname}}</a>
+                <a href="/job/detail/{{this._id}}">{{this.jobname}}</a>
                 <h5>{{this.companyname}}</h5>
                 <p class="job-desc">{{this.jobdesc}}</p>
                 <div class="secondary-content">
@@ -46,7 +46,7 @@
             </div>
             <div class="salary-content__job-ads">
               <p><i class="bi bi-currency-dollar"></i> {{this.salary}}</p>
-              <a href="/job/{{this._id}}"><i class="bi bi-fire"></i> Apply Now <i class="bi bi-fire"></i></a>
+              <a href="/job/detail/{{this._id}}"><i class="bi bi-fire"></i> Apply Now <i class="bi bi-fire"></i></a>
             </div>
           </div>
         </div>
@@ -159,7 +159,7 @@
           <img src="{{getAvatarJoba this}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
         </div>
         <div class="card-job__info">
-        <a href="/job/{{this._id}}" class="job-name">{{this.jobname}}</a>
+        <a href="/job/detail/{{this._id}}" class="job-name">{{this.jobname}}</a>
         <a href="/company/{{this.idcompany}}" class="job__company-name">{{this.companyname}}</a>
         <p class="job-desc" title="{{this.jobdesc}}">{{this.jobdesc}}</p>
         <div class="location-time">
@@ -189,7 +189,7 @@
         <ul class="random-job">
           <span class="suggest-text">suggested jobs</span>
           {{#each randomJobs}}
-          <a href="/job/{{this._id}}">
+          <a href="/job/detail/{{this._id}}">
             <li>
               <span class="suggest-jobname" title="{{this.jobname}}">{{this.jobname}}</span>
               <div class="suggestion-deal">

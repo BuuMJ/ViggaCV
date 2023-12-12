@@ -24,7 +24,7 @@
                         <p class="job-saved__location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</p>
                         <p class="job-saved__date"><i class="bi bi-calendar2-check"></i> {{moment this.createdAt format="DD/MM/YYYY" }}</p>
                         <div class="action__job-saved">
-                            <a href="/job/{{this._id}}">Apply Now</a>
+                            <a href="/job/detail/{{this._id}}">Apply Now</a>
                             <form class="function__check-save" action="/job/favourite?id={{this._id}}" method="POST">
                                 <button title="Unsave" class="check-save__job" type="submit"><i class="bi bi-heart-fill"></i></button>
                             </form>
@@ -45,7 +45,7 @@
                         <p class="job-saved__salary"><i class="bi bi-currency-dollar"></i> {{this.salary}}</p>
                         <p class="job-saved__location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</p>
                         <div class="action__job-saved">
-                            <a href="/job/{{this._id}}">Apply Now</a>
+                            <a href="/job/detail/{{this._id}}">Apply Now</a>
                             <form class="function__check-save" action="/job/favourite?id={{this._id}}" method="POST">
                             {{#if isFavourite}}
                                 <button title="Unsave" class="check-save__job" type="submit"><i class="bi bi-heart-fill"></i></button>
@@ -70,7 +70,7 @@
                         <p class="job-saved__salary"><i class="bi bi-currency-dollar"></i> {{this.salary}}</p>
                         <p class="job-saved__location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</p>
                         <div class="action__job-saved">
-                            <a href="/job/{{this._id}}">Apply Now</a>
+                            <a href="/job/detail/{{this._id}}">Apply Now</a>
                             <form class="function__check-save" action="/job/favourite?id={{this._id}}" method="POST">
                             {{#if isFavourite}}
                                 <button title="Unsave" class="check-save__job" type="submit"><i class="bi bi-heart-fill"></i></button>
