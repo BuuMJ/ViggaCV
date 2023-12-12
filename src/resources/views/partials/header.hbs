@@ -194,7 +194,7 @@
                 <li><a href="/cv"><span class="material-symbols-outlined">demography</span> NiceCV</a></li>
         </ul>
         {{else ifeq user 'company'}}
-        <a href="/yourjobs"><span class="material-symbols-outlined">folder_managed</span> Your Company Profile</a>
+        <a href="/companyprofile"><span class="material-symbols-outlined">folder_managed</span> Your Company Profile</a>
         <a href="/"><span class="material-symbols-outlined">home</span> Home</a>
         <a class="reset-localstorage" href="/job"><span class="material-symbols-outlined">work</span> Jobs</a>
         <ul class="drop-down__company">
@@ -245,19 +245,19 @@
 {{/if}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-      function logout() {
+  document.addEventListener("DOMContentLoaded", function() {
+    function logout() {
     document.cookie = 'token =; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         localStorage.setItem('showSignIn', 'show');
         localStorage.setItem('showSignUp', 'hide');
         localStorage.setItem('showForgot', 'hide');
     window.location.href = "/login"
   }
-  document.addEventListener("DOMContentLoaded", function() {
     var checkShowMenu = document.querySelector('.show-menu input#menu');
   function updateMenu(){
     if (checkShowMenu.checked) {
     document.querySelector('.responsive__navbar-center').style.transform = 'translateX(0)';
-       
+    document.querySelector('body').classList.add('modal-open');
     setTimeout(function(){
         document.querySelector('.overflow-header').style.display = 'block';
     },200);
@@ -265,6 +265,7 @@
     else{
     document.querySelector('.responsive__navbar-center').style.transform = 'translateX(200%)';
     document.querySelector('.overflow-header').style.display = 'none';
+    document.querySelector('body').classList.remove('modal-open');
     }
     };
     checkShowMenu.addEventListener('change',()=>{
@@ -274,6 +275,7 @@
         checkShowMenu.checked = false;
         document.querySelector('.overflow-header').style.display = 'none';
         document.querySelector('.responsive__navbar-center').style.transform = 'translateX(200%)';
+        document.querySelector('body').classList.remove('modal-open');
     })
     var clickedShowTools = false;
     var clickShowTools = document.querySelector('.drop-down__tools-responsive');
@@ -290,11 +292,11 @@
             textShowTools.innerHTML = '<span class="material-symbols-outlined">handyman</span> Tools <i class="bi bi-caret-down-fill"></i>';
         }
     });
-});
-var removeLocalStorageLogin = document.querySelector('.removeLocalstorage');
-removeLocalStorageLogin.addEventListener('click',()=>{
+    var removeLocalStorageLogin = document.querySelector('.removeLocalstorage');
+    removeLocalStorageLogin.addEventListener('click',()=>{
         localStorage.setItem('showSignIn', 'show');
         localStorage.setItem('showSignUp', 'hide');
         localStorage.setItem('showForgot', 'hide');
 })
+});
 </script>
