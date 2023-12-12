@@ -15,7 +15,7 @@
                 <div class="box__passed-cv">
                     <h2>In total, this job has <b>{{countPassed}}</b> CVs that have passed your company's requirements</h2>
                 {{#each cvPassed}}
-                    <a href="/applyCV/{{job.companyname}}/{{job.jobname}}/qualified/{{this.nameCV}}" class="card__passed-cv" download>
+                    <a href="/applyCV/{{job.companyname}}/{{job.jobname}}/Qualified/{{this.nameCV}}" class="card__passed-cv" download>
                         <div class="primary-content__management">
                             <div class="left-content">
                                 <span class="person-applied"><b>{{this.name}}</b></span>
@@ -45,7 +45,7 @@
                 <div class="box__failed-cv">
                     <h2>In total, this job has <b>{{countFailed}}</b> CVs that have failed your company's requirements</h2>
                 {{#each cvFailed}}
-                    <a href="/applyCV/{{job.companyname}}/{{job.jobname}}/unsatisfactory/{{item.nameCV}}" class="card__failed-cv" download>
+                    <a href="/applyCV/{{job.companyname}}/{{job.jobname}}/Unsatisfactory/{{item.nameCV}}" class="card__failed-cv" download>
                         <div class="primary-content__management">
                             <div class="left-content">
                                 <span class="person-applied"><b>{{this.name}}</b></span>
