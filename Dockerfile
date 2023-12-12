@@ -11,4 +11,6 @@ COPY package*.json ./
 RUN npm ci
 COPY . .
 
+User root
+
 CMD ["npm", "start"]
