@@ -216,7 +216,7 @@
     containerCVFailed.forEach(item=>{
         const scoreText = item.querySelector('.score-applied');
         let scoreData = scoreText.getAttribute('data-score');
-        if(scoreData === ''){
+        if(scoreData === '' || scoreData === "NaN"){
             scoreData = '0'
         }
         const score = parseFloat(scoreData);
@@ -230,7 +230,7 @@
     containerCVPassed.forEach(item=>{
         const scoreText = item.querySelector('.score-applied');
         let  scoreData = scoreText.getAttribute('data-score');
-        if(scoreData === ''){
+        if(scoreData === '' || scoreData === "NaN"){
             scoreData = '0'
         }
         const score = parseFloat(scoreData) * 100;
