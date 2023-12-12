@@ -367,6 +367,9 @@ class JobController {
   }
 
   async scan(req, res, next) {
+    console.log(
+      "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    );
     const user = req.user;
     const allJobs = await JobModel.find({ active: true });
 
@@ -376,7 +379,6 @@ class JobController {
         active: true,
         jobrequi: { $regex: new RegExp(req.session.jobs.join("|"), "i") },
       });
-      // console.log(job);
     }
 
     if (req.session.companyfield) {
@@ -387,13 +389,16 @@ class JobController {
         },
       }).select("_id");
       const companyIDs = companies.map((company) => company._id);
-      var companyscan = { ids: companyIDs };
+      if ((search = " ")) {
+        var companyscan = { ids: "companyIDs" };
+      } else {
+        var companyscan = { ids: companyIDs };
+      }
       // console.log(company);
       var job = await JobModel.find({
         idcompany: { $in: companyscan.ids },
         active: true,
       });
-      // console.log("đây là sanh sách các công việc phù hợp với bạn: " + job);
     }
     const count = job.length;
     const company = await CompanyModel.find({});
@@ -501,7 +506,6 @@ class JobController {
           .skip(skip)
           .limit(PAGE_SIZE)
           .then((data) => {
-            delete req.session.jobs;
             res.render("job", {
               user,
               count: count,
@@ -527,7 +531,6 @@ class JobController {
           .skip(skip)
           .limit(PAGE_SIZE)
           .then((data) => {
-            delete req.session.companyfield;
             res.render("job", {
               user,
               count: count,
@@ -561,7 +564,6 @@ class JobController {
           .skip(skip)
           .limit(PAGE_SIZE)
           .then((data) => {
-            delete req.session.jobs;
             res.render("job", {
               user,
               count: count,
@@ -587,7 +589,6 @@ class JobController {
           .skip(skip)
           .limit(PAGE_SIZE)
           .then((data) => {
-            delete req.session.companyfield;
             res.render("job", {
               user,
               count: count,
@@ -613,6 +614,9 @@ class JobController {
 
   //[GET] Job Detail
   async detail(req, res, next) {
+    console.log(
+      "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaâ"
+    );
     try {
       if (req.user) {
         var user = req.user;

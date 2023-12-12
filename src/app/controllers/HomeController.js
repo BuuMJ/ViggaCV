@@ -32,7 +32,6 @@ class HomeController {
           $unwind: "$jobDetail",
         },
       ]);
-      console.log(jobs);
       // thêm chức năng 20 việc làm mới nhất + thêm tổng số count vào
       const companies = await CompanyModel.find({});
       // thêm chức năng công ty có nhiều công việc nhất
@@ -112,15 +111,15 @@ class HomeController {
   async subscribe(req, res, next) {
     const email = req.body.subscribe;
     const data = await SubscribeModel.findOne({ email: email });
-    console.log("đã tới đây1" + email);
+    // console.log("đã tới đây1" + email);
     if (email != "") {
       if (data) {
-        console.log("đã tới đây2");
+        // console.log("đã tới đây2");
 
         req.session.msg = "Địa chỉ email của bạn đã đăng ký thành công!";
         res.redirect("/");
       } else {
-        console.log("đã tới đây3");
+        // console.log("đã tới đây3");
 
         await SubscribeModel.create({
           email: email,
@@ -129,7 +128,7 @@ class HomeController {
         res.redirect("/");
       }
     } else {
-      console.log("đã tới đây4");
+      // console.log("đã tới đây4");
 
       req.session.msg = "Vui lòng nhập địa chỉ email của bạn!";
       res.redirect("/");
