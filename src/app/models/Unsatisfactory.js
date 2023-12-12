@@ -6,6 +6,7 @@ const Unsatisfactory = new Schema({
   name: String,
   email: String,
   phone: String,
+  namePath: String,
   path: String,
   jobid: { type: mongoose.Schema.Types.ObjectId, ref: "Job", required: true },
   companyid: {

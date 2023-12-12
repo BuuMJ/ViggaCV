@@ -590,6 +590,14 @@ class CompanyProfileController {
             as: "userDetail",
           },
         },
+        {
+          $lookup: {
+            from: "jobs",
+            localField: "jobid",
+            foreignField: "_id",
+            as: "jobDetail",
+          },
+        },
       ]);
     } else {
       pagePassed = 1;
@@ -606,6 +614,14 @@ class CompanyProfileController {
             localField: "userid",
             foreignField: "_id",
             as: "userDetail",
+          },
+        },
+        {
+          $lookup: {
+            from: "jobs",
+            localField: "jobid",
+            foreignField: "_id",
+            as: "jobDetail",
           },
         },
       ]);
@@ -638,6 +654,14 @@ class CompanyProfileController {
           localField: "userid",
           foreignField: "_id",
           as: "userDetail",
+        },
+      },
+      {
+        $lookup: {
+          from: "jobs",
+          localField: "jobid",
+          foreignField: "_id",
+          as: "jobDetail",
         },
       },
     ]);

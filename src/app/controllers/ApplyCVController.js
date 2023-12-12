@@ -10,6 +10,8 @@ const UnsatisfactoryModel = require("../models/Unsatisfactory");
 
 class ApplyCVController {
   async scan(req, res, next) {
+    delete req.session.jobs;
+    delete req.session.companyfield;
     textract.fromFileWithPath(req.file.path, async function (error, text) {
       console.log("đây là văn bản sau khi scan cv: " + text);
       if (error) {
@@ -37,6 +39,9 @@ class ApplyCVController {
                 return;
               }
             });
+            console.log(
+              "đây là companyfield sau khi scan: " + filteredFields + "âccâcc"
+            );
             res.redirect("/job/scan");
           } else {
             const skillWords = skills.split(" ").map((word) => {
@@ -49,6 +54,9 @@ class ApplyCVController {
                 return;
               }
             });
+            console.log(
+              "đây là skill words sau khi scan: " + skillWords + "âccâcc"
+            );
             res.redirect("/job/scan");
           }
         } catch (err) {
@@ -109,6 +117,7 @@ class ApplyCVController {
           if (score / keywords.length > 0.5) {
             await QualifiedModel.create({
               nameCV: req.file.originalname,
+              namePath: req.file.filename,
               path: newPath,
               jobid: job._id,
               companyid: company._id,
@@ -122,6 +131,7 @@ class ApplyCVController {
           } else {
             await UnsatisfactoryModel.create({
               nameCV: req.file.originalname,
+              namePath: req.file.filename,
               path: newPath,
               jobid: job._id,
               companyid: company._id,

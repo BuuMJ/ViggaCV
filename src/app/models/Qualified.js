@@ -7,6 +7,7 @@ const Qualified = new Schema({
   email: String,
   phone: String,
   path: String,
+  namePath: String,
   jobid: { type: mongoose.Schema.Types.ObjectId, ref: "Job", required: true },
   companyid: {
     type: mongoose.Schema.Types.ObjectId,
