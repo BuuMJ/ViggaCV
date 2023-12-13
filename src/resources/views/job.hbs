@@ -1,6 +1,9 @@
 <header class="job-search">
 <div class="swiper mySwiper">
   <div class="swiper-wrapper">
+    {{!-- have user --}}
+    {{#if user}}
+    {{!-- role user --}}
     {{#ifeq user 'user'}}
       {{#each listJobAd}}
         <div class="swiper-slide">
@@ -21,11 +24,12 @@
             </div>
             <div class="salary-content__job-ads">
               <p><i class="bi bi-currency-dollar"></i> {{this.salary}}</p>
-              <a href="/job/detail/{{this._id}}"><i class="bi bi-fire"></i> Apply Now <i class="bi bi-fire"></i></a>
+              <a class="apply-job" href="/job/detail/{{this._id}}"><i class="bi bi-fire"></i> Apply Now <i class="bi bi-fire"></i></a>
             </div>
           </div>
         </div>
       {{/each}}
+      {{!-- role company & admin --}}
     {{else}}
       {{#each listJobAd}}
         <div class="swiper-slide">
@@ -46,12 +50,11 @@
             </div>
             <div class="salary-content__job-ads">
               <p><i class="bi bi-currency-dollar"></i> {{this.salary}}</p>
-              <a href="/job/detail/{{this._id}}"><i class="bi bi-fire"></i> Apply Now <i class="bi bi-fire"></i></a>
+              <a class="apply-job" href="/job/detail/{{this._id}}"><i class="bi bi-fire"></i> Apply Now <i class="bi bi-fire"></i></a>
             </div>
           </div>
         </div>
       {{/each}}
-      {{#if user}}
       <div class="swiper-slide">
         <div class="hot-job__ads">
           <h3><i class="bi bi-fire"></i> Connect with top talent today <i class="bi bi-fire"></i></h3>
@@ -64,8 +67,34 @@
           <a class="ads-now" href="/companyprofile"><i class="bi bi-fire"></i> Advertise Now <i class="bi bi-fire"></i></a>
         </div>
       </div>
-      {{/if}}
     {{/ifeq}}
+    {{!-- not user --}}
+    {{else}}
+    {{#each listJobAd}}
+    <div class="swiper-slide">
+          <div class="job-ads">
+            <div class="background-company__job-ads">
+                <img class="background-company" src="/{{this.backGround}}" alt="">
+                <img class="avatar-company" src="{{this.avatar}}" alt="">
+            </div>
+            <div class="primary-content__job-ads">
+                <a href="/job/detail/{{this._id}}">{{this.jobname}}</a>
+                <h5>{{this.companyname}}</h5>
+                <p class="job-desc">{{this.jobdesc}}</p>
+                <div class="secondary-content">
+                  <p><i class="bi bi-calendar-date"></i> {{moment this.createdAt format="DD/MM/YYYY"}}</p>
+                  <p class="location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</p>
+                </div>
+                <span class="superHot"><i class="bi bi-fire"></i> The most outstanding jobs today <i class="bi bi-fire"></i></span>
+            </div>
+            <div class="salary-content__job-ads">
+              <a class="view-salary salary-not__user" href="/login"><i class="bi bi-coin"></i> Sign in to view salary</a>
+              <a class="apply-job" href="/job/detail/{{this._id}}"><i class="bi bi-fire"></i> Apply Now <i class="bi bi-fire"></i></a>
+            </div>
+          </div>
+      </div>
+    {{/each}}
+    {{/if}}
   </div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
@@ -116,6 +145,7 @@
           <img class="icon-scancv" src="/img/scancv.png" alt="">
           <div class="tick-scancv"></div>
         </label>
+      <div class="overlay-scancv"></div>
       <div class="alert-scancv">
           <span>Below is the file you need to scan ?</span>
           <span class="file-name"></span>
@@ -153,6 +183,8 @@
       <h1 class="jobs-matched">{{count}} Jobs Matched</h1>
   <div class="main-jobs">
     <div class="card-jobs">
+      {{!-- have user --}}
+      {{#if user}}
       {{#each job}}
       <div class="card-job" data-href-cardjob="{{this._id}}">
         <div class="avatar-company">
@@ -175,6 +207,31 @@
         <img src="" alt="" class="new-job">
       </div>
       {{/each}}
+      {{!-- not user --}}
+      {{else}}
+      {{#each job}}
+      <div class="card-job" data-href-cardjob="{{this._id}}">
+        <div class="avatar-company">
+          <img src="{{getAvatarJoba this}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
+        </div>
+        <div class="card-job__info">
+        <a href="/job/detail/{{this._id}}" class="job-name">{{this.jobname}}</a>
+        <a href="/company/{{this.idcompany}}" class="job__company-name">{{this.companyname}}</a>
+        <p class="job-desc" title="{{this.jobdesc}}">{{this.jobdesc}}</p>
+        <div class="location-time">
+          <p class="job-time" data-time="{{this.createdAt}}"></p>
+          <p class="job-location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</p>
+        </div>
+        </div>
+        <div class="card-job__action">
+          <p class="salary-job__action salary-not__user"><i class="bi bi-coin"></i> Sign in to view salary</p>
+          <a class="detail-job__action" href="/job/detail/{{this._id}}">View Detail <i class="bi bi-chevron-double-right"></i></a>
+        </div>
+        <span class="check-hot" data-check-hot="{{this.prioritize}}"></span>
+        <img src="" alt="" class="new-job">
+      </div>
+      {{/each}}
+      {{/if}}
     <div class="pagination">
       {{#each pages}}
       <a href="/job?page={{this}}" data-page="{{this}}">{{this}}</a>
@@ -238,30 +295,32 @@
   </div>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
+document.addEventListener('DOMContentLoaded', () => {
   const progressCircle = document.querySelector("header.job-search .swiper .autoplay-progress svg");
     const progressContent = document.querySelector("header.job-search .swiper .autoplay-progress span");
-    var swiper = new Swiper("header.job-search .swiper", {
-      spaceBetween: 30,
-      centeredSlides: true,
-      autoplay: {
-        delay: 8000,
-        disableOnInteraction: false
-      },
-      /*pagination: {
-        el: "header.job-search .swiper .swiper-pagination",
-        clickable: true
-      },*/
-      navigation: {
-        nextEl: "header.job-search .swiper .swiper-button-next",
-        prevEl: "header.job-search .swiper .swiper-button-prev"
-      },
-      on: {
-        autoplayTimeLeft(s, time, progress) {
-          progressCircle.style.setProperty("--progress", 1 - progress);
-          progressContent.textContent = `${Math.ceil(time / 1000)}s`;
-        }
-      }
-    });
+    var checkLengthSlide = document.querySelectorAll('.swiper-slide').length;
+    var swiperOptions = {
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay: 8000,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: "header.job-search .swiper .swiper-button-next",
+      prevEl: "header.job-search .swiper .swiper-button-prev"
+    }
+  };
+if (checkLengthSlide > 1) {
+  swiperOptions.on = {
+    autoplayTimeLeft(s, time, progress) {
+      progressCircle.style.setProperty("--progress", 1 - progress);
+      progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+    }
+  };
+}
+  var swiper = new Swiper("header.job-search .swiper", swiperOptions);
+
   var showCloseBox = document.getElementById('close-suggest');
   var boxClose = document.querySelector('.box-contain-close');
   var closeSuggest = document.querySelector('.card-suggest');
@@ -294,11 +353,9 @@ getPagination.forEach(function(pageLink) {
     }
   });
 });
-document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('scroll', function() {
   var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
   var checkLengthSlide = document.querySelectorAll('.swiper-slide').length;
-  console.log(checkLengthSlide)
   if (checkLengthSlide === 0) {
     if (scrollPosition >= 85) {
       document.querySelector('.header-search').style.cssText = 'position: fixed; top: 0; box-shadow: 1px 1px 10px rgba(0,0,0,0.5); background-color: white; border-bottom: 1px solid #ededed;';
@@ -341,7 +398,9 @@ window.addEventListener('scroll', function() {
       document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #0072bc';
       document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: black;';
       document.getElementById('change-logo').src = '/img/LOGOVGA.png';
+      if(document.querySelector('.header-search .header-search__login .search-login')){
       document.querySelector('.header-search .header-search__login .search-login').style.display = 'flex';
+      }
     } else {
       document.querySelector('.header-search').style.cssText = 'position: unset; box-shadow: unset;';
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: white;';
@@ -353,15 +412,19 @@ window.addEventListener('scroll', function() {
       document.querySelector('.header-search .navbar-left .navbar-left__primary a.navbar-left-name').style.cssText = 'color: #0E0E23';
       document.querySelector('.header-search .navbar-left a.litle-text').style.cssText = 'color: #0072bc;';
       document.getElementById('change-logo').src = '/img/LOGOVGAJOB.png';
+      if(document.querySelector('.header-search .header-search__login .search-login')){
       document.querySelector('.header-search .header-search__login .search-login').style.display = 'none';
+      }
     }
   }
 });
+if(document.querySelector('.hot-job__ads a.ads-now')){
 const jobToAds = document.querySelector('.hot-job__ads a.ads-now')
 console.log(jobToAds)
   jobToAds.addEventListener('click',()=>{
     localStorage.setItem("guideADS", "true")
   })
+}
   /*
   var closeBestFL = document.querySelector('.close-best-fl ');
   var boxBestCompanyFl = document.querySelector('.best-companyFL');
@@ -408,31 +471,45 @@ console.log(jobToAds)
 document.addEventListener('DOMContentLoaded', () => {
   var fileInput = document.getElementById('scancv');
   var form = document.querySelector('.header-search__scancv');
-  fileInput.addEventListener('change', () => {
-    var input = fileInput; 
+  if (fileInput) {
+    fileInput.addEventListener('change', handleFileChange);
+  }
+  function handleFileChange() {
+    var input = fileInput;
     if (input.files.length > 0) {
       var fileName = input.value.split('\\').pop();
       document.querySelector('.file-name').innerHTML = fileName;
       var confirmed = document.querySelector('.alert-scancv');
-      confirmed.style.cssText = 'transform: translateY(0)';
-      acceptFile = document.querySelector('.submit-scancv');
-      refuseFile = document.querySelector('.refuse-scancv');
+      confirmed.style.cssText = 'transform: translateY(-50%)';
+      var overlayScanCV = document.querySelector('.header-search .overlay-scancv');
+      overlayScanCV.style.display = 'block';
+      var acceptFile = document.querySelector('.submit-scancv');
+      var refuseFile = document.querySelector('.refuse-scancv');
+      document.querySelector('body').classList.add('modal-open')
       acceptFile.addEventListener('click', () => {
         form.submit();
+        refuseFile.removeEventListener('click', handleFileRefusal);
       });
-      refuseFile.addEventListener('click', () => {
-        var stopScan = confirm('Do you want to stop scanning?');
-        if (stopScan) {
-          confirmed.style.cssText = 'transform: translateY(-500%)';
-          setTimeout(function() {
-            alert("Action not successful");
-          }, 300);
-        } else {
-
-        }
-      });
+      refuseFile.addEventListener('click', handleFileRefusal);
     }
-  });
+  }
+  function handleFileRefusal() {
+    var stopScan = confirm('Do you want to stop scanning?');
+    if (stopScan) {
+      var confirmed = document.querySelector('.alert-scancv');
+      confirmed.style.cssText = 'transform: translateY(-500%)';
+      var overlayScanCV = document.querySelector('.header-search .overlay-scancv');
+      overlayScanCV.style.display = 'none';
+      document.querySelector('body').classList.remove('modal-open')
+      fileInput.value = "";
+      setTimeout(() => {
+        alert("Action not successful");
+      }, 300);
+      refuseFile.removeEventListener('click', handleFileRefusal);
+    }
+  }
+  var overlayScanCV = document.querySelector('.header-search .overlay-scancv');
+  overlayScanCV.addEventListener('click', handleFileRefusal)
 });
 var containerJobs = document.querySelectorAll('.card-job');
 containerJobs.forEach(function(cardJob){

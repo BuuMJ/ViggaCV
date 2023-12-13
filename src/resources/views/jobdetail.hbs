@@ -5,7 +5,11 @@
             <span class="primary-text">{{detail.jobname}}</span>
             <span class="secondary-text">{{getCompanyname company}} {{getTOB company}}</span>
             <span class="third-text"><i class="bi bi-geo-alt"></i> {{detail.joblocation}}</span>
+            {{#if user}}
             <span class="forth-text"><i class="bi bi-currency-dollar"></i>{{detail.salary}}</span>
+            {{else}}
+            <span class="forth-text salary-not__user"><i class="bi bi-coin"></i> Sign in to view salary</span>
+            {{/if}}
         </div>
         <div class="jobdetail-action">
             {{#if user}}
@@ -32,7 +36,11 @@
                 <div class="desc-jobinfo">
                     <p class="jobinfo-main-text">Job Description</p>
                     <p>{{detail.jobdesc}}</p>
+                    {{#if user}}
                     <p class="jobinfo-main-salary"><b>Salary Offer:</b> <i class="bi bi-currency-dollar"></i>{{detail.salary}}</p>
+                    {{else}}
+                    <p class="jobinfo-main-salary"><b>Salary Offer:</b> <span class="salary-not__user"><i class="bi bi-coin"></i> Sign in to view salary</span></p>
+                    {{/if}}
                 </div>
                 <div class="requirements-jobinfo">
                     <p class="jobinfo-main-text">Job Requirements</p>
@@ -68,16 +76,33 @@
             </div>
             <div class="main-jobsfromthiscompany">
                 <ul>
+                    {{!-- have user --}}
+                    {{#if user}}
                     {{#each job}}
                     <li class="content-listjob">
                         <a href="/job/detail/{{this._id}}" class="jftc-namejobs">{{this.jobname}}</a>
                         <div class="secondary-listjob">
                             <span class="locationjobs">
-                                <span class="jftc-salary"><i class="bi bi-currency-dollar"></i>{{this.salary}}</span> <span class="jftc-location"><i class="bi bi-geo-alt-fill"></i> {{this.joblocation}}</span>
+                                <span class="jftc-salary"><i class="bi bi-currency-dollar"></i> {{this.salary}}</span>
+                                <span class="jftc-location"><i class="bi bi-geo-alt-fill"></i> {{this.joblocation}}</span>
                             </span>
                         </div> 
                     </li>
                     {{/each}}
+                    {{!-- not user --}}
+                    {{else}}
+                    {{#each job}}
+                    <li class="content-listjob">
+                        <a href="/job/detail/{{this._id}}" class="jftc-namejobs">{{this.jobname}}</a>
+                        <div class="secondary-listjob">
+                            <span class="locationjobs">
+                                <span class="jftc-salary salary-not__user"><i class="bi bi-coin"></i> Sign in to view salary</span> 
+                                <span class="jftc-location"><i class="bi bi-geo-alt-fill"></i> {{this.joblocation}}</span>
+                            </span>
+                        </div> 
+                    </li>
+                    {{/each}}
+                    {{/if}}
                 </ul>
                 <div class="pagination" data-id-pagination="{{idjob}}">
                     {{#each pages}}
@@ -178,8 +203,8 @@
     document.addEventListener('DOMContentLoaded', function() {
         var inputFile = document.getElementById('cv');
         var showFileSpan = document.querySelector('.show-file');
-
-        inputFile.addEventListener('change', function() {
+        if(inputFile){
+            inputFile.addEventListener('change', function() {
             if (this.files && this.files.length > 0) {
                 showFileSpan.innerHTML = this.files[0].name;
                 showFileSpan.style.cssText = 'color: #D3D3D3';
@@ -208,6 +233,7 @@
                 alert('Please upload your CV to apply for this job')
             }
         })
+        }
         var showBoxJobInfo = localStorage.getItem('boxJobInfo');
         var showBoxCompanyInfo = localStorage.getItem('boxCompanyInfo');
         var showBoxJFTC = localStorage.getItem('boxJFTC');
@@ -303,7 +329,7 @@
     }
     getPagination.forEach(function(pageLink) {
     var page = pageLink.getAttribute('data-page');
-    pageLink.href = `/job/${getIDPagination}?page=${page}`;
+    pageLink.href = `/job/detail/${getIDPagination}?page=${page}`;
     pageLink.addEventListener('click', function(event) {
         if (pageLink.classList.contains('active')) {
         event.preventDefault();

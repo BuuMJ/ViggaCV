@@ -129,7 +129,11 @@
                                 <div class="left__info-job">
                                     <span class="hot__job-name">{{this.jobDetail.jobname}}</span>
                                     <span class="hot__job__company-name">{{this.jobDetail.companyname}}</span>
+                                    {{#if user}}
                                     <span class="hot__job-salary"><i class="bi bi-currency-dollar"></i> {{this.jobDetail.salary}}</span>
+                                    {{else}}
+                                    <span class="hot__job-salary salary-not__user"><i class="bi bi-coin"></i> Sign in to view salary</span>
+                                    {{/if}}
                                     <span class="hot__location"><i class="bi bi-geo-alt"></i> {{this.jobDetail.joblocation}}</span>
                                 </div>
                             </a>
@@ -171,7 +175,11 @@ Create a quick and free CV template, so that employers must
                             </div>
                         </div>
                         <div class="bottom-jobnew">
+                            {{#if user}}
                             <span class="jobnew__salary"><i class="bi bi-currency-dollar"></i>{{this.salary}}</span>
+                            {{else}}
+                            <span class="jobnew__salary salary-not__user"><i class="bi bi-coin"></i> Sign in to view salary</span>
+                            {{/if}}
                             <span class="jobnew__location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</span>
                         </div>
                     </a>

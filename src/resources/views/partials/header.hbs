@@ -240,12 +240,11 @@
         <ul class="down__tools-responsive">
                 <li><a href="/cv"><span class="material-symbols-outlined">demography</span> NiceCV</a></li>
         </ul>
-        <a class="removeLocalstorage" href="/login"><i class="bi bi-door-open-fill"></i> Sign In</a>
+        <a class="removeLocalstorageResponsive" href="/login"><i class="bi bi-door-open-fill"></i> Sign In</a>
     </div>
 {{/if}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
     function logout() {
     document.cookie = 'token =; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         localStorage.setItem('showSignIn', 'show');
@@ -253,6 +252,7 @@
         localStorage.setItem('showForgot', 'hide');
     window.location.href = "/login"
   }
+  document.addEventListener("DOMContentLoaded", function() {
     var checkShowMenu = document.querySelector('.show-menu input#menu');
   function updateMenu(){
     if (checkShowMenu.checked) {
@@ -281,6 +281,7 @@
     var clickShowTools = document.querySelector('.drop-down__tools-responsive');
     var textShowTools = document.querySelector('.drop-down__tools-responsive span');
     var showTools = document.querySelector('.responsive__navbar-center .down__tools-responsive');
+    if(clickShowTools){
     clickShowTools.addEventListener('click', function() {
         if (!clickedShowTools) {
             clickedShowTools = true;
@@ -292,11 +293,22 @@
             textShowTools.innerHTML = '<span class="material-symbols-outlined">handyman</span> Tools <i class="bi bi-caret-down-fill"></i>';
         }
     });
+    }
     var removeLocalStorageLogin = document.querySelector('.removeLocalstorage');
+    if(removeLocalStorageLogin){
     removeLocalStorageLogin.addEventListener('click',()=>{
         localStorage.setItem('showSignIn', 'show');
         localStorage.setItem('showSignUp', 'hide');
         localStorage.setItem('showForgot', 'hide');
-})
+    })
+    }
+    const removeLocalstorageResponsive = document.querySelector('.removeLocalstorageResponsive')
+    if(removeLocalstorageResponsive){
+        removeLocalstorageResponsive.addEventListener('click',()=>{
+            localStorage.setItem('showSignIn', 'show');
+            localStorage.setItem('showSignUp', 'hide');
+            localStorage.setItem('showForgot', 'hide');
+        })
+    }
 });
 </script>

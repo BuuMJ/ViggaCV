@@ -31,6 +31,7 @@
     </div>
 </body>
 <script>
+document.addEventListener("DOMContentLoaded", function() {
       function moveToTop() {
   var moveTopBtn = document.getElementById("moveTopBtn");
   var moveTop = document.getElementById("toTop");
@@ -66,7 +67,7 @@ if (resetLocalStorageAdmin) {
     localStorage.setItem('currentPageJobAdmin', 1);
   });
 }
-document.addEventListener("DOMContentLoaded", function() {
+
     let currentHref = window.location.pathname;
     if (currentHref === '/' || currentHref === '') {
         let footerApp = document.querySelector('.footer-app');
@@ -80,8 +81,8 @@ document.addEventListener("DOMContentLoaded", function() {
             this.src = '/img/notfoundavatar.jpeg';
         };
     });
-});
-// show message
+
+    // show message
 var alertMessage = document.querySelector('.alert-message');
 var hideMessage = document.querySelector('.hide-message');
 if(alertMessage){
@@ -99,5 +100,14 @@ if(checkMessageSuccess === '?message=Update%20user%20successful' || checkMessage
     alertMessage.classList.add('alert-success');
 }
 }
+const salaryNotSee = document.querySelectorAll('.salary-not__user');
+salaryNotSee.forEach(item=>{
+  item.style.cssText = 'text-decoration: underline; cursor: pointer;'
+  item.addEventListener('click',(e)=>{
+      e.stopPropagation()
+      window.location.href = '/login'
+  })
+})
+});
 </script>
 </html>
