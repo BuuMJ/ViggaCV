@@ -3821,6 +3821,43 @@ header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads span.superHot {
   min-height: 620px;
   position: relative; }
 
+.modal-content__error {
+  position: fixed;
+  top: 20%;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2f2d2d;
+  color: #ff3333;
+  padding: 12px 12px 12px 24px;
+  z-index: 20;
+  font-weight: 600;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  overflow: hidden;
+  transform: translateX(200%);
+  transition: .5s; }
+
+.modal-content__error::after {
+  position: absolute;
+  content: "";
+  width: 12px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #ff3333; }
+
+.modal-content__error p {
+  margin: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.modal-content__error p i {
+  margin-right: 8px;
+  font-size: 24px; }
+
 .payment-fixed {
   position: fixed;
   right: -160px;
@@ -5616,7 +5653,9 @@ ul.listpageleadership .active {
   .payment-history .box-history h1 {
     font-size: 30px; }
   li.content-listjob .namejobs a {
-    padding-right: 50px; } }
+    padding-right: 50px; }
+  .modal-content__error {
+    font-size: 12px; } }
 
 @media screen and (max-width: 376px) {
   button.btn-setting {
@@ -5650,6 +5689,10 @@ ul.listpageleadership .active {
     font-size: 28px; } }
 
 @media screen and (max-width: 321px) {
+  .modal-content__error {
+    font-size: 10px; }
+  .modal-content__error p i {
+    font-size: 18px; }
   button.btn-setting {
     width: 52%; }
   .content-profile-main span {
