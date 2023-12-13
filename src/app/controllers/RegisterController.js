@@ -107,6 +107,11 @@ class RegisterController {
                           res.json("Không thể gửi mail");
                         } else {
                           if (info) {
+                            if (role == "company") {
+                              var confirm = false;
+                            } else {
+                              var confirm = true;
+                            }
                             bcrypt.hash(password, 10, function (err, hash) {
                               UserModel.create({
                                 username: username,
@@ -116,7 +121,7 @@ class RegisterController {
                                 phone: phone,
                                 role: role,
                                 skills: skills,
-                                confirm: false,
+                                confirm: confirm,
                               });
                             });
                             console.log(info);

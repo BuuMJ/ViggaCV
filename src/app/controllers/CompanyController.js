@@ -9,6 +9,10 @@ const {
 class CompanyController {
   //[GET] List companies
   async company(req, res, next) {
+    const confirm = req.user.confirm;
+    if (confirm == false) {
+      return res.redirect("/companyprofile");
+    }
     if (req.user) {
       var user_id = req.user._id;
     }
