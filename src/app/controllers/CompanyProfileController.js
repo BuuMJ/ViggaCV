@@ -458,6 +458,12 @@ class CompanyProfileController {
 
   //[GET] Post Job
   async postjob(req, res, next) {
+    const confirm = req.user.confirm;
+    if (confirm == false) {
+      return res.redirect(
+        "/companyprofile?message=Please complete company information before posting job."
+      );
+    }
     const iduser = req.user._id;
     const jobname = req.body.jobname;
     const jobdesc = req.body.jobdesc;
