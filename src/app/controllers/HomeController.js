@@ -12,9 +12,11 @@ const UserModel = require("../models/User");
 class HomeController {
   async home(req, res, next) {
     try {
-      const confirm = req.user.confirm;
-      if (confirm == false) {
-        return res.redirect("/companyprofile");
+      if (req.user) {
+        const confirm = req.user.confirm;
+        if (confirm == false) {
+          return res.redirect("/companyprofile");
+        }
       }
       const msg = req.query.messenge;
       // const jobs = await JobModel.find({ active: true });
