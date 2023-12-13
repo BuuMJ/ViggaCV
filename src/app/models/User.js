@@ -32,6 +32,7 @@ const User = new Schema(
     companydesc: String,
     TOB: String,
     isVerified: { type: Boolean, default: false },
+    confirm: { type: Boolean, default: false },
   },
   {
     collection: "user",

@@ -31,16 +31,17 @@ class CompanyProfileController {
     const company = await CompanyModel.findOne({ iduser: req.user._id });
     if (company) {
       var leadership = company.leadership;
+      var transactionHistory = await RevenueModel.aggregate([
+        {
+          $match: {
+            idcompany: company._id,
+          },
+        },
+      ]);
     } else {
       var leadership = null;
     }
-    const transactionHistory = await RevenueModel.aggregate([
-      {
-        $match: {
-          idcompany: company._id,
-        },
-      },
-    ]);
+
     // console.log(
     //   company.leadership +
     //     "ĐÂY LÀ GIÁ TRỊ CỦA COMPANY PROFILEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE"
@@ -159,6 +160,10 @@ class CompanyProfileController {
                 mission: mission,
                 history: history,
               });
+              const idUser = req.user._id;
+              await UserModel.findByIdAndUpdate(idUser, {
+                comfirm: true,
+              });
               res.redirect("/companyprofile");
             }
             if (avatar) {
@@ -181,6 +186,10 @@ class CompanyProfileController {
                 establisheddate: establisheddate,
                 mission: mission,
                 history: history,
+              });
+              const idUser = req.user._id;
+              await UserModel.findByIdAndUpdate(idUser, {
+                comfirm: true,
               });
               res.redirect("/companyprofile");
             }
@@ -205,6 +214,10 @@ class CompanyProfileController {
                 establisheddate: establisheddate,
                 mission: mission,
                 history: history,
+              });
+              const idUser = req.user._id;
+              await UserModel.findByIdAndUpdate(idUser, {
+                comfirm: true,
               });
               res.redirect("/companyprofile");
             }
@@ -253,6 +266,10 @@ class CompanyProfileController {
                 },
                 { new: true }
               );
+              const idUser = req.user._id;
+              await UserModel.findByIdAndUpdate(idUser, {
+                comfirm: true,
+              });
               res.redirect("/companyprofile");
             }
             if (avatar) {
@@ -279,6 +296,10 @@ class CompanyProfileController {
                 },
                 { new: true }
               );
+              const idUser = req.user._id;
+              await UserModel.findByIdAndUpdate(idUser, {
+                comfirm: true,
+              });
               res.redirect("/companyprofile");
             }
             if (background) {
@@ -306,6 +327,10 @@ class CompanyProfileController {
                 },
                 { new: true }
               );
+              const idUser = req.user._id;
+              await UserModel.findByIdAndUpdate(idUser, {
+                comfirm: true,
+              });
               res.redirect("/companyprofile");
             }
             // res.redirect("/companyprofile");
@@ -353,6 +378,10 @@ class CompanyProfileController {
               },
               { new: true }
             );
+            const idUser = req.user._id;
+            await UserModel.findByIdAndUpdate(idUser, {
+              comfirm: true,
+            });
             res.redirect("/companyprofile");
           } else {
             console.log("Đã tới đây không có file cũng không có dữ liệu");
@@ -372,6 +401,10 @@ class CompanyProfileController {
               establisheddate: establisheddate,
               mission: mission,
               history: history,
+            });
+            const idUser = req.user._id;
+            await UserModel.findByIdAndUpdate(idUser, {
+              comfirm: true,
             });
             res.redirect("/companyprofile");
           }

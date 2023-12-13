@@ -116,6 +116,7 @@ class RegisterController {
                                 phone: phone,
                                 role: role,
                                 skills: skills,
+                                confirm: false,
                               });
                             });
                             console.log(info);

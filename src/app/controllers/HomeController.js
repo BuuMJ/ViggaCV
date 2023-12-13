@@ -11,6 +11,10 @@ const RevenueModel = require("../models/Revenua");
 class HomeController {
   async home(req, res, next) {
     try {
+      const confirm = req.user.confirm;
+      if (confirm == false) {
+        res.redirect("/companyprofile");
+      }
       const msg = req.query.messenge;
       // const jobs = await JobModel.find({ active: true });
       const jobs = await FavouriteModel.aggregate([
