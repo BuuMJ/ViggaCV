@@ -7,6 +7,9 @@
         </div>
     </div>
     {{/if}}
+    <div class="modal-content__error">
+        <p><i class="bi bi-exclamation-triangle-fill"></i> Please fill in all required information above.</p>
+    </div>
     <div class="guide-ads__companyprofile">
         <h4>To advertise a job, click the star icon.</h4>
     </div>
@@ -77,46 +80,46 @@
                     <div class="about-user">
                         <label for="education">Company Name</label>
                         <input id="education" type="text" name="companyName" placeholder="ViggaCareers"
-                            value="{{getCompanyname company}}">
+                            value="{{getCompanyname company}}" required>
                     </div>
                     <div class="about-user ">
                         <label for="skills">Company Address</label>
                         <input id="skills" type="text" name="companyAddress" placeholder="124 Tran Hung Dao, P3 , Q.TB"
-                            value="{{getCompanyaddress company}}">
+                            value="{{getCompanyaddressProfile company}}" required>
                     </div>
                     <div class="about-user">
                         <label for="certifications">Business Field</label>
                         <input id="certifications" type="text" name="companyField" placeholder="IT-Sofware"
-                            value="{{getCompanyfield company}}">
+                            value="{{getCompanyfieldProfile company}}" required>
                     </div>
                     <div class="about-user">
                         <label for="taxcode">Tax Code</label>
                         <input id="taxcode" type="text" name="taxCode" placeholder="2556789"
-                            value="{{getTaxcode company}}">
+                            value="{{getTaxcodeProfile company}}">
                     </div>
                     <div class="about-user ">
                         <label for="comapanyemail">Company Email</label>
                         <input id="comapanyemail" type="text" name="companyEmail" placeholder="name@example.com"
-                            value="{{getCompanyemail company}}">
+                            value="{{getCompanyemailProfile company}}" required>
                     </div>
                     <div class="about-user ">
                         <label for="comapanyphone">Company Phone</label>
                         <input id="comapanyphone" type="text" name="companyPhone" placeholder="07055548"
-                            value="{{getCompanyphone company}}">
+                            value="{{getCompanyphoneProfile company}}" required>
                     </div>
                     <div class="about-user ">
                         <label for="companyyearsestablished">Established Date</label>
                         <input id="companyyearsestablished" type="date" name="establisheddate" placeholder="70 Years"
-                            value="{{getEstablisheddateProfile company}}">
+                            value="{{getEstablisheddateProfile company}}" required>
                     </div>
                     <div class="about-user ">
                         <label for="companyyearsinbusiness">No. Of Years In Business</label>
                         <input id="companyyearsinbusiness" type="number" name="companyYears" placeholder="70"
-                            value="{{getCompanyyearsProfile company}}">
+                            value="{{getCompanyyearsProfile company}}" required>
                     </div>
                     <div class="about-user ">
                         <label for="TOB">Type of business</label>
-                        <select id="TOB" name="typeOfBusiness">
+                        <select id="TOB" name="typeOfBusiness" required>
                             <option value="{{getTOB company}}" selected>{{getTOB company}}</option>
                             <option value="Sole Proprietorships">Sole Proprietorships.</option>
                             <option value="Partnerships">Partnerships.</option>
@@ -129,7 +132,7 @@
                     <div class="about-user ">
                         <label for="companyyears">No. Of Employee</label>
                         <input id="companyyears" type="number" name="noofemployee" placeholder="70"
-                            value="{{getNoofemployeeProfile company}}">
+                            value="{{getNoofemployeeProfile company}}" required>
                     </div>
                     <div class="about-user about-user-desc-company">
                         <label for="experience">Company Description</label>
@@ -769,12 +772,88 @@ Andrew leads the strategic direction of the business with a dedicated and divers
     });
     var btnUpdateCompanyProfile = document.querySelector('.btn-save');
     var TOB = document.querySelector('#TOB')
+    const inputCompanyName = document.querySelector('input[name="companyName"]');
+    const inputCompanyAddress = document.querySelector('input[name="companyAddress"]');
+    const inputCompanyField = document.querySelector('input[name="companyField"]');
+    const inputCompanyEmail = document.querySelector('input[name="companyEmail"]');
+    const inputCompanyPhone = document.querySelector('input[name="companyPhone"]');
+    const inputCompanyEstablished = document.querySelector('input[name="establisheddate"]');
+    const inputCompanyEmployee = document.querySelector('input[name="noofemployee"]');
+    function checkFieldProfile(){
+        if(inputCompanyName.value === "" && 
+        inputCompanyAddress.value === "" && 
+        inputCompanyField.value === "" &&
+        inputCompanyEmail.value === "" &&
+        inputCompanyPhone.value === ""&&
+        inputCompanyEstablished.value === "" &&
+        TOB.value === 'Choose Your Type Of Business' || TOB.value === '' &&
+        inputCompanyEmployee.value === ""){
+            inputCompanyName.style.cssText = 'border: 1px solid #ff3333; box-shadow: 1px 1px 5px rgba(255,51,51, 0.5);';
+            inputCompanyAddress.style.cssText = 'border: 1px solid #ff3333; box-shadow: 1px 1px 5px rgba(255,51,51, 0.5);';
+            inputCompanyField.style.cssText = 'border: 1px solid #ff3333; box-shadow: 1px 1px 5px rgba(255,51,51, 0.5);';
+            inputCompanyEmail.style.cssText = 'border: 1px solid #ff3333; box-shadow: 1px 1px 5px rgba(255,51,51, 0.5);';
+            inputCompanyPhone.style.cssText = 'border: 1px solid #ff3333; box-shadow: 1px 1px 5px rgba(255,51,51, 0.5);';
+            inputCompanyEstablished.style.cssText = 'border: 1px solid #ff3333; box-shadow: 1px 1px 5px rgba(255,51,51, 0.5);';
+            TOB.style.cssText = 'border: 1px solid #ff3333; box-shadow: 1px 1px 5px rgba(255,51,51, 0.5);';
+            inputCompanyEmployee.style.cssText = 'border: 1px solid #ff3333; box-shadow: 1px 1px 5px rgba(255,51,51, 0.5);';
+            inputCompanyName.focus();
+            const modalShowError = document.querySelector('.modal-content__error');
+            modalShowError.style.cssText = 'transform: translateX(0);';
+            setTimeout(()=>{
+                modalShowError.style.cssText = 'transform: translateX(200%);';
+            },5000)
+        }
+    }
+    function changeStyle(input){
+        input.addEventListener('input', ()=>{
+            input.style.cssText = 'border: 1px solid transparent; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);'
+        })
+    }
     btnUpdateCompanyProfile.addEventListener('click',(e)=>{
+        checkFieldProfile()
+        if(!checkFieldProfile){
+            if(inputCompanyName.value === ""){
+            inputCompanyName.style.cssText = 'border: 1px solid #ff3333; box-shadow: 1px 1px 5px rgba(255,51,51, 0.5);';
+            inputCompanyName.focus();
+        }
+        if(inputCompanyAddress.value === ""){
+            inputCompanyAddress.style.cssText = 'border: 1px solid #ff3333; box-shadow: 1px 1px 5px rgba(255,51,51, 0.5);';
+            inputCompanyAddress.focus();
+        }
+        if(inputCompanyField.value === ""){
+            inputCompanyField.style.cssText = 'border: 1px solid #ff3333; box-shadow: 1px 1px 5px rgba(255,51,51, 0.5);';
+            inputCompanyField.focus();
+        }
+        if(inputCompanyEmail.value === ""){
+            inputCompanyEmail.style.cssText = 'border: 1px solid #ff3333; box-shadow: 1px 1px 5px rgba(255,51,51, 0.5);';
+            inputCompanyEmail.focus();
+        }
+        if(inputCompanyPhone.value === ""){
+            inputCompanyPhone.style.cssText = 'border: 1px solid #ff3333; box-shadow: 1px 1px 5px rgba(255,51,51, 0.5);';
+            inputCompanyPhone.focus();
+        }
+        if(inputCompanyEstablished.value === ""){
+            inputCompanyEstablished.style.cssText = 'border: 1px solid #ff3333; box-shadow: 1px 1px 5px rgba(255,51,51, 0.5);';
+            inputCompanyEstablished.focus();
+        }
         if(TOB.value === 'Choose Your Type Of Business' || TOB.value === ''){
             e.preventDefault();
-            alert('Please choose your type of business')
+            TOB.style.cssText = 'border: 1px solid #ff3333; box-shadow: 1px 1px 5px rgba(255,51,51, 0.5);';
             TOB.focus();
         }
+        if(inputCompanyEmployee.value === ""){
+            inputCompanyEmployee.style.cssText = 'border: 1px solid #ff3333; box-shadow: 1px 1px 5px rgba(255,51,51, 0.5);';
+            inputCompanyEmployee.focus();
+        }
+        }
+        changeStyle(inputCompanyName);
+        changeStyle(inputCompanyAddress);
+        changeStyle(inputCompanyField);
+        changeStyle(inputCompanyEmail);
+        changeStyle(inputCompanyPhone);
+        changeStyle(inputCompanyEstablished);
+        changeStyle(TOB);
+        changeStyle(inputCompanyEmployee);
     })
     var paymentFixed = document.querySelector('.payment-fixed');
     var paymentHistory = document.querySelector('.payment-history');

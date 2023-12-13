@@ -157,11 +157,25 @@ module.exports = {
       return "Not updated yet";
     }
   },
+  getCompanyaddressProfile: function (company) {
+    if (company && company.companyaddress) {
+      return company.companyaddress;
+    } else {
+      return "";
+    }
+  },
   getCompanyfield: function (company) {
     if (company && company.companyfield) {
       return company.companyfield;
     } else {
       return "Not updated yet";
+    }
+  },
+  getCompanyfieldProfile: function (company) {
+    if (company && company.companyfield) {
+      return company.companyfield;
+    } else {
+      return "";
     }
   },
   getTaxcode: function (company) {
@@ -171,6 +185,13 @@ module.exports = {
       return "Not updated yet";
     }
   },
+  getTaxcodeProfile: function (company) {
+    if (company && company.taxcode) {
+      return company.taxcode;
+    } else {
+      return "";
+    }
+  },
   getCompanyemail: function (company) {
     if (company && company.companyemail) {
       return company.companyemail;
@@ -178,11 +199,25 @@ module.exports = {
       return "Not updated yet";
     }
   },
+  getCompanyemailProfile: function (company) {
+    if (company && company.companyemail) {
+      return company.companyemail;
+    } else {
+      return "";
+    }
+  },
   getCompanyphone: function (company) {
     if (company && company.companyphone) {
       return company.companyphone;
     } else {
       return "Not updated yet";
+    }
+  },
+  getCompanyphoneProfile: function (company) {
+    if (company && company.companyphone) {
+      return company.companyphone;
+    } else {
+      return "";
     }
   },
   getCompanyyears: function (company) {
