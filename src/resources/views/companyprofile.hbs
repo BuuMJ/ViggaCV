@@ -589,10 +589,10 @@ Andrew leads the strategic direction of the business with a dedicated and divers
     var actionLeader = document.querySelectorAll('.action-leader');
     var showActionLeader = document.querySelectorAll('.show-action');
     for (let i = 0; i < actionLeader.length; i++) {
-        actionLeader[i].addEventListener('mouseover', () => {
+        actionLeader[i].addEventListener('click', () => {
             showActionLeader[i].style.display = 'flex';
         })
-        showActionLeader[i].addEventListener('mouseout', () => {
+        showActionLeader[i].addEventListener('mouseleave', () => {
             showActionLeader[i].style.display = 'none'
         })
     }
