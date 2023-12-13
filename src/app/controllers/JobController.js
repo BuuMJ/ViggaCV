@@ -13,6 +13,10 @@ const RevenueModel = require("../models/Revenua");
 
 class JobController {
   async job(req, res, next) {
+    const confirm = req.user.confirm;
+    if (confirm == false) {
+      return res.redirect("/companyprofile");
+    }
     const user = req.user;
     const job = await JobModel.find({ active: true });
     const count = await JobModel.countDocuments({ active: true });

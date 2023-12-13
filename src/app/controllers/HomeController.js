@@ -8,12 +8,13 @@ const {
   staffMongoseToObject,
 } = require("../../util/mongoose");
 const RevenueModel = require("../models/Revenua");
+const UserModel = require("../models/User");
 class HomeController {
   async home(req, res, next) {
     try {
       const confirm = req.user.confirm;
       if (confirm == false) {
-        res.redirect("/companyprofile");
+        return res.redirect("/companyprofile");
       }
       const msg = req.query.messenge;
       // const jobs = await JobModel.find({ active: true });

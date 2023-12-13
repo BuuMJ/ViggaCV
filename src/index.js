@@ -13,6 +13,7 @@ const methodOverride = require("method-override");
 const passport = require("passport");
 const paypal = require("paypal-rest-sdk");
 const helpers = require("handlebars-helpers");
+const MongoDBStore = require("connect-mongodb-session")(session);
 var Handlebars = require("handlebars");
 var MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);
@@ -59,12 +60,17 @@ app.use(express.json());
 //use cookie parser
 app.use(cookieParser());
 
+const store = new MongoDBStore({
+  uri: "mongodb+srv://duoc6694:jJw8rmJmvkZzgIna@viggacv.qxmduwf.mongodb.net/ViggaCV",
+  collection: "sessions",
+});
 //use express-session
 app.use(
   session({
     secret: "pw",
     resave: false,
     saveUninitialized: true,
+    store: store,
     cookie: {
       maxAge: 24 * 60 * 60 * 1000, // Thời gian sống 1 ngày (86400000 miliseconds)
     },
