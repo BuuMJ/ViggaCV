@@ -1044,8 +1044,8 @@
   cursor: pointer;
 }
 .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite{
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -1079,7 +1079,7 @@
   justify-content: start;
   align-items: center;
   width: 100%;
-  margin: 12px 0;
+  margin: 10px 0;
 }
 .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field input{
   width: 65%;
@@ -1101,7 +1101,7 @@
   width: 35%;
 }
 .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite button.submit-invite{
-  margin: 12px 0;
+  margin: 10px 0;
   width: 100%;
 }
 .main__manager-cv section .pagination{
@@ -1171,18 +1171,23 @@
     height: 300px;
   }
   .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite h6{
+    margin: unset;
     padding: 12px 20px;
   }
   .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field input{
-    width: 50%;
+    width: 55%;
+    height: 40px;
   }
   .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field label{
-    width: 50%;
+    width: 45%;
   }
 }
 @media screen and (max-width: 768px) {
   .header-cv{
     transform: translateY(50%);
+  }
+  .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite h6{
+    margin-bottom: 0.5rem;
   }
   .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field input{
     width: 65%;
@@ -1271,6 +1276,12 @@
   .body__create-cv header .info__user-cv .primary__user-cv input.specialized{
     width: 95%;
   }
+  .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field input{
+    width: 60%;
+  }
+  .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field label{
+    width: 40%;
+  }
 }
 @media screen and (max-width: 415px) {
   .header-cv .intro-title,
@@ -1341,16 +1352,20 @@
     width: 98%;
   }
   .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite h6{
-    line-height: 26px;
+    line-height: 24px;
     margin-bottom: unset;
+  }
+  .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field{
+    margin: 8px 0;
   }
   .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field input{
     width: 60%;
     height: 40px;
+    font-size: 12px;
   }
   .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field label{
     width: 40%;
-    font-size: 14px;
+    font-size: 12px;
   }
   .main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv button,
   .main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv a.download__cv-passed{
@@ -1368,23 +1383,15 @@
   .main__create-cv header.action-create-cv .download-create-cv button{
     width: 100px;
   }
-  .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field{
-    flex-direction: column;
-    height: 65px;
-    margin: 8px 0;
-  }
-  .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field input{
-    width: 100%;
-    height: 65%;
-    margin: 6px 0 0 0;
-  }
   .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite h6{
     padding: 8px 20px;
     font-size: 16px;
   }
+  .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field input{
+    width: 55%;
+  }
   .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field label{
-    width: 100%;
-    height: 30%;
+    width: 45%;
   }
   .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite button.submit-invite{
     margin: 8px 0;
