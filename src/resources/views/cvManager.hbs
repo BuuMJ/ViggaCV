@@ -35,7 +35,7 @@
                         <span class="score-applied" data-score="{{this.score}}"></span>
                         <span class="email-applied"><span class="material-symbols-outlined">contact_mail</span> {{this.email}}</span>
                         <span class="phone-applied"><span class="material-symbols-outlined">contact_phone</span> {{this.phone}}</span>
-                       <span class="posted-date"><span class="material-symbols-outlined">fact_check</span> {{this.createdAt}}</span>
+                        <span class="posted-date"><span class="material-symbols-outlined">fact_check</span> {{this.createdAt}}</span>
                        <div class="action-card__passed-cv">
                             <button class="show-invite"><span class="material-symbols-outlined">send</span> Invite</button>
                             <a class="download__cv-passed" download=""><span class="material-symbols-outlined">cloud_download</span> Download CV</a>
@@ -76,7 +76,7 @@
                     <h2>In total, this job has <b>{{countFailed}}</b> CVs that have failed your company's requirements</h2>
                 {{#each cvFailed}}
                     {{#each this.jobDetail}}
-                        <a data-company-name="{{this.companyname}}" data-job-name="{{this.jobname}}" class="card__failed-cv" download>
+                        <div data-company-name="{{this.companyname}}" data-job-name="{{this.jobname}}" class="card__failed-cv" download>
                     {{/each}}
                         <div data-pathCV="{{this.namePath}}" class="primary-content__management">
                             <div class="left-content">
@@ -95,8 +95,11 @@
                         <span class="score-applied" data-score="{{this.score}}"></span>
                         <span class="email-applied"><span class="material-symbols-outlined">contact_mail</span> {{this.email}}</span>
                         <span class="phone-applied"><span class="material-symbols-outlined">contact_phone</span> {{this.phone}}</span>
-                       <span class="name-file"><span class="material-symbols-outlined">cloud_download</span> <span>{{this.nameCV}}</span></span>
-                    </a>
+                        <span class="posted-date"><span class="material-symbols-outlined">fact_check</span> {{this.createdAt}}</span>
+                        <div class="action-card__passed-cv">
+                            <a class="download__cv-passed" download=""><span class="material-symbols-outlined">cloud_download</span> Download CV</a>
+                        </div>
+                    </div>
                 {{/each}}
                 <div class="pagination pagination-fail" data-id-pagination-fail="{{job._id}}">
                     {{#each pagesFailed}}
@@ -252,7 +255,8 @@
         const linkCompanyName = item.getAttribute('data-company-name');
         const linkJobName = item.getAttribute('data-job-name');
         const pathCV = item.querySelector('.primary-content__management').getAttribute('data-pathCV')
-        item.href = `/applyCV/${linkCompanyName}/${linkJobName}/unsatisfactory/${pathCV}.pdf`
+        const downloadCVFailed = item.querySelector('.download__cv-passed')
+        downloadCVFailed.href = `/applyCV/${linkCompanyName}/${linkJobName}/unsatisfactory/${pathCV}.pdf`
     })
     const containerCVPassed = document.querySelectorAll('.card__passed-cv');
     containerCVPassed.forEach(item=>{

@@ -7772,6 +7772,7 @@ header.company-detail .background-company-detail {
 .main__manager-cv section .box__failed-cv .card__failed-cv .email-applied span.material-symbols-outlined,
 .main__manager-cv section .box__failed-cv .card__failed-cv .phone-applied span.material-symbols-outlined,
 .main__manager-cv section .box__passed-cv .card__passed-cv .posted-date span.material-symbols-outlined,
+.main__manager-cv section .box__failed-cv .card__failed-cv .posted-date span.material-symbols-outlined,
 .main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv button span.material-symbols-outlined {
   padding: unset !important;
   margin-right: 8px; }
@@ -7784,7 +7785,8 @@ header.company-detail .background-company-detail {
   align-items: start;
   word-break: break-all; }
 
-.main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv {
+.main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv,
+.main__manager-cv section .box__failed-cv .card__failed-cv .action-card__passed-cv {
   padding: 8px 0;
   border-top: 1px dashed #5e5d5d;
   width: 100%;
@@ -7807,7 +7809,8 @@ header.company-detail .background-company-detail {
   border-radius: 5px;
   transition: all .5s; }
 
-.main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv a.download__cv-passed {
+.main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv a.download__cv-passed,
+.main__manager-cv section .box__failed-cv .card__failed-cv .action-card__passed-cv a.download__cv-passed {
   text-decoration: none;
   display: flex;
   justify-content: center;
@@ -7822,11 +7825,13 @@ header.company-detail .background-company-detail {
   transition: all .5s; }
 
 .main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv button:hover,
-.main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv a.download__cv-passed:hover {
+.main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv a.download__cv-passed:hover,
+.main__manager-cv section .box__failed-cv .card__failed-cv .action-card__passed-cv a.download__cv-passed:hover {
   color: white;
   background-color: #0095ff; }
 
-.main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv a.download__cv-passed span {
+.main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv a.download__cv-passed span,
+.main__manager-cv section .box__failed-cv .card__failed-cv .action-card__passed-cv a.download__cv-passed span {
   padding: unset;
   margin-right: 8px; }
 
