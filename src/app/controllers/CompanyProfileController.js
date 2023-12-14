@@ -589,7 +589,6 @@ class CompanyProfileController {
     }
 
     const jobJSON = job.toJSON();
-    console.log("Đây là ngày giờ sau khi định dạng: " + jobJSON);
     await job.save();
 
     res.redirect("/companyprofile");
@@ -852,6 +851,83 @@ class CompanyProfileController {
     } else {
       res.redirect("/companyprofile?message=Refund request is not accepted");
     }
+  }
+  //[post] send mail
+  async invite(req, res, next) {
+    const id = req.query.q;
+    const time = req.body.time;
+    const date = req.body.date;
+    const email = req.body.email;
+    const qualified = await QualifiedModel.findById(id);
+    const idCompany = qualified.companyid;
+    const idJob = qualified.jobid;
+    const company = await CompanyModel.findById(idCompany);
+    const companyName = company.companyname;
+    const job = await JobModel.findById(idJob);
+    const jobName = job.jobname;
+
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "duoc6694@gmail.com",
+        pass: "wdymtvgbhblstfbj",
+      },
+    });
+    const mailOptions = {
+      to: email, // list of receivers
+      subject: "Application Confirmation - ViggaCareers",
+      html: `
+    <html>
+      <head>
+        <style>
+          body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+          }
+          h1 {
+            color: #0095ff;
+          }
+          .message {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+          }
+          p {
+            margin-bottom: 15px;
+          }
+          .job-info {
+            font-weight: bold;
+            margin-top: 10px;
+          }
+        </style>
+      </head>
+      <body>
+        <h1>ViggaCareers</h1>
+        <div class="message">
+          <p>Thank you for submitting your application to ViggaCareers.</p>
+          <p>We have received your CV and would like to invite you for an interview to discuss further opportunities at ${companyName}.</p>
+          <div class="job-info">
+            <p>Job Position: ${jobName}</p>
+            <p>Date: ${date}</p>
+            <p>Time: ${time}</p>
+          </div>
+          <p>Please feel free to contact us for any further information.</p>
+        </div>
+      </body>
+    </html>
+    `,
+    };
+    transporter.sendMail(mailOptions, function (err, info) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("Đã gửi mail cho người apply job");
+      }
+    });
+
+    res.redirect("back");
   }
 }
 

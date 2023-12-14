@@ -39,7 +39,7 @@
                        <div class="action-card__passed-cv">
                             <button class="show-invite"><span class="material-symbols-outlined">send</span> Invite</button>
                             <a class="download__cv-passed" download=""><span class="material-symbols-outlined">cloud_download</span> Download CV</a>
-                            <form class="invite-candidate" action="/CVManager/send">
+                            <form class="invite-candidate" method="post" action="/CVManager/send?q={{this._id}}">
                                 <div class="box-invite">
                                     <h6>Select a time and date for interview invitations to candidates.</h6>
                                     <div class="box-field">
