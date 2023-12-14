@@ -122,6 +122,7 @@
             <div class="swiper">
                 <div class="swiper-wrapper">
                     {{!-- job with the most favorite  --}}
+                    {{#if user}}
                     {{#each jobs}}
                         <div class="swiper-slide">
                             <a href="/job/detail/{{this._id}}" class="box__info-job">
@@ -129,16 +130,27 @@
                                 <div class="left__info-job">
                                     <span class="hot__job-name">{{this.jobDetail.jobname}}</span>
                                     <span class="hot__job__company-name">{{this.jobDetail.companyname}}</span>
-                                    {{#if user}}
                                     <span class="hot__job-salary"><i class="bi bi-currency-dollar"></i> {{this.jobDetail.salary}}</span>
-                                    {{else}}
-                                    <span class="hot__job-salary salary-not__user"><i class="bi bi-coin"></i> Sign in to view salary</span>
-                                    {{/if}}
                                     <span class="hot__location"><i class="bi bi-geo-alt"></i> {{this.jobDetail.joblocation}}</span>
                                 </div>
                             </a>
                         </div>
                     {{/each}}
+                    {{else}}
+                        {{#each jobs}}
+                        <div class="swiper-slide">
+                            <a href="/job/detail/{{this._id}}" class="box__info-job">
+                                <img src="{{this.jobDetail.avatar}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
+                                <div class="left__info-job">
+                                    <span class="hot__job-name">{{this.jobDetail.jobname}}</span>
+                                    <span class="hot__job__company-name">{{this.jobDetail.companyname}}</span>
+                                    <span class="hot__job-salary salary-not__user"><i class="bi bi-coin"></i> Sign in to view salary</span>
+                                    <span class="hot__location"><i class="bi bi-geo-alt"></i> {{this.jobDetail.joblocation}}</span>
+                                </div>
+                            </a>
+                        </div>
+                    {{/each}}
+                    {{/if}}
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -164,6 +176,7 @@ Create a quick and free CV template, so that employers must
         <span class="title-jobs">There are 20 new positions awaiting your application.</span>
          <div class="swiper mySwiper">
             <div class="swiper-wrapper">
+                {{#if user}}
                 {{#each latestJobs}}
                 <div class="swiper-slide">
                     <a href="/job/detail/{{this._id}}" class="box-jobnew">
@@ -175,16 +188,31 @@ Create a quick and free CV template, so that employers must
                             </div>
                         </div>
                         <div class="bottom-jobnew">
-                            {{#if user}}
                             <span class="jobnew__salary"><i class="bi bi-currency-dollar"></i>{{this.salary}}</span>
-                            {{else}}
-                            <span class="jobnew__salary salary-not__user"><i class="bi bi-coin"></i> Sign in to view salary</span>
-                            {{/if}}
                             <span class="jobnew__location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</span>
                         </div>
                     </a>
                 </div>
                 {{/each}}
+                {{else}}
+                {{#each latestJobs}}
+                 <div class="swiper-slide">
+                    <a href="/job/detail/{{this._id}}" class="box-jobnew">
+                        <div class="top-jobnew">
+                            <img src="/{{this.avatar}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
+                            <div class="left-info__jobnew">
+                                <span class="jobnew__name">{{this.jobname}}</span>
+                                <span class="jobnew__company">{{this.companyname}}</span>
+                            </div>
+                        </div>
+                        <div class="bottom-jobnew">
+                            <span class="jobnew__salary salary-not__user"><i class="bi bi-coin"></i> Sign in to view salary</span>
+                            <span class="jobnew__location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</span>
+                        </div>
+                    </a>
+                </div>
+                {{/each}}
+                {{/if}}
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
@@ -197,6 +225,7 @@ Create a quick and free CV template, so that employers must
         <span class="title-jobs">There are 20 new positions awaiting your application.</span>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
+                {{#if user}}
                 {{#each latestJobs}}
                 <div class="swiper-slide">
                     <a href="/job/detail/{{this._id}}" class="box-jobnew">
@@ -212,6 +241,23 @@ Create a quick and free CV template, so that employers must
                     </a>
                 </div>
                 {{/each}}
+                {{else}}
+                {{#each latestJobs}}
+                <div class="swiper-slide">
+                    <a href="/job/detail/{{this._id}}" class="box-jobnew">
+                            <div class="top-jobnew">
+                                <img src="/{{this.avatar}}" alt=""  onerror="this.src='/img/notfoundavatar.jpeg'">
+                            </div>
+                            <div class="left-info__jobnew">
+                                <span class="jobnew__name">{{this.jobname}}</span>
+                                <span class="jobnew__company">{{this.companyname}}</span>
+                                <span class="jobnew__salary salary-not__user"><i class="bi bi-coin"></i> Sign in to view salary</span>
+                                <span class="jobnew__location"><i class="bi bi-geo-alt"></i> {{this.joblocation}}</span>
+                            </div>
+                    </a>
+                </div>
+                {{/each}}
+                {{/if}}
             </div>
             <div class="swiper-pagination"></div>
         </div>
