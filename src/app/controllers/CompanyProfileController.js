@@ -858,6 +858,7 @@ class CompanyProfileController {
     const time = req.body.time;
     const date = req.body.date;
     const email = req.body.email;
+    const address = req.body.address;
     const qualified = await QualifiedModel.findById(id);
     const idCompany = qualified.companyid;
     const idJob = qualified.jobid;
