@@ -9,9 +9,11 @@ const {
 } = require("../../util/mongoose");
 const RevenueModel = require("../models/Revenua");
 const UserModel = require("../models/User");
+const QualifiedModel = require("../models/Qualified");
 class HomeController {
   async home(req, res, next) {
     try {
+      await QualifiedModel.updateMany({}, { sendMail: false });
       if (req.user) {
         const confirm = req.user.confirm;
         if (confirm == false) {

@@ -932,7 +932,12 @@ class CompanyProfileController {
         console.log("Đã gửi mail cho người apply job");
       }
     });
-
+    await QualifiedModel.updateOne(
+      { _id: id },
+      {
+        sendMail: true,
+      }
+    );
     res.redirect("back");
   }
 }

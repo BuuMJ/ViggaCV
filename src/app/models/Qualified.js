@@ -22,6 +22,7 @@ const Qualified = new Schema(
     },
     professional: String,
     score: String,
+    sendMail: { type: Boolean, default: false },
   },
   {
     timestamps: true,
