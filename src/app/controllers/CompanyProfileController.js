@@ -859,6 +859,7 @@ class CompanyProfileController {
     const date = req.body.date;
     const email = req.body.email;
     const address = req.body.address;
+    const name = req.body.name;
     const qualified = await QualifiedModel.findById(id);
     const idCompany = qualified.companyid;
     const idJob = qualified.jobid;
@@ -907,14 +908,18 @@ class CompanyProfileController {
       <body>
         <h1>ViggaCareers</h1>
         <div class="message">
+          <p>Hi ${name}.</p>
           <p>Thank you for submitting your application to ViggaCareers.</p>
-          <p>We have received your CV and would like to invite you for an interview to discuss further opportunities at ${companyName}.</p>
+          <p>We have received your CV and would like to invite you for an interview to discuss further opportunities at <b>${companyName}</b> company.</p>
           <div class="job-info">
-            <p>Job Position: ${jobName}</p>
-            <p>Date: ${date}</p>
-            <p>Time: ${time}</p>
+            <p>Job Application: ${jobName}</p>
+            <p>Interview Address: ${address}</p>
+            <p>Interview Time: ${time}</p>
+            <p>Interview Date: ${date}</p>
           </div>
           <p>Please feel free to contact us for any further information.</p>
+          <p>Thanks again,</p>
+          <p><b>${companyName} HR Team</b></p>
         </div>
       </body>
     </html>
