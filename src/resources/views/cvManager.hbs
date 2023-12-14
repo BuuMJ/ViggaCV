@@ -1,7 +1,7 @@
 <div class="container__manager-cv">
     <div class="main__manager-cv">
         <header>
-            <h1>Manage CV of {{job.jobname}} job</h1>
+            <h1>Manage the CV for the {{job.jobname}} job.</h1>
             <p>This job has a total of <b>{{count}}</b> CVs applying</p>
         </header>
         <section>
@@ -16,7 +16,7 @@
                     <h2>In total, this job has <b>{{countPassed}}</b> CVs that have passed your company's requirements</h2>
                 {{#each cvPassed}}
                     {{#each this.jobDetail}}
-                        <a data-company-name="{{this.companyname}}" data-job-name="{{this.jobname}}" class="card__passed-cv" download>
+                        <div data-company-name="{{this.companyname}}" data-job-name="{{this.jobname}}" class="card__passed-cv">
                      {{/each}}
                         <div data-pathCV="{{this.namePath}}" class="primary-content__management">
                             <div class="left-content">
@@ -35,8 +35,31 @@
                         <span class="score-applied" data-score="{{this.score}}"></span>
                         <span class="email-applied"><span class="material-symbols-outlined">contact_mail</span> {{this.email}}</span>
                         <span class="phone-applied"><span class="material-symbols-outlined">contact_phone</span> {{this.phone}}</span>
-                       <span class="name-file"><span class="material-symbols-outlined">cloud_download</span> <span>{{this.nameCV}}</span></span>
-                    </a>
+                       <span class="posted-date"><span class="material-symbols-outlined">fact_check</span> {{this.createdAt}}</span>
+                       <div class="action-card__passed-cv">
+                            <button class="show-invite"><span class="material-symbols-outlined">send</span> Invite</button>
+                            <a class="download__cv-passed" download=""><span class="material-symbols-outlined">cloud_download</span> Download CV</a>
+                            <form class="invite-candidate" action="/CVManager/send">
+                                <div class="box-invite">
+                                    <h6>Select a time and date for interview invitations to candidates.</h6>
+                                    <div class="box-field">
+                                        <label for="time-invite-{{this._id}}">Choose Time To Invite</label>
+                                        <input id="time-invite-{{this._id}}" name="time" type="time" required>
+                                    </div>
+                                    <div class="box-field">
+                                        <label for="date-invite-{{this._id}}">Choose Date To Invite</label>
+                                        <input id="date-invite-{{this._id}}" name="date" type="date" required>
+                                    </div>
+                                    <input name="email" type="text" value="{{this.email}}" hidden>
+                                    <button class="submit-invite">
+                                        <span class="material-symbols-outlined">send</span> 
+                                        Send Mail
+                                    </button>
+                                    <div class="close-invite"><i class="bi bi-x"></i></div>
+                                </div>
+                            </form>
+                       </div>
+                    </div>
                 {{/each}}
                 <div class="pagination pagination-pass" data-id-pagination-pass="{{job._id}}">
                     {{#each pagesPassed}}
@@ -238,6 +261,23 @@
         const linkCompanyName = item.getAttribute('data-company-name');
         const linkJobName = item.getAttribute('data-job-name');
         const pathCV = item.querySelector('.primary-content__management').getAttribute('data-pathCV')
-        item.href = `/applyCV/${linkCompanyName}/${linkJobName}/Qualified/${pathCV}.pdf`
+        const downloadCVPassed = item.querySelector('.download__cv-passed')
+        downloadCVPassed.href = `/applyCV/${linkCompanyName}/${linkJobName}/Qualified/${pathCV}.pdf`
+        const formInviteCandidate = item.querySelector('.invite-candidate');
+        const buttonShowInvite = item.querySelector('.show-invite');
+        const closeInvite = item.querySelector('.close-invite');
+        const boxInvite = item.querySelector('.box-invite');
+        buttonShowInvite.addEventListener('click',()=>{
+            formInviteCandidate.style.cssText = 'transform: scale(100%);';
+        })
+        closeInvite.addEventListener('click',()=>{
+            formInviteCandidate.style.cssText = 'transform: scale(0);';
+        })
+        formInviteCandidate.addEventListener('click',()=>{
+            formInviteCandidate.style.cssText = 'transform: scale(0);';
+        })
+        boxInvite.addEventListener('click',(e)=>{
+            e.stopPropagation();
+        })
     })
 </script>

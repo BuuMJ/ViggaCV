@@ -887,6 +887,10 @@
   color: black;
   transition: .5s;
 }
+.main__manager-cv section .box__passed-cv .card__passed-cv{
+  position: relative;
+  overflow: hidden;
+}
 .main__manager-cv section .box__passed-cv .card__passed-cv span,
 .main__manager-cv section .box__failed-cv .card__failed-cv span{
   padding: 0 0 12px 0 ;
@@ -939,16 +943,13 @@
   border: 1px solid $secondarycolor;
   box-shadow: 0 2px 4px $secondarycolor;
 }
-.main__manager-cv section .box__passed-cv .card__passed-cv:hover .name-file span,
 .main__manager-cv section .box__failed-cv .card__failed-cv:hover .name-file span{
   color: #0072bc;
 }
-.main__manager-cv section .box__passed-cv .card__passed-cv .name-file,
 .main__manager-cv section .box__failed-cv .card__failed-cv .name-file{
   display: flex;
   align-items: center;
 }
-.main__manager-cv section .box__passed-cv .card__passed-cv .name-file span.material-symbols-outlined,
 .main__manager-cv section .box__failed-cv .card__failed-cv .name-file span.material-symbols-outlined{
   margin-right: 8px;
 }
@@ -967,7 +968,9 @@
 .main__manager-cv section .box__passed-cv .card__passed-cv .email-applied span.material-symbols-outlined,
 .main__manager-cv section .box__passed-cv .card__passed-cv .phone-applied span.material-symbols-outlined,
 .main__manager-cv section .box__failed-cv .card__failed-cv .email-applied span.material-symbols-outlined,
-.main__manager-cv section .box__failed-cv .card__failed-cv .phone-applied span.material-symbols-outlined{
+.main__manager-cv section .box__failed-cv .card__failed-cv .phone-applied span.material-symbols-outlined,
+.main__manager-cv section .box__passed-cv .card__passed-cv .posted-date span.material-symbols-outlined,
+.main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv button span.material-symbols-outlined{
   padding: unset !important;
   margin-right: 8px;
 }
@@ -978,6 +981,127 @@
   display: flex;
   align-items: start;
   word-break: break-all;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv{
+  padding: 8px 0;
+  border-top: 1px dashed #5e5d5d;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv button{
+  padding: 6px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $btncolor;
+  color: $btncolor;
+  background-color: transparent;
+  outline: none;
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 12px;
+  border-radius: 5px;
+  transition: all .5s;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv a.download__cv-passed{
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 12px;
+  border: 1px solid $btncolor;
+  color: $btncolor;
+  background-color: transparent;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 5px;
+  transition: all .5s;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv button:hover,
+.main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv a.download__cv-passed:hover{
+  color: white;
+  background-color: $btncolor;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv a.download__cv-passed span{
+  padding: unset;
+  margin-right: 8px;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0);
+  transition: transform .5s;
+  cursor: pointer;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite{
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  background-color: white;
+  border-radius: 5px;
+  padding: 12px;
+  position: relative;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .close-invite{
+  position: absolute;
+  top: -6px;
+  right: 0;
+  color: black;
+  font-size: 30px;
+  padding: 4px;
+  transition: .3s;
+  cursor: pointer;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .close-invite:hover{
+  color: #FC0404;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite h6{
+  font-weight: 600;
+  padding: 12px 0;
+  text-align: center;
+  width: 100%;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  margin: 12px 0;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field input{
+  width: 65%;
+  margin-left: 12px;
+  height: 45px;
+  border-radius: 5px;
+  border: unset;
+  padding: 12px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field input:valid,
+.main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field input:focus{
+  box-shadow: 1px 1px 5px rgba(0, 149, 255, 0.5);
+  border: 1px solid $btncolor;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field label{
+  font-weight: 600;
+  width: 35%;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite button.submit-invite{
+  margin: 12px 0;
+  width: 100%;
 }
 .main__manager-cv section .pagination{
     width: 100%;
