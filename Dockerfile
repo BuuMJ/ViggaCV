@@ -3,7 +3,6 @@ FROM ghcr.io/puppeteer/puppeteer:20.1.2
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
     PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
 
-RUN apt-get update && apt-get install -y poppler-utils
 
 WORKDIR /usr/src/app 
 COPY package*.json ./
