@@ -37,7 +37,7 @@
                         <span class="phone-applied"><span class="material-symbols-outlined">contact_phone</span> {{this.phone}}</span>
                         <span class="posted-date"><span class="material-symbols-outlined">fact_check</span> {{this.createdAt}}</span>
                        <div class="action-card__passed-cv">
-                            <button class="show-invite"><span class="material-symbols-outlined">send</span> Invite</button>
+                            <button data-sendMail="{{this.sendMail}}" class="show-invite"><span class="material-symbols-outlined">send</span> Invite</button>
                             <a class="download__cv-passed" download=""><span class="material-symbols-outlined">cloud_download</span> Download CV</a>
                             <form class="invite-candidate" method="post" action="/CVManager/send?q={{this._id}}">
                                 <div class="box-invite">
@@ -274,11 +274,27 @@
         downloadCVPassed.href = `/applyCV/${linkCompanyName}/${linkJobName}/Qualified/${pathCV}.pdf`
         const formInviteCandidate = item.querySelector('.invite-candidate');
         const buttonShowInvite = item.querySelector('.show-invite');
+        const checkSendMail = buttonShowInvite.getAttribute('data-sendMail');
         const closeInvite = item.querySelector('.close-invite');
         const boxInvite = item.querySelector('.box-invite');
-        buttonShowInvite.addEventListener('click',()=>{
-            formInviteCandidate.style.cssText = 'transform: scale(100%);';
-        })
+        const submitSendMailText = item.querySelector('.submit-invite');
+        if(checkSendMail === "true"){
+            buttonShowInvite.innerHTML = '<span class="material-symbols-outlined">send</span> Invited';
+            submitSendMailText.innerHTML = '<span class="material-symbols-outlined">send</span> Send Mail Again'
+            buttonShowInvite.classList.add('invited');
+            buttonShowInvite.addEventListener('click',(e)=>{
+                const continueInvite = confirm('The interview invitation has been sent to this candidate via email.\n Are you certain you wish to proceed with the invitation sending process?');
+                if(!continueInvite){
+                    e.preventDefault();
+                }else{
+                    formInviteCandidate.style.cssText = 'transform: scale(100%);';
+                }
+            })
+        }else{
+            buttonShowInvite.addEventListener('click',()=>{
+                formInviteCandidate.style.cssText = 'transform: scale(100%);';
+            })
+        }
         closeInvite.addEventListener('click',()=>{
             formInviteCandidate.style.cssText = 'transform: scale(0);';
         })

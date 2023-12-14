@@ -7830,6 +7830,14 @@ header.company-detail .background-company-detail {
   color: white;
   background-color: #0095ff; }
 
+.main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv button.invited {
+  background-color: #0095ff;
+  color: white; }
+
+.main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv button.invited:hover {
+  background-color: white;
+  color: #0095ff; }
+
 .main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv a.download__cv-passed span,
 .main__manager-cv section .box__failed-cv .card__failed-cv .action-card__passed-cv a.download__cv-passed span {
   padding: unset;
@@ -8175,9 +8183,14 @@ header.company-detail .background-company-detail {
     width: 90%; }
   .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite h6 {
     padding: 12px 0; }
+  .main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv {
+    flex-direction: column; }
   .main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv button.show-invite,
   .main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv a.download__cv-passed {
-    font-size: 12px; }
+    font-size: 12px;
+    width: 100%; }
+  .main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv button.show-invite {
+    margin: 0 0 12px 0; }
   .main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv button.show-invite span,
   .main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv a.download__cv-passed span {
     font-size: 20px; } }
