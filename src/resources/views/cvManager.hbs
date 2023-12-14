@@ -41,13 +41,13 @@
                             <a class="download__cv-passed" download=""><span class="material-symbols-outlined">cloud_download</span> Download CV</a>
                             <form class="invite-candidate" method="post" action="/CVManager/send?q={{this._id}}">
                                 <div class="box-invite">
-                                    <h6>Select a time and date for interview invitations to candidates.</h6>
+                                    <h6>invitations to interviews for candidates</h6>
                                     <div class="box-field">
-                                        <label for="time-invite-{{this._id}}">Choose Time To Invite</label>
+                                        <label for="time-invite-{{this._id}}">Interview Time</label>
                                         <input id="time-invite-{{this._id}}" name="time" type="time" required>
                                     </div>
                                     <div class="box-field">
-                                        <label for="date-invite-{{this._id}}">Choose Date To Invite</label>
+                                        <label for="date-invite-{{this._id}}">Interview Date</label>
                                         <input id="date-invite-{{this._id}}" name="date" type="date" required>
                                     </div>
                                     <input name="email" type="text" value="{{this.email}}" hidden>
