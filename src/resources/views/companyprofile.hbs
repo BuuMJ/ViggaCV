@@ -309,6 +309,7 @@
                     <option value="Junior">Junior</option>
                     <option value="Medior">Medior</option>
                     <option value="Senior">Senior</option>
+                    <option value="Project Manager">Project Manager</option>
                 </select>
             </div>
             <div class="employe-type">
@@ -782,10 +783,10 @@ Andrew leads the strategic direction of the business with a dedicated and divers
         var salaryContent = parseFloat(salaryValue);
         var jobLevelValue = jobLevel.value;
         if(jobLevelValue === 'Medior' || jobLevelValue === 'Senior' && salaryContent >= 4000){
-            isConfirmedLevelSalary = confirm('It is mandatory to remit a $30 posting fee for recruiting for Senior or Medior positions or job exceeds $4000.\nIf you agree, please click OK to go to the payment page.\nIf you want to edit, please click Cancel.');
+            isConfirmedLevelSalary = confirm('It is mandatory to remit a $30 posting fee for recruiting for Project Manager, Senior or Medior positions or job exceeds $4000.\nIf you agree, please click OK to go to the payment page.\nIf you want to edit, please click Cancel.');
         }
-        else if(jobLevelValue === 'Medior' || jobLevelValue === 'Senior'){
-            var isConfirmedLevel = confirm('It is mandatory to remit a $30 posting fee for recruiting for Senior or Medior positions.\nIf you agree, please click OK to go to the payment page.\nIf you want to edit the position, please click Cancel.');
+        else if(jobLevelValue === 'Medior' || jobLevelValue === 'Senior' || jobLevelValue === 'Project Manager'){
+            var isConfirmedLevel = confirm('It is mandatory to remit a $30 posting fee for recruiting for Project Manager, Senior or Medior positions.\nIf you agree, please click OK to go to the payment page.\nIf you want to edit the position, please click Cancel.');
             if (!isConfirmedLevel) {
                 e.preventDefault();
             }
