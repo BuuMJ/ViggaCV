@@ -441,7 +441,8 @@
 .company-feature .box-hotcompany .swiper .swiper-wrapper .swiper-slide .box__info-company .company-field {
   font-size: 16px;
   font-weight: 500;
-  color: #ff7d55; }
+  color: #ff7d55;
+  text-transform: capitalize; }
 
 .company-feature .box-hotcompany .swiper .swiper-wrapper .swiper-slide .box__info-company .view-detail__desc {
   width: 100%;
@@ -570,7 +571,8 @@
   overflow: hidden;
   font-weight: 600;
   color: black;
-  transition: .5s; }
+  transition: .5s;
+  text-transform: capitalize; }
 
 .company-feature .box-hotjob .swiper .swiper-slide .box__info-job:hover .left__info-job span.hot__job-name {
   color: #0072bc; }
@@ -760,7 +762,8 @@
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-  overflow: hidden; }
+  overflow: hidden;
+  text-transform: capitalize; }
 
 .container-home .home-jobs .swiper-slide a.box-jobnew .top-jobnew .left-info__jobnew .jobnew__company {
   font-size: 12px;
@@ -1485,7 +1488,7 @@ header.jobdetail {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   padding: 20px 0;
   background-color: white;
   margin-bottom: 20px; }
@@ -1502,25 +1505,25 @@ header.jobdetail .center-jobdetail {
 
 .center-jobdetail .primary-text {
   font-size: 26px;
-  font-weight: 500;
-  padding: 12px 50px 4px 20px; }
+  font-weight: 600;
+  padding: 12px 50px 4px 20px;
+  text-transform: capitalize; }
 
 .center-jobdetail .secondary-text {
   font-size: 20px;
   font-weight: 500;
   color: #0072bc;
+  text-decoration: none;
   padding: 0 50px 4px 20px; }
 
-.center-jobdetail .third-text {
-  font-size: 14px;
-  font-weight: 400;
-  padding: 4px 50px 4px 20px;
-  color: #FFA500; }
+.center-jobdetail .secondary-text:hover {
+  text-decoration: underline; }
 
+.center-jobdetail .third-text,
 .center-jobdetail .forth-text {
-  font-size: 14px;
+  font-size: 16px;
+  color: #353636;
   font-weight: 600;
-  color: #FF5733;
   padding: 4px 50px 0 20px; }
 
 .jobdetail-action {
@@ -1534,10 +1537,10 @@ header.jobdetail .center-jobdetail {
   margin: 4px 0; }
 
 .jobdetail-action form button.check-save__job {
-  background-color: transparent;
-  border: 1px solid #58b9f9;
+  background-color: #f3f6f6;
+  border: 1px solid #f3f6f6;
   outline: none;
-  color: #E63946;
+  color: black;
   padding: 4px;
   display: flex;
   justify-content: center;
@@ -1546,12 +1549,12 @@ header.jobdetail .center-jobdetail {
   height: 50px;
   width: 50px;
   font-weight: 700;
-  transition: .5s; }
+  transition: .5s;
+  border-radius: 5px; }
 
 .jobdetail-action form button.check-save__job:hover {
-  text-shadow: unset;
-  border: 1px solid #0095ff;
-  background-color: #0095ff; }
+  color: #E63946;
+  background-color: #cecfcf; }
 
 .jobdetail-action form button.saved {
   background-color: #0095ff;
@@ -1574,7 +1577,8 @@ header.jobdetail .center-jobdetail {
   color: #0095ff;
   font-size: 20px;
   font-weight: 600;
-  transition: .5s; }
+  transition: .5s;
+  border-radius: 5px; }
 
 .jobdetail-action a.btn-apply__notuser {
   text-decoration: none;
@@ -1609,6 +1613,39 @@ header.jobdetail .center-jobdetail {
 .jobdetail-action a:hover {
   color: #0095ff; }
 
+section.primarykey-content__job {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  background-color: white; }
+
+section.primarykey-content__job .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  width: 100%;
+  padding: 20px;
+  border-top: 1px dashed #696b6d;
+  height: 100%; }
+
+section.primarykey-content__job .container .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding: 8px;
+  width: 22%;
+  border-radius: 5px;
+  background-color: #f3f6f6; }
+
+section.primarykey-content__job .container .box .content {
+  font-weight: 600;
+  color: #0072bc;
+  padding: 6px 0;
+  text-transform: capitalize; }
+
 .body-jobdetail {
   width: 100%;
   min-height: 300px;
@@ -1638,7 +1675,8 @@ header.jobdetail .center-jobdetail {
 .jobinfo {
   font-size: 20px;
   font-weight: 600;
-  border-bottom: 3px solid #0095ff; }
+  border-bottom: 3px solid #0095ff;
+  color: #0095ff; }
 
 .main-jobdetail .jobinfo:hover,
 .main-jobdetail .companyinfo:hover,
@@ -1656,7 +1694,7 @@ header.jobdetail .center-jobdetail {
   min-height: 300px;
   margin-bottom: 50px;
   transform: translateY(-9px);
-  padding: 20px 40px; }
+  padding: 20px; }
 
 .main-jobinfo {
   display: flex; }
@@ -1691,6 +1729,9 @@ header.jobdetail .center-jobdetail {
 
 .location-jobinfo {
   padding-bottom: 20px; }
+
+.desc-jobinfo p {
+  line-height: 32px; }
 
 .jobinfo-main-text {
   font-size: 20px;
@@ -3289,7 +3330,12 @@ header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads span.superHot {
     text-align: justify; }
   .box-apply-job {
     width: 80%;
-    height: 50vh; } }
+    height: 50vh; }
+  section.primarykey-content__job .container {
+    flex-wrap: wrap; }
+  section.primarykey-content__job .container .box {
+    width: 45%;
+    margin-bottom: 12px; } }
 
 @media screen and (max-width: 768px) {
   .header-search .navbar-left {
@@ -3376,7 +3422,8 @@ header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads span.superHot {
   .jobs-ads .best-job {
     width: 90%; }
   header.jobdetail {
-    flex-direction: column; }
+    flex-direction: column;
+    align-items: center; }
   header.jobdetail img {
     width: 30%;
     align-self: unset;
@@ -3385,6 +3432,10 @@ header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads span.superHot {
     width: 70%;
     align-items: center;
     justify-content: center; }
+  section.primarykey-content__job .container {
+    justify-content: center; }
+  section.primarykey-content__job .container .box {
+    margin: 0 8px 12px 8px; }
   .center-jobdetail .primary-text {
     padding: 12px 20px 4px 20px;
     text-align: center;
@@ -3621,6 +3672,12 @@ header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads span.superHot {
     font-size: 14px; }
   header.job-search .swiper .swiper-wrapper .swiper-slide .hot-job__ads ul li {
     margin: 0 16px 0 10px; }
+  section.primarykey-content__job .container .box {
+    width: 100%;
+    margin: 8px 0;
+    align-items: center; }
+  section.primarykey-content__job .container .box .content {
+    text-align: center; }
   .header-search .input-search {
     justify-content: space-around;
     padding: 6px 0; }
@@ -3690,7 +3747,7 @@ header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads span.superHot {
     width: 50%; }
   header.jobdetail .center-jobdetail,
   .jobdetail-action {
-    width: 85%; }
+    width: 90%; }
   .jobdetail-action {
     flex-direction: column; }
   .jobdetail-action button.btn-apply,
@@ -4479,13 +4536,13 @@ input#postal::-webkit-inner-spin-button {
 
 .listjobs-action button,
 .listleadership-action button {
-  width: 18%;
+  padding: 8px 12px;
+  font-weight: 600;
   outline: none;
   border: 2px solid #0095ff;
   color: #0095ff;
   border-radius: 5px;
   background-color: transparent;
-  height: 40px;
   transition: all .3s; }
 
 .listjobs-action button:hover,
@@ -4501,7 +4558,7 @@ input#postal::-webkit-inner-spin-button {
   height: 120%;
   background-color: rgba(0, 0, 0, 0.95);
   display: none;
-  z-index: 19;
+  z-index: 30;
   transform: translatey(-12%);
   cursor: pointer;
   margin: unset !important; }
@@ -4515,20 +4572,54 @@ input#postal::-webkit-inner-spin-button {
 #postleadership {
   display: none;
   flex-direction: column;
-  justify-content: space-around;
   width: 70%;
-  height: 680px;
+  max-height: 90vh;
   position: fixed;
-  z-index: 20;
-  transform: translateY(-8%); }
+  z-index: 31;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 5px;
+  overflow-y: scroll;
+  padding-bottom: 20px; }
 
-#postleadership {
-  height: 600px; }
+#postjob header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding: 12px 0;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px; }
 
-#postjob h2,
 #postleadership h2 {
   text-align: center;
-  color: white; }
+  color: #0095ff;
+  padding: 20px 0 12px 0;
+  margin-bottom: 12px;
+  font-weight: 600;
+  text-transform: uppercase; }
+
+#postjob header .postjob-cancle {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: unset; }
+
+#postjob header .postjob-cancle h2 {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #0095ff;
+  margin: unset;
+  text-align: center; }
 
 #updateleadership {
   display: none;
@@ -4617,25 +4708,28 @@ input#postal::-webkit-inner-spin-button {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 100px; }
+  margin: 8px 0;
+  padding: 0 20px; }
 
 .info-job label {
-  color: white;
-  font-size: 18px; }
+  color: black;
+  font-size: 18px;
+  font-weight: 600; }
 
 .info-job input,
 .info-job textarea,
-.job-location select {
+.job-location select,
+.job-level select,
+.employe-type select {
   outline: none;
   border: none;
-  height: 40px;
+  height: 45px;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
   resize: none;
-  padding: 4px 12px; }
-
-.jobdesc {
-  height: 200px; }
+  padding: 4px 12px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  margin: 8px 0; }
 
 .info-job textarea {
   height: 120px; }
@@ -4652,7 +4746,10 @@ input#postal::-webkit-inner-spin-button {
   height: 100%; }
 
 .job-salary,
-.job-position {
+.job-position,
+.job-level,
+.job-experience,
+.employe-type {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -4662,16 +4759,14 @@ input#postal::-webkit-inner-spin-button {
 #salary-range {
   width: 100%; }
 
-.postleader-cancle,
-.postjob-cancle {
+.postleader-cancle {
   display: flex;
-  flex-direction: row;
-  justify-content: start;
+  flex-direction: row-reverse;
+  justify-content: end;
   align-items: center; }
 
-.postleader-cancle > *,
-.postjob-cancle > * {
-  margin: 0 12px; }
+.postleader-cancle > * {
+  margin-left: 12px; }
 
 .btn-postjob,
 .btn-update-leadership,
@@ -4680,18 +4775,16 @@ input#postal::-webkit-inner-spin-button {
 .btn-updateleader-cancle {
   outline: none;
   border: 1px solid #0095ff;
-  height: 50%;
-  width: 120px;
+  padding: 8px 12px;
   font-size: 20px;
   font-weight: 600;
   color: #0095ff;
   background-color: transparent;
-  border-radius: 10px; }
+  border-radius: 5px; }
 
 .btn-postjob-cancle,
 .btn-postleader-cancle,
 .btn-updateleader-cancle {
-  width: 80px;
   border: 1px solid #FC0404;
   color: #FC0404; }
 
@@ -4924,7 +5017,7 @@ li.content-listleadership img {
   align-items: center;
   height: 70px;
   width: 120px;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.5) 0px 7px 29px 0px;
   position: absolute;
@@ -5028,25 +5121,28 @@ ul.listpageleadership .active {
   position: relative; }
 
 .avatar-leadership img {
-  border: 2px solid white;
+  outline-offset: 4px;
+  outline: 2px solid #0095ff;
   border-radius: 50%;
-  width: 100%;
-  height: 100%; }
+  width: 120px;
+  height: 120px; }
 
 .leadership-avatar {
   position: relative;
   width: 120px;
   height: 120px;
-  cursor: pointer;
-  overflow: hidden; }
+  cursor: pointer; }
 
 .leadership-avatar::after {
   position: absolute;
   content: "Change Avatar";
-  display: none;
+  display: flex;
+  opacity: 0;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  color: white;
+  background-color: rgba(0, 149, 255, 0.8);
   border-bottom-left-radius: 60px;
   border-bottom-right-radius: 60px;
   width: 120px;
@@ -5054,10 +5150,11 @@ ul.listpageleadership .active {
   bottom: 0;
   left: 50%;
   font-size: 14px;
-  transform: translateX(-50%); }
+  transform: translateX(-50%);
+  transition: opacity .3s ease-in-out; }
 
 .leadership-avatar:hover:after {
-  display: flex; }
+  opacity: 1; }
 
 .avatar-leadership input {
   display: none; }
@@ -5502,9 +5599,6 @@ ul.listpageleadership .active {
     right: 35%; }
   .camera-user-company {
     top: 9.5%; }
-  .listjobs-action button,
-  .listleadership-action button {
-    width: 26%; }
   .container-checkpayment .box__dates-payment,
   .container__success-payment .main__success-payment,
   .container__cancel-payment .main__cancel-payment {
@@ -5517,7 +5611,9 @@ ul.listpageleadership .active {
     font-size: 16px; }
   .info-job input,
   .info-job textarea,
-  .job-location select {
+  .job-location select,
+  .job-level select,
+  .employe-type select {
     font-size: 12px; }
   #updateleadership {
     width: 80%; } }
@@ -5564,7 +5660,7 @@ ul.listpageleadership .active {
     top: -60px; }
   .listjobs-action button,
   .listleadership-action button {
-    width: 40%; }
+    font-size: 14px; }
   span.timejobs, span.locationjobs {
     font-size: 8px; }
   .namejobs {
@@ -5615,10 +5711,6 @@ ul.listpageleadership .active {
     width: 66%; }
   .container__cancel-payment .main__cancel-payment .body__cancel-payment .action__cancel-payment a {
     font-size: 16px; }
-  #postjob,
-  #postleadership {
-    transform: translateY(0);
-    top: 10px; }
   .jobdesc {
     height: 150px; }
   .info-job textarea {
@@ -5631,8 +5723,13 @@ ul.listpageleadership .active {
     width: 100%;
     justify-content: center;
     height: unset; }
+  .job-experience {
+    width: 100%;
+    justify-content: center; }
   .info-job-salary .job-location,
-  .job-position {
+  .job-position,
+  .job-level,
+  .employe-type {
     width: 48%;
     justify-content: center;
     height: 70%;
@@ -5656,7 +5753,12 @@ ul.listpageleadership .active {
   li.content-listjob .namejobs a {
     padding-right: 50px; }
   .modal-content__error {
-    font-size: 12px; } }
+    font-size: 12px; }
+  #postjob header .postjob-cancle button {
+    padding: 4px 8px;
+    font-size: 18px; }
+  #postjob header .postjob-cancle {
+    padding: 0 8px; } }
 
 @media screen and (max-width: 376px) {
   button.btn-setting {
@@ -5682,10 +5784,10 @@ ul.listpageleadership .active {
     flex-wrap: wrap; }
   li.content-listjob .namejobs a {
     padding-right: 60px; }
-  #postjob {
-    top: 0; }
   #updateleadership {
     width: 95%; }
+  .btn-postjob, .btn-update-leadership, .btn-postjob-cancle, .btn-postleader-cancle, .btn-updateleader-cancle {
+    font-size: 18px; }
   .payment-history .box-history h1 {
     font-size: 28px; } }
 
@@ -5713,9 +5815,6 @@ ul.listpageleadership .active {
   li.content-listjob .cv-applied {
     font-size: 10px;
     width: 124px; }
-  .listjobs-action button,
-  .listleadership-action button {
-    width: 50%; }
   li.content-listleadership img {
     width: 40px;
     height: 40px; }
@@ -5752,24 +5851,26 @@ ul.listpageleadership .active {
     margin-bottom: 30px; }
   .container__cancel-payment .main__cancel-payment .body__cancel-payment .action__cancel-payment a {
     font-size: 12px; }
-  #postjob {
-    height: 100vh;
-    justify-content: unset; }
-  .info-job {
-    height: 70px; }
   .info-job textarea {
     height: 80px; }
+  .btn-postjob, .btn-update-leadership, .btn-postjob-cancle, .btn-postleader-cancle, .btn-updateleader-cancle {
+    font-size: 14px; }
   .info-job input,
   .info-job textarea,
-  .job-location select {
+  .info-job input,
+  .info-job textarea,
+  .job-location select,
+  .job-level select,
+  .employe-type select {
     font-size: 10px; }
+  .info-job-salary .job-location,
+  .job-position,
+  .job-level,
+  .employe-type {
+    width: 100%; }
   .info-job label {
+    font-size: 14px;
     margin: 6px 0; }
-  .info-job-salary {
-    height: 155px; }
-  #postleadership {
-    top: 0;
-    height: 100vh; }
   .text .h3 {
     font-size: 18px; }
   .text {
@@ -5789,7 +5890,11 @@ ul.listpageleadership .active {
     font-size: 8px; }
   li.content-listjob a.payment::after {
     font-size: 10px;
-    width: 100px; } }
+    width: 100px; }
+  #postjob header .postjob-cancle button {
+    font-size: 14px; }
+  #postjob header .postjob-cancle h2 {
+    font-size: 20px; } }
 
 .container-companies {
   display: flex;

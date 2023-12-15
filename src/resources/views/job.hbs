@@ -245,6 +245,7 @@
         </header>
         <ul class="random-job">
           <span class="suggest-text">suggested jobs</span>
+          {{#if user}}
           {{#each randomJobs}}
           <a href="/job/detail/{{this._id}}">
             <li>
@@ -256,6 +257,19 @@
             </li>
           </a>
           {{/each}}
+          {{else}}
+          {{#each randomJobs}}
+          <a href="/job/detail/{{this._id}}">
+            <li>
+              <span class="suggest-jobname" title="{{this.jobname}}">{{this.jobname}}</span>
+              <div class="suggestion-deal">
+                <span class="suggest-joblocation"title="{{this.joblocation}}"><i class="bi bi-geo-alt-fill"></i> {{this.joblocation}}</span>
+                <span class="suggest-jobsalary salary-not__user"><i class="bi bi-coin"></i> Sign in to view salary</span>
+              </div>
+            </li>
+          </a>
+          {{/each}}
+          {{/if}}
         </ul>
         <footer class="footer-suggest">
           <a href="/company/{{random._id}}">Apply Now</a>

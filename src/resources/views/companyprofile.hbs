@@ -142,17 +142,17 @@
                     <div class="about-user about-user-desc-company">
                         <label for="experience">Service Description</label>
                         <textarea id="experience" type="text" name="serviceDesc"
-                            placeholder="ViggaCareers provides software and services to energy, water and communications industries. The company was founded in 1971 and is headquartered in Viet Nam.">{{getService company}}</textarea>
+                            placeholder="ViggaCareers provides software and services to energy, water and communications industries. The company was founded in 1971 and is headquartered in Viet Nam.">{{getServiceProfile company}}</textarea>
                     </div>
                     <div class="about-user about-user-desc-company">
                         <label for="experience">Mission</label>
                         <textarea id="experience" type="text" name="mission"
-                            placeholder="ViggaCareers provides software and services to energy, water and communications industries. The company was founded in 1971 and is headquartered in Viet Nam.">{{getMission company}}</textarea>
+                            placeholder="ViggaCareers provides software and services to energy, water and communications industries. The company was founded in 1971 and is headquartered in Viet Nam.">{{getMissionProfile company}}</textarea>
                     </div>
                     <div class="about-user about-user-desc-company">
                         <label for="experience">History</label>
                         <textarea id="experience" type="text" name="history"
-                            placeholder="Founded in 1971, Hansen is a global provider of software and services, serving the most demanding energy and communications brands around the world. Our early origins in the management of customer and organisational data has served our customers well over the years. As a pioneer in providing some of the first web-based self-service and browser- based customer care solutions to the market we have continued to hone our software to enable energy and communications service providers to create new products and services, deliver them flawlessly, and engage customers with excellence – powered by the Hansen Create-Deliver-EngageTM suite of software applications. In the last decade we have grown exponentially through several progressive and strategic acquisitions that have expanded our geographic scope and enhanced the business of our valued customers. Today we are on the cusp of a new journey with our customers, to help them Power the NextTM age of communications and energy related experiences beyond the essentials of providing basic core energy and connectivity.">{{getHistory company}}</textarea>
+                            placeholder="Founded in 1971, Hansen is a global provider of software and services, serving the most demanding energy and communications brands around the world. Our early origins in the management of customer and organisational data has served our customers well over the years. As a pioneer in providing some of the first web-based self-service and browser- based customer care solutions to the market we have continued to hone our software to enable energy and communications service providers to create new products and services, deliver them flawlessly, and engage customers with excellence – powered by the Hansen Create-Deliver-EngageTM suite of software applications. In the last decade we have grown exponentially through several progressive and strategic acquisitions that have expanded our geographic scope and enhanced the business of our valued customers. Today we are on the cusp of a new journey with our customers, to help them Power the NextTM age of communications and energy related experiences beyond the essentials of providing basic core energy and connectivity.">{{getHistoryProfile company}}</textarea>
                     </div>
                 </div>
                 <span>TEAM LEADERSHIP</span>
@@ -258,7 +258,14 @@
     <div class="overplay-postjob"></div>
     {{!-- form post job --}}
     <form id="postjob" method="POST" action="/companyprofile/postjob">
-        <h2>New Job</h2>
+        <header>
+            <div class="info-job postjob-cancle">
+                <button type="button" class="btn-postjob-cancle">Cancel</button>
+                <h2>New Job</h2>
+                <button type="submit" class="btn-postjob">Post Job</button>
+            </div>
+        </header>
+        
         <div class="info-job">
             <label for="jobname">Job Name</label>
             <input id="jobname" name="jobname" placeholder="Developer Engineer" type="text" required>
@@ -289,6 +296,33 @@
             <textarea id="namecompanyjob" name="benefit" type="text" required></textarea>
         </div>
         <div class="info-job info-job-salary">
+            <div class="job-experience">
+                <label for="job-experience">Experience</label>
+                <input type="text" name="experience" id="job-experience" placeholder="Minimun 1 Year" required>
+            </div>
+            <div class="job-level" >
+                <label for="jobLevel">Job Level</label>
+                <select name="jobLevel" id="jobLevel" required>
+                    <option value="" selected>Select Job Level</option>
+                    <option value="Intern">Intern</option>
+                    <option value="Fresher">Fresher</option>
+                    <option value="Junior">Junior</option>
+                    <option value="Medior">Medior</option>
+                    <option value="Senior">Senior</option>
+                </select>
+            </div>
+            <div class="employe-type">
+                <label for="employeType">Employe Type</label>
+                <select id="employeType" name="employeType" required>
+                    <option value="" selected>Select Employe Type</option>
+                    <option value="Full Time">Full Time</option>
+                    <option value="Part Time">Part Time</option>
+                    <option value="Remote">Remote</option>
+                    <option value="Negotiable">Negotiable</option>
+                </select>
+            </div>
+        </div>
+        <div class="info-job info-job-salary">
             <div class="job-position">
                 <label for="position">Position</label>
                 <input type="text" name="position" id="position" placeholder="Manager" required>
@@ -307,11 +341,6 @@
                 </select>
             </div>
         </div>
-        <div class="info-job postjob-cancle">
-            <button type="submit" class="btn-postjob">Post Job</button>
-            <button type="button" class="btn-postjob-cancle">Cancel</button>
-        </div>
-
     </form>
     <div class="overplay-postleadership"></div>
     {{!-- form add leader --}}

@@ -3,13 +3,61 @@
         <img src="{{getAvatarcompany company}}" alt="" onerror="this.src='/img/notfoundavatar.jpeg'">
         <div class="center-jobdetail">
             <span class="primary-text">{{detail.jobname}}</span>
-            <span class="secondary-text">{{getCompanyname company}} {{getTOB company}}</span>
-            <span class="third-text"><i class="bi bi-geo-alt"></i> {{detail.joblocation}}</span>
-            {{#if user}}
-            <span class="forth-text"><i class="bi bi-currency-dollar"></i>{{detail.salary}}</span>
-            {{else}}
-            <span class="forth-text salary-not__user"><i class="bi bi-coin"></i> Sign in to view salary</span>
-            {{/if}}
+            <a class="secondary-text" href="/company/{{getIDcompany company}}">{{getCompanyname company}} {{getTOB company}} <span class="material-symbols-outlined">bubble</span></a>
+            <span class="third-text">{{detail.joblocation}}</span>
+            <span class="forth-text" data-posted="{{detail.createdAt}}">{{moment detail.createdAt format="DD/MM/YYYY"}}</span>
+            <section class="primarykey-content__job">
+                <div class="container">
+                    <div class="box">
+                        <span class="title">
+                            Experience
+                        </span>
+                        <span class="content">
+                            {{#if detail.experience}}
+                            {{detail.experience}}
+                            {{else}}
+                            Minimum 1 year
+                            {{/if}}
+                        </span>
+                    </div>
+                    <div class="box">
+                        <span class="title">
+                            Job Level
+                        </span>
+                        <span class="content">
+                            {{#if detail.jobLevel}}
+                            {{detail.jobLevel}}
+                            {{else}}
+                            Fresher
+                            {{/if}}
+                        </span>
+                    </div>
+                    <div class="box">
+                        <span class="title">
+                            Employe Type
+                        </span>
+                        <span class="content">
+                            {{#if detail.employeType}}
+                            {{detail.employeType}}
+                            {{else}}
+                            Negotiable
+                            {{/if}}
+                        </span>
+                    </div>
+                    <div class="box">
+                        <span class="title">
+                            Position
+                        </span>
+                        <span class="content">
+                            {{#if detail.position}}
+                            {{detail.position}}
+                            {{else}}
+                            Negotiable
+                            {{/if}}
+                        </span>
+                    </div>
+                </div>
+            </section>
         </div>
         <div class="jobdetail-action">
             {{#if user}}
@@ -164,11 +212,11 @@
     var showJobInfo = document.querySelector('.main-jobinfo');
     clickShowJobInfo.addEventListener('click',()=>{
         showJobInfo.style.cssText = "display: flex;"
-        clickShowJobInfo.style.cssText = "font-weight:600; border-bottom: 3px solid #0095ff;"
+        clickShowJobInfo.style.cssText = "font-weight:600; border-bottom: 3px solid #0095ff; color: #0095ff;"
         showcompanyInfo.style.cssText = "display: none;"
-        clickShowcompanyInfo.style.cssText = " font-weight:400; border-bottom: unset;"
+        clickShowcompanyInfo.style.cssText = " font-weight:400; border-bottom: unset; color: black;"
         showjobsfromthiscompany.style.cssText = "display: none;"
-        clickShowjobsfromthiscompany.style.cssText = " font-weight:400; border-bottom: unset;"
+        clickShowjobsfromthiscompany.style.cssText = " font-weight:400; border-bottom: unset; color: black;"
         localStorage.setItem('boxJobInfo', 'show');
         localStorage.setItem('boxCompanyInfo', 'hide');
         localStorage.setItem('boxJFTC', 'hide');
@@ -177,11 +225,11 @@
     var showcompanyInfo = document.querySelector('.main-companyinfo');
     clickShowcompanyInfo.addEventListener('click',()=>{
         showcompanyInfo.style.cssText = "display: flex;"
-        clickShowcompanyInfo.style.cssText = "font-weight:600; border-bottom: 3px solid #0095ff;"
+        clickShowcompanyInfo.style.cssText = "font-weight:600; border-bottom: 3px solid #0095ff; color: #0095ff;"
         showJobInfo.style.cssText = "display: none;"
-        clickShowJobInfo.style.cssText = " font-weight:400; border-bottom: unset;"
+        clickShowJobInfo.style.cssText = " font-weight:400; border-bottom: unset; color: black;"
         showjobsfromthiscompany.style.cssText = "display: none;"
-        clickShowjobsfromthiscompany.style.cssText = " font-weight:400; border-bottom: unset;"
+        clickShowjobsfromthiscompany.style.cssText = " font-weight:400; border-bottom: unset; color: black;"
         localStorage.setItem('boxCompanyInfo', 'show');
         localStorage.setItem('boxJFTC', 'hide');
         localStorage.setItem('boxJobInfo', 'hide');
@@ -190,11 +238,11 @@
     var showjobsfromthiscompany = document.querySelector('.main-jobsfromthiscompany');
     clickShowjobsfromthiscompany.addEventListener('click',()=>{
         showjobsfromthiscompany.style.cssText = "display: flex;"
-        clickShowjobsfromthiscompany.style.cssText = "font-weight:600; border-bottom: 3px solid #0095ff;"
+        clickShowjobsfromthiscompany.style.cssText = "font-weight:600; border-bottom: 3px solid #0095ff; color: #0095ff;"
         showJobInfo.style.cssText = "display: none;"
-        clickShowJobInfo.style.cssText = " font-weight:400; border-bottom: unset;"
+        clickShowJobInfo.style.cssText = " font-weight:400; border-bottom: unset; color: black;"
         showcompanyInfo.style.cssText = "display: none;"
-        clickShowcompanyInfo.style.cssText = " font-weight:400; border-bottom: unset;"
+        clickShowcompanyInfo.style.cssText = " font-weight:400; border-bottom: unset; color: black;"
         localStorage.setItem('boxJFTC', 'show');
         localStorage.setItem('boxJobInfo', 'hide');
         localStorage.setItem('boxCompanyInfo', 'hide');
@@ -239,25 +287,25 @@
         var showBoxJFTC = localStorage.getItem('boxJFTC');
         if(showBoxJobInfo === 'show'){
             showJobInfo.style.cssText = "display: flex;"
-            clickShowJobInfo.style.cssText = "font-weight:600; border-bottom: 3px solid #0095ff;"
+            clickShowJobInfo.style.cssText = "font-weight:600; border-bottom: 3px solid #0095ff; color: #0095ff;"
             showcompanyInfo.style.cssText = "display: none;"
-            clickShowcompanyInfo.style.cssText = " font-weight:400; border-bottom: unset;"
+            clickShowcompanyInfo.style.cssText = " font-weight:400; border-bottom: unset; color: black;"
             showjobsfromthiscompany.style.cssText = "display: none;"
-            clickShowjobsfromthiscompany.style.cssText = " font-weight:400; border-bottom: unset;"
+            clickShowjobsfromthiscompany.style.cssText = " font-weight:400; border-bottom: unset; color: black;"
         }else if(showBoxCompanyInfo === 'show'){
             showcompanyInfo.style.cssText = "display: flex;"
-            clickShowcompanyInfo.style.cssText = "font-weight:600; border-bottom: 3px solid #0095ff;"
+            clickShowcompanyInfo.style.cssText = "font-weight:600; border-bottom: 3px solid #0095ff; color: #0095ff;"
             showJobInfo.style.cssText = "display: none;"
-            clickShowJobInfo.style.cssText = " font-weight:400; border-bottom: unset;"
+            clickShowJobInfo.style.cssText = " font-weight:400; border-bottom: unset; color: black;"
             showjobsfromthiscompany.style.cssText = "display: none;"
-            clickShowjobsfromthiscompany.style.cssText = " font-weight:400; border-bottom: unset;"
+            clickShowjobsfromthiscompany.style.cssText = " font-weight:400; border-bottom: unset; color: black;"
         }else if(showBoxJFTC === 'show'){
             showjobsfromthiscompany.style.cssText = "display: flex;"
-            clickShowjobsfromthiscompany.style.cssText = "font-weight:600; border-bottom: 3px solid #0095ff;"
+            clickShowjobsfromthiscompany.style.cssText = "font-weight:600; border-bottom: 3px solid #0095ff; color: #0095ff;"
             showJobInfo.style.cssText = "display: none;"
-            clickShowJobInfo.style.cssText = " font-weight:400; border-bottom: unset;"
+            clickShowJobInfo.style.cssText = " font-weight:400; border-bottom: unset; color: black;"
             showcompanyInfo.style.cssText = "display: none;"
-            clickShowcompanyInfo.style.cssText = " font-weight:400; border-bottom: unset;"
+            clickShowcompanyInfo.style.cssText = " font-weight:400; border-bottom: unset; color: black;"
         }
         const urlParams = new URLSearchParams(window.location.search);
     const pageFromURL = urlParams.get('page');
@@ -338,4 +386,17 @@
         }
     });
     });
+    const postedText = document.querySelector('.jobdetail .center-jobdetail .forth-text');
+    const dataPosted = postedText.getAttribute('data-posted');
+    const postedDate = new Date(dataPosted);
+    const currentDate = new Date();
+    console.log(currentDate)
+    const daysDifference = Math.floor((currentDate - postedDate) / (24 * 60 * 60 * 1000));
+    console.log(postedDate)
+    if(daysDifference <= 1){
+        postedText.innerHTML = `Posted Today`
+    }
+    else{
+        postedText.innerHTML = `Posted ${daysDifference} days ago`
+    }
 </script>

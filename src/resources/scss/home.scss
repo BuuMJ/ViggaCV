@@ -480,6 +480,7 @@
     font-size: 16px;
     font-weight: 500;
     color: #ff7d55;
+    text-transform: capitalize;
 }
 
 .company-feature .box-hotcompany .swiper .swiper-wrapper .swiper-slide .box__info-company .view-detail__desc {
@@ -626,6 +627,7 @@
     font-weight: 600;
     color: black;
     transition: .5s;
+    text-transform: capitalize;
 }
 .company-feature .box-hotjob .swiper .swiper-slide .box__info-job:hover .left__info-job span.hot__job-name{
     color: $secondarycolor;
@@ -821,6 +823,7 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-transform: capitalize;
   }
   .container-home .home-jobs .swiper-slide a.box-jobnew .top-jobnew .left-info__jobnew .jobnew__company{
     font-size: 12px;

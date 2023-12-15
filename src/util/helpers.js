@@ -255,6 +255,13 @@ module.exports = {
       return "There is no information about the service, you can contact the company to learn more";
     }
   },
+  getServiceProfile: function (company) {
+    if (company && company.servicedesc) {
+      return company.servicedesc;
+    } else {
+      return "The information has not been updated";
+    }
+  },
   getEstablisheddate: function (company) {
     if (company && company.establisheddate) {
       return moment(company.establisheddate).format("DD/MM/YYYY");
@@ -290,11 +297,25 @@ module.exports = {
       return "There is no information about the mission, you can contact the company to learn more";
     }
   },
+  getMissionProfile: function (company) {
+    if (company && company.mission) {
+      return company.mission;
+    } else {
+      return "The information has not been updated";
+    }
+  },
   getHistory: function (company) {
     if (company && company.history) {
       return company.history;
     } else {
       return "The company has not updated its operating history";
+    }
+  },
+  getHistoryProfile: function (company) {
+    if (company && company.history) {
+      return company.history;
+    } else {
+      return "The information has not been updated";
     }
   },
   getJobcount: function (jobcount) {
