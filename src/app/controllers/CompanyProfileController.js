@@ -484,6 +484,9 @@ class CompanyProfileController {
     const benefit = req.body.benefit;
     const position = req.body.position;
     const DoP = req.body.DoP;
+    const experience = req.body.experience;
+    const jobLevel = req.body.jobLevel;
+    const employeType = req.body.employeType;
     req.session.jobData = {
       iduser: req.user._id,
       jobname: req.body.jobname,
@@ -494,9 +497,12 @@ class CompanyProfileController {
       benefit: req.body.benefit,
       position: req.body.position,
       DoP: req.body.DoP,
+      experience: req.body.experience,
+      jobLevel: req.body.jobLevel,
+      employeType: req.body.employeType,
     };
     const checkSalary = parseInt(salary, 10);
-    if (checkSalary >= 4000) {
+    if (checkSalary >= 4000 || jobLevel == "Medior" || jobLevel == "Senior") {
       return res.redirect("/pay/payjob");
     }
     const subscribes = await SubscribeModel.find().distinct("email");
@@ -523,6 +529,9 @@ class CompanyProfileController {
       avatar: companyname.avatar,
       backGround: companyname.background,
       idcompany: companyname._id,
+      experience: experience,
+      employeType: employeType,
+      jobLevel: jobLevel,
     });
     if (job) {
       if (combinedEmails.length > 0) {

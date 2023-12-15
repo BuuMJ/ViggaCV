@@ -13,7 +13,7 @@ const QualifiedModel = require("../models/Qualified");
 class HomeController {
   async home(req, res, next) {
     try {
-      await QualifiedModel.updateMany({}, { sendMail: false });
+      // await QualifiedModel.updateMany({}, { sendMail: false });
       if (req.user) {
         const confirm = req.user.confirm;
         if (confirm == false) {

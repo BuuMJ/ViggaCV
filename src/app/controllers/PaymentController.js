@@ -247,6 +247,9 @@ class PaymentController {
             const benefit = jobData.benefit;
             const position = jobData.position;
             const DoP = jobData.DoP;
+            const experience = jobData.experience;
+            const jobLevel = jobData.jobLevel;
+            const employeType = jobData.employeType;
             const subscribes = await SubscribeModel.find().distinct("email");
             const companyname = await CompanyModel.findOne({ iduser: iduser });
             const companyfollow = await ActionModel.find({
@@ -271,6 +274,9 @@ class PaymentController {
                 joblocation: joblocation,
                 avatar: companyname.avatar,
                 idcompany: companyname._id,
+                experience: experience,
+                employeType: employeType,
+                jobLevel: jobLevel,
               });
               await job.save();
               const saleId =

@@ -9,9 +9,11 @@ const {
 class CompanyController {
   //[GET] List companies
   async company(req, res, next) {
-    const confirm = req.user.confirm;
-    if (confirm == false) {
-      return res.redirect("/companyprofile");
+    if (req.user) {
+      const confirm = req.user.confirm;
+      if (confirm == false) {
+        return res.redirect("/companyprofile");
+      }
     }
     if (req.user) {
       var user_id = req.user._id;
@@ -36,7 +38,6 @@ class CompanyController {
     const randomCompany = Listcompany[randomIndex];
     JobModel.find({ iduser: user_id, active: true }).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
-      console.log(pages);
       if (page) {
         page = parseInt(page);
         const skip = (page - 1) * PAGE_SIZE;
@@ -162,7 +163,12 @@ class CompanyController {
     if (req.user) {
       var user_id = req.user._id;
     }
-    const search = req.query.categories;
+    const check = req.query.categories;
+    if (check == "All Business Field") {
+      var search = "";
+    } else {
+      var search = check;
+    }
     const company = await CompanyModel.find({
       companyfield: { $regex: search, $options: "i" },
     });
@@ -188,7 +194,6 @@ class CompanyController {
     const randomCompany = Listcompany[randomIndex];
     JobModel.find({ iduser: user_id, active: true }).then((listjob) => {
       listjob = listjob.map((listjob) => listjob.toObject());
-      console.log(listCategories);
       if (page) {
         page = parseInt(page);
         const skip = (page - 1) * PAGE_SIZE;
