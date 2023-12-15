@@ -3192,7 +3192,8 @@ header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads span.superHot {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  display: -webkit-box; }
+  display: -webkit-box;
+  text-transform: capitalize; }
 
 .container__job-saved .main__job-saved section .box__saved-job .card__job-saved img {
   height: 70px;
@@ -4625,7 +4626,7 @@ input#postal::-webkit-inner-spin-button {
   justify-content: center;
   align-items: center;
   position: fixed;
-  z-index: 30;
+  z-index: 31;
   width: 30%;
   height: 100vh;
   top: 49%;
@@ -4793,7 +4794,6 @@ input#postal::-webkit-inner-spin-button {
   background-color: #FC0404;
   color: white; }
 
-.btn-postleader,
 .btn-update-leadership {
   width: 180px; }
 
@@ -8014,7 +8014,8 @@ header.company-detail .background-company-detail {
 
 .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field label {
   font-weight: 600;
-  width: 35%; }
+  width: 35%;
+  font-size: 15px; }
 
 .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite button.submit-invite {
   margin: 10px 0;
@@ -8294,7 +8295,20 @@ header.company-detail .background-company-detail {
     margin: 0 0 12px 0; }
   .main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv button.show-invite span,
   .main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv a.download__cv-passed span {
-    font-size: 20px; } }
+    font-size: 20px; }
+  .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field {
+    flex-direction: column;
+    margin: 4px 0; }
+  .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field label,
+  .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field input {
+    width: 100%;
+    font-size: 14px; }
+  .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field input {
+    height: 32px;
+    margin: 4px 0; }
+  .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite button.submit-invite {
+    margin: unset;
+    margin-top: 8px; } }
 
 .container-admin {
   display: flex;

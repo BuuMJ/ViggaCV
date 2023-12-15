@@ -1112,6 +1112,7 @@
 .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field label{
   font-weight: 600;
   width: 35%;
+  font-size: 15px;
 }
 .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite button.submit-invite{
   margin: 10px 0;
@@ -1464,5 +1465,22 @@
   .main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv button.show-invite span,
   .main__manager-cv section .box__passed-cv .card__passed-cv .action-card__passed-cv a.download__cv-passed span{
     font-size: 20px;
+  }
+  .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field{
+    flex-direction: column;
+    margin: 4px 0;
+  }
+  .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field label,
+  .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field input{
+    width: 100%;
+    font-size: 14px;
+  }
+  .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite .box-field input{
+    height: 32px;
+    margin: 4px 0;
+  }
+  .main__manager-cv section .box__passed-cv .card__passed-cv .invite-candidate .box-invite button.submit-invite{
+    margin: unset;
+    margin-top: 8px;
   }
 }

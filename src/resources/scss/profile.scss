@@ -767,7 +767,7 @@ input#postal::-webkit-inner-spin-button {
     justify-content: center;
     align-items: center;
     position: fixed;
-    z-index: 30;
+    z-index: 31;
     width: 30%;
     height: 100vh;
     top: 49%;
@@ -936,7 +936,6 @@ input#postal::-webkit-inner-spin-button {
     background-color: #FC0404;
     color: white;
 }
-.btn-postleader,
 .btn-update-leadership{
     width: 180px;
 }
