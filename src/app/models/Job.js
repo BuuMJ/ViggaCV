@@ -18,6 +18,9 @@ const Job = new Schema(
     position: String,
     categories: String,
     backGround: String,
+    experience: String,
+    jobLevel: String,
+    employeType: String,
     active: {
       type: Boolean,
       default: true,
