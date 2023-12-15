@@ -1523,7 +1523,6 @@ header.jobdetail .center-jobdetail {
 .center-jobdetail .forth-text {
   font-size: 16px;
   color: #353636;
-  font-weight: 600;
   padding: 4px 50px 0 20px; }
 
 .jobdetail-action {
@@ -6104,11 +6103,9 @@ h2.main-text {
   align-items: center;
   text-decoration: none;
   color: #0095ff;
-  padding: 8px;
+  padding: 8px 12px;
   border-radius: 5px;
   background-color: white;
-  width: 100px;
-  height: 40px;
   text-align: center;
   font-weight: 500;
   cursor: pointer;
@@ -6120,9 +6117,6 @@ h2.main-text {
 .view-detail__job:hover {
   color: white;
   background-color: #0095ff; }
-
-.view-detail__company {
-  width: 130px; }
 
 .card-company:hover {
   border: 1px solid #0072bc;
@@ -6358,7 +6352,8 @@ header.company-detail .background-company-detail {
   color: #0095ff;
   font-size: 18px;
   font-weight: 500;
-  text-decoration: none; }
+  text-decoration: none;
+  text-align: center; }
 
 .header__primary-company-detail .logo-company-detail span.sumary-jobs a:hover {
   color: #0072bc; }
@@ -6456,7 +6451,8 @@ header.company-detail .background-company-detail {
   font-weight: 400;
   padding: 4px 0;
   letter-spacing: 1.3px;
-  text-align: justify; }
+  text-align: justify;
+  line-height: 32px; }
 
 .company-leadership {
   width: 90%;
@@ -10760,7 +10756,7 @@ button#moveTopBtn {
   background: #0095ff; }
 
 body {
-  font-family: Helvetica Neue, HelveticaNeueLTPro, Helvetica, Arial, sans-serif;
+  font-family: 'Lexend', sans-serif;
   overflow-x: hidden; }
 
 body.modal-open {

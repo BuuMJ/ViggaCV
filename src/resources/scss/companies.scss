@@ -214,11 +214,9 @@ color: #777777;
   align-items: center;
   text-decoration: none;
   color: $btncolor;
-  padding: 8px;
+  padding: 8px 12px;
   border-radius: 5px;
   background-color: white;
-  width: 100px;
-  height: 40px;
   text-align: center;
   font-weight: 500;
   cursor: pointer;
@@ -230,9 +228,6 @@ color: #777777;
 .view-detail__job:hover{
   color: white;
   background-color: $btncolor;
-}
-.view-detail__company{
-  width: 130px;
 }
 .card-company:hover{
   border: 1px solid $secondarycolor;
@@ -471,6 +466,7 @@ header.company-detail .background-company-detail{
   font-size: 18px;
   font-weight: 500;
   text-decoration: none;
+  text-align: center;
 }
 .header__primary-company-detail .logo-company-detail span.sumary-jobs a:hover{
   color: $secondarycolor;
@@ -570,6 +566,7 @@ header.company-detail .background-company-detail{
   padding: 4px 0 ;
   letter-spacing: 1.3px;
   text-align: justify;
+  line-height: 32px;
 }
 .company-leadership {
   width: 90%;

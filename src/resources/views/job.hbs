@@ -367,10 +367,16 @@ getPagination.forEach(function(pageLink) {
     }
   });
 });
+  var checkLengthSlide = document.querySelectorAll('.swiper-slide').length;
+  var hideSwiper = document.querySelector('.job-search .mySwiper');
+  if(checkLengthSlide === 0){
+    hideSwiper.style.display = 'none';
+  }
 window.addEventListener('scroll', function() {
   var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-  var checkLengthSlide = document.querySelectorAll('.swiper-slide').length;
+  var hideSwiper = document.querySelector('.mySwiper');
   if (checkLengthSlide === 0) {
+    hideSwiper.style.display = 'none';
     if (scrollPosition >= 85) {
       document.querySelector('.header-search').style.cssText = 'position: fixed; top: 0; box-shadow: 1px 1px 10px rgba(0,0,0,0.5); background-color: white; border-bottom: 1px solid #ededed;';
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: #F7F7F7;';
@@ -523,7 +529,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   var overlayScanCV = document.querySelector('.header-search .overlay-scancv');
-  overlayScanCV.addEventListener('click', handleFileRefusal)
+  if(overlayScanCV){
+    overlayScanCV.addEventListener('click', handleFileRefusal)
+  }
 });
 var containerJobs = document.querySelectorAll('.card-job');
 containerJobs.forEach(function(cardJob){
