@@ -776,10 +776,20 @@ Andrew leads the strategic direction of the business with a dedicated and divers
     var textSalary = document.querySelector('#postjob .job-salary #salary-range');
     var formPostJob = document.querySelector('#postjob .postjob-cancle .btn-postjob');
     var alertSalary = document.querySelector('#postjob .job-salary .alert-salary');
+    const jobLevel = document.getElementById('jobLevel');
     submitPostJob.addEventListener('click', (e) => {
         var salaryValue = textSalary.value;
         var salaryContent = parseFloat(salaryValue);
-        if (salaryContent >= 4000) {
+        var jobLevelValue = jobLevel.value;
+        if(jobLevelValue === 'Medior' || jobLevelValue === 'Senior' && salaryContent >= 4000){
+            isConfirmedLevelSalary = confirm('It is mandatory to remit a $30 posting fee for recruiting for Senior or Medior positions or job exceeds $4000.\nIf you agree, please click OK to go to the payment page.\nIf you want to edit, please click Cancel.');
+        }
+        else if(jobLevelValue === 'Medior' || jobLevelValue === 'Senior'){
+            var isConfirmedLevel = confirm('It is mandatory to remit a $30 posting fee for recruiting for Senior or Medior positions.\nIf you agree, please click OK to go to the payment page.\nIf you want to edit the position, please click Cancel.');
+            if (!isConfirmedLevel) {
+                e.preventDefault();
+            }
+        }else if (salaryContent >= 4000) {
             var isConfirmed = confirm('This job is over $4000. You need to pay $30 to be able to post this job.\nIf you agree, please click OK to go to the payment page.\nIf you want to edit the salary, please click Cancel.');
             if (!isConfirmed) {
                 e.preventDefault();
