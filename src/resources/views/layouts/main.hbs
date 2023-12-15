@@ -78,13 +78,12 @@ if (resetLocalStorageAdmin) {
         document.querySelector('.navbar').style.cssText = 'position: fixed; top: 0; z-index: 20;';
         document.querySelector('.navbar-responsive').style.cssText = 'position: fixed; top: 0; z-index: 20;';
     }
-    var images = document.querySelectorAll('img');
+var images = document.querySelectorAll('img');
     images.forEach(function(img) {
         img.onerror = function() {
             this.src = '/img/notfoundavatar.jpeg';
         };
     });
-
     // show message
 var alertMessage = document.querySelector('.alert-message');
 var hideMessage = document.querySelector('.hide-message');

@@ -159,16 +159,16 @@
                                     <input type="text" name="type" value="prioritize" hidden>
                                     <button type="button" class="refund-success">Refund</button>
                                 </form>
-                                <div class="refund-fail" action="">
+                                <div class="refund-fail">
                                     <button type="button" class="denied">Denied</button>
                                 </div>
                             </span>
                             <form class="note-denied" action="/admin/deny/{{this._id}}" method="post">
-                                <h1>Why Do You Refuse Refund?</h1>
+                                <h1>Reason For Refusing Refund?</h1>
                                 <textarea name="reason" id="note__{{this._id}}" placeholder="Enter the reason you refused to refund" required></textarea>
                                 <div class="accept">
-                                    <input type="checkbox" name="" id="accept__{{this._id}}" required>
-                                    <label for="accept__{{this._id}}">I accept to refuse refund</label>
+                                    <input type="checkbox" name="" id="accept-high__{{this._id}}" required>
+                                    <label for="accept-high__{{this._id}}">I accept to refuse refund</label>
                                 </div>
                                 <button>Submit</button>
                             </form>
@@ -209,7 +209,7 @@
                             <span class="refund__amount-high" style="font-weight: 600; color: #FC0412;">$ {{this.revenueDetail.money}}</span>
                             <span class="action">
                                 <form class="refund-succes" action="/pay/refund/{{this._id}}" method="post">
-                                    <input type="text" name="type" id="" value="post job" hidden>
+                                    <input type="text" name="type" value="post job" hidden>
                                     <button type="button" class="refund-success">Refund</button>
                                 </form>
                                 <form class="refund-fail" action="">
@@ -217,11 +217,11 @@
                                 </form>
                             </span>
                             <form class="note-denied" action="/admin/deny/{{this._id}}" method="post">
-                                <h1>Why Do You Refuse Refund?</h1>
+                                <h1>Reason For Refusing Refund?</h1>
                                 <textarea name="reason" id="note" placeholder="Enter the reason you refused to refund" required></textarea>
                                 <div class="accept">
-                                    <input type="checkbox" name="" id="accept" required>
-                                    <label for="accept">I accept to refuse refund</label>
+                                    <input type="checkbox" name="" id="accept-postjob__{{this._id}}" required>
+                                    <label for="accept-postjob__{{this._id}}">I accept to refuse refund</label>
                                 </div>
                                 <button>Submit</button>
                             </form>
