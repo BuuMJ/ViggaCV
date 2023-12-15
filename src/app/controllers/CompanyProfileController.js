@@ -502,7 +502,12 @@ class CompanyProfileController {
       employeType: req.body.employeType,
     };
     const checkSalary = parseInt(salary, 10);
-    if (checkSalary >= 4000 || jobLevel == "Medior" || jobLevel == "Senior") {
+    if (
+      checkSalary >= 4000 ||
+      jobLevel == "Medior" ||
+      jobLevel == "Senior" ||
+      jobLevel == "Project Manager"
+    ) {
       return res.redirect("/pay/payjob");
     }
     const subscribes = await SubscribeModel.find().distinct("email");
