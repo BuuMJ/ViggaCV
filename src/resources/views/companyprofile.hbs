@@ -68,11 +68,15 @@
         </div>
         <div class="content-profile company-profile">
             <div class="profile-img">
-                <label for="file-user"><img class="user-avatar" src="{{getAvatarcompany company}}" alt=""
-                        onerror="this.src='/img/notfoundavatar.jpeg'"></label>
+                <div class="box-user__avatar">
+                    <label for="file-user">
+                    <img class="user-avatar" src="{{getAvatarcompany company}}" alt=""
+                        onerror="this.src='/img/notfoundavatar.jpeg'">
+                    </label>
+                    <label class="camera-edit" for="file-user"><i class="bi bi-camera"></i></label>
+                </div>
                 <input id="file-user" name="avatar" type="file" accept="image/*">
                 <label for="file-user" class="edit-img edit-logo"><span>Change Logo</span></label>
-                <label class="camera-edit" for="file-user"><i class="bi bi-camera"></i></label>
             </div>
             <div class="content-profile-main">
                 <span>COMPANY INFORMATION</span>

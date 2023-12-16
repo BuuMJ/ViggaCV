@@ -946,7 +946,9 @@
 .main__manager-cv section .box__failed-cv .card__failed-cv:hover .name-file span{
   color: #0072bc;
 }
-.main__manager-cv section .box__failed-cv .card__failed-cv .name-file{
+.main__manager-cv section .box__failed-cv .card__failed-cv .name-file,
+.main__manager-cv section .box__passed-cv .card__passed-cv .posted-date,
+.main__manager-cv section .box__failed-cv .card__failed-cv .posted-date{
   display: flex;
   align-items: center;
 }

@@ -35,7 +35,7 @@
                         <span class="score-applied" data-score="{{this.score}}"></span>
                         <span class="email-applied"><span class="material-symbols-outlined">contact_mail</span> {{this.email}}</span>
                         <span class="phone-applied"><span class="material-symbols-outlined">contact_phone</span> {{this.phone}}</span>
-                        <span class="posted-date"><span class="material-symbols-outlined">fact_check</span> {{this.createdAt}}</span>
+                        <span class="posted-date"><span class="material-symbols-outlined">fact_check</span> {{moment this.createdAt format="DD/MM/YYYY"}}</span>
                        <div class="action-card__passed-cv">
                             <button data-sendMail="{{this.sendMail}}" class="show-invite"><span class="material-symbols-outlined">send</span> Invite</button>
                             <a class="download__cv-passed" download=""><span class="material-symbols-outlined">cloud_download</span> Download CV</a>
@@ -95,7 +95,7 @@
                         <span class="score-applied" data-score="{{this.score}}"></span>
                         <span class="email-applied"><span class="material-symbols-outlined">contact_mail</span> {{this.email}}</span>
                         <span class="phone-applied"><span class="material-symbols-outlined">contact_phone</span> {{this.phone}}</span>
-                        <span class="posted-date"><span class="material-symbols-outlined">fact_check</span> {{this.createdAt}}</span>
+                        <span class="posted-date"><span class="material-symbols-outlined">fact_check</span> {{moment this.createdAt format="DD/MM/YYYY"}}</span>
                         <div class="action-card__passed-cv">
                             <a class="download__cv-passed" download=""><span class="material-symbols-outlined">cloud_download</span> Download CV</a>
                         </div>
@@ -250,8 +250,9 @@
         if(scoreData === '' || scoreData === "NaN"){
             scoreData = '0'
         }
-        const score = parseFloat(scoreData);
-        scoreText.innerHTML = `<i class="bi bi-stars"></i> ${score}% match`
+        const score = parseFloat(scoreData) * 100;
+        const roundedScore = score.toFixed(2);
+        scoreText.innerHTML = `<i class="bi bi-stars"></i> ${roundedScore}% match`
         const linkCompanyName = item.getAttribute('data-company-name');
         const linkJobName = item.getAttribute('data-job-name');
         const pathCV = item.querySelector('.primary-content__management').getAttribute('data-pathCV')
@@ -266,7 +267,8 @@
             scoreData = '0'
         }
         const score = parseFloat(scoreData) * 100;
-        scoreText.innerHTML = `<i class="bi bi-stars"></i> ${score}% match`
+        const roundedScore = score.toFixed(2);
+        scoreText.innerHTML = `<i class="bi bi-stars"></i> ${roundedScore}% match`
         const linkCompanyName = item.getAttribute('data-company-name');
         const linkJobName = item.getAttribute('data-job-name');
         const pathCV = item.querySelector('.primary-content__management').getAttribute('data-pathCV')

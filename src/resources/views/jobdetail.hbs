@@ -391,12 +391,18 @@
     const postedDate = new Date(dataPosted);
     const currentDate = new Date();
     console.log(currentDate)
-    const daysDifference = Math.floor((currentDate - postedDate) / (24 * 60 * 60 * 1000));
+    const dateDifference = currentDate - postedDate;
+    const daysDifference = Math.floor(dateDifference / (24 * 60 * 60 * 1000));
+    const hoursDifference = Math.floor((dateDifference % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
     console.log(postedDate)
-    if(daysDifference <= 1){
-        postedText.innerHTML = `Posted Today`
+   if (daysDifference <= 1) {
+    if (hoursDifference < 1) {
+        const minutesDifference = Math.floor((dateDifference % (60 * 60 * 1000)) / (60 * 1000));
+        postedText.innerHTML = `Posted ${minutesDifference} ${minutesDifference > 1 ? 'minutes' : 'minute'} ago`;
+    } else {
+        postedText.innerHTML = `Posted ${hoursDifference} ${hoursDifference > 1 ? 'hours' : 'hour'} ago`;
     }
-    else{
-        postedText.innerHTML = `Posted ${daysDifference} days ago`
+    } else {
+        postedText.innerHTML = `Posted ${daysDifference} ${daysDifference > 1 ? 'days' : 'day'} ago`;
     }
 </script>

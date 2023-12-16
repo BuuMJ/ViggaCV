@@ -9,10 +9,14 @@
     </div>
     <form class="content-profile" method="POST" action="/profile/edit?_method=PUT" enctype="multipart/form-data">
         <div class="profile-img">
-            <label for="file-user"><img class="user-avatar" src="{{getAvatar user}}" alt=""></label>
+            <div class="box-user__avatar">
+                    <label for="file-user">
+                        <img class="user-avatar" src="{{getAvatar user}}" alt="">
+                    </label>
+                     <label class="camera-edit" for="file-user"><i class="bi bi-camera"></i></label>
+                </div>
             <input id="file-user" name="avatar" type="file" accept="image/*">
             <label for="file-user" class="edit-img"><span>Change Avatar</span></label>
-            <label class="camera-edit camera-user-edit" for="file-user"><i class="bi bi-camera"></i></label>
         </div>
         <div class="content-profile-header">
             <span>Your Account</span>
@@ -36,6 +40,14 @@
                     <label for="password">Password</label>
                     <input id="password" name="password" type="password">
                 </div>
+                <div class="profile-user">
+                    <label for="phone">Phone</label>
+                    <input id="phone" type="tel" name="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="0702775548" value="{{getPhone user}}">
+                </div>
+                <div class="profile-user">
+                    <label for="birthday">Birthday</label>
+                    <input id="birthday" type="date" name="birthday" placeholder="03/09/1999" value="{{getBirthday user}}">
+                </div>
             </div>
             <div class="underline-profile">
                 <div class="underline"></div>
@@ -45,10 +57,6 @@
                 <div class="contact-user-address">
                     <label for="address">Address</label>
                     <input id="address" type="text" name="address" placeholder="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" value="{{getAddress user}}">
-                </div>
-                <div class="contact-user">
-                    <label for="phone">Phone</label>
-                    <input id="phone" type="tel" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" value="{{getPhone user}}">
                 </div>
                 <div class="contact-user">
                     <label for="city">City</label>
@@ -114,10 +122,14 @@
     </div>
     <form class="content-profile content-profile__admin" method="POST" action="/profile/edit?_method=PUT" enctype="multipart/form-data">
         <div class="profile-img">
-            <label for="file-user"><img class="user-avatar" src="{{getAvatar user}}" alt=""></label>
+            <div class="box-user__avatar">
+                    <label for="file-user">
+                        <img class="user-avatar" src="{{getAvatar user}}" alt="">
+                    </label>
+                     <label class="camera-edit" for="file-user"><i class="bi bi-camera"></i></label>
+                </div>
             <input id="file-user" name="avatar" type="file" accept="image/*">
             <label for="file-user" class="edit-img"><span>Change Avatar</span></label>
-            <label class="camera-edit camera-user-edit camera-user-company" for="file-user"><i class="bi bi-camera"></i></label>
         </div>
         <div class="content-profile-header">
             <span>Your Account</span>
@@ -140,6 +152,14 @@
                 <div class="profile-user password-profile">
                     <label for="password">Password</label>
                     <input id="password" name="password" type="password">
+                </div>
+                <div class="profile-user">
+                    <label for="phone">Phone</label>
+                    <input id="phone" type="tel" name="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="0702775548" value="{{getPhone user}}">
+                </div>
+                <div class="profile-user">
+                    <label for="birthday">Birthday</label>
+                    <input id="birthday" type="date" name="birthday" placeholder="03/09/1999" value="{{getBirthday user}}">
                 </div>
             </div>
             <div class="profile-action">
@@ -159,10 +179,14 @@
     </div>
     <form class="content-profile content-profile__admin" method="POST" action="/profile/edit?_method=PUT" enctype="multipart/form-data">
         <div class="profile-img">
-            <label for="file-user"><img class="user-avatar" src="{{getAvatar user}}" alt=""></label>
+            <div class="box-user__avatar">
+                    <label for="file-user">
+                        <img class="user-avatar" src="{{getAvatar user}}" alt="">
+                    </label>
+                     <label class="camera-edit" for="file-user"><i class="bi bi-camera"></i></label>
+                </div>
             <input id="file-user" name="avatar" type="file" accept="image/*">
             <label for="file-user" class="edit-img"><span>Change Avatar</span></label>
-            <label class="camera-edit camera-user-edit camera-user-company" for="file-user"><i class="bi bi-camera"></i></label>
         </div>
         <div class="content-profile-header">
             <span>Your Account</span>
@@ -185,6 +209,14 @@
                 <div class="profile-user password-profile">
                     <label for="password">Password</label>
                     <input id="password" name="password" type="password">
+                </div>
+                <div class="profile-user">
+                    <label for="phone">Phone</label>
+                    <input id="phone" type="tel" name="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="0702775548" value="{{getPhone user}}">
+                </div>
+                <div class="profile-user">
+                    <label for="birthday">Birthday</label>
+                    <input id="birthday" type="date" name="birthday" placeholder="03/09/1999" value="{{getBirthday user}}">
                 </div>
             </div>
             <div class="profile-action">

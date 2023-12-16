@@ -4313,13 +4313,16 @@ button.btn-setting:active {
   align-items: center;
   height: 10%; }
 
+.profile-img .box-user__avatar {
+  transform: translateY(-40%);
+  position: relative; }
+
 .profile-img .user-avatar {
   width: 180px;
   height: 180px;
   border-radius: 50%;
   border: 4px solid white;
   box-shadow: 1px 1px 10px #8f8d8d;
-  transform: translateY(-40%);
   position: relative;
   cursor: pointer;
   background-color: white; }
@@ -4347,8 +4350,8 @@ button.btn-setting:active {
 .camera-edit {
   position: absolute;
   font-size: 30px;
-  right: 43.5%;
-  top: 1.8%;
+  bottom: 0;
+  right: 0;
   color: black;
   padding: 0 8px;
   border-radius: 50%;
@@ -4356,12 +4359,6 @@ button.btn-setting:active {
   cursor: pointer;
   border: 1px dashed black;
   transition: .3s; }
-
-.camera-user-edit {
-  top: 4.5%; }
-
-.camera-user-company {
-  top: 8.5%; }
 
 .camera-edit:hover {
   background-color: #8f8d8d;
@@ -4479,7 +4476,7 @@ button.btn-setting:active {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: calc(95% / 4);
+  width: calc(95% / 3);
   height: 100px; }
 
 .contact-user input {
@@ -5502,28 +5499,12 @@ ul.listpageleadership .active {
   background-color: #bc2627;
   color: white; }
 
-@media screen and (max-width: 1440px) {
-  .camera-edit {
-    right: 41.5%; }
-  .camera-user-edit {
-    right: 41.5%; }
-  .camera-user-company {
-    top: 8.5%; } }
-
 @media screen and (max-width: 1024px) {
   button.btn-setting {
     width: 16%; }
   .content-profile,
   .company-profile {
     width: 85%; }
-  .camera-edit {
-    right: 40%;
-    top: 2%; }
-  .camera-user-edit {
-    right: 39%;
-    top: 3.5%; }
-  .camera-user-company {
-    top: 8.5%; }
   .alert-message p {
     font-size: 18px; }
   .container-checkpayment .box__dates-payment {
@@ -5559,13 +5540,6 @@ ul.listpageleadership .active {
     width: 90%; }
   .btn-save {
     width: 20%; }
-  .camera-edit {
-    right: 38.5%; }
-  .camera-user-edit {
-    top: 4%;
-    right: 38%; }
-  .camera-user-company {
-    top: 9.5%; }
   li.content-listjob .remove-blocked {
     padding: unset;
     left: -8%; }
@@ -5592,12 +5566,6 @@ ul.listpageleadership .active {
     width: 28%; }
   .btn-save {
     width: 26%; }
-  .camera-edit {
-    right: 34.5%; }
-  .camera-user-edit {
-    right: 35%; }
-  .camera-user-company {
-    top: 9.5%; }
   .container-checkpayment .box__dates-payment,
   .container__success-payment .main__success-payment,
   .container__cancel-payment .main__cancel-payment {
@@ -5645,14 +5613,6 @@ ul.listpageleadership .active {
     width: 100%; }
   .btn-save {
     width: 38%; }
-  .camera-edit {
-    right: 30%;
-    top: 1.5%; }
-  .camera-user-edit {
-    top: 2.3%;
-    right: 30%; }
-  .camera-user-company {
-    top: 6.5%; }
   .edit-img {
     width: 152px;
     height: 152px;
@@ -5801,14 +5761,6 @@ ul.listpageleadership .active {
     font-size: 18px; }
   .btn-save {
     width: 50%; }
-  .camera-edit {
-    right: 38.5%;
-    top: 2%; }
-  .camera-user-edit {
-    top: 3.3%;
-    right: 39%; }
-  .camera-user-company {
-    top: 9%; }
   .namejobs {
     font-size: 12px !important; }
   li.content-listjob .cv-applied {
@@ -7849,7 +7801,9 @@ header.company-detail .background-company-detail {
 .main__manager-cv section .box__failed-cv .card__failed-cv:hover .name-file span {
   color: #0072bc; }
 
-.main__manager-cv section .box__failed-cv .card__failed-cv .name-file {
+.main__manager-cv section .box__failed-cv .card__failed-cv .name-file,
+.main__manager-cv section .box__passed-cv .card__passed-cv .posted-date,
+.main__manager-cv section .box__failed-cv .card__failed-cv .posted-date {
   display: flex;
   align-items: center; }
 
