@@ -11,6 +11,7 @@ const UnsatisfactoryModel = require("../models/Unsatisfactory");
 const nodemailer = require("nodemailer");
 const UserModel = require("../models/User");
 const bcrypt = require("bcrypt");
+const { company } = require("./CompanyController");
 
 class AdminController {
   async admin(req, res, next) {
@@ -515,6 +516,7 @@ class AdminController {
     });
     const job = await JobModel.findById(idJob);
     const user = await UserModel.findById(job.iduser);
+    const company = await CompanyModel.findById({ idUser: company.iduser });
     console.log(user.email);
     const reason = req.body.reason;
     var transporter = nodemailer.createTransport({
@@ -525,7 +527,7 @@ class AdminController {
       },
     });
     const mailOptions = {
-      to: user.email,
+      to: company.companyemail,
       subject: "Refund Notification ",
       html: `
               <html>
