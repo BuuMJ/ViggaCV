@@ -55,7 +55,7 @@ module.exports = {
     if(user && user.birthday){
       return moment(user.birthday).format("DD/MM/YYYY");
     }else{
-      return " ";
+      return "";
     }
   },
   getAvatar: function (user) {

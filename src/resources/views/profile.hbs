@@ -40,14 +40,6 @@
                     <label for="password">Password</label>
                     <input id="password" name="password" type="password">
                 </div>
-                <div class="profile-user">
-                    <label for="phone">Phone</label>
-                    <input id="phone" type="tel" name="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="0702775548" value="{{getPhone user}}">
-                </div>
-                <div class="profile-user">
-                    <label for="birthday">Birthday</label>
-                    <input id="birthday" type="date" name="birthday" placeholder="03/09/1999" value="{{getBirthday user}}">
-                </div>
             </div>
             <div class="underline-profile">
                 <div class="underline"></div>
@@ -57,6 +49,10 @@
                 <div class="contact-user-address">
                     <label for="address">Address</label>
                     <input id="address" type="text" name="address" placeholder="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" value="{{getAddress user}}">
+                </div>
+                <div class="contact-user">
+                    <label for="phone">Phone</label>
+                    <input id="phone" type="tel" name="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="0702775548" value="{{getPhone user}}">
                 </div>
                 <div class="contact-user">
                     <label for="city">City</label>
@@ -216,7 +212,7 @@
                 </div>
                 <div class="profile-user">
                     <label for="birthday">Birthday</label>
-                    <input id="birthday" type="date" name="birthday" placeholder="03/09/1999" value="{{getBirthday user}}">
+                    <input id="birthday" type="date" name="birthday" value="{{getBirthday user}}">
                 </div>
             </div>
             <div class="profile-action">

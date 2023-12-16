@@ -4476,7 +4476,7 @@ button.btn-setting:active {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: calc(95% / 3);
+  width: calc(95% / 4);
   height: 100px; }
 
 .contact-user input {
@@ -10381,7 +10381,7 @@ button#moveTopBtn {
   .navbar-center ul {
     margin: 0 14px; }
   .navbar-right > * {
-    margin: 0 8px; } }
+    margin: 0 6px; } }
 
 @media screen and (max-width: 768px) {
   .navbar {
