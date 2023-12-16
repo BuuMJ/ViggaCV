@@ -58,6 +58,13 @@ module.exports = {
       return "";
     }
   },
+  getBirthdayProfile: function (user) {
+    if(user && user.birthday){
+      return moment(user.birthday).format("yyyy-MM-DD");
+    }else{
+      return "";
+    }
+  },
   getAvatar: function (user) {
     if (user && user.avatar) {
       return `/${user.avatar}`;
