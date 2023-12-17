@@ -98,7 +98,7 @@ class ApplyCVController {
             }
           });
           let destinationFolder;
-          if (score / keywords.length > 0.5) {
+          if (score / keywords.length >= 0.5) {
             destinationFolder = `/applyCV/${company.companyname}/${job.jobname}/Qualified`;
           } else {
             destinationFolder = `/applyCV/${company.companyname}/${job.jobname}/Unsatisfactory`;
@@ -114,7 +114,7 @@ class ApplyCVController {
           const newPath = `${absoluteDestination}/${req.file.filename}.pdf`;
           fs.mkdirSync(absoluteDestination, { recursive: true });
           const finalScore = score / keywords.length;
-          if (score / keywords.length > 0.5) {
+          if (score / keywords.length >= 0.5) {
             await QualifiedModel.create({
               nameCV: req.file.originalname,
               namePath: req.file.filename,
