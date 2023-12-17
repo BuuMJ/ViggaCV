@@ -4921,7 +4921,6 @@ li.content-listjob .cv-applied {
   justify-content: center;
   align-items: center;
   width: 200px;
-  height: 30px;
   margin-top: 6px;
   margin-left: 24px;
   text-align: center;
@@ -5628,8 +5627,6 @@ ul.listpageleadership .active {
     padding-left: 18px; }
   li.content-listjob .cv-applied {
     margin-left: 19px;
-    width: 146px;
-    height: 24px;
     font-size: 12px; }
   .leadership-action-view {
     width: 90%; }
@@ -5764,8 +5761,7 @@ ul.listpageleadership .active {
   .namejobs {
     font-size: 12px !important; }
   li.content-listjob .cv-applied {
-    font-size: 10px;
-    width: 124px; }
+    font-size: 10px; }
   li.content-listleadership img {
     width: 40px;
     height: 40px; }
@@ -7746,6 +7742,24 @@ header.company-detail .background-company-detail {
   position: relative;
   overflow: hidden; }
 
+.main__manager-cv section .box__passed-cv .card__passed-cv .content-talent {
+  position: absolute;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-top-right-radius: 5px;
+  background-color: #0c457d;
+  display: none;
+  top: 0;
+  right: 0;
+  color: white;
+  letter-spacing: 1.4px;
+  transition: all .5s; }
+
+.main__manager-cv section .box__passed-cv .card__passed-cv .content-talent img {
+  width: 24px;
+  height: 24px;
+  margin-left: 8px; }
+
 .main__manager-cv section .box__passed-cv .card__passed-cv span,
 .main__manager-cv section .box__failed-cv .card__failed-cv span {
   padding: 0 0 12px 0;
@@ -7797,6 +7811,9 @@ header.company-detail .background-company-detail {
 .main__manager-cv section .box__failed-cv .card__failed-cv:hover {
   border: 1px solid #0072bc;
   box-shadow: 0 2px 4px #0072bc; }
+
+.main__manager-cv section .box__passed-cv .card__passed-cv:hover .content-talent {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); }
 
 .main__manager-cv section .box__failed-cv .card__failed-cv:hover .name-file span {
   color: #0072bc; }

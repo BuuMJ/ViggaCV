@@ -891,6 +891,24 @@
   position: relative;
   overflow: hidden;
 }
+.main__manager-cv section .box__passed-cv .card__passed-cv .content-talent{
+  position: absolute;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-top-right-radius: 5px;
+  background-color: #0c457d;
+  display: none;
+  top: 0;
+  right: 0;
+  color: white;
+  letter-spacing: 1.4px;
+  transition: all .5s;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv .content-talent img{
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
+}
 .main__manager-cv section .box__passed-cv .card__passed-cv span,
 .main__manager-cv section .box__failed-cv .card__failed-cv span{
   padding: 0 0 12px 0 ;
@@ -942,6 +960,9 @@
 .main__manager-cv section .box__failed-cv .card__failed-cv:hover{
   border: 1px solid $secondarycolor;
   box-shadow: 0 2px 4px $secondarycolor;
+}
+.main__manager-cv section .box__passed-cv .card__passed-cv:hover .content-talent{
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 .main__manager-cv section .box__failed-cv .card__failed-cv:hover .name-file span{
   color: #0072bc;
