@@ -354,6 +354,9 @@ class AdminController {
       {
         $unwind: "$companyDetail",
       },
+      {
+        $sort: {updatedAt: -1}
+      }
     ]);
 
     const listJobRequestPostJob = await JobModel.aggregate([
@@ -396,6 +399,9 @@ class AdminController {
       {
         $unwind: "$companyDetail",
       },
+      {
+        $sort: {updatedAt: -1}
+      }
     ]);
     const refundCount = await RevenueModel.countDocuments({ type: "refund" });
     var listRefund = await RevenueModel.find({ type: "refund" })
@@ -405,7 +411,8 @@ class AdminController {
         select: "companyname avatar",
         model: "company",
       })
-      .select("paymentId money type jobname updatedAt admin");
+      .select("paymentId money type jobname updatedAt admin")
+      .sort({updatedAt: -1});
 
     var listRevenue = await RevenueModel.find({
       type: { $in: ["post job", "prioritize"] },
@@ -416,8 +423,9 @@ class AdminController {
         select: "companyname avatar",
         model: "company",
       })
-      .select("paymentId money type jobname updatedAt admin");
-    const abc = listJobRequestPrioritize;
+      .select("paymentId money type jobname updatedAt admin")
+      .sort({updatedAt: -1});
+      const abc = listJobRequestPrioritize;
     // console.log(annualRevenue);
     console.log(listJobRequestPrioritize);
     res.render("admin", {

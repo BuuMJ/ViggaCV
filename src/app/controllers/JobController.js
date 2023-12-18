@@ -44,6 +44,7 @@ class JobController {
         companiesWithAtLeast2Jobs.push(company1);
       }
     }
+    console.log(companiesWithAtLeast2Jobs + "aasdasdashkdjagfkjasgfjkagdjasda")
 
     // Chọn ngẫu nhiên một công ty từ danh sách công ty phù hợp
     const randomIndex = Math.floor(

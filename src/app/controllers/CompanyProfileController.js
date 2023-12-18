@@ -727,6 +727,9 @@ class CompanyProfileController {
           as: "jobDetail",
         },
       },
+      {
+        $sort: {score: -1}
+      }
     ]);
     res.render("cvManager", {
       cvPassed: cvPassed,
