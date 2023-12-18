@@ -375,11 +375,19 @@ getPagination.forEach(function(pageLink) {
 window.addEventListener('scroll', function() {
   var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
   var hideSwiper = document.querySelector('.mySwiper');
+  const containerJob = document.querySelector('.container-jobs');
   if (checkLengthSlide === 0) {
     hideSwiper.style.display = 'none';
     if (scrollPosition >= 85) {
       document.querySelector('.header-search').style.cssText = 'position: fixed; top: 0; box-shadow: 1px 1px 10px rgba(0,0,0,0.5); background-color: white; border-bottom: 1px solid #ededed;';
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: #F7F7F7;';
+      if(window.innerWidth > 601){
+        containerJob.style.cssText = 'margin-top: 80px'
+      }else if (window.innerWidth > 322 && window.innerWidth < 601){
+        containerJob.style.cssText = 'margin-top: 180px'
+      }else{
+        containerJob.style.cssText = 'margin-top: 120px'
+      }
       if(document.querySelector('.header-search .input-search .categories-select') && document.querySelector('.header-search .input-search .categories-select__position')){
         document.querySelector('.header-search .input-search .categories-select').style.cssText = 'background-color: #F7F7F7;';
         document.querySelector('.header-search .input-search .categories-select__position').style.cssText = 'background-color: #F7F7F7;';
@@ -391,6 +399,7 @@ window.addEventListener('scroll', function() {
     } else {
       document.querySelector('.header-search').style.cssText = 'position: unset; box-shadow: unset;';
       document.querySelector('.header-search .input-search input').style.cssText = 'background-color: white;';
+      containerJob.style.cssText = 'margin-top: unset'
       if(document.querySelector('.header-search .input-search .categories-select') && document.querySelector('.header-search .input-search .categories-select__position')){
       document.querySelector('.header-search .input-search .categories-select').style.cssText = 'background-color: white;';
       document.querySelector('.header-search .input-search .categories-select__position').style.cssText = 'background-color: white;';

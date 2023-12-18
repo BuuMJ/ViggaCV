@@ -247,7 +247,9 @@ section.primarykey-content__job .container .box .content{
 .location-jobinfo{
     padding-bottom: 20px;
 }
-.desc-jobinfo p{
+.desc-jobinfo p,
+.requirements-jobinfo p,
+.benefit-jobinfo p{
     line-height: 32px;
 }
 // .desc-jobinfo p,
@@ -1656,7 +1658,7 @@ header.job-search .swiper {
     background-color: #F80404;
     color: white;
     transform: translate(-4px,-4px);
-    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
 }
 .card-suggest #close-suggest{
@@ -1896,9 +1898,6 @@ header.job-search .swiper {
     }
 }
 @media screen and (max-width: 1025px) {
-    .header-search .header-search__scancv label{
-        width: 150px;
-    }
     header.job-search .swiper .swiper-wrapper .swiper-slide .job-ads .salary-content__job-ads a.view-salary{
         font-size: 16px;
     }
@@ -1965,7 +1964,9 @@ header.job-search .swiper {
     .main-jobinfo p {
         text-align: justify;
     }
-    .desc-jobinfo p{
+    .desc-jobinfo p,
+    .requirements-jobinfo p,
+    .benefit-jobinfo p{
         text-align: justify;
     }
     .box-apply-job{
