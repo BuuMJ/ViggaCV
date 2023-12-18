@@ -53,7 +53,8 @@ header.jobdetail .center-jobdetail{
 .jobdetail-action form {
     margin: 4px 0;
 }
-.jobdetail-action form button.check-save__job{
+.jobdetail-action form button.check-save__job,
+.jobdetail-action form a.check-save__job{
     background-color: #f3f6f6;
     border: 1px solid #f3f6f6;
     outline: none;
@@ -69,7 +70,8 @@ header.jobdetail .center-jobdetail{
     transition: .5s;
     border-radius: 5px;
 }
-.jobdetail-action form button.check-save__job:hover{
+.jobdetail-action form button.check-save__job:hover,
+.jobdetail-action form a.check-save__job:hover{
     color: #E63946;
     background-color: #cecfcf;
 }

@@ -71,6 +71,10 @@
             {{/ifeq}}
             {{else}}
             <a class="btn-apply__notuser" href="/login">Apply Now</a>
+            <form class="function__check-save" action="/job/favourite?id={{detail._id}}" method="POST">
+                <a href="/login" title="Save Job" class="check-save__job" type="submit" data-check-save="{{checkSave checksave}}"><i class="bi bi-heart"></i></a>
+            </form>
+            <a class="create-cv__job" href="/login"><span class="material-symbols-outlined">clinical_notes</span> Create CV To Apply</a>
             {{/if}}
         </div>
     </header>

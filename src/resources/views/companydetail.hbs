@@ -12,9 +12,15 @@
                           <a class="sumary-jobs" href="/company/job/{{getIDcompany company}}">({{getCompanyname company}} company's jobs)</a>
                     </span>
                 </div>
+                {{#if user}}
                 <form class="follow-company-detail" method="post" action="/company/{{company._id}}/follow">
                     <button id="followButton" type="submit">{{checkfl.follow}} ({{company.follow}})</button>
                 </form>
+                {{else}}
+                <form class="follow-company-detail" method="post" action="/company/{{company._id}}/follow">
+                    <a href="/login" id="followButton" class="follow__not-user" type="submit">{{checkfl.follow}} ({{company.follow}})</a>
+                </form>
+                {{/if}}
             </div>
         </div>
     </header>

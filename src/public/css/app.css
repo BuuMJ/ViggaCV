@@ -1535,7 +1535,8 @@ header.jobdetail .center-jobdetail {
 .jobdetail-action form {
   margin: 4px 0; }
 
-.jobdetail-action form button.check-save__job {
+.jobdetail-action form button.check-save__job,
+.jobdetail-action form a.check-save__job {
   background-color: #f3f6f6;
   border: 1px solid #f3f6f6;
   outline: none;
@@ -1551,7 +1552,8 @@ header.jobdetail .center-jobdetail {
   transition: .5s;
   border-radius: 5px; }
 
-.jobdetail-action form button.check-save__job:hover {
+.jobdetail-action form button.check-save__job:hover,
+.jobdetail-action form a.check-save__job:hover {
   color: #E63946;
   background-color: #cecfcf; }
 
@@ -6282,7 +6284,8 @@ header.company-detail .background-company-detail {
   width: 150px;
   height: 100px;
   border-radius: 5px;
-  box-shadow: 1px 1px 8px #999999; }
+  box-shadow: 1px 1px 8px #999999;
+  background-color: white; }
 
 .header__primary-company-detail .logo-company-detail span.sumary-jobs {
   font-size: 30px;
@@ -6315,10 +6318,10 @@ header.company-detail .background-company-detail {
   align-items: center;
   width: 18%; }
 
-.follow-company-detail button {
+.follow-company-detail button,
+.follow-company-detail a.follow__not-user {
   outline: none;
-  width: 120px;
-  height: 50px;
+  padding: 10px 16px;
   background-color: #0095ff;
   color: white;
   border: 1px solid #0095ff;
@@ -6327,10 +6330,11 @@ header.company-detail .background-company-detail {
   transition: .5s;
   text-transform: capitalize; }
 
-.follow-company-detail button.following {
-  width: 120px; }
+.follow-company-detail a.follow__not-user {
+  text-decoration: none; }
 
-.follow-company-detail button:hover {
+.follow-company-detail button:hover,
+.follow-company-detail a.follow__not-user:hover {
   background-color: white;
   color: #0095ff;
   border: 1px solid #0095ff; }
@@ -6625,6 +6629,10 @@ header.company-detail .background-company-detail {
   .logo-company-detail,
   .follow-company-detail {
     margin-top: 30px; }
+  .logo-company-detail {
+    width: 75%; }
+  .follow-company-detail {
+    width: 25%; }
   .header__primary-company-detail .logo-company-detail img {
     position: absolute;
     top: -40%; }
