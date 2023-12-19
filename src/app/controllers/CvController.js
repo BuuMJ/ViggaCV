@@ -53,6 +53,9 @@ class CvController {
     const color = req.query.color;
     const fontfamily = req.query.fontfamily;
     const fontsize = req.query.fontsize;
+    // console.log("alooooooaodsoasdoasodaosdoasdoso" + color)
+    // console.log("alooooooaodsoasdoasodaosdoasdoso" + fontfamily)
+    // console.log("alooooooaodsoasdoasodaosdoasdoso" + fontsize)
     if (data) {
       // console.log(data + " = Thông tin của user sau khi tra cứu");
       res.render("cvpdf", {
@@ -100,7 +103,7 @@ class CvController {
       let savedCv;
 
       if (data) {
-        console.log("Đã tới đây");
+        console.log("Đã tới đây" + color);
         const cv = await CVModel.findByIdAndUpdate(
           data._id,
           {
@@ -349,13 +352,12 @@ class CvController {
       const token = req.cookies.token;
       // console.log(token);
       const browser = await puppeteer.launch({
-        args: [
-          "--disable-setuid-sandbox",
-          "--no-sandbox",
-          "--single-process",
-          "--no-zygote",
-        ],
-        headless: "new",
+        // args: [
+        //   "--disable-setuid-sandbox",
+        //   "--no-sandbox",
+        //   "--single-process",
+        //   "--no-zygote",
+        // ],
         // executablePath:
         //   process.env.NODE_ENV === "production"
         //     ? process.env.PUPPETEER_EXECUTABLE_PATH
@@ -371,9 +373,12 @@ class CvController {
       });
 
       // Navigate to the page you want and create PDF
-      await page.goto("http://localhost:10000/cv/export", {
-        waitUntil: "networkidle0",
-      });
+      await page.goto(
+        `http://localhost:10000/cv/exportcv?color=${color}&fontfamily=${fontfamily}&fontsize=${fontsize}`,
+        {
+          waitUntil: "networkidle0",
+        }
+      );
       // Wait until the element appears on the page
       await page.waitForSelector(".body__create-cv.a4");
 
