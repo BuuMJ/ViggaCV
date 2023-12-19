@@ -121,7 +121,7 @@
       <div class="categories-select">
           <select name="categories" id="categories-search">
              <option  value="" selected>Professions</option>
-             {{#each listcompany}}
+             {{#each professions}}
              <option value="{{this.companyfield}}">{{this.companyfield}}</option>
              {{/each}}
           </select>
@@ -130,7 +130,7 @@
       <div class="categories-select__position">
           <select name="position" id="categories-search__position">
              <option  value="" selected>Position</option>
-             {{#each jobs}}
+             {{#each position}}
              <option value="{{this.position}}">{{this.position}}</option>
              {{/each}}
           </select>

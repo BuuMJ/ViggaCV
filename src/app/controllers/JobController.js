@@ -13,12 +13,55 @@ const RevenueModel = require("../models/Revenua");
 
 class JobController {
   async job(req, res, next) {
-    if(req.user){
+    if (req.user) {
       const confirm = req.user.confirm;
       if (confirm == false) {
         return res.redirect("/companyprofile");
       }
     }
+    const position = await JobModel.aggregate([
+      {
+        $match: {
+          active: true,
+          position: { $ne: null }, // Loại bỏ những documents có position là null
+        },
+      },
+      {
+        $group: {
+          _id: "$position",
+          count: { $sum: 1 },
+        },
+      },
+      {
+        $replaceRoot: {
+          newRoot: {
+            position: "$_id",
+          },
+        },
+      },
+    ]);
+
+    const professions = await CompanyModel.aggregate([
+      {
+        $match: {
+          companyfield: { $ne: null },
+        },
+      },
+      {
+        $group: {
+          _id: "$companyfield",
+          count: { $sum: 1 },
+        },
+      },
+      {
+        $replaceRoot: {
+          newRoot: {
+            companyfield: "$_id",
+          },
+        },
+      },
+    ]);
+    console.log(professions);
     const user = req.user;
     const job = await JobModel.find({ active: true });
     const count = await JobModel.countDocuments({ active: true });
@@ -44,7 +87,6 @@ class JobController {
         companiesWithAtLeast2Jobs.push(company1);
       }
     }
-    console.log(companiesWithAtLeast2Jobs + "aasdasdashkdjagfkjasgfjkagdjasda")
 
     // Chọn ngẫu nhiên một công ty từ danh sách công ty phù hợp
     const randomIndex = Math.floor(
@@ -165,6 +207,8 @@ class JobController {
             randomJobs: mutipleMongooseToObject(randomJobs),
             listcompany: mutipleMongooseToObject(company),
             listJobAd: mutipleMongooseToObject(listJobAd),
+            position,
+            professions,
           });
         });
     } else {
@@ -193,6 +237,8 @@ class JobController {
             listcompany: mutipleMongooseToObject(company),
             company1: company,
             listJobAd: mutipleMongooseToObject(listJobAd),
+            position,
+            professions,
           });
         });
     }
