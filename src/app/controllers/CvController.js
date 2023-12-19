@@ -366,16 +366,13 @@ class CvController {
       await page.setCookie({
         name: "token",
         value: token,
-        url: "https://vigga-careers.onrender.com//",
+        url: "http://localhost:10000/",
       });
 
       // Navigate to the page you want and create PDF
-      await page.goto(
-        `https://vigga-careers.onrender.com/cv/exportcv?color=${color}&fontfamily=${fontfamily}&fontsize=${fontsize}`,
-        {
-          waitUntil: "networkidle0",
-        }
-      );
+      await page.goto({
+        waitUntil: "networkidle0",
+      });
       // Wait until the element appears on the page
       await page.waitForSelector(".body__create-cv.a4");
 

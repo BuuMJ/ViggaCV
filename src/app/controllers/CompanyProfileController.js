@@ -547,7 +547,7 @@ class CompanyProfileController {
             pass: "wdymtvgbhblstfbj",
           },
         });
-        const linkJob = `https://vigga-careers.onrender.com/job/${job._id}`;
+        const linkJob = `hhttp://localhost:10000/job/${job._id}`;
         const mailOptions = {
           to: combinedEmails, // list of receivers
           subject: "ViggaCareers ", // Subject line<a href="${linkJob}">here</a>
@@ -728,8 +728,8 @@ class CompanyProfileController {
         },
       },
       {
-        $sort: {score: -1}
-      }
+        $sort: { score: -1 },
+      },
     ]);
     res.render("cvManager", {
       cvPassed: cvPassed,

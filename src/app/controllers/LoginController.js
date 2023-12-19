@@ -74,7 +74,7 @@ class LoginController {
       },
     });
     const token = jwt.sign({ email: email }, "PW", { expiresIn: "1h" });
-    const verifyLink = `https://vigga-careers.onrender.com/login/verify?token=${token}`;
+    const verifyLink = `http://localhost:10000/login/verify?token=${token}`;
     const mailOptions = {
       to: email, // list of receivers
       subject: "Reset Password", // Subject line
