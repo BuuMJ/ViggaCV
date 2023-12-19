@@ -13,13 +13,16 @@ const QualifiedModel = require("../models/Qualified");
 class HomeController {
   async home(req, res, next) {
     try {
-      
       // await QualifiedModel.updateMany({}, { sendMail: false });
       if (req.user) {
         const confirm = req.user.confirm;
         if (confirm == false) {
           return res.redirect("/companyprofile");
         }
+        // const user = req.user;
+        // if (user.role == "admin") {
+        //   return res.redirect("/admin");
+        // }
       }
       const msg = req.query.messenge;
       // const jobs = await JobModel.find({ active: true });

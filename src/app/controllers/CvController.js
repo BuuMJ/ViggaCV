@@ -355,10 +355,11 @@ class CvController {
           "--single-process",
           "--no-zygote",
         ],
-        executablePath:
-          process.env.NODE_ENV === "production"
-            ? process.env.PUPPETEER_EXECUTABLE_PATH
-            : puppeteer.executablePath(),
+        headless: "new",
+        // executablePath:
+        //   process.env.NODE_ENV === "production"
+        //     ? process.env.PUPPETEER_EXECUTABLE_PATH
+        //     : puppeteer.executablePath(),
       });
       const page = await browser.newPage();
 
@@ -370,7 +371,7 @@ class CvController {
       });
 
       // Navigate to the page you want and create PDF
-      await page.goto({
+      await page.goto("http://localhost:10000/cv/export", {
         waitUntil: "networkidle0",
       });
       // Wait until the element appears on the page

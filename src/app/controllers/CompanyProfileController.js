@@ -37,6 +37,9 @@ class CompanyProfileController {
             idcompany: company._id,
           },
         },
+        {
+          $sort: { createdAt: -1 },
+        },
       ]);
     } else {
       var leadership = null;

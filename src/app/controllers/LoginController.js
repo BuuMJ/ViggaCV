@@ -45,7 +45,11 @@ class LoginController {
               res.cookie("token", token, {
                 expires: new Date(Date.now() + 18000000000),
               });
-              return res.redirect("/");
+              if (data.role == "admin") {
+                return res.redirect("/admin");
+              } else {
+                return res.redirect("/");
+              }
             } else {
               return res.render("login", {
                 msg: "The user or password is incorrect.",
